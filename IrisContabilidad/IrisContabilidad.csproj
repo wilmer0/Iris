@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2345E4DB-E9F4-4F9B-962D-C81D67280ACE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IrisContabilidad</RootNamespace>
+    <AssemblyName>IrisContabilidad</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clases\utilidades.cs" />
+    <Compile Include="Contabilidad\busqueda_cuenta_contable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\busqueda_cuenta_contable.Designer.cs">
+      <DependentUpon>busqueda_cuenta_contable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\catalogo_cuentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contabilidad\catalogo_cuentas.Designer.cs">
+      <DependentUpon>catalogo_cuentas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Contabilidad\ControlDesigner.cs" />
+    <Compile Include="formularios_base\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios_base\FormBase.Designer.cs">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formularios_base\FormBusqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formularios_base\FormBusqueda.Designer.cs">
+      <DependentUpon>FormBusqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sistema\login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sistema\menu_principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sistema\menu_principal.Designer.cs">
+      <DependentUpon>menu_principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sistema\procesando_ventana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sistema\procesando_ventana.Designer.cs">
+      <DependentUpon>procesando_ventana.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Contabilidad\busqueda_cuenta_contable.resx">
+      <DependentUpon>busqueda_cuenta_contable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contabilidad\catalogo_cuentas.resx">
+      <DependentUpon>catalogo_cuentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios_base\FormBase.resx">
+      <DependentUpon>FormBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formularios_base\FormBusqueda.resx">
+      <DependentUpon>FormBusqueda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sistema\login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Sistema\menu_principal.resx">
+      <DependentUpon>menu_principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sistema\procesando_ventana.resx">
+      <DependentUpon>procesando_ventana.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="cuentas_por_cobrar\" />
+    <Folder Include="cuentas_por_pagar\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Iconos\IrisCont.ico" />
+    <None Include="Resources\Imagenes\categoria.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
