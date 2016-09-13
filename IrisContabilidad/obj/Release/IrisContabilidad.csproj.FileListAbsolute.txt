@@ -12,3 +12,17 @@ c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisConta
 c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Contabilidad.catalogo_cuentas.resources
 c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Sistema.procesando_ventana.resources
 c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Contabilidad.busqueda_cuenta_contable.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.exe
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.pdb
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.pdb
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Contabilidad.busqueda_cuenta_contable.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Contabilidad.catalogo_cuentas.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.FormBase.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.formularios_base.FormBusqueda.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.login.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Properties.Resources.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Sistema.menu_principal.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Sistema.procesando_ventana.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csproj.GenerateResource.Cache

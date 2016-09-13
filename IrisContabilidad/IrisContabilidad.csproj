@@ -45,19 +45,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\utilidades.cs" />
-    <Compile Include="Contabilidad\busqueda_cuenta_contable.cs">
+    <Compile Include="contabilidad\busqueda_cuenta_contable.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Contabilidad\busqueda_cuenta_contable.Designer.cs">
+    <Compile Include="contabilidad\busqueda_cuenta_contable.Designer.cs">
       <DependentUpon>busqueda_cuenta_contable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Contabilidad\catalogo_cuentas.cs">
+    <Compile Include="contabilidad\catalogo_cuentas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Contabilidad\catalogo_cuentas.Designer.cs">
+    <Compile Include="contabilidad\catalogo_cuentas.Designer.cs">
       <DependentUpon>catalogo_cuentas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Contabilidad\ControlDesigner.cs" />
+    <Compile Include="contabilidad\ControlDesigner.cs" />
     <Compile Include="formularios_base\FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,10 +90,10 @@
     <Compile Include="Sistema\procesando_ventana.Designer.cs">
       <DependentUpon>procesando_ventana.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Contabilidad\busqueda_cuenta_contable.resx">
+    <EmbeddedResource Include="contabilidad\busqueda_cuenta_contable.resx">
       <DependentUpon>busqueda_cuenta_contable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Contabilidad\catalogo_cuentas.resx">
+    <EmbeddedResource Include="contabilidad\catalogo_cuentas.resx">
       <DependentUpon>catalogo_cuentas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formularios_base\FormBase.resx">
