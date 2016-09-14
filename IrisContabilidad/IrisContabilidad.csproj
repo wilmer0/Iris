@@ -107,14 +107,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Sistema\menu_principal.resx">
       <DependentUpon>menu_principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -134,10 +128,6 @@
   <ItemGroup>
     <Folder Include="cuentas_por_cobrar\" />
     <Folder Include="cuentas_por_pagar\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\Iconos\IrisCont.ico" />
-    <None Include="Resources\Imagenes\categoria.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

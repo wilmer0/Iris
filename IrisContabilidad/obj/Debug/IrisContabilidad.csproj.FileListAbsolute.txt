@@ -1,0 +1,13 @@
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.Contabilidad.busqueda_cuenta_contable.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.Contabilidad.catalogo_cuentas.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.FormBase.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.formularios_base.FormBusqueda.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.login.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.Properties.Resources.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.Sistema.menu_principal.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.Sistema.procesando_ventana.resources
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.csproj.GenerateResource.Cache
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\bin\Debug\IrisContabilidad.exe
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\bin\Debug\IrisContabilidad.pdb
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.exe
+D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.pdb

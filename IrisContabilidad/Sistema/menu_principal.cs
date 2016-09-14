@@ -16,8 +16,12 @@ namespace IrisContabilidad.Sistema
 
 
         //variables
+       
         string codigoModuloPresionado = "";
         string codigoVentanaPresionada = "";
+        int top = 100;
+        int left = 0;
+        string carpetaImagenes = Directory.GetCurrentDirectory();
 
 
         public menu_principal()
@@ -30,45 +34,135 @@ namespace IrisContabilidad.Sistema
         {
 
         }
+        public void cargarModulosBotones()
+        {
+            try
+            {
+                flowLayoutPanel1.Controls.Clear();
+                string sql = "select ruta_imagen_productos from sistema";
+                DataSet ds = Clases.utilidades.ejecutarcomando(sql);
+                string rutaImagen = "";
+                if (ds.Tables[0].Rows[0][0].ToString() != "")
+                {
+                    rutaImagen = ds.Tables[0].Rows[0][0].ToString();
+                }
+
+                sql = "select codigo,descripcion,nombre_logico,imagen from sistema_modulos where estado='1'";
+                ds = Clases.utilidades.ejecutarcomando(sql);
+                int contador = 0;
+                int top = 100;
+                int left = 0;
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    
+                    Button botonModulo = new Button();
+                    //botonModulo.Text = row[0].ToString() + "-" + row[1].ToString();
+                    botonModulo.Tag = row[0].ToString();
+                    botonModulo.Width = 148;
+                    botonModulo.Height = 112;
+                    botonModulo.Tag = row[0].ToString();
+
+
+                    //crear el evento click del boton modulo
+                    botonModulo.Click += eventoClickBotonModulo;
+                    botonModulo.FlatStyle = FlatStyle.Flat;
+                   
+                    //botonModulo.BackgroundImage = Image.FromFile(@"D:\wilmer\developer\github\data\DLR-POS\proyecto\prueba\fotos_productos\empresa.png");
+                    if (row[3].ToString() != "")
+                    {
+                        botonModulo.BackgroundImage = Image.FromFile(rutaImagen + @"\" + row[3].ToString());
+                        botonModulo.BackgroundImageLayout = ImageLayout.Stretch;
+                    }
+                    
+                    flowLayoutPanel1.Controls.Add(botonModulo);             
+                    
+                }
+                // MessageBox.Show("Desde "+desde.ToString()+" hasta "+hasta.ToString());
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error cargando los botones del modulo: "+ex.ToString());
+            }
+        }
+
+        private void eventoClickBotonModulo(object sender, EventArgs e)
+        {
+            try
+            {
+                Button btn = (Button)sender;
+                //MessageBox.Show(btn.Tag.ToString());
+                codigoModuloPresionado = btn.Tag.ToString(); //para tener el codigo
+                cargarBotonesDelModulo();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error en el evento click de boton modulo");
+            }
+        }
+
+        public void cargarBotonesDelModulo()
+        {
+            try
+            {
+
+            //    if (codigoModuloPresionado.ToString() == null)
+            //        return;
+                  flowLayoutPanel2.Controls.Clear();
+            //    string sql = "select codigo,descripcion,cod_modulo,nombre_logico,imagen from sistema_modulo_opciones where estado='1' and cod_modulo='"+codigoModuloPresionado.ToString()+"'";
+            //    DataSet ds = Clases.utilidades.ejecutarcomando(sql);
+            //    string rutaImagen = "";
+            //    if (ds.Tables[0].Rows[0][0].ToString() != "")
+            //    {
+            //        rutaImagen = ds.Tables[0].Rows[0][0].ToString();
+            //    }
+
+            //    int contador = 0;
+            //    int top = 100;
+            //    int left = 0;
+            //    foreach (DataRow row in ds.Tables[0].Rows)
+            //    {
+
+            //        Button botonModulo = new Button();
+            //        //botonModulo.Text = row[0].ToString() + "-" + row[1].ToString();
+            //        botonModulo.Tag = row[0].ToString();
+            //        botonModulo.Width = 109;
+            //        botonModulo.Height = 99;
+            //        botonModulo.Tag = row[0].ToString();
+
+
+            //        //crear el evento click del boton modulo
+            //        //botonModulo.Click += eventoClickBotonModulo;
+            //        botonModulo.FlatStyle = FlatStyle.Flat;
+
+            //        //botonModulo.BackgroundImage = Image.FromFile(@"D:\wilmer\developer\github\data\DLR-POS\proyecto\prueba\fotos_productos\empresa.png");
+            //        if (row[4].ToString() != "")
+            //        {
+            //            botonModulo.BackgroundImage = Image.FromFile(rutaImagen + @"\" + row[3].ToString());
+            //            botonModulo.BackgroundImageLayout = ImageLayout.Stretch;
+            //        }
+
+            //        flowLayoutPanel2.Controls.Add(botonModulo);
+
+            //    }
+            //    // MessageBox.Show("Desde "+desde.ToString()+" hasta "+hasta.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargando los botones del modulo: " + ex.ToString());
+            }
+        }
         public override void loadVentana()
         {
             try
             {
-                string carpetaImagenes = Directory.GetCurrentDirectory();
-                carpetaImagenes += @"\Resources\Imagenes\";
-                MessageBox.Show(carpetaImagenes);
-                //cargar modulos
-                string sql = "select codigo,descripcion,nombre_logico,imagen from sistema_modulos where estado='1'";
-                DataSet ds = Clases.utilidades.ejecutarcomando(sql);
-                foreach (DataRow rowModulo in ds.Tables[0].Rows)
-                {
-                    Button botonModulo = new Button();
-                    botonModulo.Width = 148;
-                    botonModulo.Height = 112;
-                    if (rowModulo[3].ToString() != "")
-                    {
-                        botonModulo.BackgroundImage = Image.FromFile(carpetaImagenes + rowModulo[3].ToString());
-                    }
-                    botonModulo.Tag = rowModulo[0].ToString();
-                    flowLayoutPanel1.Controls.Add(botonModulo);
-
-
-                    //cargar ventana de cada modulo
-                    //string cmd = "select codigo,descripcion,cod_modulo,nombre_logico,imagen from sistema_modulo_opciones where estado='1' and cod_modulo='1'";
-                    //DataSet ds2 = Clases.utilidades.ejecutarcomando(cmd);
-                    //Button botonVentana = new Button();
-                    //botonVentana.Width = 148;
-                    //botonVentana.Height = 112;
-                    //if (ds2.Tables[0].Rows[0][4].ToString() != "")
-                    //{
-                    //    botonVentana.BackgroundImage = Image.FromFile(carpetaImagenes + ds2.Tables[0].Rows[0][4].ToString());
-                    //}
-                }
+                //cargarModulosBotones();
+                cargarModulosBotones();
+                
 
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Error: "+ex.ToString());
+                //MessageBox.Show("Error: "+ex.ToString());
             }
             this.tituloLabel.Text = "Menú principal";
         }
