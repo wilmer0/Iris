@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad
+﻿namespace puntoVenta
 {
     partial class login
     {

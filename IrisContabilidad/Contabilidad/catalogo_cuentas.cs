@@ -1,4 +1,4 @@
-﻿using IrisContabilidad.Clases;
+﻿using puntoVenta.Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace IrisContabilidad.Contabilidad
+namespace puntoVenta.Contabilidad
 {
     public partial class catalogo_cuentas : FormBase
     {

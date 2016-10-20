@@ -7,7 +7,7 @@
     <ProjectGuid>{2345E4DB-E9F4-4F9B-962D-C81D67280ACE}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IrisContabilidad</RootNamespace>
+    <RootNamespace>puntoVenta</RootNamespace>
     <AssemblyName>IrisContabilidad</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

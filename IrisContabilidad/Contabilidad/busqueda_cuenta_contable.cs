@@ -1,4 +1,4 @@
-﻿using IrisContabilidad.formularios_base;
+﻿using puntoVenta.formularios_base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace IrisContabilidad.Contabilidad
+namespace puntoVenta.Contabilidad
 {
     public partial class busqueda_cuenta_contable : FormBusqueda
     {

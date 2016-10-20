@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.Contabilidad
+﻿namespace puntoVenta.Contabilidad
 {
     partial class catalogo_cuentas
     {

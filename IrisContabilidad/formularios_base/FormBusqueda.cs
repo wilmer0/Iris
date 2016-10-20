@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace IrisContabilidad.formularios_base
+namespace puntoVenta.formularios_base
 {
     public partial class FormBusqueda : Form
     {

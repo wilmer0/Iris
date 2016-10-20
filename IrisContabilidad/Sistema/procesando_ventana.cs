@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace IrisContabilidad.Sistema
+namespace puntoVenta.Sistema
 {
     public partial class procesando_ventana : Form
     {

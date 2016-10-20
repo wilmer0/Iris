@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.formularios_base
+﻿namespace puntoVenta.formularios_base
 {
     partial class FormBusqueda
     {

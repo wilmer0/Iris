@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.Sistema
+﻿namespace puntoVenta.Sistema
 {
     partial class menu_principal
     {

@@ -12,7 +12,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Data;
 
-namespace IrisContabilidad.Clases
+namespace puntoVenta.Clases
 {
     public static class  utilidades
     {

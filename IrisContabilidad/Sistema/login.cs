@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace IrisContabilidad
+namespace puntoVenta
 {
     public partial class login : FormBase
     {

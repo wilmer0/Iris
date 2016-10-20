@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Reflection;
 using System.IO;
-namespace IrisContabilidad.Sistema
+namespace puntoVenta.Sistema
 {
     public partial class menu_principal : FormBase
     {
