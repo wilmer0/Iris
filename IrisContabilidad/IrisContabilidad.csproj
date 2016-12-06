@@ -33,6 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BarcodeLib">
+      <HintPath>..\..\DLR-POS-2.0\proyecto\packages\BarcodeLib.1.0.0.22\lib\net20\BarcodeLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Gmap.net">
+      <HintPath>..\..\DLR-POS-2.0\proyecto\packages\GMap.Net.1.0.1\lib\Gmap.net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\DLR-POS-2.0\proyecto\puntoVentaWin\librerias\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,14 +54,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="clases\utilidades.cs" />
+    <Compile Include="modulo_sistema\login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="modulo_sistema\login.Designer.cs">
+      <DependentUpon>login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_sistema\formBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_sistema\formBase.Designer.cs">
+      <DependentUpon>formBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="modulo_sistema\formBase.resx">
+      <DependentUpon>formBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_sistema\login.resx">
+      <DependentUpon>login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,14 +104,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="clases\" />
     <Folder Include="modulo_cuenta_por_cobrar\" />
     <Folder Include="modulo_cuenta_por_pagar\" />
     <Folder Include="modulo_empresa\" />
     <Folder Include="modulo_facturacion\" />
     <Folder Include="modulo_inventario\" />
     <Folder Include="modulo_nomina\" />
-    <Folder Include="modulo_sistema\" />
     <Folder Include="pruebas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
