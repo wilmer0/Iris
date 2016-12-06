@@ -1,30 +1,12 @@
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.pdb
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.login.resources
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Properties.Resources.resources
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csproj.GenerateResource.Cache
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.exe
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.pdb
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.FormBase.resources
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.formularios_base.FormBusqueda.resources
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Sistema.menu_principal.resources
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Contabilidad.catalogo_cuentas.resources
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Sistema.procesando_ventana.resources
-c:\users\wilmer\documents\visual studio 2013\Projects\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Contabilidad.busqueda_cuenta_contable.resources
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.exe
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.pdb
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.pdb
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csproj.GenerateResource.Cache
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.Contabilidad.busqueda_cuenta_contable.resources
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.Contabilidad.catalogo_cuentas.resources
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.FormBase.resources
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.formularios_base.FormBusqueda.resources
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.login.resources
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.Properties.Resources.resources
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.Sistema.menu_principal.resources
-D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.Sistema.procesando_ventana.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe.config
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidadModelo.exe
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\EntityFramework.dll
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidadModelo.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\EntityFramework.xml
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.Properties.Resources.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csproj.GenerateResource.Cache
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.exe
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.pdb

@@ -19,8 +19,7 @@ namespace IrisContabilidadModelo.modelos
             : base("name=iris_contabilidadEntities")
         {
         }
-        public iris_contabilidadEntities(string servidor, string baseDatos, string user, string pass, string Puerto = "3306")
-            : base("name=punto_ventaEntities")
+    	public iris_contabilidadEntities(string servidor, string baseDatos, string user, string pass, string Puerto="3306"): base("name=punto_ventaEntities")
                             {
     
     

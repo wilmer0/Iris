@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2345E4DB-E9F4-4F9B-962D-C81D67280ACE}</ProjectGuid>
+    <ProjectGuid>{19334FF1-9E72-4E79-8350-68E5AB3EA64D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>puntoVenta</RootNamespace>
+    <RootNamespace>IrisContabilidad</RootNamespace>
     <AssemblyName>IrisContabilidad</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,11 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
@@ -44,32 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clases\utilidades.cs" />
-    <Compile Include="contabilidad\busqueda_cuenta_contable.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="contabilidad\busqueda_cuenta_contable.Designer.cs">
-      <DependentUpon>busqueda_cuenta_contable.cs</DependentUpon>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="contabilidad\catalogo_cuentas.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="contabilidad\catalogo_cuentas.Designer.cs">
-      <DependentUpon>catalogo_cuentas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="contabilidad\ControlDesigner.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="contabilidad\busqueda_cuenta_contable.resx">
-      <DependentUpon>busqueda_cuenta_contable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="contabilidad\catalogo_cuentas.resx">
-      <DependentUpon>catalogo_cuentas.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -81,15 +73,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="administracion\" />
-    <Folder Include="cuentas_por_cobrar\" />
-    <Folder Include="cuentas_por_pagar\" />
-    <Folder Include="empresa\" />
-    <Folder Include="facturacion\" />
-    <Folder Include="inventario\" />
-    <Folder Include="nomina\" />
-    <Folder Include="opciones\" />
-    <Folder Include="sistema\" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IrisContabilidadModelo\IrisContabilidadModelo.csproj">
+      <Project>{585d0dc1-c6a1-4d88-b74d-b91d0e7f5c78}</Project>
+      <Name>IrisContabilidadModelo</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="clases\" />
+    <Folder Include="modulo_cuenta_por_cobrar\" />
+    <Folder Include="modulo_cuenta_por_pagar\" />
+    <Folder Include="modulo_empresa\" />
+    <Folder Include="modulo_facturacion\" />
+    <Folder Include="modulo_inventario\" />
+    <Folder Include="modulo_nomina\" />
+    <Folder Include="modulo_sistema\" />
+    <Folder Include="pruebas\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
