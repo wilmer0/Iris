@@ -55,11 +55,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clases\utilidades.cs" />
-    <Compile Include="modulo_sistema\login.cs">
+    <Compile Include="modulo_empresa\ventana_empresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_sistema\login.Designer.cs">
-      <DependentUpon>login.cs</DependentUpon>
+    <Compile Include="modulo_empresa\ventana_empresa.Designer.cs">
+      <DependentUpon>ventana_empresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_sucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_sucursal.Designer.cs">
+      <DependentUpon>ventana_sucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_sistema\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_sistema\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_sistema\formBase.cs">
       <SubType>Form</SubType>
@@ -67,13 +79,22 @@
     <Compile Include="modulo_sistema\formBase.Designer.cs">
       <DependentUpon>formBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_sistema\menu1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_sistema\menu1.Designer.cs">
+      <DependentUpon>menu1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="modulo_sistema\formBase.resx">
       <DependentUpon>formBase.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modulo_sistema\login.resx">
-      <DependentUpon>login.cs</DependentUpon>
+    <EmbeddedResource Include="modulo_sistema\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_sistema\menu1.resx">
+      <DependentUpon>menu1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,13 +125,312 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Release\Resources\productos\" />
     <Folder Include="modulo_cuenta_por_cobrar\" />
     <Folder Include="modulo_cuenta_por_pagar\" />
-    <Folder Include="modulo_empresa\" />
     <Folder Include="modulo_facturacion\" />
     <Folder Include="modulo_inventario\" />
     <Folder Include="modulo_nomina\" />
     <Folder Include="pruebas\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Release\Resources\botones\analisis1.png" />
+    <Content Include="bin\Release\Resources\botones\analisis2.png" />
+    <Content Include="bin\Release\Resources\botones\analisis3.png" />
+    <Content Include="bin\Release\Resources\botones\analisis4.png" />
+    <Content Include="bin\Release\Resources\botones\analisis5.png" />
+    <Content Include="bin\Release\Resources\botones\Blue-Backup-W-icon.png" />
+    <Content Include="bin\Release\Resources\botones\Bus-icon.png" />
+    <Content Include="bin\Release\Resources\botones\buscar1.png" />
+    <Content Include="bin\Release\Resources\botones\buscar2.png" />
+    <Content Include="bin\Release\Resources\botones\buscar3.png" />
+    <Content Include="bin\Release\Resources\botones\cancel.png" />
+    <Content Include="bin\Release\Resources\botones\construction_worker_37654.jpg" />
+    <Content Include="bin\Release\Resources\botones\descuentos.png" />
+    <Content Include="bin\Release\Resources\botones\dgii.jpg" />
+    <Content Include="bin\Release\Resources\botones\direccion.png" />
+    <Content Include="bin\Release\Resources\botones\disco duro.png" />
+    <Content Include="bin\Release\Resources\botones\doc2.png" />
+    <Content Include="bin\Release\Resources\botones\down-yellow-arrow-icon-clip-art.png" />
+    <Content Include="bin\Release\Resources\botones\easel-icon.png" />
+    <Content Include="bin\Release\Resources\botones\edit-not-validated.png" />
+    <Content Include="bin\Release\Resources\botones\edit-validated.png" />
+    <Content Include="bin\Release\Resources\botones\faq.ico" />
+    <Content Include="bin\Release\Resources\botones\file-complete.png" />
+    <Content Include="bin\Release\Resources\botones\file-info.png" />
+    <Content Include="bin\Release\Resources\botones\file-warning.png" />
+    <Content Include="bin\Release\Resources\botones\limpiar1.png" />
+    <Content Include="bin\Release\Resources\botones\Ok.png" />
+    <Content Include="bin\Release\Resources\botones\pdf.png" />
+    <Content Include="bin\Release\Resources\botones\salir1.png" />
+    <Content Include="bin\Release\Resources\gifs\3499424w91v795brv.gif" />
+    <Content Include="bin\Release\Resources\gifs\8YsAmq3.gif" />
+    <Content Include="bin\Release\Resources\gifs\Cento-Lodigiani-animated-GIFs-10.gif" />
+    <Content Include="bin\Release\Resources\gifs\dribbbleloading.gif" />
+    <Content Include="bin\Release\Resources\gifs\giphy.gif" />
+    <Content Include="bin\Release\Resources\gifs\hex-loader2.gif" />
+    <Content Include="bin\Release\Resources\gifs\kTTdW2l.gif" />
+    <Content Include="bin\Release\Resources\gifs\tumblr_n2eccv6Dev1rgpzseo1_1280.gif" />
+    <Content Include="bin\Release\Resources\gifs\tumblr_n3d222ytYM1s32c21o1_400.gif" />
+    <Content Include="bin\Release\Resources\logo\logo.png" />
+    <Content Include="bin\Release\Resources\logo\logo_nombre.jpeg" />
+    <Content Include="bin\Release\Resources\modulos\13903213_1042534115800468_2791184830658061128_n.png" />
+    <Content Include="bin\Release\Resources\modulos\13906880_1043988452321701_8234076818093472343_n.png" />
+    <Content Include="bin\Release\Resources\modulos\13939476_1053419711378575_224179634427920563_n.png" />
+    <Content Include="bin\Release\Resources\modulos\default1.png" />
+    <Content Include="bin\Release\Resources\modulos\empresa1.png" />
+    <Content Include="bin\Release\Resources\modulos\facturacion1.jpg" />
+    <Content Include="bin\Release\Resources\modulos\icono06.png" />
+    <Content Include="bin\Release\Resources\modulos\icono07.png" />
+    <Content Include="bin\Release\Resources\modulos\inventario1.png" />
+    <Content Include="bin\Release\Resources\modulos\inventario2.png" />
+    <Content Include="bin\Release\Resources\modulos\Inventario3.png" />
+    <Content Include="bin\Release\Resources\modulos\inventario4.png" />
+    <Content Include="bin\Release\Resources\modulos\inventory-maintenance.png" />
+    <Content Include="bin\Release\Resources\modulos\opciones1.png" />
+    <Content Include="bin\Release\Resources\modulos\opciones2.png" />
+    <Content Include="bin\Release\Resources\modulos\opciones3.png" />
+    <Content Include="bin\Release\Resources\otros\004.png" />
+    <Content Include="bin\Release\Resources\otros\1351296727icono_avion.png" />
+    <Content Include="bin\Release\Resources\otros\17850-NRJ5DH.jpg" />
+    <Content Include="bin\Release\Resources\otros\1c7MHYz.png" />
+    <Content Include="bin\Release\Resources\otros\26497034-concepto-de-retroalimentaci-n-de-los-clientes-en-el-estilo-plano-control-de-mano-marca-excelente-en--Foto-de-archivo.jpg" />
+    <Content Include="bin\Release\Resources\otros\30104-NXXV35.jpg" />
+    <Content Include="bin\Release\Resources\otros\4060408-desk-wallpapers.png" />
+    <Content Include="bin\Release\Resources\otros\450_1000.jpg" />
+    <Content Include="bin\Release\Resources\otros\49754696-valoraci-n-de-los-clientes-del-icono-dise-o-plano-concepto-de-negocio-ilustraci-n-aislado.jpg" />
+    <Content Include="bin\Release\Resources\otros\505531190.jpg" />
+    <Content Include="bin\Release\Resources\otros\546183.jpg" />
+    <Content Include="bin\Release\Resources\otros\7585445_orig.png" />
+    <Content Include="bin\Release\Resources\otros\7875.wifipass.PNG" />
+    <Content Include="bin\Release\Resources\otros\about us.png" />
+    <Content Include="bin\Release\Resources\otros\aceiteAltoleico2848484.jpg" />
+    <Content Include="bin\Release\Resources\otros\acerca de nosotros.png" />
+    <Content Include="bin\Release\Resources\otros\administrador-icon-big.png" />
+    <Content Include="bin\Release\Resources\otros\affiliate_programs_icon.png" />
+    <Content Include="bin\Release\Resources\otros\Alerta.png" />
+    <Content Include="bin\Release\Resources\otros\antes.png" />
+    <Content Include="bin\Release\Resources\otros\atencion_cliente_icon.png" />
+    <Content Include="bin\Release\Resources\otros\avatar1.jpg" />
+    <Content Include="bin\Release\Resources\otros\B.png" />
+    <Content Include="bin\Release\Resources\otros\barcode_scanner.png" />
+    <Content Include="bin\Release\Resources\otros\beawesome-wallpaper.jpg" />
+    <Content Include="bin\Release\Resources\otros\beneficios.png" />
+    <Content Include="bin\Release\Resources\otros\calculadora.png" />
+    <Content Include="bin\Release\Resources\otros\camara1.png" />
+    <Content Include="bin\Release\Resources\otros\camera-icon.png" />
+    <Content Include="bin\Release\Resources\otros\carbon_fiber_background-wallpaper-2560x1600.jpg" />
+    <Content Include="bin\Release\Resources\otros\categoria.png" />
+    <Content Include="bin\Release\Resources\otros\cH_KdU0WeXhuBOTIt6EFC2mSuLqj0CjVTu7Bc0oQJ8812NB1kGlVkCca3pGmejG6Z5I=w300.png" />
+    <Content Include="bin\Release\Resources\otros\CLIENTES-ICONO.png" />
+    <Content Include="bin\Release\Resources\otros\Clock.png" />
+    <Content Include="bin\Release\Resources\otros\cloud-icon.png" />
+    <Content Include="bin\Release\Resources\otros\codigo-de-barras_318-41866.jpg" />
+    <Content Include="bin\Release\Resources\otros\cohete.png" />
+    <Content Include="bin\Release\Resources\otros\components_fp_12_state1.png" />
+    <Content Include="bin\Release\Resources\otros\comprobantes-fiscales-cfdi-1.jpg" />
+    <Content Include="bin\Release\Resources\otros\Computer-Desk-Wallpaper-HD-For-Desktop.jpg" />
+    <Content Include="bin\Release\Resources\otros\contactos.png" />
+    <Content Include="bin\Release\Resources\otros\Cost-per-Click-%28CPC%29_icon-icons.com_53723.png" />
+    <Content Include="bin\Release\Resources\otros\Cydia-Package.png" />
+    <Content Include="bin\Release\Resources\otros\código-de-barras.jpg" />
+    <Content Include="bin\Release\Resources\otros\delivery.png" />
+    <Content Include="bin\Release\Resources\otros\detalles.png" />
+    <Content Include="bin\Release\Resources\otros\detalles2.png" />
+    <Content Include="bin\Release\Resources\otros\devolucion.png" />
+    <Content Include="bin\Release\Resources\otros\dinero-icono-01.png" />
+    <Content Include="bin\Release\Resources\otros\dinero.png" />
+    <Content Include="bin\Release\Resources\otros\direccion-icono.png" />
+    <Content Include="bin\Release\Resources\otros\DiscusionRespuesta.png" />
+    <Content Include="bin\Release\Resources\otros\diseño-web-forcehosting.jpg" />
+    <Content Include="bin\Release\Resources\otros\document-edit-icon.png" />
+    <Content Include="bin\Release\Resources\otros\e4f93fb1cafa581a322423e3ac2c9d94.png" />
+    <Content Include="bin\Release\Resources\otros\e9a9428046093.560b65f4e2bf3.jpg" />
+    <Content Include="bin\Release\Resources\otros\elegir-carrera-universitaria.jpg" />
+    <Content Include="bin\Release\Resources\otros\empresa.jpg" />
+    <Content Include="bin\Release\Resources\otros\entradaysalida.png" />
+    <Content Include="bin\Release\Resources\otros\es-site-app-icon-fraude.png" />
+    <Content Include="bin\Release\Resources\otros\estado cliente.png" />
+    <Content Include="bin\Release\Resources\otros\evelb_rrhh2.png" />
+    <Content Include="bin\Release\Resources\otros\Event-Icons-vendors.png" />
+    <Content Include="bin\Release\Resources\otros\facebook.png" />
+    <Content Include="bin\Release\Resources\otros\facebook2.png" />
+    <Content Include="bin\Release\Resources\otros\follower-icon-4.png" />
+    <Content Include="bin\Release\Resources\otros\follower-icon-5.png" />
+    <Content Include="bin\Release\Resources\otros\fondo_blanco.gif" />
+    <Content Include="bin\Release\Resources\otros\furgon-2.jpg" />
+    <Content Include="bin\Release\Resources\otros\gaq.png" />
+    <Content Include="bin\Release\Resources\otros\geometric_narwhal___wallpaper_by_plusjack-d88tngn.png" />
+    <Content Include="bin\Release\Resources\otros\Goals-Icon.png" />
+    <Content Include="bin\Release\Resources\otros\Google sheets.png" />
+    <Content Include="bin\Release\Resources\otros\Google-Fit-Icon.png" />
+    <Content Include="bin\Release\Resources\otros\google.png" />
+    <Content Include="bin\Release\Resources\otros\google2.png" />
+    <Content Include="bin\Release\Resources\otros\Graphicloads-Seo-Services-Pay-per-click.ico" />
+    <Content Include="bin\Release\Resources\otros\hourglass-icon.png" />
+    <Content Include="bin\Release\Resources\otros\icon-3.png" />
+    <Content Include="bin\Release\Resources\otros\Icon-Nomina.png" />
+    <Content Include="bin\Release\Resources\otros\icon-pedidos.png" />
+    <Content Include="bin\Release\Resources\otros\icon.jpg" />
+    <Content Include="bin\Release\Resources\otros\icon.png" />
+    <Content Include="bin\Release\Resources\otros\icon2.jpg" />
+    <Content Include="bin\Release\Resources\otros\icon2.png" />
+    <Content Include="bin\Release\Resources\otros\iconAut21.png" />
+    <Content Include="bin\Release\Resources\otros\iconDinero.png" />
+    <Content Include="bin\Release\Resources\otros\icono control.png" />
+    <Content Include="bin\Release\Resources\otros\icono-almacen2.png" />
+    <Content Include="bin\Release\Resources\otros\icono-cifras-m6fpesfpwtsexxb6xl81a2g9qlf30op23rjlfizpq4.png" />
+    <Content Include="bin\Release\Resources\otros\icono-cuentas.png" />
+    <Content Include="bin\Release\Resources\otros\icono-datos1.png" />
+    <Content Include="bin\Release\Resources\otros\icono-el-tiempo-estadio-deportivo.png" />
+    <Content Include="bin\Release\Resources\otros\icono-empresas.png" />
+    <Content Include="bin\Release\Resources\otros\icono-gris-camara.png" />
+    <Content Include="bin\Release\Resources\otros\icono-pasarela-pagos.png" />
+    <Content Include="bin\Release\Resources\otros\icono-perfil.png" />
+    <Content Include="bin\Release\Resources\otros\icono-seguimiento-alto-riesgo.png" />
+    <Content Include="bin\Release\Resources\otros\icono-tarjetas.png" />
+    <Content Include="bin\Release\Resources\otros\icono02.png" />
+    <Content Include="bin\Release\Resources\otros\icono03_externalizacion_ventas.png" />
+    <Content Include="bin\Release\Resources\otros\icono05.png" />
+    <Content Include="bin\Release\Resources\otros\icono06.png" />
+    <Content Include="bin\Release\Resources\otros\icono07.png" />
+    <Content Include="bin\Release\Resources\otros\Iconos Pago.png" />
+    <Content Include="bin\Release\Resources\otros\Iconos-clientes-01.png" />
+    <Content Include="bin\Release\Resources\otros\iconos-nuestras-areas-finanzas.png" />
+    <Content Include="bin\Release\Resources\otros\icono_3a.png" />
+    <Content Include="bin\Release\Resources\otros\icono_correo.png" />
+    <Content Include="bin\Release\Resources\otros\icono_formulario_inscripcixn_diadeporte2015.png" />
+    <Content Include="bin\Release\Resources\otros\icono_nosotros-300x300.png" />
+    <Content Include="bin\Release\Resources\otros\icono_paquetes.png" />
+    <Content Include="bin\Release\Resources\otros\icono_pdf.png" />
+    <Content Include="bin\Release\Resources\otros\icono_producto2.png" />
+    <Content Include="bin\Release\Resources\otros\icono_puntoventa.png" />
+    <Content Include="bin\Release\Resources\otros\icono_retail01-170x169.png" />
+    <Content Include="bin\Release\Resources\otros\icono_servicios1.png" />
+    <Content Include="bin\Release\Resources\otros\icono_ventas.png" />
+    <Content Include="bin\Release\Resources\otros\icons-01-640x420.png" />
+    <Content Include="bin\Release\Resources\otros\icon_carritus.png" />
+    <Content Include="bin\Release\Resources\otros\icon_image.png" />
+    <Content Include="bin\Release\Resources\otros\icon_magicinfo.png" />
+    <Content Include="bin\Release\Resources\otros\icon_manufacturer.png" />
+    <Content Include="bin\Release\Resources\otros\ico_estrategias.png" />
+    <Content Include="bin\Release\Resources\otros\images.jpg" />
+    <Content Include="bin\Release\Resources\otros\inicio-sesion.png" />
+    <Content Include="bin\Release\Resources\otros\inventario.png" />
+    <Content Include="bin\Release\Resources\otros\itebis.png" />
+    <Content Include="bin\Release\Resources\otros\leder_c_family.jpg" />
+    <Content Include="bin\Release\Resources\otros\leder_c_gaucho.jpg" />
+    <Content Include="bin\Release\Resources\otros\lg-employees-business-labor-icon.png" />
+    <Content Include="bin\Release\Resources\otros\lg-red-green-OK-not-OK-Icons.png" />
+    <Content Include="bin\Release\Resources\otros\libra.png" />
+    <Content Include="bin\Release\Resources\otros\libro y manzana.png" />
+    <Content Include="bin\Release\Resources\otros\Login-icon.png" />
+    <Content Include="bin\Release\Resources\otros\logo.jpg" />
+    <Content Include="bin\Release\Resources\otros\logo1.jpg" />
+    <Content Include="bin\Release\Resources\otros\logoDeveloper.jpg" />
+    <Content Include="bin\Release\Resources\otros\logout.png" />
+    <Content Include="bin\Release\Resources\otros\logo_empresa.png" />
+    <Content Include="bin\Release\Resources\otros\mail.png" />
+    <Content Include="bin\Release\Resources\otros\managed-services-icon.png" />
+    <Content Include="bin\Release\Resources\otros\map-icon.png" />
+    <Content Include="bin\Release\Resources\otros\mcm_icon.png" />
+    <Content Include="bin\Release\Resources\otros\meeting-point-98586_960_720.png" />
+    <Content Include="bin\Release\Resources\otros\memorycard-icon.png" />
+    <Content Include="bin\Release\Resources\otros\mensaje.png" />
+    <Content Include="bin\Release\Resources\otros\mensaje2.png" />
+    <Content Include="bin\Release\Resources\otros\mensaje3.png" />
+    <Content Include="bin\Release\Resources\otros\mercadeo-estrategico-icon.png" />
+    <Content Include="bin\Release\Resources\otros\mesa.png" />
+    <Content Include="bin\Release\Resources\otros\mic-icon.png" />
+    <Content Include="bin\Release\Resources\otros\Microscope-icon.png" />
+    <Content Include="bin\Release\Resources\otros\monedas.jpg" />
+    <Content Include="bin\Release\Resources\otros\money.png" />
+    <Content Include="bin\Release\Resources\otros\money_icon1.png" />
+    <Content Include="bin\Release\Resources\otros\Moto2.png" />
+    <Content Include="bin\Release\Resources\otros\msg_message_14385.png" />
+    <Content Include="bin\Release\Resources\otros\mudanza y logistica de carga.png" />
+    <Content Include="bin\Release\Resources\otros\multi_0315_icon_550x550_lpg-multicalculator_nam_eng.png" />
+    <Content Include="bin\Release\Resources\otros\my_files_img_038e98c9cad468676568ea68a4097e2870be99c6.png" />
+    <Content Include="bin\Release\Resources\otros\name-card-icon.png" />
+    <Content Include="bin\Release\Resources\otros\news-184931.jpg" />
+    <Content Include="bin\Release\Resources\otros\nomina5151515151.png" />
+    <Content Include="bin\Release\Resources\otros\nomina65462486426542946548948949284894289.png" />
+    <Content Include="bin\Release\Resources\otros\nuestros-servicios-manejo-de-inventario-icono.jpg" />
+    <Content Include="bin\Release\Resources\otros\Online-Shopping-icon.png" />
+    <Content Include="bin\Release\Resources\otros\opciones1.png" />
+    <Content Include="bin\Release\Resources\otros\Orange-User-Authentication-Icon.png" />
+    <Content Include="bin\Release\Resources\otros\pedidos.jpg" />
+    <Content Include="bin\Release\Resources\otros\pedidos.png" />
+    <Content Include="bin\Release\Resources\otros\photo.png" />
+    <Content Include="bin\Release\Resources\otros\pixel77-free-vector-gift-icon-1106.jpg" />
+    <Content Include="bin\Release\Resources\otros\pixel77-free-vector-wifi-icon-2006.jpg" />
+    <Content Include="bin\Release\Resources\otros\Preguntas_Frecuentes.png" />
+    <Content Include="bin\Release\Resources\otros\printer_256.png" />
+    <Content Include="bin\Release\Resources\otros\print_256.png" />
+    <Content Include="bin\Release\Resources\otros\proceso.png" />
+    <Content Include="bin\Release\Resources\otros\products-icon.png" />
+    <Content Include="bin\Release\Resources\otros\program_icon.png" />
+    <Content Include="bin\Release\Resources\otros\project+.png" />
+    <Content Include="bin\Release\Resources\otros\proveedores.png" />
+    <Content Include="bin\Release\Resources\otros\PYHfK0sebYRi_SZ9RtAJr9Rc4EilckYAjGlix0GV0Ov08dPEoLOFcbLXgUhxBlLODPg=w300.png" />
+    <Content Include="bin\Release\Resources\otros\question-mark-310100_960_720.png" />
+    <Content Include="bin\Release\Resources\otros\qYInGu86.jpg" />
+    <Content Include="bin\Release\Resources\otros\QZSUosSSy44Vmm5J6CEvycQs5Gb7_2qZKmxjijeRwlbhQcV-sR9FJcbzS_AAPLWbaVY=w300.png" />
+    <Content Include="bin\Release\Resources\otros\recarga.png" />
+    <Content Include="bin\Release\Resources\otros\recycle-bin-icon.png" />
+    <Content Include="bin\Release\Resources\otros\red-x-cross-wrong-not-clip-art_f.jpg" />
+    <Content Include="bin\Release\Resources\otros\registro.png" />
+    <Content Include="bin\Release\Resources\otros\retouren.png" />
+    <Content Include="bin\Release\Resources\otros\RXSJ798lme1nxJshWxjRz5FArDg9YrwX_UuR3Qx6Ni61GJcs01z2lElzHWFNgf7j7_A=w300.png" />
+    <Content Include="bin\Release\Resources\otros\Save-as_37111.png" />
+    <Content Include="bin\Release\Resources\otros\save_file_disk_open_searsh_loading_clipboard_1513.png" />
+    <Content Include="bin\Release\Resources\otros\scan_icon.png" />
+    <Content Include="bin\Release\Resources\otros\sector_publico_iconos_04.png" />
+    <Content Include="bin\Release\Resources\otros\security-icon.png" />
+    <Content Include="bin\Release\Resources\otros\send-user.png" />
+    <Content Include="bin\Release\Resources\otros\servicios.png" />
+    <Content Include="bin\Release\Resources\otros\Sexo.png" />
+    <Content Include="bin\Release\Resources\otros\shoeprints-icon.png" />
+    <Content Include="bin\Release\Resources\otros\shopping-cart-icon-psd-image-2367shopping-cart-icon-515.png" />
+    <Content Include="bin\Release\Resources\otros\siguiente.png" />
+    <Content Include="bin\Release\Resources\otros\sin-tc3adtulo1.png" />
+    <Content Include="bin\Release\Resources\otros\slider-agencia-seo-choy-icono.png" />
+    <Content Include="bin\Release\Resources\otros\splashscreen.png" />
+    <Content Include="bin\Release\Resources\otros\SportsLine-600x600.jpg" />
+    <Content Include="bin\Release\Resources\otros\spreadsheet-28205_640.png" />
+    <Content Include="bin\Release\Resources\otros\Status-mail-task-icon.png" />
+    <Content Include="bin\Release\Resources\otros\sucursal.png" />
+    <Content Include="bin\Release\Resources\otros\switch-turn-off-icon.png" />
+    <Content Include="bin\Release\Resources\otros\T21zEV5fkzuezlzlIE6pn2loRzVBsd1RVFysblCbs7abrS7EEdDGoOeRQVLEisQtCRdz=w300.png" />
+    <Content Include="bin\Release\Resources\otros\tabs-3-2.png" />
+    <Content Include="bin\Release\Resources\otros\tb-tesoreria.png" />
+    <Content Include="bin\Release\Resources\otros\teammember_avatar_f.jpg" />
+    <Content Include="bin\Release\Resources\otros\teeth-icon.png" />
+    <Content Include="bin\Release\Resources\otros\tiempo.png" />
+    <Content Include="bin\Release\Resources\otros\transfer_money_around_the_world_icon.png" />
+    <Content Include="bin\Release\Resources\otros\trash.png" />
+    <Content Include="bin\Release\Resources\otros\travelerbag-icon.png" />
+    <Content Include="bin\Release\Resources\otros\twitter.png" />
+    <Content Include="bin\Release\Resources\otros\twitter2.png" />
+    <Content Include="bin\Release\Resources\otros\unlocked-icon.png" />
+    <Content Include="bin\Release\Resources\otros\user-info-icon.png" />
+    <Content Include="bin\Release\Resources\otros\user-menu-icon.png" />
+    <Content Include="bin\Release\Resources\otros\users.png" />
+    <Content Include="bin\Release\Resources\otros\usuario-hombre.png" />
+    <Content Include="bin\Release\Resources\otros\usuario-mujer.png" />
+    <Content Include="bin\Release\Resources\otros\ventas.png" />
+    <Content Include="bin\Release\Resources\otros\vigilar.png" />
+    <Content Include="bin\Release\Resources\otros\wallet_46876.png" />
+    <Content Include="bin\Release\Resources\otros\wallet_money_cash_purse_business_finance_financial_shopping_payment_flat_design_icon-512.png" />
+    <Content Include="bin\Release\Resources\otros\web_developer_wallpaper__code__by_plusjack-d7bmt54.jpg" />
+    <Content Include="bin\Release\Resources\ventanas\add.png" />
+    <Content Include="bin\Release\Resources\ventanas\cajera.png" />
+    <Content Include="bin\Release\Resources\ventanas\cashier_icon-icons.com_53075.png" />
+    <Content Include="bin\Release\Resources\ventanas\cashier_icon-icons.com_53629.png" />
+    <Content Include="bin\Release\Resources\ventanas\circulo-morado.png" />
+    <Content Include="bin\Release\Resources\ventanas\empresa1.png" />
+    <Content Include="bin\Release\Resources\ventanas\file-video-icon.png" />
+    <Content Include="bin\Release\Resources\ventanas\Word-2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

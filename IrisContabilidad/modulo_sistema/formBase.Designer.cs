@@ -66,6 +66,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Limpiar (F3)";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -109,6 +110,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(284, 21);
             this.panel2.TabIndex = 8;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
             // tituloLabel
             // 
@@ -121,6 +123,7 @@
             this.tituloLabel.TabIndex = 8;
             this.tituloLabel.Text = "Titulo";
             this.tituloLabel.Click += new System.EventHandler(this.tituloLabel_Click);
+            this.tituloLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.tituloLabel_MouseDown);
             // 
             // formBase
             // 
@@ -130,10 +133,11 @@
             this.ClientSize = new System.Drawing.Size(284, 262);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "formBase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.formBase_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

@@ -198,6 +198,11 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="modelos\modeloEmpleado.cs" />
+    <Compile Include="modelos\modeloEmpresa.cs" />
+    <Compile Include="modelos\modeloModulo.cs" />
+    <Compile Include="modelos\modeloModulosVsVentanas.cs" />
+    <Compile Include="modelos\modeloSucursal.cs" />
+    <Compile Include="modelos\modeloVentana.cs" />
     <Compile Include="modelos\modulos_vs_ventanas.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
