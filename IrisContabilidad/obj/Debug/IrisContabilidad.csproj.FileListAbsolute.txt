@@ -11,3 +11,5 @@ D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\bin\Debug\Iris
 D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\bin\Debug\IrisContabilidad.pdb
 D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.exe
 D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.exe
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Debug\IrisContabilidad.pdb

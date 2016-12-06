@@ -26,3 +26,5 @@ D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\pu
 D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.Properties.Resources.resources
 D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.Sistema.menu_principal.resources
 D:\wilmer\developer\github\data\IrisContabilidad\IrisContabilidad\obj\Release\puntoVenta.Sistema.procesando_ventana.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.exe
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.pdb
