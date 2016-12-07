@@ -7,20 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_empresa
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
-    public partial class ventana_empresa : formBase
+    public partial class ventana_suplidor : Form
     {
-        public ventana_empresa()
+        public ventana_suplidor()
         {
             InitializeComponent();
-        }
-
-        private void ventana_empresa_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

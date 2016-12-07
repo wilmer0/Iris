@@ -7,20 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_empresa
+namespace IrisContabilidad.modulo_inventario
 {
-    public partial class ventana_empresa : formBase
+    public partial class ventana_producto : Form
     {
-        public ventana_empresa()
+        public ventana_producto()
         {
             InitializeComponent();
-        }
-
-        private void ventana_empresa_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

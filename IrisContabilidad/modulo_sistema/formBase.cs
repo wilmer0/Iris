@@ -10,6 +10,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidadModelo.modelos;
+using IrisContabilidad.modulo_cuenta_por_cobrar;
+using IrisContabilidad.modulo_cuenta_por_pagar;
+using IrisContabilidad.modulo_empresa;
+using IrisContabilidad.modulo_facturacion;
+using IrisContabilidad.modulo_inventario;
+using IrisContabilidad.modulo_nomina;
+using IrisContabilidad.modulo_sistema;
+
+
+//carpetas modulos
 
 namespace IrisContabilidad.modulo_sistema
 {

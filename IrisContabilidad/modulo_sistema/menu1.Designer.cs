@@ -74,6 +74,7 @@
             this.flowLayoutVentanas.Name = "flowLayoutVentanas";
             this.flowLayoutVentanas.Size = new System.Drawing.Size(940, 386);
             this.flowLayoutVentanas.TabIndex = 13;
+            this.flowLayoutVentanas.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutVentanas_Paint);
             // 
             // flowLayoutModulos
             // 

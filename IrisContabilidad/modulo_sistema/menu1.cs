@@ -12,6 +12,9 @@ using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidadModelo.modelos;
 using IrisContabilidad.modulo_sistema;
+
+
+
 namespace IrisContabilidad.modulo_sistema
 {
     public partial class menu1 : formBase
@@ -199,6 +202,11 @@ namespace IrisContabilidad.modulo_sistema
         private void button2_Click(object sender, EventArgs e)
         {
             Salir();
+        }
+
+        private void flowLayoutVentanas_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
