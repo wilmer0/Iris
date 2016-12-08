@@ -30,7 +30,7 @@ namespace IrisContabilidad.modulo_sistema
 
 
         //objetos
-        public empleado empleado;
+        private empleado empleado;
         private utilidades utilidades = new utilidades();
         private sistema_ventanas ventana;
         private sistema_modulo modulo;
@@ -130,8 +130,8 @@ namespace IrisContabilidad.modulo_sistema
                 {
                     botonVentana = new Button();
                     botonVentana.FlatStyle = FlatStyle.Flat;
-                    botonVentana.Width = 150;
-                    botonVentana.Height = 150;
+                    botonVentana.Width = 93;
+                    botonVentana.Height = 77;
                     botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
                     botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + x.imagen);
                     //instanciar formulario de la ventana con el nombre logico
@@ -140,14 +140,13 @@ namespace IrisContabilidad.modulo_sistema
                         //Assembly asm = Assembly.GetEntryAssembly();
                         string form = "IrisContabilidad."+x.nombre_logico;
                         //form = "puntoVentaWin.Form1";
-                        //MessageBox.Show(form);
+                        MessageBox.Show(form);
                         Assembly asm = Assembly.GetEntryAssembly();
                         Type formtype = asm.GetType(form);
                         //c
                         Form f = (Form)Activator.CreateInstance(formtype);
                         if (f != null)
                         {
-                            
                             f.ShowInTaskbar = false;
                             f.Owner = this;
                             f.ShowDialog();
@@ -206,11 +205,6 @@ namespace IrisContabilidad.modulo_sistema
         }
 
         private void flowLayoutVentanas_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
         {
 
         }

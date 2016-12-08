@@ -54,7 +54,6 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(198, 5);
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -90,7 +89,6 @@
             this.divisionText.Name = "divisionText";
             this.divisionText.Size = new System.Drawing.Size(256, 26);
             this.divisionText.TabIndex = 19;
-            this.divisionText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.divisionText_KeyPress);
             // 
             // label4
             // 
@@ -111,7 +109,6 @@
             this.RncText.Name = "RncText";
             this.RncText.Size = new System.Drawing.Size(256, 26);
             this.RncText.TabIndex = 17;
-            this.RncText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RncText_KeyPress);
             // 
             // label3
             // 
@@ -132,7 +129,6 @@
             this.empresaText.Name = "empresaText";
             this.empresaText.Size = new System.Drawing.Size(256, 26);
             this.empresaText.TabIndex = 14;
-            this.empresaText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.empresaText_KeyPress);
             // 
             // label2
             // 
@@ -187,7 +183,6 @@
             this.groupBox2.Size = new System.Drawing.Size(532, 255);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // ventana_empresa
             // 
