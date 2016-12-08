@@ -31,10 +31,12 @@ namespace IrisContabilidad.modulo_sistema
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+
         //objeto
         utilidades utilidades = new utilidades();
         private empleado empleado;
-
+        private singleton singleton=new singleton();
 
         public formBase()
         {

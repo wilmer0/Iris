@@ -23,7 +23,7 @@ namespace IrisContabilidad
         //objetos
         private empleado empleado;
         utilidades utilidades = new utilidades();
-
+        singleton singleton=new singleton();
 
 
         public Form1()
@@ -82,6 +82,7 @@ namespace IrisContabilidad
 
             if ((empleado = modeloEmpleado.getEmpleadoByLogin(empleado)) != null)
             {
+                singleton.empleado = this.empleado;
                 menu1 ventana = new menu1(empleado);
                 ventana.Show();
                 this.Hide();
@@ -122,6 +123,11 @@ namespace IrisContabilidad
             {
                 button1.Focus();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
 
 

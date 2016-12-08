@@ -1078,5 +1078,17 @@ namespace IrisContabilidad.clases
                 return false;
             }
         }
+
+
+        public void textBoxNumeroEntero(KeyPressEventArgs e)
+        {
+            
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten números", "", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
     }
 }
