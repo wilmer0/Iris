@@ -71,7 +71,6 @@ namespace IrisContabilidadModelo.modelos
                         MessageBoxIcon.Error);
                     return false;
                 }
-                lista.cod_modulo = ventana.cod_modulo;
                 lista.nombre_ventana = ventana.nombre_ventana;
                 lista.nombre_logico = ventana.nombre_logico;
                 lista.imagen = ventana.imagen;

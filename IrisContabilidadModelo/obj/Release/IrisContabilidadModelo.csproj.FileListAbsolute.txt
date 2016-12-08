@@ -3,5 +3,6 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadModelo\bin\Rel
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadModelo\bin\Release\IrisContabilidadModelo.pdb
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadModelo\bin\Release\EntityFramework.dll
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadModelo\bin\Release\EntityFramework.xml
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadModelo\obj\Release\IrisContabilidadModelo.csprojResolveAssemblyReference.cache
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadModelo\obj\Release\IrisContabilidadModelo.exe
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadModelo\obj\Release\IrisContabilidadModelo.pdb
