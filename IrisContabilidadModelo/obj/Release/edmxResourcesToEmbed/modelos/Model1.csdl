@@ -429,10 +429,6 @@
       <End Role="sexo" EntitySet="sexo" />
       <End Role="empleado_historial_datos" EntitySet="empleado_historial_datos" />
     </AssociationSet>
-    <AssociationSet Name="FK_sistema_ventanas_1" Association="iris_contabilidadModel.FK_sistema_ventanas_1">
-      <End Role="sistema_modulo" EntitySet="sistema_modulo" />
-      <End Role="sistema_ventanas" EntitySet="sistema_ventanas" />
-    </AssociationSet>
     <AssociationSet Name="empleado_situacion" Association="iris_contabilidadModel.empleado_situacion">
       <End Role="situacion_empleado" EntitySet="situacion_empleado" />
       <End Role="empleado_historial_datos" EntitySet="empleado_historial_datos" />
@@ -1290,7 +1286,6 @@
     <Property Name="nombre_modulo_proyecto" Type="String" Nullable="false" />
     <Property Name="imagen" Type="String" Nullable="false" />
     <NavigationProperty Name="modulos_vs_ventanas" Relationship="iris_contabilidadModel.modulos_vs_ventanas_modulo" FromRole="sistema_modulo" ToRole="modulos_vs_ventanas" />
-    <NavigationProperty Name="sistema_ventanas" Relationship="iris_contabilidadModel.FK_sistema_ventanas_1" FromRole="sistema_modulo" ToRole="sistema_ventanas" />
   </EntityType>
   <EntityType Name="sistema_ventanas">
     <Key>
@@ -1298,12 +1293,10 @@
     </Key>
     <Property Name="codigo" Type="Int32" Nullable="false" />
     <Property Name="nombre_ventana" Type="String" />
-    <Property Name="cod_modulo" Type="Int32" Nullable="false" />
     <Property Name="nombre_logico" Type="String" Nullable="false" />
     <Property Name="imagen" Type="String" />
     <Property Name="activo" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="modulos_vs_ventanas" Relationship="iris_contabilidadModel.modulos_vs_ventanas_ventana" FromRole="sistema_ventanas" ToRole="modulos_vs_ventanas" />
-    <NavigationProperty Name="sistema_modulo" Relationship="iris_contabilidadModel.FK_sistema_ventanas_1" FromRole="sistema_ventanas" ToRole="sistema_modulo" />
   </EntityType>
   <EntityType Name="situacion_empleado">
     <Key>
@@ -2685,18 +2678,6 @@
       </Principal>
       <Dependent Role="empleado_historial_datos">
         <PropertyRef Name="cod_sexo" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_sistema_ventanas_1">
-    <End Type="iris_contabilidadModel.sistema_modulo" Role="sistema_modulo" Multiplicity="1" />
-    <End Type="iris_contabilidadModel.sistema_ventanas" Role="sistema_ventanas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="sistema_modulo">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="sistema_ventanas">
-        <PropertyRef Name="cod_modulo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

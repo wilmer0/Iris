@@ -178,7 +178,6 @@
         <AssociationConnector Association="iris_contabilidadModel.provincia_region" />
         <AssociationConnector Association="iris_contabilidadModel.sector_provincia" />
         <AssociationConnector Association="iris_contabilidadModel.empleado_sexo" />
-        <AssociationConnector Association="iris_contabilidadModel.FK_sistema_ventanas_1" />
         <AssociationConnector Association="iris_contabilidadModel.empleado_situacion" />
         <AssociationConnector Association="iris_contabilidadModel.empleado_sucursal" />
         <AssociationConnector Association="iris_contabilidadModel.producto_oferta_historial_sucursal" />

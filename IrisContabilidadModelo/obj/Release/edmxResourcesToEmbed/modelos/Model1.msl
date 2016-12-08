@@ -739,7 +739,6 @@
           <ScalarProperty Name="activo" ColumnName="activo" />
           <ScalarProperty Name="imagen" ColumnName="imagen" />
           <ScalarProperty Name="nombre_logico" ColumnName="nombre_logico" />
-          <ScalarProperty Name="cod_modulo" ColumnName="cod_modulo" />
           <ScalarProperty Name="nombre_ventana" ColumnName="nombre_ventana" />
           <ScalarProperty Name="codigo" ColumnName="codigo" />
         </MappingFragment>

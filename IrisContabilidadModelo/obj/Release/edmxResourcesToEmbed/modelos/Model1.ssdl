@@ -338,15 +338,6 @@ advertencia 6002: La tabla o vista 'def.iris_contabilidad.empleado_historial_dat
     <Property Name="cod_empleado" Type="int" Nullable="false" />
     <Property Name="cod_cargo" Type="int" Nullable="false" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'def.iris_contabilidad.empleado_vs_conceptos_nomina' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="empleado_vs_conceptos_nomina">
-          <Property Name="cod_nomina" Type="int" />
-          <Property Name="cod_empleado" Type="int" />
-          <Property Name="cod_concepto" Type="int" />
-          <Property Name="monto" Type="decimal" Precision="20" Scale="2" />
-          <Property Name="cod_empleado_modifico" Type="int" />
-        </EntityType>-->
   <EntityType Name="empresa">
     <Key>
       <PropertyRef Name="codigo" />
@@ -798,14 +789,6 @@ advertencia 6002: La tabla o vista 'def.iris_contabilidad.producto_oferta_histor
     <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="activo" Type="bool" Nullable="false" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'def.iris_contabilidad.producto_productos_requisitos' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="producto_productos_requisitos">
-          <Property Name="codpro_titular" Type="int" />
-          <Property Name="codpro_requisito" Type="int" />
-          <Property Name="cod_unidad" Type="int" />
-          <Property Name="cantidad" Type="decimal" Precision="20" Scale="2" />
-        </EntityType>-->
   <EntityType Name="producto_unidad">
     <Key>
       <PropertyRef Name="cod_producto" />
@@ -911,7 +894,6 @@ advertencia 6013: La tabla o vista 'def.iris_contabilidad.producto_productos_req
     </Key>
     <Property Name="codigo" Type="int" Nullable="false" />
     <Property Name="nombre_ventana" Type="varchar" MaxLength="200" />
-    <Property Name="cod_modulo" Type="int" Nullable="false" />
     <Property Name="nombre_logico" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="imagen" Type="varchar" MaxLength="999" />
     <Property Name="activo" Type="bool" Nullable="false" />
@@ -960,13 +942,6 @@ advertencia 6013: La tabla o vista 'def.iris_contabilidad.producto_productos_req
     <Property Name="tipo_gasto" Type="uint" />
     <Property Name="fecha_modificacion" Type="datetime" Nullable="false" />
   </EntityType>
-  <!--Errores durante la generación:
-advertencia 6013: La tabla o vista 'def.iris_contabilidad.suplidores_dgii' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
-        <EntityType Name="suplidores_dgii">
-          <Property Name="identificacion" Type="longtext" />
-          <Property Name="nombre" Type="longtext" />
-          <Property Name="nombre_comercial" Type="longtext" />
-        </EntityType>-->
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -1320,12 +1295,6 @@ advertencia 6013: La tabla o vista 'def.iris_contabilidad.suplidores_dgii' no ti
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'def.iris_contabilidad.empleado_vs_conceptos_nomina', pero no se encuentra la tabla.
-        <Association Name="empleado_concepto_nomina_concepto" />-->
-  <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'def.iris_contabilidad.empleado_vs_conceptos_nomina', pero no se encuentra la tabla.
-        <Association Name="empleado_concepto_nomina_empelado_modifico" />-->
   <Association Name="empleado_empleado">
     <End Role="empleado" Type="Self.empleado" Multiplicity="1" />
     <End Role="empleado_historial_datos" Type="Self.empleado_historial_datos" Multiplicity="*" />
@@ -1587,18 +1556,6 @@ error 6004: Una relación hace referencia a la tabla 'def.iris_contabilidad.empl
       </Principal>
       <Dependent Role="empleado">
         <PropertyRef Name="cod_tipo_nomina" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_sistema_ventanas_1">
-    <End Role="sistema_modulo" Type="Self.sistema_modulo" Multiplicity="1" />
-    <End Role="sistema_ventanas" Type="Self.sistema_ventanas" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="sistema_modulo">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="sistema_ventanas">
-        <PropertyRef Name="cod_modulo" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2082,15 +2039,6 @@ error 6004: Una relación hace referencia a la tabla 'def.iris_contabilidad.empl
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'def.iris_contabilidad.producto_productos_requisitos', pero no se encuentra la tabla.
-        <Association Name="producto_productos_requisitos_producto_requisito" />-->
-  <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'def.iris_contabilidad.producto_productos_requisitos', pero no se encuentra la tabla.
-        <Association Name="producto_productos_requisitos_producto_titular" />-->
-  <!--Errores durante la generación:
-error 6004: Una relación hace referencia a la tabla 'def.iris_contabilidad.producto_productos_requisitos', pero no se encuentra la tabla.
-        <Association Name="producto_productos_requisitos_unidad" />-->
   <Association Name="producto_subcategoria">
     <End Role="subcategoria_producto" Type="Self.subcategoria_producto" Multiplicity="1" />
     <End Role="producto" Type="Self.producto" Multiplicity="*" />
@@ -2658,10 +2606,6 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
     <AssociationSet Name="FK_empleado_5" Association="Self.FK_empleado_5">
       <End Role="nomina_tipos" EntitySet="nomina_tipos" />
       <End Role="empleado" EntitySet="empleado" />
-    </AssociationSet>
-    <AssociationSet Name="FK_sistema_ventanas_1" Association="Self.FK_sistema_ventanas_1">
-      <End Role="sistema_modulo" EntitySet="sistema_modulo" />
-      <End Role="sistema_ventanas" EntitySet="sistema_ventanas" />
     </AssociationSet>
     <AssociationSet Name="FK_sucursal_1" Association="Self.FK_sucursal_1">
       <End Role="empresa" EntitySet="empresa" />

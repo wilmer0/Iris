@@ -14,11 +14,6 @@ namespace IrisContabilidadModelo.modelos
     
     public partial class sistema_modulo
     {
-        public sistema_modulo()
-        {
-            this.sistema_ventanas = new HashSet<sistema_ventanas>();
-        }
-    
         public int id { get; set; }
         public string nombre { get; set; }
         public Nullable<bool> activo { get; set; }
@@ -26,6 +21,5 @@ namespace IrisContabilidadModelo.modelos
         public string imagen { get; set; }
     
         public virtual modulos_vs_ventanas modulos_vs_ventanas { get; set; }
-        public virtual ICollection<sistema_ventanas> sistema_ventanas { get; set; }
     }
 }

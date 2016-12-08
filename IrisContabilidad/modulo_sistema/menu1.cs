@@ -156,8 +156,6 @@ namespace IrisContabilidad.modulo_sistema
                             MessageBox.Show("Form esta llgando nulo-->" + form);
                         }
                     };
-
-
                     flowLayoutVentanas.Controls.Add(botonVentana);
                 });
 
