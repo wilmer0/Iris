@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ionic.Zip;
 using IrisContabilidadModelo.modelos;
+using MySql.Data.MySqlClient;
 using CompressionLevel = Ionic.Zlib.CompressionLevel;
 
 namespace IrisContabilidad.clases
@@ -199,22 +200,21 @@ namespace IrisContabilidad.clases
 
 
 
-        //public  DataSet ejecutarcomando_mysql(string query)
-        //{
-        //    try
-        //    {
-        //        MySqlConnection conn = new MySqlConnection("server=127.0.0.1;uid=root;" +"pwd=wilmerlomas1;database=punto_venta;");
-        //        MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
-        //        DataSet ds = new DataSet();
-        //        da.Fill(ds);
-        //        return ds;
-        //    }
-        //    catch(Exception)
-        //    {
-        //        return null;
-        //        MessageBox.Show("Fallo conectando al server");
-        //    }
-        //}
+        public DataSet ejecutarcomando_mysql(string query)
+        {
+            try
+            {
+                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                return ds;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Fallo conectando al server");
+                return null;
+            }
+        }
 
 
 

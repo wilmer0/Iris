@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Objects.DataClasses;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -117,23 +118,22 @@ namespace IrisContabilidadModelo.modelos
 
         public sistema_ventanas getVentanaById(int id)
         {
+            coneccion coneccion = new coneccion();
+            iris_contabilidadEntities entity = coneccion.GetConeccion();
             try
             {
-                coneccion coneccion = new coneccion();
-                iris_contabilidadEntities entity = coneccion.GetConeccion();
-
-
+               
                 var lista = (from c in entity.sistema_ventanas
                              where c.codigo == id
                              select c).ToList().FirstOrDefault();
 
-
                 return lista;
 
-
+               
             }
             catch (Exception ex)
             {
+                entity=null;
                 MessageBox.Show("Error: getVentanaById.: " + ex.ToString());
                 return null;
             }
@@ -357,28 +357,49 @@ namespace IrisContabilidadModelo.modelos
             }
         }
 
-        public List<sistema_ventanas> getListaByModuloID(int modulo)
+        public List<sistema_ventanas> getListaVentanasByModuloID(int id)
         {
+            
             coneccion coneccion = new coneccion();
             iris_contabilidadEntities entity = coneccion.GetConeccion();
-            List<sistema_ventanas> listaVentanas = new List<sistema_ventanas>();
             sistema_ventanas ventana;
             try
             {
-                var lista = (from c in entity.modulos_vs_ventanas
-                             where c.id_modulo == modulo
-                             select c).ToList();
+                
+                List<sistema_ventanas> listaVentanas=new List<sistema_ventanas>();
+                List<modulos_vs_ventanas> lista=new List<modulos_vs_ventanas>();
 
+                lista = (from c in entity.modulos_vs_ventanas
+                        select c).ToList();
 
                 lista.ForEach(x =>
                 {
-                    ventana = new sistema_ventanas();
-                    ventana = getVentanaById((int)x.id_ventana);
-                    if (ventana != null)
-                    {
-                        listaVentanas.Add(ventana);
-                    }
+                    MessageBox.Show("ventana todas-->" + x.sistema_ventanas.nombre_ventana);
+                    ventana=new sistema_ventanas();
+                    ventana = getVentanaById((int) x.id_ventana);
+                    listaVentanas.Add(ventana);
+
                 });
+
+
+                //var lista2 = getListaCompleta();
+                //lista.ForEach(x =>
+                //{
+                //    MessageBox.Show("ventana que llego->" +x.id_ventana);
+                //    if (x.id_modulo == id)
+                //    {
+                //        ventana = new sistema_ventanas();
+                //        ventana = getVentanaById((int) x.id_ventana);
+                //        if (ventana != null)
+                //        {
+                //            listaVentanas.Add(ventana);
+                //        }
+                //        else
+                //        {
+                //            MessageBox.Show("Ventana nula getListaByModuloID");
+                //        }
+                //    }
+                //});
                 return listaVentanas;
 
             }

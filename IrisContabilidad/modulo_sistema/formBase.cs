@@ -95,5 +95,17 @@ namespace IrisContabilidad.modulo_sistema
         {
             throw new NotImplementedException();
         }
+
+        private void formBase_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Salir();
+            }
+            if (e.KeyCode == Keys.F8)
+            {
+                GetAction();
+            }
+        }
     }
 }

@@ -138,6 +138,7 @@
             this.Name = "formBase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.formBase_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formBase_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

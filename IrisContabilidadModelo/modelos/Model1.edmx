@@ -915,10 +915,10 @@ advertencia 6002: La tabla o vista 'def.iris_contabilidad.producto_oferta_histor
           <Key>
             <PropertyRef Name="codigo" />
           </Key>
-          <Property Name="codigo" Type="int" Nullable="false" />
-          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="cod_categoria" Type="int" Nullable="false" />
-          <Property Name="activo" Type="utinyint" Nullable="false" />
+          <Property Name="codigo" Nullable="false" Type="int" />
+          <Property Name="nombre" Nullable="false" MaxLength="100" Type="varchar" />
+          <Property Name="cod_categoria" Nullable="false" Type="int" />
+          <Property Name="activo" Nullable="false" Type="utinyint" />
         </EntityType>
         <EntityType Name="sucursal">
           <Key>
@@ -2045,8 +2045,8 @@ advertencia 6002: La tabla o vista 'def.iris_contabilidad.producto_oferta_histor
           </ReferentialConstraint>
         </Association>
         <Association Name="producto_subcategoria">
-          <End Role="subcategoria_producto" Type="Self.subcategoria_producto" Multiplicity="1" />
-          <End Role="producto" Type="Self.producto" Multiplicity="*" />
+          <End Type="Self.subcategoria_producto" Multiplicity="1" Role="subcategoria_producto" />
+          <End Type="Self.producto" Multiplicity="*" Role="producto" />
           <ReferentialConstraint>
             <Principal Role="subcategoria_producto">
               <PropertyRef Name="codigo" />
@@ -2213,8 +2213,8 @@ advertencia 6002: La tabla o vista 'def.iris_contabilidad.producto_oferta_histor
           </ReferentialConstraint>
         </Association>
         <Association Name="subcategoria_producto_Categoria">
-          <End Role="categoria_producto" Type="Self.categoria_producto" Multiplicity="1" />
-          <End Role="subcategoria_producto" Type="Self.subcategoria_producto" Multiplicity="*" />
+          <End Type="Self.categoria_producto" Multiplicity="1" Role="categoria_producto" />
+          <End Type="Self.subcategoria_producto" Multiplicity="*" Role="subcategoria_producto" />
           <ReferentialConstraint>
             <Principal Role="categoria_producto">
               <PropertyRef Name="codigo" />
@@ -2773,8 +2773,8 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
             <End Role="producto_oferta_historial" EntitySet="producto_oferta_historial" />
           </AssociationSet>
           <AssociationSet Name="producto_subcategoria" Association="Self.producto_subcategoria">
-            <End Role="subcategoria_producto" EntitySet="subcategoria_producto" />
-            <End Role="producto" EntitySet="producto" />
+            <End EntitySet="subcategoria_producto" Role="subcategoria_producto" />
+            <End EntitySet="producto" Role="producto" />
           </AssociationSet>
           <AssociationSet Name="producto_unidad_conversion_producto" Association="Self.producto_unidad_conversion_producto">
             <End Role="producto" EntitySet="producto" />
@@ -2829,8 +2829,8 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
             <End Role="sistema" EntitySet="sistema" />
           </AssociationSet>
           <AssociationSet Name="subcategoria_producto_Categoria" Association="Self.subcategoria_producto_Categoria">
-            <End Role="categoria_producto" EntitySet="categoria_producto" />
-            <End Role="subcategoria_producto" EntitySet="subcategoria_producto" />
+            <End EntitySet="categoria_producto" Role="categoria_producto" />
+            <End EntitySet="subcategoria_producto" Role="subcategoria_producto" />
           </AssociationSet>
           <AssociationSet Name="suplidor_sucursal" Association="Self.suplidor_sucursal">
             <End Role="sucursal" EntitySet="sucursal" />
@@ -2975,8 +2975,8 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
             <End Role="producto" EntitySet="producto" />
           </AssociationSet>
           <AssociationSet Name="subcategoria_producto_Categoria" Association="iris_contabilidadModel.subcategoria_producto_Categoria">
-            <End Role="categoria_producto" EntitySet="categoria_producto" />
-            <End Role="subcategoria_producto" EntitySet="subcategoria_producto" />
+            <End EntitySet="categoria_producto" Role="categoria_producto" />
+            <End EntitySet="subcategoria_producto" Role="subcategoria_producto" />
           </AssociationSet>
           <AssociationSet Name="cliente_categoria_cliente" Association="iris_contabilidadModel.cliente_categoria_cliente">
             <End Role="cliente_categoria" EntitySet="cliente_categoria" />
@@ -3219,8 +3219,8 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
             <End Role="producto_codigobarra" EntitySet="producto_codigobarra" />
           </AssociationSet>
           <AssociationSet Name="producto_subcategoria" Association="iris_contabilidadModel.producto_subcategoria">
-            <End Role="subcategoria_producto" EntitySet="subcategoria_producto" />
-            <End Role="producto" EntitySet="producto" />
+            <End EntitySet="subcategoria_producto" Role="subcategoria_producto" />
+            <End EntitySet="producto" Role="producto" />
           </AssociationSet>
           <AssociationSet Name="producto_unidad_conversion_producto" Association="iris_contabilidadModel.producto_unidad_conversion_producto">
             <End Role="producto" EntitySet="producto" />
@@ -4153,10 +4153,10 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
           <Key>
             <PropertyRef Name="codigo" />
           </Key>
-          <Property Name="codigo" Type="Int32" Nullable="false" />
-          <Property Name="nombre" Type="String" Nullable="false" />
-          <Property Name="cod_categoria" Type="Int32" Nullable="false" />
-          <Property Name="activo" Type="Byte" Nullable="false" />
+          <Property Name="codigo" Nullable="false" Type="Int32" />
+          <Property Name="nombre" Nullable="false" Type="String" />
+          <Property Name="cod_categoria" Nullable="false" Type="Int32" />
+          <Property Name="activo" Nullable="false" Type="Byte" />
           <NavigationProperty Name="categoria_producto" Relationship="iris_contabilidadModel.subcategoria_producto_Categoria" FromRole="subcategoria_producto" ToRole="categoria_producto" />
           <NavigationProperty Name="producto" Relationship="iris_contabilidadModel.producto_subcategoria" FromRole="subcategoria_producto" ToRole="producto" />
         </EntityType>
@@ -4635,8 +4635,8 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
           </ReferentialConstraint>
         </Association>
         <Association Name="subcategoria_producto_Categoria">
-          <End Type="iris_contabilidadModel.categoria_producto" Role="categoria_producto" Multiplicity="1" />
-          <End Type="iris_contabilidadModel.subcategoria_producto" Role="subcategoria_producto" Multiplicity="*" />
+          <End Type="iris_contabilidadModel.categoria_producto" Multiplicity="1" Role="categoria_producto" />
+          <End Type="iris_contabilidadModel.subcategoria_producto" Multiplicity="*" Role="subcategoria_producto" />
           <ReferentialConstraint>
             <Principal Role="categoria_producto">
               <PropertyRef Name="codigo" />
@@ -5367,8 +5367,8 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
           </ReferentialConstraint>
         </Association>
         <Association Name="producto_subcategoria">
-          <End Type="iris_contabilidadModel.subcategoria_producto" Role="subcategoria_producto" Multiplicity="1" />
-          <End Type="iris_contabilidadModel.producto" Role="producto" Multiplicity="*" />
+          <End Type="iris_contabilidadModel.subcategoria_producto" Multiplicity="1" Role="subcategoria_producto" />
+          <End Type="iris_contabilidadModel.producto" Multiplicity="*" Role="producto" />
           <ReferentialConstraint>
             <Principal Role="subcategoria_producto">
               <PropertyRef Name="codigo" />

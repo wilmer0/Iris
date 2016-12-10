@@ -68,7 +68,7 @@
         <EntityTypeShape EntityType="iris_contabilidadModel.sistema_modulo" Width="1.5" PointX="12.75" PointY="4.625" />
         <EntityTypeShape EntityType="iris_contabilidadModel.sistema_ventanas" Width="1.5" PointX="15" PointY="7" />
         <EntityTypeShape EntityType="iris_contabilidadModel.situacion_empleado" Width="1.5" PointX="0.75" PointY="21.5" />
-        <EntityTypeShape EntityType="iris_contabilidadModel.subcategoria_producto" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="iris_contabilidadModel.subcategoria_producto" PointX="5.25" PointY="61.25" Width="1.5" />
         <EntityTypeShape EntityType="iris_contabilidadModel.sucursal" Width="1.5" PointX="0.75" PointY="33.25" />
         <EntityTypeShape EntityType="iris_contabilidadModel.suplidor" Width="1.5" PointX="6" PointY="52.75" />
         <EntityTypeShape EntityType="iris_contabilidadModel.sysdiagrams" Width="1.5" PointX="21.75" PointY="5.875" />

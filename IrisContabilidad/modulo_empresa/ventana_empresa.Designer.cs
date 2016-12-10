@@ -58,6 +58,7 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -183,6 +184,7 @@
             this.groupBox2.Size = new System.Drawing.Size(532, 255);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // ventana_empresa
             // 

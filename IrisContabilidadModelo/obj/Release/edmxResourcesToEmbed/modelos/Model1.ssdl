@@ -910,10 +910,10 @@ advertencia 6002: La tabla o vista 'def.iris_contabilidad.producto_oferta_histor
     <Key>
       <PropertyRef Name="codigo" />
     </Key>
-    <Property Name="codigo" Type="int" Nullable="false" />
-    <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="cod_categoria" Type="int" Nullable="false" />
-    <Property Name="activo" Type="utinyint" Nullable="false" />
+    <Property Name="codigo" Nullable="false" Type="int" />
+    <Property Name="nombre" Nullable="false" MaxLength="100" Type="varchar" />
+    <Property Name="cod_categoria" Nullable="false" Type="int" />
+    <Property Name="activo" Nullable="false" Type="utinyint" />
   </EntityType>
   <EntityType Name="sucursal">
     <Key>
@@ -2040,8 +2040,8 @@ advertencia 6002: La tabla o vista 'def.iris_contabilidad.producto_oferta_histor
     </ReferentialConstraint>
   </Association>
   <Association Name="producto_subcategoria">
-    <End Role="subcategoria_producto" Type="Self.subcategoria_producto" Multiplicity="1" />
-    <End Role="producto" Type="Self.producto" Multiplicity="*" />
+    <End Type="Self.subcategoria_producto" Multiplicity="1" Role="subcategoria_producto" />
+    <End Type="Self.producto" Multiplicity="*" Role="producto" />
     <ReferentialConstraint>
       <Principal Role="subcategoria_producto">
         <PropertyRef Name="codigo" />
@@ -2208,8 +2208,8 @@ advertencia 6002: La tabla o vista 'def.iris_contabilidad.producto_oferta_histor
     </ReferentialConstraint>
   </Association>
   <Association Name="subcategoria_producto_Categoria">
-    <End Role="categoria_producto" Type="Self.categoria_producto" Multiplicity="1" />
-    <End Role="subcategoria_producto" Type="Self.subcategoria_producto" Multiplicity="*" />
+    <End Type="Self.categoria_producto" Multiplicity="1" Role="categoria_producto" />
+    <End Type="Self.subcategoria_producto" Multiplicity="*" Role="subcategoria_producto" />
     <ReferentialConstraint>
       <Principal Role="categoria_producto">
         <PropertyRef Name="codigo" />
@@ -2768,8 +2768,8 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
       <End Role="producto_oferta_historial" EntitySet="producto_oferta_historial" />
     </AssociationSet>
     <AssociationSet Name="producto_subcategoria" Association="Self.producto_subcategoria">
-      <End Role="subcategoria_producto" EntitySet="subcategoria_producto" />
-      <End Role="producto" EntitySet="producto" />
+      <End EntitySet="subcategoria_producto" Role="subcategoria_producto" />
+      <End EntitySet="producto" Role="producto" />
     </AssociationSet>
     <AssociationSet Name="producto_unidad_conversion_producto" Association="Self.producto_unidad_conversion_producto">
       <End Role="producto" EntitySet="producto" />
@@ -2824,8 +2824,8 @@ FROM `producto_oferta_historial` AS `producto_oferta_historial`</DefiningQuery>
       <End Role="sistema" EntitySet="sistema" />
     </AssociationSet>
     <AssociationSet Name="subcategoria_producto_Categoria" Association="Self.subcategoria_producto_Categoria">
-      <End Role="categoria_producto" EntitySet="categoria_producto" />
-      <End Role="subcategoria_producto" EntitySet="subcategoria_producto" />
+      <End EntitySet="categoria_producto" Role="categoria_producto" />
+      <End EntitySet="subcategoria_producto" Role="subcategoria_producto" />
     </AssociationSet>
     <AssociationSet Name="suplidor_sucursal" Association="Self.suplidor_sucursal">
       <End Role="sucursal" EntitySet="sucursal" />
