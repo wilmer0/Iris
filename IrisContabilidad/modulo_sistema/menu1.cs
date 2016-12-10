@@ -36,18 +36,11 @@ namespace IrisContabilidad.modulo_sistema
         private Button botonVentana;
 
         //modelos
-        modeloempleado modeloEmpleado = new modeloEmpleado();
-        modeloModulosVsVentanas modeloModuloVsVentanas = new modeloModulosVsVentanas();
-        modeloModulo modeloModulo = new modeloModulo();
-        modeloVentana modeloVentana = new modeloVentana();
-
+      
 
 
         //listas
-        private List<modulos_vs_ventanas> listaModulosVsVentanas;
-        private List<sistema_modulo> listaModulos;
-        List<sistema_ventanas> listaVentanas;
-        List<empleado_accesos_ventanas> listaEmpleadoVentanas; 
+       
 
 
 
@@ -77,42 +70,11 @@ namespace IrisContabilidad.modulo_sistema
         {
             try
             {
-                //cargar los modulos y ponerlo en el layout de modulos
-                //if (listaModulosVsVentanas == null)
-                //{
-                //    listaModulosVsVentanas = new List<modulos_vs_ventanas>();
-                //    listaModulosVsVentanas = modeloModuloVsVentanas.getListaCompleta();
-                //}
-                if (listaModulos == null)
-                {
-                    listaModulos = new List<sistema_modulo>();
-                    listaModulos = modeloModulo.GetListaCompleta();
-                }
+               
+               
 
                 //limpiar el layout de modulos para empezar agregar
-                if (flowLayoutModulos.Controls.Count > 0)
-                {
-                    flowLayoutModulos.Controls.Clear();
-                }
-                listaModulos.ForEach(x =>
-                {
-                    botonModulo = new Button();
-                    botonModulo.FlatStyle = FlatStyle.Flat;
-                    botonModulo.Width = 97;
-                    botonModulo.Height = 77;
-                    botonModulo.BackgroundImageLayout = ImageLayout.Stretch;
-                    botonModulo.BackgroundImage = Image.FromFile(RutaImagenesModulos + x.imagen);
-                    //MessageBox.Show(x.id.ToString());
-                    botonModulo.Click += (sender, args) => loadVentanas(x.id);
-                    
-                    
-                    
-                    
-                    
-                    flowLayoutModulos.Controls.Add(botonModulo);
-                });
-
-
+              
             }
             catch (Exception ex)
             {
@@ -126,11 +88,7 @@ namespace IrisContabilidad.modulo_sistema
             {
 
                 //obteniendo las ventanas que son del modulo presionado
-                listaVentanas = modeloVentana.getListaVentanasByModuloID(idModulo);
-                listaVentanas.ForEach(x =>
-                {
-                    MessageBox.Show(x.codigo + "-" + x.nombre_ventana + "-" + x.nombre_logico + "-" + x.imagen);
-                });
+               
                 //limpiar el flowlayout con las ventanas viejas
                 if (flowLayoutVentanas.Controls.Count > 0)
                 {
@@ -138,41 +96,10 @@ namespace IrisContabilidad.modulo_sistema
                 }
 
                 //agregando las ventanas nuevas al flow layout
-                listaVentanas.ForEach(x =>
-                {
-                    
-                    botonVentana = new Button();
-                    botonVentana.FlatStyle = FlatStyle.Flat;
-                    botonVentana.Width = 150;
-                    botonVentana.Height = 150;
-                    botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
-                    botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + x.imagen);
-                    //instanciar formulario de la ventana con el nombre logico
-                    botonVentana.Click += (sender, args) =>
-                    {
-                        string form = "IrisContabilidad."+x.nombre_logico;
-                        //MessageBox.Show(form);
-                        Assembly asm = Assembly.GetEntryAssembly();
-                        Type formtype = asm.GetType(form);
-                        Form f = (Form)Activator.CreateInstance(formtype);
-                        if (f != null)
-                        {
-                            f.ShowInTaskbar = false;
-                            f.Owner = this;
-                            f.ShowDialog();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Form esta llgando nulo-->" + form);
-                        }
-                    };
+             
 
 
 
-
-
-                    flowLayoutVentanas.Controls.Add(botonVentana);
-                });
 
             }
             catch (Exception ex)

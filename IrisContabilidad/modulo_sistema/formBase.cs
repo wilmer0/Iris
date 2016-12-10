@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
-using IrisContabilidadModelo.modelos;
 using IrisContabilidad.modulo_cuenta_por_cobrar;
 using IrisContabilidad.modulo_cuenta_por_pagar;
 using IrisContabilidad.modulo_empresa;
