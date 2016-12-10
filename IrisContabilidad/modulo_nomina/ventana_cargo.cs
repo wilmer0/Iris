@@ -8,9 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
-using IrisContabilidadModelo.modelos;
-using cargo = IrisContabilidad.clases.cargo;
 
 namespace IrisContabilidad.modulo_nomina
 {
@@ -20,6 +19,11 @@ namespace IrisContabilidad.modulo_nomina
         //objetos
         private cargo cargo;
         utilidades utilidades=new utilidades();
+
+
+
+        //modelos
+        modeloCargo modeloCargo=new modeloCargo();
 
         public ventana_cargo()
         {
@@ -99,7 +103,7 @@ namespace IrisContabilidad.modulo_nomina
                     //agrega
                     crear = true;
                     cargo = new cargo();
-                    cargo.id = cargo.getNext();
+                    cargo.id = modeloCargo.getNext();
                 }
 
                 cargo.nombre = CargoText.Text;
@@ -108,7 +112,7 @@ namespace IrisContabilidad.modulo_nomina
                 if (crear)
                 {
                     //agrega
-                    if (cargo.agregarCargo(cargo) == true)
+                    if (modeloCargo.agregarCargo(cargo) == true)
                     {
                         cargo = null;
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -122,7 +126,7 @@ namespace IrisContabilidad.modulo_nomina
                 else
                 {
                     //actualiza
-                    if (cargo.modificarCargo(cargo) == true)
+                    if (modeloCargo.modificarCargo(cargo) == true)
                     {
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

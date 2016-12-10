@@ -8,8 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
-using IrisContabilidadModelo.modelos;
 
 namespace IrisContabilidad
 {
@@ -17,8 +17,7 @@ namespace IrisContabilidad
     {
 
         //modelos
-        private modeloEmpleado modeloEmpleado = new modeloEmpleado();
-
+        modeloEmpleado modeloEmpleado=new modeloEmpleado();
 
         //objetos
         private empleado empleado;
@@ -78,7 +77,6 @@ namespace IrisContabilidad
             empleado = new empleado();
             empleado.login = usuarioText.Text.Trim();
             empleado.clave = utilidades.encriptar(claveText.Text.Trim());
-
 
             if ((empleado = modeloEmpleado.getEmpleadoByLogin(empleado)) != null)
             {
