@@ -60,10 +60,13 @@
   <ItemGroup>
     <Compile Include="clases\cargo.cs" />
     <Compile Include="clases\empleado.cs" />
+    <Compile Include="clases\modulo.cs" />
     <Compile Include="clases\singleton.cs" />
     <Compile Include="clases\utilidades.cs" />
+    <Compile Include="clases\ventana.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
+    <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,6 +137,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="modulo_empresa\ventana_empresa.resx">
       <DependentUpon>ventana_empresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_empresa\ventana_sucursal.resx">
+      <DependentUpon>ventana_sucursal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_cargo.resx">
       <DependentUpon>ventana_cargo.cs</DependentUpon>

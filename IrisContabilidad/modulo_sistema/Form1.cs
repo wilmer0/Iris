@@ -22,6 +22,7 @@ namespace IrisContabilidad
         //objetos
         private empleado empleado;
         utilidades utilidades = new utilidades();
+        private singleton singleton;
 
 
 
@@ -74,12 +75,9 @@ namespace IrisContabilidad
             if (!ValidarGetAction())
                 return;
 
-            empleado = new empleado();
-            empleado.login = usuarioText.Text.Trim();
-            empleado.clave = utilidades.encriptar(claveText.Text.Trim());
-
-            if ((empleado = modeloEmpleado.getEmpleadoByLogin(empleado)) != null)
+            if ((empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()))) != null)
             {
+                singleton.empleado = empleado;
                 menu1 ventana = new menu1(empleado);
                 ventana.Show();
                 this.Hide();

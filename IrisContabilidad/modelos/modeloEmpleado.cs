@@ -51,19 +51,22 @@ namespace IrisContabilidad.modelos
             {
                 //listas
                 List<string> listaModulos = new List<string>();
-
                 string sql = "";
-                sql = "SELECT id_ventana_sistema FROM empleado_accesos_ventanas ev where  ev.id_empleado ='" +
-                      empleado.codigo + "'";
+                sql = "SELECT id_ventana_sistema FROM empleado_accesos_ventanas  where  id_empleado ='"+empleado.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                foreach (var x in ds.Tables[0].Rows)
+                foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     //hacer select para saber a que modulo pertenece esa ventana
                     string sql2 = "";
-                    sql2 = "SELECT id_modulo FROM modulos_vs_ventanas  where id_ventana='" + x.ToString() + "'";
-                    listaModulos.Add(x.ToString());
+                    sql2 = "SELECT id_modulo FROM modulos_vs_ventanas  where id_ventana='" + row[0] + "'";
+                    DataSet ds2 = utilidades.ejecutarcomando_mysql(sql2);
+                    //MessageBox.Show(ds2.Tables[0].Rows[0][0].ToString());
+                    if (ds2.Tables[0].Rows[0][0].ToString() != null)
+                    {
+                        listaModulos.Add(ds2.Tables[0].Rows[0][0].ToString());
+                    }
                 }
-               
+
                 listaModulos = listaModulos.Distinct().ToList();
                 return listaModulos;
 
@@ -80,8 +83,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 List<empleado> listaEmpleado = new List<empleado>();
-                string sql =
-                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_gripo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where activo='1'";
+                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_gripo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where activo='1'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
@@ -115,13 +117,13 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        public empleado getEmpleadoByLogin(empleado empleado1)
+        public empleado getEmpleadoByLogin(string usuario,string clave)
         {
             try
             {
-                clases.empleado empleado = new empleado();
+                empleado = new empleado();
                 List<empleado> listaEmpleado = new List<empleado>();
-                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where login='"+empleado1.login+"' and clave='"+empleado1.clave+"'";
+                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where login='"+usuario+"' and clave='"+clave+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
