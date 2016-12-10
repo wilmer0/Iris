@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 using empleado = IrisContabilidad.clases.empleado;
@@ -36,11 +37,13 @@ namespace IrisContabilidad.modulo_sistema
         private Button botonVentana;
 
         //modelos
+        modeloEmpleado modeloEmpleado=new modeloEmpleado();
       
 
 
         //listas
-       
+        private List<string> listaModulos;
+        private List<string> listaVentanas; 
 
 
 
@@ -72,9 +75,19 @@ namespace IrisContabilidad.modulo_sistema
             {
                
                
+                listaModulos=new List<string>();
+                listaModulos = modeloEmpleado.GetListaModulosByEmpleado(empleado);
 
                 //limpiar el layout de modulos para empezar agregar
-              
+                if (flowLayoutModulos.Controls.Count > 0)
+                {
+                    flowLayoutModulos.Controls.Clear();
+                }
+
+
+                //agregar cada modulo
+                listamo
+
             }
             catch (Exception ex)
             {

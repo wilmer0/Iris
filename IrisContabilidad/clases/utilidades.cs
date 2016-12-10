@@ -190,9 +190,10 @@ namespace IrisContabilidad.clases
                 da.Fill(ds);
                 return ds;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //MessageBox.Show("Fallo conectando al server:"+ex.ToString());
+
+                MessageBox.Show("Fallo conectando al server.:" + ex.ToString());
                 return null;
             }
         }
@@ -209,9 +210,9 @@ namespace IrisContabilidad.clases
                 da.Fill(ds);
                 return ds;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Fallo conectando al server");
+                MessageBox.Show("Fallo conectando al server.:"+ex.ToString());
                 return null;
             }
         }

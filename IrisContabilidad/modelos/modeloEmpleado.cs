@@ -19,7 +19,7 @@ namespace IrisContabilidad.modelos
 
 
 
-        private Boolean validarLogin(string usuario, string clave)
+        public Boolean validarLogin(string usuario, string clave)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace IrisContabilidad.modelos
 
 
 
-        private List<string> GetListaModulosByEmpleado(empleado empleado)
+        public List<string> GetListaModulosByEmpleado(empleado empleado)
         {
             try
             {
@@ -63,16 +63,8 @@ namespace IrisContabilidad.modelos
                     sql2 = "SELECT id_modulo FROM modulos_vs_ventanas  where id_ventana='" + x.ToString() + "'";
                     listaModulos.Add(x.ToString());
                 }
-                foreach (var x in listaModulos)
-                {
-                    MessageBox.Show("modulos normal-->" + x.ToString());
-                }
+               
                 listaModulos = listaModulos.Distinct().ToList();
-                foreach (var x in listaModulos)
-                {
-                    MessageBox.Show("modulos limpio-->" + x.ToString());
-                }
-
                 return listaModulos;
 
             }
@@ -83,7 +75,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        private List<empleado> getListaCompleta()
+        public List<empleado> getListaCompleta()
         {
             try
             {
@@ -129,7 +121,7 @@ namespace IrisContabilidad.modelos
             {
                 clases.empleado empleado = new empleado();
                 List<empleado> listaEmpleado = new List<empleado>();
-                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_gripo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where login='"+empleado1.login+"' and clave='"+empleado1.clave+"'";
+                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where login='"+empleado1.login+"' and clave='"+empleado1.clave+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
