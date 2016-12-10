@@ -138,6 +138,7 @@
             this.Text = "menu1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.menu1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.menu1_KeyDown);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.panel3, 0);

@@ -74,7 +74,7 @@
             this.activoCheck.AutoSize = true;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(233, 178);
+            this.activoCheck.Location = new System.Drawing.Point(163, 178);
             this.activoCheck.Name = "activoCheck";
             this.activoCheck.Size = new System.Drawing.Size(68, 21);
             this.activoCheck.TabIndex = 21;
@@ -196,6 +196,7 @@
             this.Name = "ventana_empresa";
             this.Text = "ventana_empresa";
             this.Load += new System.EventHandler(this.ventana_empresa_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventana_empresa_KeyDown);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);

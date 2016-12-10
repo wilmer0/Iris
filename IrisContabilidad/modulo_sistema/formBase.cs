@@ -99,12 +99,13 @@ namespace IrisContabilidad.modulo_sistema
         {
             if (e.KeyCode == Keys.Escape)
             {
-                Salir();
+                this.Close();
             }
             if (e.KeyCode == Keys.F8)
             {
                 GetAction();
             }
+
         }
     }
 }

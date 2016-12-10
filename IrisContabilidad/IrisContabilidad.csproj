@@ -60,12 +60,14 @@
   <ItemGroup>
     <Compile Include="clases\cargo.cs" />
     <Compile Include="clases\empleado.cs" />
+    <Compile Include="clases\empresa.cs" />
     <Compile Include="clases\modulo.cs" />
     <Compile Include="clases\singleton.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
+    <Compile Include="modelos\modeloEmpresa.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
       <SubType>Form</SubType>

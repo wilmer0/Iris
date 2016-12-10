@@ -11,7 +11,7 @@ namespace IrisContabilidad.modelos
 {
     public class modeloCargo
     {
-        //objetos
+            //objetos
             utilidades utilidades = new utilidades();
 
         
@@ -30,7 +30,6 @@ namespace IrisContabilidad.modelos
                         cargo.nombre = ds.Tables[0].Rows[0][1].ToString();
                         cargo.activo = (int)ds.Tables[0].Rows[0][2];
                     }
-
                     return cargo;
                 }
                 catch (Exception ex)
@@ -45,13 +44,12 @@ namespace IrisContabilidad.modelos
             {
                 try
                 {
-                   cargo cargo=new cargo();
+                    cargo cargo=new cargo();
                     string sql = "select *from cargo where nombre='" + cargoAPP.nombre + "'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        MessageBox.Show("Existe un cargo con ese nombre", "", MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning);
+                        MessageBox.Show("Existe un cargo con ese nombre", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                         return false;
                     }
 
@@ -68,8 +66,8 @@ namespace IrisContabilidad.modelos
                     cargo.activo = cargoAPP.activo;
 
                     sql="insert into cargo(id,nombre,activo) values('"+cargoAPP.id+"','"+cargoAPP.nombre+"','"+cargoAPP.activo+"')";
-                    MessageBox.Show(sql);
-                    ds=utilidades.ejecutarcomando(sql);
+                    //MessageBox.Show(sql);
+                    ds=utilidades.ejecutarcomando_mysql(sql);
                     return true;
                 }
                 catch (Exception ex)

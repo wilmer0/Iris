@@ -89,9 +89,9 @@
             this.groupBox1.Controls.Add(this.usuarioText);
             this.groupBox1.Controls.Add(this.claveText);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(6, 189);
+            this.groupBox1.Location = new System.Drawing.Point(57, 189);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(566, 141);
+            this.groupBox1.Size = new System.Drawing.Size(457, 141);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
@@ -99,7 +99,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(124, 40);
+            this.label2.Location = new System.Drawing.Point(76, 39);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 9;
@@ -108,7 +108,7 @@
             // usuarioText
             // 
             this.usuarioText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usuarioText.Location = new System.Drawing.Point(206, 40);
+            this.usuarioText.Location = new System.Drawing.Point(158, 39);
             this.usuarioText.MaxLength = 30;
             this.usuarioText.Name = "usuarioText";
             this.usuarioText.Size = new System.Drawing.Size(224, 26);
@@ -118,7 +118,7 @@
             // claveText
             // 
             this.claveText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.claveText.Location = new System.Drawing.Point(206, 89);
+            this.claveText.Location = new System.Drawing.Point(158, 88);
             this.claveText.MaxLength = 30;
             this.claveText.Name = "claveText";
             this.claveText.PasswordChar = '*';
@@ -130,7 +130,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(131, 89);
+            this.label3.Location = new System.Drawing.Point(83, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 10;
