@@ -13,7 +13,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ionic.Zip;
-using IrisContabilidadModelo.modelos;
 using MySql.Data.MySqlClient;
 using CompressionLevel = Ionic.Zlib.CompressionLevel;
 
@@ -204,6 +203,7 @@ namespace IrisContabilidad.clases
         {
             try
             {
+                MySqlConnection conn =new MySqlConnection("server=localhost;uid=root;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);

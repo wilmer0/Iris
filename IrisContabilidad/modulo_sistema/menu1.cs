@@ -10,9 +10,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
-using IrisContabilidadModelo.modelos;
+using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
-
+using empleado = IrisContabilidad.clases.empleado;
 
 
 namespace IrisContabilidad.modulo_sistema
@@ -32,13 +32,11 @@ namespace IrisContabilidad.modulo_sistema
         //objetos
         private empleado empleado;
         private utilidades utilidades = new utilidades();
-        private sistema_ventanas ventana;
-        private sistema_modulo modulo;
         private Button botonModulo;
         private Button botonVentana;
 
         //modelos
-        modeloEmpleado modeloEmpleado = new modeloEmpleado();
+        modeloempleado modeloEmpleado = new modeloEmpleado();
         modeloModulosVsVentanas modeloModuloVsVentanas = new modeloModulosVsVentanas();
         modeloModulo modeloModulo = new modeloModulo();
         modeloVentana modeloVentana = new modeloVentana();
@@ -104,9 +102,14 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo.Height = 77;
                     botonModulo.BackgroundImageLayout = ImageLayout.Stretch;
                     botonModulo.BackgroundImage = Image.FromFile(RutaImagenesModulos + x.imagen);
-                    flowLayoutModulos.Controls.Add(botonModulo);
+                    //MessageBox.Show(x.id.ToString());
                     botonModulo.Click += (sender, args) => loadVentanas(x.id);
-
+                    
+                    
+                    
+                    
+                    
+                    flowLayoutModulos.Controls.Add(botonModulo);
                 });
 
 
@@ -121,29 +124,36 @@ namespace IrisContabilidad.modulo_sistema
         {
             try
             {
-                listaVentanas = modeloVentana.getListaByModuloID(idModulo);
+
+                //obteniendo las ventanas que son del modulo presionado
+                listaVentanas = modeloVentana.getListaVentanasByModuloID(idModulo);
+                listaVentanas.ForEach(x =>
+                {
+                    MessageBox.Show(x.codigo + "-" + x.nombre_ventana + "-" + x.nombre_logico + "-" + x.imagen);
+                });
+                //limpiar el flowlayout con las ventanas viejas
                 if (flowLayoutVentanas.Controls.Count > 0)
                 {
                     flowLayoutVentanas.Controls.Clear();
                 }
+
+                //agregando las ventanas nuevas al flow layout
                 listaVentanas.ForEach(x =>
                 {
+                    
                     botonVentana = new Button();
                     botonVentana.FlatStyle = FlatStyle.Flat;
-                    botonVentana.Width = 93;
-                    botonVentana.Height = 77;
+                    botonVentana.Width = 150;
+                    botonVentana.Height = 150;
                     botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
                     botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + x.imagen);
                     //instanciar formulario de la ventana con el nombre logico
                     botonVentana.Click += (sender, args) =>
                     {
-                        //Assembly asm = Assembly.GetEntryAssembly();
                         string form = "IrisContabilidad."+x.nombre_logico;
-                        //form = "puntoVentaWin.Form1";
-                        MessageBox.Show(form);
+                        //MessageBox.Show(form);
                         Assembly asm = Assembly.GetEntryAssembly();
                         Type formtype = asm.GetType(form);
-                        //c
                         Form f = (Form)Activator.CreateInstance(formtype);
                         if (f != null)
                         {
@@ -156,6 +166,11 @@ namespace IrisContabilidad.modulo_sistema
                             MessageBox.Show("Form esta llgando nulo-->" + form);
                         }
                     };
+
+
+
+
+
                     flowLayoutVentanas.Controls.Add(botonVentana);
                 });
 
@@ -205,6 +220,18 @@ namespace IrisContabilidad.modulo_sistema
         private void flowLayoutVentanas_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            ventana_cargo ventana=new ventana_cargo(empleado);
+            ventana.Owner = this;
+            ventana.ShowDialog();
         }
     }
 }

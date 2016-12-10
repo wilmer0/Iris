@@ -42,6 +42,10 @@
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\DLR-POS-2.0\proyecto\puntoVentaWin\librerias\Ionic.Zip.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -54,7 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\cargo.cs" />
+    <Compile Include="clases\empleado.cs" />
+    <Compile Include="clases\singleton.cs" />
     <Compile Include="clases\utilidades.cs" />
+    <Compile Include="modelos\modeloCargo.cs" />
+    <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +106,12 @@
     <Compile Include="modulo_nomina\tipo_nomina.Designer.cs">
       <DependentUpon>tipo_nomina.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_nomina\ventana_cargo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_cargo.Designer.cs">
+      <DependentUpon>ventana_cargo.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_sistema\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +135,9 @@
     <EmbeddedResource Include="modulo_empresa\ventana_empresa.resx">
       <DependentUpon>ventana_empresa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_cargo.resx">
+      <DependentUpon>ventana_cargo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_sistema\formBase.resx">
       <DependentUpon>formBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,6 +156,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -150,12 +169,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IrisContabilidadModelo\IrisContabilidadModelo.csproj">
-      <Project>{585d0dc1-c6a1-4d88-b74d-b91d0e7f5c78}</Project>
-      <Name>IrisContabilidadModelo</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\Resources\productos\" />
