@@ -39,6 +39,7 @@
             this.Reporte.Name = "Reporte";
             this.Reporte.Size = new System.Drawing.Size(817, 582);
             this.Reporte.TabIndex = 0;
+            this.Reporte.Load += new System.EventHandler(this.Reporte_Load);
             // 
             // VisorReporteComun
             // 

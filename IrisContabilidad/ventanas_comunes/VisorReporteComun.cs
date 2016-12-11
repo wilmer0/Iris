@@ -81,6 +81,11 @@ namespace _7ADMFIC_1._0.VentanasComunes
             this.Reporte.RefreshReport();
         }
 
+        private void Reporte_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         //public void ImprimirMedio(String Impresora)
