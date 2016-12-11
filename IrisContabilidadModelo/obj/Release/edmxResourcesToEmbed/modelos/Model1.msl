@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="iris_contabilidadModelStoreContainer" CdmEntityContainer="iris_contabilidadEntities">
+    <EntitySetMapping Name="almacen">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.almacen">
+        <MappingFragment StoreEntitySet="almacen">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="caja">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.caja">
+        <MappingFragment StoreEntitySet="caja">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cajero">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.cajero">
+        <MappingFragment StoreEntitySet="cajero">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_caja" ColumnName="cod_caja" />
+          <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cargo">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.cargo">
+        <MappingFragment StoreEntitySet="cargo">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categoria_producto">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.categoria_producto">
+        <MappingFragment StoreEntitySet="categoria_producto">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="telefono2" ColumnName="telefono2" />
+          <ScalarProperty Name="telefono1" ColumnName="telefono1" />
+          <ScalarProperty Name="cliente_contado" ColumnName="cliente_contado" />
+          <ScalarProperty Name="cod_sucursal_creado" ColumnName="cod_sucursal_creado" />
+          <ScalarProperty Name="abrir_credito" ColumnName="abrir_credito" />
+          <ScalarProperty Name="fecha_creado" ColumnName="fecha_creado" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_categoria" ColumnName="cod_categoria" />
+          <ScalarProperty Name="limite_credito" ColumnName="limite_credito" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente_categoria">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.cliente_categoria">
+        <MappingFragment StoreEntitySet="cliente_categoria">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cobros">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.cobros">
+        <MappingFragment StoreEntitySet="cobros">
+          <ScalarProperty Name="cuadrado" ColumnName="cuadrado" />
+          <ScalarProperty Name="motivo_anulado" ColumnName="motivo_anulado" />
+          <ScalarProperty Name="cod_empleado_anular" ColumnName="cod_empleado_anular" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="devuelta" ColumnName="devuelta" />
+          <ScalarProperty Name="efectivo" ColumnName="efectivo" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cobros_detalles">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.cobros_detalles">
+        <MappingFragment StoreEntitySet="cobros_detalles">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="motivo_anulado" ColumnName="motivo_anulado" />
+          <ScalarProperty Name="cod_empleado_anular" ColumnName="cod_empleado_anular" />
+          <ScalarProperty Name="monto_descontado" ColumnName="monto_descontado" />
+          <ScalarProperty Name="monto_pagado" ColumnName="monto_pagado" />
+          <ScalarProperty Name="cod_metodo_pago" ColumnName="cod_metodo_pago" />
+          <ScalarProperty Name="cod_factura" ColumnName="cod_factura" />
+          <ScalarProperty Name="cod_cobro" ColumnName="cod_cobro" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="compra">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.compra">
+        <MappingFragment StoreEntitySet="compra">
+          <ScalarProperty Name="compracol" ColumnName="compracol" />
+          <ScalarProperty Name="motivo_anulado" ColumnName="motivo_anulado" />
+          <ScalarProperty Name="codigo_empleado_anular" ColumnName="codigo_empleado_anular" />
+          <ScalarProperty Name="codigo_empleado" ColumnName="codigo_empleado" />
+          <ScalarProperty Name="devuelta" ColumnName="devuelta" />
+          <ScalarProperty Name="efectivo" ColumnName="efectivo" />
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="pagada" ColumnName="pagada" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
+          <ScalarProperty Name="rnc" ColumnName="rnc" />
+          <ScalarProperty Name="ncf" ColumnName="ncf" />
+          <ScalarProperty Name="fecha_limite" ColumnName="fecha_limite" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cod_suplidor" ColumnName="cod_suplidor" />
+          <ScalarProperty Name="num_factura" ColumnName="num_factura" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comprobante_fiscal">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.comprobante_fiscal">
+        <MappingFragment StoreEntitySet="comprobante_fiscal">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="avisar" ColumnName="avisar" />
+          <ScalarProperty Name="contador" ColumnName="contador" />
+          <ScalarProperty Name="hasta_numero" ColumnName="hasta_numero" />
+          <ScalarProperty Name="desde_numero" ColumnName="desde_numero" />
+          <ScalarProperty Name="codigo_tipo" ColumnName="codigo_tipo" />
+          <ScalarProperty Name="cod_caja" ColumnName="cod_caja" />
+          <ScalarProperty Name="cod_serie" ColumnName="cod_serie" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comprobante_serie">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.comprobante_serie">
+        <MappingFragment StoreEntitySet="comprobante_serie">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="serie" ColumnName="serie" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comprobante_ventas">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.comprobante_ventas">
+        <MappingFragment StoreEntitySet="comprobante_ventas">
+          <ScalarProperty Name="contador" ColumnName="contador" />
+          <ScalarProperty Name="cod_caja" ColumnName="cod_caja" />
+          <ScalarProperty Name="cod_tipo_comprobante" ColumnName="cod_tipo_comprobante" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuadre_caja">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.cuadre_caja">
+        <MappingFragment StoreEntitySet="cuadre_caja">
+          <ScalarProperty Name="sobrante" ColumnName="sobrante" />
+          <ScalarProperty Name="faltante" ColumnName="faltante" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="turno" ColumnName="turno" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cod_cajero" ColumnName="cod_cajero" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuadre_caja_detalles">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.cuadre_caja_detalles">
+        <MappingFragment StoreEntitySet="cuadre_caja_detalles">
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="cod_metodo_pago" ColumnName="cod_metodo_pago" />
+          <ScalarProperty Name="codigo_cuadre" ColumnName="codigo_cuadre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuenta_bancaria">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.cuenta_bancaria">
+        <MappingFragment StoreEntitySet="cuenta_bancaria">
+          <ScalarProperty Name="TRIAL_COLUMN7" ColumnName="TRIAL_COLUMN7" />
+          <ScalarProperty Name="TRIAL_COLUMN6" ColumnName="TRIAL_COLUMN6" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
+          <ScalarProperty Name="numero_cuenta" ColumnName="numero_cuenta" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departamento">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.departamento">
+        <MappingFragment StoreEntitySet="departamento">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="direccion">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.direccion">
+        <MappingFragment StoreEntitySet="direccion">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="cod_sector" ColumnName="cod_sector" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="egresos_caja">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.egresos_caja">
+        <MappingFragment StoreEntitySet="egresos_caja">
+          <ScalarProperty Name="cuadrado" ColumnName="cuadrado" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="afecta_cuadre" ColumnName="afecta_cuadre" />
+          <ScalarProperty Name="detalles" ColumnName="detalles" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="cod_cajero" ColumnName="cod_cajero" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cod_concepto" ColumnName="cod_concepto" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="egresos_conceptos">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.egresos_conceptos">
+        <MappingFragment StoreEntitySet="egresos_conceptos">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleado">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.empleado">
+        <MappingFragment StoreEntitySet="empleado">
+          <ScalarProperty Name="pasaporte" ColumnName="pasaporte" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="cod_tipo_nomina" ColumnName="cod_tipo_nomina" />
+          <ScalarProperty Name="permiso" ColumnName="permiso" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="cod_grupo_usuario" ColumnName="cod_grupo_usuario" />
+          <ScalarProperty Name="cod_cargo" ColumnName="cod_cargo" />
+          <ScalarProperty Name="cod_departamento" ColumnName="cod_departamento" />
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_situacion" ColumnName="cod_situacion" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empresa">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.empresa">
+        <MappingFragment StoreEntitySet="empresa">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="rnc" ColumnName="rnc" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="division" ColumnName="division" />
+          <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entrada_salida_inventario">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.entrada_salida_inventario">
+        <MappingFragment StoreEntitySet="entrada_salida_inventario">
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+          <ScalarProperty Name="cod_empleado_cambio" ColumnName="cod_empleado_cambio" />
+          <ScalarProperty Name="cod_almacen" ColumnName="cod_almacen" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="cod_unidad" ColumnName="cod_unidad" />
+          <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+          <ScalarProperty Name="tipo_movimiento" ColumnName="tipo_movimiento" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estados">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.estados">
+        <MappingFragment StoreEntitySet="estados">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estados_reparacion">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.estados_reparacion">
+        <MappingFragment StoreEntitySet="estados_reparacion">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="factura">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.factura">
+        <MappingFragment StoreEntitySet="factura">
+          <ScalarProperty Name="codigo_comprobante" ColumnName="codigo_comprobante" />
+          <ScalarProperty Name="detalles" ColumnName="detalles" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="cuadrado" ColumnName="cuadrado" />
+          <ScalarProperty Name="autorizar_pedido" ColumnName="autorizar_pedido" />
+          <ScalarProperty Name="despachado" ColumnName="despachado" />
+          <ScalarProperty Name="cod_vendedor" ColumnName="cod_vendedor" />
+          <ScalarProperty Name="monto_propina" ColumnName="monto_propina" />
+          <ScalarProperty Name="motivo_anulada" ColumnName="motivo_anulada" />
+          <ScalarProperty Name="efectivo" ColumnName="efectivo" />
+          <ScalarProperty Name="itebis" ColumnName="itebis" />
+          <ScalarProperty Name="devuelta" ColumnName="devuelta" />
+          <ScalarProperty Name="cod_empleado_anular" ColumnName="cod_empleado_anular" />
+          <ScalarProperty Name="pagada" ColumnName="pagada" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="codigo_tipo_factura" ColumnName="codigo_tipo_factura" />
+          <ScalarProperty Name="ncf" ColumnName="ncf" />
+          <ScalarProperty Name="rnc" ColumnName="rnc" />
+          <ScalarProperty Name="codigo_cliente" ColumnName="codigo_cliente" />
+          <ScalarProperty Name="codigo_empleado" ColumnName="codigo_empleado" />
+          <ScalarProperty Name="fecha_limite" ColumnName="fecha_limite" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="num_factura" ColumnName="num_factura" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grupo_usuarios">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.grupo_usuarios">
+        <MappingFragment StoreEntitySet="grupo_usuarios">
+          <ScalarProperty Name="detalles" ColumnName="detalles" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="identificacion">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.identificacion">
+        <MappingFragment StoreEntitySet="identificacion">
+          <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
+          <ScalarProperty Name="identificacion1" ColumnName="identificacion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingresos_caja">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.ingresos_caja">
+        <MappingFragment StoreEntitySet="ingresos_caja">
+          <ScalarProperty Name="cuadrado" ColumnName="cuadrado" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="afecta_cuadre" ColumnName="afecta_cuadre" />
+          <ScalarProperty Name="detalles" ColumnName="detalles" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="cod_cajero" ColumnName="cod_cajero" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cod_concepto" ColumnName="cod_concepto" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ingresos_conceptos">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.ingresos_conceptos">
+        <MappingFragment StoreEntitySet="ingresos_conceptos">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventario">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.inventario">
+        <MappingFragment StoreEntitySet="inventario">
+          <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+          <ScalarProperty Name="fecha_entrada" ColumnName="fecha_entrada" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="codigo_unidad" ColumnName="codigo_unidad" />
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventario_reparacion">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.inventario_reparacion">
+        <MappingFragment StoreEntitySet="inventario_reparacion">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="detalles" ColumnName="detalles" />
+          <ScalarProperty Name="estado_reparacion" ColumnName="estado_reparacion" />
+          <ScalarProperty Name="cod_cliente_titular" ColumnName="cod_cliente_titular" />
+          <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+          <ScalarProperty Name="fecha_entrada" ColumnName="fecha_entrada" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="serial" ColumnName="serial" />
+          <ScalarProperty Name="matricula" ColumnName="matricula" />
+          <ScalarProperty Name="imei" ColumnName="imei" />
+          <ScalarProperty Name="cod_modelo" ColumnName="cod_modelo" />
+          <ScalarProperty Name="cod_marca" ColumnName="cod_marca" />
+          <ScalarProperty Name="codigo_unidad" ColumnName="codigo_unidad" />
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="itebis">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.itebis">
+        <MappingFragment StoreEntitySet="itebis">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="porciento" ColumnName="porciento" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="marcas">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.marcas">
+        <MappingFragment StoreEntitySet="marcas">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mesas">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.mesas">
+        <MappingFragment StoreEntitySet="mesas">
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="metodo_pago">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.metodo_pago">
+        <MappingFragment StoreEntitySet="metodo_pago">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="metodo" ColumnName="metodo" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modelo">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.modelo">
+        <MappingFragment StoreEntitySet="modelo">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre_modelo" ColumnName="nombre_modelo" />
+          <ScalarProperty Name="codigo_marca" ColumnName="codigo_marca" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="modulos_vs_ventanas">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.modulos_vs_ventanas">
+        <MappingFragment StoreEntitySet="modulos_vs_ventanas">
+          <ScalarProperty Name="id_ventana" ColumnName="id_ventana" />
+          <ScalarProperty Name="id_modulo" ColumnName="id_modulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="moneda">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.moneda">
+        <MappingFragment StoreEntitySet="moneda">
+          <ScalarProperty Name="monedacol" ColumnName="monedacol" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="tasa_actual" ColumnName="tasa_actual" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="moneda_historial">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.moneda_historial">
+        <MappingFragment StoreEntitySet="moneda_historial">
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="tasa" ColumnName="tasa" />
+          <ScalarProperty Name="cod_moneda" ColumnName="cod_moneda" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nomina">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.nomina">
+        <MappingFragment StoreEntitySet="nomina">
+          <ScalarProperty Name="cod_empleado_cerrada" ColumnName="cod_empleado_cerrada" />
+          <ScalarProperty Name="abierta_cerrada" ColumnName="abierta_cerrada" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="cod_tipo" ColumnName="cod_tipo" />
+          <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+          <ScalarProperty Name="fecha_final" ColumnName="fecha_final" />
+          <ScalarProperty Name="fecha_inicial" ColumnName="fecha_inicial" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nomina_conceptos">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.nomina_conceptos">
+        <MappingFragment StoreEntitySet="nomina_conceptos">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="aumenta_sueldo" ColumnName="aumenta_sueldo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nomina_tipos">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.nomina_tipos">
+        <MappingFragment StoreEntitySet="nomina_tipos">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagos">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.pagos">
+        <MappingFragment StoreEntitySet="pagos">
+          <ScalarProperty Name="cuadrado" ColumnName="cuadrado" />
+          <ScalarProperty Name="motivo_anulado" ColumnName="motivo_anulado" />
+          <ScalarProperty Name="cod_empleado_anular" ColumnName="cod_empleado_anular" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+          <ScalarProperty Name="detalle" ColumnName="detalle" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pagos_detalles">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.pagos_detalles">
+        <MappingFragment StoreEntitySet="pagos_detalles">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="monto_descontado" ColumnName="monto_descontado" />
+          <ScalarProperty Name="monto_pagado" ColumnName="monto_pagado" />
+          <ScalarProperty Name="cod_metodo_pago" ColumnName="cod_metodo_pago" />
+          <ScalarProperty Name="cod_compra" ColumnName="cod_compra" />
+          <ScalarProperty Name="cod_pago" ColumnName="cod_pago" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pais">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.pais">
+        <MappingFragment StoreEntitySet="pais">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permiso">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.permiso">
+        <MappingFragment StoreEntitySet="permiso">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="persona">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.persona">
+        <MappingFragment StoreEntitySet="persona">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.producto">
+        <MappingFragment StoreEntitySet="producto">
+          <ScalarProperty Name="cod_unidad_minima" ColumnName="cod_unidad_minima" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="cod_almacen" ColumnName="cod_almacen" />
+          <ScalarProperty Name="cod_subcategoria" ColumnName="cod_subcategoria" />
+          <ScalarProperty Name="cod_categoria" ColumnName="cod_categoria" />
+          <ScalarProperty Name="cod_itebis" ColumnName="cod_itebis" />
+          <ScalarProperty Name="punto_maximo" ColumnName="punto_maximo" />
+          <ScalarProperty Name="reorden" ColumnName="reorden" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="referencia" ColumnName="referencia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto_detalle">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.producto_detalle">
+        <MappingFragment StoreEntitySet="producto_detalle">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto_oferta">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.producto_oferta">
+        <MappingFragment StoreEntitySet="producto_oferta">
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fecha_final" ColumnName="fecha_final" />
+          <ScalarProperty Name="fecha_inicial" ColumnName="fecha_inicial" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto_permisos">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.producto_permisos">
+        <MappingFragment StoreEntitySet="producto_permisos">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto_unidad_conversion">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.producto_unidad_conversion">
+        <MappingFragment StoreEntitySet="producto_unidad_conversion">
+          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="precio_venta" ColumnName="precio_venta" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="cod_unidad" ColumnName="cod_unidad" />
+          <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto_vs_detalle">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.producto_vs_detalle">
+        <MappingFragment StoreEntitySet="producto_vs_detalle">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo_detalle" ColumnName="codigo_detalle" />
+          <ScalarProperty Name="codigo_producto" ColumnName="codigo_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto_vs_permisos">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.producto_vs_permisos">
+        <MappingFragment StoreEntitySet="producto_vs_permisos">
+          <ScalarProperty Name="cod_permiso" ColumnName="cod_permiso" />
+          <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincia">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.provincia">
+        <MappingFragment StoreEntitySet="provincia">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_region" ColumnName="cod_region" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="region">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.region">
+        <MappingFragment StoreEntitySet="region">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_pais" ColumnName="cod_pais" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sector">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.sector">
+        <MappingFragment StoreEntitySet="sector">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_provincia" ColumnName="cod_provincia" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sexo">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.sexo">
+        <MappingFragment StoreEntitySet="sexo">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="sexo1" ColumnName="sexo" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sistema">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.sistema">
+        <MappingFragment StoreEntitySet="sistema">
+          <ScalarProperty Name="porciento_propina" ColumnName="porciento_propina" />
+          <ScalarProperty Name="ver_nombre_fact_touch" ColumnName="ver_nombre_fact_touch" />
+          <ScalarProperty Name="ver_imagen_fact_touch" ColumnName="ver_imagen_fact_touch" />
+          <ScalarProperty Name="fecha_vencimiento" ColumnName="fecha_vencimiento" />
+          <ScalarProperty Name="usar_comprobantes" ColumnName="usar_comprobantes" />
+          <ScalarProperty Name="limite_egreso_caja" ColumnName="limite_egreso_caja" />
+          <ScalarProperty Name="autorizar_pedidos_apartir" ColumnName="autorizar_pedidos_apartir" />
+          <ScalarProperty Name="permisos_por_grupos_usuarios" ColumnName="permisos_por_grupos_usuarios" />
+          <ScalarProperty Name="codigo_moneda" ColumnName="codigo_moneda" />
+          <ScalarProperty Name="ruta_logo_empresa" ColumnName="ruta_logo_empresa" />
+          <ScalarProperty Name="ruta_backup" ColumnName="ruta_backup" />
+          <ScalarProperty Name="ruta_imagen_productos" ColumnName="ruta_imagen_productos" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sistema_modulo">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.sistema_modulo">
+        <MappingFragment StoreEntitySet="sistema_modulo">
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="nombre_modulo_proyecto" ColumnName="nombre_modulo_proyecto" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sistema_ventanas">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.sistema_ventanas">
+        <MappingFragment StoreEntitySet="sistema_ventanas">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="nombre_logico" ColumnName="nombre_logico" />
+          <ScalarProperty Name="nombre_ventana" ColumnName="nombre_ventana" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="situacion_empleado">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.situacion_empleado">
+        <MappingFragment StoreEntitySet="situacion_empleado">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="subcategoria_producto">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.subcategoria_producto">
+        <MappingFragment StoreEntitySet="subcategoria_producto">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_categoria" ColumnName="cod_categoria" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursal">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.sucursal">
+        <MappingFragment StoreEntitySet="sucursal">
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+          <ScalarProperty Name="codigo_empresa" ColumnName="codigo_empresa" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suplidor">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.suplidor">
+        <MappingFragment StoreEntitySet="suplidor">
+          <ScalarProperty Name="fecha_modificacion" ColumnName="fecha_modificacion" />
+          <ScalarProperty Name="tipo_gasto" ColumnName="tipo_gasto" />
+          <ScalarProperty Name="telefono2" ColumnName="telefono2" />
+          <ScalarProperty Name="telefono1" ColumnName="telefono1" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="limite_credito" ColumnName="limite_credito" />
+          <ScalarProperty Name="cod_sucursal_creado" ColumnName="cod_sucursal_creado" />
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="rnc" ColumnName="rnc" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tarjetas_credito">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.tarjetas_credito">
+        <MappingFragment StoreEntitySet="tarjetas_credito">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_comprobante_fiscal">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.tipo_comprobante_fiscal">
+        <MappingFragment StoreEntitySet="tipo_comprobante_fiscal">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="secuencia" ColumnName="secuencia" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_correo_electronico">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.tipo_correo_electronico">
+        <MappingFragment StoreEntitySet="tipo_correo_electronico">
+          <ScalarProperty Name="puerto" ColumnName="puerto" />
+          <ScalarProperty Name="host" ColumnName="host" />
+          <ScalarProperty Name="ssl_activo" ColumnName="ssl_activo" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_cuenta_bancaria">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.tipo_cuenta_bancaria">
+        <MappingFragment StoreEntitySet="tipo_cuenta_bancaria">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_gasto">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.tipo_gasto">
+        <MappingFragment StoreEntitySet="tipo_gasto">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_identificacion">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.tipo_identificacion">
+        <MappingFragment StoreEntitySet="tipo_identificacion">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_movimiento_inventario">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.tipo_movimiento_inventario">
+        <MappingFragment StoreEntitySet="tipo_movimiento_inventario">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transferencia_inventario">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.transferencia_inventario">
+        <MappingFragment StoreEntitySet="transferencia_inventario">
+          <ScalarProperty Name="codigo_empleado" ColumnName="codigo_empleado" />
+          <ScalarProperty Name="codigo_almacen_destino" ColumnName="codigo_almacen_destino" />
+          <ScalarProperty Name="codigo_sucursal_destino" ColumnName="codigo_sucursal_destino" />
+          <ScalarProperty Name="codigo_almacen_origen" ColumnName="codigo_almacen_origen" />
+          <ScalarProperty Name="codigo_sucursal_origen" ColumnName="codigo_sucursal_origen" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="cod_unidad" ColumnName="cod_unidad" />
+          <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+          <ScalarProperty Name="tipo_movimiento" ColumnName="tipo_movimiento" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="unidad">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.unidad">
+        <MappingFragment StoreEntitySet="unidad">
+          <ScalarProperty Name="unidad_abreviada" ColumnName="unidad_abreviada" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vendedor">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.vendedor">
+        <MappingFragment StoreEntitySet="vendedor">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="porciento" ColumnName="porciento" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="catalogo_cuentas">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.catalogo_cuentas">
+        <MappingFragment StoreEntitySet="catalogo_cuentas">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="origen_debito" ColumnName="origen_debito" />
+          <ScalarProperty Name="origen_credito" ColumnName="origen_credito" />
+          <ScalarProperty Name="cuenta_movimiento" ColumnName="cuenta_movimiento" />
+          <ScalarProperty Name="cuenta_acumulativa" ColumnName="cuenta_acumulativa" />
+          <ScalarProperty Name="cuenta_sub_master" ColumnName="cuenta_sub_master" />
+          <ScalarProperty Name="cuenta_master" ColumnName="cuenta_master" />
+          <ScalarProperty Name="numero_cuenta" ColumnName="numero_cuenta" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="compra_detalle">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.compra_detalle">
+        <MappingFragment StoreEntitySet="compra_detalle">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="cod_unidad" ColumnName="cod_unidad" />
+          <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+          <ScalarProperty Name="cod_compra" ColumnName="cod_compra" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleado_accesos_ventanas">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.empleado_accesos_ventanas">
+        <MappingFragment StoreEntitySet="empleado_accesos_ventanas">
+          <ScalarProperty Name="id_ventana_sistema" ColumnName="id_ventana_sistema" />
+          <ScalarProperty Name="id_empleado" ColumnName="id_empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empleado_historial_datos">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.empleado_historial_datos">
+        <MappingFragment StoreEntitySet="empleado_historial_datos">
+          <ScalarProperty Name="cod_tipo_nomina" ColumnName="cod_tipo_nomina" />
+          <ScalarProperty Name="fecha_ingreso" ColumnName="fecha_ingreso" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="cod_empleado_cambio" ColumnName="cod_empleado_cambio" />
+          <ScalarProperty Name="sueldo" ColumnName="sueldo" />
+          <ScalarProperty Name="cod_departamento" ColumnName="cod_departamento" />
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="cod_cargo" ColumnName="cod_cargo" />
+          <ScalarProperty Name="cod_sexo" ColumnName="cod_sexo" />
+          <ScalarProperty Name="cod_situacion" ColumnName="cod_situacion" />
+          <ScalarProperty Name="clave" ColumnName="clave" />
+          <ScalarProperty Name="usuario" ColumnName="usuario" />
+          <ScalarProperty Name="fecha_nacimiento" ColumnName="fecha_nacimiento" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="factura_detalle">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.factura_detalle">
+        <MappingFragment StoreEntitySet="factura_detalle">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="itebis" ColumnName="itebis" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="cod_unidad" ColumnName="cod_unidad" />
+          <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+          <ScalarProperty Name="cod_factura" ColumnName="cod_factura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mesas_detalles">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.mesas_detalles">
+        <MappingFragment StoreEntitySet="mesas_detalles">
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="cod_detalle" ColumnName="cod_detalle" />
+          <ScalarProperty Name="codigo_mesa" ColumnName="codigo_mesa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="nomina_detalle">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.nomina_detalle">
+        <MappingFragment StoreEntitySet="nomina_detalle">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_empleado_modifico" ColumnName="cod_empleado_modifico" />
+          <ScalarProperty Name="monto_sueldo" ColumnName="monto_sueldo" />
+          <ScalarProperty Name="cod_concepto" ColumnName="cod_concepto" />
+          <ScalarProperty Name="cod_empleado" ColumnName="cod_empleado" />
+          <ScalarProperty Name="cod_nomina" ColumnName="cod_nomina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oferta_producto_categoria_detalle">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.oferta_producto_categoria_detalle">
+        <MappingFragment StoreEntitySet="oferta_producto_categoria_detalle">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_categoria" ColumnName="cod_categoria" />
+          <ScalarProperty Name="cod_oferta" ColumnName="cod_oferta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="oferta_producto_detalle">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.oferta_producto_detalle">
+        <MappingFragment StoreEntitySet="oferta_producto_detalle">
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="cod_prod" ColumnName="cod_prod" />
+          <ScalarProperty Name="cod_oferta" ColumnName="cod_oferta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto_codigobarra">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.producto_codigobarra">
+        <MappingFragment StoreEntitySet="producto_codigobarra">
+          <ScalarProperty Name="codigo_barra" ColumnName="codigo_barra" />
+          <ScalarProperty Name="cod_unidad" ColumnName="cod_unidad" />
+          <ScalarProperty Name="cod_producto" ColumnName="cod_producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="producto_oferta_historial">
+      <EntityTypeMapping TypeName="iris_contabilidadModel.producto_oferta_historial">
+        <MappingFragment StoreEntitySet="producto_oferta_historial">
+          <ScalarProperty Name="cod_sucursal" ColumnName="cod_sucursal" />
+          <ScalarProperty Name="cod_empleado_actualiza" ColumnName="cod_empleado_actualiza" />
+          <ScalarProperty Name="fecha_actualizada" ColumnName="fecha_actualizada" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="fecha_final" ColumnName="fecha_final" />
+          <ScalarProperty Name="fecha_inicial" ColumnName="fecha_inicial" />
+          <ScalarProperty Name="descuento" ColumnName="descuento" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="empleado_vs_cargo" TypeName="iris_contabilidadModel.empleado_vs_cargo" StoreEntitySet="empleado_vs_cargo">
+      <EndProperty Name="empleado">
+        <ScalarProperty Name="codigo" ColumnName="cod_empleado" />
+      </EndProperty>
+      <EndProperty Name="cargo">
+        <ScalarProperty Name="codigo" ColumnName="cod_cargo" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="producto_unidad" TypeName="iris_contabilidadModel.producto_unidad" StoreEntitySet="producto_unidad">
+      <EndProperty Name="unidad">
+        <ScalarProperty Name="codigo" ColumnName="cod_unidad" />
+      </EndProperty>
+      <EndProperty Name="producto">
+        <ScalarProperty Name="codigo" ColumnName="cod_producto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="grupo_usuarios_permisos" TypeName="iris_contabilidadModel.grupo_usuarios_permisos" StoreEntitySet="grupo_usuarios_permisos">
+      <EndProperty Name="permiso">
+        <ScalarProperty Name="codigo" ColumnName="cod_permiso" />
+      </EndProperty>
+      <EndProperty Name="grupo_usuarios">
+        <ScalarProperty Name="codigo" ColumnName="cod_grupo" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

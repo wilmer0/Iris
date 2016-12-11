@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>BarcodeLib</id>
+    <version>1.0.0.22</version>
+    <title>BarcodeLib</title>
+    <authors>Barnhill Software</authors>
+    <owners>Barnhill Software</owners>
+    <licenseUrl>https://github.com/bbarnhill/barcodelib/blob/master/LICENSE?raw=true</licenseUrl>
+    <projectUrl>https://github.com/barnhill/barcodelib</projectUrl>
+    <iconUrl>https://github.com/barnhill/barcodelib/blob/master/BarcodeLibTest/Barcode.ico?raw=true</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Barcode Image Generation Library</description>
+    <summary />
+    <copyright>Copyright © Brad Barnhill 2007-present</copyright>
+    <tags>barcode</tags>
+  </metadata>
+</package>
