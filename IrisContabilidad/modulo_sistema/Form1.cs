@@ -38,7 +38,7 @@ namespace IrisContabilidad
         {
 
         }
-        public override bool ValidarGetAction()
+        public  bool ValidarGetAction()
         {
             try
             {
@@ -66,7 +66,7 @@ namespace IrisContabilidad
             }
         }
 
-        public override void GetAction()
+        public  void GetAction()
         {
             if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
             {
@@ -75,13 +75,15 @@ namespace IrisContabilidad
             if (!ValidarGetAction())
                 return;
 
-            if ((empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()))) != null)
+            empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()));
+            if (empleado.login != null)
             {
-                singleton.empleado = empleado;
-                menu1 ventana = new menu1(empleado);
-                ventana.Show();
-                this.Hide();
-                //MessageBox.Show("Existe");
+                    singleton.empleado = empleado;
+                    menu1 ventana = new menu1(empleado);
+                    ventana.Show();
+                    this.Hide();
+                    //MessageBox.Show("Existe");
+                
             }
             else
             {
@@ -95,7 +97,7 @@ namespace IrisContabilidad
 
 
 
-        public override void Salir()
+        public  void Salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -120,14 +122,20 @@ namespace IrisContabilidad
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GetAction();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
 
+        }
 
-
-
-
-
-
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+       
     }
 }

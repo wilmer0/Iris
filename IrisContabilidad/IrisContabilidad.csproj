@@ -82,12 +82,14 @@
     <Compile Include="clases\empresa.cs" />
     <Compile Include="clases\modulo.cs" />
     <Compile Include="clases\singleton.cs" />
+    <Compile Include="clases\sucursal.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
+    <Compile Include="modelos\modeloSucursal.cs" />
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +101,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_suplidor.Designer.cs">
       <DependentUpon>ventana_suplidor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_busqueda_sucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_busqueda_sucursal.Designer.cs">
+      <DependentUpon>ventana_busqueda_sucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_empresa\ventana_empresa.cs">
       <SubType>Form</SubType>
@@ -162,6 +170,9 @@
     <Compile Include="ventanas_comunes\VisorReporteComun.Designer.cs">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="modulo_empresa\ventana_busqueda_sucursal.resx">
+      <DependentUpon>ventana_busqueda_sucursal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_empresa.resx">
       <DependentUpon>ventana_empresa.cs</DependentUpon>
     </EmbeddedResource>

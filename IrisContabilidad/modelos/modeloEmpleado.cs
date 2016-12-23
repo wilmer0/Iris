@@ -127,7 +127,7 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    empleado.codigo = (int)row[0];
+                    empleado.codigo = Convert.ToInt16(row[0]);
                     empleado.nombre = row[1].ToString();
                     empleado.login = row[2].ToString();
                     empleado.clave = row[3].ToString();
@@ -135,12 +135,12 @@ namespace IrisContabilidad.modelos
                     empleado.codigo_situacion = (int)row[5];
                     empleado.activo = (bool)row[6];
                     empleado.codigo_sucursal = (int)row[7];
-                    empleado.codigo_departamento = (int)row[8];
-                    empleado.codigo_cargo = (int)row[9];
-                    empleado.codigo_grupo_usuario = (int)row[10];
+                    empleado.codigo_departamento = Convert.ToInt16(row[8]);
+                    empleado.codigo_cargo = Convert.ToInt16(row[9]);
+                    empleado.codigo_grupo_usuario = Convert.ToInt16(row[10]);
                     empleado.fecha_ingreso = (DateTime)row[11];
                     empleado.tipo_permiso = row[12].ToString();
-                    empleado.codigo_tipo_nomina = (int)row[13];
+                    empleado.codigo_tipo_nomina = Convert.ToInt16(row[13]);
                     empleado.identificacion = row[14].ToString();
                     empleado.pasaporte = row[15].ToString();
                    
@@ -149,7 +149,6 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Error getEmpleadoByLogin.: " + ex.ToString());
                 return null;
             }

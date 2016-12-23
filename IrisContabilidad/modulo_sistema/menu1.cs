@@ -221,7 +221,7 @@ namespace IrisContabilidad.modulo_sistema
         {
             
         }
-        public override void Salir()
+        public  void Salir()
         {
             Form1 ventana = new Form1();
             ventana.Show();

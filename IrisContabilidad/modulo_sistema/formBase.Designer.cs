@@ -46,59 +46,55 @@
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(12, 196);
+            this.panel1.Location = new System.Drawing.Point(12, 306);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(260, 54);
+            this.panel1.Size = new System.Drawing.Size(610, 54);
             this.panel1.TabIndex = 2;
             // 
             // button3
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button3.BackColor = System.Drawing.Color.ForestGreen;
-            this.button3.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button3.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(61, 5);
+            this.button3.Location = new System.Drawing.Point(242, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(138, 42);
             this.button3.TabIndex = 3;
-            this.button3.Text = "Limpiar (F3)";
+            this.button3.Text = "Limpiar";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.BackColor = System.Drawing.Color.Red;
             this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(4, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(138, 42);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Cancelar (Esc)";
+            this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.DodgerBlue;
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(119, 5);
+            this.button1.Location = new System.Drawing.Point(469, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 42);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Procesar (F8)";
+            this.button1.Text = "Procesar";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -108,7 +104,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(284, 21);
+            this.panel2.Size = new System.Drawing.Size(634, 21);
             this.panel2.TabIndex = 8;
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
             // 
@@ -130,14 +126,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(634, 372);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "formBase";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.formBase_Load);
+            this.Load += new System.EventHandler(this.formBase_Load_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.formBase_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -150,10 +146,10 @@
         #endregion
 
         public System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.Button button3;
         public System.Windows.Forms.Button button2;
         public System.Windows.Forms.Button button1;
         public System.Windows.Forms.Panel panel2;
         public System.Windows.Forms.Label tituloLabel;
+        public System.Windows.Forms.Button button3;
     }
 }
