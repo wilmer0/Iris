@@ -1079,5 +1079,32 @@ namespace IrisContabilidad.clases
                 return false;
             }
         }
+
+
+
+
+        public void validarTextBoxNumeroEntero(KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+        }
     }
 }

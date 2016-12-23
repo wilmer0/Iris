@@ -70,7 +70,7 @@ namespace IrisContabilidad.modulo_nomina
             }
         }
 
-        public override bool ValidarGetAction()
+        public  bool ValidarGetAction()
         {
             try
             {
@@ -93,7 +93,7 @@ namespace IrisContabilidad.modulo_nomina
             }
         }
 
-        public override void GetAction()
+        public  void GetAction()
         {
             try
             {

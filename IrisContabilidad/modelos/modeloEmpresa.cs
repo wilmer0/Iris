@@ -48,7 +48,6 @@ namespace IrisContabilidad.modelos
                     ds = utilidades.ejecutarcomando_mysql(sql);
                     return true;
                 }
-                
             }
             catch (Exception ex)
             {

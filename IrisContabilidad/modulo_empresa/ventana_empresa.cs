@@ -55,6 +55,8 @@ namespace IrisContabilidad.modulo_empresa
                     divisionText.Text = "";
                     activoCheck.Checked = false;
                 }
+                empresaText.Focus();
+                empresaText.SelectAll();
             }
             catch (Exception ex)
             {
@@ -67,8 +69,13 @@ namespace IrisContabilidad.modulo_empresa
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Salir();
         }
 
+        public void salir()
+        {
+            
+        }
         private void groupBox2_Enter(object sender, EventArgs e)
         {
         }
@@ -83,9 +90,21 @@ namespace IrisContabilidad.modulo_empresa
             {
                 GetAction();
             }
+            if (e.KeyCode == Keys.F2)
+            {
+                button3_Click(null, null);
+            }
         }
 
-        public override bool ValidarGetAction()
+        public void Salir()
+        {
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        public  bool ValidarGetAction()
         {
             try
             {
@@ -121,7 +140,7 @@ namespace IrisContabilidad.modulo_empresa
             }
         }
 
-        public override void GetAction()
+        public  void GetAction()
         {
             //si validar me retorna false entonces no hace nada
             if (!ValidarGetAction())
@@ -143,6 +162,60 @@ namespace IrisContabilidad.modulo_empresa
             else
             {
                 MessageBox.Show("No se agregó la empresa", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            empresa = null;
+            loadVentana();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GetAction();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void empresaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                RncText.Focus();
+                RncText.SelectAll();
+            }
+        }
+
+        private void RncText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                divisionText.Focus();
+                divisionText.SelectAll();
+            }
+        }
+
+        private void divisionText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                activoCheck.Focus();
+            }
+        }
+
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                button1.Focus();
+            }
+            if (e.KeyCode == Keys.Space)
+            {
+                activoCheck.Checked = !(bool)activoCheck.Checked;
             }
         }
     }

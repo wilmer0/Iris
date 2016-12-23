@@ -24,12 +24,20 @@ namespace IrisContabilidad.modulo_sistema
 {
     public partial class formBase : Form
     {
+
         //mover form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
 
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+
+
+
+
+
+
+
         //objeto
         utilidades utilidades = new utilidades();
         private empleado empleado;
@@ -43,29 +51,6 @@ namespace IrisContabilidad.modulo_sistema
         private void tituloLabel_Click(object sender, EventArgs e)
         {
 
-        }
-        public virtual void GetAction()
-        {
-            if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-
-            }
-        }
-        public virtual void Salir()
-        {
-            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
-        private void button2_Click(object sender, EventArgs e)
-        {
-          Salir();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            GetAction();
         }
 
         private void panel2_MouseDown(object sender, MouseEventArgs e)
@@ -85,15 +70,9 @@ namespace IrisContabilidad.modulo_sistema
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-        }
+      
 
-        public virtual bool ValidarGetAction()
-        {
-            throw new NotImplementedException();
-        }
+      
 
         private void formBase_KeyDown(object sender, KeyEventArgs e)
         {
@@ -103,8 +82,17 @@ namespace IrisContabilidad.modulo_sistema
             }
             if (e.KeyCode == Keys.F8)
             {
-                GetAction();
+                
             }
+        }
+
+        public void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void formBase_Load_1(object sender, EventArgs e)
+        {
 
         }
     }
