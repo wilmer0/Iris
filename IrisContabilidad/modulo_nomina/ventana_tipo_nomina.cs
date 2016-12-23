@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace IrisContabilidad.modulo_nomina
 {
-    public partial class tipo_nomina : Form
+    public partial class ventana_tipo_nomina : Form
     {
-        public tipo_nomina()
+        public ventana_tipo_nomina()
         {
             InitializeComponent();
         }

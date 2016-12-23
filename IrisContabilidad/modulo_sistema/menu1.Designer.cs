@@ -44,11 +44,6 @@
             this.panel1.Location = new System.Drawing.Point(12, 594);
             this.panel1.Size = new System.Drawing.Size(940, 54);
             // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(401, 5);
-            // 
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
@@ -63,6 +58,11 @@
             // 
             this.panel2.Size = new System.Drawing.Size(964, 21);
             // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.Location = new System.Drawing.Point(401, 5);
+            // 
             // flowLayoutVentanas
             // 
             this.flowLayoutVentanas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -70,6 +70,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutVentanas.AutoScroll = true;
             this.flowLayoutVentanas.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.flowLayoutVentanas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.flowLayoutVentanas.Location = new System.Drawing.Point(12, 110);
             this.flowLayoutVentanas.Name = "flowLayoutVentanas";
             this.flowLayoutVentanas.Size = new System.Drawing.Size(940, 386);
@@ -130,11 +131,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(964, 660);
             this.Controls.Add(this.flowLayoutVentanas);
             this.Controls.Add(this.flowLayoutModulos);
             this.Controls.Add(this.panel3);
             this.Name = "menu1";
+            this.Opacity = 0.7D;
             this.Text = "menu1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.menu1_Load);

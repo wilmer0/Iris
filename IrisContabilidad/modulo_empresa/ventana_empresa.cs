@@ -149,6 +149,7 @@ namespace IrisContabilidad.modulo_empresa
             }
             //hacer getAction
             empresa=new empresa();
+            empresa.codigo = 1;
             empresa.nombre = empresaText.Text;
             empresa.rnc = RncText.Text;
             empresa.division = divisionText.Text;

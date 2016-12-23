@@ -36,7 +36,6 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Error validarLogin.: " + ex.ToString());
                 return false;
             }

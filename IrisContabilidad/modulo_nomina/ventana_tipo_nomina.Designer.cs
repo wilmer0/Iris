@@ -1,6 +1,6 @@
 ﻿namespace IrisContabilidad.modulo_nomina
 {
-    partial class tipo_nomina
+    partial class ventana_tipo_nomina
     {
         /// <summary>
         /// Required designer variable.

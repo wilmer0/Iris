@@ -69,6 +69,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(201, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // groupBox2
             // 

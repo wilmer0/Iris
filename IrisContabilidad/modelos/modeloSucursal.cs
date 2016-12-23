@@ -29,8 +29,7 @@ namespace IrisContabilidad.modelos
 
 
                 //validaciones
-                sql = "select *from sucursal where secuencia='" + sucursal.secuencia + "' and codigo_empresa='" +
-                      sucursal.codigo_empresa + "'";
+                sql = "select *from sucursal where secuencia='" + sucursal.secuencia + "' and codigo!='"+sucursal.codigo+"'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -48,9 +47,7 @@ namespace IrisContabilidad.modelos
                 }
 
                 //se agrega  
-                sql = "insert into sucursal(codigo,codigo_empresa,secuencia,activo,direccion) values('" +
-                      sucursal.codigo + "','" + sucursal.codigo_empresa + "','" + sucursal.secuencia + "','" +
-                      activo.ToString() + "','" + sucursal.direccion + "')";
+                sql = "insert into sucursal(codigo,codigo_empresa,secuencia,activo,direccion) values('" +sucursal.codigo + "','" + sucursal.codigo_empresa + "','" + sucursal.secuencia + "','" + activo.ToString() + "','" + sucursal.direccion + "')";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
 
@@ -76,8 +73,7 @@ namespace IrisContabilidad.modelos
 
 
                 //validaciones
-                sql = "select *from sucursal where secuencia='" + sucursal.secuencia + "'and codigo_empresa='" +
-                      sucursal.codigo_empresa + "' and codigo!='" + sucursal.codigo + "'";
+                sql = "select *from sucursal where secuencia='" + sucursal.secuencia + "' and codigo!='" + sucursal.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -95,9 +91,7 @@ namespace IrisContabilidad.modelos
                 }
 
                 //se modifica  
-                sql = "update sucursal set codigo_empresa='" + sucursal.codigo_empresa + "',secuencia='" +
-                      sucursal.secuencia + "',activo='" + activo + "',direccion='" + sucursal.direccion +
-                      "' where codigo='" + sucursal.codigo + "'";
+                sql = "update sucursal set codigo_empresa='" + sucursal.codigo_empresa + "',secuencia='" + sucursal.secuencia + "',activo='" + activo + "',direccion='" + sucursal.direccion + "' where codigo='" + sucursal.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
 
@@ -118,9 +112,17 @@ namespace IrisContabilidad.modelos
         {
             try
             {
+                int id = 0;
                 string sql = "select max(codigo)from sucursal";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                if (ds.Tables[0].Rows[0][0].ToString() == "")
+                {
+                    id = 0;
+                }
+                else
+                {
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                }
                 if (id == null || id == 0)
                 {
                     id = 1;
