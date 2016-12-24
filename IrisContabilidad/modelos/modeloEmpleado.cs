@@ -18,6 +18,47 @@ namespace IrisContabilidad.modelos
 
 
 
+        //agregar
+
+
+
+        //modificar
+
+
+
+        //obtener el codigo siguiente sucursal
+        public int getNext()
+        {
+            try
+            {
+                int id = 0;
+                string sql = "select max(codigo)from empleado";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows[0][0].ToString() == "")
+                {
+                    id = 0;
+                }
+                else
+                {
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                }
+                if (id == null || id == 0)
+                {
+                    id = 1;
+                }
+                else
+                {
+                    id += 1;
+                }
+                return id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getNext.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
 
         public Boolean validarLogin(string usuario, string clave)
         {

@@ -116,6 +116,7 @@
             this.RncText.Size = new System.Drawing.Size(256, 26);
             this.RncText.TabIndex = 17;
             this.RncText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RncText_KeyDown);
+            this.RncText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RncText_KeyPress);
             // 
             // label3
             // 

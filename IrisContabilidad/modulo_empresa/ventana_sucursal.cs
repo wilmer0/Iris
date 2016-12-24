@@ -144,36 +144,41 @@ namespace IrisContabilidad.modulo_empresa
                     return;
                 }
 
-
+                bool crear = false;
                 if (sucursal == null)
                 {
                     //se agrega
+                    crear = true;
                     sucursal = new sucursal();
                     sucursal.codigo = modeloSucursal.getNext();
+                }
                     sucursal.codigo_empresa = 1;
                     sucursal.secuencia = secuenciaText.Text;
                     sucursal.activo = Convert.ToBoolean(activoCheck.Checked);
                     sucursal.direccion = direccionText.Text;
+
+                if (crear == true)
+                {
                     if ((modeloSucursal.agregarSucursal(sucursal)) == true)
                     {
                         MessageBox.Show("Se agregó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    else
+                    {
+                        MessageBox.Show("No se agregó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    sucursal.secuencia = secuenciaText.Text;
-                    sucursal.activo = Convert.ToBoolean(activoCheck.Checked);
-                    sucursal.direccion = direccionText.Text;
                     if ((modeloSucursal.modificarSucursal(sucursal)) == true)
                     {
                         MessageBox.Show("Se modificó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    else
+                    {
+                        MessageBox.Show("No se modificó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-
-
-
-
-
             }
             catch (Exception ex)
             {

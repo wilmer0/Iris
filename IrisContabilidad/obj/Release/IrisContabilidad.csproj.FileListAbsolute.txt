@@ -23,3 +23,5 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\I
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.pdb
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_nomina.ventana_empleado.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_nomina.ventana_tipo_nomina.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_nomina.ventana_busqueda_cargo.resources

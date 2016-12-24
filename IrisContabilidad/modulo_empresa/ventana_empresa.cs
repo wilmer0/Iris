@@ -219,5 +219,10 @@ namespace IrisContabilidad.modulo_empresa
                 activoCheck.Checked = !(bool)activoCheck.Checked;
             }
         }
+
+        private void RncText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
     }
 }

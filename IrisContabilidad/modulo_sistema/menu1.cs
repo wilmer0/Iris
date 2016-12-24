@@ -245,7 +245,7 @@ namespace IrisContabilidad.modulo_sistema
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            ventana_cargo ventana=new ventana_cargo(empleado);
+            ventana_cargo ventana=new ventana_cargo();
             ventana.Owner = this;
             ventana.ShowDialog();
         }
