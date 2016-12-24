@@ -82,6 +82,7 @@
     <Compile Include="clases\empresa.cs" />
     <Compile Include="clases\modulo.cs" />
     <Compile Include="clases\singleton.cs" />
+    <Compile Include="clases\situacion_empleado.cs" />
     <Compile Include="clases\sucursal.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
@@ -132,11 +133,23 @@
     <Compile Include="modulo_inventario\ventana_producto.Designer.cs">
       <DependentUpon>ventana_producto.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_nomina\tipo_nomina.cs">
+    <Compile Include="modulo_nomina\ventana_busqueda_cargo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_nomina\tipo_nomina.Designer.cs">
-      <DependentUpon>tipo_nomina.cs</DependentUpon>
+    <Compile Include="modulo_nomina\ventana_busqueda_cargo.Designer.cs">
+      <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_empleado.Designer.cs">
+      <DependentUpon>ventana_empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_tipo_nomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_tipo_nomina.Designer.cs">
+      <DependentUpon>ventana_tipo_nomina.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_nomina\ventana_cargo.cs">
       <SubType>Form</SubType>
@@ -179,8 +192,17 @@
     <EmbeddedResource Include="modulo_empresa\ventana_sucursal.resx">
       <DependentUpon>ventana_sucursal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_busqueda_cargo.resx">
+      <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_cargo.resx">
       <DependentUpon>ventana_cargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_empleado.resx">
+      <DependentUpon>ventana_empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_tipo_nomina.resx">
+      <DependentUpon>ventana_tipo_nomina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_sistema\formBase.resx">
       <DependentUpon>formBase.cs</DependentUpon>
@@ -252,6 +274,7 @@
     <Content Include="bin\Release\Resources\botones\Ok.png" />
     <Content Include="bin\Release\Resources\botones\pdf.png" />
     <Content Include="bin\Release\Resources\botones\salir1.png" />
+    <Content Include="bin\Release\Resources\fondos\wall4.jpg" />
     <Content Include="bin\Release\Resources\gifs\3499424w91v795brv.gif" />
     <Content Include="bin\Release\Resources\gifs\8YsAmq3.gif" />
     <Content Include="bin\Release\Resources\gifs\Cento-Lodigiani-animated-GIFs-10.gif" />

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_empresa
@@ -20,6 +21,11 @@ namespace IrisContabilidad.modulo_empresa
         singleton singleton = new singleton();
         private sucursal sucursal;
 
+
+        //modelos
+        modeloSucursal modeloSucursal=new modeloSucursal();
+
+        //listas
 
 
 
@@ -65,10 +71,10 @@ namespace IrisContabilidad.modulo_empresa
                 }
                 else
                 {
-                    //sucursalIdText.Text = "";
-                    //secuenciaText.Text = "";
-                    //direccionText.Text = "";
-                    //activoCheck.Checked = false;
+                    sucursalIdText.Text = "";
+                    secuenciaText.Text = "";
+                    direccionText.Text = "";
+                    activoCheck.Checked = false;
                 }
             }
             catch (Exception ex)
@@ -92,7 +98,7 @@ namespace IrisContabilidad.modulo_empresa
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            getAction();
         }
 
         private void secuenciaText_KeyPress(object sender, KeyPressEventArgs e)
@@ -100,23 +106,79 @@ namespace IrisContabilidad.modulo_empresa
             utilidades.validarTextBoxNumeroEntero(e);
         }
 
-        public void validarGetAction()
+        public bool validarGetAction()
         {
             try
             {
+                if (secuenciaText.Text == "")
+                {
+                    MessageBox.Show("Falta la secuencia", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    secuenciaText.Focus();
+                    secuenciaText.SelectAll();
+                    return false;
+                }
+                if (direccionText.Text == "")
+                {
+                    MessageBox.Show("Falta la dirección", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    direccionText.Focus();
+                    direccionText.SelectAll();
+                    return false;
+                }
 
+                return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error validarGetAction.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return false;
             }
         }
         public void getAction()
         {
             try
             {
+                //validando campos no esten vacios
+                if (!validarGetAction() == true)
+                {
+                    return;
+                }
 
+                bool crear = false;
+                if (sucursal == null)
+                {
+                    //se agrega
+                    crear = true;
+                    sucursal = new sucursal();
+                    sucursal.codigo = modeloSucursal.getNext();
+                }
+                    sucursal.codigo_empresa = 1;
+                    sucursal.secuencia = secuenciaText.Text;
+                    sucursal.activo = Convert.ToBoolean(activoCheck.Checked);
+                    sucursal.direccion = direccionText.Text;
+
+                if (crear == true)
+                {
+                    if ((modeloSucursal.agregarSucursal(sucursal)) == true)
+                    {
+                        MessageBox.Show("Se agregó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se agregó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    if ((modeloSucursal.modificarSucursal(sucursal)) == true)
+                    {
+                        MessageBox.Show("Se modificó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se modificó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -139,6 +201,14 @@ namespace IrisContabilidad.modulo_empresa
             {
                 button3_Click(null, null);
             }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            sucursal = null;
+            loadVentana();
+            sucursalIdText.Focus();
+            sucursalIdText.SelectAll();
         }
     }
 }

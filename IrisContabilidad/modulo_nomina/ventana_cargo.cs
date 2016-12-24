@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_empresa;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_nomina
@@ -19,19 +20,18 @@ namespace IrisContabilidad.modulo_nomina
         //objetos
         private cargo cargo;
         utilidades utilidades=new utilidades();
-
+        private singleton singleton=new singleton();
+        private empleado empleado;
 
 
         //modelos
         modeloCargo modeloCargo=new modeloCargo();
 
+
         public ventana_cargo()
         {
-        }
-
-        public ventana_cargo(empleado empleado)
-        {
             InitializeComponent();
+            empleado = singleton.getEmpleado();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "cargo empleado");
             this.Text = tituloLabel.Text;
             loadVentana();
@@ -44,7 +44,7 @@ namespace IrisContabilidad.modulo_nomina
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            GetAction();
         }
 
         public void loadVentana()
@@ -97,6 +97,12 @@ namespace IrisContabilidad.modulo_nomina
         {
             try
             {
+                if (!ValidarGetAction())
+                {
+                    return;
+                }
+
+
                 bool crear = false;
                 if (cargo == null)
                 {
@@ -107,7 +113,7 @@ namespace IrisContabilidad.modulo_nomina
                 }
 
                 cargo.nombre = CargoText.Text;
-                cargo.activo = Convert.ToInt16(activoCheck.Checked);
+                cargo.activo = Convert.ToBoolean(activoCheck.Checked);
 
                 if (crear)
                 {
@@ -121,7 +127,6 @@ namespace IrisContabilidad.modulo_nomina
                     {
                         MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                  
                 }
                 else
                 {
@@ -141,6 +146,36 @@ namespace IrisContabilidad.modulo_nomina
             catch (Exception ex)
             {
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            salir();
+        }
+        public void salir()
+        {
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            cargo = null;
+            loadVentana();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_cargo ventana = new ventana_busqueda_cargo();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                cargo = ventana.getObjeto();
+                loadVentana();
             }
         }
     }
