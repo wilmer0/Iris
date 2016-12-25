@@ -142,6 +142,11 @@ namespace IrisContabilidad.modulo_empresa
 
         public  void GetAction()
         {
+            if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+            
             //si validar me retorna false entonces no hace nada
             if (!ValidarGetAction())
             {
