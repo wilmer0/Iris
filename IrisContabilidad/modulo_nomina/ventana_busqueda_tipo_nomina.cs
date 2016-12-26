@@ -13,19 +13,19 @@ using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_nomina
 {
-    public partial class ventana_busqueda_cargo : formBase
+    public partial class ventana_busqueda_tipo_nomina : formBase
     {
 
         //objetos
-        private cargo cargo;
+        private nomina_tipo nominaTipo;
 
         //listas
-        private List<cargo> listaCargo;
+        private List<nomina_tipo> listaNominaTipo;
 
 
 
         //modelos
-        private modeloCargo modeloCargo = new modeloCargo();
+        private modeloNominaTipo modeloNominaTipo = new modeloNominaTipo();
 
 
         //variables 
@@ -33,21 +33,20 @@ namespace IrisContabilidad.modulo_nomina
         private int fila = 0;
 
 
-        public ventana_busqueda_cargo()
+        public ventana_busqueda_tipo_nomina()
         {
             InitializeComponent();
             loadLista();
         }
-
         public void loadLista()
         {
             try
             {
                 //si la lista esta null se inicializa
-                if (listaCargo == null)
+                if (listaNominaTipo == null)
                 {
-                    listaCargo = new List<cargo>();
-                    listaCargo = modeloCargo.getListaCompleta();
+                    listaNominaTipo = new List<nomina_tipo>();
+                    listaNominaTipo = modeloNominaTipo.getListaCompleta();
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
@@ -55,9 +54,9 @@ namespace IrisContabilidad.modulo_nomina
                     dataGridView1.Rows.Clear();
                 }
                 //se agrega todos los datos de la lista en el gridView
-                listaCargo.ForEach(x =>
+                listaNominaTipo.ForEach(x =>
                 {
-                    dataGridView1.Rows.Add(x.id, x.nombre,x.activo);
+                    dataGridView1.Rows.Add(x.codigo, x.nombre, x.activo);
 
                 });
             }
@@ -66,14 +65,14 @@ namespace IrisContabilidad.modulo_nomina
                 MessageBox.Show("Error loadLista.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public cargo getObjeto()
+        public nomina_tipo getObjeto()
         {
             try
             {
                 //para pasar el objeto sucursal desde deonde se llamo
                 fila = dataGridView1.CurrentRow.Index;
-                cargo = modeloCargo.getCargoById(Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString()));
-                return cargo;
+                nominaTipo = modeloNominaTipo.getNominaTipoById(Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString()));
+                return nominaTipo;
             }
             catch (Exception ex)
             {
@@ -81,40 +80,23 @@ namespace IrisContabilidad.modulo_nomina
                 return null;
             }
         }
-
         public void getAction()
         {
             this.DialogResult = DialogResult.OK;
             getObjeto();
             this.Close();
         }
-        private void ventana_busqueda_cargo_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Salir();
-        }
         public void Salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-               
+
                 this.Close();
             }
         }
-
-        private void button3_Click_1(object sender, EventArgs e)
+        private void ventana_busqueda_tipo_nomina_Load(object sender, EventArgs e)
         {
-            listaCargo = null;
-            loadLista();
-        }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            getAction();
         }
 
         private void nombreText_KeyDown(object sender, KeyEventArgs e)
@@ -123,8 +105,8 @@ namespace IrisContabilidad.modulo_nomina
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    listaCargo = modeloCargo.getListaCompleta();
-                    listaCargo = listaCargo.FindAll(x => x.nombre.Contains(nombreText.Text));
+                    listaNominaTipo = modeloNominaTipo.getListaCompleta();
+                    listaNominaTipo = listaNominaTipo.FindAll(x => x.nombre.Contains(nombreText.Text));
                     loadLista();
                 }
             }
@@ -134,9 +116,20 @@ namespace IrisContabilidad.modulo_nomina
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            getAction();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            listaNominaTipo = null;
+            loadLista();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

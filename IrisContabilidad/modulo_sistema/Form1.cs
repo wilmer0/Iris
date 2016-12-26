@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_empresa;
+using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad
@@ -119,7 +120,9 @@ namespace IrisContabilidad
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //debe crear el primer empleado
-                    
+                    ventana_empleado ventana=new ventana_empleado();
+                    ventana.Owner = this;
+                    ventana.ShowDialog();
                 }
 
             }
@@ -191,7 +194,7 @@ namespace IrisContabilidad
         {
             ValidarCrearPrimeraEmpresa();
             ValidarCrearPrimeraSucursal();
-            //ValidarCrearPrimerEmpleado();
+            ValidarCrearPrimerEmpleado();
             GetAction();
         }
 
