@@ -18,7 +18,7 @@ namespace IrisContabilidad.modelos
 
        
 
-            //agregar cargo
+            //agregar 
             public bool agregarCargo(cargo cargoAPP)
             {
                 try
@@ -52,7 +52,7 @@ namespace IrisContabilidad.modelos
                 }
             }
 
-            //modificar cargo
+            //modificar
             public bool modificarCargo(cargo cargoAPP)
             {
                 try
@@ -83,7 +83,7 @@ namespace IrisContabilidad.modelos
             }
 
 
-        //obtener el codigo siguiente cargo
+        //obtener el codigo siguiente
         public int getNext()
         {
             try
@@ -109,7 +109,7 @@ namespace IrisContabilidad.modelos
         }
 
 
-        //get cargo
+        //get objeto
         public cargo getCargoById(int id)
         {
             try

@@ -1,6 +1,6 @@
 ﻿namespace IrisContabilidad.modulo_nomina
 {
-    partial class ventana_busqueda_cargo
+    partial class ventana_busqueda_departamento
     {
         /// <summary>
         /// Required designer variable.
@@ -43,8 +43,8 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 364);
-            this.panel1.Size = new System.Drawing.Size(669, 54);
+            this.panel1.Location = new System.Drawing.Point(12, 360);
+            this.panel1.Size = new System.Drawing.Size(671, 54);
             // 
             // button2
             // 
@@ -54,29 +54,28 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(528, 5);
+            this.button1.Location = new System.Drawing.Point(530, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(693, 21);
+            this.panel2.Size = new System.Drawing.Size(695, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(264, 5);
+            this.button3.Location = new System.Drawing.Point(265, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.nombreText);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 30);
+            this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(666, 67);
-            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabIndex = 27;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // nombreText
             // 
@@ -109,14 +108,14 @@
             this.codigoColumn,
             this.secuenciacolumn,
             this.activoColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 103);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 100);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(666, 255);
-            this.dataGridView1.TabIndex = 22;
+            this.dataGridView1.Size = new System.Drawing.Size(668, 255);
+            this.dataGridView1.TabIndex = 26;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // codigoColumn
@@ -139,16 +138,16 @@
             this.activoColumn.Name = "activoColumn";
             this.activoColumn.ReadOnly = true;
             // 
-            // ventana_busqueda_cargo
+            // ventana_busqueda_departamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 430);
+            this.ClientSize = new System.Drawing.Size(695, 426);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "ventana_busqueda_cargo";
-            this.Text = "ventana_busqueda_cargo";
-            this.Load += new System.EventHandler(this.ventana_busqueda_cargo_Load);
+            this.Name = "ventana_busqueda_departamento";
+            this.Text = "ventana_busqueda_departamento";
+            this.Load += new System.EventHandler(this.ventana_busqueda_departamento_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
