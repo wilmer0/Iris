@@ -138,6 +138,11 @@ namespace IrisContabilidad.modulo_empresa
         {
             try
             {
+                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
+
                 //validando campos no esten vacios
                 if (!validarGetAction() == true)
                 {

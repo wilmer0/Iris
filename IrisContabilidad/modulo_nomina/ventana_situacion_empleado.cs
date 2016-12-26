@@ -13,44 +13,43 @@ using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_nomina
 {
-    public partial class ventana_tipo_nomina : formBase
+    public partial class ventana_situacion_empleado : formBase
     {
 
-
         //objetos
-        private nomina_tipo nomina_tipo;
+        private situacion_empleado situacion;
         utilidades utilidades = new utilidades();
         private singleton singleton = new singleton();
         private empleado empleado;
 
 
         //modelos
-        modeloNominaTipo modeloNominaTipo = new modeloNominaTipo();
+        modeloSituacionEmpleado modeloSituacionEmpleado = new modeloSituacionEmpleado();
 
 
-
-        public ventana_tipo_nomina()
+        public ventana_situacion_empleado()
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana tipos de nómina");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "situación empleado");
             this.Text = tituloLabel.Text;
             loadVentana();
+
         }
         public void loadVentana()
         {
             try
             {
-                if (nomina_tipo != null)
+                if (situacion != null)
                 {
-                    NominatipoIdText.Text = nomina_tipo.codigo.ToString();
-                    NominaTipoText.Text = nomina_tipo.nombre;
-                    activoCheck.Checked = Convert.ToBoolean(nomina_tipo.activo);
+                    situacionIdText.Text = situacion.codigo.ToString();
+                    situacionText.Text = situacion.descripcion;
+                    activoCheck.Checked = Convert.ToBoolean(situacion.activo);
                 }
                 else
                 {
-                    NominatipoIdText.Text = "";
-                    NominaTipoText.Text = "";
+                    situacionIdText.Text = "";
+                    situacionText.Text = "";
                     activoCheck.Checked = false;
                 }
             }
@@ -63,15 +62,13 @@ namespace IrisContabilidad.modulo_nomina
         {
             try
             {
-                if (NominaTipoText.Text == "")
+                if (situacionText.Text == "")
                 {
                     MessageBox.Show("Falta el nombre ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    NominaTipoText.Focus();
-                    NominaTipoText.SelectAll();
+                    situacionText.Focus();
+                    situacionText.SelectAll();
                     return false;
                 }
-
-
 
                 return true;
             }
@@ -81,6 +78,7 @@ namespace IrisContabilidad.modulo_nomina
                 return false;
             }
         }
+
         public void GetAction()
         {
             try
@@ -96,24 +94,23 @@ namespace IrisContabilidad.modulo_nomina
                     return;
                 }
 
-
                 bool crear = false;
-                if (nomina_tipo == null)
+                if (situacion == null)
                 {
                     //agrega
                     crear = true;
-                    nomina_tipo = new nomina_tipo();
-                    nomina_tipo.codigo = modeloNominaTipo.getNext();
+                    situacion = new situacion_empleado();
+                    situacion.codigo = modeloSituacionEmpleado.getNext();
                 }
 
-                nomina_tipo.nombre = NominaTipoText.Text;
-                nomina_tipo.activo = Convert.ToBoolean(activoCheck.Checked);
-
+                situacion.descripcion = situacionText.Text;
+                situacion.activo = Convert.ToBoolean(activoCheck.Checked);
                 if (crear)
                 {
                     //agrega
-                    if (modeloNominaTipo.agregarNominaTipo(nomina_tipo) == true)
+                    if (modeloSituacionEmpleado.agregarSituacionEmpleado(situacion) == true)
                     {
+                        situacion = null;
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -124,7 +121,7 @@ namespace IrisContabilidad.modulo_nomina
                 else
                 {
                     //actualiza
-                    if (modeloNominaTipo.modificarNominaTipo(nomina_tipo) == true)
+                    if (modeloSituacionEmpleado.modificarSituacionEmpleado(situacion) == true)
                     {
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -134,22 +131,17 @@ namespace IrisContabilidad.modulo_nomina
                     }
 
                 }
-                nomina_tipo = null;
+                situacion = null;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-       
-        private void ventana_tipo_nomina_Load(object sender, EventArgs e)
+
+        private void ventana_situacion_empleado_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            salir();
         }
         public void salir()
         {
@@ -159,23 +151,20 @@ namespace IrisContabilidad.modulo_nomina
             }
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                GetAction();
-            }
+            GetAction();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            nomina_tipo = null;
+            situacion = null;
             loadVentana();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            salir();
         }
     }
 }

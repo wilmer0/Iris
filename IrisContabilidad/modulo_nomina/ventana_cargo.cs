@@ -97,6 +97,12 @@ namespace IrisContabilidad.modulo_nomina
         {
             try
             {
+
+                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
+
                 if (!ValidarGetAction())
                 {
                     return;

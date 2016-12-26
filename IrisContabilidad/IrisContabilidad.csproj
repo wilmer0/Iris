@@ -81,6 +81,7 @@
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
     <Compile Include="clases\modulo.cs" />
+    <Compile Include="clases\nomina_tipo.cs" />
     <Compile Include="clases\singleton.cs" />
     <Compile Include="clases\situacion_empleado.cs" />
     <Compile Include="clases\sucursal.cs" />
@@ -90,6 +91,8 @@
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
+    <Compile Include="modelos\modeloNominaTipo.cs" />
+    <Compile Include="modelos\modeloSituacionEmpleado.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
       <SubType>Form</SubType>
@@ -139,11 +142,23 @@
     <Compile Include="modulo_nomina\ventana_busqueda_cargo.Designer.cs">
       <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_situacion_empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_situacion_empleado.Designer.cs">
+      <DependentUpon>ventana_busqueda_situacion_empleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_nomina\ventana_empleado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modulo_nomina\ventana_empleado.Designer.cs">
       <DependentUpon>ventana_empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_situacion_empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_situacion_empleado.Designer.cs">
+      <DependentUpon>ventana_situacion_empleado.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_nomina\ventana_tipo_nomina.cs">
       <SubType>Form</SubType>
@@ -195,11 +210,17 @@
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_cargo.resx">
       <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_busqueda_situacion_empleado.resx">
+      <DependentUpon>ventana_busqueda_situacion_empleado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_cargo.resx">
       <DependentUpon>ventana_cargo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_empleado.resx">
       <DependentUpon>ventana_empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_situacion_empleado.resx">
+      <DependentUpon>ventana_situacion_empleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_tipo_nomina.resx">
       <DependentUpon>ventana_tipo_nomina.cs</DependentUpon>
