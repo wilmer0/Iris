@@ -19,28 +19,24 @@ namespace IrisContabilidad.modelos
        
 
             //agregar 
-            public bool agregarCargo(cargo cargoAPP)
+            public bool agregarCargo(cargo cargo)
             {
                 try
                 {
-                    cargo cargo=new cargo();
                     int activo = 0;
-                    string sql = "select *from cargo where nombre='" + cargoAPP.nombre + "'";
+                    string sql = "select *from cargo where nombre='" + cargo.nombre + "'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         MessageBox.Show("Existe un cargo con ese nombre", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                         return false;
                     }
-
-                    cargo.id = cargoAPP.id;
-                    cargo.nombre = cargoAPP.nombre;
-                    if (cargoAPP.activo == true)
+                    if (cargo.activo == true)
                     {
                         activo = 1;
                     }
                     
-                    sql="insert into cargo(id,nombre,activo) values('"+cargoAPP.id+"','"+cargoAPP.nombre+"','"+activo.ToString()+"')";
+                    sql="insert into cargo(id,nombre,activo) values('"+cargo.id+"','"+cargo.nombre+"','"+activo.ToString()+"')";
                     //MessageBox.Show(sql);
                     ds=utilidades.ejecutarcomando_mysql(sql);
                     return true;
@@ -115,7 +111,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 cargo cargo = new cargo();
-                string sql = "select id,nombre,activo from cargo where codigo='" + id + "'";
+                string sql = "select id,nombre,activo from cargo where id='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

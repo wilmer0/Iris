@@ -38,7 +38,7 @@ namespace IrisContabilidad.modulo_empresa
             try
             {
                 empresa=new empresa();
-                empresa = modeloEmpresa.getEmpresaById(3);
+                empresa = modeloEmpresa.getEmpresaById(1);
                 if (empresa != null)
                 {
                     empresaIdText.Text = empresa.codigo.ToString();

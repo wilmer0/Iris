@@ -30,3 +30,4 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\I
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_nomina.ventana_busqueda_tipo_nomina.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_nomina.ventana_busqueda_departamento.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_nomina.ventana_departamento.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_nomina.ventana_busqueda_empleado.resources

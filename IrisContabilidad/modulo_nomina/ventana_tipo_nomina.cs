@@ -177,5 +177,17 @@ namespace IrisContabilidad.modulo_nomina
             nomina_tipo = null;
             loadVentana();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_tipo_nomina ventana = new ventana_busqueda_tipo_nomina();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                nomina_tipo = ventana.getObjeto();
+                loadVentana();
+            }
+        }
     }
 }

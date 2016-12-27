@@ -166,5 +166,17 @@ namespace IrisContabilidad.modulo_nomina
         {
             salir();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_situacion_empleado ventana=new ventana_busqueda_situacion_empleado();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                situacion = ventana.getObjeto();
+                loadVentana();
+            }
+        }
     }
 }

@@ -147,7 +147,7 @@ namespace IrisContabilidad
                     menu1 ventana = new menu1(empleado);
                     ventana.Show();
                     this.Hide();
-                    //MessageBox.Show("Existe");
+                    //MessageBox.Show(empleado.fecha_ingreso.ToString());
             }
             else
             {
@@ -192,6 +192,8 @@ namespace IrisContabilidad
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
+            //modeloEmpleado.adminPrimerLogin();
             ValidarCrearPrimeraEmpresa();
             ValidarCrearPrimeraSucursal();
             ValidarCrearPrimerEmpleado();
