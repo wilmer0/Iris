@@ -13,18 +13,18 @@ using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_nomina
 {
-    public partial class ventana_busqueda_departamento : formBase
+    public partial class ventana_busqueda_empleado : formBase
     {
         //objetos
-        private departamento departamento;
+        private empleado empleado;
 
         //listas
-        private List<departamento> listaDepartamento;
+        private List<empleado> listaEmpleado;
 
 
 
         //modelos
-        private modeloDepartamento modeloDepartamento = new modeloDepartamento();
+        private modeloEmpleado modeloEmpleado = new modeloEmpleado();
 
 
         //variables 
@@ -32,7 +32,7 @@ namespace IrisContabilidad.modulo_nomina
         private int fila = 0;
 
 
-        public ventana_busqueda_departamento()
+        public ventana_busqueda_empleado()
         {
             InitializeComponent();
             this.tituloLabel.Text = this.Text;
@@ -43,10 +43,10 @@ namespace IrisContabilidad.modulo_nomina
             try
             {
                 //si la lista esta null se inicializa
-                if (listaDepartamento == null)
+                if (listaEmpleado == null)
                 {
-                    listaDepartamento = new List<departamento>();
-                    listaDepartamento = modeloDepartamento.getListaCompleta();
+                    listaEmpleado = new List<empleado>();
+                    listaEmpleado =modeloEmpleado.getListaCompleta();
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
@@ -54,9 +54,9 @@ namespace IrisContabilidad.modulo_nomina
                     dataGridView1.Rows.Clear();
                 }
                 //se agrega todos los datos de la lista en el gridView
-                listaDepartamento.ForEach(x =>
+                listaEmpleado.ForEach(x =>
                 {
-                    dataGridView1.Rows.Add(x.codigo, x.nombre, x.activo);
+                    dataGridView1.Rows.Add(x.codigo, x.nombre,x.identificacion, x.activo);
 
                 });
             }
@@ -65,14 +65,14 @@ namespace IrisContabilidad.modulo_nomina
                 MessageBox.Show("Error loadLista.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public departamento getObjeto()
+        public empleado getObjeto()
         {
             try
             {
                 //para pasar el objeto sucursal desde deonde se llamo
                 fila = dataGridView1.CurrentRow.Index;
-                departamento = modeloDepartamento.getDepartamentoById(Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString()));
-                return departamento;
+                empleado = modeloEmpleado.getEmpleadoById(Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString()));
+                return empleado;
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace IrisContabilidad.modulo_nomina
                 this.Close();
             }
         }
-        private void ventana_busqueda_departamento_Load(object sender, EventArgs e)
+        private void ventana_busqueda_empleado_Load(object sender, EventArgs e)
         {
 
         }
@@ -105,8 +105,8 @@ namespace IrisContabilidad.modulo_nomina
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    listaDepartamento = modeloDepartamento.getListaCompleta();
-                    listaDepartamento = listaDepartamento.FindAll(x => x.nombre.Contains(nombreText.Text));
+                    listaEmpleado = modeloEmpleado.getListaCompleta();
+                    listaEmpleado = listaEmpleado.FindAll(x => x.nombre.Contains(nombreText.Text));
                     loadLista();
                 }
             }
@@ -116,30 +116,20 @@ namespace IrisContabilidad.modulo_nomina
             }
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
         private void button3_Click_1(object sender, EventArgs e)
         {
-            listaDepartamento = null;
+            listaEmpleado = null;
             loadLista();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Salir();
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

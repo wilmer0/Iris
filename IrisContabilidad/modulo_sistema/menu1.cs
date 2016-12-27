@@ -155,7 +155,7 @@ namespace IrisContabilidad.modulo_sistema
                                 //instanciar el formulario dinamico
                                 //obteniendo el nombre del fromulario
                                 Assembly asm = Assembly.GetEntryAssembly();
-                                Type formtype = asm.GetType("IrisContabilidad." + row[2].ToString());
+                                Type formtype = asm.GetType(row[2].ToString());
                                 Form f = (Form)Activator.CreateInstance(formtype);
                                 f.Owner = this;
                                 f.ShowDialog();

@@ -1,6 +1,6 @@
 ﻿namespace IrisContabilidad.modulo_nomina
 {
-    partial class ventana_busqueda_situacion_empleado
+    partial class ventana_busqueda_empleado
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,9 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.secuenciacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.identificacionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departamentoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cargoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -43,8 +46,8 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 397);
-            this.panel1.Size = new System.Drawing.Size(626, 54);
+            this.panel1.Location = new System.Drawing.Point(12, 418);
+            this.panel1.Size = new System.Drawing.Size(873, 54);
             // 
             // button2
             // 
@@ -54,34 +57,28 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(485, 5);
+            this.button1.Location = new System.Drawing.Point(732, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(650, 21);
-            // 
-            // tituloLabel
-            // 
-            this.tituloLabel.Size = new System.Drawing.Size(0, 17);
-            this.tituloLabel.Text = "";
+            this.panel2.Size = new System.Drawing.Size(897, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(243, 5);
+            this.button3.Location = new System.Drawing.Point(366, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.nombreText);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 38);
+            this.groupBox1.Location = new System.Drawing.Point(16, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(623, 67);
-            this.groupBox1.TabIndex = 25;
+            this.groupBox1.Size = new System.Drawing.Size(866, 82);
+            this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // nombreText
             // 
@@ -113,20 +110,22 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoColumn,
             this.secuenciacolumn,
+            this.identificacionColumn,
+            this.departamentoColumn,
+            this.cargoColumn,
             this.activoColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 111);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 115);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(623, 280);
-            this.dataGridView1.TabIndex = 24;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.Size = new System.Drawing.Size(866, 297);
+            this.dataGridView1.TabIndex = 28;
             // 
             // codigoColumn
             // 
-            this.codigoColumn.FillWeight = 20F;
+            this.codigoColumn.FillWeight = 30F;
             this.codigoColumn.HeaderText = "Id";
             this.codigoColumn.Name = "codigoColumn";
             this.codigoColumn.ReadOnly = true;
@@ -137,6 +136,27 @@
             this.secuenciacolumn.Name = "secuenciacolumn";
             this.secuenciacolumn.ReadOnly = true;
             // 
+            // identificacionColumn
+            // 
+            this.identificacionColumn.FillWeight = 70F;
+            this.identificacionColumn.HeaderText = "Identificacion";
+            this.identificacionColumn.Name = "identificacionColumn";
+            this.identificacionColumn.ReadOnly = true;
+            // 
+            // departamentoColumn
+            // 
+            this.departamentoColumn.FillWeight = 60F;
+            this.departamentoColumn.HeaderText = "Departamento";
+            this.departamentoColumn.Name = "departamentoColumn";
+            this.departamentoColumn.ReadOnly = true;
+            // 
+            // cargoColumn
+            // 
+            this.cargoColumn.FillWeight = 60F;
+            this.cargoColumn.HeaderText = "Cargo";
+            this.cargoColumn.Name = "cargoColumn";
+            this.cargoColumn.ReadOnly = true;
+            // 
             // activoColumn
             // 
             this.activoColumn.FillWeight = 30F;
@@ -144,16 +164,16 @@
             this.activoColumn.Name = "activoColumn";
             this.activoColumn.ReadOnly = true;
             // 
-            // ventana_busqueda_situacion_empleado
+            // ventana_busqueda_empleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(650, 463);
+            this.ClientSize = new System.Drawing.Size(897, 484);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "ventana_busqueda_situacion_empleado";
-            this.Text = "ventana busqueda situacion empleado";
-            this.Load += new System.EventHandler(this.ventana_busqueda_situacion_empleado_Load);
+            this.Name = "ventana_busqueda_empleado";
+            this.Text = "ventana busqueda empleado";
+            this.Load += new System.EventHandler(this.ventana_busqueda_empleado_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
@@ -177,6 +197,9 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn identificacionColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departamentoColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cargoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn activoColumn;
     }
 }

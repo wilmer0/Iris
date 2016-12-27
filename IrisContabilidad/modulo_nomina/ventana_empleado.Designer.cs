@@ -81,14 +81,14 @@
             this.claveText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button14 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.permisoText = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
-            this.permisoText = new System.Windows.Forms.TextBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.secuenciacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
@@ -98,8 +98,8 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -263,12 +263,15 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 23;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // imagen_empleado
             // 
-            this.imagen_empleado.Location = new System.Drawing.Point(725, 78);
+            this.imagen_empleado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagen_empleado.BackgroundImage")));
+            this.imagen_empleado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imagen_empleado.Location = new System.Drawing.Point(725, 81);
             this.imagen_empleado.Name = "imagen_empleado";
-            this.imagen_empleado.Size = new System.Drawing.Size(185, 139);
+            this.imagen_empleado.Size = new System.Drawing.Size(185, 171);
             this.imagen_empleado.TabIndex = 61;
             // 
             // situacionText
@@ -699,26 +702,6 @@
             this.tabPage2.Text = "Permisos";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoColumn,
-            this.secuenciacolumn});
-            this.dataGridView1.Location = new System.Drawing.Point(9, 103);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(904, 403);
-            this.dataGridView1.TabIndex = 25;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button14);
@@ -733,6 +716,39 @@
             this.groupBox3.TabIndex = 63;
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // button14
+            // 
+            this.button14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button14.BackgroundImage")));
+            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Location = new System.Drawing.Point(834, 23);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(64, 58);
+            this.button14.TabIndex = 26;
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
+            // button13
+            // 
+            this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
+            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Location = new System.Drawing.Point(763, 23);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(65, 58);
+            this.button13.TabIndex = 25;
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // permisoText
+            // 
+            this.permisoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.permisoText.Location = new System.Drawing.Point(90, 55);
+            this.permisoText.MaxLength = 30;
+            this.permisoText.Name = "permisoText";
+            this.permisoText.Size = new System.Drawing.Size(335, 26);
+            this.permisoText.TabIndex = 24;
             // 
             // textBox2
             // 
@@ -764,38 +780,25 @@
             this.button12.TabIndex = 23;
             this.button12.UseVisualStyleBackColor = true;
             // 
-            // permisoText
+            // dataGridView1
             // 
-            this.permisoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.permisoText.Location = new System.Drawing.Point(90, 55);
-            this.permisoText.MaxLength = 30;
-            this.permisoText.Name = "permisoText";
-            this.permisoText.Size = new System.Drawing.Size(335, 26);
-            this.permisoText.TabIndex = 24;
-            // 
-            // button13
-            // 
-            this.button13.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button13.BackgroundImage")));
-            this.button13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button13.Location = new System.Drawing.Point(763, 23);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(65, 58);
-            this.button13.TabIndex = 25;
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // button14
-            // 
-            this.button14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button14.BackgroundImage")));
-            this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(834, 23);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(64, 58);
-            this.button14.TabIndex = 26;
-            this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codigoColumn,
+            this.secuenciacolumn});
+            this.dataGridView1.Location = new System.Drawing.Point(9, 103);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(904, 403);
+            this.dataGridView1.TabIndex = 25;
             // 
             // codigoColumn
             // 
@@ -833,9 +836,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -36,6 +36,7 @@ namespace IrisContabilidad.modulo_nomina
         {
             InitializeComponent();
             tituloLabel.Text = this.Text;
+            loadLista();
         }
         public void loadLista()
         {
@@ -133,6 +134,11 @@ namespace IrisContabilidad.modulo_nomina
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

@@ -131,14 +131,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(964, 660);
             this.Controls.Add(this.flowLayoutVentanas);
             this.Controls.Add(this.flowLayoutModulos);
             this.Controls.Add(this.panel3);
             this.Name = "menu1";
-            this.Opacity = 0.7D;
             this.Text = "menu1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.menu1_Load);
