@@ -16,56 +16,27 @@ namespace IrisContabilidad.modelos
 
         
 
-            //get cargo
-            public cargo getCargoById(int id)
-            {
-                try
-                {
-                    cargo cargo=new cargo();
-                    string sql = "select id,nombre,activo from cargo where codigo='"+id+"'";
-                    DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        cargo.id = (int) ds.Tables[0].Rows[0][0];
-                        cargo.nombre = ds.Tables[0].Rows[0][1].ToString();
-                        cargo.activo = (int)ds.Tables[0].Rows[0][2];
-                    }
-                    return cargo;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error getCargoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return null;
-                }
-            }
+       
 
-            //agregar cargo
-            public bool agregarCargo(cargo cargoAPP)
+            //agregar 
+            public bool agregarCargo(cargo cargo)
             {
                 try
                 {
-                    cargo cargo=new cargo();
-                    string sql = "select *from cargo where nombre='" + cargoAPP.nombre + "'";
+                    int activo = 0;
+                    string sql = "select *from cargo where nombre='" + cargo.nombre + "'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
                         MessageBox.Show("Existe un cargo con ese nombre", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                         return false;
                     }
-
-                    cargo.id = cargoAPP.id;
-                    cargo.nombre = cargoAPP.nombre;
-                    if (cargoAPP.activo == 1)
+                    if (cargo.activo == true)
                     {
-                        cargoAPP.activo = 1;
+                        activo = 1;
                     }
-                    else
-                    {
-                        cargoAPP.activo = 0;
-                    }
-                    cargo.activo = cargoAPP.activo;
-
-                    sql="insert into cargo(id,nombre,activo) values('"+cargoAPP.id+"','"+cargoAPP.nombre+"','"+cargoAPP.activo+"')";
+                    
+                    sql="insert into cargo(id,nombre,activo) values('"+cargo.id+"','"+cargo.nombre+"','"+activo.ToString()+"')";
                     //MessageBox.Show(sql);
                     ds=utilidades.ejecutarcomando_mysql(sql);
                     return true;
@@ -77,12 +48,12 @@ namespace IrisContabilidad.modelos
                 }
             }
 
-            //modificar cargo
+            //modificar
             public bool modificarCargo(cargo cargoAPP)
             {
                 try
                 {
-
+                    int activo = 0;
                     string sql = "select *from cargo where nombre='" + cargoAPP.nombre + "' and id!='"+cargoAPP.id+"'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                     if (ds.Tables[0].Rows.Count > 0)
@@ -91,15 +62,11 @@ namespace IrisContabilidad.modelos
                             MessageBoxIcon.Warning);
                         return false;
                     }
-                    if (cargoAPP.activo == 1)
+                    if (cargoAPP.activo == true)
                     {
-                        cargoAPP.activo = 1;
+                        activo = 1;
                     }
-                    else
-                    {
-                        cargoAPP.activo = 0;
-                    }
-                    sql = "update cargo set nombre='" + cargoAPP.nombre + "',activo='"+cargoAPP.activo+"' where id='"+cargoAPP.id+"'";
+                    sql = "update cargo set nombre='" + cargoAPP.nombre + "',activo='"+activo.ToString()+"' where id='"+cargoAPP.id+"'";
                     ds=utilidades.ejecutarcomando(sql);
                     MessageBox.Show(sql);
                     return true;
@@ -112,7 +79,7 @@ namespace IrisContabilidad.modelos
             }
 
 
-        //obtener el codigo siguiente cargo
+        //obtener el codigo siguiente
         public int getNext()
         {
             try
@@ -137,5 +104,64 @@ namespace IrisContabilidad.modelos
             }
         }
 
+
+        //get objeto
+        public cargo getCargoById(int id)
+        {
+            try
+            {
+                cargo cargo = new cargo();
+                string sql = "select id,nombre,activo from cargo where id='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    cargo.id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    cargo.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    cargo.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
+                }
+                return cargo;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCargoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+
+        //get lista completa
+        public List<cargo> getListaCompleta(bool mantenimiento = false)
+        {
+            try
+            {
+
+                List<cargo> lista = new List<cargo>();
+                string sql = "";
+                sql = "select id,nombre,activo from cargo";
+                if (mantenimiento == true)
+                {
+                    sql += " where activo=1";
+                }
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        cargo  cargo= new cargo();
+                        cargo.id = Convert.ToInt16(row[0].ToString());
+                        cargo.nombre = row[1].ToString();
+                        cargo.activo = Convert.ToBoolean(row[2].ToString());
+                        lista.Add(cargo);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

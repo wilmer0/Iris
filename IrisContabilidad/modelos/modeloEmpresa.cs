@@ -44,11 +44,10 @@ namespace IrisContabilidad.modelos
                 {
                     sql = "update empresa set secuencia='" + empresaApp.seuencia + "',division='" + empresaApp.division +
                     "',activo='" + activo.ToString()+ "',rnc='" + empresaApp.rnc + "',nombre='" +
-                    empresaApp.nombre + "' where codigo='3'";
+                    empresaApp.nombre + "' where codigo='1'";
                     ds = utilidades.ejecutarcomando_mysql(sql);
                     return true;
                 }
-                
             }
             catch (Exception ex)
             {

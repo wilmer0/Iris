@@ -155,7 +155,7 @@ namespace IrisContabilidad.modulo_sistema
                                 //instanciar el formulario dinamico
                                 //obteniendo el nombre del fromulario
                                 Assembly asm = Assembly.GetEntryAssembly();
-                                Type formtype = asm.GetType("IrisContabilidad." + row[2].ToString());
+                                Type formtype = asm.GetType(row[2].ToString());
                                 Form f = (Form)Activator.CreateInstance(formtype);
                                 f.Owner = this;
                                 f.ShowDialog();
@@ -221,7 +221,7 @@ namespace IrisContabilidad.modulo_sistema
         {
             
         }
-        public override void Salir()
+        public  void Salir()
         {
             Form1 ventana = new Form1();
             ventana.Show();
@@ -245,7 +245,7 @@ namespace IrisContabilidad.modulo_sistema
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            ventana_cargo ventana=new ventana_cargo(empleado);
+            ventana_cargo ventana=new ventana_cargo();
             ventana.Owner = this;
             ventana.ShowDialog();
         }

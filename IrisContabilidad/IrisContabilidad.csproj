@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>view.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BarcodeLib">
       <HintPath>..\..\DLR-POS-2.0\proyecto\packages\BarcodeLib.1.0.0.22\lib\net20\BarcodeLib.dll</HintPath>
@@ -75,16 +78,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clases\cargo.cs" />
+    <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
     <Compile Include="clases\modulo.cs" />
+    <Compile Include="clases\nomina_tipo.cs" />
     <Compile Include="clases\singleton.cs" />
+    <Compile Include="clases\situacion_empleado.cs" />
+    <Compile Include="clases\sucursal.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
+    <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
+    <Compile Include="modelos\modeloNominaTipo.cs" />
+    <Compile Include="modelos\modeloSituacionEmpleado.cs" />
+    <Compile Include="modelos\modeloSucursal.cs" />
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +107,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_suplidor.Designer.cs">
       <DependentUpon>ventana_suplidor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_busqueda_sucursal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_busqueda_sucursal.Designer.cs">
+      <DependentUpon>ventana_busqueda_sucursal.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_empresa\ventana_empresa.cs">
       <SubType>Form</SubType>
@@ -121,11 +138,59 @@
     <Compile Include="modulo_inventario\ventana_producto.Designer.cs">
       <DependentUpon>ventana_producto.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_nomina\tipo_nomina.cs">
+    <Compile Include="modulo_nomina\ventana_busqueda_cargo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_nomina\tipo_nomina.Designer.cs">
-      <DependentUpon>tipo_nomina.cs</DependentUpon>
+    <Compile Include="modulo_nomina\ventana_busqueda_cargo.Designer.cs">
+      <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_departamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_departamento.Designer.cs">
+      <DependentUpon>ventana_busqueda_departamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_empleado.Designer.cs">
+      <DependentUpon>ventana_busqueda_empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_situacion_empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_situacion_empleado.Designer.cs">
+      <DependentUpon>ventana_busqueda_situacion_empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_tipo_nomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_tipo_nomina.Designer.cs">
+      <DependentUpon>ventana_busqueda_tipo_nomina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_departamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_departamento.Designer.cs">
+      <DependentUpon>ventana_departamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_empleado.Designer.cs">
+      <DependentUpon>ventana_empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_situacion_empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_situacion_empleado.Designer.cs">
+      <DependentUpon>ventana_situacion_empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_tipo_nomina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_tipo_nomina.Designer.cs">
+      <DependentUpon>ventana_tipo_nomina.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_nomina\ventana_cargo.cs">
       <SubType>Form</SubType>
@@ -153,26 +218,50 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ventanas_comunes\VisorReporte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ventanas_comunes\VisorReporte.Designer.cs">
-      <DependentUpon>VisorReporte.cs</DependentUpon>
-    </Compile>
     <Compile Include="ventanas_comunes\VisorReporteComun.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ventanas_comunes\VisorReporteComun.Designer.cs">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="modulo_empresa\ventana_busqueda_sucursal.resx">
+      <DependentUpon>ventana_busqueda_sucursal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_empresa.resx">
       <DependentUpon>ventana_empresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_sucursal.resx">
       <DependentUpon>ventana_sucursal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_busqueda_cargo.resx">
+      <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_busqueda_departamento.resx">
+      <DependentUpon>ventana_busqueda_departamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_busqueda_empleado.resx">
+      <DependentUpon>ventana_busqueda_empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_busqueda_situacion_empleado.resx">
+      <DependentUpon>ventana_busqueda_situacion_empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_busqueda_tipo_nomina.resx">
+      <DependentUpon>ventana_busqueda_tipo_nomina.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_cargo.resx">
       <DependentUpon>ventana_cargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_departamento.resx">
+      <DependentUpon>ventana_departamento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_empleado.resx">
+      <DependentUpon>ventana_empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_situacion_empleado.resx">
+      <DependentUpon>ventana_situacion_empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_tipo_nomina.resx">
+      <DependentUpon>ventana_tipo_nomina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_sistema\formBase.resx">
       <DependentUpon>formBase.cs</DependentUpon>
@@ -192,10 +281,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ventanas_comunes\Report1.rdlc" />
-    <EmbeddedResource Include="ventanas_comunes\VisorReporte.resx">
-      <DependentUpon>VisorReporte.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
@@ -248,6 +333,7 @@
     <Content Include="bin\Release\Resources\botones\Ok.png" />
     <Content Include="bin\Release\Resources\botones\pdf.png" />
     <Content Include="bin\Release\Resources\botones\salir1.png" />
+    <Content Include="bin\Release\Resources\fondos\wall4.jpg" />
     <Content Include="bin\Release\Resources\gifs\3499424w91v795brv.gif" />
     <Content Include="bin\Release\Resources\gifs\8YsAmq3.gif" />
     <Content Include="bin\Release\Resources\gifs\Cento-Lodigiani-animated-GIFs-10.gif" />
@@ -516,6 +602,7 @@
     <Content Include="bin\Release\Resources\ventanas\empresa1.png" />
     <Content Include="bin\Release\Resources\ventanas\file-video-icon.png" />
     <Content Include="bin\Release\Resources\ventanas\Word-2.ico" />
+    <Content Include="view.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

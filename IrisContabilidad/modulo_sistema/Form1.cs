@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_empresa;
+using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad
@@ -32,13 +34,14 @@ namespace IrisContabilidad
             this.tituloLabel.Text = "Inicio sesión";
             this.Text = tituloLabel.Text;
             usuarioText.Select();
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-        public override bool ValidarGetAction()
+        public  bool ValidarGetAction()
         {
             try
             {
@@ -66,7 +69,69 @@ namespace IrisContabilidad
             }
         }
 
-        public override void GetAction()
+
+        public void ValidarCrearPrimeraEmpresa()
+        {
+            try
+            {
+                string sql = "select *from empresa";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    //debe crear la primera empresa
+                    ventana_empresa ventana=new ventana_empresa();
+                    ventana.Owner = this;
+                    ventana.ShowDialog();
+                }
+               
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error validarPrimeraEmpresa.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void ValidarCrearPrimeraSucursal()
+        {
+            try
+            {
+                string sql = "select *from sucursal";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    //debe crear la primera empresa
+                    ventana_sucursal ventana = new ventana_sucursal();
+                    ventana.Owner = this;
+                    ventana.ShowDialog();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error validarPrimeraEmpresa.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public void ValidarCrearPrimerEmpleado()
+        {
+            try
+            {
+                string sql = "select *from empleado";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    //debe crear el primer empleado
+                    ventana_empleado ventana=new ventana_empleado();
+                    ventana.Owner = this;
+                    ventana.ShowDialog();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error ValidarCrearPrimerEmpleado.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public  void GetAction()
         {
             if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
             {
@@ -75,18 +140,23 @@ namespace IrisContabilidad
             if (!ValidarGetAction())
                 return;
 
-            if ((empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()))) != null)
+            empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()));
+            if (empleado.login != null)
             {
-                singleton.empleado = empleado;
-                menu1 ventana = new menu1(empleado);
-                ventana.Show();
-                this.Hide();
-                //MessageBox.Show("Existe");
+                    singleton.empleado = empleado;
+                    menu1 ventana = new menu1(empleado);
+                    ventana.Show();
+                    this.Hide();
+                    //MessageBox.Show(empleado.fecha_ingreso.ToString());
             }
             else
             {
                 empleado = null;
                 MessageBox.Show("No existe el usuario", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                usuarioText.Clear();
+                claveText.Clear();
+                usuarioText.Focus();
+                usuarioText.SelectAll();
             }
         }
 
@@ -95,7 +165,7 @@ namespace IrisContabilidad
 
 
 
-        public override void Salir()
+        public  void Salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -120,14 +190,25 @@ namespace IrisContabilidad
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
+            //modeloEmpleado.adminPrimerLogin();
+            ValidarCrearPrimeraEmpresa();
+            ValidarCrearPrimeraSucursal();
+            ValidarCrearPrimerEmpleado();
+            GetAction();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
 
+        }
 
-
-
-
-
-
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+       
     }
 }

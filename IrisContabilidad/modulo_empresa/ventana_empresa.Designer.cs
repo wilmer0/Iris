@@ -49,11 +49,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(12, 374);
             this.panel1.Size = new System.Drawing.Size(535, 54);
-            // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(198, 5);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button2
             // 
@@ -64,10 +60,17 @@
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(394, 5);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
             this.panel2.Size = new System.Drawing.Size(559, 21);
+            // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.Location = new System.Drawing.Point(198, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // activoCheck
             // 
@@ -80,6 +83,7 @@
             this.activoCheck.TabIndex = 21;
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
             // 
             // divisionText
             // 
@@ -90,6 +94,7 @@
             this.divisionText.Name = "divisionText";
             this.divisionText.Size = new System.Drawing.Size(256, 26);
             this.divisionText.TabIndex = 19;
+            this.divisionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.divisionText_KeyDown);
             // 
             // label4
             // 
@@ -110,6 +115,8 @@
             this.RncText.Name = "RncText";
             this.RncText.Size = new System.Drawing.Size(256, 26);
             this.RncText.TabIndex = 17;
+            this.RncText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.RncText_KeyDown);
+            this.RncText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RncText_KeyPress);
             // 
             // label3
             // 
@@ -130,6 +137,7 @@
             this.empresaText.Name = "empresaText";
             this.empresaText.Size = new System.Drawing.Size(256, 26);
             this.empresaText.TabIndex = 14;
+            this.empresaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.empresaText_KeyDown);
             // 
             // label2
             // 
