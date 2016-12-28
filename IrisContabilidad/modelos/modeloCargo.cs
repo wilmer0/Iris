@@ -24,7 +24,7 @@ namespace IrisContabilidad.modelos
                 try
                 {
                     int activo = 0;
-                    string sql = "select *from cargo where nombre='" + cargo.nombre + "'";
+                    string sql = "select *from cargo where nombre='" + cargo.nombre + "' and id!='"+cargo.id+"'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
@@ -138,7 +138,7 @@ namespace IrisContabilidad.modelos
                 List<cargo> lista = new List<cargo>();
                 string sql = "";
                 sql = "select id,nombre,activo from cargo";
-                if (mantenimiento == true)
+                if (mantenimiento == false)
                 {
                     sql += " where activo=1";
                 }

@@ -135,7 +135,7 @@ namespace IrisContabilidad.modelos
                 List<nomina_tipo> lista = new List<nomina_tipo>();
                 string sql = "";
                 sql = "select codigo,nombre,activo from nomina_tipos";
-                if (mantenimiento == true)
+                if (mantenimiento == false)
                 {
                     sql += " where activo=1";
                 }

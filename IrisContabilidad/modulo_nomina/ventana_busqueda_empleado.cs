@@ -17,6 +17,8 @@ namespace IrisContabilidad.modulo_nomina
     {
         //objetos
         private empleado empleado;
+        private departamento departamento;
+        private cargo cargo;
 
         //listas
         private List<empleado> listaEmpleado;
@@ -25,7 +27,8 @@ namespace IrisContabilidad.modulo_nomina
 
         //modelos
         private modeloEmpleado modeloEmpleado = new modeloEmpleado();
-
+        modeloDepartamento modeloDepartamento=new modeloDepartamento();
+        modeloCargo modeloCargo=new modeloCargo();
 
         //variables 
         private bool mantenimiento = false;
@@ -56,7 +59,11 @@ namespace IrisContabilidad.modulo_nomina
                 //se agrega todos los datos de la lista en el gridView
                 listaEmpleado.ForEach(x =>
                 {
-                    dataGridView1.Rows.Add(x.codigo, x.nombre,x.identificacion, x.activo);
+                    departamento=new departamento();
+                    cargo=new cargo();
+                    departamento = modeloDepartamento.getDepartamentoById(x.codigo_departamento);
+                    cargo = modeloCargo.getCargoById(x.codigo_cargo);
+                    dataGridView1.Rows.Add(x.codigo, x.nombre,x.identificacion,departamento.nombre,cargo.nombre, x.activo);
 
                 });
             }
@@ -130,6 +137,11 @@ namespace IrisContabilidad.modulo_nomina
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

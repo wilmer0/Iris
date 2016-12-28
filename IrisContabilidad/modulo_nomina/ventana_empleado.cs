@@ -27,8 +27,7 @@ namespace IrisContabilidad.modulo_nomina
         private departamento departamento;
         private cargo cargo;
         private nomina_tipo nominaTipo;
-
-
+        private grupo_usuarios grupoUsuarios;
 
 
         //modelos
@@ -64,7 +63,7 @@ namespace IrisContabilidad.modulo_nomina
                     nombreText.Text = empleado.nombre;
                     identificacionText.Text = empleado.identificacion;
                     usuarioText.Text=empleado.login;
-                    usuarioText.Text = utilidades.desencriptar(empleado.clave);
+                    claveText.Text = utilidades.desencriptar(empleado.clave);
                     sucursal = modeloSucursal.getSucursalById(empleado.codigo_sucursal);
                     loadSucursal();
                     departamento = modeloDepartamento.getDepartamentoById(empleado.codigo_departamento);
@@ -86,7 +85,7 @@ namespace IrisContabilidad.modulo_nomina
                     nombreText.Text = "";
                     identificacionText.Text = "";
                     usuarioText.Text = "";
-                    usuarioText.Text = "";
+                    claveText.Text = "";
                     sucursalIdText.Text = "";
                     sucursalText.Text = "";
                     departamentoIdText.Text = "";
@@ -106,7 +105,6 @@ namespace IrisContabilidad.modulo_nomina
             {
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-          
         }
 
         public void salir()
@@ -208,7 +206,12 @@ namespace IrisContabilidad.modulo_nomina
         {
             try
             {
-                validarGetAction();
+                //validando campos necesarios
+                if (validarGetAction() == false)
+                {
+                    return;
+                }
+
                 if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
@@ -242,6 +245,7 @@ namespace IrisContabilidad.modulo_nomina
                     if ((modeloEmpleado.agregarEmpleado(empleado)) == true)
                     {
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        empleado = null;
                     }
                     else
                     {
@@ -254,13 +258,14 @@ namespace IrisContabilidad.modulo_nomina
                     if ((modeloEmpleado.modificarEmpleado(empleado)) == true)
                     {
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        empleado = null;
                     }
                     else
                     {
                         MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
+               
             }
             catch (Exception ex)
             {
