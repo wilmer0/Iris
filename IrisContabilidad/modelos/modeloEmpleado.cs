@@ -24,11 +24,28 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
-                string sql = "select *from empelado where identificacion='" + empleado.nombre + "' || pasaporte='"+empleado.pasaporte+"'";
+                //validar identificacion
+                string sql = "select *from empleado where identificacion='" + empleado.identificacion + "' and identificacion!='' and codigo!='" + empleado.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     MessageBox.Show("Existe un empleado con esa identificacion con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar pasaporte
+                sql = "select *from empleado where pasaporte='" + empleado.pasaporte + "' and pasaporte!='' and codigo!='" + empleado.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un empleado con ese login", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar login
+                sql = "select *from empleado where login='" + empleado.login + "' and codigo!='" + empleado.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un empleado con ese login", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
 
@@ -36,8 +53,7 @@ namespace IrisContabilidad.modelos
                 {
                     activo = 1;
                 }
-
-                sql = "insert into empleado() values('','')";
+                sql = "insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte) values('" + empleado.codigo + "','" + empleado.nombre + "','" + empleado.login + "','" + empleado.clave + "','" + empleado.sueldo + "','" + empleado.codigo_situacion + "','" + activo + "','" + empleado.codigo_sucursal + "','" + empleado.codigo_departamento + "','" + empleado.codigo_cargo + "','" + empleado.codigo_grupo_usuario + "','" + empleado.fecha_ingreso.ToString("yyyy-MM-dd") + "','" + empleado.tipo_permiso + "','" + empleado.codigo_tipo_nomina + "','" + empleado.identificacion + "','" + empleado.pasaporte + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -50,26 +66,43 @@ namespace IrisContabilidad.modelos
         }
 
         //modificar
-        public bool modificarEmpleado(cargo cargoAPP)
+        public bool modificarEmpleado(empleado empleado)
         {
             try
             {
                 int activo = 0;
-                string sql = "select *from cargo where nombre='" + cargoAPP.nombre + "' and id!='" + cargoAPP.id + "'";
+                //validar identificacion
+                string sql = "select *from empleado where identificacion='" + empleado.identificacion + "' and identificacion!='' and codigo!='" + empleado.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un cargo con ese nombre", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un empleado con esa identificacion con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                if (cargoAPP.activo == true)
+                //validar pasaporte
+                sql = "select *from empleado where pasaporte='" + empleado.pasaporte + "' and pasaporte!='' and codigo!='" + empleado.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un empleado con ese login", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar login
+                sql = "select *from empleado where login='" + empleado.login + "' and codigo!='" + empleado.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un empleado con ese login", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
+                if (empleado.activo == true)
                 {
                     activo = 1;
                 }
-                sql = "update cargo set nombre='" + cargoAPP.nombre + "',activo='" + activo.ToString() + "' where id='" + cargoAPP.id + "'";
-                ds = utilidades.ejecutarcomando(sql);
-                MessageBox.Show(sql);
+                sql = "update empleado set nombre='" + empleado.nombre + "',login='" + empleado.login + "',clave='" + empleado.clave + "',sueldo='" + empleado.sueldo + "',cod_situacion='" + empleado.codigo_situacion + "',activo='" + activo + "',cod_sucursal='" + empleado.codigo_sucursal + "',cod_departamento='" + empleado.codigo_departamento + "',cod_cargo='" + empleado.codigo_cargo + "',cod_grupo_usuario='" + empleado.codigo_grupo_usuario + "',fecha_ingreso='" + empleado.fecha_ingreso.ToString("yyyy-MM-dd") + "',permiso='" + empleado.tipo_permiso + "',cod_tipo_nomina='" + empleado.codigo_tipo_nomina + "',identificacion='" + empleado.identificacion + "',pasaporte='" + empleado.pasaporte + "' where codigo='" + empleado.codigo + "'";
+                //MessageBox.Show(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
@@ -113,7 +146,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
+        //validar login
         public Boolean validarLogin(string usuario, string clave)
         {
             try
@@ -138,7 +171,7 @@ namespace IrisContabilidad.modelos
 
 
 
-
+        //get modulos by empleado
         public List<string> GetListaModulosByEmpleado(empleado empleado)
         {
             try
@@ -172,12 +205,17 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        public List<empleado> getListaCompleta()
+        //get lista completa
+        public List<empleado> getListaCompleta(bool mantenimiento=false)
         {
             try
             {
                 List<empleado> listaEmpleado = new List<empleado>();
-                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_gripo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where activo='1'";
+                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado";
+                if (mantenimiento == false)
+                {
+                    sql += "  where activo='1'";
+                }
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
@@ -211,6 +249,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //get by login
         public empleado getEmpleadoByLogin(string usuario,string clave)
         {
             try
@@ -248,6 +287,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //get by id
         public empleado getEmpleadoById(int id)
         {
             try

@@ -33,6 +33,12 @@ namespace IrisContabilidad.modulo_nomina
 
         //modelos
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
+        modeloSucursal modeloSucursal=new modeloSucursal();
+        modeloCargo modeloCargo=new modeloCargo();
+        modeloDepartamento modeloDepartamento=new modeloDepartamento();
+        modeloNominaTipo modeloTipoNomina=new modeloNominaTipo();
+        modeloSituacionEmpleado modeloSituacionEmpleado=new modeloSituacionEmpleado();
+
 
 
         public ventana_empleado()
@@ -55,10 +61,43 @@ namespace IrisContabilidad.modulo_nomina
                 if (empleado != null)
                 {
                     //llenar campos
+                    nombreText.Text = empleado.nombre;
+                    identificacionText.Text = empleado.identificacion;
+                    usuarioText.Text=empleado.login;
+                    sucursal = modeloSucursal.getSucursalById(empleado.codigo_sucursal);
+                    loadSucursal();
+                    departamento = modeloDepartamento.getDepartamentoById(empleado.codigo_departamento);
+                    loadDepartamento();
+                    cargo = modeloCargo.getCargoById(empleado.codigo_cargo);
+                    loadCargo();
+                    fechaIngreso.Text = empleado.fecha_ingreso.ToString();
+                    empleado.codigo_grupo_usuario = 1;
+                    nominaTipo = modeloTipoNomina.getNominaTipoById(empleado.codigo_tipo_nomina);
+                    loadNominaTipo();
+                    sueldoText.Text = empleado.sueldo.ToString();
+                    situacion = modeloSituacionEmpleado.getSituacionEmpleadoById(empleado.codigo_situacion);
+                    loadSituacionEmpleado();
+                    activoCheck.Checked = Convert.ToBoolean(empleado.activo);
                 }
                 else
                 {
                     //blanquear campos
+                    nombreText.Text = "";
+                    identificacionText.Text = "";
+                    usuarioText.Text = "";
+                    sucursalIdText.Text = "";
+                    sucursalText.Text = "";
+                    departamentoIdText.Text = "";
+                    departamentoText.Text = "";
+                    cargoIdText.Text = "";
+                    cargoText.Text = "";
+                    fechaIngreso.Value = DateTime.Today;
+                    nominaTipoIdText.Text = "";
+                    nominaTipoText.Text = "";
+                    sueldoText.Text = "";
+                    situacionIdText.Text = "";
+                    situacionText.Text = "";
+                    activoCheck.Checked =false;
                 }
             }
             catch (Exception ex)
@@ -76,14 +115,143 @@ namespace IrisContabilidad.modulo_nomina
             }
         }
 
-        public void validarGetAction()
+        public bool validarGetAction()
         {
-            
+            try
+            {
+                //validar nombre
+                if (nombreText.Text == "")
+                {
+                    MessageBox.Show("Falta el nombre ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+                    return false;
+                }
+                //validar usuario
+                if (usuarioText.Text == "")
+                {
+                    MessageBox.Show("Falta el nombre de usuario ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    usuarioText.Focus();
+                    usuarioText.SelectAll();
+                    return false;
+                }
+                //validar clave
+                {
+                    MessageBox.Show("Falta la clave ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                //validar sucursal
+                if (sucursal == null)
+                {
+                    MessageBox.Show("Falta la sucursal ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    sucursalIdText.Focus();
+                    sucursalIdText.SelectAll();
+                    return false;
+                }
+                //validar departamento
+                if (departamento==null)
+                {
+                    MessageBox.Show("Falta el departamento ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    departamentoIdText.Focus();
+                    departamentoIdText.SelectAll();
+                    return false;
+                }
+                //validar cargo
+                if (cargo==null)
+                {
+                    MessageBox.Show("Falta el cargo ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    cargoIdText.Focus();
+                    cargoIdText.SelectAll();
+                    return false;
+                }
+                //validar tipo nomina
+                {
+                    MessageBox.Show("Falta el tipo de nomina ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                //validar sueldo
+                {
+                    MessageBox.Show("Falta la clave ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                //validar situacion empleado
+                {
+                    MessageBox.Show("Falta la clave ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validarGetAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
         
         public void getAction()
         {
-            
+            try
+            {
+                validarGetAction();
+                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
+
+                bool crear = false;
+                //se instancia el empleado si esta nulo
+                if (empleado == null)
+                {
+                    empleado = new empleado();
+                    crear = true;
+                    empleado.codigo = modeloEmpleado.getNext();
+                }
+                empleado.nombre = nombreText.Text;
+                empleado.identificacion = identificacionText.Text;
+                empleado.login = usuarioText.Text;
+                empleado.codigo_sucursal = sucursal.codigo;
+                empleado.codigo_cargo = cargo.id;
+                empleado.fecha_ingreso = Convert.ToDateTime(fechaIngreso.Text);
+                empleado.codigo_grupo_usuario = 1;
+                empleado.codigo_tipo_nomina = nominaTipo.codigo;
+                empleado.sueldo = Convert.ToDecimal(sueldoText.Text);
+                empleado.codigo_situacion = situacion.codigo;
+                empleado.codigo_departamento = departamento.codigo;
+                empleado.activo= Convert.ToBoolean(activoCheck.Checked);
+
+                if (crear == true)
+                {
+                    //se agrega
+                    if ((modeloEmpleado.agregarEmpleado(empleado)) == true)
+                    {
+                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    //se modifica
+                    if ((modeloEmpleado.modificarEmpleado(empleado)) == true)
+                    {
+                        MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
@@ -291,13 +459,18 @@ namespace IrisContabilidad.modulo_nomina
         {
             try
             {
+                //validar que tenga filas el datagrid
+                if (dataGridView1.Rows.Count < 0)
+                {
+                    return;
+                }
                 int fila = 0;
                 fila = dataGridView1.CurrentRow.Index;
                 dataGridView1.Rows.Remove(dataGridView1.Rows[fila]);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error eliminarPermiso.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error eliminarPermiso.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
         private void button13_Click(object sender, EventArgs e)

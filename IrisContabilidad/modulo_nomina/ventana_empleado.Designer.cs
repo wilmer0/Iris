@@ -45,11 +45,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.nominaTipoText = new System.Windows.Forms.TextBox();
             this.activoCheck = new System.Windows.Forms.CheckBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.grupoUsuarioText = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.grupoUsuarioIdText = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.fechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
             this.cargoText = new System.Windows.Forms.TextBox();
             this.departamentoText = new System.Windows.Forms.TextBox();
@@ -58,9 +58,9 @@
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.identificacionText = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.sueldoText = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.nominaTipoIdText = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -74,11 +74,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.claveText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.nombreText = new System.Windows.Forms.TextBox();
-            this.claveText = new System.Windows.Forms.TextBox();
+            this.usuarioText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -152,19 +152,19 @@
             this.tabPage1.Controls.Add(this.label13);
             this.tabPage1.Controls.Add(this.nominaTipoText);
             this.tabPage1.Controls.Add(this.activoCheck);
-            this.tabPage1.Controls.Add(this.textBox11);
+            this.tabPage1.Controls.Add(this.grupoUsuarioText);
             this.tabPage1.Controls.Add(this.button9);
-            this.tabPage1.Controls.Add(this.textBox12);
+            this.tabPage1.Controls.Add(this.grupoUsuarioIdText);
             this.tabPage1.Controls.Add(this.label12);
-            this.tabPage1.Controls.Add(this.dateTimePicker1);
+            this.tabPage1.Controls.Add(this.fechaIngreso);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.cargoText);
             this.tabPage1.Controls.Add(this.departamentoText);
             this.tabPage1.Controls.Add(this.sucursalText);
             this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.textBox7);
+            this.tabPage1.Controls.Add(this.identificacionText);
             this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.textBox6);
+            this.tabPage1.Controls.Add(this.sueldoText);
             this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.nominaTipoIdText);
             this.tabPage1.Controls.Add(this.label9);
@@ -178,11 +178,11 @@
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.claveText);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.nombreText);
-            this.tabPage1.Controls.Add(this.claveText);
+            this.tabPage1.Controls.Add(this.usuarioText);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -337,15 +337,15 @@
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
             // 
-            // textBox11
+            // grupoUsuarioText
             // 
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(509, 147);
-            this.textBox11.MaxLength = 30;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ReadOnly = true;
-            this.textBox11.Size = new System.Drawing.Size(194, 26);
-            this.textBox11.TabIndex = 54;
+            this.grupoUsuarioText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grupoUsuarioText.Location = new System.Drawing.Point(509, 147);
+            this.grupoUsuarioText.MaxLength = 30;
+            this.grupoUsuarioText.Name = "grupoUsuarioText";
+            this.grupoUsuarioText.ReadOnly = true;
+            this.grupoUsuarioText.Size = new System.Drawing.Size(194, 26);
+            this.grupoUsuarioText.TabIndex = 54;
             // 
             // button9
             // 
@@ -358,14 +358,14 @@
             this.button9.TabIndex = 53;
             this.button9.UseVisualStyleBackColor = true;
             // 
-            // textBox12
+            // grupoUsuarioIdText
             // 
-            this.textBox12.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(509, 115);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(141, 26);
-            this.textBox12.TabIndex = 52;
+            this.grupoUsuarioIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.grupoUsuarioIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grupoUsuarioIdText.Location = new System.Drawing.Point(509, 115);
+            this.grupoUsuarioIdText.Name = "grupoUsuarioIdText";
+            this.grupoUsuarioIdText.Size = new System.Drawing.Size(141, 26);
+            this.grupoUsuarioIdText.TabIndex = 52;
             // 
             // label12
             // 
@@ -377,12 +377,12 @@
             this.label12.TabIndex = 51;
             this.label12.Text = "Grup. usuario";
             // 
-            // dateTimePicker1
+            // fechaIngreso
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(509, 81);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 50;
+            this.fechaIngreso.Location = new System.Drawing.Point(509, 81);
+            this.fechaIngreso.Name = "fechaIngreso";
+            this.fechaIngreso.Size = new System.Drawing.Size(200, 20);
+            this.fechaIngreso.TabIndex = 50;
             // 
             // label11
             // 
@@ -469,14 +469,14 @@
             this.radioButton1.Text = "Cedula";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // textBox7
+            // identificacionText
             // 
-            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(112, 112);
-            this.textBox7.MaxLength = 30;
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(253, 26);
-            this.textBox7.TabIndex = 45;
+            this.identificacionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.identificacionText.Location = new System.Drawing.Point(112, 112);
+            this.identificacionText.MaxLength = 30;
+            this.identificacionText.Name = "identificacionText";
+            this.identificacionText.Size = new System.Drawing.Size(253, 26);
+            this.identificacionText.TabIndex = 45;
             // 
             // label10
             // 
@@ -488,15 +488,15 @@
             this.label10.TabIndex = 44;
             this.label10.Text = "Identif.";
             // 
-            // textBox6
+            // sueldoText
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(509, 272);
-            this.textBox6.MaxLength = 30;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(194, 26);
-            this.textBox6.TabIndex = 43;
-            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
+            this.sueldoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sueldoText.Location = new System.Drawing.Point(509, 272);
+            this.sueldoText.MaxLength = 30;
+            this.sueldoText.Name = "sueldoText";
+            this.sueldoText.Size = new System.Drawing.Size(194, 26);
+            this.sueldoText.TabIndex = 43;
+            this.sueldoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // button8
             // 
@@ -632,15 +632,15 @@
             this.label4.TabIndex = 30;
             this.label4.Text = "Dpto.";
             // 
-            // textBox1
+            // claveText
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(112, 228);
-            this.textBox1.MaxLength = 30;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(253, 26);
-            this.textBox1.TabIndex = 29;
+            this.claveText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.claveText.Location = new System.Drawing.Point(112, 228);
+            this.claveText.MaxLength = 30;
+            this.claveText.Name = "claveText";
+            this.claveText.PasswordChar = '*';
+            this.claveText.Size = new System.Drawing.Size(253, 26);
+            this.claveText.TabIndex = 29;
             // 
             // label7
             // 
@@ -671,14 +671,14 @@
             this.nombreText.Size = new System.Drawing.Size(253, 26);
             this.nombreText.TabIndex = 11;
             // 
-            // claveText
+            // usuarioText
             // 
-            this.claveText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.claveText.Location = new System.Drawing.Point(112, 196);
-            this.claveText.MaxLength = 30;
-            this.claveText.Name = "claveText";
-            this.claveText.Size = new System.Drawing.Size(253, 26);
-            this.claveText.TabIndex = 12;
+            this.usuarioText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usuarioText.Location = new System.Drawing.Point(112, 196);
+            this.usuarioText.MaxLength = 30;
+            this.usuarioText.Name = "usuarioText";
+            this.usuarioText.Size = new System.Drawing.Size(253, 26);
+            this.usuarioText.TabIndex = 12;
             // 
             // label3
             // 
@@ -851,19 +851,19 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox nombreText;
-        public System.Windows.Forms.TextBox claveText;
+        public System.Windows.Forms.TextBox usuarioText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox empresaIdText;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox claveText;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox cargoIdText;
-        public System.Windows.Forms.TextBox textBox6;
+        public System.Windows.Forms.TextBox sueldoText;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TextBox nominaTipoIdText;
         private System.Windows.Forms.Label label9;
@@ -872,7 +872,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.TextBox departamentoIdText;
-        public System.Windows.Forms.TextBox textBox7;
+        public System.Windows.Forms.TextBox identificacionText;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
@@ -881,11 +881,11 @@
         public System.Windows.Forms.TextBox sucursalText;
         public System.Windows.Forms.TextBox departamentoText;
         public System.Windows.Forms.TextBox cargoText;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker fechaIngreso;
         private System.Windows.Forms.Label label11;
-        public System.Windows.Forms.TextBox textBox11;
+        public System.Windows.Forms.TextBox grupoUsuarioText;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox grupoUsuarioIdText;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.CheckBox activoCheck;
         public System.Windows.Forms.TextBox situacionText;
