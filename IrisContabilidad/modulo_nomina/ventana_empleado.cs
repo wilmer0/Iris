@@ -64,6 +64,7 @@ namespace IrisContabilidad.modulo_nomina
                     nombreText.Text = empleado.nombre;
                     identificacionText.Text = empleado.identificacion;
                     usuarioText.Text=empleado.login;
+                    usuarioText.Text = utilidades.desencriptar(empleado.clave);
                     sucursal = modeloSucursal.getSucursalById(empleado.codigo_sucursal);
                     loadSucursal();
                     departamento = modeloDepartamento.getDepartamentoById(empleado.codigo_departamento);
@@ -84,6 +85,7 @@ namespace IrisContabilidad.modulo_nomina
                     //blanquear campos
                     nombreText.Text = "";
                     identificacionText.Text = "";
+                    usuarioText.Text = "";
                     usuarioText.Text = "";
                     sucursalIdText.Text = "";
                     sucursalText.Text = "";
@@ -136,8 +138,11 @@ namespace IrisContabilidad.modulo_nomina
                     return false;
                 }
                 //validar clave
+                if (usuarioText.Text == "")
                 {
                     MessageBox.Show("Falta la clave ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    usuarioText.Focus();
+                    usuarioText.SelectAll();
                     return false;
                 }
                 //validar sucursal
@@ -165,18 +170,27 @@ namespace IrisContabilidad.modulo_nomina
                     return false;
                 }
                 //validar tipo nomina
+                if (nominaTipo == null)
                 {
-                    MessageBox.Show("Falta el tipo de nomina ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Falta el tipo de nómina ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    nominaTipoIdText.Focus();
+                    nominaTipoIdText.SelectAll();
                     return false;
                 }
                 //validar sueldo
+                if (sueldoText.Text == "")
                 {
-                    MessageBox.Show("Falta la clave ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Falta el sueldo ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    sueldoText.Focus();
+                    sueldoText.SelectAll();
                     return false;
                 }
                 //validar situacion empleado
+                if (situacion == null)
                 {
-                    MessageBox.Show("Falta la clave ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Falta la situación empleado ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    situacionIdText.Focus();
+                    situacionIdText.SelectAll();
                     return false;
                 }
 
@@ -211,6 +225,7 @@ namespace IrisContabilidad.modulo_nomina
                 empleado.nombre = nombreText.Text;
                 empleado.identificacion = identificacionText.Text;
                 empleado.login = usuarioText.Text;
+                empleado.clave = utilidades.encriptar(usuarioText.Text);
                 empleado.codigo_sucursal = sucursal.codigo;
                 empleado.codigo_cargo = cargo.id;
                 empleado.fecha_ingreso = Convert.ToDateTime(fechaIngreso.Text);
