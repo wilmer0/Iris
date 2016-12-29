@@ -24,6 +24,7 @@ namespace IrisContabilidad.modelos
                 try
                 {
                     int activo = 0;
+                    //validar nombre
                     string sql = "select *from cargo where nombre='" + cargo.nombre + "' and id!='"+cargo.id+"'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                     if (ds.Tables[0].Rows.Count > 0)
@@ -54,6 +55,7 @@ namespace IrisContabilidad.modelos
                 try
                 {
                     int activo = 0;
+                    //validar nombre
                     string sql = "select *from cargo where nombre='" + cargoAPP.nombre + "' and id!='"+cargoAPP.id+"'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                     if (ds.Tables[0].Rows.Count > 0)
@@ -68,7 +70,7 @@ namespace IrisContabilidad.modelos
                     }
                     sql = "update cargo set nombre='" + cargoAPP.nombre + "',activo='"+activo.ToString()+"' where id='"+cargoAPP.id+"'";
                     ds=utilidades.ejecutarcomando(sql);
-                    MessageBox.Show(sql);
+                    //MessageBox.Show(sql);
                     return true;
                 }
                 catch (Exception ex)

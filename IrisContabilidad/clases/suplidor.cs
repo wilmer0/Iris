@@ -21,6 +21,7 @@ namespace IrisContabilidad.clases
         public int cod_tipo_gasto { get; set; }
         public DateTime fecha_modificacion { get; set; }
         public string fax { get; set; }
+        public int codigo_ciudad { get; set; }
 
     }
 }

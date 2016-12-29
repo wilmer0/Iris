@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clases\cargo.cs" />
+    <Compile Include="clases\ciudad.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
+    <Compile Include="modelos\modeloCiudad.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
@@ -100,6 +102,8 @@
     <Compile Include="modelos\modeloNominaTipo.cs" />
     <Compile Include="modelos\modeloSituacionEmpleado.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />
+    <Compile Include="modelos\modeloSuplidor.cs" />
+    <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +232,9 @@
     <Compile Include="ventanas_comunes\VisorReporteComun.Designer.cs">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_suplidor.resx">
+      <DependentUpon>ventana_suplidor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_busqueda_sucursal.resx">
       <DependentUpon>ventana_busqueda_sucursal.cs</DependentUpon>
     </EmbeddedResource>
