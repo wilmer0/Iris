@@ -21,14 +21,22 @@ namespace IrisContabilidad.modelos
         private sucursal sucursal;
         private ciudad ciudad;
         private modulo modulo;
+        private cargo cargo;
+        private departamento departamento;
+        private situacion_empleado situacionEmpleado;
+        private tipo_gasto tipoGasto;
+        private nomina_tipo nominaTipo;
 
         //modelos
         modeloEmpresa modeloEmpresa = new modeloEmpresa();
         modeloSucursal modeloSucursal=new modeloSucursal();
         modeloCiudad modeloCiudad=new modeloCiudad();
         modeloModulo modeloModulo = new modeloModulo();
-
-
+        modeloCargo modeloCargo=new modeloCargo();
+        modeloDepartamento modeloDepartamento=new modeloDepartamento();
+        modeloSituacionEmpleado modeloSituacionEmpleado=new modeloSituacionEmpleado();
+        modeloTipoGasto modeloTipoGasto=new modeloTipoGasto();
+        modeloNominaTipo modeloNominaTipo=new modeloNominaTipo();
 
         //validar primer login
         public void validarPrimerLogin()
@@ -45,9 +53,7 @@ namespace IrisContabilidad.modelos
                     agregarVentanas();
                     agregarPrimerEmpleado();
                     agregarAccesosVentanas();
-
-
-
+                    agregarVentanasPrimerModulo();
                 }
             }
             catch (Exception ex)
@@ -72,7 +78,7 @@ namespace IrisContabilidad.modelos
                     empresa.codigo = 1;
                     empresa.nombre = "Empresa";
                     empresa.secuencia = "001";
-                    empresa.division = "001";
+                    empresa.division = "01";
                     empresa.rnc = "000000000";
                     empresa.activo = true;
                     modeloEmpresa.agregarEmpresa(empresa);
@@ -94,8 +100,103 @@ namespace IrisContabilidad.modelos
                     modeloSucursal.agregarSucursal(sucursal);
                 }
 
-                    //ciudades
-                    List<ciudad> listaCiudades=new List<ciudad>();
+
+                //cargos
+                #region
+                List<cargo> listaCargo=new List<cargo>();
+
+                //nuevo cargo
+                cargo=new cargo();
+                cargo.id = 1;
+                cargo.nombre = "general";
+                cargo.activo = true;
+                listaCargo.Add(cargo);
+
+                listaCargo.ForEach(cargoActual =>
+                {
+                    modeloCargo.agregarCargo(cargoActual);
+                });
+
+                #endregion
+
+
+                //departamentos sucursales
+                #region
+                List<departamento> listaDepartamento = new List<departamento>();
+
+                //nuevo departamento
+                departamento = new departamento();
+                departamento.codigo = 1;
+                departamento.nombre = "general";
+                departamento.codigo_sucursal = 1;
+                departamento.activo = true;
+                listaDepartamento.Add(departamento);
+
+                listaDepartamento.ForEach(cargoActual =>
+                {
+                    modeloDepartamento.agregarDepartamento(departamento);
+                });
+
+                #endregion
+
+                
+                //situacion empleado
+                #region
+                List<situacion_empleado> listaSituacionEmpleado = new List<situacion_empleado>();
+
+                //situacion empleado
+                situacionEmpleado = new situacion_empleado();
+                situacionEmpleado.codigo = 1;
+                situacionEmpleado.descripcion = "general";
+                situacionEmpleado.activo = true;
+                listaSituacionEmpleado.Add(situacionEmpleado);
+
+                listaSituacionEmpleado.ForEach(cargoActual =>
+                {
+                    modeloSituacionEmpleado.agregarSituacionEmpleado(situacionEmpleado);
+                });
+
+                #endregion
+
+                //tipos de nomina
+                #region
+                List<nomina_tipo> listaNominaTipo = new List<nomina_tipo>();
+
+                //tipos de nomina
+                nominaTipo = new nomina_tipo();
+                nominaTipo.codigo = 1;
+                nominaTipo.nombre = "general";
+                nominaTipo.activo = true;
+                listaNominaTipo.Add(nominaTipo);
+
+                listaNominaTipo.ForEach(cargoActual =>
+                {
+                    modeloNominaTipo.agregarNominaTipo(nominaTipo);
+                });
+
+                #endregion
+                
+                //tipos de gastos
+                #region
+                List<tipo_gasto> listaTipoGasto = new List<tipo_gasto>();
+
+                //nuevo tipo_gasto
+                tipoGasto = new tipo_gasto();
+                tipoGasto.id = 1;
+                tipoGasto.nombre = "general";
+                tipoGasto.activo = true;
+                listaTipoGasto.Add(tipoGasto);
+
+                listaTipoGasto.ForEach(cargoActual =>
+                {
+                    modeloTipoGasto.agregarTipoGasto(tipoGasto);
+                });
+
+                #endregion
+
+                //ciudades
+                #region
+                List<ciudad> listaCiudades=new List<ciudad>();
 
                     //nueva ciudad
                     ciudad = new ciudad();
@@ -125,9 +226,9 @@ namespace IrisContabilidad.modelos
 
 
                     modeloCiudad.agregarCiudad(listaCiudades);
-                
+                #endregion
 
-                //primera sucursal
+                
             }
             catch (Exception ex)
             {
@@ -144,7 +245,7 @@ namespace IrisContabilidad.modelos
                 List<modulo> listaModulo = new List<modulo>();
                 //nuevo modulo
                 modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
+                modulo.id = 1;
                 modulo.nombre = "modulo empresa";
                 modulo.imagen = "empresa1.png";
                 modulo.activo = true;
@@ -152,7 +253,7 @@ namespace IrisContabilidad.modelos
                 listaModulo.Add(modulo);
                 //nuevo modulo
                 modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
+                modulo.id = 2;
                 modulo.nombre = "modulo facturacion";
                 modulo.imagen = "facturacion1.png";
                 modulo.activo = true;
@@ -160,7 +261,7 @@ namespace IrisContabilidad.modelos
                 listaModulo.Add(modulo);
                 //nuevo modulo
                 modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
+                modulo.id = 3;
                 modulo.nombre = "modulo cuentas por cobrar";
                 modulo.imagen = "cxc.png";
                 modulo.activo = true;
@@ -168,7 +269,7 @@ namespace IrisContabilidad.modelos
                 listaModulo.Add(modulo);
                 //nuevo modulo
                 modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
+                modulo.id = 4;
                 modulo.nombre = "modulo cuentas por pagar";
                 modulo.imagen = "cxp.png";
                 modulo.activo = true;
@@ -176,7 +277,7 @@ namespace IrisContabilidad.modelos
                 listaModulo.Add(modulo);
                 //nuevo modulo
                 modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
+                modulo.id = 5;
                 modulo.nombre = "modulo inventario";
                 modulo.imagen = "inventario1.png";
                 modulo.activo = true;
@@ -184,7 +285,7 @@ namespace IrisContabilidad.modelos
                 listaModulo.Add(modulo);
                 //nuevo modulo
                 modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
+                modulo.id = 6;
                 modulo.nombre = "modulo opciones";
                 modulo.imagen = "opciones1.png";
                 modulo.activo = true;
@@ -192,7 +293,7 @@ namespace IrisContabilidad.modelos
                 listaModulo.Add(modulo);
                 //nuevo modulo
                 modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
+                modulo.id = 7;
                 modulo.nombre = "modulo nomina";
                 modulo.imagen = "nomina1.png";
                 modulo.activo = true;
@@ -249,7 +350,7 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "sucursal1.png";
                 listaVentana.Add(ventana);
-
+               
                 #endregion
                 
                
@@ -326,7 +427,7 @@ namespace IrisContabilidad.modelos
                 //nueva ventana
                 ventana = new ventana();
                 ventana.nombre_ventana = "ventana cargo empleado";
-                ventana.nombre_logico = "IrisContabilidad.modulo_nomina.ventana_cargo_empleado";
+                ventana.nombre_logico = "IrisContabilidad.modulo_nomina.ventana_cargo";
                 ventana.activo = true;
                 ventana.programador = false;
                 ventana.imagen = "cargo1.png";
@@ -378,10 +479,9 @@ namespace IrisContabilidad.modelos
                 {
                     sql ="select *from empleado_accesos_ventanas  where id_empleado='1' and id_ventana_sistema='" + row[0].ToString() + "'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                    if (ds.Tables[0].Rows[0][0] == "")
+                    if (ds.Tables[0].Rows.Count==0)
                     {
-                        sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','" +
-                              row[0].ToString() + "')";
+                        sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','" +row[0].ToString() + "')";
                         utilidades.ejecutarcomando_mysql(sql);
                     }
                 }
@@ -393,7 +493,26 @@ namespace IrisContabilidad.modelos
             }
         }
 
-       
+
+        public void agregarVentanasPrimerModulo()
+        {
+            try
+            {
+                //seleccionando todas las ventanas
+                string sql = "select codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    //agregar esta ventana al primer modulo
+                    utilidades.ejecutarcomando_mysql("insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','" + row[0].ToString() + "')");
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarVentanasPrimerModulo.: " + ex.ToString());
+            }
+        }
 
         //agregar primer empleado
         public void agregarPrimerEmpleado()

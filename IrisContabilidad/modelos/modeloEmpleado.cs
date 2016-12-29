@@ -196,9 +196,12 @@ namespace IrisContabilidad.modelos
                 //listas
                 List<string> listaModulos = new List<string>();
                 string sql = "";
-                sql = "SELECT id_ventana_sistema FROM empleado_accesos_ventanas  where  id_empleado ='" +
-                      empleado.codigo + "'";
+                sql = "SELECT id_ventana_sistema FROM empleado_accesos_ventanas  where  id_empleado ='" +empleado.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    return null;
+                }
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     //hacer select para saber a que modulo pertenece esa ventana

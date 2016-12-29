@@ -20,7 +20,9 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
+                int programador = 0;
                 ventana.codigo = getNextVentana();
+                
                 //validar nombre
                 string sql = "select *from sistema_ventanas where nombre_ventana='" + ventana.nombre_ventana + "' and codigo!='" + ventana.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
@@ -41,8 +43,12 @@ namespace IrisContabilidad.modelos
                 {
                     activo = 1;
                 }
+                if (ventana.programador == true)
+                {
+                    programador = 1;
+                }
 
-                sql = "insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('" + ventana.codigo + "','" + ventana.nombre_ventana + "','" +ventana.nombre_logico+"','"+ventana.imagen+"','"+ activo.ToString() + "','" + ventana.programador+ "')";
+                sql = "insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('" + ventana.codigo + "','" + ventana.nombre_ventana + "','" + ventana.nombre_logico + "','" + ventana.imagen + "','" + activo.ToString() + "','" + programador + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -84,6 +90,45 @@ namespace IrisContabilidad.modelos
                 sql = "insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('" + modulo.id + "','" + modulo.nombre + "','" + activo.ToString() + "','"+modulo.nombre_logico+"','"+modulo.imagen+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarModulo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        //agregar ventana
+        public bool agregarModulo(List<modulo> listaModulo)
+        {
+            try
+            {
+                listaModulo.ForEach(moduloActual =>
+                {
+                   
+                int activo = 0;
+                moduloActual.id = getNextModulo();
+                //validar nombre
+                string sql = "select *from sistema_modulo where nombre='" + moduloActual.nombre + "' and id!='" + moduloActual.id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                    if (ds.Tables[0].Rows.Count == 0)
+                    {
+                        //validar nombre_modulo_proyecto
+                        sql = "select *from sistema_modulo where nombre_modulo_proyecto='" + moduloActual.nombre +"' and id!='" + moduloActual.id + "'";
+                        ds = utilidades.ejecutarcomando_mysql(sql);
+                        if (ds.Tables[0].Rows.Count == 0)
+                        {
+                            if (moduloActual.activo == true)
+                            {
+                                activo = 1;
+                            }
+                            sql ="insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('" +moduloActual.id + "','" + moduloActual.nombre + "','" + activo.ToString() + "','" +
+                            moduloActual.nombre_logico + "','" + moduloActual.imagen + "')";
+                            //MessageBox.Show(sql);
+                            ds = utilidades.ejecutarcomando_mysql(sql);
+                        }
+                    }
+                });
                 return true;
             }
             catch (Exception ex)

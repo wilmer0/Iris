@@ -24,7 +24,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
-                string sql = "select *from situacion_empleado where nombre='" + situacion.descripcion + "'";
+                string sql = "select *from situacion_empleado where descripcion='" + situacion.descripcion + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -54,7 +54,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
-                string sql = "select *from situacion_empleado where nombre='" + situacion.descripcion + "' and codigo!='" + situacion.codigo + "'";
+                string sql = "select *from situacion_empleado where descripcion='" + situacion.descripcion + "' and codigo!='" + situacion.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
