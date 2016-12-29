@@ -123,6 +123,9 @@ namespace IrisContabilidad
             if (!ValidarGetAction())
                 return;
 
+            modeloPrimerLogin.validarPrimerLogin();
+            modeloPrimerLogin.agregarVentanas();
+            modeloPrimerLogin.agregarAccesosVentanas();
             empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()));
             if (empleado.login != null)
             {
@@ -176,9 +179,8 @@ namespace IrisContabilidad
         private void button1_Click(object sender, EventArgs e)
         {
             //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
-            //modeloPrimerLogin.primerosDatos();
-            modeloPrimerLogin.agregarPrimerEmpleado();
-            modeloPrimerLogin.agregarVentanas();
+           
+            
             GetAction();
         }
 

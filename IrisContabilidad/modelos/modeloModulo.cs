@@ -14,9 +14,46 @@ namespace IrisContabilidad.modelos
         //objetos
         utilidades utilidades = new utilidades();
 
+        //agregar ventana
+        public bool agregarVentana(ventana ventana)
+        {
+            try
+            {
+                int activo = 0;
+                ventana.codigo = getNextVentana();
+                //validar nombre
+                string sql = "select *from sistema_ventanas where nombre_ventana='" + ventana.nombre_ventana + "' and codigo!='" + ventana.codigo + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un modulo con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar nombre_logico
+                sql = "select *from sistema_ventanas where nombre_logico='" + ventana.nombre_logico + "' and codigo!='" + ventana.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe una ventana con ese nombre lógico", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                if (ventana.activo == true)
+                {
+                    activo = 1;
+                }
 
-
-        //agregar 
+                sql = "insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('" + ventana.codigo + "','" + ventana.nombre_ventana + "','" +ventana.nombre_logico+"','"+ventana.imagen+"','"+ activo.ToString() + "','" + ventana.programador+ "')";
+                //MessageBox.Show(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        //agregar ventana
         public bool agregarModulo(modulo modulo)
         {
             try
@@ -219,5 +256,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
+       
     }
 }

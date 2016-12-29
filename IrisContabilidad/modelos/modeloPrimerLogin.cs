@@ -28,6 +28,35 @@ namespace IrisContabilidad.modelos
         modeloCiudad modeloCiudad=new modeloCiudad();
         modeloModulo modeloModulo = new modeloModulo();
 
+
+
+        //validar primer login
+        public void validarPrimerLogin()
+        {
+            try
+            {
+                string sql = "select *from empleado";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    //no existe empleado entonces se debe agregar todo
+                    primerosDatos();
+                    agregarModulos();
+                    agregarVentanas();
+                    agregarPrimerEmpleado();
+                    agregarAccesosVentanas();
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validarPrimerLogin.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
         //agregando todos los datos que son necesarios al momento de iniciar el sistemas
         public void primerosDatos()
         {
@@ -206,7 +235,6 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "empresa1.png";
                 listaVentana.Add(ventana);
-
                 //nueva ventana
                 ventana = new ventana();
                 ventana.nombre_ventana = "ventana situacion empleado";
@@ -215,7 +243,6 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "situacion_empleado1.png";
                 listaVentana.Add(ventana);
-
                 //nueva ventana
                 ventana = new ventana();
                 ventana.nombre_ventana = "ventana cargo empleado";
@@ -224,6 +251,22 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "cargo1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana departamento";
+                ventana.nombre_logico = "IrisContabilidad.modulo_nomina.ventana_departamento";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "departamento1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana empleado";
+                ventana.nombre_logico = "IrisContabilidad.modulo_nomina.ventana_empleado";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "empleado1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
@@ -231,10 +274,11 @@ namespace IrisContabilidad.modelos
                 #region
                 #endregion
 
-
-
-
-
+                listaVentana.ForEach(ventanaActual =>
+                {
+                    modeloModulo.agregarVentana(ventanaActual);
+                });
+                
             }
             catch (Exception ex)
             {
@@ -370,5 +414,7 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error ValidarCrearPrimerEmpleado.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        
     }
 }
