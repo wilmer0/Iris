@@ -9,7 +9,7 @@ using IrisContabilidad.clases;
 
 namespace IrisContabilidad.modelos
 {
-    public class modeloDepartamento
+    public class modeloGrupoUsuarios
     {
         //objetos
         utilidades utilidades = new utilidades();
@@ -19,63 +19,62 @@ namespace IrisContabilidad.modelos
 
 
         //agregar 
-        public bool agregarDepartamento(departamento departamento)
+        public bool agregarGrupoUsuario(grupo_usuarios grupoUsuario)
         {
             try
             {
-             
                 int activo = 0;
-                string sql = "select *from departamento where nombre='" + departamento.nombre + "'";
+                //validar nombre
+                string sql = "select *from grupo_usuarios where nombre='" + grupoUsuario.nombre + "' and codigo!='"+grupoUsuario.codigo+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un departamento con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un grupo de usuarios con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
-                if (departamento.activo == true)
+                if (grupoUsuario.activo == true)
                 {
                     activo = 1;
                 }
 
-                sql = "insert into departamento(codigo,codigo_sucursal,nombre,activo) values('" + departamento.codigo+"','"+departamento.codigo_sucursal + "','" + departamento.nombre + "','" + activo.ToString() + "')";
+                sql = "insert into grupo_usuarios(codigo,nombre,detalles,activo) values('" + grupoUsuario.codigo + "','" + grupoUsuario.nombre + "','"+grupoUsuario.detalles+"','" + activo.ToString() + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarDepartamento.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error agregarGrupoUsuario.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
         //modificar
-        public bool modificarDepartamento(departamento departamento)
+        public bool modificarGrupoUsuario(grupo_usuarios grupoUsuario)
         {
             try
             {
                 int activo = 0;
-                string sql = "select *from departamento where nombre='" + departamento.nombre + "' and codigo!='" + departamento.codigo + "' and codigo_sucursal!='"+departamento.codigo_sucursal+"'";
+                //validaciones
+                string sql = "select *from grupo_usuarios where nombre='" + grupoUsuario.nombre + "' and id!='" + grupoUsuario.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un departamento con ese nombre", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un grupo de usuarios con ese nombre", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     return false;
                 }
-                if (departamento.activo == true)
+                if (grupoUsuario.activo == true)
                 {
                     activo = 1;
                 }
-                sql = "update departamento set nombre='" + departamento.nombre + "', codigo_sucursal='"+departamento.codigo_sucursal+"', activo='" + activo.ToString() + "' where codigo='" + departamento.codigo + "'";
+                sql = "update grupo_usuarios set nombre='" + grupoUsuario.nombre + "',detalles='"+grupoUsuario.detalles+"',activo='" + activo.ToString() + "' where codigo='" + grupoUsuario.codigo + "'";
                 ds = utilidades.ejecutarcomando(sql);
                 MessageBox.Show(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error modificarDepartamento.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error modificarGrupoUsuario.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -86,7 +85,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                string sql = "select max(codigo)from departamento";
+                string sql = "select max(id)from grupo_usuarios";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 int id = (int)ds.Tables[0].Rows[0][0];
                 if (id == null || id == 0)
@@ -108,39 +107,39 @@ namespace IrisContabilidad.modelos
 
 
         //get objeto
-        public departamento getDepartamentoById(int id)
+        public grupo_usuarios getGrupoUsuarioById(int id)
         {
             try
             {
-                departamento departamento = new departamento();
-                string sql = "select codigo,nombre,codigo_sucursal,activo from departamento where codigo='" + id + "'";
+                grupo_usuarios grupuUsuario = new grupo_usuarios();
+                string sql = "select codigo,nombre,detalles,activo from grupo_usuarios where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    departamento.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    departamento.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    departamento.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    departamento.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    grupuUsuario.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    grupuUsuario.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    grupuUsuario.detalles = ds.Tables[0].Rows[0][2].ToString();
+                    grupuUsuario.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
                 }
-                return departamento;
+                return grupuUsuario;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getDepartamentoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getGrupoUsuarioById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
 
         //get lista completa
-        public List<departamento> getListaCompleta(bool mantenimiento = false)
+        public List<cargo> getListaCompleta(bool mantenimiento = false)
         {
             try
             {
 
-                List<departamento> lista = new List<departamento>();
+                List<cargo> lista = new List<cargo>();
                 string sql = "";
-                sql = "select codigo,nombre,codigo_sucursal,activo from departamento";
+                sql = "select codigo,nombre,detalles,activo from grupo_usuarios";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -150,12 +149,11 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        departamento departamento = new departamento();
-                        departamento.codigo = Convert.ToInt16(row[0].ToString());
-                        departamento.nombre = row[1].ToString();
-                        departamento.codigo_sucursal = Convert.ToInt16(row[2].ToString());
-                        departamento.activo = Convert.ToBoolean(row[3].ToString());
-                        lista.Add(departamento);
+                        cargo cargo = new cargo();
+                        cargo.id = Convert.ToInt16(row[0].ToString());
+                        cargo.nombre = row[1].ToString();
+                        cargo.activo = Convert.ToBoolean(row[2].ToString());
+                        lista.Add(cargo);
                     }
                 }
                 return lista;

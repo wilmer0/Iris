@@ -187,7 +187,7 @@ namespace IrisContabilidad.modelos
                 List<sucursal> lista =new List<sucursal>();
                 string sql = "";
                 sql = "select codigo,codigo_empresa,secuencia,activo,direccion from sucursal ";
-                if(mantenimiento==true)
+                if (mantenimiento == false)
                 {
                     sql+=" where activo=1";
                 }

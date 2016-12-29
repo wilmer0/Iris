@@ -9,7 +9,7 @@ using IrisContabilidad.clases;
 
 namespace IrisContabilidad.modelos
 {
-    public class modeloDepartamento
+    public class modeloCiudad
     {
         //objetos
         utilidades utilidades = new utilidades();
@@ -19,63 +19,63 @@ namespace IrisContabilidad.modelos
 
 
         //agregar 
-        public bool agregarDepartamento(departamento departamento)
+        public bool agregarCiudad(ciudad ciudad)
         {
             try
             {
-             
                 int activo = 0;
-                string sql = "select *from departamento where nombre='" + departamento.nombre + "'";
+                //validar nombre
+                string sql = "select *from ciudad where nombre='" + ciudad.nombre + "' and codigo!='" + ciudad.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un departamento con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe una ciudad con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
-                if (departamento.activo == true)
+                if (ciudad.activo == true)
                 {
                     activo = 1;
                 }
 
-                sql = "insert into departamento(codigo,codigo_sucursal,nombre,activo) values('" + departamento.codigo+"','"+departamento.codigo_sucursal + "','" + departamento.nombre + "','" + activo.ToString() + "')";
+                sql = "insert into ciudad(codigo,nombre,activo) values('" + ciudad.codigo + "','" + ciudad.nombre + "','" + activo + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarDepartamento.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error agregarCiudad.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
         //modificar
-        public bool modificarDepartamento(departamento departamento)
+        public bool modificarCiudad(ciudad ciudad)
         {
             try
             {
                 int activo = 0;
-                string sql = "select *from departamento where nombre='" + departamento.nombre + "' and codigo!='" + departamento.codigo + "' and codigo_sucursal!='"+departamento.codigo_sucursal+"'";
+                //validar nombre
+                string sql = "select *from ciudad where nombre='" + ciudad.nombre + "' and codigo!='" + ciudad.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un departamento con ese nombre", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe una ciudad con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                if (departamento.activo == true)
+                if (ciudad.activo == true)
                 {
                     activo = 1;
                 }
-                sql = "update departamento set nombre='" + departamento.nombre + "', codigo_sucursal='"+departamento.codigo_sucursal+"', activo='" + activo.ToString() + "' where codigo='" + departamento.codigo + "'";
-                ds = utilidades.ejecutarcomando(sql);
-                MessageBox.Show(sql);
+
+                sql = "update ciudad set nombre='" + ciudad.nombre + "',activo='" + activo + "' where codigo='" + ciudad.codigo + "'";
+                //MessageBox.Show(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error modificarDepartamento.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error modificarCiudad.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -86,7 +86,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                string sql = "select max(codigo)from departamento";
+                string sql = "select max(codigo)from ciudad";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 int id = (int)ds.Tables[0].Rows[0][0];
                 if (id == null || id == 0)
@@ -108,39 +108,39 @@ namespace IrisContabilidad.modelos
 
 
         //get objeto
-        public departamento getDepartamentoById(int id)
+        public ciudad getCiudadById(int id)
         {
             try
             {
-                departamento departamento = new departamento();
-                string sql = "select codigo,nombre,codigo_sucursal,activo from departamento where codigo='" + id + "'";
+                ciudad ciudad = new ciudad();
+                string sql = "select codigo,nombre,activo from ciudad where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    departamento.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    departamento.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    departamento.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    departamento.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    ciudad.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    ciudad.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    ciudad.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
+                   
                 }
-                return departamento;
+                return ciudad;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getDepartamentoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getCiudadById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
 
         //get lista completa
-        public List<departamento> getListaCompleta(bool mantenimiento = false)
+        public List<ciudad> getListaCompleta(bool mantenimiento = false)
         {
             try
             {
 
-                List<departamento> lista = new List<departamento>();
+                List<ciudad> lista = new List<ciudad>();
                 string sql = "";
-                sql = "select codigo,nombre,codigo_sucursal,activo from departamento";
+                sql = "select codigo,nombre,activo from ciudad";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -150,12 +150,12 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        departamento departamento = new departamento();
-                        departamento.codigo = Convert.ToInt16(row[0].ToString());
-                        departamento.nombre = row[1].ToString();
-                        departamento.codigo_sucursal = Convert.ToInt16(row[2].ToString());
-                        departamento.activo = Convert.ToBoolean(row[3].ToString());
-                        lista.Add(departamento);
+                        ciudad ciudad = new ciudad();
+                        ciudad.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                        ciudad.nombre = ds.Tables[0].Rows[0][1].ToString();
+                        ciudad.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
+
+                        lista.Add(ciudad);
                     }
                 }
                 return lista;

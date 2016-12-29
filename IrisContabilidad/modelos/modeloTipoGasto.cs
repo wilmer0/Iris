@@ -9,7 +9,7 @@ using IrisContabilidad.clases;
 
 namespace IrisContabilidad.modelos
 {
-    public class modeloDepartamento
+    public class modeloTipoGasto
     {
         //objetos
         utilidades utilidades = new utilidades();
@@ -19,63 +19,63 @@ namespace IrisContabilidad.modelos
 
 
         //agregar 
-        public bool agregarDepartamento(departamento departamento)
+        public bool agregarTipoGasto(tipo_gasto tipoGasto)
         {
             try
             {
-             
                 int activo = 0;
-                string sql = "select *from departamento where nombre='" + departamento.nombre + "'";
+                //validar nombre
+                string sql = "select *from tipo_gasto where nombre='" + tipoGasto.nombre + "' and id!='" + tipoGasto.id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un departamento con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un tipo de gasto con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
-                if (departamento.activo == true)
+                if (tipoGasto.activo == true)
                 {
                     activo = 1;
                 }
 
-                sql = "insert into departamento(codigo,codigo_sucursal,nombre,activo) values('" + departamento.codigo+"','"+departamento.codigo_sucursal + "','" + departamento.nombre + "','" + activo.ToString() + "')";
+                sql = "insert into tipo_gasto(id,nombre,activo) values('" + tipoGasto.id + "','" + tipoGasto.nombre + "','" + activo + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarDepartamento.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error agregarTipoGasto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
         //modificar
-        public bool modificarDepartamento(departamento departamento)
+        public bool modificarTipoGasto(tipo_gasto tipoGasto)
         {
             try
             {
                 int activo = 0;
-                string sql = "select *from departamento where nombre='" + departamento.nombre + "' and codigo!='" + departamento.codigo + "' and codigo_sucursal!='"+departamento.codigo_sucursal+"'";
+                //validar nombre
+                string sql = "select *from tipo_gasto where nombre='" + tipoGasto.nombre + "' and id!='" + tipoGasto.id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un departamento con ese nombre", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un tipo de gasto con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                if (departamento.activo == true)
+                if (tipoGasto.activo == true)
                 {
                     activo = 1;
                 }
-                sql = "update departamento set nombre='" + departamento.nombre + "', codigo_sucursal='"+departamento.codigo_sucursal+"', activo='" + activo.ToString() + "' where codigo='" + departamento.codigo + "'";
-                ds = utilidades.ejecutarcomando(sql);
-                MessageBox.Show(sql);
+
+                sql = "update ciudad set nombre='" + tipoGasto.nombre + "',activo='" + activo + "' where codigo='" + tipoGasto.id + "'";
+                //MessageBox.Show(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error modificarDepartamento.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error modificarTipoGasto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -86,7 +86,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                string sql = "select max(codigo)from departamento";
+                string sql = "select max(id)from tipo_gasto";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 int id = (int)ds.Tables[0].Rows[0][0];
                 if (id == null || id == 0)
@@ -108,39 +108,39 @@ namespace IrisContabilidad.modelos
 
 
         //get objeto
-        public departamento getDepartamentoById(int id)
+        public tipo_gasto getTipoGastoById(int id)
         {
             try
             {
-                departamento departamento = new departamento();
-                string sql = "select codigo,nombre,codigo_sucursal,activo from departamento where codigo='" + id + "'";
+                tipo_gasto tipoGasto = new tipo_gasto();
+                string sql = "select id,nombre,activo from tipo_gasto where id='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    departamento.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    departamento.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    departamento.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    departamento.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    tipoGasto.id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    tipoGasto.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    tipoGasto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
+
                 }
-                return departamento;
+                return tipoGasto;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getDepartamentoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getTipoGastoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
 
         //get lista completa
-        public List<departamento> getListaCompleta(bool mantenimiento = false)
+        public List<tipo_gasto> getListaCompleta(bool mantenimiento = false)
         {
             try
             {
 
-                List<departamento> lista = new List<departamento>();
+                List<tipo_gasto> lista = new List<tipo_gasto>();
                 string sql = "";
-                sql = "select codigo,nombre,codigo_sucursal,activo from departamento";
+                sql = "select id,nombre,activo from tipo_gasto";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -150,12 +150,12 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        departamento departamento = new departamento();
-                        departamento.codigo = Convert.ToInt16(row[0].ToString());
-                        departamento.nombre = row[1].ToString();
-                        departamento.codigo_sucursal = Convert.ToInt16(row[2].ToString());
-                        departamento.activo = Convert.ToBoolean(row[3].ToString());
-                        lista.Add(departamento);
+                        tipo_gasto tipoGasto = new tipo_gasto();
+                        tipoGasto.id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                        tipoGasto.nombre = ds.Tables[0].Rows[0][1].ToString();
+                        tipoGasto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
+
+                        lista.Add(tipoGasto);
                     }
                 }
                 return lista;
