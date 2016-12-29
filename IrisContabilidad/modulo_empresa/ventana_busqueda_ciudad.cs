@@ -30,13 +30,8 @@ namespace IrisContabilidad.modulo_empresa
         private int fila = 0;
 
 
-        public ventana_busqueda_ciudad()
-        {
-            InitializeComponent();
-            tituloLabel.Text = this.Text;
-            loadLista();
-        }
-        public ventana_busqueda_ciudad(bool mantenimiento)
+       
+        public ventana_busqueda_ciudad(bool mantenimiento=false)
         {
             InitializeComponent();
             tituloLabel.Text = this.Text;

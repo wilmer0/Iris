@@ -31,13 +31,8 @@ namespace IrisContabilidad.modulo_empresa
 
 
 
-        public ventana_busqueda_sucursal()
-        {
-            InitializeComponent();
-            tituloLabel.Text = this.Text;
-            loadLista();
-        }
-        public ventana_busqueda_sucursal(bool mantenimiento)
+       
+        public ventana_busqueda_sucursal(bool mantenimiento=false)
         {
             InitializeComponent();
             tituloLabel.Text = this.Text;

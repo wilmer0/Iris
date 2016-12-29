@@ -33,13 +33,8 @@ namespace IrisContabilidad.modulo_nomina
         private int fila = 0;
 
 
-        public ventana_busqueda_cargo()
-        {
-            InitializeComponent();
-            this.tituloLabel.Text = this.Text;
-            loadLista();
-        }
-        public ventana_busqueda_cargo(bool mantenimiento)
+      
+        public ventana_busqueda_cargo(bool mantenimiento=false)
         {
             InitializeComponent();
             this.tituloLabel.Text = this.Text;
