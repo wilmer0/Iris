@@ -212,15 +212,15 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 int id = 0;
-                if (ds.Tables[0].Rows[0][0].ToString() == null)
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
                 {
                     id = 0;
                 }
                 else
                 {
                     id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    id += 1;
                 }
+                id += 1;
                 return id;
             }
             catch (Exception ex)
@@ -238,15 +238,15 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 int id = 0;
-                if (ds.Tables[0].Rows[0][0].ToString() == null)
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
                 {
                     id = 0;
                 }
                 else
                 {
                     id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    id += 1;
                 }
+                id += 1;
                 return id;
             }
             catch (Exception ex)

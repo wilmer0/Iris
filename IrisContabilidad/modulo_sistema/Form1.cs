@@ -124,8 +124,7 @@ namespace IrisContabilidad
                 return;
 
             modeloPrimerLogin.validarPrimerLogin();
-            modeloPrimerLogin.agregarVentanas();
-            modeloPrimerLogin.agregarAccesosVentanas();
+            
             empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()));
             if (empleado.login != null)
             {

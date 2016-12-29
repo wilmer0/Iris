@@ -82,7 +82,7 @@ namespace IrisContabilidad.modelos
                 //sucursal
                 sql = "SELECT * FROM sucursal";
                 ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count < 1)
+                if (ds.Tables[0].Rows.Count ==0)
                 {
                     //debe agregar la empresa
                     sucursal = new sucursal();
@@ -135,6 +135,86 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //agregar modulos del sistema
+        public void agregarModulos()
+        {
+            try
+            {
+                #region
+                List<modulo> listaModulo = new List<modulo>();
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = modeloModulo.getNextModulo();
+                modulo.nombre = "modulo empresa";
+                modulo.imagen = "empresa1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_empresa";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = modeloModulo.getNextModulo();
+                modulo.nombre = "modulo facturacion";
+                modulo.imagen = "facturacion1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_facturacion";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = modeloModulo.getNextModulo();
+                modulo.nombre = "modulo cuentas por cobrar";
+                modulo.imagen = "cxc.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = modeloModulo.getNextModulo();
+                modulo.nombre = "modulo cuentas por pagar";
+                modulo.imagen = "cxp.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = modeloModulo.getNextModulo();
+                modulo.nombre = "modulo inventario";
+                modulo.imagen = "inventario1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_inventario";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = modeloModulo.getNextModulo();
+                modulo.nombre = "modulo opciones";
+                modulo.imagen = "opciones1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_opciones";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = modeloModulo.getNextModulo();
+                modulo.nombre = "modulo nomina";
+                modulo.imagen = "nomina1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_nomina";
+                listaModulo.Add(modulo);
+
+                #endregion
+
+
+                listaModulo.ForEach(moduloActual =>
+                {
+                    modeloModulo.agregarModulo(moduloActual);
+                    string sql = "insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('1','modulo_empresa','1','IrisContabilidad.modulo_empresa','empresa1.png')";
+                    utilidades.ejecutarcomando_mysql(sql);
+                });
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarVentanas.: " + ex.ToString());
+            }
+        }
 
         //agregando las ventanas para que salgan al primer usuario
         public void agregarVentanas()
@@ -313,87 +393,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //agregar modulos del sistema
-        public void agregarModulos()
-        {
-            try
-            {
-                #region
-                List<modulo> listaModulo=new List<modulo>();
-                //nuevo modulo
-                modulo=new modulo();
-                modulo.id = modeloModulo.getNextModulo();
-                modulo.nombre = "modulo empresa";
-                modulo.imagen = "empresa1.png";
-                modulo.activo = true;
-                modulo.nombre_logico = "IrisContabilidad.modulo_empresa";
-                listaModulo.Add(modulo);
-                //nuevo modulo
-                modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
-                modulo.nombre = "modulo facturacion";
-                modulo.imagen = "facturacion1.png";
-                modulo.activo = true;
-                modulo.nombre_logico = "IrisContabilidad.modulo_facturacion";
-                listaModulo.Add(modulo);
-                //nuevo modulo
-                modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
-                modulo.nombre = "modulo cuentas por cobrar";
-                modulo.imagen = "cxc.png";
-                modulo.activo = true;
-                modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar";
-                listaModulo.Add(modulo);
-                //nuevo modulo
-                modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
-                modulo.nombre = "modulo cuentas por pagar";
-                modulo.imagen = "cxp.png";
-                modulo.activo = true;
-                modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar";
-                listaModulo.Add(modulo);
-                //nuevo modulo
-                modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
-                modulo.nombre = "modulo inventario";
-                modulo.imagen = "inventario1.png";
-                modulo.activo = true;
-                modulo.nombre_logico = "IrisContabilidad.modulo_inventario";
-                listaModulo.Add(modulo);
-                //nuevo modulo
-                modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
-                modulo.nombre = "modulo opciones";
-                modulo.imagen = "opciones1.png";
-                modulo.activo = true;
-                modulo.nombre_logico = "IrisContabilidad.modulo_opciones";
-                listaModulo.Add(modulo);
-                //nuevo modulo
-                modulo = new modulo();
-                modulo.id = modeloModulo.getNextModulo();
-                modulo.nombre = "modulo nomina";
-                modulo.imagen = "nomina1.png";
-                modulo.activo = true;
-                modulo.nombre_logico = "IrisContabilidad.modulo_nomina";
-                listaModulo.Add(modulo);
-               
-                #endregion
-                
-                
-                listaModulo.ForEach(moduloActual =>
-                {
-                    modeloModulo.agregarModulo(moduloActual);
-                    string sql = "insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('1','modulo_empresa','1','IrisContabilidad.modulo_empresa','empresa1.png')";
-                    utilidades.ejecutarcomando_mysql(sql);
-                });
-               
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error agregarVentanas.: " + ex.ToString());
-            }
-        }
-
+       
 
         //agregar primer empleado
         public void agregarPrimerEmpleado()
