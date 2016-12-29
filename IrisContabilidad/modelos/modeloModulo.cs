@@ -15,6 +15,84 @@ namespace IrisContabilidad.modelos
         utilidades utilidades = new utilidades();
 
 
+
+        //agregar 
+        public bool agregarModulo(modulo modulo)
+        {
+            try
+            {
+                int activo = 0;
+                modulo.id = getNextModulo();
+                //validar nombre
+                string sql = "select *from sistema_modulo where nombre='" + modulo.nombre + "' and id!='" + modulo.id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un modulo con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar nombre_modulo_proyecto
+                sql = "select *from sistema_modulo where nombre_modulo_proyecto='" + modulo.nombre + "' and id!='" + modulo.id + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un modulo con ese nombre de proyecto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                if (modulo.activo == true)
+                {
+                    activo = 1;
+                }
+
+                sql = "insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('" + modulo.id + "','" + modulo.nombre + "','" + activo.ToString() + "','"+modulo.nombre_logico+"','"+modulo.imagen+"')";
+                //MessageBox.Show(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarModulo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //modificar
+        public bool modificarModulo(modulo modulo)
+        {
+            try
+            {
+                int activo = 0;
+                //validar nombre
+                string sql = "select *from sistema_modulo where nombre='" + modulo.nombre + "' and id!='" + modulo.id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un modulo con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar nombre_modulo_proyecto
+                sql = "select *from sistema_modulo where nombre_modulo_proyecto='" + modulo.nombre + "' and id!='" + modulo.id + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un modulo con ese nombre de proyecto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                if (modulo.activo == true)
+                {
+                    activo = 1;
+                }
+                sql = "update sistema_modulo set nombre='" + modulo.nombre + "',activo='" + activo.ToString() + "',nombre_modulo_proyecto='" +modulo.nombre_logico+ "',imagen='"+modulo.imagen+"' where id='" + modulo.id + "'";
+                ds = utilidades.ejecutarcomando(sql);
+                //MessageBox.Show(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error modificarModulo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
         public modulo getModuloByid(int id)
         {
             try
@@ -87,6 +165,57 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error getVentanaById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+        }
+        public int getNextModulo()
+        {
+            try
+            {
+                string sql = "select max(id)from sistema_modulo";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null)
+                {
+                    id = 0;
+                }
+                else
+                {
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    id += 1;
+                }
+                return id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getNextModulo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+        public int getNextVentana()
+        {
+            try
+            {
+                string sql = "select max(codigo)from sistema_ventanas";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null)
+                {
+                    id = 0;
+                }
+                else
+                {
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    id += 1;
+                }
+                return id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getgetNextVentanaNext.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
             }
         }
 

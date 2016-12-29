@@ -49,6 +49,37 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //agregar lista ciudades
+        public bool agregarCiudad(List<ciudad> lista)
+        {
+            try
+            {
+                lista.ForEach(ciudadActual=>
+                {
+                    int activo = 0;
+                    //validar nombre
+                    ciudadActual.codigo = getNext();
+                    string sql = "select *from ciudad where nombre='" + ciudadActual.nombre + "' and codigo!='" + ciudadActual.codigo + "'";
+                    DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                    if (ds.Tables[0].Rows.Count == 0)
+                    {
+                        if (ciudadActual.activo == true)
+                        {
+                            activo = 1;
+                        }
+                        sql = "insert into ciudad(codigo,nombre,activo) values('" + ciudadActual.codigo + "','" + ciudadActual.nombre + "','" + activo + "')";
+                        ds = utilidades.ejecutarcomando_mysql(sql);
+                    }
+                });
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarCiudad.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         //modificar
         public bool modificarCiudad(ciudad ciudad)
         {
@@ -88,13 +119,15 @@ namespace IrisContabilidad.modelos
             {
                 string sql = "select max(codigo)from ciudad";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                int id = (int)ds.Tables[0].Rows[0][0];
-                if (id == null || id == 0)
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString()==null)
                 {
-                    id = 1;
+                    id = 0;
                 }
                 else
                 {
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     id += 1;
                 }
                 return id;

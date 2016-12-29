@@ -100,6 +100,7 @@
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />
+    <Compile Include="modelos\modeloPrimerLogin.cs" />
     <Compile Include="modelos\modeloSituacionEmpleado.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />
     <Compile Include="modelos\modeloSuplidor.cs" />
@@ -116,11 +117,23 @@
     <Compile Include="modulo_cuenta_por_pagar\ventana_suplidor.Designer.cs">
       <DependentUpon>ventana_suplidor.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_empresa\ventana_busqueda_ciudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_busqueda_ciudad.Designer.cs">
+      <DependentUpon>ventana_busqueda_ciudad.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_empresa\ventana_busqueda_sucursal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modulo_empresa\ventana_busqueda_sucursal.Designer.cs">
       <DependentUpon>ventana_busqueda_sucursal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_ciudad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_ciudad.Designer.cs">
+      <DependentUpon>ventana_ciudad.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_empresa\ventana_empresa.cs">
       <SubType>Form</SubType>
@@ -235,8 +248,14 @@
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_suplidor.resx">
       <DependentUpon>ventana_suplidor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_empresa\ventana_busqueda_ciudad.resx">
+      <DependentUpon>ventana_busqueda_ciudad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_busqueda_sucursal.resx">
       <DependentUpon>ventana_busqueda_sucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_empresa\ventana_ciudad.resx">
+      <DependentUpon>ventana_ciudad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_empresa.resx">
       <DependentUpon>ventana_empresa.cs</DependentUpon>
