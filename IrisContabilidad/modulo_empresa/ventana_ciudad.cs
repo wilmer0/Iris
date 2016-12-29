@@ -44,13 +44,11 @@ namespace IrisContabilidad.modulo_empresa
             {
                 if (ciudad != null)
                 {
-                    //llenar campos
                     nombreText.Text = ciudad.nombre;
                     activoCheck.Checked = Convert.ToBoolean(ciudad.activo);
                 }
                 else
                 {
-                    //blanquear campos
                     nombreText.Text = "";
                     activoCheck.Checked = false;
                 }
@@ -168,6 +166,18 @@ namespace IrisContabilidad.modulo_empresa
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_ciudad ventana = new ventana_busqueda_ciudad(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                ciudad = ventana.getObjeto();
+                loadVentana();
+            }
         }
     }
 }

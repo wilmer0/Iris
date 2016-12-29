@@ -28,7 +28,7 @@ namespace IrisContabilidad.modulo_nomina
 
 
         //variables 
-        private bool mantenimiento = false;
+        public bool mantenimiento = false;
         private int fila = 0;
 
 
@@ -36,6 +36,13 @@ namespace IrisContabilidad.modulo_nomina
         {
             InitializeComponent();
             this.tituloLabel.Text = this.Text;
+            loadLista();
+        }
+        public ventana_busqueda_departamento(bool mantenimiento)
+        {
+            InitializeComponent();
+            this.tituloLabel.Text = this.Text;
+            this.mantenimiento = mantenimiento;
             loadLista();
         }
         public void loadLista()
@@ -46,7 +53,7 @@ namespace IrisContabilidad.modulo_nomina
                 if (listaDepartamento == null)
                 {
                     listaDepartamento = new List<departamento>();
-                    listaDepartamento = modeloDepartamento.getListaCompleta();
+                    listaDepartamento = modeloDepartamento.getListaCompleta(mantenimiento);
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)

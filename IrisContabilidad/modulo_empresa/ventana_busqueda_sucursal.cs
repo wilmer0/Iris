@@ -26,7 +26,7 @@ namespace IrisContabilidad.modulo_empresa
         private modeloSucursal modeloSucursal=new modeloSucursal();
 
         //variables 
-        private bool mantenimiento = false;
+        public bool mantenimiento = false;
         private int fila = 0;
 
 
@@ -37,7 +37,13 @@ namespace IrisContabilidad.modulo_empresa
             tituloLabel.Text = this.Text;
             loadLista();
         }
-
+        public ventana_busqueda_sucursal(bool mantenimiento)
+        {
+            InitializeComponent();
+            tituloLabel.Text = this.Text;
+            this.mantenimiento = mantenimiento;
+            loadLista();
+        }
 
         public void loadLista()
         {
@@ -47,7 +53,7 @@ namespace IrisContabilidad.modulo_empresa
                 if (listaSucursal == null)
                 {
                     listaSucursal=new List<sucursal>();
-                    listaSucursal = modeloSucursal.getListaCompleta();
+                    listaSucursal = modeloSucursal.getListaCompleta(mantenimiento);
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
@@ -161,6 +167,11 @@ namespace IrisContabilidad.modulo_empresa
         }
 
         private void nombreText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

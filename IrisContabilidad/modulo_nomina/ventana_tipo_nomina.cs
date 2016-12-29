@@ -181,6 +181,7 @@ namespace IrisContabilidad.modulo_nomina
         private void button4_Click(object sender, EventArgs e)
         {
             ventana_busqueda_tipo_nomina ventana = new ventana_busqueda_tipo_nomina();
+            ventana.mantenimiento = true;
             ventana.Owner = this;
             ventana.ShowDialog();
             if (ventana.DialogResult == DialogResult.OK)

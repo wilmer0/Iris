@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_empresa;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_cuenta_por_pagar
@@ -284,6 +285,18 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private void faxText_KeyPress(object sender, KeyPressEventArgs e)
         {
             utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_ciudad ventana = new ventana_busqueda_ciudad();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                ciudad = ventana.getObjeto();
+               loadCiudad();
+            }
         }
     }
 }

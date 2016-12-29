@@ -49,6 +49,7 @@ namespace IrisContabilidad.modulo_empresa
         private void button4_Click(object sender, EventArgs e)
         {
             ventana_busqueda_sucursal ventana=new ventana_busqueda_sucursal();
+            ventana.mantenimiento = true;
             ventana.Owner = this;
             ventana.ShowDialog();
             if (ventana.DialogResult==DialogResult.OK)

@@ -26,7 +26,7 @@ namespace IrisContabilidad.modulo_empresa
         private modeloCiudad modeloCiudad = new modeloCiudad();
 
         //variables 
-        private bool mantenimiento = false;
+        public bool mantenimiento=false;
         private int fila = 0;
 
 
@@ -34,6 +34,13 @@ namespace IrisContabilidad.modulo_empresa
         {
             InitializeComponent();
             tituloLabel.Text = this.Text;
+            loadLista();
+        }
+        public ventana_busqueda_ciudad(bool mantenimiento)
+        {
+            InitializeComponent();
+            tituloLabel.Text = this.Text;
+            this.mantenimiento = mantenimiento;
             loadLista();
         }
         public void loadLista()
@@ -44,7 +51,7 @@ namespace IrisContabilidad.modulo_empresa
                 if (listaCiudad == null)
                 {
                     listaCiudad = new List<ciudad>();
-                    listaCiudad = modeloCiudad.getListaCompleta();
+                    listaCiudad = modeloCiudad.getListaCompleta(mantenimiento);
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
@@ -153,6 +160,16 @@ namespace IrisContabilidad.modulo_empresa
         private void button2_Click(object sender, EventArgs e)
         {
             Salir();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

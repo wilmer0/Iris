@@ -170,10 +170,10 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-
+                ciudad ciudad;
                 List<ciudad> lista = new List<ciudad>();
                 string sql = "";
-                sql = "select codigo,nombre,activo from ciudad";
+                sql = "select codigo,nombre,activo from ciudad ";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -183,10 +183,10 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        ciudad ciudad = new ciudad();
-                        ciudad.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                        ciudad.nombre = ds.Tables[0].Rows[0][1].ToString();
-                        ciudad.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
+                        ciudad=new ciudad();
+                        ciudad.codigo = Convert.ToInt16(row[0].ToString());
+                        ciudad.nombre = row[1].ToString();
+                        ciudad.activo = Convert.ToBoolean(row[2].ToString());
 
                         lista.Add(ciudad);
                     }
