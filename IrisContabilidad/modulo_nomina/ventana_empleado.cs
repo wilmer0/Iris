@@ -63,6 +63,7 @@ namespace IrisContabilidad.modulo_nomina
                     //llenar campos
                     nombreText.Text = empleado.nombre;
                     identificacionText.Text = empleado.identificacion;
+                    pasaporteText.Text = empleado.pasaporte;
                     usuarioText.Text=empleado.login;
                     claveText.Text = utilidades.desencriptar(empleado.clave);
                     sucursal = modeloSucursal.getSucursalById(empleado.codigo_sucursal);
@@ -85,6 +86,7 @@ namespace IrisContabilidad.modulo_nomina
                     //blanquear campos
                     nombreText.Text = "";
                     identificacionText.Text = "";
+                    pasaporteText.Text = "";
                     usuarioText.Text = "";
                     claveText.Text = "";
                     sucursalIdText.Text = "";

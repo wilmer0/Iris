@@ -54,10 +54,6 @@
             this.cargoText = new System.Windows.Forms.TextBox();
             this.departamentoText = new System.Windows.Forms.TextBox();
             this.sucursalText = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.identificacionText = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.sueldoText = new System.Windows.Forms.TextBox();
@@ -91,12 +87,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.secuenciacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pasaporteText = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -141,6 +138,8 @@
             // tabPage1
             // 
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage1.Controls.Add(this.pasaporteText);
+            this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.button11);
             this.tabPage1.Controls.Add(this.foto_empleado);
             this.tabPage1.Controls.Add(this.label14);
@@ -161,7 +160,6 @@
             this.tabPage1.Controls.Add(this.cargoText);
             this.tabPage1.Controls.Add(this.departamentoText);
             this.tabPage1.Controls.Add(this.sucursalText);
-            this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.identificacionText);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.sueldoText);
@@ -424,55 +422,10 @@
             this.sucursalText.Size = new System.Drawing.Size(253, 26);
             this.sucursalText.TabIndex = 46;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Location = new System.Drawing.Point(112, 144);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(253, 46);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(174, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(73, 17);
-            this.radioButton3.TabIndex = 48;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Pasaporte";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(99, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(45, 17);
-            this.radioButton2.TabIndex = 47;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Rnc";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(58, 17);
-            this.radioButton1.TabIndex = 46;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Cedula";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
             // identificacionText
             // 
             this.identificacionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.identificacionText.Location = new System.Drawing.Point(112, 112);
+            this.identificacionText.Location = new System.Drawing.Point(112, 115);
             this.identificacionText.MaxLength = 30;
             this.identificacionText.Name = "identificacionText";
             this.identificacionText.Size = new System.Drawing.Size(253, 26);
@@ -482,7 +435,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(41, 115);
+            this.label10.Location = new System.Drawing.Point(41, 118);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(66, 20);
             this.label10.TabIndex = 44;
@@ -656,7 +609,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 197);
+            this.label1.Location = new System.Drawing.Point(35, 189);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 20);
             this.label1.TabIndex = 24;
@@ -674,7 +627,7 @@
             // usuarioText
             // 
             this.usuarioText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usuarioText.Location = new System.Drawing.Point(112, 196);
+            this.usuarioText.Location = new System.Drawing.Point(112, 188);
             this.usuarioText.MaxLength = 30;
             this.usuarioText.Name = "usuarioText";
             this.usuarioText.Size = new System.Drawing.Size(253, 26);
@@ -813,6 +766,25 @@
             this.secuenciacolumn.Name = "secuenciacolumn";
             this.secuenciacolumn.ReadOnly = true;
             // 
+            // pasaporteText
+            // 
+            this.pasaporteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pasaporteText.Location = new System.Drawing.Point(112, 150);
+            this.pasaporteText.MaxLength = 30;
+            this.pasaporteText.Name = "pasaporteText";
+            this.pasaporteText.Size = new System.Drawing.Size(253, 26);
+            this.pasaporteText.TabIndex = 67;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(15, 153);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(91, 20);
+            this.label16.TabIndex = 66;
+            this.label16.Text = "Pasaporte";
+            // 
             // ventana_empleado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -833,8 +805,6 @@
             this.tabPage1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
@@ -874,10 +844,6 @@
         private System.Windows.Forms.TextBox departamentoIdText;
         public System.Windows.Forms.TextBox identificacionText;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton3;
         public System.Windows.Forms.TextBox sucursalText;
         public System.Windows.Forms.TextBox departamentoText;
         public System.Windows.Forms.TextBox cargoText;
@@ -908,5 +874,7 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
+        public System.Windows.Forms.TextBox pasaporteText;
+        private System.Windows.Forms.Label label16;
     }
 }
