@@ -87,6 +87,8 @@
     <Compile Include="clases\singleton.cs" />
     <Compile Include="clases\situacion_empleado.cs" />
     <Compile Include="clases\sucursal.cs" />
+    <Compile Include="clases\suplidor.cs" />
+    <Compile Include="clases\tipo_gasto.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
     <Compile Include="modelos\modeloCargo.cs" />

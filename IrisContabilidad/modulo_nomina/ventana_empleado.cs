@@ -28,6 +28,7 @@ namespace IrisContabilidad.modulo_nomina
         private cargo cargo;
         private nomina_tipo nominaTipo;
         private grupo_usuarios grupoUsuarios;
+        
 
 
         //modelos
@@ -44,7 +45,7 @@ namespace IrisContabilidad.modulo_nomina
         {
             InitializeComponent();
             empleadoSingleton = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana empleado");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana empleado");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
@@ -228,7 +229,7 @@ namespace IrisContabilidad.modulo_nomina
                 empleado.nombre = nombreText.Text;
                 empleado.identificacion = identificacionText.Text;
                 empleado.login = usuarioText.Text;
-                empleado.clave = utilidades.encriptar(usuarioText.Text);
+                empleado.clave = utilidades.encriptar(claveText.Text);
                 empleado.codigo_sucursal = sucursal.codigo;
                 empleado.codigo_cargo = cargo.id;
                 empleado.fecha_ingreso = Convert.ToDateTime(fechaIngreso.Text);

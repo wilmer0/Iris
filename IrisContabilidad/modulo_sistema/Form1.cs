@@ -133,6 +133,7 @@ namespace IrisContabilidad
         }
         public  void GetAction()
         {
+            //modeloEmpleado.adminPrimerLogin();
             if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;

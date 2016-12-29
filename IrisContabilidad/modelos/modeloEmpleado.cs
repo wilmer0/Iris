@@ -338,17 +338,33 @@ namespace IrisContabilidad.modelos
                 //ingresando acceso a ventanas del primer usuario
                 foreach (DataRow row in ventanas.Tables[0].Rows)
                 {
-                    sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','"+row[0].ToString()+"')";
+                    sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','" + row[0].ToString() + "')";
                     utilidades.ejecutarcomando_mysql(sql);
                 }
                 //agregando el primer modulo
-                sql ="insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('1','modulo_empresa','1','IrisContabilidad.modulo_empresa','empresa1.png')";
+                sql = "insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('1','modulo_empresa','1','IrisContabilidad.modulo_empresa','empresa1.png')";
                 utilidades.ejecutarcomando_mysql(sql);
                 //agregando todas las ventanas al primer modulo
                 foreach (DataRow row in ventanas.Tables[0].Rows)
                 {
                     sql = "insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','" + row[0].ToString() + "')";
                 }
+                //string sql = "select codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas";
+                //DataSet ventanas = utilidades.ejecutarcomando_mysql(sql);
+                ////ingresando acceso a ventanas del primer usuario
+                //foreach (DataRow row in ventanas.Tables[0].Rows)
+                //{
+                //    sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('2','" + row[0].ToString() + "')";
+                //    utilidades.ejecutarcomando_mysql(sql);
+                //}
+                ////agregando el primer modulo
+                //sql = "insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('1','modulo_empresa','1','IrisContabilidad.modulo_empresa','empresa1.png')";
+                //utilidades.ejecutarcomando_mysql(sql);
+                ////agregando todas las ventanas al primer modulo
+                //foreach (DataRow row in ventanas.Tables[0].Rows)
+                //{
+                //    sql = "insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','" + row[0].ToString() + "')";
+                //}
             }
             catch (Exception ex)
             {
