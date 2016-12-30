@@ -29,13 +29,16 @@ namespace IrisContabilidad.modulo_nomina
 
 
         //variables 
-        private bool mantenimiento = false;
+        public  bool mantenimiento = false;
         private int fila = 0;
 
 
-        public ventana_busqueda_tipo_nomina()
+        
+        public ventana_busqueda_tipo_nomina(bool mantenimiento=false)
         {
             InitializeComponent();
+            this.tituloLabel.Text = this.Text;
+            this.mantenimiento = mantenimiento;
             loadLista();
         }
         public void loadLista()
@@ -46,7 +49,7 @@ namespace IrisContabilidad.modulo_nomina
                 if (listaNominaTipo == null)
                 {
                     listaNominaTipo = new List<nomina_tipo>();
-                    listaNominaTipo = modeloNominaTipo.getListaCompleta();
+                    listaNominaTipo = modeloNominaTipo.getListaCompleta(mantenimiento);
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)

@@ -24,6 +24,7 @@ namespace IrisContabilidad.clases
         public int codigo_tipo_nomina { get; set; }
         public string identificacion { get; set; }
         public string pasaporte { get; set; }
+        
 
     }
 }

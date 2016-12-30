@@ -90,6 +90,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(747, 255);
             this.dataGridView1.TabIndex = 9;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // codigoColumn
             // 
@@ -136,6 +137,7 @@
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(396, 26);
             this.nombreText.TabIndex = 20;
+            this.nombreText.TextChanged += new System.EventHandler(this.nombreText_TextChanged);
             this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // groupBox1

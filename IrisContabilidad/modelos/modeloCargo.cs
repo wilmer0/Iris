@@ -24,7 +24,8 @@ namespace IrisContabilidad.modelos
                 try
                 {
                     int activo = 0;
-                    string sql = "select *from cargo where nombre='" + cargo.nombre + "'";
+                    //validar nombre
+                    string sql = "select *from cargo where nombre='" + cargo.nombre + "' and id!='"+cargo.id+"'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
@@ -54,6 +55,7 @@ namespace IrisContabilidad.modelos
                 try
                 {
                     int activo = 0;
+                    //validar nombre
                     string sql = "select *from cargo where nombre='" + cargoAPP.nombre + "' and id!='"+cargoAPP.id+"'";
                     DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                     if (ds.Tables[0].Rows.Count > 0)
@@ -68,7 +70,7 @@ namespace IrisContabilidad.modelos
                     }
                     sql = "update cargo set nombre='" + cargoAPP.nombre + "',activo='"+activo.ToString()+"' where id='"+cargoAPP.id+"'";
                     ds=utilidades.ejecutarcomando(sql);
-                    MessageBox.Show(sql);
+                    //MessageBox.Show(sql);
                     return true;
                 }
                 catch (Exception ex)
@@ -86,15 +88,17 @@ namespace IrisContabilidad.modelos
             {
                 string sql = "select max(id)from cargo";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                int id = (int)ds.Tables[0].Rows[0][0];
-                if (id == null || id==0)
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
                 {
-                    id = 1;
+                    id = 0;
                 }
                 else
                 {
-                    id += 1;
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 }
+                id += 1;
                 return id;
             }
             catch (Exception ex)
@@ -138,7 +142,7 @@ namespace IrisContabilidad.modelos
                 List<cargo> lista = new List<cargo>();
                 string sql = "";
                 sql = "select id,nombre,activo from cargo";
-                if (mantenimiento == true)
+                if (mantenimiento == false)
                 {
                     sql += " where activo=1";
                 }

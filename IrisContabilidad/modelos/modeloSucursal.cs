@@ -112,10 +112,11 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                int id = 0;
                 string sql = "select max(codigo)from sucursal";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows[0][0].ToString() == "")
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
                 {
                     id = 0;
                 }
@@ -123,14 +124,7 @@ namespace IrisContabilidad.modelos
                 {
                     id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 }
-                if (id == null || id == 0)
-                {
-                    id = 1;
-                }
-                else
-                {
-                    id += 1;
-                }
+                id += 1;
                 return id;
             }
             catch (Exception ex)
@@ -187,7 +181,7 @@ namespace IrisContabilidad.modelos
                 List<sucursal> lista =new List<sucursal>();
                 string sql = "";
                 sql = "select codigo,codigo_empresa,secuencia,activo,direccion from sucursal ";
-                if(mantenimiento==true)
+                if (mantenimiento == false)
                 {
                     sql+=" where activo=1";
                 }
