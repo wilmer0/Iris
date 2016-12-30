@@ -32,7 +32,7 @@ namespace IrisContabilidad.modulo_facturacion
         private int fila = 0;
 
 
-        public ventana_busqueda_itbis()
+        public ventana_busqueda_itbis(bool mantenimiento=false)
         {
             InitializeComponent();
             this.tituloLabel.Text = this.Text;

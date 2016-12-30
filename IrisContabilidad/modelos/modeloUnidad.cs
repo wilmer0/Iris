@@ -86,7 +86,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
                 sql = "update unidad set nombre='" + unidad.nombre + "',unidad_abreviada='"+unidad.unidad_abreviada+"',activo='" + activo.ToString() + "' where codigo='" + unidad.codigo + "'";
-                ds = utilidades.ejecutarcomando_sql(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
             }

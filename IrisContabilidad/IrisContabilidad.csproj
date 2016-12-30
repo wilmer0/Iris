@@ -42,6 +42,18 @@
     <Reference Include="Gmap.net">
       <HintPath>..\..\DLR-POS-2.0\proyecto\packages\GMap.Net.1.0.1\lib\Gmap.net.dll</HintPath>
     </Reference>
+    <Reference Include="GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsPresentation, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.Windows.1.7.5\lib\net40\GMap.NET.WindowsPresentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\DLR-POS-2.0\proyecto\puntoVentaWin\librerias\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -181,6 +193,12 @@
     <Compile Include="modulo_facturacion\ventana_itebis.Designer.cs">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_producto.Designer.cs">
+      <DependentUpon>ventana_producto.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_busqueda_unidad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -317,6 +335,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_producto.resx">
+      <DependentUpon>ventana_producto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>

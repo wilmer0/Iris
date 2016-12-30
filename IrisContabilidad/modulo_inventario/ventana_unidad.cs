@@ -149,14 +149,12 @@ namespace IrisContabilidad.modulo_inventario
                         MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
             catch (Exception ex)
             {
                 unidad = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
         private void ventana_unidad_Load(object sender, EventArgs e)
         {
@@ -181,7 +179,7 @@ namespace IrisContabilidad.modulo_inventario
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ventana_busqueda_unidad ventana = new ventana_busqueda_unidad();
+            ventana_busqueda_unidad ventana = new ventana_busqueda_unidad(true);
             ventana.mantenimiento = true;
             ventana.Owner = this;
             ventana.ShowDialog();

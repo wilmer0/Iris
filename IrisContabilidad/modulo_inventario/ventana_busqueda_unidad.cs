@@ -32,7 +32,7 @@ namespace IrisContabilidad.modulo_inventario
         private int fila = 0;
 
 
-        public ventana_busqueda_unidad()
+        public ventana_busqueda_unidad(bool mantenimiento=false)
         {
             InitializeComponent();
             this.tituloLabel.Text = this.Text;

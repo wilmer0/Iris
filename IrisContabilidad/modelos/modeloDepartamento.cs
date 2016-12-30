@@ -69,7 +69,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
                 sql = "update departamento set nombre='" + departamento.nombre + "', codigo_sucursal='"+departamento.codigo_sucursal+"', activo='" + activo.ToString() + "' where codigo='" + departamento.codigo + "'";
-                ds = utilidades.ejecutarcomando_sql(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 MessageBox.Show(sql);
                 return true;
             }

@@ -41,3 +41,8 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\I
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_busqueda_itbis.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_inventario.ventana_unidad.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_inventario.ventana_busqueda_unidad.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GMap.NET.Core.dll
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GMap.NET.WindowsForms.dll
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GMap.NET.WindowsPresentation.dll
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GMap.NET.WindowsPresentation.xml
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_producto.resources

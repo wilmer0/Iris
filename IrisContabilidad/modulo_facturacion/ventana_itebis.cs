@@ -192,7 +192,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ventana_busqueda_itbis ventana = new ventana_busqueda_itbis();
+            ventana_busqueda_itbis ventana = new ventana_busqueda_itbis(true);
             ventana.mantenimiento = true;
             ventana.Owner = this;
             ventana.ShowDialog();
