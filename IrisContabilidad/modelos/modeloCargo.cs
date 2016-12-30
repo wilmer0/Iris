@@ -88,15 +88,17 @@ namespace IrisContabilidad.modelos
             {
                 string sql = "select max(id)from cargo";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                int id = (int)ds.Tables[0].Rows[0][0];
-                if (id == null || id==0)
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
                 {
-                    id = 1;
+                    id = 0;
                 }
                 else
                 {
-                    id += 1;
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 }
+                id += 1;
                 return id;
             }
             catch (Exception ex)

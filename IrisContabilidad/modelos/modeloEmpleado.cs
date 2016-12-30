@@ -25,15 +25,18 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validar identificacion
-                string sql = "select *from empleado where identificacion='" + empleado.identificacion + "' and identificacion!='' and codigo!='" + empleado.codigo + "'";
+                string sql = "select *from empleado where identificacion='" + empleado.identificacion +
+                             "' and identificacion!='' and codigo!='" + empleado.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un empleado con esa identificacion con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un empleado con esa identificacion con ese nombre", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
                     return false;
                 }
                 //validar pasaporte
-                sql = "select *from empleado where pasaporte='" + empleado.pasaporte + "' and pasaporte!='' and codigo!='" + empleado.codigo + "'";
+                sql = "select *from empleado where pasaporte='" + empleado.pasaporte +
+                      "' and pasaporte!='' and codigo!='" + empleado.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -53,14 +56,22 @@ namespace IrisContabilidad.modelos
                 {
                     activo = 1;
                 }
-                sql = "insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte) values('" + empleado.codigo + "','" + empleado.nombre + "','" + empleado.login + "','" + empleado.clave + "','" + empleado.sueldo + "','" + empleado.codigo_situacion + "','" + activo + "','" + empleado.codigo_sucursal + "','" + empleado.codigo_departamento + "','" + empleado.codigo_cargo + "','" + empleado.codigo_grupo_usuario + "','" + empleado.fecha_ingreso.ToString("yyyy-MM-dd") + "','" + empleado.tipo_permiso + "','" + empleado.codigo_tipo_nomina + "','" + empleado.identificacion + "','" + empleado.pasaporte + "')";
+                sql =
+                    "insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte) values('" +
+                    empleado.codigo + "','" + empleado.nombre + "','" + empleado.login + "','" + empleado.clave + "','" +
+                    empleado.sueldo + "','" + empleado.codigo_situacion + "','" + activo + "','" +
+                    empleado.codigo_sucursal + "','" + empleado.codigo_departamento + "','" + empleado.codigo_cargo +
+                    "','" + empleado.codigo_grupo_usuario + "','" + empleado.fecha_ingreso.ToString("yyyy-MM-dd") +
+                    "','" + empleado.tipo_permiso + "','" + empleado.codigo_tipo_nomina + "','" +
+                    empleado.identificacion + "','" + empleado.pasaporte + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarEmpleado.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error agregarEmpleado.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -72,15 +83,18 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validar identificacion
-                string sql = "select *from empleado where identificacion='" + empleado.identificacion + "' and identificacion!='' and codigo!='" + empleado.codigo + "'";
+                string sql = "select *from empleado where identificacion='" + empleado.identificacion +
+                             "' and identificacion!='' and codigo!='" + empleado.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un empleado con esa identificacion con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un empleado con esa identificacion con ese nombre", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
                     return false;
                 }
                 //validar pasaporte
-                sql = "select *from empleado where pasaporte='" + empleado.pasaporte + "' and pasaporte!='' and codigo!='" + empleado.codigo + "'";
+                sql = "select *from empleado where pasaporte='" + empleado.pasaporte +
+                      "' and pasaporte!='' and codigo!='" + empleado.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -100,14 +114,23 @@ namespace IrisContabilidad.modelos
                 {
                     activo = 1;
                 }
-                sql = "update empleado set nombre='" + empleado.nombre + "',login='" + empleado.login + "',clave='" + empleado.clave + "',sueldo='" + empleado.sueldo + "',cod_situacion='" + empleado.codigo_situacion + "',activo='" + activo + "',cod_sucursal='" + empleado.codigo_sucursal + "',cod_departamento='" + empleado.codigo_departamento + "',cod_cargo='" + empleado.codigo_cargo + "',cod_grupo_usuario='" + empleado.codigo_grupo_usuario + "',fecha_ingreso='" + empleado.fecha_ingreso.ToString("yyyy-MM-dd") + "',permiso='" + empleado.tipo_permiso + "',cod_tipo_nomina='" + empleado.codigo_tipo_nomina + "',identificacion='" + empleado.identificacion + "',pasaporte='" + empleado.pasaporte + "' where codigo='" + empleado.codigo + "'";
+                sql = "update empleado set nombre='" + empleado.nombre + "',login='" + empleado.login + "',clave='" +
+                      empleado.clave + "',sueldo='" + empleado.sueldo + "',cod_situacion='" + empleado.codigo_situacion +
+                      "',activo='" + activo + "',cod_sucursal='" + empleado.codigo_sucursal + "',cod_departamento='" +
+                      empleado.codigo_departamento + "',cod_cargo='" + empleado.codigo_cargo + "',cod_grupo_usuario='" +
+                      empleado.codigo_grupo_usuario + "',fecha_ingreso='" +
+                      empleado.fecha_ingreso.ToString("yyyy-MM-dd") + "',permiso='" + empleado.tipo_permiso +
+                      "',cod_tipo_nomina='" + empleado.codigo_tipo_nomina + "',identificacion='" +
+                      empleado.identificacion + "',pasaporte='" + empleado.pasaporte + "' where codigo='" +
+                      empleado.codigo + "'";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error modificarEmpleado.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error modificarEmpleado.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -118,10 +141,11 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                int id = 0;
                 string sql = "select max(codigo)from empleado";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows[0][0].ToString() == "")
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
                 {
                     id = 0;
                 }
@@ -129,14 +153,7 @@ namespace IrisContabilidad.modelos
                 {
                     id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 }
-                if (id == null || id == 0)
-                {
-                    id = 1;
-                }
-                else
-                {
-                    id += 1;
-                }
+                id += 1;
                 return id;
             }
             catch (Exception ex)
@@ -179,8 +196,12 @@ namespace IrisContabilidad.modelos
                 //listas
                 List<string> listaModulos = new List<string>();
                 string sql = "";
-                sql = "SELECT id_ventana_sistema FROM empleado_accesos_ventanas  where  id_empleado ='"+empleado.codigo + "'";
+                sql = "SELECT id_ventana_sistema FROM empleado_accesos_ventanas  where  id_empleado ='" +empleado.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    return null;
+                }
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     //hacer select para saber a que modulo pertenece esa ventana
@@ -206,12 +227,13 @@ namespace IrisContabilidad.modelos
         }
 
         //get lista completa
-        public List<empleado> getListaCompleta(bool mantenimiento=false)
+        public List<empleado> getListaCompleta(bool mantenimiento = false)
         {
             try
             {
                 List<empleado> listaEmpleado = new List<empleado>();
-                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado";
+                string sql =
+                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado";
                 if (mantenimiento == false)
                 {
                     sql += "  where activo='1'";
@@ -250,13 +272,15 @@ namespace IrisContabilidad.modelos
         }
 
         //get by login
-        public empleado getEmpleadoByLogin(string usuario,string clave)
+        public empleado getEmpleadoByLogin(string usuario, string clave)
         {
             try
             {
                 empleado = new empleado();
                 List<empleado> listaEmpleado = new List<empleado>();
-                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where login='"+usuario+"' and clave='"+clave+"'";
+                string sql =
+                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where login='" +
+                    usuario + "' and clave='" + clave + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
@@ -264,19 +288,19 @@ namespace IrisContabilidad.modelos
                     empleado.nombre = row[1].ToString();
                     empleado.login = row[2].ToString();
                     empleado.clave = row[3].ToString();
-                    empleado.sueldo = (decimal)row[4];
-                    empleado.codigo_situacion = (int)row[5];
-                    empleado.activo = (bool)row[6];
-                    empleado.codigo_sucursal = (int)row[7];
+                    empleado.sueldo = (decimal) row[4];
+                    empleado.codigo_situacion = (int) row[5];
+                    empleado.activo = (bool) row[6];
+                    empleado.codigo_sucursal = (int) row[7];
                     empleado.codigo_departamento = Convert.ToInt16(row[8]);
                     empleado.codigo_cargo = Convert.ToInt16(row[9]);
                     empleado.codigo_grupo_usuario = Convert.ToInt16(row[10]);
-                    empleado.fecha_ingreso = (DateTime)row[11];
+                    empleado.fecha_ingreso = (DateTime) row[11];
                     empleado.tipo_permiso = row[12].ToString();
                     empleado.codigo_tipo_nomina = Convert.ToInt16(row[13]);
                     empleado.identificacion = row[14].ToString();
                     empleado.pasaporte = row[15].ToString();
-                   
+
                 }
                 return empleado;
             }
@@ -293,7 +317,9 @@ namespace IrisContabilidad.modelos
             try
             {
                 empleado empleado = new empleado();
-                string sql = "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where codigo='" + id + "'";
+                string sql =
+                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where codigo='" +
+                    id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -323,54 +349,10 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getEmpleadoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getEmpleadoById.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return null;
             }
         }
-
-
-        public void adminPrimerLogin()
-        {
-            try
-            {
-                string sql = "select codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas";
-                DataSet ventanas = utilidades.ejecutarcomando_mysql(sql);
-                //ingresando acceso a ventanas del primer usuario
-                foreach (DataRow row in ventanas.Tables[0].Rows)
-                {
-                    sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','" + row[0].ToString() + "')";
-                    utilidades.ejecutarcomando_mysql(sql);
-                }
-                //agregando el primer modulo
-                sql = "insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('1','modulo_empresa','1','IrisContabilidad.modulo_empresa','empresa1.png')";
-                utilidades.ejecutarcomando_mysql(sql);
-                //agregando todas las ventanas al primer modulo
-                foreach (DataRow row in ventanas.Tables[0].Rows)
-                {
-                    sql = "insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','" + row[0].ToString() + "')";
-                }
-                //string sql = "select codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas";
-                //DataSet ventanas = utilidades.ejecutarcomando_mysql(sql);
-                ////ingresando acceso a ventanas del primer usuario
-                //foreach (DataRow row in ventanas.Tables[0].Rows)
-                //{
-                //    sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('2','" + row[0].ToString() + "')";
-                //    utilidades.ejecutarcomando_mysql(sql);
-                //}
-                ////agregando el primer modulo
-                //sql = "insert into sistema_modulo(id,nombre,activo,nombre_modulo_proyecto,imagen) values('1','modulo_empresa','1','IrisContabilidad.modulo_empresa','empresa1.png')";
-                //utilidades.ejecutarcomando_mysql(sql);
-                ////agregando todas las ventanas al primer modulo
-                //foreach (DataRow row in ventanas.Tables[0].Rows)
-                //{
-                //    sql = "insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','" + row[0].ToString() + "')";
-                //}
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error adminCargarVentanas.: " + ex.ToString());
-            }
-        }
-
     }
 }

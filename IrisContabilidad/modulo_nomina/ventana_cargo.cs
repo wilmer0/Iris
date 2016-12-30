@@ -88,6 +88,7 @@ namespace IrisContabilidad.modulo_nomina
             }
             catch (Exception ex)
             {
+                cargo = null;
                 MessageBox.Show("Error ValidarGetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -176,6 +177,7 @@ namespace IrisContabilidad.modulo_nomina
         private void button4_Click(object sender, EventArgs e)
         {
             ventana_busqueda_cargo ventana = new ventana_busqueda_cargo();
+            ventana.mantenimiento = true;
             ventana.Owner = this;
             ventana.ShowDialog();
             if (ventana.DialogResult == DialogResult.OK)

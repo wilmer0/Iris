@@ -24,7 +24,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
-                string sql = "select *from situacion_empleado where nombre='" + situacion.descripcion + "'";
+                string sql = "select *from situacion_empleado where descripcion='" + situacion.descripcion + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -54,7 +54,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
-                string sql = "select *from situacion_empleado where nombre='" + situacion.descripcion + "' and codigo!='" + situacion.codigo + "'";
+                string sql = "select *from situacion_empleado where descripcion='" + situacion.descripcion + "' and codigo!='" + situacion.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -85,15 +85,17 @@ namespace IrisContabilidad.modelos
             {
                 string sql = "select max(id)from situacion_empleado";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                int id = (int)ds.Tables[0].Rows[0][0];
-                if (id == null || id == 0)
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
                 {
-                    id = 1;
+                    id = 0;
                 }
                 else
                 {
-                    id += 1;
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 }
+                id += 1;
                 return id;
             }
             catch (Exception ex)

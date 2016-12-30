@@ -20,6 +20,7 @@ namespace IrisContabilidad
 
         //modelos
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
+        private modeloPrimerLogin modeloPrimerLogin = new modeloPrimerLogin();
 
         //objetos
         private empleado empleado;
@@ -111,26 +112,7 @@ namespace IrisContabilidad
                 MessageBox.Show("Error validarPrimeraEmpresa.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        public void ValidarCrearPrimerEmpleado()
-        {
-            try
-            {
-                string sql = "select *from empleado";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count == 0)
-                {
-                    //debe crear el primer empleado
-                    ventana_empleado ventana=new ventana_empleado();
-                    ventana.Owner = this;
-                    ventana.ShowDialog();
-                }
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error ValidarCrearPrimerEmpleado.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+       
         public  void GetAction()
         {
             //modeloEmpleado.adminPrimerLogin();
@@ -141,6 +123,8 @@ namespace IrisContabilidad
             if (!ValidarGetAction())
                 return;
 
+            modeloPrimerLogin.validarPrimerLogin();
+            
             empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()));
             if (empleado.login != null)
             {
@@ -194,10 +178,8 @@ namespace IrisContabilidad
         private void button1_Click(object sender, EventArgs e)
         {
             //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
-            //modeloEmpleado.adminPrimerLogin();
-            ValidarCrearPrimeraEmpresa();
-            ValidarCrearPrimeraSucursal();
-            ValidarCrearPrimerEmpleado();
+           
+            
             GetAction();
         }
 

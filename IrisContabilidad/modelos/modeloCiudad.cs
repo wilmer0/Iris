@@ -49,6 +49,37 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //agregar lista ciudades
+        public bool agregarCiudad(List<ciudad> lista)
+        {
+            try
+            {
+                lista.ForEach(ciudadActual=>
+                {
+                    int activo = 0;
+                    //validar nombre
+                    ciudadActual.codigo = getNext();
+                    string sql = "select *from ciudad where nombre='" + ciudadActual.nombre + "' and codigo!='" + ciudadActual.codigo + "'";
+                    DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                    if (ds.Tables[0].Rows.Count == 0)
+                    {
+                        if (ciudadActual.activo == true)
+                        {
+                            activo = 1;
+                        }
+                        sql = "insert into ciudad(codigo,nombre,activo) values('" + ciudadActual.codigo + "','" + ciudadActual.nombre + "','" + activo + "')";
+                        ds = utilidades.ejecutarcomando_mysql(sql);
+                    }
+                });
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarCiudad.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
         //modificar
         public bool modificarCiudad(ciudad ciudad)
         {
@@ -88,15 +119,17 @@ namespace IrisContabilidad.modelos
             {
                 string sql = "select max(codigo)from ciudad";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                int id = (int)ds.Tables[0].Rows[0][0];
-                if (id == null || id == 0)
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString()==null || ds.Tables[0].Rows[0][0].ToString()=="")
                 {
-                    id = 1;
+                    id = 0;
                 }
                 else
                 {
-                    id += 1;
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 }
+                id += 1;
                 return id;
             }
             catch (Exception ex)
@@ -137,10 +170,10 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-
+                ciudad ciudad;
                 List<ciudad> lista = new List<ciudad>();
                 string sql = "";
-                sql = "select codigo,nombre,activo from ciudad";
+                sql = "select codigo,nombre,activo from ciudad ";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -150,10 +183,10 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        ciudad ciudad = new ciudad();
-                        ciudad.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                        ciudad.nombre = ds.Tables[0].Rows[0][1].ToString();
-                        ciudad.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
+                        ciudad=new ciudad();
+                        ciudad.codigo = Convert.ToInt16(row[0].ToString());
+                        ciudad.nombre = row[1].ToString();
+                        ciudad.activo = Convert.ToBoolean(row[2].ToString());
 
                         lista.Add(ciudad);
                     }

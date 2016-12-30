@@ -36,13 +36,13 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //se agrega
-                    sql = "insert into empresa(codigo,secuencia,division,activo,rnc,nombre) values('"+empresaApp.codigo+"','"+empresaApp.seuencia+"','"+empresaApp.division+"','"+activo.ToString()+"','"+empresaApp.rnc+"','"+empresaApp.nombre+"')";
+                    sql = "insert into empresa(codigo,secuencia,division,activo,rnc,nombre) values('"+empresaApp.codigo+"','"+empresaApp.secuencia+"','"+empresaApp.division+"','"+activo.ToString()+"','"+empresaApp.rnc+"','"+empresaApp.nombre+"')";
                     ds = utilidades.ejecutarcomando_mysql(sql);
                     return true;
                 }
                 else
                 {
-                    sql = "update empresa set secuencia='" + empresaApp.seuencia + "',division='" + empresaApp.division +
+                    sql = "update empresa set secuencia='" + empresaApp.secuencia + "',division='" + empresaApp.division +
                     "',activo='" + activo.ToString()+ "',rnc='" + empresaApp.rnc + "',nombre='" +
                     empresaApp.nombre + "' where codigo='1'";
                     ds = utilidades.ejecutarcomando_mysql(sql);
@@ -63,15 +63,17 @@ namespace IrisContabilidad.modelos
             {
                 string sql = "select max(codigo)from empresa";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                int id = (int)ds.Tables[0].Rows[0][0];
-                if (id == null || id == 0)
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
                 {
-                    id = 1;
+                    id = 0;
                 }
                 else
                 {
-                    id += 1;
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 }
+                id += 1;
                 return id;
             }
             catch (Exception ex)
@@ -94,7 +96,7 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     empresa.codigo = (int)ds.Tables[0].Rows[0][0];
-                    empresa.seuencia = ds.Tables[0].Rows[0][1].ToString();
+                    empresa.secuencia = ds.Tables[0].Rows[0][1].ToString();
                     empresa.division = ds.Tables[0].Rows[0][2].ToString();
                     empresa.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
                     empresa.rnc = ds.Tables[0].Rows[0][4].ToString();

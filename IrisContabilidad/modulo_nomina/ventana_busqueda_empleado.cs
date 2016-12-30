@@ -31,14 +31,16 @@ namespace IrisContabilidad.modulo_nomina
         modeloCargo modeloCargo=new modeloCargo();
 
         //variables 
-        private bool mantenimiento = false;
+        public bool mantenimiento = false;
         private int fila = 0;
 
 
-        public ventana_busqueda_empleado()
+       
+        public ventana_busqueda_empleado(bool mantenimiento=false)
         {
             InitializeComponent();
             this.tituloLabel.Text = this.Text;
+            this.mantenimiento = mantenimiento;
             loadLista();
         }
         public void loadLista()
@@ -49,7 +51,7 @@ namespace IrisContabilidad.modulo_nomina
                 if (listaEmpleado == null)
                 {
                     listaEmpleado = new List<empleado>();
-                    listaEmpleado =modeloEmpleado.getListaCompleta();
+                    listaEmpleado = modeloEmpleado.getListaCompleta(mantenimiento);
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)

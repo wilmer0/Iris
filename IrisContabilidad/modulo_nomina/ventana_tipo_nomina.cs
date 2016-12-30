@@ -18,7 +18,7 @@ namespace IrisContabilidad.modulo_nomina
 
 
         //objetos
-        private nomina_tipo nomina_tipo;
+        private nomina_tipo nominaTipo;
         utilidades utilidades = new utilidades();
         private singleton singleton = new singleton();
         private empleado empleado;
@@ -41,11 +41,11 @@ namespace IrisContabilidad.modulo_nomina
         {
             try
             {
-                if (nomina_tipo != null)
+                if (nominaTipo != null)
                 {
-                    NominatipoIdText.Text = nomina_tipo.codigo.ToString();
-                    NominaTipoText.Text = nomina_tipo.nombre;
-                    activoCheck.Checked = Convert.ToBoolean(nomina_tipo.activo);
+                    NominatipoIdText.Text = nominaTipo.codigo.ToString();
+                    NominaTipoText.Text = nominaTipo.nombre;
+                    activoCheck.Checked = Convert.ToBoolean(nominaTipo.activo);
                 }
                 else
                 {
@@ -98,21 +98,21 @@ namespace IrisContabilidad.modulo_nomina
 
 
                 bool crear = false;
-                if (nomina_tipo == null)
+                if (nominaTipo == null)
                 {
                     //agrega
                     crear = true;
-                    nomina_tipo = new nomina_tipo();
-                    nomina_tipo.codigo = modeloNominaTipo.getNext();
+                    nominaTipo = new nomina_tipo();
+                    nominaTipo.codigo = modeloNominaTipo.getNext();
                 }
 
-                nomina_tipo.nombre = NominaTipoText.Text;
-                nomina_tipo.activo = Convert.ToBoolean(activoCheck.Checked);
+                nominaTipo.nombre = NominaTipoText.Text;
+                nominaTipo.activo = Convert.ToBoolean(activoCheck.Checked);
 
                 if (crear)
                 {
                     //agrega
-                    if (modeloNominaTipo.agregarNominaTipo(nomina_tipo) == true)
+                    if (modeloNominaTipo.agregarNominaTipo(nominaTipo) == true)
                     {
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -124,7 +124,7 @@ namespace IrisContabilidad.modulo_nomina
                 else
                 {
                     //actualiza
-                    if (modeloNominaTipo.modificarNominaTipo(nomina_tipo) == true)
+                    if (modeloNominaTipo.modificarNominaTipo(nominaTipo) == true)
                     {
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -134,10 +134,11 @@ namespace IrisContabilidad.modulo_nomina
                     }
 
                 }
-                nomina_tipo = null;
+                nominaTipo = null;
             }
             catch (Exception ex)
             {
+                nominaTipo = null;
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -166,26 +167,26 @@ namespace IrisContabilidad.modulo_nomina
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                GetAction();
-            }
+
+            GetAction();
+
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            nomina_tipo = null;
+            nominaTipo = null;
             loadVentana();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             ventana_busqueda_tipo_nomina ventana = new ventana_busqueda_tipo_nomina();
+            ventana.mantenimiento = true;
             ventana.Owner = this;
             ventana.ShowDialog();
             if (ventana.DialogResult == DialogResult.OK)
             {
-                nomina_tipo = ventana.getObjeto();
+                nominaTipo = ventana.getObjeto();
                 loadVentana();
             }
         }
