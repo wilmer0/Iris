@@ -9,33 +9,30 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
-using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_facturacion
+namespace IrisContabilidad.modulo_inventario
 {
-    public partial class ventana_itebis : formBase
+    public partial class ventana_unidad : formBase
     {
         //objetos
         empleado empleadoSingleton;
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
         empleado empleado;
-        itebis itebis;
+        unidad unidad;
 
 
 
 
         //modelos
-        modeloItebis modeloItebis= new modeloItebis();
+        modeloUnidad modeloUnidad = new modeloUnidad();
 
-
-
-        public ventana_itebis()
+        public ventana_unidad()
         {
             InitializeComponent();
             empleadoSingleton = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana itbis");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana unidad");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
@@ -43,16 +40,16 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-                if (itebis != null)
+                if (unidad != null)
                 {
-                    nombreText.Text = itebis.nombre;
-                    porcientoText.Text = itebis.porciento.ToString("N");
-                    activoCheck.Checked = Convert.ToBoolean(itebis.activo);
+                    nombreText.Text = unidad.nombre;
+                    unidadAbreviadaText.Text = unidad.unidad_abreviada.ToString();
+                    activoCheck.Checked = Convert.ToBoolean(unidad.activo);
                 }
                 else
                 {
                     nombreText.Text = "";
-                    porcientoText.Text = "";
+                    unidadAbreviadaText.Text = "";
                     activoCheck.Checked = false;
                 }
             }
@@ -75,17 +72,17 @@ namespace IrisContabilidad.modulo_facturacion
                 //validar nombre
                 if (nombreText.Text == "")
                 {
-                    MessageBox.Show("Falta el nombre del itbis ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Falta el nombre de la unidad ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     nombreText.Focus();
                     nombreText.SelectAll();
                     return false;
                 }
                 //validar numero itebis
-                if (porcientoText.Text == "")
+                if (unidadAbreviadaText.Text == "")
                 {
-                    MessageBox.Show("Falta el porciento del itbis ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    porcientoText.Focus();
-                    porcientoText.SelectAll();
+                    MessageBox.Show("Falta el nombre abreviado de la unidad ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    unidadAbreviadaText.Focus();
+                    unidadAbreviadaText.SelectAll();
                     return false;
                 }
                 return true;
@@ -114,36 +111,37 @@ namespace IrisContabilidad.modulo_facturacion
 
                 bool crear = false;
                 //se instancia el empleado si esta nulo
-                if (itebis == null)
+                if (unidad == null)
                 {
-                    itebis = new itebis();
+                    unidad = new unidad();
                     crear = true;
-                    itebis.codigo = modeloItebis.getNext();
+                    unidad.codigo = modeloUnidad.getNext();
                 }
-                itebis.nombre = nombreText.Text;
-                itebis.porciento = Convert.ToDecimal(porcientoText.Text.Trim());
-                itebis.activo = Convert.ToBoolean(activoCheck.Checked);
+                unidad.nombre = nombreText.Text;
+                unidad.unidad_abreviada = unidadAbreviadaText.Text.Trim();
+                unidad.activo = Convert.ToBoolean(activoCheck.Checked);
 
                 if (crear == true)
                 {
                     //se agrega
-                    if ((modeloItebis.agregarItebis(itebis)) == true)
+                    if ((modeloUnidad.agregarUnidad(unidad)) == true)
                     {
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        itebis = null;
+                        unidad = null;
                     }
                     else
                     {
                         MessageBox.Show("No se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        unidad = null;
                     }
                 }
                 else
                 {
                     //se modifica
-                    if ((modeloItebis.modificarItebis(itebis)) == true)
+                    if ((modeloUnidad.modificarUnidad(unidad)) == true)
                     {
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        itebis = null;
+                        unidad = null;
                     }
                     else
                     {
@@ -154,24 +152,14 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception ex)
             {
-                itebis = null;
+                unidad = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
-        private void ventana_itebis_Load(object sender, EventArgs e)
+        private void ventana_unidad_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
-            
-        }
-
-        private void porcientoText_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            utilidades.validarTextBoxNumeroDecimal(e,porcientoText.Text.Trim());
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -181,26 +169,13 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            itebis = null;
+            unidad = null;
             loadVentana();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            ventana_busqueda_itbis ventana = new ventana_busqueda_itbis();
-            ventana.mantenimiento = true;
-            ventana.Owner = this;
-            ventana.ShowDialog();
-            if (ventana.DialogResult == DialogResult.OK)
-            {
-                itebis = ventana.getObjeto();
-                loadVentana();
-            }
         }
     }
 }

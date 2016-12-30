@@ -91,6 +91,7 @@
     <Compile Include="clases\sucursal.cs" />
     <Compile Include="clases\suplidor.cs" />
     <Compile Include="clases\tipo_gasto.cs" />
+    <Compile Include="clases\unidad.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="modelos\modeloSucursal.cs" />
     <Compile Include="modelos\modeloSuplidor.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
+    <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +169,12 @@
     <Compile Include="modulo_empresa\ventana_sucursal.Designer.cs">
       <DependentUpon>ventana_sucursal.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_itbis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_itbis.Designer.cs">
+      <DependentUpon>ventana_busqueda_itbis.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_itebis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +186,12 @@
     </Compile>
     <Compile Include="modulo_inventario\ventana_producto.Designer.cs">
       <DependentUpon>ventana_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_unidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_unidad.Designer.cs">
+      <DependentUpon>ventana_unidad.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_nomina\ventana_busqueda_cargo.cs">
       <SubType>Form</SubType>
@@ -292,8 +306,14 @@
     <EmbeddedResource Include="modulo_empresa\ventana_sucursal.resx">
       <DependentUpon>ventana_sucursal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_itbis.resx">
+      <DependentUpon>ventana_busqueda_itbis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_unidad.resx">
+      <DependentUpon>ventana_unidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_cargo.resx">
       <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>

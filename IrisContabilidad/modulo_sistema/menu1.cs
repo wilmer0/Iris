@@ -111,7 +111,11 @@ namespace IrisContabilidad.modulo_sistema
                     flowLayoutModulos.Controls.Add(botonModulo);
                 });
 
-
+                //para que cargue siempre las ventanas del primer modulo encontrado
+                if (listaTemp[0].ToString() != "")
+                {
+                    loadVentanas(Convert.ToInt16(listaTemp[0].ToString()));
+                }
 
             }
             catch (Exception ex)
