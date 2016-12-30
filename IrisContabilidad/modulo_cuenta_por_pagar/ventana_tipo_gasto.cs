@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_empresa;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_empresa
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
-    public partial class ventana_ciudad : formBase
+    public partial class ventana_tipo_gasto : formBase
     {
 
         //objetos
@@ -21,20 +22,19 @@ namespace IrisContabilidad.modulo_empresa
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
         empleado empleado;
-        ciudad ciudad;
-      
-
+        tipo_gasto tipoGasto;
 
 
         //modelos
-        modeloCiudad modeloCiudad=new modeloCiudad();
+        modeloTipoGasto modeloTipoGasto = new modeloTipoGasto();
 
 
-        public ventana_ciudad()
+
+        public ventana_tipo_gasto()
         {
             InitializeComponent();
             empleadoSingleton = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana ciudad");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana tipo de gasto");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
@@ -42,10 +42,10 @@ namespace IrisContabilidad.modulo_empresa
         {
             try
             {
-                if (ciudad != null)
+                if (tipoGasto != null)
                 {
-                    nombreText.Text = ciudad.nombre;
-                    activoCheck.Checked = Convert.ToBoolean(ciudad.activo);
+                    nombreText.Text = tipoGasto.nombre;
+                    activoCheck.Checked = Convert.ToBoolean(tipoGasto.activo);
                 }
                 else
                 {
@@ -72,7 +72,7 @@ namespace IrisContabilidad.modulo_empresa
                 //validar nombre
                 if (nombreText.Text == "")
                 {
-                    MessageBox.Show("Falta el nombre de la ciudad ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Falta el nombre del tipo de gasto ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     nombreText.Focus();
                     nombreText.SelectAll();
                     return false;
@@ -103,22 +103,22 @@ namespace IrisContabilidad.modulo_empresa
 
                 bool crear = false;
                 //se instancia el empleado si esta nulo
-                if (ciudad == null)
+                if (tipoGasto == null)
                 {
-                    ciudad = new ciudad();
+                    tipoGasto = new tipo_gasto();
                     crear = true;
-                    ciudad.codigo = modeloCiudad.getNext();
+                    tipoGasto.id = modeloTipoGasto.getNext();
                 }
-                ciudad.nombre = nombreText.Text;
-                ciudad.activo = Convert.ToBoolean(activoCheck.Checked);
+                tipoGasto.nombre = nombreText.Text;
+                tipoGasto.activo = Convert.ToBoolean(activoCheck.Checked);
 
                 if (crear == true)
                 {
                     //se agrega
-                    if ((modeloCiudad.agregarCiudad(ciudad)) == true)
+                    if ((modeloTipoGasto.agregarTipoGasto(tipoGasto)) == true)
                     {
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ciudad = null;
+                        tipoGasto = null;
                     }
                     else
                     {
@@ -128,10 +128,10 @@ namespace IrisContabilidad.modulo_empresa
                 else
                 {
                     //se modifica
-                    if ((modeloCiudad.modificarCiudad(ciudad)) == true)
+                    if ((modeloTipoGasto.modificarTipoGasto(tipoGasto)) == true)
                     {
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        ciudad = null;
+                        tipoGasto = null;
                     }
                     else
                     {
@@ -142,13 +142,12 @@ namespace IrisContabilidad.modulo_empresa
             }
             catch (Exception ex)
             {
-                ciudad = null;
+                tipoGasto = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
-
-        private void ventana_ciudad_Load(object sender, EventArgs e)
+        private void ventana_tipo_gasto_Load(object sender, EventArgs e)
         {
 
         }
@@ -160,7 +159,7 @@ namespace IrisContabilidad.modulo_empresa
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            ciudad = null;
+            tipoGasto = null;
             loadVentana();
         }
 
@@ -171,12 +170,12 @@ namespace IrisContabilidad.modulo_empresa
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ventana_busqueda_ciudad ventana = new ventana_busqueda_ciudad(true);
+            ventana_busqueda_tipo_gasto ventana = new ventana_busqueda_tipo_gasto(true);
             ventana.Owner = this;
             ventana.ShowDialog();
             if (ventana.DialogResult == DialogResult.OK)
             {
-                ciudad = ventana.getObjeto();
+                tipoGasto = ventana.getObjeto();
                 loadVentana();
             }
         }

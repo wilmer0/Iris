@@ -139,7 +139,6 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-
                 List<tipo_gasto> lista = new List<tipo_gasto>();
                 string sql = "";
                 sql = "select id,nombre,activo from tipo_gasto";

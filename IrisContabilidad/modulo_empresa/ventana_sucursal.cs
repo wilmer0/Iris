@@ -188,6 +188,7 @@ namespace IrisContabilidad.modulo_empresa
             }
             catch (Exception ex)
             {
+                sucursal = null;
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }

@@ -25,7 +25,7 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validar rnc
-                string sql = "select *from suplidor where rnc='" + suplidor.rnc + "' and id!='" + suplidor.codigo + "'";
+                string sql = "select *from suplidor where rnc='" + suplidor.rnc + "' and codigo!='" + suplidor.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -33,7 +33,7 @@ namespace IrisContabilidad.modelos
                     return false;
                 }
                 //validar nombre
-                sql = "select *from suplidor where nombre='" + suplidor.nombre + "' and id!='" + suplidor.codigo + "'";
+                sql = "select *from suplidor where nombre='" + suplidor.nombre + "' and codigo!='" + suplidor.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -45,7 +45,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
 
-                sql = "insert into suplidor(codigo,nombre,rnc,fecha_creacion,cod_sucursal_creado,limite_credito,activo,direccion,telefono1,telefono2,tipo_gasto,fecha_modificacion,fax,cod_ciudad) values('" + suplidor.codigo + "','" + suplidor.nombre + "','" + suplidor.rnc + "','" + suplidor.fecha_creacion.ToString("yyyy-MM-dd") + "','" + suplidor.codigo_sucursal_creado + "','" + suplidor.limite_credito + "','" + activo + "','" + suplidor.direccion + "','" + suplidor.telefono1 + "','" + suplidor.telefono2 + "','" + suplidor.cod_tipo_gasto + "','" + suplidor.fecha_modificacion+ "','" + suplidor.fax + "','" + suplidor.codigo_ciudad + "',)";
+                sql = "insert into suplidor(codigo,nombre,rnc,fecha_creacion,cod_sucursal_creado,limite_credito,activo,direccion,telefono1,telefono2,tipo_gasto,fecha_modificacion,fax,cod_ciudad) values('" + suplidor.codigo + "','" + suplidor.nombre + "','" + suplidor.rnc + "','" + suplidor.fecha_creacion.ToString("yyyy-MM-dd") + "','" + suplidor.codigo_sucursal_creado + "','" + suplidor.limite_credito + "','" + activo + "','" + suplidor.direccion + "','" + suplidor.telefono1 + "','" + suplidor.telefono2 + "','" + suplidor.cod_tipo_gasto + "','" + suplidor.fecha_modificacion.ToString("yyyy-MM-dd")+ "','" + suplidor.fax + "','" + suplidor.codigo_ciudad + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -64,7 +64,7 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validar rnc
-                string sql = "select *from suplidor where rnc='" + suplidor.rnc + "' and id!='" + suplidor.codigo + "'";
+                string sql = "select *from suplidor where rnc='" + suplidor.rnc + "' and codigo!='" + suplidor.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -72,7 +72,7 @@ namespace IrisContabilidad.modelos
                     return false;
                 }
                 //validar nombre
-                sql = "select *from suplidor where nombre='" + suplidor.nombre + "' and id!='" + suplidor.codigo + "'";
+                sql = "select *from suplidor where nombre='" + suplidor.nombre + "' and codigo!='" + suplidor.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

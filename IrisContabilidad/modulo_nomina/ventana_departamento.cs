@@ -139,6 +139,7 @@ namespace IrisContabilidad.modulo_nomina
             }
             catch (Exception ex)
             {
+                departamento = null;
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

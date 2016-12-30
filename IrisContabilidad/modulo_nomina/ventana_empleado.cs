@@ -272,6 +272,7 @@ namespace IrisContabilidad.modulo_nomina
             }
             catch (Exception ex)
             {
+                empleado = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 

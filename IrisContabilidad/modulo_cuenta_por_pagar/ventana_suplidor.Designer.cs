@@ -175,6 +175,7 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 71;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label7
             // 
@@ -335,6 +336,7 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 23;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // activoCheck
             // 

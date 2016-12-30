@@ -88,6 +88,7 @@ namespace IrisContabilidad.modulo_nomina
             }
             catch (Exception ex)
             {
+                cargo = null;
                 MessageBox.Show("Error ValidarGetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }

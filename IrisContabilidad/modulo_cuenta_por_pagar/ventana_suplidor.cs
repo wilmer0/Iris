@@ -99,6 +99,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     tipoGasto = modeloTipoGasto.getTipoGastoById(suplidor.cod_tipo_gasto);
                     loadTipoGasto();
                     direccionText.Text = suplidor.direccion;
+                    limiteCreditoText.Text = suplidor.limite_credito.ToString("N");
                     activoCheck.Checked = Convert.ToBoolean(suplidor.activo);
                 }
                 else
@@ -116,6 +117,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     tipoGastoIdText.Text = "";
                     tipoGastoText.Text = "";
                     direccionText.Text = "";
+                    limiteCreditoText.Text = "";
                     activoCheck.Checked = false;
                 }
             }
@@ -143,12 +145,20 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     nombreText.SelectAll();
                     return false;
                 }
-                //validar usuario
+                //validar la ciudad
                 if (ciudad == null)
                 {
                     MessageBox.Show("Falta la ciudad", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ciudadIdText.Focus();
                     ciudadIdText.SelectAll();
+                    return false;
+                }
+                //validar limite credito
+                if (limiteCreditoText.Text == "")
+                {
+                    MessageBox.Show("Falta el limite de credito", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limiteCreditoText.Focus();
+                    limiteCreditoText.SelectAll();
                     return false;
                 }
                
@@ -229,6 +239,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             }
             catch (Exception ex)
             {
+                suplidor = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -296,6 +307,30 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             {
                 ciudad = ventana.getObjeto();
                loadCiudad();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_tipo_gasto ventana = new ventana_busqueda_tipo_gasto();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                tipoGasto = ventana.getObjeto();
+                loadTipoGasto();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_suplidor ventana = new ventana_busqueda_suplidor(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                suplidor = ventana.getObjeto();
+                loadVentana();
             }
         }
     }
