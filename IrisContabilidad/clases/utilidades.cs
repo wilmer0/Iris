@@ -169,22 +169,11 @@ namespace IrisContabilidad.clases
             escribir.Close();
         }
 
-
-
-        public DataSet ejecutarcomando(string query)
+        public DataSet ejecutarcomando_sql(string query)
         {
             try
             {
-                //string cmd = "select ip_server,base_datos,base_datos_usuario,base_datos_clave from sistema where ip_server!='' ";
-                //DataSet dx = utilidades.ejecutarcomando(cmd);
-                //if(dx.Tables[0].Rows[0][0].ToString()!="")
-                //{
-                //    MessageBox.Show("Ip server tiene dato");
-                //}
-
-                //funaciona nitido para conecciones desde otra maquina porq se especifica el user y password de la bd
-                //SqlConnection conn = new SqlConnection("Data Source=dlr-laptop.ddns.net,31164;" + "Initial Catalog=punto_venta;" + "User id=dextroyex;" + "Password=wilmerlomas1;");
-                SqlConnection conn = new SqlConnection("Data Source=.;" + "Initial Catalog=punto_venta;" + "User id=dextroyex;" + "Password=123456;");
+                SqlConnection conn = new SqlConnection("Data Source=.;" + "Initial Catalog=iris_contabilidad;" + "User id=dextroyex;" + "Password=wilmerlomas1;");
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -197,14 +186,11 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
-
-
-
         public DataSet ejecutarcomando_mysql(string query)
         {
             try
             {
-                MySqlConnection conn =new MySqlConnection("server=localhost;uid=root;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
+                MySqlConnection conn =new MySqlConnection("server=localhost;uid=dextroyex;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -335,16 +321,7 @@ namespace IrisContabilidad.clases
 
 
 
-        public string getNombreTercero(string codigo)
-        {
-            string cmd = "";
-            DataSet ds;
-            cmd = "select (t.nombre+' '+p.apellido) as nombre from tercero t join persona p on p.codigo=t.codigo where t.codigo='" + codigo.ToString() + "'";
-            utilidades utilidades = new utilidades();
-            ds = utilidades.ejecutarcomando(cmd);
-            return ds.Tables[0].Rows[0][0].ToString();
-        }
-
+      
 
         public Boolean comprimirArchivo(string rutaArchivo)
         {

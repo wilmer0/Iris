@@ -86,7 +86,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
                 sql = "update unidad set nombre='" + unidad.nombre + "',unidad_abreviada='"+unidad.unidad_abreviada+"',activo='" + activo.ToString() + "' where codigo='" + unidad.codigo + "'";
-                ds = utilidades.ejecutarcomando(sql);
+                ds = utilidades.ejecutarcomando_sql(sql);
                 //MessageBox.Show(sql);
                 return true;
             }
@@ -132,7 +132,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 unidad unidad = new unidad();
-                string sql = "select id,nombre,unidad_abreviada,activo from unidad where codigo='" + id + "'";
+                string sql = "select codigo,nombre,unidad_abreviada,activo from unidad where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -159,7 +159,7 @@ namespace IrisContabilidad.modelos
 
                 List<unidad> lista = new List<unidad>();
                 string sql = "";
-                sql = "select id,nombre,unidad_abreviada,activo from unidad";
+                sql = "select codigo,nombre,unidad_abreviada,activo from unidad";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";

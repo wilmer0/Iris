@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_inventario
@@ -176,6 +177,19 @@ namespace IrisContabilidad.modulo_inventario
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_unidad ventana = new ventana_busqueda_unidad();
+            ventana.mantenimiento = true;
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                unidad = ventana.getObjeto();
+                loadVentana();
+            }
         }
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace IrisContabilidad.modulo_nomina
+﻿namespace IrisContabilidad.modulo_inventario
 {
-    partial class ventana_busqueda_cargo
+    partial class ventana_busqueda_unidad
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +34,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.secuenciacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadAbreviadaColun = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -44,7 +45,7 @@
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(12, 364);
-            this.panel1.Size = new System.Drawing.Size(669, 54);
+            this.panel1.Size = new System.Drawing.Size(671, 54);
             // 
             // button2
             // 
@@ -54,29 +55,28 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(528, 5);
+            this.button1.Location = new System.Drawing.Point(530, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(693, 21);
+            this.panel2.Size = new System.Drawing.Size(695, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(264, 5);
+            this.button3.Location = new System.Drawing.Point(265, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.nombreText);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(12, 30);
+            this.groupBox1.Location = new System.Drawing.Point(16, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(666, 67);
-            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabIndex = 25;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // nombreText
             // 
@@ -85,7 +85,6 @@
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(396, 26);
             this.nombreText.TabIndex = 20;
-            this.nombreText.TextChanged += new System.EventHandler(this.nombreText_TextChanged);
             this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyDown);
             // 
             // label3
@@ -109,16 +108,16 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoColumn,
             this.secuenciacolumn,
+            this.unidadAbreviadaColun,
             this.activoColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 103);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 100);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(666, 255);
-            this.dataGridView1.TabIndex = 22;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.TabIndex = 24;
             // 
             // codigoColumn
             // 
@@ -133,6 +132,13 @@
             this.secuenciacolumn.Name = "secuenciacolumn";
             this.secuenciacolumn.ReadOnly = true;
             // 
+            // unidadAbreviadaColun
+            // 
+            this.unidadAbreviadaColun.FillWeight = 50F;
+            this.unidadAbreviadaColun.HeaderText = "Abreviada";
+            this.unidadAbreviadaColun.Name = "unidadAbreviadaColun";
+            this.unidadAbreviadaColun.ReadOnly = true;
+            // 
             // activoColumn
             // 
             this.activoColumn.FillWeight = 30F;
@@ -140,16 +146,16 @@
             this.activoColumn.Name = "activoColumn";
             this.activoColumn.ReadOnly = true;
             // 
-            // ventana_busqueda_cargo
+            // ventana_busqueda_unidad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 430);
+            this.ClientSize = new System.Drawing.Size(695, 430);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
-            this.Name = "ventana_busqueda_cargo";
-            this.Text = "ventana_busqueda_cargo";
-            this.Load += new System.EventHandler(this.ventana_busqueda_cargo_Load);
+            this.Name = "ventana_busqueda_unidad";
+            this.Text = "ventana_busqueda_unidad";
+            this.Load += new System.EventHandler(this.ventana_busqueda_unidad_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
@@ -173,6 +179,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidadAbreviadaColun;
         private System.Windows.Forms.DataGridViewTextBoxColumn activoColumn;
     }
 }

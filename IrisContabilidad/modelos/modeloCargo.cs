@@ -69,7 +69,7 @@ namespace IrisContabilidad.modelos
                         activo = 1;
                     }
                     sql = "update cargo set nombre='" + cargoAPP.nombre + "',activo='"+activo.ToString()+"' where id='"+cargoAPP.id+"'";
-                    ds=utilidades.ejecutarcomando(sql);
+                    ds=utilidades.ejecutarcomando_sql(sql);
                     //MessageBox.Show(sql);
                     return true;
                 }
