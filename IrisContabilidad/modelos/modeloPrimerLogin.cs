@@ -390,6 +390,7 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "itebis1.png";
                 listaVentana.Add(ventana);
+                
                 #endregion
                 
                 

@@ -1081,7 +1081,24 @@ namespace IrisContabilidad.clases
         }
 
 
+        public void validarTextBoxNumeroDecimal(KeyPressEventArgs e)
+        {
+            if (e.KeyChar >= 48 && e.KeyChar <= 57)
+            {
+                e.Handled = false;
+            }
 
+            else if (e.KeyChar == 8)
+            {
+                e.Handled = false;
+            }
+
+            else if (e.KeyChar == 13)
+            {
+                e.Handled = false;
+            }
+
+        }
 
         public void validarTextBoxNumeroEntero(KeyPressEventArgs e)
         {

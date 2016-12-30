@@ -83,6 +83,7 @@
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
     <Compile Include="clases\grupo_usuarios.cs" />
+    <Compile Include="clases\itebis.cs" />
     <Compile Include="clases\modulo.cs" />
     <Compile Include="clases\nomina_tipo.cs" />
     <Compile Include="clases\singleton.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
+    <Compile Include="modelos\modeloItebis.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />
     <Compile Include="modelos\modeloPrimerLogin.cs" />
@@ -289,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_sucursal.resx">
       <DependentUpon>ventana_sucursal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
+      <DependentUpon>ventana_itebis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_cargo.resx">
       <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>
