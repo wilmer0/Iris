@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿namespace IrisContabilidad.modulo_inventario
 {
     partial class ventana_busqueda_itbis
     {

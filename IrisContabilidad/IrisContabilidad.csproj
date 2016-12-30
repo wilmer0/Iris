@@ -193,10 +193,10 @@
     <Compile Include="modulo_facturacion\ventana_itebis.Designer.cs">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_facturacion\ventana_producto.cs">
+    <Compile Include="modulo_inventario\ventana_producto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_facturacion\ventana_producto.Designer.cs">
+    <Compile Include="modulo_inventario\ventana_producto.Designer.cs">
       <DependentUpon>ventana_producto.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_busqueda_unidad.cs">
@@ -204,12 +204,6 @@
     </Compile>
     <Compile Include="modulo_inventario\ventana_busqueda_unidad.Designer.cs">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="modulo_inventario\ventana_producto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="modulo_inventario\ventana_producto.Designer.cs">
-      <DependentUpon>ventana_producto.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_unidad.cs">
       <SubType>Form</SubType>
@@ -336,7 +330,7 @@
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modulo_facturacion\ventana_producto.resx">
+    <EmbeddedResource Include="modulo_inventario\ventana_producto.resx">
       <DependentUpon>ventana_producto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">

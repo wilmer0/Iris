@@ -480,7 +480,7 @@ namespace IrisContabilidad.modelos
                 
 
                 //para agregarla manualmente
-                //insert into sistema_ventanas(codigo,nombre_ventana_nombre_logico,imagen,activo,programador) values('13','ventana ','IrisContabilidad.modulo_facturacion.ventana_unidad','unidad1.png','1','0');
+                //insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('14','ventana producto','IrisContabilidad.modulo_inventario.ventana_producto','producto1.png','1','0');
                 //insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','13');
                 //insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','13');
             }
