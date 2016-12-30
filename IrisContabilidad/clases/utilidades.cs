@@ -1081,23 +1081,32 @@ namespace IrisContabilidad.clases
         }
 
 
-        public void validarTextBoxNumeroDecimal(KeyPressEventArgs e)
+        public void validarTextBoxNumeroDecimal(KeyPressEventArgs e,string numeroCompleto)
         {
-            if (e.KeyChar >= 48 && e.KeyChar <= 57)
+            if (numeroCompleto.ToString().Contains('.'))
             {
-                e.Handled = false;
-            }
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
 
-            else if (e.KeyChar == 8)
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
             {
-                e.Handled = false;
-            }
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
 
-            else if (e.KeyChar == 13)
-            {
-                e.Handled = false;
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
             }
-
         }
 
         public void validarTextBoxNumeroEntero(KeyPressEventArgs e)

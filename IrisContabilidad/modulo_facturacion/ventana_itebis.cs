@@ -170,7 +170,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void porcientoText_KeyPress(object sender, KeyPressEventArgs e)
         {
-            utilidades.validarTextBoxNumeroDecimal(e);
+            utilidades.validarTextBoxNumeroDecimal(e,porcientoText.Text.Trim());
         }
 
         private void button2_Click(object sender, EventArgs e)
