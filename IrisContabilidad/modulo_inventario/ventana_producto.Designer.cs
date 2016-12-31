@@ -39,7 +39,7 @@
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.rutaImagenText = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -97,11 +97,13 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(800, 5);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -132,7 +134,7 @@
             this.tabPage1.Controls.Add(this.textBox14);
             this.tabPage1.Controls.Add(this.button9);
             this.tabPage1.Controls.Add(this.label10);
-            this.tabPage1.Controls.Add(this.textBox12);
+            this.tabPage1.Controls.Add(this.rutaImagenText);
             this.tabPage1.Controls.Add(this.textBox10);
             this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.label9);
@@ -238,6 +240,7 @@
             this.button9.Size = new System.Drawing.Size(47, 37);
             this.button9.TabIndex = 48;
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // label10
             // 
@@ -249,14 +252,14 @@
             this.label10.TabIndex = 47;
             this.label10.Text = "Foto";
             // 
-            // textBox12
+            // rutaImagenText
             // 
-            this.textBox12.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox12.Location = new System.Drawing.Point(606, 157);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(183, 26);
-            this.textBox12.TabIndex = 46;
+            this.rutaImagenText.BackColor = System.Drawing.Color.SkyBlue;
+            this.rutaImagenText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rutaImagenText.Location = new System.Drawing.Point(606, 157);
+            this.rutaImagenText.Name = "rutaImagenText";
+            this.rutaImagenText.Size = new System.Drawing.Size(183, 26);
+            this.rutaImagenText.TabIndex = 46;
             // 
             // textBox10
             // 
@@ -731,7 +734,7 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox rutaImagenText;
         private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label11;

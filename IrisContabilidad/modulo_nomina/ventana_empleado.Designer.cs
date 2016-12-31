@@ -1,4 +1,6 @@
-﻿namespace IrisContabilidad.modulo_nomina
+﻿using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_nomina
 {
     partial class ventana_empleado
     {
@@ -31,8 +33,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_empleado));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pasaporteText = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
-            this.foto_empleado = new System.Windows.Forms.TextBox();
+            this.rutaImagenText = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.empresaIdText = new System.Windows.Forms.TextBox();
@@ -87,8 +91,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.secuenciacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pasaporteText = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -138,10 +141,11 @@
             // tabPage1
             // 
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage1.Controls.Add(this.button15);
             this.tabPage1.Controls.Add(this.pasaporteText);
             this.tabPage1.Controls.Add(this.label16);
             this.tabPage1.Controls.Add(this.button11);
-            this.tabPage1.Controls.Add(this.foto_empleado);
+            this.tabPage1.Controls.Add(this.rutaImagenText);
             this.tabPage1.Controls.Add(this.label14);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.imagen_empleado);
@@ -189,6 +193,26 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Empleado";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // pasaporteText
+            // 
+            this.pasaporteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pasaporteText.Location = new System.Drawing.Point(112, 150);
+            this.pasaporteText.MaxLength = 30;
+            this.pasaporteText.Name = "pasaporteText";
+            this.pasaporteText.Size = new System.Drawing.Size(253, 26);
+            this.pasaporteText.TabIndex = 67;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(15, 153);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(91, 20);
+            this.label16.TabIndex = 66;
+            this.label16.Text = "Pasaporte";
             // 
             // button11
             // 
@@ -200,15 +224,16 @@
             this.button11.Size = new System.Drawing.Size(47, 37);
             this.button11.TabIndex = 65;
             this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
-            // foto_empleado
+            // rutaImagenText
             // 
-            this.foto_empleado.BackColor = System.Drawing.Color.SkyBlue;
-            this.foto_empleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.foto_empleado.Location = new System.Drawing.Point(509, 380);
-            this.foto_empleado.Name = "foto_empleado";
-            this.foto_empleado.Size = new System.Drawing.Size(141, 26);
-            this.foto_empleado.TabIndex = 64;
+            this.rutaImagenText.BackColor = System.Drawing.Color.SkyBlue;
+            this.rutaImagenText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rutaImagenText.Location = new System.Drawing.Point(509, 380);
+            this.rutaImagenText.Name = "rutaImagenText";
+            this.rutaImagenText.Size = new System.Drawing.Size(141, 26);
+            this.rutaImagenText.TabIndex = 64;
             // 
             // label14
             // 
@@ -265,7 +290,6 @@
             // 
             // imagen_empleado
             // 
-            this.imagen_empleado.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("imagen_empleado.BackgroundImage")));
             this.imagen_empleado.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.imagen_empleado.Location = new System.Drawing.Point(725, 81);
             this.imagen_empleado.Name = "imagen_empleado";
@@ -766,24 +790,19 @@
             this.secuenciacolumn.Name = "secuenciacolumn";
             this.secuenciacolumn.ReadOnly = true;
             // 
-            // pasaporteText
+            // button15
             // 
-            this.pasaporteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pasaporteText.Location = new System.Drawing.Point(112, 150);
-            this.pasaporteText.MaxLength = 30;
-            this.pasaporteText.Name = "pasaporteText";
-            this.pasaporteText.Size = new System.Drawing.Size(253, 26);
-            this.pasaporteText.TabIndex = 67;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(15, 153);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(91, 20);
-            this.label16.TabIndex = 66;
-            this.label16.Text = "Pasaporte";
+            this.button15.BackColor = System.Drawing.Color.Tomato;
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button15.ForeColor = System.Drawing.Color.White;
+            this.button15.Location = new System.Drawing.Point(725, 258);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(185, 37);
+            this.button15.TabIndex = 68;
+            this.button15.Text = "Eliminar Foto";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // ventana_empleado
             // 
@@ -862,7 +881,6 @@
         private System.Windows.Forms.Panel imagen_empleado;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.TextBox foto_empleado;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -876,5 +894,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
         public System.Windows.Forms.TextBox pasaporteText;
         private System.Windows.Forms.Label label16;
+        private TextBox rutaImagenText;
+        private Button button15;
     }
 }
