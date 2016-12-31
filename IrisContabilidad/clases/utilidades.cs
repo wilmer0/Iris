@@ -1019,15 +1019,7 @@ namespace IrisContabilidad.clases
             }
         }
 
-        public static void EliminarARchivo(string fullPath)
-        {
-            if (System.IO.File.Exists(fullPath))
-            {
-                System.IO.FileInfo info = new System.IO.FileInfo(fullPath);
-                info.Attributes = System.IO.FileAttributes.Normal;
-                System.IO.File.Delete(fullPath);
-            }
-        }
+        
         public bool copiarPegarArchivo(string origPath, string destPath, bool overwrite)
         {
             try
@@ -1045,7 +1037,7 @@ namespace IrisContabilidad.clases
                 {
                     if (overwrite == true)
                     {
-                        EliminarARchivo(destPath);
+                        EliminarArchivo(destPath);
                         System.IO.File.Copy(origPath, destPath, true);
                     }
                 }
@@ -1107,6 +1099,26 @@ namespace IrisContabilidad.clases
             if (char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = false;
+            }
+        }
+
+
+       
+        public bool EliminarArchivo(string rutaArchivo)
+        {
+            try
+            {
+                //validar si el archivo no existe
+                if (!File.Exists(rutaArchivo))
+                {
+                    return true;
+                }
+                File.Delete(rutaArchivo);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,8 @@ namespace IrisContabilidad.modelos
         private utilidades utilidades = new utilidades();
         private empleado empleado;
 
-
+        //variables
+        string rutaImagenesEmpleados = Directory.GetCurrentDirectory().ToString() + @"\Resources\imagenes_empleados\";
 
         //agregar 
         public bool agregarEmpleado(empleado empleado)
@@ -51,19 +53,32 @@ namespace IrisContabilidad.modelos
                     MessageBox.Show("Existe un empleado con ese login", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+                //validar la foto 
+                if (empleado.foto == "")
+                {
+                    //si no tiene se asigna la foto por default
+                    empleado.foto = "default1.png";
+                }
+                else
+                {
+                    //si tiene foto entonces se pega en la carpeta del proyecto
+                    utilidades.copiarPegarArchivo(empleado.foto, rutaImagenesEmpleados,true);
+                    empleado.foto = Path.GetFileName(empleado.foto);
+                }
+
 
                 if (empleado.activo == true)
                 {
                     activo = 1;
                 }
                 sql =
-                    "insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte) values('" +
+                    "insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto) values('" +
                     empleado.codigo + "','" + empleado.nombre + "','" + empleado.login + "','" + empleado.clave + "','" +
                     empleado.sueldo + "','" + empleado.codigo_situacion + "','" + activo + "','" +
                     empleado.codigo_sucursal + "','" + empleado.codigo_departamento + "','" + empleado.codigo_cargo +
                     "','" + empleado.codigo_grupo_usuario + "','" + empleado.fecha_ingreso.ToString("yyyy-MM-dd") +
                     "','" + empleado.tipo_permiso + "','" + empleado.codigo_tipo_nomina + "','" +
-                    empleado.identificacion + "','" + empleado.pasaporte + "')";
+                    empleado.identificacion + "','" + empleado.pasaporte + "','"+empleado.foto+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -109,6 +124,19 @@ namespace IrisContabilidad.modelos
                     MessageBox.Show("Existe un empleado con ese login", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+                //validar la foto 
+                if (empleado.foto == "")
+                {
+                    //si no tiene se asigna la foto por default
+                    empleado.foto = "default1.png";
+                }
+                else
+                {
+                    //si tiene foto entonces se pega en la carpeta del proyecto
+                    utilidades.copiarPegarArchivo(empleado.foto, rutaImagenesEmpleados,true);
+                    empleado.foto = Path.GetFileName(empleado.foto);
+                }
+
 
                 if (empleado.activo == true)
                 {
@@ -121,7 +149,7 @@ namespace IrisContabilidad.modelos
                       empleado.codigo_grupo_usuario + "',fecha_ingreso='" +
                       empleado.fecha_ingreso.ToString("yyyy-MM-dd") + "',permiso='" + empleado.tipo_permiso +
                       "',cod_tipo_nomina='" + empleado.codigo_tipo_nomina + "',identificacion='" +
-                      empleado.identificacion + "',pasaporte='" + empleado.pasaporte + "' where codigo='" +
+                      empleado.identificacion + "',pasaporte='" + empleado.pasaporte + "',foto='"+empleado.foto+"' where codigo='" +
                       empleado.codigo + "'";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
@@ -233,7 +261,7 @@ namespace IrisContabilidad.modelos
             {
                 List<empleado> listaEmpleado = new List<empleado>();
                 string sql =
-                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado";
+                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado";
                 if (mantenimiento == false)
                 {
                     sql += "  where activo='1'";
@@ -258,6 +286,7 @@ namespace IrisContabilidad.modelos
                     empleado.codigo_tipo_nomina = (int) row[13];
                     empleado.identificacion = row[14].ToString();
                     empleado.pasaporte = row[15].ToString();
+                    empleado.foto = row[16].ToString();
 
                     listaEmpleado.Add(empleado);
                 }
@@ -279,7 +308,7 @@ namespace IrisContabilidad.modelos
                 empleado = new empleado();
                 List<empleado> listaEmpleado = new List<empleado>();
                 string sql =
-                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where login='" +
+                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado where login='" +
                     usuario + "' and clave='" + clave + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
@@ -300,6 +329,7 @@ namespace IrisContabilidad.modelos
                     empleado.codigo_tipo_nomina = Convert.ToInt16(row[13]);
                     empleado.identificacion = row[14].ToString();
                     empleado.pasaporte = row[15].ToString();
+                    empleado.foto = row[16].ToString();
 
                 }
                 return empleado;
@@ -317,8 +347,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 empleado empleado = new empleado();
-                string sql =
-                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte from empleado where codigo='" +
+                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado where codigo='" +
                     id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -344,6 +373,7 @@ namespace IrisContabilidad.modelos
                     empleado.codigo_tipo_nomina = Convert.ToInt16(ds.Tables[0].Rows[0][13].ToString());
                     empleado.identificacion = ds.Tables[0].Rows[0][14].ToString();
                     empleado.pasaporte = ds.Tables[0].Rows[0][15].ToString();
+                    empleado.foto = ds.Tables[0].Rows[0][16].ToString();
                 }
                 return empleado;
             }

@@ -67,5 +67,35 @@ namespace IrisContabilidad.modulo_inventario
         {
 
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog file=new OpenFileDialog();
+                if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    rutaImagenText.Text = file.FileName;
+                    panel3.BackgroundImage=Image.FromFile(rutaImagenText.Text);
+                }
+            }
+            catch (Exception)
+            {
+                rutaImagenText.Text = "";
+                panel3.BackgroundImage = null;
+                MessageBox.Show("Debe seleccionar una imagen", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

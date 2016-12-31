@@ -94,6 +94,7 @@
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
+    <Compile Include="clases\FileFolderDialog.cs" />
     <Compile Include="clases\grupo_usuarios.cs" />
     <Compile Include="clases\itebis.cs" />
     <Compile Include="clases\modulo.cs" />
