@@ -35,6 +35,7 @@ namespace IrisContabilidad
             this.tituloLabel.Text = "Inicio sesión";
             this.Text = tituloLabel.Text;
             usuarioText.Select();
+            utilidades.notificacionWindows("titulo prueba", "hola mundo esto es un mensaje",5);
            
         }
 

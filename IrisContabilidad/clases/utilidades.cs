@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.IO.Compression;
@@ -13,8 +12,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ionic.Zip;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using MySql.Data.MySqlClient;
 using CompressionLevel = Ionic.Zlib.CompressionLevel;
+using DataSet = System.Data.DataSet;
 
 namespace IrisContabilidad.clases
 {
@@ -424,15 +425,7 @@ namespace IrisContabilidad.clases
                 return false;
             }
         }
-        //imprimir venta rollor
-
-        //imprimir factura en hoja normales 8.50 x 11
-
-
-        //imprimir cobros papel rollo
-
-
-
+       
 
         //public  Boolean limpiarDatosTodasTablasMysql()
         //{
@@ -1101,8 +1094,6 @@ namespace IrisContabilidad.clases
                 e.Handled = false;
             }
         }
-
-
        
         public bool EliminarArchivo(string rutaArchivo)
         {
@@ -1119,6 +1110,27 @@ namespace IrisContabilidad.clases
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+        public void notificacionWindows(string titulo, string mensaje, int duracionSegundos, ToolTipIcon icono = ToolTipIcon.Info)
+        {
+            try
+            {
+
+                NotifyIcon notifyIcon=new NotifyIcon();
+                notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+                notifyIcon.BalloonTipTitle = titulo;
+                notifyIcon.Text = mensaje;
+                notifyIcon.BalloonTipText = mensaje;
+                duracionSegundos *= 1000;
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip(duracionSegundos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error notificacionWindows.:" + ex.ToString());
+                
             }
         }
     }

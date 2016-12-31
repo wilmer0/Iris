@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(menu1));
             this.flowLayoutVentanas = new System.Windows.Forms.FlowLayoutPanel();
+            this.notificacionesBoton = new System.Windows.Forms.Button();
             this.flowLayoutModulos = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button14 = new System.Windows.Forms.Button();
@@ -77,15 +78,29 @@
             this.flowLayoutVentanas.TabIndex = 13;
             this.flowLayoutVentanas.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutVentanas_Paint);
             // 
+            // notificacionesBoton
+            // 
+            this.notificacionesBoton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.notificacionesBoton.BackColor = System.Drawing.Color.Transparent;
+            this.notificacionesBoton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("notificacionesBoton.BackgroundImage")));
+            this.notificacionesBoton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.notificacionesBoton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.notificacionesBoton.Location = new System.Drawing.Point(752, 0);
+            this.notificacionesBoton.Name = "notificacionesBoton";
+            this.notificacionesBoton.Size = new System.Drawing.Size(93, 77);
+            this.notificacionesBoton.TabIndex = 0;
+            this.notificacionesBoton.UseVisualStyleBackColor = false;
+            this.notificacionesBoton.Click += new System.EventHandler(this.notificacionesBoton_Click);
+            // 
             // flowLayoutModulos
             // 
             this.flowLayoutModulos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutModulos.AutoScroll = true;
             this.flowLayoutModulos.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.flowLayoutModulos.Location = new System.Drawing.Point(12, 499);
+            this.flowLayoutModulos.Location = new System.Drawing.Point(12, 502);
             this.flowLayoutModulos.Name = "flowLayoutModulos";
-            this.flowLayoutModulos.Size = new System.Drawing.Size(940, 89);
+            this.flowLayoutModulos.Size = new System.Drawing.Size(940, 86);
             this.flowLayoutModulos.TabIndex = 12;
             // 
             // panel3
@@ -93,6 +108,7 @@
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel3.Controls.Add(this.notificacionesBoton);
             this.panel3.Controls.Add(this.button14);
             this.panel3.Controls.Add(this.button4);
             this.panel3.Location = new System.Drawing.Point(12, 27);
@@ -107,7 +123,7 @@
             this.button14.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button14.BackgroundImage")));
             this.button14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Location = new System.Drawing.Point(748, 0);
+            this.button14.Location = new System.Drawing.Point(657, 0);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(93, 77);
             this.button14.TabIndex = 10;
@@ -120,7 +136,7 @@
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(847, 0);
+            this.button4.Location = new System.Drawing.Point(846, 0);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(93, 77);
             this.button4.TabIndex = 9;
@@ -162,5 +178,6 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button notificacionesBoton;
     }
 }
