@@ -421,6 +421,14 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "unidad1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana almacen";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_almacen";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "almacen1.png";
+                listaVentana.Add(ventana);
                 #endregion
                 
                 
@@ -480,9 +488,9 @@ namespace IrisContabilidad.modelos
                 
 
                 //para agregarla manualmente
-                //insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('14','ventana producto','IrisContabilidad.modulo_inventario.ventana_producto','producto1.png','1','0');
-                //insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','13');
-                //insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','13');
+                //insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('15','ventana almacen','IrisContabilidad.modulo_inventario.ventana_almacen','almacen1.png','1','0');
+                //insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','15');
+                //insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','15');
             }
             catch (Exception ex)
             {

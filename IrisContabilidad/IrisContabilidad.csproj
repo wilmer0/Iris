@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\almacen.cs" />
     <Compile Include="clases\año.cs" />
     <Compile Include="clases\cargo.cs" />
     <Compile Include="clases\ciudad.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="clases\unidad.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
+    <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
     <Compile Include="modelos\modeloCiudad.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
@@ -196,6 +198,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_itebis.Designer.cs">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_almacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_almacen.Designer.cs">
+      <DependentUpon>ventana_almacen.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_producto.cs">
       <SubType>Form</SubType>
@@ -333,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_almacen.resx">
+      <DependentUpon>ventana_almacen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_producto.resx">
       <DependentUpon>ventana_producto.cs</DependentUpon>
