@@ -111,7 +111,11 @@ namespace IrisContabilidad.modulo_sistema
                     flowLayoutModulos.Controls.Add(botonModulo);
                 });
 
-
+                //para que cargue siempre las ventanas del primer modulo encontrado
+                if (listaTemp[0].ToString() != "")
+                {
+                    loadVentanas(Convert.ToInt16(listaTemp[0].ToString()));
+                }
 
             }
             catch (Exception ex)
@@ -200,6 +204,7 @@ namespace IrisContabilidad.modulo_sistema
         {
             try
             {
+                actualizarNotificacionesSistema();
                 //cargar todos los modulos que tiene habilitados el empleado con todas las ventanas que tiene habilitadas
                 loadModulos();
 
@@ -253,6 +258,24 @@ namespace IrisContabilidad.modulo_sistema
         private void menu1_KeyDown(object sender, KeyEventArgs e)
         {
 
+        }
+
+        private void notificacionesBoton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void actualizarNotificacionesSistema()
+        {
+            try
+            {
+                //notificacionesBoton.BackColor=Color.Red;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error actualizarNotificacionesSistema.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿namespace IrisContabilidad.modulo_inventario
 {
     partial class ventana_itebis
     {
@@ -140,6 +140,7 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 23;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // porcientoText
             // 

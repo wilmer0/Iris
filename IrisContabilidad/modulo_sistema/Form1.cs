@@ -35,6 +35,7 @@ namespace IrisContabilidad
             this.tituloLabel.Text = "Inicio sesión";
             this.Text = tituloLabel.Text;
             usuarioText.Select();
+            utilidades.notificacionWindows("titulo prueba", "hola mundo esto es un mensaje",5);
            
         }
 
@@ -116,7 +117,7 @@ namespace IrisContabilidad
         public  void GetAction()
         {
             //modeloEmpleado.adminPrimerLogin();
-            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
             }
@@ -152,7 +153,7 @@ namespace IrisContabilidad
 
         public  void Salir()
         {
-            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }

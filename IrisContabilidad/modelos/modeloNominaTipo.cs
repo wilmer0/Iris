@@ -64,7 +64,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
                 sql = "update nomina_tipos set nombre='" + tipo.nombre + "',activo='" + activo.ToString() + "' where codigo='" + tipo.codigo + "'";
-                ds = utilidades.ejecutarcomando(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 MessageBox.Show(sql);
                 return true;
             }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.IO.Compression;
@@ -13,8 +12,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ionic.Zip;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using MySql.Data.MySqlClient;
 using CompressionLevel = Ionic.Zlib.CompressionLevel;
+using DataSet = System.Data.DataSet;
 
 namespace IrisContabilidad.clases
 {
@@ -169,22 +170,11 @@ namespace IrisContabilidad.clases
             escribir.Close();
         }
 
-
-
-        public DataSet ejecutarcomando(string query)
+        public DataSet ejecutarcomando_sql(string query)
         {
             try
             {
-                //string cmd = "select ip_server,base_datos,base_datos_usuario,base_datos_clave from sistema where ip_server!='' ";
-                //DataSet dx = utilidades.ejecutarcomando(cmd);
-                //if(dx.Tables[0].Rows[0][0].ToString()!="")
-                //{
-                //    MessageBox.Show("Ip server tiene dato");
-                //}
-
-                //funaciona nitido para conecciones desde otra maquina porq se especifica el user y password de la bd
-                //SqlConnection conn = new SqlConnection("Data Source=dlr-laptop.ddns.net,31164;" + "Initial Catalog=punto_venta;" + "User id=dextroyex;" + "Password=wilmerlomas1;");
-                SqlConnection conn = new SqlConnection("Data Source=.;" + "Initial Catalog=punto_venta;" + "User id=dextroyex;" + "Password=123456;");
+                SqlConnection conn = new SqlConnection("Data Source=.;" + "Initial Catalog=iris_contabilidad;" + "User id=dextroyex;" + "Password=wilmerlomas1;");
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -197,14 +187,11 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
-
-
-
         public DataSet ejecutarcomando_mysql(string query)
         {
             try
             {
-                MySqlConnection conn =new MySqlConnection("server=localhost;uid=root;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
+                MySqlConnection conn =new MySqlConnection("server=localhost;uid=dextroyex;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -335,16 +322,7 @@ namespace IrisContabilidad.clases
 
 
 
-        public string getNombreTercero(string codigo)
-        {
-            string cmd = "";
-            DataSet ds;
-            cmd = "select (t.nombre+' '+p.apellido) as nombre from tercero t join persona p on p.codigo=t.codigo where t.codigo='" + codigo.ToString() + "'";
-            utilidades utilidades = new utilidades();
-            ds = utilidades.ejecutarcomando(cmd);
-            return ds.Tables[0].Rows[0][0].ToString();
-        }
-
+      
 
         public Boolean comprimirArchivo(string rutaArchivo)
         {
@@ -447,15 +425,7 @@ namespace IrisContabilidad.clases
                 return false;
             }
         }
-        //imprimir venta rollor
-
-        //imprimir factura en hoja normales 8.50 x 11
-
-
-        //imprimir cobros papel rollo
-
-
-
+       
 
         //public  Boolean limpiarDatosTodasTablasMysql()
         //{
@@ -1042,15 +1012,7 @@ namespace IrisContabilidad.clases
             }
         }
 
-        public static void EliminarARchivo(string fullPath)
-        {
-            if (System.IO.File.Exists(fullPath))
-            {
-                System.IO.FileInfo info = new System.IO.FileInfo(fullPath);
-                info.Attributes = System.IO.FileAttributes.Normal;
-                System.IO.File.Delete(fullPath);
-            }
-        }
+        
         public bool copiarPegarArchivo(string origPath, string destPath, bool overwrite)
         {
             try
@@ -1068,7 +1030,7 @@ namespace IrisContabilidad.clases
                 {
                     if (overwrite == true)
                     {
-                        EliminarARchivo(destPath);
+                        EliminarArchivo(destPath);
                         System.IO.File.Copy(origPath, destPath, true);
                     }
                 }
@@ -1130,6 +1092,45 @@ namespace IrisContabilidad.clases
             if (char.IsWhiteSpace(e.KeyChar))
             {
                 e.Handled = false;
+            }
+        }
+       
+        public bool EliminarArchivo(string rutaArchivo)
+        {
+            try
+            {
+                //validar si el archivo no existe
+                if (!File.Exists(rutaArchivo))
+                {
+                    return true;
+                }
+                File.Delete(rutaArchivo);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public void notificacionWindows(string titulo, string mensaje, int duracionSegundos, ToolTipIcon icono = ToolTipIcon.Info)
+        {
+            try
+            {
+
+                NotifyIcon notifyIcon=new NotifyIcon();
+                notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+                notifyIcon.BalloonTipTitle = titulo;
+                notifyIcon.Text = mensaje;
+                notifyIcon.BalloonTipText = mensaje;
+                duracionSegundos *= 1000;
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip(duracionSegundos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error notificacionWindows.:" + ex.ToString());
+                
             }
         }
     }

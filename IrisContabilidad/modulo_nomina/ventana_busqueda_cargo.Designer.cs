@@ -85,6 +85,7 @@
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(396, 26);
             this.nombreText.TabIndex = 20;
+            this.nombreText.TextChanged += new System.EventHandler(this.nombreText_TextChanged);
             this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyDown);
             // 
             // label3

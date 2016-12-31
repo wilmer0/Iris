@@ -165,7 +165,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
                 sql = "update sistema_modulo set nombre='" + modulo.nombre + "',activo='" + activo.ToString() + "',nombre_modulo_proyecto='" +modulo.nombre_logico+ "',imagen='"+modulo.imagen+"' where id='" + modulo.id + "'";
-                ds = utilidades.ejecutarcomando(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
             }
