@@ -371,6 +371,7 @@
             this.puntoReordenText.Name = "puntoReordenText";
             this.puntoReordenText.Size = new System.Drawing.Size(256, 26);
             this.puntoReordenText.TabIndex = 36;
+            this.puntoReordenText.Text = "0";
             this.puntoReordenText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.puntoReordenText_KeyPress);
             // 
             // label7
@@ -392,6 +393,7 @@
             this.puntoMaximoText.Name = "puntoMaximoText";
             this.puntoMaximoText.Size = new System.Drawing.Size(256, 26);
             this.puntoMaximoText.TabIndex = 34;
+            this.puntoMaximoText.Text = "0";
             this.puntoMaximoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label6

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.modulo_nomina;
 using empleado = IrisContabilidad.clases.empleado;
 
 namespace IrisContabilidad.modelos
@@ -18,7 +19,8 @@ namespace IrisContabilidad.modelos
         private empleado empleado;
 
         //variables
-        string rutaImagenesEmpleados = Directory.GetCurrentDirectory().ToString() + @"\Resources\imagenes_empleados\";
+        private string rutaImagenesEmpleados = Directory.GetCurrentDirectory().ToString() +
+                                               @"\Resources\imagenes_empleados\";
 
         //agregar 
         public bool agregarEmpleado(empleado empleado)
@@ -62,7 +64,7 @@ namespace IrisContabilidad.modelos
                 else
                 {
                     //si tiene foto entonces se pega en la carpeta del proyecto
-                    utilidades.copiarPegarArchivo(empleado.foto, rutaImagenesEmpleados,true);
+                    utilidades.copiarPegarArchivo(empleado.foto, rutaImagenesEmpleados, true);
                     empleado.foto = Path.GetFileName(empleado.foto);
                 }
 
@@ -78,7 +80,7 @@ namespace IrisContabilidad.modelos
                     empleado.codigo_sucursal + "','" + empleado.codigo_departamento + "','" + empleado.codigo_cargo +
                     "','" + empleado.codigo_grupo_usuario + "','" + empleado.fecha_ingreso.ToString("yyyy-MM-dd") +
                     "','" + empleado.tipo_permiso + "','" + empleado.codigo_tipo_nomina + "','" +
-                    empleado.identificacion + "','" + empleado.pasaporte + "','"+empleado.foto+"')";
+                    empleado.identificacion + "','" + empleado.pasaporte + "','" + empleado.foto + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -133,7 +135,7 @@ namespace IrisContabilidad.modelos
                 else
                 {
                     //si tiene foto entonces se pega en la carpeta del proyecto
-                    utilidades.copiarPegarArchivo(empleado.foto, rutaImagenesEmpleados,true);
+                    utilidades.copiarPegarArchivo(empleado.foto, rutaImagenesEmpleados, true);
                     empleado.foto = Path.GetFileName(empleado.foto);
                 }
 
@@ -149,7 +151,8 @@ namespace IrisContabilidad.modelos
                       empleado.codigo_grupo_usuario + "',fecha_ingreso='" +
                       empleado.fecha_ingreso.ToString("yyyy-MM-dd") + "',permiso='" + empleado.tipo_permiso +
                       "',cod_tipo_nomina='" + empleado.codigo_tipo_nomina + "',identificacion='" +
-                      empleado.identificacion + "',pasaporte='" + empleado.pasaporte + "',foto='"+empleado.foto+"' where codigo='" +
+                      empleado.identificacion + "',pasaporte='" + empleado.pasaporte + "',foto='" + empleado.foto +
+                      "' where codigo='" +
                       empleado.codigo + "'";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
@@ -192,7 +195,7 @@ namespace IrisContabilidad.modelos
         }
 
         //validar login
-        public Boolean validarLogin(string usuario, string clave)
+        public empleado validarLogin(string usuario, string clave)
         {
             try
             {
@@ -203,24 +206,48 @@ namespace IrisContabilidad.modelos
                  select *from empleado e join sucursal suc on e.cod_sucursal=suc.codigo and suc.activo='1' join empresa emp
 on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e.clave='MQAyADMA';
                  */
-                sql = "select *from empleado e join sucursal suc on e.cod_sucursal=suc.codigo and suc.activo='1' join empresa emp on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='" + usuario + "' and e.clave='" + clave + "'";
+                sql =
+                    "select e.codigo,e.nombre,e.login,e.clave,e.sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento,e.cod_cargo,e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion,e.pasaporte,e.foto from empleado e join sucursal suc on e.cod_sucursal=suc.codigo and suc.activo='1' join empresa emp on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='" +
+                    usuario + "' and e.clave='" + clave + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count > 0)
+                if (ds.Tables[0].Rows[0][0].ToString() != "" || ds.Tables[0].Rows.Count > 0)
                 {
-                    return true;
+                    empleado empleado = new empleado();
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+
+                        empleado.codigo = Convert.ToInt16(row[0]);
+                        empleado.nombre = row[1].ToString();
+                        empleado.login = row[2].ToString();
+                        empleado.clave = row[3].ToString();
+                        empleado.sueldo = (decimal) row[4];
+                        empleado.codigo_situacion = (int) row[5];
+                        empleado.activo = (bool) row[6];
+                        empleado.codigo_sucursal = (int) row[7];
+                        empleado.codigo_departamento = Convert.ToInt16(row[8]);
+                        empleado.codigo_cargo = Convert.ToInt16(row[9]);
+                        empleado.codigo_grupo_usuario = Convert.ToInt16(row[10]);
+                        empleado.fecha_ingreso = (DateTime) row[11];
+                        empleado.tipo_permiso = row[12].ToString();
+                        empleado.codigo_tipo_nomina = Convert.ToInt16(row[13]);
+                        empleado.identificacion = row[14].ToString();
+                        empleado.pasaporte = row[15].ToString();
+                        empleado.foto = row[16].ToString();
+                    }
+                    return empleado;
                 }
-                return false;
+                return null;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error validarLogin.: " + ex.ToString());
-                return false;
+                return null;
             }
         }
 
 
 
-        //get modulos by empleado
+    //get modulos by empleado
         public List<string> GetListaModulosByEmpleado(empleado empleado)
         {
             try
@@ -311,10 +338,21 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
             {
                 empleado = new empleado();
                 List<empleado> listaEmpleado = new List<empleado>();
-                string sql =
-                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado where login='" +
-                    usuario + "' and clave='" + clave + "'";
+
+                //validar empresa habilitada y sucursal
+                string sql ="select *from empleado e join sucursal suc on e.cod_sucursal=suc.codigo and suc.activo='1' join empresa emp on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='" +
+                    usuario + "' and e.clave='" + clave + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count ==0)
+                {
+                    MessageBox.Show("La empresa se encuentra deshabilitada, por favor contacte con su proveedor", "",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return null;
+                }
+               
+                sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado where login='" +
+                    usuario + "' and clave='" + clave + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     empleado.codigo = Convert.ToInt16(row[0]);

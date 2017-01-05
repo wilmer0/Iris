@@ -57,7 +57,18 @@ namespace IrisContabilidad.modulo_inventario
                 if (producto != null)
                 {
                     //llenar campos
-
+                    productoText.Text = producto.nombre;
+                    referenciaText.Text = producto.referencia;
+                    //categoria
+                    //subcategoria
+                    puntoMaximoText.Text = producto.punto_maximo.ToString("N");
+                    puntoReordenText.Text = producto.reorden.ToString("N");
+                    itebis = modeloItebis.getItebisById(producto.codigo_itebis);
+                    loadItebis();
+                    almacen =modeloAlmacen.getAlmacenById(producto.codigo_almacen);
+                    loadAlmacen();
+                    unidadMinima = modeloUnidad.getUnidadById(producto.codigo_unidad_minima);
+                    loadUnidad();
                     if (empleado.foto != "")
                     {
                         panel3.BackgroundImage = Image.FromFile(rutaImagenesProductos + producto.imagen);
@@ -71,7 +82,19 @@ namespace IrisContabilidad.modulo_inventario
                 else
                 {
                     //blanquear campos
-                    
+                    productoText.Text = "";
+                    referenciaText.Text = "";
+                    //categoria
+                    //subcategoria
+                    puntoMaximoText.Text = "";
+                    puntoReordenText.Text = "";
+                    itebis = null;
+                    loadItebis();
+                    almacen = null;
+                    loadAlmacen();
+                    unidadMinima = null;
+                    loadUnidad();
+                    rutaImagenText.Text = "";
                     panel3.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
                     activoCheck.Checked = false;
                 }
@@ -122,6 +145,22 @@ namespace IrisContabilidad.modulo_inventario
                     MessageBox.Show("Falta el almacen", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     almacenIdText.Focus();
                     almacenIdText.SelectAll();
+                    return false;
+                }
+                //validar punto maximo
+                if (puntoMaximoText.Text == "")
+                {
+                    MessageBox.Show("Falta el punto maximo", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    puntoMaximoText.Focus();
+                    puntoMaximoText.SelectAll();
+                    return false;
+                }
+                //validar punto reorden
+                if (puntoReordenText.Text == "")
+                {
+                    MessageBox.Show("Falta el punto de reorden", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    puntoReordenText.Focus();
+                    puntoReordenText.SelectAll();
                     return false;
                 }
                 return true;

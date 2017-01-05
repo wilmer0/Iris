@@ -166,7 +166,7 @@ namespace IrisContabilidad.modelos
             {
 
                 List<producto> lista = new List<producto>();
-                string sql = "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima from producto where codigo='" + id + "'";
+                string sql = "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima from producto'";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
