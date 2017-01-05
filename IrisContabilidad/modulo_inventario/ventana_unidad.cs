@@ -180,7 +180,6 @@ namespace IrisContabilidad.modulo_inventario
         private void button4_Click(object sender, EventArgs e)
         {
             ventana_busqueda_unidad ventana = new ventana_busqueda_unidad(true);
-            ventana.mantenimiento = true;
             ventana.Owner = this;
             ventana.ShowDialog();
             if (ventana.DialogResult == DialogResult.OK)

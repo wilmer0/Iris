@@ -1,0 +1,2 @@
+server=localhost;uid=dextroyex;pwd=wilmerlomas1;database=iris_contabilidad;
+    

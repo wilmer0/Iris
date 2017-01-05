@@ -31,38 +31,39 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button15 = new System.Windows.Forms.Button();
             this.activoCheck = new System.Windows.Forms.CheckBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.unidadMinimaText = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.unidadMinimaIdText = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.rutaImagenText = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.almacenText = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.almacenIdText = new System.Windows.Forms.TextBox();
+            this.itebisText = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.itebisIdText = new System.Windows.Forms.TextBox();
             this.puntoReordenText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.puntoMaximoText = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.subCategoriaText = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.subcategoriaIdText = new System.Windows.Forms.TextBox();
+            this.categoriaText = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.referenciaText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.CargoText = new System.Windows.Forms.TextBox();
+            this.categoriaIdText = new System.Windows.Forms.TextBox();
+            this.productoText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
@@ -113,6 +114,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(400, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // tabControl1
             // 
@@ -126,38 +128,39 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button15);
             this.tabPage1.Controls.Add(this.activoCheck);
             this.tabPage1.Controls.Add(this.panel3);
-            this.tabPage1.Controls.Add(this.textBox13);
+            this.tabPage1.Controls.Add(this.unidadMinimaText);
             this.tabPage1.Controls.Add(this.button10);
             this.tabPage1.Controls.Add(this.label11);
-            this.tabPage1.Controls.Add(this.textBox14);
+            this.tabPage1.Controls.Add(this.unidadMinimaIdText);
             this.tabPage1.Controls.Add(this.button9);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.rutaImagenText);
-            this.tabPage1.Controls.Add(this.textBox10);
+            this.tabPage1.Controls.Add(this.almacenText);
             this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.textBox11);
-            this.tabPage1.Controls.Add(this.textBox8);
+            this.tabPage1.Controls.Add(this.almacenIdText);
+            this.tabPage1.Controls.Add(this.itebisText);
             this.tabPage1.Controls.Add(this.button7);
             this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.textBox9);
+            this.tabPage1.Controls.Add(this.itebisIdText);
             this.tabPage1.Controls.Add(this.puntoReordenText);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.puntoMaximoText);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.textBox4);
+            this.tabPage1.Controls.Add(this.subCategoriaText);
             this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.textBox5);
-            this.tabPage1.Controls.Add(this.textBox3);
+            this.tabPage1.Controls.Add(this.subcategoriaIdText);
+            this.tabPage1.Controls.Add(this.categoriaText);
             this.tabPage1.Controls.Add(this.button5);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.referenciaText);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.CargoText);
+            this.tabPage1.Controls.Add(this.categoriaIdText);
+            this.tabPage1.Controls.Add(this.productoText);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -168,12 +171,26 @@
             this.tabPage1.Text = "Producto";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.Tomato;
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button15.ForeColor = System.Drawing.Color.White;
+            this.button15.Location = new System.Drawing.Point(635, 386);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(185, 37);
+            this.button15.TabIndex = 69;
+            this.button15.Text = "Eliminar Foto";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // activoCheck
             // 
             this.activoCheck.AutoSize = true;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(606, 408);
+            this.activoCheck.Location = new System.Drawing.Point(606, 461);
             this.activoCheck.Name = "activoCheck";
             this.activoCheck.Size = new System.Drawing.Size(68, 21);
             this.activoCheck.TabIndex = 54;
@@ -182,23 +199,22 @@
             // 
             // panel3
             // 
-            this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.Location = new System.Drawing.Point(606, 196);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(236, 184);
             this.panel3.TabIndex = 53;
             // 
-            // textBox13
+            // unidadMinimaText
             // 
-            this.textBox13.BackColor = System.Drawing.Color.White;
-            this.textBox13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox13.Location = new System.Drawing.Point(606, 113);
-            this.textBox13.MaxLength = 200;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ReadOnly = true;
-            this.textBox13.Size = new System.Drawing.Size(256, 26);
-            this.textBox13.TabIndex = 52;
+            this.unidadMinimaText.BackColor = System.Drawing.Color.White;
+            this.unidadMinimaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadMinimaText.Location = new System.Drawing.Point(606, 113);
+            this.unidadMinimaText.MaxLength = 200;
+            this.unidadMinimaText.Name = "unidadMinimaText";
+            this.unidadMinimaText.ReadOnly = true;
+            this.unidadMinimaText.Size = new System.Drawing.Size(256, 26);
+            this.unidadMinimaText.TabIndex = 52;
             // 
             // button10
             // 
@@ -210,6 +226,7 @@
             this.button10.Size = new System.Drawing.Size(47, 37);
             this.button10.TabIndex = 51;
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // label11
             // 
@@ -221,14 +238,14 @@
             this.label11.TabIndex = 50;
             this.label11.Text = "Unidad minima";
             // 
-            // textBox14
+            // unidadMinimaIdText
             // 
-            this.textBox14.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox14.Location = new System.Drawing.Point(606, 76);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(183, 26);
-            this.textBox14.TabIndex = 49;
+            this.unidadMinimaIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.unidadMinimaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadMinimaIdText.Location = new System.Drawing.Point(606, 76);
+            this.unidadMinimaIdText.Name = "unidadMinimaIdText";
+            this.unidadMinimaIdText.Size = new System.Drawing.Size(183, 26);
+            this.unidadMinimaIdText.TabIndex = 49;
             // 
             // button9
             // 
@@ -261,16 +278,16 @@
             this.rutaImagenText.Size = new System.Drawing.Size(183, 26);
             this.rutaImagenText.TabIndex = 46;
             // 
-            // textBox10
+            // almacenText
             // 
-            this.textBox10.BackColor = System.Drawing.Color.White;
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(158, 502);
-            this.textBox10.MaxLength = 200;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ReadOnly = true;
-            this.textBox10.Size = new System.Drawing.Size(256, 26);
-            this.textBox10.TabIndex = 45;
+            this.almacenText.BackColor = System.Drawing.Color.White;
+            this.almacenText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.almacenText.Location = new System.Drawing.Point(158, 502);
+            this.almacenText.MaxLength = 200;
+            this.almacenText.Name = "almacenText";
+            this.almacenText.ReadOnly = true;
+            this.almacenText.Size = new System.Drawing.Size(256, 26);
+            this.almacenText.TabIndex = 45;
             // 
             // button8
             // 
@@ -282,6 +299,7 @@
             this.button8.Size = new System.Drawing.Size(47, 37);
             this.button8.TabIndex = 44;
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label9
             // 
@@ -293,25 +311,25 @@
             this.label9.TabIndex = 43;
             this.label9.Text = "Almacen";
             // 
-            // textBox11
+            // almacenIdText
             // 
-            this.textBox11.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox11.Location = new System.Drawing.Point(158, 465);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(183, 26);
-            this.textBox11.TabIndex = 42;
+            this.almacenIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.almacenIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.almacenIdText.Location = new System.Drawing.Point(158, 465);
+            this.almacenIdText.Name = "almacenIdText";
+            this.almacenIdText.Size = new System.Drawing.Size(183, 26);
+            this.almacenIdText.TabIndex = 42;
             // 
-            // textBox8
+            // itebisText
             // 
-            this.textBox8.BackColor = System.Drawing.Color.White;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(158, 424);
-            this.textBox8.MaxLength = 200;
-            this.textBox8.Name = "textBox8";
-            this.textBox8.ReadOnly = true;
-            this.textBox8.Size = new System.Drawing.Size(256, 26);
-            this.textBox8.TabIndex = 41;
+            this.itebisText.BackColor = System.Drawing.Color.White;
+            this.itebisText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itebisText.Location = new System.Drawing.Point(158, 424);
+            this.itebisText.MaxLength = 200;
+            this.itebisText.Name = "itebisText";
+            this.itebisText.ReadOnly = true;
+            this.itebisText.Size = new System.Drawing.Size(256, 26);
+            this.itebisText.TabIndex = 41;
             // 
             // button7
             // 
@@ -335,14 +353,14 @@
             this.label8.TabIndex = 39;
             this.label8.Text = "Itbis";
             // 
-            // textBox9
+            // itebisIdText
             // 
-            this.textBox9.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(158, 387);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(183, 26);
-            this.textBox9.TabIndex = 38;
+            this.itebisIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.itebisIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itebisIdText.Location = new System.Drawing.Point(158, 387);
+            this.itebisIdText.Name = "itebisIdText";
+            this.itebisIdText.Size = new System.Drawing.Size(183, 26);
+            this.itebisIdText.TabIndex = 38;
             // 
             // puntoReordenText
             // 
@@ -353,6 +371,7 @@
             this.puntoReordenText.Name = "puntoReordenText";
             this.puntoReordenText.Size = new System.Drawing.Size(256, 26);
             this.puntoReordenText.TabIndex = 36;
+            this.puntoReordenText.Text = "0";
             this.puntoReordenText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.puntoReordenText_KeyPress);
             // 
             // label7
@@ -374,6 +393,7 @@
             this.puntoMaximoText.Name = "puntoMaximoText";
             this.puntoMaximoText.Size = new System.Drawing.Size(256, 26);
             this.puntoMaximoText.TabIndex = 34;
+            this.puntoMaximoText.Text = "0";
             this.puntoMaximoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label6
@@ -386,16 +406,16 @@
             this.label6.TabIndex = 35;
             this.label6.Text = "P.maximo";
             // 
-            // textBox4
+            // subCategoriaText
             // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(158, 267);
-            this.textBox4.MaxLength = 200;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(256, 26);
-            this.textBox4.TabIndex = 33;
+            this.subCategoriaText.BackColor = System.Drawing.Color.White;
+            this.subCategoriaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subCategoriaText.Location = new System.Drawing.Point(158, 267);
+            this.subCategoriaText.MaxLength = 200;
+            this.subCategoriaText.Name = "subCategoriaText";
+            this.subCategoriaText.ReadOnly = true;
+            this.subCategoriaText.Size = new System.Drawing.Size(256, 26);
+            this.subCategoriaText.TabIndex = 33;
             // 
             // button6
             // 
@@ -418,25 +438,25 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Subcategoria";
             // 
-            // textBox5
+            // subcategoriaIdText
             // 
-            this.textBox5.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(158, 230);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(183, 26);
-            this.textBox5.TabIndex = 30;
+            this.subcategoriaIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.subcategoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subcategoriaIdText.Location = new System.Drawing.Point(158, 230);
+            this.subcategoriaIdText.Name = "subcategoriaIdText";
+            this.subcategoriaIdText.Size = new System.Drawing.Size(183, 26);
+            this.subcategoriaIdText.TabIndex = 30;
             // 
-            // textBox3
+            // categoriaText
             // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(158, 187);
-            this.textBox3.MaxLength = 200;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(256, 26);
-            this.textBox3.TabIndex = 29;
+            this.categoriaText.BackColor = System.Drawing.Color.White;
+            this.categoriaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoriaText.Location = new System.Drawing.Point(158, 187);
+            this.categoriaText.MaxLength = 200;
+            this.categoriaText.Name = "categoriaText";
+            this.categoriaText.ReadOnly = true;
+            this.categoriaText.Size = new System.Drawing.Size(256, 26);
+            this.categoriaText.TabIndex = 29;
             // 
             // button5
             // 
@@ -449,15 +469,15 @@
             this.button5.TabIndex = 27;
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // referenciaText
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(158, 107);
-            this.textBox1.MaxLength = 20;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(256, 26);
-            this.textBox1.TabIndex = 27;
+            this.referenciaText.BackColor = System.Drawing.Color.White;
+            this.referenciaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.referenciaText.Location = new System.Drawing.Point(158, 107);
+            this.referenciaText.MaxLength = 20;
+            this.referenciaText.Name = "referenciaText";
+            this.referenciaText.Size = new System.Drawing.Size(256, 26);
+            this.referenciaText.TabIndex = 27;
             // 
             // label4
             // 
@@ -479,24 +499,24 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Referencia";
             // 
-            // textBox2
+            // categoriaIdText
             // 
-            this.textBox2.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(158, 150);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(183, 26);
-            this.textBox2.TabIndex = 25;
+            this.categoriaIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.categoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoriaIdText.Location = new System.Drawing.Point(158, 150);
+            this.categoriaIdText.Name = "categoriaIdText";
+            this.categoriaIdText.Size = new System.Drawing.Size(183, 26);
+            this.categoriaIdText.TabIndex = 25;
             // 
-            // CargoText
+            // productoText
             // 
-            this.CargoText.BackColor = System.Drawing.Color.White;
-            this.CargoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CargoText.Location = new System.Drawing.Point(158, 73);
-            this.CargoText.MaxLength = 30;
-            this.CargoText.Name = "CargoText";
-            this.CargoText.Size = new System.Drawing.Size(256, 26);
-            this.CargoText.TabIndex = 25;
+            this.productoText.BackColor = System.Drawing.Color.White;
+            this.productoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productoText.Location = new System.Drawing.Point(158, 73);
+            this.productoText.MaxLength = 30;
+            this.productoText.Name = "productoText";
+            this.productoText.Size = new System.Drawing.Size(256, 26);
+            this.productoText.TabIndex = 25;
             // 
             // label2
             // 
@@ -708,37 +728,37 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox cargoIdText;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox referenciaText;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox CargoText;
+        private System.Windows.Forms.TextBox productoText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox categoriaIdText;
+        private System.Windows.Forms.TextBox categoriaText;
+        private System.Windows.Forms.TextBox subCategoriaText;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox subcategoriaIdText;
         private System.Windows.Forms.TextBox puntoReordenText;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox puntoMaximoText;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox itebisText;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox itebisIdText;
+        private System.Windows.Forms.TextBox almacenText;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox almacenIdText;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox rutaImagenText;
-        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.TextBox unidadMinimaText;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox unidadMinimaIdText;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.CheckBox activoCheck;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -751,5 +771,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
+        private System.Windows.Forms.Button button15;
     }
 }

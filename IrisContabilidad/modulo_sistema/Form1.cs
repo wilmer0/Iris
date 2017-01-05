@@ -116,33 +116,60 @@ namespace IrisContabilidad
        
         public  void GetAction()
         {
-            //modeloEmpleado.adminPrimerLogin();
-            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            try
             {
-                return;
-            }
-            if (!ValidarGetAction())
-                return;
+                //modeloEmpleado.adminPrimerLogin();
+                if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
+                if (!ValidarGetAction())
+                    return;
 
-            modeloPrimerLogin.validarPrimerLogin();
-            
-            empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()));
-            if (empleado.login != null)
-            {
+                modeloPrimerLogin.validarPrimerLogin();
+
+                empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));
+
+                if (empleado == null)
+                {
+                    limpiar();
+                    return;
+                }
+                //empleado = modeloEmpleado.validarLogin(usuarioText.Text, claveText.Text);
+                if (empleado.login != null)
+                {
                     singleton.empleado = empleado;
                     menu1 ventana = new menu1(empleado);
                     ventana.Show();
                     this.Hide();
                     //MessageBox.Show(empleado.fecha_ingreso.ToString());
+                }
+                else
+                {
+                    empleado = null;
+                    MessageBox.Show("No existe el usuario", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   limpiar();
+                }
             }
-            else
+            catch (Exception)
             {
-                empleado = null;
-                MessageBox.Show("No existe el usuario", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error GetAction.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+        }
+
+        public void limpiar()
+        {
+            try
+            {
                 usuarioText.Clear();
                 claveText.Clear();
                 usuarioText.Focus();
                 usuarioText.SelectAll();
+            }
+            catch (Exception)
+            {
+                
             }
         }
 
@@ -179,14 +206,19 @@ namespace IrisContabilidad
         private void button1_Click(object sender, EventArgs e)
         {
             //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
-           
+            //modeloPrimerLogin.primerosDatos();
+            //modeloPrimerLogin.agregarModulos();
+            //modeloPrimerLogin.agregarVentanas();
+            //modeloPrimerLogin.agregarVentanasPrimerModulo();
+            //modeloPrimerLogin.agregarPrimerEmpleado();
+            //modeloPrimerLogin.agregarAccesosVentanas();
             
             GetAction();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            limpiar();
         }
 
         private void button2_Click(object sender, EventArgs e)

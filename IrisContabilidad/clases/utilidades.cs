@@ -203,6 +203,22 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+        public DataSet ejecutarcomando_mysql_remoto(string query)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection("server=127.0.0.1;uid=dextroyex;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
+                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fallo conectando al server.:" + ex.ToString());
+                return null;
+            }
+        }
 
 
 
@@ -1131,6 +1147,37 @@ namespace IrisContabilidad.clases
             {
                 MessageBox.Show("Error notificacionWindows.:" + ex.ToString());
                 
+            }
+        }
+
+        public void getPalabraArchivoTxt(string rutaArchivo, string palabra, string delimitador = ";")
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getPalabraArchivoTxt.:" + ex.ToString());
+            }
+        }
+
+        public string rellenarIzquierda(string cadena, int maximoDigitos,char relleno)
+        {
+            try
+            {
+                int digitos = 0;//saber la cantidad de digitos que tiene la cadena
+                digitos = cadena.Length;
+                int digitosRellenos = 0;//saber la cantidad que va rellenar
+                digitosRellenos = maximoDigitos - digitos;
+                cadena = cadena.PadLeft(digitosRellenos,relleno);
+                MessageBox.Show(cadena);
+                return cadena;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error rellenarIzquierda.:" + ex.ToString());
+                return null;
             }
         }
     }

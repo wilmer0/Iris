@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrisContabilidad", "IrisContabilidad\IrisContabilidad.csproj", "{19334FF1-9E72-4E79-8350-68E5AB3EA64D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitarias", "PruebasUnitarias\PruebasUnitarias.csproj", "{7B82AFC1-7499-454B-BB66-F86B0B7CEFE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{19334FF1-9E72-4E79-8350-68E5AB3EA64D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19334FF1-9E72-4E79-8350-68E5AB3EA64D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19334FF1-9E72-4E79-8350-68E5AB3EA64D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B82AFC1-7499-454B-BB66-F86B0B7CEFE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B82AFC1-7499-454B-BB66-F86B0B7CEFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B82AFC1-7499-454B-BB66-F86B0B7CEFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B82AFC1-7499-454B-BB66-F86B0B7CEFE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

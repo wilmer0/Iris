@@ -89,6 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\almacen.cs" />
     <Compile Include="clases\año.cs" />
     <Compile Include="clases\cargo.cs" />
     <Compile Include="clases\ciudad.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="clases\mes.cs" />
     <Compile Include="clases\modulo.cs" />
     <Compile Include="clases\nomina_tipo.cs" />
+    <Compile Include="clases\producto.cs" />
     <Compile Include="clases\singleton.cs" />
     <Compile Include="clases\situacion_empleado.cs" />
     <Compile Include="clases\sucursal.cs" />
@@ -110,6 +112,7 @@
     <Compile Include="clases\unidad.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
+    <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
     <Compile Include="modelos\modeloCiudad.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />
     <Compile Include="modelos\modeloPrimerLogin.cs" />
+    <Compile Include="modelos\modeloProducto.cs" />
     <Compile Include="modelos\modeloSituacionEmpleado.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />
     <Compile Include="modelos\modeloSuplidor.cs" />
@@ -196,6 +200,18 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_itebis.Designer.cs">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_almacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_almacen.Designer.cs">
+      <DependentUpon>ventana_almacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_almacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_almacen.Designer.cs">
+      <DependentUpon>ventana_busqueda_almacen.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_producto.cs">
       <SubType>Form</SubType>
@@ -334,6 +350,12 @@
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_almacen.resx">
+      <DependentUpon>ventana_almacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_almacen.resx">
+      <DependentUpon>ventana_busqueda_almacen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_producto.resx">
       <DependentUpon>ventana_producto.cs</DependentUpon>
     </EmbeddedResource>
@@ -414,6 +436,7 @@
     <Folder Include="reportes_clases\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Release\Resources\archivos\connection.txt" />
     <Content Include="bin\Release\Resources\botones\analisis1.png" />
     <Content Include="bin\Release\Resources\botones\analisis2.png" />
     <Content Include="bin\Release\Resources\botones\analisis3.png" />
