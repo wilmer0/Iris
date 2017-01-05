@@ -1,0 +1,8 @@
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\bin\Release\PruebasUnitarias.dll
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\bin\Release\PruebasUnitarias.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\bin\Release\IrisContabilidad.exe
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\bin\Release\Ionic.Zip.dll
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\bin\Release\IrisContabilidad.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\obj\Release\PruebasUnitarias.csprojResolveAssemblyReference.cache
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\obj\Release\PruebasUnitarias.dll
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\obj\Release\PruebasUnitarias.pdb

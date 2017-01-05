@@ -93,6 +93,10 @@ namespace IrisContabilidad.modulo_nomina
                         imagen_empleado.BackgroundImage =
                             Image.FromFile(rutaImagenesEmpleados + empleado.foto);
                     }
+                    else
+                    {
+                        imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + "default1.png");
+                    }
                     activoCheck.Checked = Convert.ToBoolean(empleado.activo);
                 }
                 else

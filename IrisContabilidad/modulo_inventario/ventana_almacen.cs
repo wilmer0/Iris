@@ -169,5 +169,17 @@ namespace IrisContabilidad.modulo_inventario
             almacen = null;
             loadVentana();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_almacen ventana = new ventana_busqueda_almacen(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                almacen = ventana.getObjeto();
+                loadVentana();
+            }
+        }
     }
 }

@@ -199,7 +199,11 @@ namespace IrisContabilidad.modelos
 
                 //hacer select de usuario y clave
                 string sql = "";
-                sql = "select *from empleado where login='" + usuario + "' and clave='" + clave + "'";
+                /*
+                 select *from empleado e join sucursal suc on e.cod_sucursal=suc.codigo and suc.activo='1' join empresa emp
+on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e.clave='MQAyADMA';
+                 */
+                sql = "select *from empleado e join sucursal suc on e.cod_sucursal=suc.codigo and suc.activo='1' join empresa emp on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='" + usuario + "' and e.clave='" + clave + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

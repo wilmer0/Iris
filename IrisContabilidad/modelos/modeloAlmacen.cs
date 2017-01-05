@@ -155,7 +155,8 @@ namespace IrisContabilidad.modelos
                         almacen almacen = new almacen();
                         almacen.codigo = Convert.ToInt16(row[0].ToString());
                         almacen.nombre = row[1].ToString();
-                        almacen.activo = Convert.ToBoolean(row[2].ToString());
+                        almacen.codigo_sucursal = Convert.ToInt16(row[2].ToString());
+                        almacen.activo = Convert.ToBoolean(row[3].ToString());
                         lista.Add(almacen);
                     }
                 }
