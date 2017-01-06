@@ -26,7 +26,8 @@ namespace IrisContabilidad.modulo_inventario
         itebis itebis;
         unidad unidadMinima;
         private almacen almacen;
-
+        private categoria_producto categoria;
+        private subCategoriaProducto subCategoria;
 
         //modelos
         modeloItebis modeloItebis = new modeloItebis();
@@ -393,6 +394,68 @@ namespace IrisContabilidad.modulo_inventario
         {
             producto = null;
             loadVentana();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_categoria_producto ventana = new ventana_busqueda_categoria_producto();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                categoria = ventana.getObjeto();
+                loadCategoria();
+            }
+        }
+        public void loadCategoria()
+        {
+            try
+            {
+                if (categoria != null)
+                {
+                    categoriaIdText.Text = categoria.codigo.ToString();
+                    categoriaText.Text = categoria.nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadCategoria.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void loadSubCategoria()
+        {
+            try
+            {
+                if (subCategoria != null)
+                {
+                    subcategoriaIdText.Text = subCategoria.codigo.ToString();
+                    subCategoriaText.Text = subCategoria.nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadSubCategoria.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (categoria == null)
+            {
+                MessageBox.Show("Falta la categoria", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                categoriaIdText.Focus();
+                categoriaIdText.SelectAll();
+                return;
+            }
+            ventana_busqueda_subcategoria_producto ventana = new ventana_busqueda_subcategoria_producto(categoria.codigo);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                subCategoria = ventana.getObjeto();
+                loadSubCategoria();
+            }
+
         }
     }
 }
