@@ -429,6 +429,22 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "almacen1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana categoria producto";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_categoria_producto";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "categoria_producto1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana subcategoria producto";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_subcategoria_producto";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "sub_categoria_producto1.png";
+                listaVentana.Add(ventana);
                 #endregion
                 
                 

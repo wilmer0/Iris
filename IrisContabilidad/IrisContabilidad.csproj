@@ -92,6 +92,7 @@
     <Compile Include="clases\almacen.cs" />
     <Compile Include="clases\año.cs" />
     <Compile Include="clases\cargo.cs" />
+    <Compile Include="clases\categoria_producto.cs" />
     <Compile Include="clases\ciudad.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\dias.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="clases\producto.cs" />
     <Compile Include="clases\singleton.cs" />
     <Compile Include="clases\situacion_empleado.cs" />
+    <Compile Include="clases\subCategoriaProducto.cs" />
     <Compile Include="clases\sucursal.cs" />
     <Compile Include="clases\suplidor.cs" />
     <Compile Include="clases\tipo_gasto.cs" />
@@ -114,6 +116,7 @@
     <Compile Include="clases\ventana.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
+    <Compile Include="modelos\modeloCategoriaProducto.cs" />
     <Compile Include="modelos\modeloCiudad.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
@@ -125,6 +128,7 @@
     <Compile Include="modelos\modeloPrimerLogin.cs" />
     <Compile Include="modelos\modeloProducto.cs" />
     <Compile Include="modelos\modeloSituacionEmpleado.cs" />
+    <Compile Include="modelos\modeloSubCategoriaProducto.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />
     <Compile Include="modelos\modeloSuplidor.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
@@ -213,6 +217,24 @@
     <Compile Include="modulo_inventario\ventana_busqueda_almacen.Designer.cs">
       <DependentUpon>ventana_busqueda_almacen.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_categoria_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_categoria_producto.Designer.cs">
+      <DependentUpon>ventana_busqueda_categoria_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_subcategoria_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_subcategoria_producto.Designer.cs">
+      <DependentUpon>ventana_busqueda_subcategoria_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_categoria_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_categoria_producto.Designer.cs">
+      <DependentUpon>ventana_categoria_producto.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +246,12 @@
     </Compile>
     <Compile Include="modulo_inventario\ventana_busqueda_unidad.Designer.cs">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_subcategoria_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_subcategoria_producto.Designer.cs">
+      <DependentUpon>ventana_subcategoria_producto.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_unidad.cs">
       <SubType>Form</SubType>
@@ -356,11 +384,23 @@
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_almacen.resx">
       <DependentUpon>ventana_busqueda_almacen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_categoria_producto.resx">
+      <DependentUpon>ventana_busqueda_categoria_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_subcategoria_producto.resx">
+      <DependentUpon>ventana_busqueda_subcategoria_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_categoria_producto.resx">
+      <DependentUpon>ventana_categoria_producto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_producto.resx">
       <DependentUpon>ventana_producto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_subcategoria_producto.resx">
+      <DependentUpon>ventana_subcategoria_producto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_unidad.resx">
       <DependentUpon>ventana_unidad.cs</DependentUpon>
