@@ -150,8 +150,8 @@ namespace IrisContabilidad.modulo_sistema
                             botonVentana = new Button();
                             botonVentana.FlatStyle = FlatStyle.Flat;
                             botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
-                            botonVentana.Width = 130;
-                            botonVentana.Height = 130;
+                            botonVentana.Width = 200;
+                            botonVentana.Height = 170;
                             //estableciendo la imagen de fondo del boton
                             botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + row[3].ToString());
                             botonVentana.Click += (sender, args) =>
