@@ -456,7 +456,7 @@ namespace IrisContabilidad.modelos
                 ventana.nombre_logico = "IrisContabilidad.modulo_nomina.ventana_tipo_nomina";
                 ventana.activo = true;
                 ventana.programador = false;
-                ventana.imagen = "empresa1.png";
+                ventana.imagen = "tipo_nomina1.png";
                 listaVentana.Add(ventana);
                 //nueva ventana
                 ventana = new ventana();
