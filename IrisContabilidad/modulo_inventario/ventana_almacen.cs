@@ -114,6 +114,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (modeloAlmacen.agregarAlmacen(almacen) == true)
                     {
                         almacen = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -126,6 +127,8 @@ namespace IrisContabilidad.modulo_inventario
                     //actualiza
                     if (modeloAlmacen.modificarAlmacen(almacen) == true)
                     {
+                        almacen = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else

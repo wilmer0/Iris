@@ -34,6 +34,8 @@ namespace IrisContabilidad.modulo_inventario
         modeloUnidad modeloUnidad=new modeloUnidad();
         modeloAlmacen modeloAlmacen=new modeloAlmacen();
         modeloProducto modeloProducto=new modeloProducto();
+        modeloCategoriaProducto modeloCategoria=new modeloCategoriaProducto();
+        modeloSubCategoriaProducto modeloSubcategoria=new modeloSubCategoriaProducto();
 
         //variables
         private string rutaResources = "";
@@ -48,7 +50,7 @@ namespace IrisContabilidad.modulo_inventario
             this.Text = tituloLabel.Text;
             rutaResources = Directory.GetCurrentDirectory().ToString() + @"\Resources\";
             rutaImagenesProductos = rutaResources + @"productos\";
-            panel3.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
+            imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
             loadVentana();
         }
         public void loadVentana()
@@ -60,33 +62,40 @@ namespace IrisContabilidad.modulo_inventario
                     //llenar campos
                     productoText.Text = producto.nombre;
                     referenciaText.Text = producto.referencia;
-                    //categoria
-                    //subcategoria
+                    categoria = modeloCategoria.getCategoriaById(producto.codigo_categoria);
+                    loadCategoria();
+                    subCategoria = modeloSubcategoria.getSubCategoriaById(producto.codigo_subcategoria);
+                    loadSubCategoria();
                     puntoMaximoText.Text = producto.punto_maximo.ToString("N");
                     puntoReordenText.Text = producto.reorden.ToString("N");
                     itebis = modeloItebis.getItebisById(producto.codigo_itebis);
                     loadItebis();
-                    almacen =modeloAlmacen.getAlmacenById(producto.codigo_almacen);
+                    almacen = modeloAlmacen.getAlmacenById(producto.codigo_almacen);
                     loadAlmacen();
                     unidadMinima = modeloUnidad.getUnidadById(producto.codigo_unidad_minima);
                     loadUnidad();
-                    if (empleado.foto != "")
+                    if (producto.imagen != "")
                     {
-                        panel3.BackgroundImage = Image.FromFile(rutaImagenesProductos + producto.imagen);
+                        rutaImagenText.Text = rutaImagenesProductos + producto.imagen;
+                        imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + producto.imagen);
                     }
                     else
                     {
-                        panel3.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
+                        imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
                     }
-                    activoCheck.Checked = Convert.ToBoolean(empleado.activo);
+                    activoCheck.Checked = Convert.ToBoolean(producto.activo);
                 }
                 else
                 {
                     //blanquear campos
                     productoText.Text = "";
                     referenciaText.Text = "";
-                    //categoria
-                    //subcategoria
+                    categoria = null;
+                    categoriaIdText.Text = "";
+                    categoriaText.Text = "";
+                    subCategoria = null;
+                    subcategoriaIdText.Text = "";
+                    subCategoriaText.Text = "";
                     puntoMaximoText.Text = "";
                     puntoReordenText.Text = "";
                     itebis = null;
@@ -96,7 +105,7 @@ namespace IrisContabilidad.modulo_inventario
                     unidadMinima = null;
                     loadUnidad();
                     rutaImagenText.Text = "";
-                    panel3.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
+                    imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
                     activoCheck.Checked = false;
                 }
             }
@@ -110,13 +119,16 @@ namespace IrisContabilidad.modulo_inventario
         {
 
         }
-
+     
+      
         public void loadItebis()
         {
             try
             {
                 if (itebis == null)
                 {
+                    itebisIdText.Text = "";
+                    itebisText.Text = "";
                     return;
                 }
                 itebisIdText.Text = itebis.codigo.ToString();
@@ -199,8 +211,8 @@ namespace IrisContabilidad.modulo_inventario
                 producto.nombre =productoText.Text;
                 producto.referencia = referenciaText.Text;
                 producto.activo = Convert.ToBoolean(activoCheck.Checked);
-                //categoria
-                //subcategoria
+                producto.codigo_categoria = categoria.codigo;
+                producto.codigo_subcategoria = subCategoria.codigo;
                 producto.punto_maximo = Convert.ToDecimal(puntoMaximoText.Text);
                 producto.reorden = Convert.ToDecimal(puntoReordenText.Text);
                 producto.codigo_itebis = itebis.codigo;
@@ -220,6 +232,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (modeloProducto.agregarProducto(producto) == true)
                     {
                         producto = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -234,6 +247,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (modeloProducto.modificarProducto(producto) == true)
                     {
                         producto = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -285,13 +299,13 @@ namespace IrisContabilidad.modulo_inventario
                 if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     rutaImagenText.Text = file.FileName;
-                    panel3.BackgroundImage = Image.FromFile(rutaImagenText.Text);
+                    imagenProducto.BackgroundImage = Image.FromFile(rutaImagenText.Text);
                 }
             }
             catch (Exception)
             {
                 rutaImagenText.Text = "";
-                panel3.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
+                imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
                 MessageBox.Show("Debe seleccionar una imagen", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
            
@@ -325,7 +339,7 @@ namespace IrisContabilidad.modulo_inventario
                 }
 
                 rutaImagenText.Text = "";
-                panel3.BackgroundImage = Image.FromFile(rutaImagenesProductos + @"default1.png");
+                imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + @"default1.png");
             }
             catch (Exception ex)
             {
@@ -339,6 +353,8 @@ namespace IrisContabilidad.modulo_inventario
             {
                 if (almacen == null)
                 {
+                    almacenIdText.Text = "";
+                    almacenText.Text = "";
                     return;
                 }
                 almacenIdText.Text = almacen.codigo.ToString();
@@ -367,6 +383,8 @@ namespace IrisContabilidad.modulo_inventario
             {
                 if (unidadMinima == null)
                 {
+                    unidadMinimaIdText.Text = "";
+                    unidadMinimaText.Text = "";
                     return;
                 }
                 unidadMinimaIdText.Text = unidadMinima.codigo.ToString();
@@ -456,6 +474,18 @@ namespace IrisContabilidad.modulo_inventario
                 loadSubCategoria();
             }
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_producto ventana = new ventana_busqueda_producto(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                producto = ventana.getObjeto();
+                loadVentana();
+            }
         }
     }
 }

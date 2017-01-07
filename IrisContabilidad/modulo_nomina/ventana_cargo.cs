@@ -128,6 +128,7 @@ namespace IrisContabilidad.modulo_nomina
                     if (modeloCargo.agregarCargo(cargo) == true)
                     {
                         cargo = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -140,6 +141,8 @@ namespace IrisContabilidad.modulo_nomina
                     //actualiza
                     if (modeloCargo.modificarCargo(cargo) == true)
                     {
+                        cargo = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else

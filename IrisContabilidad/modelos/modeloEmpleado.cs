@@ -19,8 +19,7 @@ namespace IrisContabilidad.modelos
         private empleado empleado;
 
         //variables
-        private string rutaImagenesEmpleados = Directory.GetCurrentDirectory().ToString() +
-                                               @"\Resources\imagenes_empleados\";
+        private string rutaImagenesEmpleados = Directory.GetCurrentDirectory().ToString() +@"\Resources\imagenes_empleados\";
 
         //agregar 
         public bool agregarEmpleado(empleado empleado)

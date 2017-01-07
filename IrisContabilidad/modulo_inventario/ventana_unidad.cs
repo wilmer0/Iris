@@ -127,8 +127,10 @@ namespace IrisContabilidad.modulo_inventario
                     //se agrega
                     if ((modeloUnidad.agregarUnidad(unidad)) == true)
                     {
-                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         unidad = null;
+                        loadVentana();
+                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       
                     }
                     else
                     {
@@ -141,8 +143,10 @@ namespace IrisContabilidad.modulo_inventario
                     //se modifica
                     if ((modeloUnidad.modificarUnidad(unidad)) == true)
                     {
-                        MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         unidad = null;
+                        loadVentana();
+                        MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     else
                     {

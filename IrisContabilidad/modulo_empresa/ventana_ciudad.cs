@@ -117,8 +117,10 @@ namespace IrisContabilidad.modulo_empresa
                     //se agrega
                     if ((modeloCiudad.agregarCiudad(ciudad)) == true)
                     {
-                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ciudad = null;
+                        loadVentana();
+                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     else
                     {
@@ -130,8 +132,10 @@ namespace IrisContabilidad.modulo_empresa
                     //se modifica
                     if ((modeloCiudad.modificarCiudad(ciudad)) == true)
                     {
-                        MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ciudad = null;
+                        loadVentana();
+                        MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     else
                     {

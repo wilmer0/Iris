@@ -33,7 +33,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button15 = new System.Windows.Forms.Button();
             this.activoCheck = new System.Windows.Forms.CheckBox();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.imagenProducto = new System.Windows.Forms.Panel();
             this.unidadMinimaText = new System.Windows.Forms.TextBox();
             this.button10 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -130,7 +130,7 @@
             // 
             this.tabPage1.Controls.Add(this.button15);
             this.tabPage1.Controls.Add(this.activoCheck);
-            this.tabPage1.Controls.Add(this.panel3);
+            this.tabPage1.Controls.Add(this.imagenProducto);
             this.tabPage1.Controls.Add(this.unidadMinimaText);
             this.tabPage1.Controls.Add(this.button10);
             this.tabPage1.Controls.Add(this.label11);
@@ -197,13 +197,13 @@
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
             // 
-            // panel3
+            // imagenProducto
             // 
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(606, 196);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(236, 184);
-            this.panel3.TabIndex = 53;
+            this.imagenProducto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imagenProducto.Location = new System.Drawing.Point(606, 196);
+            this.imagenProducto.Name = "imagenProducto";
+            this.imagenProducto.Size = new System.Drawing.Size(236, 184);
+            this.imagenProducto.TabIndex = 53;
             // 
             // unidadMinimaText
             // 
@@ -552,6 +552,7 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 24;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
@@ -761,7 +762,7 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox unidadMinimaIdText;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel imagenProducto;
         private System.Windows.Forms.CheckBox activoCheck;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button14;

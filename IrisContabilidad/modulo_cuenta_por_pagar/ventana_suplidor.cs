@@ -215,6 +215,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     {
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         empleado = null;
+                        loadVentana();
                     }
                     else
                     {
@@ -229,6 +230,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     {
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         empleado = null;
+                        loadVentana();
                     }
                     else
                     {
