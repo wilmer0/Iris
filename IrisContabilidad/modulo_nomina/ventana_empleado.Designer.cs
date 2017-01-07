@@ -33,6 +33,7 @@ namespace IrisContabilidad.modulo_nomina
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_empleado));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button15 = new System.Windows.Forms.Button();
             this.pasaporteText = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
@@ -91,7 +92,6 @@ namespace IrisContabilidad.modulo_nomina
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.secuenciacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button15 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -194,6 +194,20 @@ namespace IrisContabilidad.modulo_nomina
             this.tabPage1.Text = "Empleado";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.Tomato;
+            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button15.ForeColor = System.Drawing.Color.White;
+            this.button15.Location = new System.Drawing.Point(725, 258);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(185, 37);
+            this.button15.TabIndex = 68;
+            this.button15.Text = "Eliminar Foto";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // pasaporteText
             // 
@@ -789,20 +803,6 @@ namespace IrisContabilidad.modulo_nomina
             this.secuenciacolumn.HeaderText = "Nombre";
             this.secuenciacolumn.Name = "secuenciacolumn";
             this.secuenciacolumn.ReadOnly = true;
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.Tomato;
-            this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button15.ForeColor = System.Drawing.Color.White;
-            this.button15.Location = new System.Drawing.Point(725, 258);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(185, 37);
-            this.button15.TabIndex = 68;
-            this.button15.Text = "Eliminar Foto";
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
             // ventana_empleado
             // 

@@ -28,6 +28,7 @@ namespace IrisContabilidad.modulo_inventario
         private almacen almacen;
         private categoria_producto categoria;
         private subCategoriaProducto subCategoria;
+        private unidad unidadCodigoBarra;
 
         //modelos
         modeloItebis modeloItebis = new modeloItebis();
@@ -40,6 +41,7 @@ namespace IrisContabilidad.modulo_inventario
         //variables
         private string rutaResources = "";
         private string rutaImagenesProductos = "";
+        bool existe = false;//para saber si existe la unidad actual y el codigo de barra
 
 
         public ventana_producto()
@@ -393,7 +395,7 @@ namespace IrisContabilidad.modulo_inventario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loadAlmacen.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loadUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void button10_Click(object sender, EventArgs e)
@@ -485,6 +487,118 @@ namespace IrisContabilidad.modulo_inventario
             {
                 producto = ventana.getObjeto();
                 loadVentana();
+            }
+        }
+        public void loadUnidadCodigoBarra()
+        {
+            try
+            {
+                if (unidadCodigoBarra == null)
+                {
+                    unidadIdCodigoBarraText.Text = "";
+                    unidadTextCodigoBarra.Text = "";
+                    return;
+                }
+                unidadIdCodigoBarraText.Text = unidadCodigoBarra.codigo.ToString();
+                unidadTextCodigoBarra.Text = unidadCodigoBarra.nombre;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadUnidadCodigoBarra.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void button17_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_unidad ventana = new ventana_busqueda_unidad();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                unidadCodigoBarra = ventana.getObjeto();
+                loadUnidadCodigoBarra();
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            eliminarcodigoBarra();
+        }
+        public void eliminarcodigoBarra()
+        {
+            try
+            {
+                //validar que tenga filas el datagrid
+                if (dataGridView2.Rows.Count < 0)
+                {
+                    return;
+                }
+                int fila = 0;
+                fila = dataGridView2.CurrentRow.Index;
+                if (fila >= 0)
+                {
+                    dataGridView2.Rows.Remove(dataGridView2.Rows[fila]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error eliminarcodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+        private void button14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            agregarCodigoBarra();
+        }
+        public void agregarCodigoBarra()
+        {
+            try
+            {
+
+               
+                //validaciones
+                //validar tenga unidad
+                if (unidadCodigoBarra == null)
+                {
+                    MessageBox.Show("Falta la unidad","", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    unidadIdCodigoBarraText.Focus();
+                    unidadIdCodigoBarraText.SelectAll();
+                    return;
+                }
+
+                //validar que tenga codigo de barra
+                if (codigoBarraText.Text == "")
+                {
+                    MessageBox.Show("Falta la codigo de barra ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    codigoBarraText.Focus();
+                    codigoBarraText.SelectAll();
+                    return;
+                }
+
+                existe = false;
+                //validar que no se repita la unidad y el codigo de barra
+                foreach (DataGridViewRow row in dataGridView2.Rows)
+                {
+                    if (row.Cells[0].Value.ToString()==unidadCodigoBarra.codigo.ToString() && row.Cells[2].Value.ToString()==codigoBarraText.Text.Trim())
+                    {
+                        existe = true;
+                        break;
+                    }
+                }
+                if (existe == false)
+                {
+                    dataGridView2.Rows.Add(unidadCodigoBarra.codigo.ToString(), unidadCodigoBarra.nombre,codigoBarraText.Text.Trim());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarCodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }
