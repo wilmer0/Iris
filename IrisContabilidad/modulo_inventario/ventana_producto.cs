@@ -44,6 +44,9 @@ namespace IrisContabilidad.modulo_inventario
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
 
 
+        //listas
+        private List<producto_vs_codigobarra> listaCodigoBarra; 
+
         public ventana_producto()
         {
             InitializeComponent();
@@ -542,8 +545,7 @@ namespace IrisContabilidad.modulo_inventario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error eliminarcodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error eliminarcodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
         private void button14_Click(object sender, EventArgs e)
@@ -559,8 +561,6 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
-
-               
                 //validaciones
                 //validar tenga unidad
                 if (unidadCodigoBarra == null)

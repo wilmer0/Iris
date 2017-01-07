@@ -15,10 +15,10 @@ namespace IrisContabilidad.modelos
     {
         //objetos
         utilidades utilidades = new utilidades();
+        private producto producto;
 
         //variables
         private string rutaImagenesProductos = Directory.GetCurrentDirectory().ToString() + @"\Resources\productos\";
-
 
 
 
@@ -122,7 +122,65 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+        //agregar productos vs codigo de barra
+        public bool agregarCodigoBarra(List<producto_vs_codigobarra> lista)
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds=new DataSet();
 
+                producto.codigo = lista.ToList().FirstOrDefault().codigo_producto;
+                
+
+                //borrar todos los codigo barra que son de este producto
+                sql = "delete from producto_vs_codigobarra where cod_producto='"+producto.codigo+"'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                
+                //recorriendo la lista para agregarlo uno a uno
+                lista.ForEach(x =>
+                {
+                    sql = "insert into producto_vs_codigobarra(cod_producto,cod_unidad,codigo_barra) values('"+x.codigo_producto+"','"+x.codigo_unidad+"','"+x.codigo_barra+"')";
+                    ds = utilidades.ejecutarcomando_mysql(sql);
+                });
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarCodigoBarra.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        //get lista de codigo de barra del producto
+        public List<producto_vs_codigobarra> getListacodigoBarraById(int id)
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds = new DataSet();
+                List<producto_vs_codigobarra> lista = new List<producto_vs_codigobarra>();
+                producto_vs_codigobarra productoCodigoBarra;
+
+                //borrar todos los codigo barra que son de este producto
+                sql = "select cod_producto,cod_unidad,codigo_barra from producto_vs_codigobarra where cod_producto='" + id + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    productoCodigoBarra=new producto_vs_codigobarra();
+                    productoCodigoBarra.codigo_producto = Convert.ToInt16(row[0].ToString());
+                    productoCodigoBarra.codigo_unidad = Convert.ToInt16(row[1].ToString());
+                    productoCodigoBarra.codigo_barra = row[2].ToString();
+                    lista.Add(productoCodigoBarra);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListacodigoBarraById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
 
         //obtener el codigo siguiente
         public int getNext()
