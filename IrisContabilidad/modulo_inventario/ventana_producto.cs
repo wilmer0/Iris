@@ -23,21 +23,23 @@ namespace IrisContabilidad.modulo_inventario
         singleton singleton = new singleton();
         empleado empleado;
         private producto producto;
-        itebis itebis;
-        unidad unidadMinima;
+        private itebis itebis;
+        private unidad unidadMinima;
         private almacen almacen;
         private categoria_producto categoria;
         private subCategoriaProducto subCategoria;
         private unidad unidadCodigoBarra;
+        private producto productoTemporal;
 
         //modelos
-        modeloItebis modeloItebis = new modeloItebis();
-        modeloUnidad modeloUnidad=new modeloUnidad();
-        modeloAlmacen modeloAlmacen=new modeloAlmacen();
-        modeloProducto modeloProducto=new modeloProducto();
-        modeloCategoriaProducto modeloCategoria=new modeloCategoriaProducto();
-        modeloSubCategoriaProducto modeloSubcategoria=new modeloSubCategoriaProducto();
-
+        private modeloItebis modeloItebis = new modeloItebis();
+        private modeloUnidad modeloUnidad = new modeloUnidad();
+        private modeloAlmacen modeloAlmacen = new modeloAlmacen();
+        private modeloProducto modeloProducto = new modeloProducto();
+        private modeloCategoriaProducto modeloCategoria = new modeloCategoriaProducto();
+        private modeloSubCategoriaProducto modeloSubcategoria = new modeloSubCategoriaProducto();
+        private producto_vs_codigobarra productoCodigoBarra;
+        
         //variables
         private string rutaResources = "";
         private string rutaImagenesProductos = "";
@@ -46,6 +48,8 @@ namespace IrisContabilidad.modulo_inventario
 
         //listas
         private List<producto_vs_codigobarra> listaCodigoBarra; 
+
+
 
         public ventana_producto()
         {
@@ -89,6 +93,8 @@ namespace IrisContabilidad.modulo_inventario
                         imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
                     }
                     activoCheck.Checked = Convert.ToBoolean(producto.activo);
+                    listaCodigoBarra = modeloProducto.getListacodigoBarraById(producto.codigo);
+                    loadProductoCodigoBarra();
                 }
                 else
                 {
@@ -112,6 +118,17 @@ namespace IrisContabilidad.modulo_inventario
                     rutaImagenText.Text = "";
                     imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
                     activoCheck.Checked = false;
+                    unidadCodigoBarra = null;
+                    loadUnidadCodigoBarra();
+                    if (dataGridView1.Rows.Count > 0)
+                    {
+                        dataGridView1.Rows.Clear();
+                    }
+                    if (dataGridView2.Rows.Count > 0)
+                    {
+                        dataGridView2.Rows.Clear();
+                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -236,7 +253,9 @@ namespace IrisContabilidad.modulo_inventario
                     //agrega
                     if (modeloProducto.agregarProducto(producto) == true)
                     {
+                        actualizarCodigoBarra();
                         producto = null;
+                        listaCodigoBarra = null;
                         loadVentana();
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -251,7 +270,9 @@ namespace IrisContabilidad.modulo_inventario
                     //actualiza
                     if (modeloProducto.modificarProducto(producto) == true)
                     {
+                        actualizarCodigoBarra();
                         producto = null;
+                        listaCodigoBarra = null;
                         loadVentana();
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -281,6 +302,25 @@ namespace IrisContabilidad.modulo_inventario
             }
         }
 
+        public void actualizarCodigoBarra()
+        {
+            try
+            {
+                //borrar todos los codigo barra que son de este producto
+                string sql = "delete from producto_vs_codigobarra where cod_producto='" + producto.codigo + "'";
+                utilidades.ejecutarcomando_mysql(sql);
+                //recorriendo la lista para agregarlo uno a uno
+                foreach (DataGridViewRow row in dataGridView2.Rows)
+                {
+                    sql = "insert into producto_vs_codigobarra(cod_producto,cod_unidad,codigo_barra) values('" + producto.codigo + "','" + row.Cells[0].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "')";
+                    utilidades.ejecutarcomando_mysql(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error actualizarCodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void textBox6_KeyPress(object sender, KeyPressEventArgs e)
         {
             utilidades.validarTextBoxNumeroDecimal(e,puntoMaximoText.Text);
@@ -540,6 +580,7 @@ namespace IrisContabilidad.modulo_inventario
                 fila = dataGridView2.CurrentRow.Index;
                 if (fila >= 0)
                 {
+                    listaCodigoBarra.RemoveAt(fila);
                     dataGridView2.Rows.Remove(dataGridView2.Rows[fila]);
                 }
             }
@@ -562,6 +603,25 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //validaciones
+
+                //validar que ese codigo de barra no lo tenga otro producto
+                if (codigoBarraText.Text != "")
+                {
+                    productoTemporal = modeloProducto.validarCodigoBarra(codigoBarraText.Text);
+                    if (productoTemporal!=null)
+                    {
+                        MessageBox.Show("El código de barra ya lo tiene el producto.: " + productoTemporal.nombre, "",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        productoTemporal = null;
+                        return;
+                    }
+                    productoTemporal = null;
+                }
+                //validar que la lista no este nula
+                if (listaCodigoBarra == null)
+                {
+                    listaCodigoBarra = new List<producto_vs_codigobarra>();
+                }
+
                 //validar tenga unidad
                 if (unidadCodigoBarra == null)
                 {
@@ -574,7 +634,7 @@ namespace IrisContabilidad.modulo_inventario
                 //validar que tenga codigo de barra
                 if (codigoBarraText.Text == "")
                 {
-                    MessageBox.Show("Falta la codigo de barra ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Falta la código de barra ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     codigoBarraText.Focus();
                     codigoBarraText.SelectAll();
                     return;
@@ -590,6 +650,7 @@ namespace IrisContabilidad.modulo_inventario
                         break;
                     }
                 }
+
                 if (existe == false)
                 {
                     dataGridView2.Rows.Add(unidadCodigoBarra.codigo.ToString(), unidadCodigoBarra.nombre,codigoBarraText.Text.Trim());
@@ -598,6 +659,37 @@ namespace IrisContabilidad.modulo_inventario
             catch (Exception ex)
             {
                 MessageBox.Show("Error agregarCodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        public void loadProductoCodigoBarra()
+        {
+            try
+            {
+                //validar que no tenga filas el datagrid
+                if (dataGridView2.Rows.Count > 0)
+                {
+                    dataGridView2.Rows.Clear();
+                }
+                //validar lista no este nula
+                if (listaCodigoBarra == null)
+                {
+                    return;
+                }
+                listaCodigoBarra.ForEach(x =>
+                {
+                    unidadCodigoBarra=new unidad();
+                    unidadCodigoBarra = modeloUnidad.getUnidadById(x.codigo_unidad);
+                    dataGridView2.Rows.Add(unidadCodigoBarra.codigo, unidadCodigoBarra.nombre, x.codigo_barra);
+                });
+
+                unidadCodigoBarra = null;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadProductoCodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
