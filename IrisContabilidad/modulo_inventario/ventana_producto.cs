@@ -889,5 +889,33 @@ namespace IrisContabilidad.modulo_inventario
         {
             utilidades.validarTextBoxNumeroDecimal(e, "");
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ventana_categoria_producto ventana=new ventana_categoria_producto();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ventana_subcategoria_producto ventana = new ventana_subcategoria_producto();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ventana_almacen ventana = new ventana_almacen();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ventana_unidad ventana = new ventana_unidad();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
     }
 }
