@@ -29,7 +29,9 @@ namespace IrisContabilidad.modulo_inventario
         private categoria_producto categoria;
         private subCategoriaProducto subCategoria;
         private unidad unidadCodigoBarra;
+        private unidad unidadConversion;
         private producto productoTemporal;
+        private productoUnidadConversion productoUnidadConversion;
 
         //modelos
         private modeloItebis modeloItebis = new modeloItebis();
@@ -47,8 +49,8 @@ namespace IrisContabilidad.modulo_inventario
 
 
         //listas
-        private List<producto_vs_codigobarra> listaCodigoBarra; 
-
+        private List<producto_vs_codigobarra> listaCodigoBarra;
+        private List<productoUnidadConversion> listaProductoUnidadConversion; 
 
 
         public ventana_producto()
@@ -94,7 +96,9 @@ namespace IrisContabilidad.modulo_inventario
                     }
                     activoCheck.Checked = Convert.ToBoolean(producto.activo);
                     listaCodigoBarra = modeloProducto.getListacodigoBarraById(producto.codigo);
+                    listaProductoUnidadConversion = modeloProducto.getListaUnidadConversionById(producto.codigo);
                     loadProductoCodigoBarra();
+                    loadUnidadProductoConversion();
                 }
                 else
                 {
@@ -254,6 +258,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (modeloProducto.agregarProducto(producto) == true)
                     {
                         actualizarCodigoBarra();
+                        actualizarUnidadConversion();
                         producto = null;
                         listaCodigoBarra = null;
                         loadVentana();
@@ -271,6 +276,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (modeloProducto.modificarProducto(producto) == true)
                     {
                         actualizarCodigoBarra();
+                        actualizarUnidadConversion();
                         producto = null;
                         listaCodigoBarra = null;
                         loadVentana();
@@ -691,6 +697,166 @@ namespace IrisContabilidad.modulo_inventario
             {
                 MessageBox.Show("Error loadProductoCodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_unidad ventana = new ventana_busqueda_unidad();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                unidadConversion = ventana.getObjeto();
+                loadUnidadConversion();
+            }
+        }
+        public void actualizarUnidadConversion()
+        {
+            try
+            {
+                //borrar todos los codigo barra que son de este producto
+                string sql = "delete from producto_unidad_conversion where cod_producto='" + producto.codigo + "'";
+                utilidades.ejecutarcomando_mysql(sql);
+                //recorriendo la lista para agregarlo uno a uno
+                foreach (DataGridViewRow row in dataGridView2.Rows)
+                {
+                    sql = "insert into producto_unidad_conversion(cod_producto,cod_unidad,cantidad,previo_venta,costo,precio_venta) values('" + producto.codigo + "','" + row.Cells[0].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "')";
+                    utilidades.ejecutarcomando_mysql(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error actualizarUnidadConversion.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void loadUnidadConversion()
+        {
+            try
+            {
+                if (unidadConversion == null)
+                {
+                    unidadIdPrecioVentaText.Text = "";
+                    unidadPrecioVentaText.Text = "";
+                    return;
+                }
+                unidadIdPrecioVentaText.Text = unidadConversion.codigo.ToString();
+                unidadPrecioVentaText.Text = unidadConversion.nombre;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadUnidadConversion.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void loadUnidadProductoConversion()
+        {
+            try
+            {
+                //validar que no tenga filas el datagrid
+                if (dataGridView3.Rows.Count > 0)
+                {
+                    dataGridView3.Rows.Clear();
+                }
+                //validar lista no este nula
+                if (listaProductoUnidadConversion == null)
+                {
+                    return;
+                }
+                listaProductoUnidadConversion.ForEach(x =>
+                {
+                    unidadConversion = new unidad();
+                    unidadConversion = modeloUnidad.getUnidadById(x.codigo_unidad);
+                    dataGridView3.Rows.Add(unidadConversion.codigo, unidadConversion.nombre,x.cantidad,x.precio_costo.ToString("N"),x.precio_venta.ToString("N"));
+                });
+                unidadConversion = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadUnidadProductoConversion.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            agregarUnidadConversion();
+        }
+        public void agregarUnidadConversion()
+        {
+            try
+            {
+                //validaciones
+
+                //validar que tenga unidadConversion seleccionada
+                if (unidadConversion==null)
+                {
+                    return;
+                }
+               
+                //validar que tenga costo 
+                if (codigoBarraText.Text == "")
+                {
+                    MessageBox.Show("Falta la código de barra ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    codigoBarraText.Focus();
+                    codigoBarraText.SelectAll();
+                    return;
+                }
+                //validar que tenga precio de venta 
+                if (codigoBarraText.Text == "")
+                {
+                    MessageBox.Show("Falta la código de barra ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    codigoBarraText.Focus();
+                    codigoBarraText.SelectAll();
+                    return;
+                }
+
+                existe = false;
+                //validar que no se repita la unidad y el codigo de barra
+                foreach (DataGridViewRow row in dataGridView2.Rows)
+                {
+                    if (row.Cells[0].Value.ToString() == unidadCodigoBarra.codigo.ToString() && row.Cells[2].Value.ToString() == codigoBarraText.Text.Trim())
+                    {
+                        existe = true;
+                        break;
+                    }
+                }
+
+                if (existe == false)
+                {
+                    dataGridView2.Rows.Add(unidadCodigoBarra.codigo.ToString(), unidadCodigoBarra.nombre, codigoBarraText.Text.Trim());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarCodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            eliminarUnidadConversion();
+        }
+        public void eliminarUnidadConversion()
+        {
+            try
+            {
+                //validar que tenga filas el datagrid
+                if (dataGridView3.Rows.Count < 0)
+                {
+                    return;
+                }
+                int fila = 0;
+                fila = dataGridView3.CurrentRow.Index;
+                if (fila >= 0)
+                {
+                    dataGridView3.Rows.Remove(dataGridView2.Rows[fila]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error eliminarcodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

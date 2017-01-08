@@ -206,6 +206,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
 
         //obtener el codigo siguiente
         public int getNext()
@@ -342,6 +343,38 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error getProductoById.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get lista Unidad ConversionById
+        public List<productoUnidadConversion> getListaUnidadConversionById(int id)
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds = new DataSet();
+                List<productoUnidadConversion> lista = new List<productoUnidadConversion>();
+                productoUnidadConversion productoUnidadConversion;
+
+                //borrar todos los codigo barra que son de este producto
+                sql = "select cod_producto,cod_unidad,cantidad,precio_venta,costo from producto_unidad_conversion where cod_producto='" +id + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    productoUnidadConversion = new productoUnidadConversion();
+                    productoUnidadConversion.codigo_producto = Convert.ToInt16(row[0].ToString());
+                    productoUnidadConversion.codigo_unidad = Convert.ToInt16(row[1].ToString());
+                    productoUnidadConversion.cantidad = Convert.ToDecimal(row[2].ToString());
+                    productoUnidadConversion.precio_venta = Convert.ToDecimal(row[3].ToString());
+                    productoUnidadConversion.precio_costo = Convert.ToDecimal(row[4].ToString());
+                    lista.Add(productoUnidadConversion);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaUnidadConversionById.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }

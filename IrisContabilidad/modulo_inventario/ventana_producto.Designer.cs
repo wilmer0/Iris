@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button15 = new System.Windows.Forms.Button();
@@ -82,18 +84,36 @@
             this.secuenciacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.codigoBarraText = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.unidadTextCodigoBarra = new System.Windows.Forms.TextBox();
             this.button17 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.unidadIdCodigoBarraText = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.codigoBarraText = new System.Windows.Forms.TextBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barraColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.precioVentaText = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.unidadPrecioVentaText = new System.Windows.Forms.TextBox();
+            this.button18 = new System.Windows.Forms.Button();
+            this.label16 = new System.Windows.Forms.Label();
+            this.unidadIdPrecioVentaText = new System.Windows.Forms.TextBox();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioVentaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioCostoText = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -105,6 +125,9 @@
             this.tabPage3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -138,6 +161,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(16, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -740,6 +764,68 @@
             this.groupBox2.TabIndex = 67;
             this.groupBox2.TabStop = false;
             // 
+            // codigoBarraText
+            // 
+            this.codigoBarraText.BackColor = System.Drawing.Color.White;
+            this.codigoBarraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.codigoBarraText.Location = new System.Drawing.Point(351, 55);
+            this.codigoBarraText.MaxLength = 30;
+            this.codigoBarraText.Name = "codigoBarraText";
+            this.codigoBarraText.Size = new System.Drawing.Size(236, 26);
+            this.codigoBarraText.TabIndex = 58;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(347, 21);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(112, 20);
+            this.label13.TabIndex = 57;
+            this.label13.Text = "Codigo barra";
+            // 
+            // unidadTextCodigoBarra
+            // 
+            this.unidadTextCodigoBarra.BackColor = System.Drawing.Color.White;
+            this.unidadTextCodigoBarra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadTextCodigoBarra.Location = new System.Drawing.Point(76, 56);
+            this.unidadTextCodigoBarra.MaxLength = 200;
+            this.unidadTextCodigoBarra.Name = "unidadTextCodigoBarra";
+            this.unidadTextCodigoBarra.ReadOnly = true;
+            this.unidadTextCodigoBarra.Size = new System.Drawing.Size(236, 26);
+            this.unidadTextCodigoBarra.TabIndex = 56;
+            // 
+            // button17
+            // 
+            this.button17.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button17.BackgroundImage")));
+            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button17.Location = new System.Drawing.Point(265, 15);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(47, 37);
+            this.button17.TabIndex = 55;
+            this.button17.UseVisualStyleBackColor = true;
+            this.button17.Click += new System.EventHandler(this.button17_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(4, 21);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 20);
+            this.label12.TabIndex = 54;
+            this.label12.Text = "Unidad";
+            // 
+            // unidadIdCodigoBarraText
+            // 
+            this.unidadIdCodigoBarraText.BackColor = System.Drawing.Color.SkyBlue;
+            this.unidadIdCodigoBarraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadIdCodigoBarraText.Location = new System.Drawing.Point(76, 19);
+            this.unidadIdCodigoBarraText.Name = "unidadIdCodigoBarraText";
+            this.unidadIdCodigoBarraText.Size = new System.Drawing.Size(183, 26);
+            this.unidadIdCodigoBarraText.TabIndex = 53;
+            // 
             // button11
             // 
             this.button11.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button11.BackgroundImage")));
@@ -785,68 +871,6 @@
             this.dataGridView2.Size = new System.Drawing.Size(904, 403);
             this.dataGridView2.TabIndex = 66;
             // 
-            // unidadTextCodigoBarra
-            // 
-            this.unidadTextCodigoBarra.BackColor = System.Drawing.Color.White;
-            this.unidadTextCodigoBarra.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidadTextCodigoBarra.Location = new System.Drawing.Point(76, 56);
-            this.unidadTextCodigoBarra.MaxLength = 200;
-            this.unidadTextCodigoBarra.Name = "unidadTextCodigoBarra";
-            this.unidadTextCodigoBarra.ReadOnly = true;
-            this.unidadTextCodigoBarra.Size = new System.Drawing.Size(236, 26);
-            this.unidadTextCodigoBarra.TabIndex = 56;
-            // 
-            // button17
-            // 
-            this.button17.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button17.BackgroundImage")));
-            this.button17.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button17.Location = new System.Drawing.Point(265, 15);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(47, 37);
-            this.button17.TabIndex = 55;
-            this.button17.UseVisualStyleBackColor = true;
-            this.button17.Click += new System.EventHandler(this.button17_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(4, 21);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(66, 20);
-            this.label12.TabIndex = 54;
-            this.label12.Text = "Unidad";
-            // 
-            // unidadIdCodigoBarraText
-            // 
-            this.unidadIdCodigoBarraText.BackColor = System.Drawing.Color.SkyBlue;
-            this.unidadIdCodigoBarraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidadIdCodigoBarraText.Location = new System.Drawing.Point(76, 19);
-            this.unidadIdCodigoBarraText.Name = "unidadIdCodigoBarraText";
-            this.unidadIdCodigoBarraText.Size = new System.Drawing.Size(183, 26);
-            this.unidadIdCodigoBarraText.TabIndex = 53;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(347, 21);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(112, 20);
-            this.label13.TabIndex = 57;
-            this.label13.Text = "Codigo barra";
-            // 
-            // codigoBarraText
-            // 
-            this.codigoBarraText.BackColor = System.Drawing.Color.White;
-            this.codigoBarraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codigoBarraText.Location = new System.Drawing.Point(351, 55);
-            this.codigoBarraText.MaxLength = 30;
-            this.codigoBarraText.Name = "codigoBarraText";
-            this.codigoBarraText.Size = new System.Drawing.Size(236, 26);
-            this.codigoBarraText.TabIndex = 58;
-            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.FillWeight = 20F;
@@ -865,6 +889,202 @@
             this.barraColumn.HeaderText = "Codigo Barra";
             this.barraColumn.Name = "barraColumn";
             this.barraColumn.ReadOnly = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.groupBox4);
+            this.tabPage4.Controls.Add(this.dataGridView3);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(929, 540);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Unidades";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.precioCostoText);
+            this.groupBox4.Controls.Add(this.label17);
+            this.groupBox4.Controls.Add(this.precioVentaText);
+            this.groupBox4.Controls.Add(this.label14);
+            this.groupBox4.Controls.Add(this.unidadPrecioVentaText);
+            this.groupBox4.Controls.Add(this.button18);
+            this.groupBox4.Controls.Add(this.label16);
+            this.groupBox4.Controls.Add(this.unidadIdPrecioVentaText);
+            this.groupBox4.Controls.Add(this.button19);
+            this.groupBox4.Controls.Add(this.button20);
+            this.groupBox4.Location = new System.Drawing.Point(12, 20);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(904, 91);
+            this.groupBox4.TabIndex = 69;
+            this.groupBox4.TabStop = false;
+            // 
+            // precioVentaText
+            // 
+            this.precioVentaText.BackColor = System.Drawing.Color.White;
+            this.precioVentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.precioVentaText.Location = new System.Drawing.Point(521, 55);
+            this.precioVentaText.MaxLength = 30;
+            this.precioVentaText.Name = "precioVentaText";
+            this.precioVentaText.Size = new System.Drawing.Size(152, 26);
+            this.precioVentaText.TabIndex = 58;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(517, 21);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(108, 20);
+            this.label14.TabIndex = 57;
+            this.label14.Text = "Precio venta";
+            // 
+            // unidadPrecioVentaText
+            // 
+            this.unidadPrecioVentaText.BackColor = System.Drawing.Color.White;
+            this.unidadPrecioVentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadPrecioVentaText.Location = new System.Drawing.Point(76, 56);
+            this.unidadPrecioVentaText.MaxLength = 200;
+            this.unidadPrecioVentaText.Name = "unidadPrecioVentaText";
+            this.unidadPrecioVentaText.ReadOnly = true;
+            this.unidadPrecioVentaText.Size = new System.Drawing.Size(236, 26);
+            this.unidadPrecioVentaText.TabIndex = 56;
+            // 
+            // button18
+            // 
+            this.button18.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button18.BackgroundImage")));
+            this.button18.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button18.Location = new System.Drawing.Point(265, 15);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(47, 37);
+            this.button18.TabIndex = 55;
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(4, 21);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(66, 20);
+            this.label16.TabIndex = 54;
+            this.label16.Text = "Unidad";
+            // 
+            // unidadIdPrecioVentaText
+            // 
+            this.unidadIdPrecioVentaText.BackColor = System.Drawing.Color.SkyBlue;
+            this.unidadIdPrecioVentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadIdPrecioVentaText.Location = new System.Drawing.Point(76, 19);
+            this.unidadIdPrecioVentaText.Name = "unidadIdPrecioVentaText";
+            this.unidadIdPrecioVentaText.Size = new System.Drawing.Size(183, 26);
+            this.unidadIdPrecioVentaText.TabIndex = 53;
+            // 
+            // button19
+            // 
+            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Location = new System.Drawing.Point(834, 23);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(64, 58);
+            this.button19.TabIndex = 26;
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button20
+            // 
+            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Location = new System.Drawing.Point(763, 23);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(65, 58);
+            this.button20.TabIndex = 25;
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.AllowUserToResizeRows = false;
+            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView3.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.cantidadColumn,
+            this.dataGridViewTextBoxColumn5,
+            this.precioVentaColumn});
+            this.dataGridView3.Location = new System.Drawing.Point(12, 117);
+            this.dataGridView3.MultiSelect = false;
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
+            this.dataGridView3.RowHeadersVisible = false;
+            this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView3.Size = new System.Drawing.Size(904, 403);
+            this.dataGridView3.TabIndex = 68;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn3.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Unidad";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // cantidadColumn
+            // 
+            this.cantidadColumn.HeaderText = "Cantidad";
+            this.cantidadColumn.Name = "cantidadColumn";
+            this.cantidadColumn.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn5.FillWeight = 70F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Precio costo";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // precioVentaColumn
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            this.precioVentaColumn.FillWeight = 70F;
+            this.precioVentaColumn.HeaderText = "Precio venta";
+            this.precioVentaColumn.Name = "precioVentaColumn";
+            this.precioVentaColumn.ReadOnly = true;
+            // 
+            // precioCostoText
+            // 
+            this.precioCostoText.BackColor = System.Drawing.Color.White;
+            this.precioCostoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.precioCostoText.Location = new System.Drawing.Point(347, 55);
+            this.precioCostoText.MaxLength = 30;
+            this.precioCostoText.Name = "precioCostoText";
+            this.precioCostoText.Size = new System.Drawing.Size(152, 26);
+            this.precioCostoText.TabIndex = 60;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(343, 21);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(108, 20);
+            this.label17.TabIndex = 59;
+            this.label17.Text = "Precio costo";
             // 
             // ventana_producto
             // 
@@ -894,6 +1114,10 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -966,5 +1190,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn barraColumn;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.TextBox precioVentaText;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox unidadPrecioVentaText;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox unidadIdPrecioVentaText;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaColumn;
+        private System.Windows.Forms.TextBox precioCostoText;
+        private System.Windows.Forms.Label label17;
     }
 }
