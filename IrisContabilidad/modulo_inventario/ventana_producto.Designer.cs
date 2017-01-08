@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -273,7 +273,7 @@
             this.button15.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button15.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button15.ForeColor = System.Drawing.Color.White;
-            this.button15.Location = new System.Drawing.Point(635, 386);
+            this.button15.Location = new System.Drawing.Point(633, 386);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(185, 37);
             this.button15.TabIndex = 69;
@@ -284,6 +284,8 @@
             // activoCheck
             // 
             this.activoCheck.AutoSize = true;
+            this.activoCheck.Checked = true;
+            this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activoCheck.Location = new System.Drawing.Point(606, 461);
@@ -309,7 +311,7 @@
             this.unidadMinimaText.MaxLength = 200;
             this.unidadMinimaText.Name = "unidadMinimaText";
             this.unidadMinimaText.ReadOnly = true;
-            this.unidadMinimaText.Size = new System.Drawing.Size(256, 26);
+            this.unidadMinimaText.Size = new System.Drawing.Size(236, 26);
             this.unidadMinimaText.TabIndex = 52;
             // 
             // button10
@@ -372,7 +374,7 @@
             this.almacenText.MaxLength = 200;
             this.almacenText.Name = "almacenText";
             this.almacenText.ReadOnly = true;
-            this.almacenText.Size = new System.Drawing.Size(256, 26);
+            this.almacenText.Size = new System.Drawing.Size(236, 26);
             this.almacenText.TabIndex = 45;
             // 
             // button8
@@ -404,7 +406,7 @@
             this.itebisText.MaxLength = 200;
             this.itebisText.Name = "itebisText";
             this.itebisText.ReadOnly = true;
-            this.itebisText.Size = new System.Drawing.Size(256, 26);
+            this.itebisText.Size = new System.Drawing.Size(236, 26);
             this.itebisText.TabIndex = 41;
             // 
             // button7
@@ -445,7 +447,7 @@
             this.puntoReordenText.Location = new System.Drawing.Point(158, 345);
             this.puntoReordenText.MaxLength = 200;
             this.puntoReordenText.Name = "puntoReordenText";
-            this.puntoReordenText.Size = new System.Drawing.Size(256, 26);
+            this.puntoReordenText.Size = new System.Drawing.Size(236, 26);
             this.puntoReordenText.TabIndex = 36;
             this.puntoReordenText.Text = "0";
             this.puntoReordenText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.puntoReordenText_KeyPress);
@@ -467,7 +469,7 @@
             this.puntoMaximoText.Location = new System.Drawing.Point(158, 305);
             this.puntoMaximoText.MaxLength = 200;
             this.puntoMaximoText.Name = "puntoMaximoText";
-            this.puntoMaximoText.Size = new System.Drawing.Size(256, 26);
+            this.puntoMaximoText.Size = new System.Drawing.Size(236, 26);
             this.puntoMaximoText.TabIndex = 34;
             this.puntoMaximoText.Text = "0";
             this.puntoMaximoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
@@ -490,7 +492,7 @@
             this.subCategoriaText.MaxLength = 200;
             this.subCategoriaText.Name = "subCategoriaText";
             this.subCategoriaText.ReadOnly = true;
-            this.subCategoriaText.Size = new System.Drawing.Size(256, 26);
+            this.subCategoriaText.Size = new System.Drawing.Size(236, 26);
             this.subCategoriaText.TabIndex = 33;
             // 
             // button6
@@ -522,7 +524,7 @@
             this.categoriaText.MaxLength = 200;
             this.categoriaText.Name = "categoriaText";
             this.categoriaText.ReadOnly = true;
-            this.categoriaText.Size = new System.Drawing.Size(256, 26);
+            this.categoriaText.Size = new System.Drawing.Size(236, 26);
             this.categoriaText.TabIndex = 29;
             // 
             // button5
@@ -544,7 +546,7 @@
             this.referenciaText.Location = new System.Drawing.Point(158, 107);
             this.referenciaText.MaxLength = 20;
             this.referenciaText.Name = "referenciaText";
-            this.referenciaText.Size = new System.Drawing.Size(256, 26);
+            this.referenciaText.Size = new System.Drawing.Size(236, 26);
             this.referenciaText.TabIndex = 27;
             // 
             // label3
@@ -573,7 +575,7 @@
             this.productoText.Location = new System.Drawing.Point(158, 73);
             this.productoText.MaxLength = 30;
             this.productoText.Name = "productoText";
-            this.productoText.Size = new System.Drawing.Size(256, 26);
+            this.productoText.Size = new System.Drawing.Size(236, 26);
             this.productoText.TabIndex = 25;
             // 
             // label2
@@ -1109,8 +1111,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewTextBoxColumn5.FillWeight = 70F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Precio costo";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -1118,8 +1120,8 @@
             // 
             // precioVentaColumn
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.precioVentaColumn.FillWeight = 70F;
             this.precioVentaColumn.HeaderText = "Precio venta";
             this.precioVentaColumn.Name = "precioVentaColumn";

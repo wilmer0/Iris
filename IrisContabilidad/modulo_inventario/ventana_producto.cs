@@ -121,7 +121,7 @@ namespace IrisContabilidad.modulo_inventario
                     loadUnidad();
                     rutaImagenText.Text = "";
                     imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                     unidadCodigoBarra = null;
                     loadUnidadCodigoBarra();
                     cantidadText.Text = "";
