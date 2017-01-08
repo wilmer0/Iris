@@ -124,6 +124,11 @@ namespace IrisContabilidad.modulo_inventario
                     activoCheck.Checked = false;
                     unidadCodigoBarra = null;
                     loadUnidadCodigoBarra();
+                    cantidadText.Text = "";
+                    unidadIdPrecioVentaText.Text = "";
+                    unidadPrecioVentaText.Text = "";
+                    precioVentaText.Text = "";
+                    precioCostoText.Text = "";
                     if (dataGridView1.Rows.Count > 0)
                     {
                         dataGridView1.Rows.Clear();
@@ -131,6 +136,10 @@ namespace IrisContabilidad.modulo_inventario
                     if (dataGridView2.Rows.Count > 0)
                     {
                         dataGridView2.Rows.Clear();
+                    }
+                    if (dataGridView3.Rows.Count > 0)
+                    {
+                        dataGridView3.Rows.Clear();
                     }
                     
                 }
@@ -719,9 +728,9 @@ namespace IrisContabilidad.modulo_inventario
                 string sql = "delete from producto_unidad_conversion where cod_producto='" + producto.codigo + "'";
                 utilidades.ejecutarcomando_mysql(sql);
                 //recorriendo la lista para agregarlo uno a uno
-                foreach (DataGridViewRow row in dataGridView2.Rows)
+                foreach (DataGridViewRow row in dataGridView3.Rows)
                 {
-                    sql = "insert into producto_unidad_conversion(cod_producto,cod_unidad,cantidad,previo_venta,costo,precio_venta) values('" + producto.codigo + "','" + row.Cells[0].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "')";
+                    sql = "insert into producto_unidad_conversion(cod_producto,cod_unidad,cantidad,costo,precio_venta) values('" + producto.codigo + "','" + row.Cells[0].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "')";
                     utilidades.ejecutarcomando_mysql(sql);
                 }
             }
@@ -793,29 +802,36 @@ namespace IrisContabilidad.modulo_inventario
                 {
                     return;
                 }
-               
-                //validar que tenga costo 
-                if (codigoBarraText.Text == "")
+                //validar que tenga cantidad 
+                if (cantidadText.Text == "")
                 {
-                    MessageBox.Show("Falta la código de barra ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    codigoBarraText.Focus();
-                    codigoBarraText.SelectAll();
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cantidadText.Focus();
+                    cantidadText.SelectAll();
+                    return;
+                }
+                //validar que tenga costo 
+                if (precioCostoText.Text == "")
+                {
+                    MessageBox.Show("Falta el precio de costo", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    precioCostoText.Focus();
+                    precioCostoText.SelectAll();
                     return;
                 }
                 //validar que tenga precio de venta 
-                if (codigoBarraText.Text == "")
+                if (precioVentaText.Text == "")
                 {
-                    MessageBox.Show("Falta la código de barra ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    codigoBarraText.Focus();
-                    codigoBarraText.SelectAll();
+                    MessageBox.Show("Falta el precio de venta", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    precioVentaText.Focus();
+                    precioVentaText.SelectAll();
                     return;
                 }
 
                 existe = false;
-                //validar que no se repita la unidad y el codigo de barra
-                foreach (DataGridViewRow row in dataGridView2.Rows)
+                //validar que no se repita la unidad
+                foreach (DataGridViewRow row in dataGridView3.Rows)
                 {
-                    if (row.Cells[0].Value.ToString() == unidadCodigoBarra.codigo.ToString() && row.Cells[2].Value.ToString() == codigoBarraText.Text.Trim())
+                    if (row.Cells[0].Value.ToString() == unidadConversion.codigo.ToString())
                     {
                         existe = true;
                         break;
@@ -824,13 +840,12 @@ namespace IrisContabilidad.modulo_inventario
 
                 if (existe == false)
                 {
-                    dataGridView2.Rows.Add(unidadCodigoBarra.codigo.ToString(), unidadCodigoBarra.nombre, codigoBarraText.Text.Trim());
+                    dataGridView3.Rows.Add(unidadConversion.codigo.ToString(), unidadConversion.nombre, cantidadText.Text.Trim(), precioCostoText.Text.Trim(), precioVentaText.Text.Trim());
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarCodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error agregarUnidadConversion.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -858,6 +873,21 @@ namespace IrisContabilidad.modulo_inventario
             {
                 MessageBox.Show("Error eliminarcodigoBarra.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cantidadText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e,"");
+        }
+
+        private void precioCostoText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, "");
+        }
+
+        private void precioVentaText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, "");
         }
     }
 }

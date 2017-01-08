@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.button15 = new System.Windows.Forms.Button();
@@ -98,6 +98,10 @@
             this.barraColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cantidadText = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.precioCostoText = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.precioVentaText = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.unidadPrecioVentaText = new System.Windows.Forms.TextBox();
@@ -112,8 +116,6 @@
             this.cantidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioVentaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioCostoText = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -904,6 +906,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.cantidadText);
+            this.groupBox4.Controls.Add(this.label18);
             this.groupBox4.Controls.Add(this.precioCostoText);
             this.groupBox4.Controls.Add(this.label17);
             this.groupBox4.Controls.Add(this.precioVentaText);
@@ -920,21 +924,64 @@
             this.groupBox4.TabIndex = 69;
             this.groupBox4.TabStop = false;
             // 
+            // cantidadText
+            // 
+            this.cantidadText.BackColor = System.Drawing.Color.White;
+            this.cantidadText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cantidadText.Location = new System.Drawing.Point(338, 53);
+            this.cantidadText.MaxLength = 30;
+            this.cantidadText.Name = "cantidadText";
+            this.cantidadText.Size = new System.Drawing.Size(104, 26);
+            this.cantidadText.TabIndex = 62;
+            this.cantidadText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cantidadText_KeyPress);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(334, 19);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(81, 20);
+            this.label18.TabIndex = 61;
+            this.label18.Text = "Cantidad";
+            // 
+            // precioCostoText
+            // 
+            this.precioCostoText.BackColor = System.Drawing.Color.White;
+            this.precioCostoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.precioCostoText.Location = new System.Drawing.Point(460, 55);
+            this.precioCostoText.MaxLength = 30;
+            this.precioCostoText.Name = "precioCostoText";
+            this.precioCostoText.Size = new System.Drawing.Size(104, 26);
+            this.precioCostoText.TabIndex = 60;
+            this.precioCostoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.precioCostoText_KeyPress);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(456, 21);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(108, 20);
+            this.label17.TabIndex = 59;
+            this.label17.Text = "Precio costo";
+            // 
             // precioVentaText
             // 
             this.precioVentaText.BackColor = System.Drawing.Color.White;
             this.precioVentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.precioVentaText.Location = new System.Drawing.Point(521, 55);
+            this.precioVentaText.Location = new System.Drawing.Point(580, 55);
             this.precioVentaText.MaxLength = 30;
             this.precioVentaText.Name = "precioVentaText";
-            this.precioVentaText.Size = new System.Drawing.Size(152, 26);
+            this.precioVentaText.Size = new System.Drawing.Size(104, 26);
             this.precioVentaText.TabIndex = 58;
+            this.precioVentaText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.precioVentaText_KeyPress);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(517, 21);
+            this.label14.Location = new System.Drawing.Point(576, 21);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(108, 20);
             this.label14.TabIndex = 57;
@@ -1050,8 +1097,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn5.FillWeight = 70F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Precio costo";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -1059,32 +1106,12 @@
             // 
             // precioVentaColumn
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.precioVentaColumn.FillWeight = 70F;
             this.precioVentaColumn.HeaderText = "Precio venta";
             this.precioVentaColumn.Name = "precioVentaColumn";
             this.precioVentaColumn.ReadOnly = true;
-            // 
-            // precioCostoText
-            // 
-            this.precioCostoText.BackColor = System.Drawing.Color.White;
-            this.precioCostoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.precioCostoText.Location = new System.Drawing.Point(347, 55);
-            this.precioCostoText.MaxLength = 30;
-            this.precioCostoText.Name = "precioCostoText";
-            this.precioCostoText.Size = new System.Drawing.Size(152, 26);
-            this.precioCostoText.TabIndex = 60;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(343, 21);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(108, 20);
-            this.label17.TabIndex = 59;
-            this.label17.Text = "Precio costo";
             // 
             // ventana_producto
             // 
@@ -1208,5 +1235,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaColumn;
         private System.Windows.Forms.TextBox precioCostoText;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox cantidadText;
+        private System.Windows.Forms.Label label18;
     }
 }
