@@ -445,6 +445,14 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "sub_categoria_producto1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana compra";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_compra";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "compra1.png";
+                listaVentana.Add(ventana);
                 #endregion
                 
                 

@@ -248,6 +248,12 @@
     <Compile Include="modulo_inventario\ventana_categoria_producto.Designer.cs">
       <DependentUpon>ventana_categoria_producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_compra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_compra.Designer.cs">
+      <DependentUpon>ventana_compra.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -408,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_categoria_producto.resx">
       <DependentUpon>ventana_categoria_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_compra.resx">
+      <DependentUpon>ventana_compra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_producto.resx">
       <DependentUpon>ventana_producto.cs</DependentUpon>
