@@ -52,6 +52,15 @@
             this.suplidorIdText = new System.Windows.Forms.TextBox();
             this.numerocComprobanteFiscalText = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idUnidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itebisColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuentoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.importeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.productoIdText = new System.Windows.Forms.TextBox();
@@ -73,15 +82,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.totalItebisText = new System.Windows.Forms.TextBox();
             this.totalMontoText = new System.Windows.Forms.TextBox();
-            this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idUnidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itebisColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descuentoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.importeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -338,6 +338,70 @@
             this.dataGridView1.Size = new System.Drawing.Size(1001, 294);
             this.dataGridView1.TabIndex = 87;
             // 
+            // idPrductoColumn
+            // 
+            this.idPrductoColumn.FillWeight = 50F;
+            this.idPrductoColumn.HeaderText = "Id";
+            this.idPrductoColumn.Name = "idPrductoColumn";
+            this.idPrductoColumn.ReadOnly = true;
+            // 
+            // ProductoColumn
+            // 
+            this.ProductoColumn.HeaderText = "Producto";
+            this.ProductoColumn.Name = "ProductoColumn";
+            this.ProductoColumn.ReadOnly = true;
+            // 
+            // idUnidadColumn
+            // 
+            this.idUnidadColumn.FillWeight = 50F;
+            this.idUnidadColumn.HeaderText = "Id";
+            this.idUnidadColumn.Name = "idUnidadColumn";
+            this.idUnidadColumn.ReadOnly = true;
+            // 
+            // unidadColumn
+            // 
+            this.unidadColumn.HeaderText = "Unidad";
+            this.unidadColumn.Name = "unidadColumn";
+            this.unidadColumn.ReadOnly = true;
+            // 
+            // cantidadColumn
+            // 
+            this.cantidadColumn.HeaderText = "Cantidad";
+            this.cantidadColumn.Name = "cantidadColumn";
+            this.cantidadColumn.ReadOnly = true;
+            // 
+            // precioColumn
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.precioColumn.HeaderText = "Precio";
+            this.precioColumn.Name = "precioColumn";
+            this.precioColumn.ReadOnly = true;
+            // 
+            // itebisColumn
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.itebisColumn.HeaderText = "Itbis";
+            this.itebisColumn.Name = "itebisColumn";
+            this.itebisColumn.ReadOnly = true;
+            // 
+            // descuentoColumn
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.descuentoColumn.HeaderText = "Descuento";
+            this.descuentoColumn.Name = "descuentoColumn";
+            this.descuentoColumn.ReadOnly = true;
+            // 
+            // importeColumn
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.importeColumn.HeaderText = "Importe";
+            this.importeColumn.Name = "importeColumn";
+            this.importeColumn.ReadOnly = true;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -460,9 +524,9 @@
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(614, 16);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 17);
+            this.label12.Size = new System.Drawing.Size(110, 17);
             this.label12.TabIndex = 98;
-            this.label12.Text = "Descuento";
+            this.label12.Text = "Descuento(%)";
             // 
             // groupBox2
             // 
@@ -553,70 +617,6 @@
             this.totalMontoText.Size = new System.Drawing.Size(150, 26);
             this.totalMontoText.TabIndex = 102;
             this.totalMontoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // idPrductoColumn
-            // 
-            this.idPrductoColumn.FillWeight = 50F;
-            this.idPrductoColumn.HeaderText = "Id";
-            this.idPrductoColumn.Name = "idPrductoColumn";
-            this.idPrductoColumn.ReadOnly = true;
-            // 
-            // ProductoColumn
-            // 
-            this.ProductoColumn.HeaderText = "Producto";
-            this.ProductoColumn.Name = "ProductoColumn";
-            this.ProductoColumn.ReadOnly = true;
-            // 
-            // idUnidadColumn
-            // 
-            this.idUnidadColumn.FillWeight = 50F;
-            this.idUnidadColumn.HeaderText = "Id";
-            this.idUnidadColumn.Name = "idUnidadColumn";
-            this.idUnidadColumn.ReadOnly = true;
-            // 
-            // unidadColumn
-            // 
-            this.unidadColumn.HeaderText = "Unidad";
-            this.unidadColumn.Name = "unidadColumn";
-            this.unidadColumn.ReadOnly = true;
-            // 
-            // cantidadColumn
-            // 
-            this.cantidadColumn.HeaderText = "Cantidad";
-            this.cantidadColumn.Name = "cantidadColumn";
-            this.cantidadColumn.ReadOnly = true;
-            // 
-            // precioColumn
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.precioColumn.HeaderText = "Precio";
-            this.precioColumn.Name = "precioColumn";
-            this.precioColumn.ReadOnly = true;
-            // 
-            // itebisColumn
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.itebisColumn.HeaderText = "Itbis";
-            this.itebisColumn.Name = "itebisColumn";
-            this.itebisColumn.ReadOnly = true;
-            // 
-            // descuentoColumn
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.descuentoColumn.HeaderText = "Descuento";
-            this.descuentoColumn.Name = "descuentoColumn";
-            this.descuentoColumn.ReadOnly = true;
-            // 
-            // importeColumn
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.importeColumn.HeaderText = "Importe";
-            this.importeColumn.Name = "importeColumn";
-            this.importeColumn.ReadOnly = true;
             // 
             // ventana_compra
             // 
