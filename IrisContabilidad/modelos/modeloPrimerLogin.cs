@@ -399,6 +399,13 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "itebis1.png";
                 listaVentana.Add(ventana);
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_caja";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "caja1.png";
+                listaVentana.Add(ventana);
                 
                 #endregion
                 
