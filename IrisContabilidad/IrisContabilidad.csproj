@@ -99,6 +99,7 @@
     <Compile Include="clases\compra_vs_pagos.cs" />
     <Compile Include="clases\compra_vs_pagos_detalles.cs" />
     <Compile Include="clases\departamento.cs" />
+    <Compile Include="clases\desglose_dinero.cs" />
     <Compile Include="clases\dias.cs" />
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
@@ -205,6 +206,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_itbis.Designer.cs">
       <DependentUpon>ventana_busqueda_itbis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_desglose_dinero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_desglose_dinero.Designer.cs">
+      <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_itebis.cs">
       <SubType>Form</SubType>
@@ -393,6 +400,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_itbis.resx">
       <DependentUpon>ventana_busqueda_itbis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_desglose_dinero.resx">
+      <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>

@@ -58,6 +58,7 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                tipoCompraComboBox.SelectedIndex = 0;
                 if (compra != null)
                 {
                     //llenar campos
@@ -72,8 +73,6 @@ namespace IrisContabilidad.modulo_inventario
                     {
                         dataGridView1.Rows.Clear();
                     }
-                   
-
                 }
             }
             catch (Exception ex)
@@ -92,6 +91,11 @@ namespace IrisContabilidad.modulo_inventario
             ventana_suplidor ventana=new ventana_suplidor();
             ventana.Owner = this;
             ventana.ShowDialog();
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
