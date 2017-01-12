@@ -273,6 +273,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                     }
                 }
 
+                //para sacar los modulos que se repiten porque son muchas ventanas
                 listaModulos = listaModulos.Distinct().ToList();
                 return listaModulos;
 

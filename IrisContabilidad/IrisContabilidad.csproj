@@ -546,12 +546,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Release\Resources\archivos\codigos barras\" />
+    <Folder Include="bin\Release\Resources\archivos\compras\" />
+    <Folder Include="bin\Release\Resources\archivos\ventas\" />
     <Folder Include="bin\Release\Resources\productos\" />
     <Folder Include="pruebas\" />
     <Folder Include="reportes_clases\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Release\Resources\archivos\connection.txt" />
+    <Content Include="bin\Release\Resources\archivos\coneccion\connection.txt" />
     <Content Include="bin\Release\Resources\botones\analisis1.png" />
     <Content Include="bin\Release\Resources\botones\analisis2.png" />
     <Content Include="bin\Release\Resources\botones\analisis3.png" />
