@@ -167,5 +167,37 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        //get lista completa por nombre
+        public List<categoria_producto> getListaByNombre(string nombre)
+        {
+            try
+            {
+
+                List<categoria_producto> lista = new List<categoria_producto>();
+                string sql = "";
+                sql = "select codigo,nombre,activo from categoria_producto where estado='1'";
+                
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        categoria_producto categoria = new categoria_producto();
+                        categoria.codigo = Convert.ToInt16(row[0].ToString());
+                        categoria.nombre = row[1].ToString();
+                        categoria.activo = Convert.ToBoolean(row[2].ToString());
+                        lista.Add(categoria);
+                    }
+                }
+                lista = lista.FindAll(x => x.nombre.ToLower().Contains(nombre.ToLower()));
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

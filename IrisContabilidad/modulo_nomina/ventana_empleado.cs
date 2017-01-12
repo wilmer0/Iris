@@ -90,8 +90,8 @@ namespace IrisContabilidad.modulo_nomina
                     loadSituacionEmpleado();
                     if (empleado.foto != "")
                     {
-                        imagen_empleado.BackgroundImage =
-                            Image.FromFile(rutaImagenesEmpleados + empleado.foto);
+                        rutaImagenText.Text = rutaImagenesEmpleados + empleado.foto;
+                        imagen_empleado.BackgroundImage =Image.FromFile(rutaImagenesEmpleados + empleado.foto);
                     }
                     else
                     {
@@ -119,6 +119,7 @@ namespace IrisContabilidad.modulo_nomina
                     sueldoText.Text = "";
                     situacionIdText.Text = "";
                     situacionText.Text = "";
+                    rutaImagenText.Text = "";
                     imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + "default1.png");
                     activoCheck.Checked =false;
                 }
@@ -275,6 +276,7 @@ namespace IrisContabilidad.modulo_nomina
                     {
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         empleado = null;
+                        loadVentana();
                     }
                     else
                     {
@@ -288,6 +290,7 @@ namespace IrisContabilidad.modulo_nomina
                     {
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         empleado = null;
+                        loadVentana();
                     }
                     else
                     {

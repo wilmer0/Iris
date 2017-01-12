@@ -167,6 +167,8 @@ namespace IrisContabilidad.modulo_empresa
                 {
                     if ((modeloSucursal.agregarSucursal(sucursal)) == true)
                     {
+                        sucursal = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -178,6 +180,8 @@ namespace IrisContabilidad.modulo_empresa
                 {
                     if ((modeloSucursal.modificarSucursal(sucursal)) == true)
                     {
+                        sucursal = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else

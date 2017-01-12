@@ -169,5 +169,38 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        //get lista completa por nombre
+        public List<almacen> getListaByNombre(string nombre)
+        {
+            try
+            {
+
+                List<almacen> lista = new List<almacen>();
+                string sql = "";
+                sql = "select codigo,nombre,cod_sucursal,activo from almacen where activo='1'";
+
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        almacen almacen = new almacen();
+                        almacen.codigo = Convert.ToInt16(row[0].ToString());
+                        almacen.nombre = row[1].ToString();
+                        almacen.codigo_sucursal = Convert.ToInt16(row[2].ToString());
+                        almacen.activo = Convert.ToBoolean(row[3].ToString());
+                        lista.Add(almacen);
+                    }
+                }
+                lista = lista.FindAll(x => x.nombre.ToLower().Contains(nombre.ToLower()));
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

@@ -115,6 +115,7 @@ namespace IrisContabilidad.modulo_nomina
                     if (modeloDepartamento.agregarDepartamento(departamento) == true)
                     {
                         departamento = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -127,6 +128,8 @@ namespace IrisContabilidad.modulo_nomina
                     //actualiza
                     if (modeloDepartamento.modificarDepartamento(departamento)== true)
                     {
+                        departamento = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else

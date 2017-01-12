@@ -111,6 +111,7 @@ namespace IrisContabilidad.modulo_nomina
                     if (modeloSituacionEmpleado.agregarSituacionEmpleado(situacion) == true)
                     {
                         situacion = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -123,6 +124,8 @@ namespace IrisContabilidad.modulo_nomina
                     //actualiza
                     if (modeloSituacionEmpleado.modificarSituacionEmpleado(situacion) == true)
                     {
+                        situacion = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else

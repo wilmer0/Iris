@@ -129,6 +129,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (modeloSubCategoria.agregarSubCategoria(subCategoria) == true)
                     {
                         subCategoria = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -142,6 +143,8 @@ namespace IrisContabilidad.modulo_inventario
                     //actualiza
                     if (modeloSubCategoria.modificarSubCategoria(subCategoria) == true)
                     {
+                        subCategoria = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else

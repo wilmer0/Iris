@@ -114,6 +114,8 @@ namespace IrisContabilidad.modulo_nomina
                     //agrega
                     if (modeloNominaTipo.agregarNominaTipo(nominaTipo) == true)
                     {
+                        nominaTipo = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -126,6 +128,8 @@ namespace IrisContabilidad.modulo_nomina
                     //actualiza
                     if (modeloNominaTipo.modificarNominaTipo(nominaTipo) == true)
                     {
+                        nominaTipo = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else

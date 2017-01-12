@@ -129,8 +129,10 @@ namespace IrisContabilidad.modulo_inventario
                     //se agrega
                     if ((modeloItebis.agregarItebis(itebis)) == true)
                     {
-                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         itebis = null;
+                        loadVentana();
+                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     else
                     {
@@ -142,8 +144,10 @@ namespace IrisContabilidad.modulo_inventario
                     //se modifica
                     if ((modeloItebis.modificarItebis(itebis)) == true)
                     {
-                        MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         itebis = null;
+                        loadVentana();
+                        MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       
                     }
                     else
                     {
