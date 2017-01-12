@@ -13,18 +13,24 @@ using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_facturacion
 {
-    public partial class ventana_busqueda_caja : formBase
+    public partial class ventana_busqueda_cajero : formBase
     {
+
         //objetos
         private caja caja;
+        private cajero cajero;
+        private empleado empleado;
+
 
         //listas
-        private List<caja> listaCaja;
-
+        private List<cajero> listaCajero;
+        private List<cajero> listaCajeroTemp; 
 
 
         //modelos
         private modeloCaja modeloCaja = new modeloCaja();
+        modeloCajero modeloCajero=new modeloCajero();
+        modeloEmpleado modeloEmpleado=new modeloEmpleado();
 
 
         //variables 
@@ -32,7 +38,9 @@ namespace IrisContabilidad.modulo_facturacion
         private int fila = 0;
 
 
-        public ventana_busqueda_caja(bool mantenimiento=false)
+
+
+        public ventana_busqueda_cajero(bool mantenimiento=false)
         {
             InitializeComponent();
             this.tituloLabel.Text = this.Text;
@@ -44,10 +52,10 @@ namespace IrisContabilidad.modulo_facturacion
             try
             {
                 //si la lista esta null se inicializa
-                if (listaCaja == null)
+                if (listaCajero == null)
                 {
-                    listaCaja = new List<caja>();
-                    listaCaja = modeloCaja.getListaCompleta(mantenimiento);
+                    listaCajero = new List<cajero>();
+                    listaCajero = modeloCajero.getListaCompleta(mantenimiento);
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
@@ -55,10 +63,11 @@ namespace IrisContabilidad.modulo_facturacion
                     dataGridView1.Rows.Clear();
                 }
                 //se agrega todos los datos de la lista en el gridView
-                listaCaja.ForEach(x =>
+                listaCajero.ForEach(x =>
                 {
-                    dataGridView1.Rows.Add(x.codigo, x.nombre, x.secuencia, x.activo);
-
+                    empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
+                    caja = modeloCaja.getCajaById(x.codigo_caja);
+                    dataGridView1.Rows.Add(x.codigo, empleado.nombre, caja.nombre+"-"+caja.secuencia, x.activo);
                 });
             }
             catch (Exception ex)
@@ -66,14 +75,14 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadLista.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public caja getObjeto()
+        public cajero getObjeto()
         {
             try
             {
                 //para pasar el objeto sucursal desde deonde se llamo
                 fila = dataGridView1.CurrentRow.Index;
-                caja = modeloCaja.getCajaById(Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString()));
-                return caja;
+                cajero = modeloCajero.getCajeroById(Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString()));
+                return cajero;
             }
             catch (Exception ex)
             {
@@ -95,15 +104,9 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
-
-        private void ventana_busqueda_caja_Load(object sender, EventArgs e)
+        private void ventana_busqueda_cajero_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            getAction();
         }
 
         private void nombreText_KeyDown(object sender, KeyEventArgs e)
@@ -112,8 +115,21 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    listaCaja = modeloCaja.getListaCompleta();
-                    listaCaja = listaCaja.FindAll(x => x.nombre.Contains(nombreText.Text));
+                    empleado=new empleado();
+                    listaCajero = modeloCajero.getListaCompleta();
+                    listaCajeroTemp = listaCajeroTemp;
+                    listaCajero = new List<cajero>();
+                    foreach (cajero x in listaCajeroTemp)
+                    {
+                        cajero=new cajero();
+                        empleado=new empleado();
+                        empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
+                        if (empleado.nombre.ToLower().Contains(nombreText.Text))
+                        {
+                            cajero = modeloCajero.getCajeroById(x.codigo);
+                            listaCajero.Add(cajero);
+                        }
+                    }
                     loadLista();
                 }
             }
@@ -130,8 +146,14 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            listaCaja = null;
+            listaCajeroTemp = null;
+            listaCajero = null;
             loadLista();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getAction();
         }
     }
 }

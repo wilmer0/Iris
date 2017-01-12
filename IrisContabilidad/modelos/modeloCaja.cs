@@ -108,7 +108,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                string sql = "select max(codigo)from caja";
+                string sql = "select max(codigo) from caja";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 int id = 0;

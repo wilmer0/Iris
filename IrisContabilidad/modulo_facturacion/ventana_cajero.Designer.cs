@@ -31,15 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_cajero));
             this.activoCheck = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.suplidorIdText = new System.Windows.Forms.TextBox();
+            this.cajeroIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.cajaIdText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.numerocComprobanteFiscalText = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.cajaText = new System.Windows.Forms.TextBox();
+            this.empleadoText = new System.Windows.Forms.TextBox();
+            this.empleadoIdText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -55,6 +55,7 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -70,6 +71,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(195, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // activoCheck
             // 
@@ -85,7 +87,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.suplidorIdText);
+            this.groupBox1.Controls.Add(this.cajeroIdText);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
@@ -94,14 +96,14 @@
             this.groupBox1.TabIndex = 73;
             this.groupBox1.TabStop = false;
             // 
-            // suplidorIdText
+            // cajeroIdText
             // 
-            this.suplidorIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.suplidorIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suplidorIdText.Location = new System.Drawing.Point(155, 21);
-            this.suplidorIdText.Name = "suplidorIdText";
-            this.suplidorIdText.Size = new System.Drawing.Size(155, 26);
-            this.suplidorIdText.TabIndex = 18;
+            this.cajeroIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.cajeroIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cajeroIdText.Location = new System.Drawing.Point(155, 21);
+            this.cajeroIdText.Name = "cajeroIdText";
+            this.cajeroIdText.Size = new System.Drawing.Size(155, 26);
+            this.cajeroIdText.TabIndex = 18;
             // 
             // label2
             // 
@@ -123,15 +125,16 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 23;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox1
+            // cajaIdText
             // 
-            this.textBox1.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(167, 121);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(155, 26);
-            this.textBox1.TabIndex = 78;
+            this.cajaIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.cajaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cajaIdText.Location = new System.Drawing.Point(167, 121);
+            this.cajaIdText.Name = "cajaIdText";
+            this.cajaIdText.Size = new System.Drawing.Size(155, 26);
+            this.cajaIdText.TabIndex = 78;
             // 
             // label1
             // 
@@ -153,37 +156,38 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 79;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // numerocComprobanteFiscalText
+            // cajaText
             // 
-            this.numerocComprobanteFiscalText.BackColor = System.Drawing.Color.White;
-            this.numerocComprobanteFiscalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numerocComprobanteFiscalText.Location = new System.Drawing.Point(167, 159);
-            this.numerocComprobanteFiscalText.MaxLength = 100;
-            this.numerocComprobanteFiscalText.Name = "numerocComprobanteFiscalText";
-            this.numerocComprobanteFiscalText.ReadOnly = true;
-            this.numerocComprobanteFiscalText.Size = new System.Drawing.Size(236, 26);
-            this.numerocComprobanteFiscalText.TabIndex = 80;
+            this.cajaText.BackColor = System.Drawing.Color.White;
+            this.cajaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cajaText.Location = new System.Drawing.Point(167, 159);
+            this.cajaText.MaxLength = 100;
+            this.cajaText.Name = "cajaText";
+            this.cajaText.ReadOnly = true;
+            this.cajaText.Size = new System.Drawing.Size(236, 26);
+            this.cajaText.TabIndex = 80;
             // 
-            // textBox2
+            // empleadoText
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(167, 246);
-            this.textBox2.MaxLength = 100;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(236, 26);
-            this.textBox2.TabIndex = 84;
+            this.empleadoText.BackColor = System.Drawing.Color.White;
+            this.empleadoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empleadoText.Location = new System.Drawing.Point(167, 246);
+            this.empleadoText.MaxLength = 100;
+            this.empleadoText.Name = "empleadoText";
+            this.empleadoText.ReadOnly = true;
+            this.empleadoText.Size = new System.Drawing.Size(236, 26);
+            this.empleadoText.TabIndex = 84;
             // 
-            // textBox3
+            // empleadoIdText
             // 
-            this.textBox3.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(167, 208);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(155, 26);
-            this.textBox3.TabIndex = 82;
+            this.empleadoIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.empleadoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.empleadoIdText.Location = new System.Drawing.Point(167, 208);
+            this.empleadoIdText.Name = "empleadoIdText";
+            this.empleadoIdText.Size = new System.Drawing.Size(155, 26);
+            this.empleadoIdText.TabIndex = 82;
             // 
             // label3
             // 
@@ -205,18 +209,19 @@
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 83;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // ventana_cajero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(554, 387);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.empleadoText);
+            this.Controls.Add(this.empleadoIdText);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.numerocComprobanteFiscalText);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.cajaText);
+            this.Controls.Add(this.cajaIdText);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.activoCheck);
@@ -230,12 +235,12 @@
             this.Controls.SetChildIndex(this.activoCheck, 0);
             this.Controls.SetChildIndex(this.button5, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
-            this.Controls.SetChildIndex(this.numerocComprobanteFiscalText, 0);
+            this.Controls.SetChildIndex(this.cajaIdText, 0);
+            this.Controls.SetChildIndex(this.cajaText, 0);
             this.Controls.SetChildIndex(this.button6, 0);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.textBox3, 0);
-            this.Controls.SetChildIndex(this.textBox2, 0);
+            this.Controls.SetChildIndex(this.empleadoIdText, 0);
+            this.Controls.SetChildIndex(this.empleadoText, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -250,15 +255,15 @@
 
         private System.Windows.Forms.CheckBox activoCheck;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox suplidorIdText;
+        private System.Windows.Forms.TextBox cajeroIdText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox cajaIdText;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox numerocComprobanteFiscalText;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox cajaText;
+        private System.Windows.Forms.TextBox empleadoText;
+        private System.Windows.Forms.TextBox empleadoIdText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button6;
     }
