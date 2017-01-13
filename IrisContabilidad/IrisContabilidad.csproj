@@ -145,7 +145,9 @@
     <Compile Include="modelos\modeloSuplidor.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
-    <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs" />
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.Designer.cs">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </Compile>
@@ -551,6 +553,7 @@
     <Folder Include="bin\Release\Resources\archivos\compras\" />
     <Folder Include="bin\Release\Resources\archivos\ventas\" />
     <Folder Include="bin\Release\Resources\productos\" />
+    <Folder Include="modulo_inicio_rapido\" />
     <Folder Include="pruebas\" />
     <Folder Include="reportes_clases\" />
   </ItemGroup>
