@@ -345,7 +345,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count ==0)
                 {
-                    MessageBox.Show("La empresa se encuentra deshabilitada, por favor contacte con su proveedor", "",
+                    MessageBox.Show("Datos incorrectos", "",
                         MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return null;
                 }
