@@ -133,5 +133,10 @@ namespace IrisContabilidad.modulo_facturacion
             listaCaja = null;
             loadLista();
         }
+
+        private void nombreText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

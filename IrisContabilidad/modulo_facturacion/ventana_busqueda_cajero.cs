@@ -56,6 +56,7 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     listaCajero = new List<cajero>();
                     listaCajero = modeloCajero.getListaCompleta(mantenimiento);
+                    listaCajeroTemp = listaCajero;
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
@@ -63,7 +64,7 @@ namespace IrisContabilidad.modulo_facturacion
                     dataGridView1.Rows.Clear();
                 }
                 //se agrega todos los datos de la lista en el gridView
-                listaCajero.ForEach(x =>
+                listaCajeroTemp.ForEach(x =>
                 {
                     empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
                     caja = modeloCaja.getCajaById(x.codigo_caja);
@@ -116,20 +117,24 @@ namespace IrisContabilidad.modulo_facturacion
                 if (e.KeyCode == Keys.Enter)
                 {
                     empleado=new empleado();
+                    //listaCajeroTemp = new List<cajero>();
+                    //listaCajero = new List<cajero>();
+
                     listaCajero = modeloCajero.getListaCompleta();
-                    listaCajeroTemp = listaCajeroTemp;
-                    listaCajero = new List<cajero>();
-                    foreach (cajero x in listaCajeroTemp)
+                    listaCajeroTemp = new List<cajero>();
+                   
+                    listaCajero.ForEach(x =>
                     {
-                        cajero=new cajero();
-                        empleado=new empleado();
+                        cajero = new cajero();
+                        empleado = new empleado();
                         empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
-                        if (empleado.nombre.ToLower().Contains(nombreText.Text))
+                        cajero = modeloCajero.getCajeroById(empleado.codigo);
+                        if (empleado.nombre.ToLower().Contains(nombreText.Text.ToLower()))
                         {
-                            cajero = modeloCajero.getCajeroById(x.codigo);
-                            listaCajero.Add(cajero);
+                            //cajero = modeloCajero.getCajeroById(empleado.codigo);
+                            listaCajeroTemp.Add(cajero);
                         }
-                    }
+                    });
                     loadLista();
                 }
             }

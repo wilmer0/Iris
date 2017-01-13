@@ -210,7 +210,7 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        ventana.codigo = (int) row[1];
+                        ventana.codigo = Convert.ToInt16(row[1].ToString());
                         listaVentanas.Add(row[1].ToString());
                     }
                 }

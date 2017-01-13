@@ -136,7 +136,7 @@ namespace IrisContabilidad
                     return;
                 }
                 //empleado = modeloEmpleado.validarLogin(usuarioText.Text, claveText.Text);
-                if (empleado.login != null)
+                if (empleado.login != null || empleado.login!="")
                 {
                     singleton.empleado = empleado;
                     menu1 ventana = new menu1(empleado);
@@ -147,8 +147,8 @@ namespace IrisContabilidad
                 else
                 {
                     empleado = null;
-                    MessageBox.Show("No existe el usuario", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                   limpiar();
+                    MessageBox.Show("Datos incorrectos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limpiar();
                 }
             }
             catch (Exception)

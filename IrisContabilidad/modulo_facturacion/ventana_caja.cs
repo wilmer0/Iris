@@ -84,6 +84,14 @@ namespace IrisContabilidad.modulo_facturacion
                     secuenciaText.SelectAll();
                     return false;
                 }
+                //validar tamano de la secuencia
+                if (secuenciaText.Text.Length !=2)
+                {
+                    MessageBox.Show("La secuencia no esta completa,deben ser 2 digitos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    secuenciaText.Focus();
+                    secuenciaText.SelectAll();
+                    return false;
+                }
                 return true;
             }
             catch (Exception ex)
