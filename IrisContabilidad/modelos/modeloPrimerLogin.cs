@@ -249,7 +249,7 @@ namespace IrisContabilidad.modelos
                    5-modulo inventario
                    6-modulo opciones
                    7-modulo nomina
-                 * 8-modulo inicio rapido
+                   8-modulo inicio rapido
                 */
                 #region
                 List<modulo> listaModulo = new List<modulo>();
