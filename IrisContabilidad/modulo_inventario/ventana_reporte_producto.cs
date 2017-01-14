@@ -135,7 +135,7 @@ namespace IrisContabilidad.modulo_inventario
                 reporteProductoEncabezado.empresa = modeloEmpresa.getEmpresaById(1).nombre;
                 reporteProductoEncabezado.direccion = modeloSucursal.getSucursalById(empleado.codigo_sucursal).direccion;
                 reporteProductoEncabezado.empleado = empleado.nombre;
-                reporteProductoEncabezado.fecha_impresion = DateTime.Today;
+                reporteProductoEncabezado.fecha_impresion = DateTime.Now;
                 reporteProductoEncabezado.almacen = almacenText.Text;
                 reporteProductoEncabezado.categoria = categoriaText.Text;
                 reporteProductoEncabezado.itebis = itebisText.Text;
