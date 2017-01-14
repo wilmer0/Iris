@@ -148,15 +148,26 @@ namespace IrisContabilidad.modulo_sistema
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow rowVentana  in ds.Tables[0].Rows)
                 {
+                    botonVentana = new Button();
                     ventana=new ventana();
                     ventana.codigo = Convert.ToInt16(rowVentana[1].ToString());
                     ventana = modeloModulo.getVentanaById(ventana.codigo);
-                    //MessageBox.Show(ventana.nombre_ventana);
-                    botonVentana = new Button();
+                    
+                    
+                    //estableciendo el estilo del boton
                     botonVentana.FlatStyle = FlatStyle.Flat;
                     botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
                     botonVentana.Width = 200;
                     botonVentana.Height = 170;
+                    
+                    
+                    //dando estilo al texto del boton
+                    //botonVentana.TextAlign= ContentAlignment.BottomCenter;
+                    //botonVentana.Text = ventana.nombre_ventana;
+                    //botonVentana.ForeColor = Color.Blue;
+                    //botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, 20);
+                    
+                    
                     //estableciendo la imagen de fondo del boton
                     botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + ventana.imagen);
                     botonVentana.Tag = ventana.codigo;

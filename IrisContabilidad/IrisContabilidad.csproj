@@ -124,6 +124,8 @@
     <Compile Include="clases\unidad.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
+    <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCaja.cs" />
     <Compile Include="modelos\modeloCajero.cs" />
@@ -301,6 +303,12 @@
     <Compile Include="modulo_inventario\ventana_busqueda_unidad.Designer.cs">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_reporte_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_reporte_producto.Designer.cs">
+      <DependentUpon>ventana_reporte_producto.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_subcategoria_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -477,6 +485,9 @@
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_reporte_producto.resx">
+      <DependentUpon>ventana_reporte_producto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_subcategoria_producto.resx">
       <DependentUpon>ventana_subcategoria_producto.cs</DependentUpon>
     </EmbeddedResource>
@@ -531,6 +542,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
