@@ -121,6 +121,7 @@
             this.itebisIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itebisIdText.Location = new System.Drawing.Point(141, 223);
             this.itebisIdText.Name = "itebisIdText";
+            this.itebisIdText.ReadOnly = true;
             this.itebisIdText.Size = new System.Drawing.Size(183, 26);
             this.itebisIdText.TabIndex = 28;
             // 
@@ -199,6 +200,7 @@
             this.categoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoriaIdText.Location = new System.Drawing.Point(141, 305);
             this.categoriaIdText.Name = "categoriaIdText";
+            this.categoriaIdText.ReadOnly = true;
             this.categoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.categoriaIdText.TabIndex = 34;
             // 
@@ -239,6 +241,7 @@
             this.subcategoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subcategoriaIdText.Location = new System.Drawing.Point(141, 386);
             this.subcategoriaIdText.Name = "subcategoriaIdText";
+            this.subcategoriaIdText.ReadOnly = true;
             this.subcategoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.subcategoriaIdText.TabIndex = 38;
             // 
@@ -279,6 +282,7 @@
             this.almacenIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.almacenIdText.Location = new System.Drawing.Point(141, 468);
             this.almacenIdText.Name = "almacenIdText";
+            this.almacenIdText.ReadOnly = true;
             this.almacenIdText.Size = new System.Drawing.Size(183, 26);
             this.almacenIdText.TabIndex = 42;
             // 
@@ -319,6 +323,7 @@
             this.unidadMinimaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidadMinimaIdText.Location = new System.Drawing.Point(141, 137);
             this.unidadMinimaIdText.Name = "unidadMinimaIdText";
+            this.unidadMinimaIdText.ReadOnly = true;
             this.unidadMinimaIdText.Size = new System.Drawing.Size(183, 26);
             this.unidadMinimaIdText.TabIndex = 46;
             // 

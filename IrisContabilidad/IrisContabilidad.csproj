@@ -547,6 +547,8 @@
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

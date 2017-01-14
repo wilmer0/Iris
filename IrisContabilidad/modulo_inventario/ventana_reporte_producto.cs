@@ -44,6 +44,9 @@ namespace IrisContabilidad.modulo_inventario
         modeloSubCategoriaProducto modeloSubcategoriaProducto=new modeloSubCategoriaProducto();
         modeloAlmacen modeloAlmacen = new modeloAlmacen();
         modeloUnidad modeloUnidad=new modeloUnidad();
+        modeloEmpresa modeloEmpresa = new modeloEmpresa();
+        modeloSucursal modeloSucursal=new modeloSucursal();
+
 
         //listas
         private List<producto> listaProducto; 
@@ -98,25 +101,105 @@ namespace IrisContabilidad.modulo_inventario
                     return;
                 }
                 #region
-                if (listaReporteProductoDetalle == null)
-                {
-                    MessageBox.Show("No hay datos", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+               
 
                 //datos generales
                 String reporte = "IrisContabilidad.reportes.reporte_producto.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
                 listaReporteProductoEncabezado = new List<reporte_producto_encabezado>();
                 listaReporteProductoDetalle=new List<reporte_producto_detalle>();
-                
                 reporteProductoEncabezado=new reporte_producto_encabezado();
+                listaProducto=new List<producto>();
+                
+
+                //llenar encabezado
+                reporteProductoEncabezado.empresa = modeloEmpresa.getEmpresaById(1).nombre;
+                reporteProductoEncabezado.direccion = modeloSucursal.getSucursalById(empleado.codigo_sucursal).direccion;
+                reporteProductoEncabezado.empleado = empleado.nombre;
+                reporteProductoEncabezado.fecha_impresion = DateTime.Today;
+                reporteProductoEncabezado.almacen = almacenText.Text;
+                reporteProductoEncabezado.categoria = categoriaText.Text;
+                reporteProductoEncabezado.itebis = itebisText.Text;
+                reporteProductoEncabezado.producto = productoText.Text;
+                reporteProductoEncabezado.referencia = referenciaText.Text;
+                reporteProductoEncabezado.subcategoria = subcategoriaText.Text;
+                reporteProductoEncabezado.unidad_minima = unidadMinimaText.Text;
+                listaReporteProductoEncabezado.Add(reporteProductoEncabezado);
+                
+                //llenar lista detalle
+                listaProducto = modeloProducto.getListaCompleta();
 
 
-                foreach()
+                //filtar lista
+                #region
+                //nombre
+                if (productoText.Text != "")
                 {
-                    listaReporteGraficoCliente.Add(reporteGraficoCliente);
+                    listaProducto.Find(x => x.nombre.ToLower().Contains(productoText.Text.ToLower()));
                 }
+                //referencia
+                if (referenciaText.Text != "")
+                {
+                    listaProducto.Find(x => x.referencia.ToLower().Contains(referenciaText.Text.ToLower()));
+                }
+                //unidad minima
+                if (unidadMinimaIdText.Text !="")
+                {
+                    listaProducto.Find(x => x.codigo_unidad_minima == Convert.ToInt16(unidadMinimaIdText.Text));
+                }
+                //itebis
+                if (itebisIdText.Text != "")
+                {
+                    listaProducto.Find(x => x.codigo_itebis == Convert.ToInt16(itebisIdText.Text));
+                }
+                //categoria
+                if (categoriaIdText.Text != "")
+                {
+                    listaProducto.Find(x => x.codigo_categoria == Convert.ToInt16(categoriaIdText.Text));
+                }
+                //subcategoria
+                if (subcategoriaIdText.Text != "")
+                {
+                    listaProducto.Find(x => x.codigo_subcategoria == Convert.ToInt16(subcategoriaIdText.Text));
+                }
+                //almacen
+                if (almacenIdText.Text != "")
+                {
+                    listaProducto.Find(x => x.codigo_almacen == Convert.ToInt16(almacenIdText.Text));
+                }
+                #endregion
+
+
+                //llelando la lista reporteProductoDetalle
+                foreach(var x in listaProducto)
+                {
+                    reporteProductoDetalle=new reporte_producto_detalle();
+                    
+                    almacen = modeloAlmacen.getAlmacenById(x.codigo_almacen);
+                    reporteProductoDetalle.almacen = almacen.nombre;
+                    categoria = modeloCategoriaProducto.getCategoriaById(x.codigo_categoria);
+                    reporteProductoDetalle.categoria = "";
+                    reporteProductoDetalle.codigo_producto = x.codigo;
+                    reporteProductoDetalle.existencia = 0;
+                    itebis = modeloItebis.getItebisById(x.codigo_itebis);
+                    reporteProductoDetalle.itebis = itebis.nombre;
+                    reporteProductoDetalle.nombre = x.nombre;
+                    reporteProductoDetalle.referencia = x.referencia;
+                    subCategoria = modeloSubcategoriaProducto.getSubCategoriaById(x.codigo_subcategoria);
+                    reporteProductoDetalle.subcategoria = subCategoria.nombre;
+                    unidad = modeloUnidad.getUnidadById(x.codigo_unidad_minima);
+                    reporteProductoDetalle.unidad_minima = unidad.nombre;
+                    listaReporteProductoDetalle.Add(reporteProductoDetalle);
+                }
+
+
+                //validar que tenga datos
+                if (listaReporteProductoDetalle == null)
+                {
+                    MessageBox.Show("No hay datos", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
 
                 ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteProductoEncabezado);
                 listaReportDataSource.Add(reporteGrafico);
@@ -131,7 +214,12 @@ namespace IrisContabilidad.modulo_inventario
                 ventana.ShowDialog();
 
                 #endregion
-             
+
+
+
+
+
+               
             }
             catch (Exception ex)
             {

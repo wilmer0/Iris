@@ -158,6 +158,129 @@
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="IrisContabilidadclases_reportes">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>400a8852-c1fe-4daa-8f60-3325c9af4bbc</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="IrisContabilidadclases_reportes1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>839e375f-3599-4d25-8786-f82be6363935</rd:DataSourceID>
+    </DataSource>
+    <DataSource Name="IrisContabilidadclases_reportes2">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>11df3cba-1ed3-4a97-b0cd-ced1394b66ce</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="reporte_detalle">
+      <Query>
+        <DataSourceName>IrisContabilidadclases_reportes1</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="almacen">
+          <DataField>almacen</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="categoria">
+          <DataField>categoria</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="codigo_producto">
+          <DataField>codigo_producto</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="existencia">
+          <DataField>existencia</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="itebis">
+          <DataField>itebis</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="nombre">
+          <DataField>nombre</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="referencia">
+          <DataField>referencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="subcategoria">
+          <DataField>subcategoria</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="unidad_minima">
+          <DataField>unidad_minima</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>IrisContabilidad.clases_reportes</rd:DataSetName>
+        <rd:TableName>reporte_producto_detalle</rd:TableName>
+        <rd:ObjectDataSourceType>IrisContabilidad.clases_reportes.reporte_producto_detalle, IrisContabilidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+    <DataSet Name="reporte_encabezado">
+      <Query>
+        <DataSourceName>IrisContabilidadclases_reportes2</DataSourceName>
+        <CommandText>/* Local Query */</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="almacen">
+          <DataField>almacen</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="categoria">
+          <DataField>categoria</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="empleado">
+          <DataField>empleado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="fecha_impresion">
+          <DataField>fecha_impresion</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="itebis">
+          <DataField>itebis</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="producto">
+          <DataField>producto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="referencia">
+          <DataField>referencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="subcategoria">
+          <DataField>subcategoria</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="unidad_minima">
+          <DataField>unidad_minima</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+      </Fields>
+      <rd:DataSetInfo>
+        <rd:DataSetName>IrisContabilidad.clases_reportes</rd:DataSetName>
+        <rd:TableName>reporte_producto_encabezado</rd:TableName>
+        <rd:ObjectDataSourceType>IrisContabilidad.clases_reportes.reporte_producto_encabezado, IrisContabilidad, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+      </rd:DataSetInfo>
+    </DataSet>
+  </DataSets>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>504c3c35-34ba-4f82-8fd1-0edf0f74bcd9</rd:ReportID>
 </Report>
