@@ -29,6 +29,11 @@
           <Border>
             <Style>None</Style>
           </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -63,6 +68,11 @@
           <Border>
             <Style>None</Style>
           </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -97,70 +107,17 @@
           <Border>
             <Style>None</Style>
           </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Textbox Name="Textbox19">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>Filtros:</Value>
-                <Style>
-                  <FontWeight>Bold</FontWeight>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox19</rd:DefaultName>
-        <Top>1.58208in</Top>
-        <Left>0.2175in</Left>
-        <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Line Name="Line1">
-        <Top>1.29042in</Top>
-        <Left>0.23139in</Left>
-        <Height>0in</Height>
-        <Width>8.03125in</Width>
-        <ZIndex>4</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
-      <Line Name="Line2">
-        <Top>2.90847in</Top>
-        <Left>0.2175in</Left>
-        <Height>0in</Height>
-        <Width>8.03125in</Width>
-        <ZIndex>5</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
       <Textbox Name="Textbox47">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -168,7 +125,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Producto</Value>
+                <Value>Producto:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -180,11 +137,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>1.84597in</Top>
+        <Top>1.4432in</Top>
         <Left>0.21749in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -202,7 +159,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Referencia</Value>
+                <Value>Referencia:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -214,11 +171,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>2.10986in</Top>
+        <Top>1.70709in</Top>
         <Left>0.21749in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -236,7 +193,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Unidad</Value>
+                <Value>Unidad:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -248,11 +205,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>2.37375in</Top>
+        <Top>1.97098in</Top>
         <Left>0.21749in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>8</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -270,7 +227,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>almacen</Value>
+                <Value>almacen:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -282,11 +239,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>2.63764in</Top>
+        <Top>2.23487in</Top>
         <Left>0.21749in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>9</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -304,7 +261,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Categoria</Value>
+                <Value>Categoria:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -316,11 +273,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>1.84597in</Top>
-        <Left>5.27652in</Left>
+        <Top>1.6932in</Top>
+        <Left>5.15152in</Left>
         <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>10</ZIndex>
+        <Width>1.125in</Width>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -338,7 +295,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Sub categoria</Value>
+                <Value>Sub categoria:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -350,11 +307,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>2.10986in</Top>
-        <Left>5.27652in</Left>
+        <Top>1.95709in</Top>
+        <Left>5.15152in</Left>
         <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>11</ZIndex>
+        <Width>1.125in</Width>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -372,7 +329,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Itbis</Value>
+                <Value>Itbis:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -384,11 +341,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>2.37375in</Top>
-        <Left>5.27652in</Left>
+        <Top>2.22098in</Top>
+        <Left>5.15152in</Left>
         <Height>0.25in</Height>
-        <Width>1in</Width>
-        <ZIndex>12</ZIndex>
+        <Width>1.125in</Width>
+        <ZIndex>9</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -406,7 +363,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!producto.Value, "reporte_encabezado")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -416,11 +373,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>1.84597in</Top>
+        <Top>1.4432in</Top>
         <Left>1.23138in</Left>
         <Height>0.25in</Height>
         <Width>2.62153in</Width>
-        <ZIndex>13</ZIndex>
+        <ZIndex>10</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -438,7 +395,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!referencia.Value, "reporte_encabezado")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -448,11 +405,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>2.10986in</Top>
+        <Top>1.70709in</Top>
         <Left>1.23138in</Left>
         <Height>0.25in</Height>
         <Width>2.62153in</Width>
-        <ZIndex>14</ZIndex>
+        <ZIndex>11</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -470,7 +427,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!unidad_minima.Value, "reporte_encabezado")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -480,11 +437,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>2.37375in</Top>
+        <Top>1.97098in</Top>
         <Left>1.23138in</Left>
         <Height>0.25in</Height>
         <Width>2.62153in</Width>
-        <ZIndex>15</ZIndex>
+        <ZIndex>12</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -502,7 +459,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!almacen.Value, "reporte_encabezado")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -512,11 +469,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>2.63764in</Top>
+        <Top>2.23487in</Top>
         <Left>1.23138in</Left>
         <Height>0.25in</Height>
         <Width>2.62153in</Width>
-        <ZIndex>16</ZIndex>
+        <ZIndex>13</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -534,7 +491,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!categoria.Value, "reporte_encabezado")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -544,11 +501,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>1.84597in</Top>
+        <Top>1.6932in</Top>
         <Left>6.29041in</Left>
         <Height>0.25in</Height>
         <Width>1.97223in</Width>
-        <ZIndex>17</ZIndex>
+        <ZIndex>14</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -566,7 +523,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!subcategoria.Value, "reporte_encabezado")</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -576,11 +533,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>2.10986in</Top>
+        <Top>1.95709in</Top>
         <Left>6.29041in</Left>
         <Height>0.25in</Height>
         <Width>1.97223in</Width>
-        <ZIndex>18</ZIndex>
+        <ZIndex>15</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -598,7 +555,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value />
+                <Value>=First(Fields!itebis.Value, "reporte_encabezado")</Value>
                 <Style>
                   <Format>0.00</Format>
                 </Style>
@@ -610,11 +567,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>2.37375in</Top>
+        <Top>2.22098in</Top>
         <Left>6.29041in</Left>
         <Height>0.25in</Height>
         <Width>1.97223in</Width>
-        <ZIndex>19</ZIndex>
+        <ZIndex>16</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -632,7 +589,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Empleado</Value>
+                <Value>Empleado:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -644,11 +601,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>1.30431in</Top>
+        <Top>1.17931in</Top>
         <Left>0.2175in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>20</ZIndex>
+        <ZIndex>17</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -676,11 +633,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>1.30431in</Top>
+        <Top>1.17931in</Top>
         <Left>1.23139in</Left>
         <Height>0.25in</Height>
         <Width>2.62153in</Width>
-        <ZIndex>21</ZIndex>
+        <ZIndex>18</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -698,7 +655,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Fecha</Value>
+                <Value>Fecha:</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -710,11 +667,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox47</rd:DefaultName>
-        <Top>1.30431in</Top>
-        <Left>6.29041in</Left>
+        <Top>1.42931in</Top>
+        <Left>5.66541in</Left>
         <Height>0.25in</Height>
         <Width>1in</Width>
-        <ZIndex>22</ZIndex>
+        <ZIndex>19</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -734,7 +691,7 @@
               <TextRun>
                 <Value>=First(Fields!fecha_impresion.Value, "reporte_encabezado")</Value>
                 <Style>
-                  <Format>MM/dd/yyyy</Format>
+                  <Format>f</Format>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -744,11 +701,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox55</rd:DefaultName>
-        <Top>1.30431in</Top>
-        <Left>7.3043in</Left>
+        <Top>1.42931in</Top>
+        <Left>6.6793in</Left>
         <Height>0.25in</Height>
-        <Width>0.94445in</Width>
-        <ZIndex>23</ZIndex>
+        <Width>1.56945in</Width>
+        <ZIndex>20</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1081,7 +1038,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>codigo_producto</rd:DefaultName>
@@ -1339,17 +1298,86 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>reporte_detalle</DataSetName>
-        <Top>2.97792in</Top>
+        <Top>2.51265in</Top>
         <Left>0.2175in</Left>
         <Height>0.5in</Height>
         <Width>8.03125in</Width>
-        <ZIndex>24</ZIndex>
+        <ZIndex>21</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
           </Border>
+          <TopBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </TopBorder>
         </Style>
       </Tablix>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Pagina:</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>1.16542in</Top>
+        <Left>5.67583in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>22</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Globals!PageNumber &amp;"/"&amp; Globals!TotalPages</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox5</rd:DefaultName>
+        <Top>1.16542in</Top>
+        <Left>6.67583in</Left>
+        <Height>0.25in</Height>
+        <Width>1in</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
     <Height>7.00917in</Height>
     <Style />

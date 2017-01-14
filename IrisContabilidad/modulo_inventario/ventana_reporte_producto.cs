@@ -68,6 +68,25 @@ namespace IrisContabilidad.modulo_inventario
             {
                 productoText.Focus();
                 productoText.SelectAll();
+
+                productoText.Clear();
+                referenciaText.Clear();
+
+                unidad = null;
+                loadUnidad();
+
+                itebis = null;
+                loadItebis();
+
+                categoria = null;
+                loadCategoria();
+
+                subCategoria = null;
+                loadSubCategoria();
+
+                almacen = null;
+                loadAlmacen();
+
             }
             catch (Exception ex)
             {
@@ -135,37 +154,38 @@ namespace IrisContabilidad.modulo_inventario
                 //nombre
                 if (productoText.Text != "")
                 {
-                    listaProducto.Find(x => x.nombre.ToLower().Contains(productoText.Text.ToLower()));
+
+                    listaProducto = listaProducto.FindAll(x => x.nombre.ToLower().Contains(productoText.Text.ToLower())).ToList();
                 }
                 //referencia
                 if (referenciaText.Text != "")
                 {
-                    listaProducto.Find(x => x.referencia.ToLower().Contains(referenciaText.Text.ToLower()));
+                    listaProducto =listaProducto.FindAll(x => x.referencia.ToLower().Contains(referenciaText.Text.ToLower()));
                 }
                 //unidad minima
                 if (unidadMinimaIdText.Text !="")
                 {
-                    listaProducto.Find(x => x.codigo_unidad_minima == Convert.ToInt16(unidadMinimaIdText.Text));
+                    listaProducto = listaProducto.FindAll(x => x.codigo_unidad_minima == Convert.ToInt16(unidadMinimaIdText.Text));
                 }
                 //itebis
                 if (itebisIdText.Text != "")
                 {
-                    listaProducto.Find(x => x.codigo_itebis == Convert.ToInt16(itebisIdText.Text));
+                    listaProducto = listaProducto.FindAll(x => x.codigo_itebis == Convert.ToInt16(itebisIdText.Text));
                 }
                 //categoria
                 if (categoriaIdText.Text != "")
                 {
-                    listaProducto.Find(x => x.codigo_categoria == Convert.ToInt16(categoriaIdText.Text));
+                    listaProducto = listaProducto.FindAll(x => x.codigo_categoria == Convert.ToInt16(categoriaIdText.Text));
                 }
                 //subcategoria
                 if (subcategoriaIdText.Text != "")
                 {
-                    listaProducto.Find(x => x.codigo_subcategoria == Convert.ToInt16(subcategoriaIdText.Text));
+                    listaProducto = listaProducto.FindAll(x => x.codigo_subcategoria == Convert.ToInt16(subcategoriaIdText.Text));
                 }
                 //almacen
                 if (almacenIdText.Text != "")
                 {
-                    listaProducto.Find(x => x.codigo_almacen == Convert.ToInt16(almacenIdText.Text));
+                    listaProducto = listaProducto.FindAll(x => x.codigo_almacen == Convert.ToInt16(almacenIdText.Text));
                 }
                 #endregion
 
@@ -178,11 +198,11 @@ namespace IrisContabilidad.modulo_inventario
                     almacen = modeloAlmacen.getAlmacenById(x.codigo_almacen);
                     reporteProductoDetalle.almacen = almacen.nombre;
                     categoria = modeloCategoriaProducto.getCategoriaById(x.codigo_categoria);
-                    reporteProductoDetalle.categoria = "";
+                    reporteProductoDetalle.categoria = categoria.nombre;
                     reporteProductoDetalle.codigo_producto = x.codigo;
                     reporteProductoDetalle.existencia = 0;
                     itebis = modeloItebis.getItebisById(x.codigo_itebis);
-                    reporteProductoDetalle.itebis = itebis.nombre;
+                    reporteProductoDetalle.itebis = itebis.porciento.ToString();
                     reporteProductoDetalle.nombre = x.nombre;
                     reporteProductoDetalle.referencia = x.referencia;
                     subCategoria = modeloSubcategoriaProducto.getSubCategoriaById(x.codigo_subcategoria);
@@ -245,7 +265,7 @@ namespace IrisContabilidad.modulo_inventario
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-           
+           loadVentana();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -344,7 +364,7 @@ namespace IrisContabilidad.modulo_inventario
                 }
 
                 itebisIdText.Text = itebis.codigo.ToString();
-                itebisText.Text = itebis.nombre+"-"+itebis.porciento;
+                itebisText.Text = itebis.porciento.ToString();
 
                 categoriaIdText.Focus();
                 categoriaIdText.SelectAll();
