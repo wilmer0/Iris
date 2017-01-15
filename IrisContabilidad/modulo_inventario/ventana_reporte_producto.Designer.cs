@@ -59,8 +59,8 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 553);
-            this.panel1.Size = new System.Drawing.Size(804, 54);
+            this.panel1.Location = new System.Drawing.Point(12, 453);
+            this.panel1.Size = new System.Drawing.Size(857, 54);
             // 
             // button2
             // 
@@ -70,18 +70,18 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(663, 5);
+            this.button1.Location = new System.Drawing.Point(716, 5);
             this.button1.Text = "Imprimir";
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(828, 21);
+            this.panel2.Size = new System.Drawing.Size(881, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(332, 5);
+            this.button3.Location = new System.Drawing.Point(358, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // label1
@@ -166,7 +166,7 @@
             // categoriaText
             // 
             this.categoriaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoriaText.Location = new System.Drawing.Point(141, 344);
+            this.categoriaText.Location = new System.Drawing.Point(543, 91);
             this.categoriaText.Name = "categoriaText";
             this.categoriaText.ReadOnly = true;
             this.categoriaText.Size = new System.Drawing.Size(268, 26);
@@ -176,7 +176,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(49, 305);
+            this.label4.Location = new System.Drawing.Point(451, 52);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(87, 20);
             this.label4.TabIndex = 36;
@@ -187,7 +187,7 @@
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(330, 301);
+            this.button4.Location = new System.Drawing.Point(732, 48);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 35;
@@ -198,7 +198,7 @@
             // 
             this.categoriaIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.categoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoriaIdText.Location = new System.Drawing.Point(141, 305);
+            this.categoriaIdText.Location = new System.Drawing.Point(543, 52);
             this.categoriaIdText.Name = "categoriaIdText";
             this.categoriaIdText.ReadOnly = true;
             this.categoriaIdText.Size = new System.Drawing.Size(183, 26);
@@ -207,7 +207,7 @@
             // subcategoriaText
             // 
             this.subcategoriaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subcategoriaText.Location = new System.Drawing.Point(141, 425);
+            this.subcategoriaText.Location = new System.Drawing.Point(543, 176);
             this.subcategoriaText.Name = "subcategoriaText";
             this.subcategoriaText.ReadOnly = true;
             this.subcategoriaText.Size = new System.Drawing.Size(268, 26);
@@ -217,7 +217,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(20, 386);
+            this.label5.Location = new System.Drawing.Point(422, 137);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(116, 20);
             this.label5.TabIndex = 40;
@@ -228,7 +228,7 @@
             this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(330, 382);
+            this.button6.Location = new System.Drawing.Point(732, 133);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 39;
@@ -239,7 +239,7 @@
             // 
             this.subcategoriaIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.subcategoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subcategoriaIdText.Location = new System.Drawing.Point(141, 386);
+            this.subcategoriaIdText.Location = new System.Drawing.Point(543, 137);
             this.subcategoriaIdText.Name = "subcategoriaIdText";
             this.subcategoriaIdText.ReadOnly = true;
             this.subcategoriaIdText.Size = new System.Drawing.Size(183, 26);
@@ -248,7 +248,7 @@
             // almacenText
             // 
             this.almacenText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.almacenText.Location = new System.Drawing.Point(141, 507);
+            this.almacenText.Location = new System.Drawing.Point(543, 262);
             this.almacenText.Name = "almacenText";
             this.almacenText.ReadOnly = true;
             this.almacenText.Size = new System.Drawing.Size(268, 26);
@@ -258,7 +258,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(58, 468);
+            this.label6.Location = new System.Drawing.Point(460, 223);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 20);
             this.label6.TabIndex = 44;
@@ -269,7 +269,7 @@
             this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(330, 464);
+            this.button7.Location = new System.Drawing.Point(732, 219);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(47, 37);
             this.button7.TabIndex = 43;
@@ -280,7 +280,7 @@
             // 
             this.almacenIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.almacenIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.almacenIdText.Location = new System.Drawing.Point(141, 468);
+            this.almacenIdText.Location = new System.Drawing.Point(543, 223);
             this.almacenIdText.Name = "almacenIdText";
             this.almacenIdText.ReadOnly = true;
             this.almacenIdText.Size = new System.Drawing.Size(183, 26);
@@ -331,7 +331,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(828, 619);
+            this.ClientSize = new System.Drawing.Size(881, 519);
             this.Controls.Add(this.unidadMinimaText);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button8);

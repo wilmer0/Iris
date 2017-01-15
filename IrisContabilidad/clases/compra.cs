@@ -22,6 +22,7 @@ namespace IrisContabilidad.clases
         public int codigo_empleado_anular { get; set; }
         public string motivo_anulada { get; set; }
         public string detalle { get; set; }
+        public bool suplidor_informal { get; set; }
 
     }
 }

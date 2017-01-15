@@ -132,6 +132,7 @@
     <Compile Include="modelos\modeloCargo.cs" />
     <Compile Include="modelos\modeloCategoriaProducto.cs" />
     <Compile Include="modelos\modeloCiudad.cs" />
+    <Compile Include="modelos\modeloCompra.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />

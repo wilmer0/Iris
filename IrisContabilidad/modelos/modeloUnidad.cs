@@ -186,5 +186,36 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        //get lista unidad por producto
+        public List<unidad> getListaByProducto(int id)
+        {
+            try
+            {
+
+                List<unidad> lista = new List<unidad>();
+                string sql = "";
+                sql = "select u.codigo,u.nombre,u.unidad_abreviada,u.activo from producto_unidad_conversion p join unidad u on p.cod_unidad=u.codigo where cod_producto='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        unidad unidad = new unidad();
+                        unidad.codigo = Convert.ToInt16(row[0].ToString());
+                        unidad.nombre = row[1].ToString();
+                        unidad.unidad_abreviada = row[2].ToString();
+                        unidad.activo = Convert.ToBoolean(row[3].ToString());
+                        lista.Add(unidad);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaByProducto.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }
