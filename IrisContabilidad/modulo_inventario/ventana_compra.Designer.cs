@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_compra));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.suplidorInformalCheck = new System.Windows.Forms.CheckBox();
             this.detalleText = new System.Windows.Forms.TextBox();
@@ -76,6 +76,8 @@
             this.descuentoText = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
@@ -91,7 +93,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 656);
+            this.panel1.Location = new System.Drawing.Point(12, 691);
             this.panel1.Size = new System.Drawing.Size(1001, 54);
             // 
             // button2
@@ -152,6 +154,7 @@
             this.suplidorInformalCheck.TabIndex = 87;
             this.suplidorInformalCheck.Text = "Suplidor informal";
             this.suplidorInformalCheck.UseVisualStyleBackColor = true;
+            this.suplidorInformalCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suplidorInformalCheck_KeyDown);
             // 
             // detalleText
             // 
@@ -161,6 +164,7 @@
             this.detalleText.Name = "detalleText";
             this.detalleText.Size = new System.Drawing.Size(406, 66);
             this.detalleText.TabIndex = 86;
+            this.detalleText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.detalleText_KeyDown);
             // 
             // label6
             // 
@@ -198,6 +202,7 @@
             this.fechaLimiteTimePicker.Name = "fechaLimiteTimePicker";
             this.fechaLimiteTimePicker.Size = new System.Drawing.Size(200, 20);
             this.fechaLimiteTimePicker.TabIndex = 82;
+            this.fechaLimiteTimePicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaLimiteTimePicker_KeyDown);
             // 
             // fechaCreadaPicker
             // 
@@ -206,6 +211,7 @@
             this.fechaCreadaPicker.Name = "fechaCreadaPicker";
             this.fechaCreadaPicker.Size = new System.Drawing.Size(200, 20);
             this.fechaCreadaPicker.TabIndex = 81;
+            this.fechaCreadaPicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaCreadaPicker_KeyDown);
             // 
             // label1
             // 
@@ -231,6 +237,7 @@
             this.tipoCompraComboBox.Size = new System.Drawing.Size(236, 21);
             this.tipoCompraComboBox.TabIndex = 79;
             this.tipoCompraComboBox.Tag = "";
+            this.tipoCompraComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoCompraComboBox_KeyDown);
             // 
             // linkLabel1
             // 
@@ -254,6 +261,7 @@
             this.numeroFacturaText.Name = "numeroFacturaText";
             this.numeroFacturaText.Size = new System.Drawing.Size(236, 26);
             this.numeroFacturaText.TabIndex = 72;
+            this.numeroFacturaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numeroFacturaText_KeyDown);
             // 
             // suplidorText
             // 
@@ -265,6 +273,7 @@
             this.suplidorText.ReadOnly = true;
             this.suplidorText.Size = new System.Drawing.Size(236, 26);
             this.suplidorText.TabIndex = 77;
+            this.suplidorText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suplidorText_KeyDown);
             // 
             // label2
             // 
@@ -286,6 +295,7 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 74;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label3
             // 
@@ -305,6 +315,7 @@
             this.suplidorIdText.Name = "suplidorIdText";
             this.suplidorIdText.Size = new System.Drawing.Size(183, 26);
             this.suplidorIdText.TabIndex = 71;
+            this.suplidorIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suplidorIdText_KeyDown);
             // 
             // numerocComprobanteFiscalText
             // 
@@ -315,6 +326,7 @@
             this.numerocComprobanteFiscalText.Name = "numerocComprobanteFiscalText";
             this.numerocComprobanteFiscalText.Size = new System.Drawing.Size(236, 26);
             this.numerocComprobanteFiscalText.TabIndex = 75;
+            this.numerocComprobanteFiscalText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numerocComprobanteFiscalText_KeyDown);
             // 
             // dataGridView1
             // 
@@ -334,7 +346,7 @@
             this.itebisColumn,
             this.descuentoColumn,
             this.importeColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 328);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 363);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -377,32 +389,32 @@
             // 
             // precioColumn
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.precioColumn.HeaderText = "Precio";
             this.precioColumn.Name = "precioColumn";
             this.precioColumn.ReadOnly = true;
             // 
             // itebisColumn
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.itebisColumn.HeaderText = "Itbis";
             this.itebisColumn.Name = "itebisColumn";
             this.itebisColumn.ReadOnly = true;
             // 
             // descuentoColumn
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.descuentoColumn.HeaderText = "Descuento";
             this.descuentoColumn.Name = "descuentoColumn";
             this.descuentoColumn.ReadOnly = true;
             // 
             // importeColumn
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.importeColumn.HeaderText = "Importe";
             this.importeColumn.Name = "importeColumn";
             this.importeColumn.ReadOnly = true;
@@ -434,6 +446,7 @@
             this.productoIdText.Name = "productoIdText";
             this.productoIdText.Size = new System.Drawing.Size(125, 20);
             this.productoIdText.TabIndex = 90;
+            this.productoIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.productoIdText_KeyDown);
             // 
             // button4
             // 
@@ -464,7 +477,7 @@
             this.unidadComboText.Size = new System.Drawing.Size(122, 21);
             this.unidadComboText.TabIndex = 88;
             this.unidadComboText.Tag = "";
-            this.unidadComboText.TextChanged += new System.EventHandler(this.unidadComboText_TextChanged);
+            this.unidadComboText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.unidadComboText_KeyDown);
             // 
             // label9
             // 
@@ -482,6 +495,9 @@
             this.cantidadText.Name = "cantidadText";
             this.cantidadText.Size = new System.Drawing.Size(108, 20);
             this.cantidadText.TabIndex = 93;
+            this.cantidadText.TextChanged += new System.EventHandler(this.cantidadText_TextChanged);
+            this.cantidadText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cantidadText_KeyDown);
+            this.cantidadText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cantidadText_KeyPress);
             // 
             // precioText
             // 
@@ -489,6 +505,9 @@
             this.precioText.Name = "precioText";
             this.precioText.Size = new System.Drawing.Size(108, 20);
             this.precioText.TabIndex = 95;
+            this.precioText.TextChanged += new System.EventHandler(this.precioText_TextChanged);
+            this.precioText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.precioText_KeyDown);
+            this.precioText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.precioText_KeyPress);
             // 
             // label10
             // 
@@ -507,6 +526,7 @@
             this.importeText.ReadOnly = true;
             this.importeText.Size = new System.Drawing.Size(108, 20);
             this.importeText.TabIndex = 97;
+            this.importeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label11
             // 
@@ -521,9 +541,14 @@
             // descuentoText
             // 
             this.descuentoText.Location = new System.Drawing.Point(616, 38);
+            this.descuentoText.MaxLength = 5;
             this.descuentoText.Name = "descuentoText";
             this.descuentoText.Size = new System.Drawing.Size(108, 20);
             this.descuentoText.TabIndex = 99;
+            this.descuentoText.Text = "0.00";
+            this.descuentoText.TextChanged += new System.EventHandler(this.descuentoText_TextChanged);
+            this.descuentoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descuentoText_KeyDown);
+            this.descuentoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.descuentoText_KeyPress);
             // 
             // label12
             // 
@@ -537,6 +562,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.button19);
             this.groupBox2.Controls.Add(this.button20);
             this.groupBox2.Controls.Add(this.button4);
@@ -555,17 +582,37 @@
             this.groupBox2.Controls.Add(this.cantidadText);
             this.groupBox2.Location = new System.Drawing.Point(12, 246);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1001, 76);
+            this.groupBox2.Size = new System.Drawing.Size(1001, 111);
             this.groupBox2.TabIndex = 100;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(946, 12);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(38, 17);
+            this.label16.TabIndex = 103;
+            this.label16.Text = "(F2)";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(871, 12);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(38, 17);
+            this.label15.TabIndex = 102;
+            this.label15.Text = "(F1)";
             // 
             // button19
             // 
             this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
             this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Location = new System.Drawing.Point(931, 12);
+            this.button19.Location = new System.Drawing.Point(931, 32);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(64, 58);
             this.button19.TabIndex = 101;
@@ -577,7 +624,7 @@
             this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
             this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Location = new System.Drawing.Point(860, 12);
+            this.button20.Location = new System.Drawing.Point(860, 32);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(65, 58);
             this.button20.TabIndex = 100;
@@ -588,7 +635,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(569, 628);
+            this.label13.Location = new System.Drawing.Point(569, 663);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 20);
             this.label13.TabIndex = 88;
@@ -598,7 +645,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(808, 628);
+            this.label14.Location = new System.Drawing.Point(808, 663);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 20);
             this.label14.TabIndex = 101;
@@ -608,7 +655,7 @@
             // 
             this.totalItebisText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalItebisText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalItebisText.Location = new System.Drawing.Point(629, 625);
+            this.totalItebisText.Location = new System.Drawing.Point(629, 660);
             this.totalItebisText.MaxLength = 200;
             this.totalItebisText.Name = "totalItebisText";
             this.totalItebisText.ReadOnly = true;
@@ -620,7 +667,7 @@
             // 
             this.totalMontoText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalMontoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalMontoText.Location = new System.Drawing.Point(863, 625);
+            this.totalMontoText.Location = new System.Drawing.Point(863, 660);
             this.totalMontoText.MaxLength = 200;
             this.totalMontoText.Name = "totalMontoText";
             this.totalMontoText.ReadOnly = true;
@@ -632,7 +679,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 722);
+            this.ClientSize = new System.Drawing.Size(1025, 757);
             this.Controls.Add(this.totalMontoText);
             this.Controls.Add(this.totalItebisText);
             this.Controls.Add(this.label14);
@@ -643,6 +690,7 @@
             this.Name = "ventana_compra";
             this.Text = "ventana_compra";
             this.Load += new System.EventHandler(this.ventana_compra_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventana_compra_KeyDown);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
@@ -716,5 +764,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itebisColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn importeColumn;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
     }
 }
