@@ -31,32 +31,33 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_cliente));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.clienteContadoCheck = new System.Windows.Forms.CheckBox();
+            this.tipoNcfText = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tipoNcfIdText = new System.Windows.Forms.TextBox();
+            this.abrirCreditoCheck = new System.Windows.Forms.CheckBox();
+            this.creditoText = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.categoriaText = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.telefono2Text = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.categoriaIdText = new System.Windows.Forms.TextBox();
+            this.telefono1Text = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rncText = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cedulaText = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nombreText = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cargoIdText = new System.Windows.Forms.TextBox();
-            this.productoText = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.cedulaText = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.rncText = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.telefono1Text = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.telefono2Text = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.abrirCreditoCheck = new System.Windows.Forms.CheckBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.clienteContadoCheck = new System.Windows.Forms.CheckBox();
+            this.clienteIdText = new System.Windows.Forms.TextBox();
+            this.activoCheck = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -72,11 +73,13 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(807, 5);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -86,6 +89,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(404, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // tabControl1
             // 
@@ -98,27 +102,28 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.activoCheck);
             this.tabPage1.Controls.Add(this.clienteContadoCheck);
-            this.tabPage1.Controls.Add(this.textBox4);
+            this.tabPage1.Controls.Add(this.tipoNcfText);
             this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.label9);
-            this.tabPage1.Controls.Add(this.textBox5);
+            this.tabPage1.Controls.Add(this.tipoNcfIdText);
             this.tabPage1.Controls.Add(this.abrirCreditoCheck);
-            this.tabPage1.Controls.Add(this.textBox3);
+            this.tabPage1.Controls.Add(this.creditoText);
             this.tabPage1.Controls.Add(this.label8);
-            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.categoriaText);
             this.tabPage1.Controls.Add(this.button5);
             this.tabPage1.Controls.Add(this.telefono2Text);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.categoriaIdText);
             this.tabPage1.Controls.Add(this.telefono1Text);
             this.tabPage1.Controls.Add(this.label5);
             this.tabPage1.Controls.Add(this.rncText);
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.cedulaText);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.productoText);
+            this.tabPage1.Controls.Add(this.nombreText);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -129,230 +134,28 @@
             this.tabPage1.Text = "Cliente";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // clienteContadoCheck
             // 
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cargoIdText);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(934, 61);
-            this.groupBox1.TabIndex = 25;
-            this.groupBox1.TabStop = false;
+            this.clienteContadoCheck.AutoSize = true;
+            this.clienteContadoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clienteContadoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clienteContadoCheck.Location = new System.Drawing.Point(476, 179);
+            this.clienteContadoCheck.Name = "clienteContadoCheck";
+            this.clienteContadoCheck.Size = new System.Drawing.Size(155, 21);
+            this.clienteContadoCheck.TabIndex = 60;
+            this.clienteContadoCheck.Text = "Cliente al contado";
+            this.clienteContadoCheck.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // tipoNcfText
             // 
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(341, 15);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(47, 37);
-            this.button4.TabIndex = 24;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(65, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Cliente";
-            // 
-            // cargoIdText
-            // 
-            this.cargoIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.cargoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cargoIdText.Location = new System.Drawing.Point(152, 19);
-            this.cargoIdText.Name = "cargoIdText";
-            this.cargoIdText.Size = new System.Drawing.Size(183, 26);
-            this.cargoIdText.TabIndex = 0;
-            // 
-            // productoText
-            // 
-            this.productoText.BackColor = System.Drawing.Color.White;
-            this.productoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.productoText.Location = new System.Drawing.Point(115, 92);
-            this.productoText.MaxLength = 30;
-            this.productoText.Name = "productoText";
-            this.productoText.Size = new System.Drawing.Size(236, 26);
-            this.productoText.TabIndex = 27;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(38, 93);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 20);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Nombre";
-            // 
-            // cedulaText
-            // 
-            this.cedulaText.BackColor = System.Drawing.Color.White;
-            this.cedulaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cedulaText.Location = new System.Drawing.Point(115, 136);
-            this.cedulaText.MaxLength = 30;
-            this.cedulaText.Name = "cedulaText";
-            this.cedulaText.Size = new System.Drawing.Size(236, 26);
-            this.cedulaText.TabIndex = 29;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(47, 137);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 20);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "cedula";
-            // 
-            // rncText
-            // 
-            this.rncText.BackColor = System.Drawing.Color.White;
-            this.rncText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rncText.Location = new System.Drawing.Point(115, 179);
-            this.rncText.MaxLength = 30;
-            this.rncText.Name = "rncText";
-            this.rncText.Size = new System.Drawing.Size(236, 26);
-            this.rncText.TabIndex = 31;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(68, 180);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 20);
-            this.label4.TabIndex = 32;
-            this.label4.Text = "Rnc";
-            // 
-            // telefono1Text
-            // 
-            this.telefono1Text.BackColor = System.Drawing.Color.White;
-            this.telefono1Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telefono1Text.Location = new System.Drawing.Point(115, 226);
-            this.telefono1Text.MaxLength = 30;
-            this.telefono1Text.Name = "telefono1Text";
-            this.telefono1Text.Size = new System.Drawing.Size(236, 26);
-            this.telefono1Text.TabIndex = 33;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(66, 227);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 20);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "Tel1";
-            // 
-            // telefono2Text
-            // 
-            this.telefono2Text.BackColor = System.Drawing.Color.White;
-            this.telefono2Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telefono2Text.Location = new System.Drawing.Point(115, 273);
-            this.telefono2Text.MaxLength = 30;
-            this.telefono2Text.Name = "telefono2Text";
-            this.telefono2Text.Size = new System.Drawing.Size(236, 26);
-            this.telefono2Text.TabIndex = 35;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(66, 274);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 20);
-            this.label6.TabIndex = 36;
-            this.label6.Text = "Tel2";
-            // 
-            // button5
-            // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(304, 312);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(47, 37);
-            this.button5.TabIndex = 27;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(22, 320);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(87, 20);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "Categoria";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(115, 316);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(183, 26);
-            this.textBox1.TabIndex = 25;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(115, 355);
-            this.textBox2.MaxLength = 30;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(236, 26);
-            this.textBox2.TabIndex = 37;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(115, 425);
-            this.textBox3.MaxLength = 30;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(236, 26);
-            this.textBox3.TabIndex = 38;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(42, 425);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(67, 20);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "Credito";
-            // 
-            // abrirCreditoCheck
-            // 
-            this.abrirCreditoCheck.AutoSize = true;
-            this.abrirCreditoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.abrirCreditoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.abrirCreditoCheck.Location = new System.Drawing.Point(115, 402);
-            this.abrirCreditoCheck.Name = "abrirCreditoCheck";
-            this.abrirCreditoCheck.Size = new System.Drawing.Size(203, 21);
-            this.abrirCreditoCheck.TabIndex = 55;
-            this.abrirCreditoCheck.Text = "Puede comprar a credito";
-            this.abrirCreditoCheck.UseVisualStyleBackColor = true;
-            // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(476, 129);
-            this.textBox4.MaxLength = 30;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(236, 26);
-            this.textBox4.TabIndex = 59;
+            this.tipoNcfText.BackColor = System.Drawing.Color.White;
+            this.tipoNcfText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipoNcfText.Location = new System.Drawing.Point(476, 129);
+            this.tipoNcfText.MaxLength = 30;
+            this.tipoNcfText.Name = "tipoNcfText";
+            this.tipoNcfText.ReadOnly = true;
+            this.tipoNcfText.Size = new System.Drawing.Size(236, 26);
+            this.tipoNcfText.TabIndex = 59;
             // 
             // button6
             // 
@@ -375,26 +178,246 @@
             this.label9.TabIndex = 57;
             this.label9.Text = "Tipo ncf";
             // 
-            // textBox5
+            // tipoNcfIdText
             // 
-            this.textBox5.BackColor = System.Drawing.Color.SkyBlue;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(476, 90);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(183, 26);
-            this.textBox5.TabIndex = 56;
+            this.tipoNcfIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.tipoNcfIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipoNcfIdText.Location = new System.Drawing.Point(476, 90);
+            this.tipoNcfIdText.Name = "tipoNcfIdText";
+            this.tipoNcfIdText.Size = new System.Drawing.Size(183, 26);
+            this.tipoNcfIdText.TabIndex = 56;
             // 
-            // clienteContadoCheck
+            // abrirCreditoCheck
             // 
-            this.clienteContadoCheck.AutoSize = true;
-            this.clienteContadoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clienteContadoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteContadoCheck.Location = new System.Drawing.Point(476, 179);
-            this.clienteContadoCheck.Name = "clienteContadoCheck";
-            this.clienteContadoCheck.Size = new System.Drawing.Size(155, 21);
-            this.clienteContadoCheck.TabIndex = 60;
-            this.clienteContadoCheck.Text = "Cliente al contado";
-            this.clienteContadoCheck.UseVisualStyleBackColor = true;
+            this.abrirCreditoCheck.AutoSize = true;
+            this.abrirCreditoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.abrirCreditoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.abrirCreditoCheck.Location = new System.Drawing.Point(115, 402);
+            this.abrirCreditoCheck.Name = "abrirCreditoCheck";
+            this.abrirCreditoCheck.Size = new System.Drawing.Size(203, 21);
+            this.abrirCreditoCheck.TabIndex = 55;
+            this.abrirCreditoCheck.Text = "Puede comprar a credito";
+            this.abrirCreditoCheck.UseVisualStyleBackColor = true;
+            // 
+            // creditoText
+            // 
+            this.creditoText.BackColor = System.Drawing.Color.White;
+            this.creditoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.creditoText.Location = new System.Drawing.Point(115, 439);
+            this.creditoText.MaxLength = 30;
+            this.creditoText.Name = "creditoText";
+            this.creditoText.Size = new System.Drawing.Size(236, 26);
+            this.creditoText.TabIndex = 38;
+            this.creditoText.Text = "0.00";
+            this.creditoText.TextChanged += new System.EventHandler(this.creditoText_TextChanged);
+            this.creditoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.creditoText_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(42, 441);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(67, 20);
+            this.label8.TabIndex = 39;
+            this.label8.Text = "Credito";
+            // 
+            // categoriaText
+            // 
+            this.categoriaText.BackColor = System.Drawing.Color.White;
+            this.categoriaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoriaText.Location = new System.Drawing.Point(115, 355);
+            this.categoriaText.MaxLength = 30;
+            this.categoriaText.Name = "categoriaText";
+            this.categoriaText.ReadOnly = true;
+            this.categoriaText.Size = new System.Drawing.Size(236, 26);
+            this.categoriaText.TabIndex = 37;
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(304, 312);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(47, 37);
+            this.button5.TabIndex = 27;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // telefono2Text
+            // 
+            this.telefono2Text.BackColor = System.Drawing.Color.White;
+            this.telefono2Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.telefono2Text.Location = new System.Drawing.Point(115, 273);
+            this.telefono2Text.MaxLength = 30;
+            this.telefono2Text.Name = "telefono2Text";
+            this.telefono2Text.Size = new System.Drawing.Size(236, 26);
+            this.telefono2Text.TabIndex = 35;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(22, 320);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(87, 20);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Categoria";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(66, 274);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 20);
+            this.label6.TabIndex = 36;
+            this.label6.Text = "Tel2";
+            // 
+            // categoriaIdText
+            // 
+            this.categoriaIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.categoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoriaIdText.Location = new System.Drawing.Point(115, 316);
+            this.categoriaIdText.Name = "categoriaIdText";
+            this.categoriaIdText.Size = new System.Drawing.Size(183, 26);
+            this.categoriaIdText.TabIndex = 25;
+            // 
+            // telefono1Text
+            // 
+            this.telefono1Text.BackColor = System.Drawing.Color.White;
+            this.telefono1Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.telefono1Text.Location = new System.Drawing.Point(115, 226);
+            this.telefono1Text.MaxLength = 30;
+            this.telefono1Text.Name = "telefono1Text";
+            this.telefono1Text.Size = new System.Drawing.Size(236, 26);
+            this.telefono1Text.TabIndex = 33;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(66, 227);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 20);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Tel1";
+            // 
+            // rncText
+            // 
+            this.rncText.BackColor = System.Drawing.Color.White;
+            this.rncText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rncText.Location = new System.Drawing.Point(115, 179);
+            this.rncText.MaxLength = 30;
+            this.rncText.Name = "rncText";
+            this.rncText.Size = new System.Drawing.Size(236, 26);
+            this.rncText.TabIndex = 31;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(68, 180);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 20);
+            this.label4.TabIndex = 32;
+            this.label4.Text = "Rnc";
+            // 
+            // cedulaText
+            // 
+            this.cedulaText.BackColor = System.Drawing.Color.White;
+            this.cedulaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cedulaText.Location = new System.Drawing.Point(115, 136);
+            this.cedulaText.MaxLength = 30;
+            this.cedulaText.Name = "cedulaText";
+            this.cedulaText.Size = new System.Drawing.Size(236, 26);
+            this.cedulaText.TabIndex = 29;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(47, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 20);
+            this.label3.TabIndex = 30;
+            this.label3.Text = "cedula";
+            // 
+            // nombreText
+            // 
+            this.nombreText.BackColor = System.Drawing.Color.White;
+            this.nombreText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombreText.Location = new System.Drawing.Point(115, 92);
+            this.nombreText.MaxLength = 30;
+            this.nombreText.Name = "nombreText";
+            this.nombreText.Size = new System.Drawing.Size(236, 26);
+            this.nombreText.TabIndex = 27;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(38, 93);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 20);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Nombre";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.button4);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.clienteIdText);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(934, 61);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(341, 15);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(47, 37);
+            this.button4.TabIndex = 24;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(65, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Cliente";
+            // 
+            // clienteIdText
+            // 
+            this.clienteIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.clienteIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clienteIdText.Location = new System.Drawing.Point(152, 19);
+            this.clienteIdText.Name = "clienteIdText";
+            this.clienteIdText.Size = new System.Drawing.Size(183, 26);
+            this.clienteIdText.TabIndex = 0;
+            // 
+            // activoCheck
+            // 
+            this.activoCheck.AutoSize = true;
+            this.activoCheck.Checked = true;
+            this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activoCheck.Location = new System.Drawing.Point(476, 214);
+            this.activoCheck.Name = "activoCheck";
+            this.activoCheck.Size = new System.Drawing.Size(68, 21);
+            this.activoCheck.TabIndex = 61;
+            this.activoCheck.Text = "Activo";
+            this.activoCheck.UseVisualStyleBackColor = true;
             // 
             // ventana_cliente
             // 
@@ -428,28 +451,29 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox cargoIdText;
+        private System.Windows.Forms.TextBox clienteIdText;
         private System.Windows.Forms.TextBox rncText;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox cedulaText;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox productoText;
+        private System.Windows.Forms.TextBox nombreText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox telefono2Text;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox telefono1Text;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox categoriaText;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox categoriaIdText;
+        private System.Windows.Forms.TextBox creditoText;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox abrirCreditoCheck;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox tipoNcfText;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tipoNcfIdText;
         private System.Windows.Forms.CheckBox clienteContadoCheck;
+        private System.Windows.Forms.CheckBox activoCheck;
     }
 }
