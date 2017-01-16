@@ -32,6 +32,11 @@ namespace IrisContabilidad.modelos
                     MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+
+
+
+
+
                 if (almacen.activo == true)
                 {
                     activo = 1;
@@ -64,6 +69,9 @@ namespace IrisContabilidad.modelos
                         MessageBoxIcon.Warning);
                     return false;
                 }
+
+
+
                 if (almacen.activo == true)
                 {
                     activo = 1;

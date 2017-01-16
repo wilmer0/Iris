@@ -267,9 +267,9 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                     sql2 = "SELECT id_modulo FROM modulos_vs_ventanas  where id_ventana='" + row[0] + "'";
                     DataSet ds2 = utilidades.ejecutarcomando_mysql(sql2);
                     //MessageBox.Show(ds2.Tables[0].Rows[0][0].ToString());
-                    if (ds2.Tables[0].Rows[0][0].ToString() != null)
+                    foreach(DataRow row2 in ds2.Tables[0].Rows)
                     {
-                        listaModulos.Add(ds2.Tables[0].Rows[0][0].ToString());
+                        listaModulos.Add(row2[0].ToString());
                     }
                 }
 

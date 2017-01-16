@@ -866,7 +866,7 @@ namespace IrisContabilidad.modulo_inventario
                 fila = dataGridView3.CurrentRow.Index;
                 if (fila >= 0)
                 {
-                    dataGridView3.Rows.Remove(dataGridView2.Rows[fila]);
+                    dataGridView3.Rows.Remove(dataGridView3.Rows[fila]);
                 }
             }
             catch (Exception ex)

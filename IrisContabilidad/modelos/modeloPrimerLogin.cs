@@ -249,6 +249,7 @@ namespace IrisContabilidad.modelos
                    5-modulo inventario
                    6-modulo opciones
                    7-modulo nomina
+                   8-modulo inicio rapido
                 */
                 #region
                 List<modulo> listaModulo = new List<modulo>();
@@ -307,6 +308,14 @@ namespace IrisContabilidad.modelos
                 modulo.imagen = "nomina1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_nomina";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = 7;
+                modulo.nombre = "modulo inicio rapido";
+                modulo.imagen = "inicio_rapido1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_inicio_rapido";
                 listaModulo.Add(modulo);
 
                 #endregion
@@ -520,6 +529,12 @@ namespace IrisContabilidad.modelos
                 //modulo sistema
                 #region
                 #endregion
+
+
+                //modulo inicio rapido
+                #region
+                #endregion
+
 
                 listaVentana.ForEach(ventanaActual =>
                 {

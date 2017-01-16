@@ -191,7 +191,7 @@ namespace IrisContabilidad.clases
         {
             try
             {
-                MySqlConnection conn = new MySqlConnection("server=localhost;uid=dextroyex;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
+                MySqlConnection conn = new MySqlConnection("server=localhost;uid=bc;" + "pwd=BlackCode123;database=iris_contabilidad;");
                 //MySqlConnection conn = new MySqlConnection("server=153.92.11.223;uid=bc1;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();

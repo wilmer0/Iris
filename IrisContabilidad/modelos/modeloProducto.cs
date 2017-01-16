@@ -419,5 +419,37 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        //get precio producto unidad
+        public productoUnidadConversion getPrecioProductoUnidad(int codigoProducto, int codigoUnidad)
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds = new DataSet();
+                List<productoUnidadConversion> lista = new List<productoUnidadConversion>();
+                productoUnidadConversion productoUnidadConversion;
+
+                //borrar todos los codigo barra que son de este producto
+                sql = "select cod_producto,cod_unidad,cantidad,precio_venta,costo from producto_unidad_conversion where cod_producto='"+codigoProducto+"' and cod_unidad='"+codigoUnidad+"'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if(ds.Tables[0].Rows.Count>0)
+                {
+                    productoUnidadConversion = new productoUnidadConversion();
+                    productoUnidadConversion.codigo_producto = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    productoUnidadConversion.codigo_unidad = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                    productoUnidadConversion.cantidad = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
+                    productoUnidadConversion.precio_venta = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
+                    productoUnidadConversion.precio_costo = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                    return productoUnidadConversion;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getPrecioProductoUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

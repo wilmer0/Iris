@@ -96,6 +96,7 @@
     <Compile Include="clases\cargo.cs" />
     <Compile Include="clases\categoria_producto.cs" />
     <Compile Include="clases\ciudad.cs" />
+    <Compile Include="clases\cliente.cs" />
     <Compile Include="clases\compra.cs" />
     <Compile Include="clases\compra_detalle.cs" />
     <Compile Include="clases\compra_vs_pagos.cs" />
@@ -124,12 +125,16 @@
     <Compile Include="clases\unidad.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
+    <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCaja.cs" />
     <Compile Include="modelos\modeloCajero.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
     <Compile Include="modelos\modeloCategoriaProducto.cs" />
     <Compile Include="modelos\modeloCiudad.cs" />
+    <Compile Include="modelos\modeloCliente.cs" />
+    <Compile Include="modelos\modeloCompra.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
@@ -145,7 +150,9 @@
     <Compile Include="modelos\modeloSuplidor.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
-    <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs" />
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.Designer.cs">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </Compile>
@@ -298,6 +305,12 @@
     </Compile>
     <Compile Include="modulo_inventario\ventana_busqueda_unidad.Designer.cs">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_reporte_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_reporte_producto.Designer.cs">
+      <DependentUpon>ventana_reporte_producto.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_subcategoria_producto.cs">
       <SubType>Form</SubType>
@@ -475,6 +488,9 @@
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_reporte_producto.resx">
+      <DependentUpon>ventana_reporte_producto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_subcategoria_producto.resx">
       <DependentUpon>ventana_subcategoria_producto.cs</DependentUpon>
     </EmbeddedResource>
@@ -529,10 +545,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -551,6 +570,7 @@
     <Folder Include="bin\Release\Resources\archivos\compras\" />
     <Folder Include="bin\Release\Resources\archivos\ventas\" />
     <Folder Include="bin\Release\Resources\productos\" />
+    <Folder Include="modulo_inicio_rapido\" />
     <Folder Include="pruebas\" />
     <Folder Include="reportes_clases\" />
   </ItemGroup>
