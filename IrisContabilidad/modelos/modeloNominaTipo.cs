@@ -20,7 +20,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
-                string sql = "select *from nomina_tipos where nombre='" + tipo.nombre + "'";
+                string sql = "select *from nomina_tipos where nombre='" + tipo.nombre + "' and codigo!='"+tipo.codigo+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -51,7 +51,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
-                string sql = "select *from nomina_tipos where nombre='" + tipo.nombre + "' and id!='" + tipo.codigo + "'";
+                string sql = "select *from nomina_tipos where nombre='" + tipo.nombre + "' and codigo!='" + tipo.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -64,8 +64,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
                 sql = "update nomina_tipos set nombre='" + tipo.nombre + "',activo='" + activo.ToString() + "' where codigo='" + tipo.codigo + "'";
-                ds = utilidades.ejecutarcomando(sql);
-                MessageBox.Show(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
@@ -81,7 +80,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                string sql = "select max(id)from nomina_tipos";
+                string sql = "select max(codigo)from nomina_tipos";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 int id = 0;

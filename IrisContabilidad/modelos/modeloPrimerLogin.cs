@@ -241,6 +241,16 @@ namespace IrisContabilidad.modelos
         {
             try
             {
+                /*
+                   1-modulo empresa
+                   2-modulo facturacion
+                   3-modulo cxc
+                   4-modulo cxp
+                   5-modulo inventario
+                   6-modulo opciones
+                   7-modulo nomina
+                   8-modulo inicio rapido
+                */
                 #region
                 List<modulo> listaModulo = new List<modulo>();
                 //nuevo modulo
@@ -298,6 +308,14 @@ namespace IrisContabilidad.modelos
                 modulo.imagen = "nomina1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_nomina";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = 7;
+                modulo.nombre = "modulo inicio rapido";
+                modulo.imagen = "inicio_rapido1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_inicio_rapido";
                 listaModulo.Add(modulo);
 
                 #endregion
@@ -390,6 +408,22 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "itebis1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_caja";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "caja1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana cajero";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_cajero";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "cajero1.png";
+                listaVentana.Add(ventana);
                 
                 #endregion
                 
@@ -404,6 +438,46 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "producto1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana unidad";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_unidad";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "unidad1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana almacen";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_almacen";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "almacen1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana categoria producto";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_categoria_producto";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "categoria_producto1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana subcategoria producto";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_subcategoria_producto";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "sub_categoria_producto1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana compra";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_compra";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "compra1.png";
+                listaVentana.Add(ventana);
                 #endregion
                 
                 
@@ -415,7 +489,7 @@ namespace IrisContabilidad.modelos
                 ventana.nombre_logico = "IrisContabilidad.modulo_nomina.ventana_tipo_nomina";
                 ventana.activo = true;
                 ventana.programador = false;
-                ventana.imagen = "empresa1.png";
+                ventana.imagen = "tipo_nomina1.png";
                 listaVentana.Add(ventana);
                 //nueva ventana
                 ventana = new ventana();
@@ -456,11 +530,22 @@ namespace IrisContabilidad.modelos
                 #region
                 #endregion
 
+
+                //modulo inicio rapido
+                #region
+                #endregion
+
+
                 listaVentana.ForEach(ventanaActual =>
                 {
                     modeloModulo.agregarVentana(ventanaActual);
                 });
                 
+
+                //para agregarla manualmente
+                //insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('15','ventana almacen','IrisContabilidad.modulo_inventario.ventana_almacen','almacen1.png','1','0');
+                //insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','15');
+                //insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','15');
             }
             catch (Exception ex)
             {

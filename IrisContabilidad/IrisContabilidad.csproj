@@ -42,6 +42,18 @@
     <Reference Include="Gmap.net">
       <HintPath>..\..\DLR-POS-2.0\proyecto\packages\GMap.Net.1.0.1\lib\Gmap.net.dll</HintPath>
     </Reference>
+    <Reference Include="GMap.NET.Core, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsForms, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.WindowsForms.1.7.5\lib\net40\GMap.NET.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GMap.NET.WindowsPresentation, Version=1.7.5.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
+      <HintPath>..\packages\GMap.NET.Windows.1.7.5\lib\net40\GMap.NET.WindowsPresentation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\DLR-POS-2.0\proyecto\puntoVentaWin\librerias\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -77,24 +89,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\caja.cs" />
+    <Compile Include="clases\almacen.cs" />
+    <Compile Include="clases\año.cs" />
+    <Compile Include="clases\cajero.cs" />
     <Compile Include="clases\cargo.cs" />
+    <Compile Include="clases\categoria_producto.cs" />
     <Compile Include="clases\ciudad.cs" />
+    <Compile Include="clases\cliente.cs" />
+    <Compile Include="clases\compra.cs" />
+    <Compile Include="clases\compra_detalle.cs" />
+    <Compile Include="clases\compra_vs_pagos.cs" />
+    <Compile Include="clases\compra_vs_pagos_detalles.cs" />
     <Compile Include="clases\departamento.cs" />
+    <Compile Include="clases\desglose_dinero.cs" />
+    <Compile Include="clases\dias.cs" />
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
+    <Compile Include="clases\FileFolderDialog.cs" />
     <Compile Include="clases\grupo_usuarios.cs" />
     <Compile Include="clases\itebis.cs" />
+    <Compile Include="clases\mes.cs" />
+    <Compile Include="clases\metodo_pago.cs" />
     <Compile Include="clases\modulo.cs" />
     <Compile Include="clases\nomina_tipo.cs" />
+    <Compile Include="clases\producto.cs" />
+    <Compile Include="clases\productoUnidadConversion.cs" />
+    <Compile Include="clases\producto_vs_codigobarra.cs" />
     <Compile Include="clases\singleton.cs" />
     <Compile Include="clases\situacion_empleado.cs" />
+    <Compile Include="clases\subCategoriaProducto.cs" />
     <Compile Include="clases\sucursal.cs" />
     <Compile Include="clases\suplidor.cs" />
     <Compile Include="clases\tipo_gasto.cs" />
+    <Compile Include="clases\unidad.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\ventana.cs" />
+    <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
+    <Compile Include="modelos\modeloAlmacen.cs" />
+    <Compile Include="modelos\modeloCaja.cs" />
+    <Compile Include="modelos\modeloCajero.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
+    <Compile Include="modelos\modeloCategoriaProducto.cs" />
     <Compile Include="modelos\modeloCiudad.cs" />
+    <Compile Include="modelos\modeloCliente.cs" />
+    <Compile Include="modelos\modeloCompra.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
@@ -103,10 +143,13 @@
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />
     <Compile Include="modelos\modeloPrimerLogin.cs" />
+    <Compile Include="modelos\modeloProducto.cs" />
     <Compile Include="modelos\modeloSituacionEmpleado.cs" />
+    <Compile Include="modelos\modeloSubCategoriaProducto.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />
     <Compile Include="modelos\modeloSuplidor.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
+    <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,17 +210,119 @@
     <Compile Include="modulo_empresa\ventana_sucursal.Designer.cs">
       <DependentUpon>ventana_sucursal.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_caja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_caja.Designer.cs">
+      <DependentUpon>ventana_busqueda_caja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_cajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_cajero.Designer.cs">
+      <DependentUpon>ventana_busqueda_cajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_itbis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_itbis.Designer.cs">
+      <DependentUpon>ventana_busqueda_itbis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_caja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_caja.Designer.cs">
+      <DependentUpon>ventana_caja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_cajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_cajero.Designer.cs">
+      <DependentUpon>ventana_cajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_desglose_dinero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_desglose_dinero.Designer.cs">
+      <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_itebis.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_itebis.Designer.cs">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_almacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_almacen.Designer.cs">
+      <DependentUpon>ventana_almacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_almacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_almacen.Designer.cs">
+      <DependentUpon>ventana_busqueda_almacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_categoria_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_categoria_producto.Designer.cs">
+      <DependentUpon>ventana_busqueda_categoria_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_producto.Designer.cs">
+      <DependentUpon>ventana_busqueda_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_subcategoria_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_subcategoria_producto.Designer.cs">
+      <DependentUpon>ventana_busqueda_subcategoria_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_categoria_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_categoria_producto.Designer.cs">
+      <DependentUpon>ventana_categoria_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_compra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_compra.Designer.cs">
+      <DependentUpon>ventana_compra.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_producto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modulo_inventario\ventana_producto.Designer.cs">
       <DependentUpon>ventana_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_unidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_unidad.Designer.cs">
+      <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_reporte_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_reporte_producto.Designer.cs">
+      <DependentUpon>ventana_reporte_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_subcategoria_producto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_subcategoria_producto.Designer.cs">
+      <DependentUpon>ventana_subcategoria_producto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_unidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_unidad.Designer.cs">
+      <DependentUpon>ventana_unidad.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_nomina\ventana_busqueda_cargo.cs">
       <SubType>Form</SubType>
@@ -265,6 +410,9 @@
     <Compile Include="ventanas_comunes\VisorReporteComun.Designer.cs">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_cliente.resx">
+      <DependentUpon>ventana_cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_suplidor.resx">
       <DependentUpon>ventana_busqueda_suplidor.cs</DependentUpon>
     </EmbeddedResource>
@@ -292,8 +440,62 @@
     <EmbeddedResource Include="modulo_empresa\ventana_sucursal.resx">
       <DependentUpon>ventana_sucursal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_caja.resx">
+      <DependentUpon>ventana_busqueda_caja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_cajero.resx">
+      <DependentUpon>ventana_busqueda_cajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_itbis.resx">
+      <DependentUpon>ventana_busqueda_itbis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_caja.resx">
+      <DependentUpon>ventana_caja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_cajero.resx">
+      <DependentUpon>ventana_cajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_desglose_dinero.resx">
+      <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_almacen.resx">
+      <DependentUpon>ventana_almacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_almacen.resx">
+      <DependentUpon>ventana_busqueda_almacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_categoria_producto.resx">
+      <DependentUpon>ventana_busqueda_categoria_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_producto.resx">
+      <DependentUpon>ventana_busqueda_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_subcategoria_producto.resx">
+      <DependentUpon>ventana_busqueda_subcategoria_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_categoria_producto.resx">
+      <DependentUpon>ventana_categoria_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_compra.resx">
+      <DependentUpon>ventana_compra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_producto.resx">
+      <DependentUpon>ventana_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">
+      <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_reporte_producto.resx">
+      <DependentUpon>ventana_reporte_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_subcategoria_producto.resx">
+      <DependentUpon>ventana_subcategoria_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_unidad.resx">
+      <DependentUpon>ventana_unidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_cargo.resx">
       <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>
@@ -343,10 +545,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -361,11 +566,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\Release\Resources\archivos\codigos barras\" />
+    <Folder Include="bin\Release\Resources\archivos\compras\" />
+    <Folder Include="bin\Release\Resources\archivos\ventas\" />
     <Folder Include="bin\Release\Resources\productos\" />
+    <Folder Include="modulo_inicio_rapido\" />
     <Folder Include="pruebas\" />
     <Folder Include="reportes_clases\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Release\Resources\archivos\coneccion\connection.txt" />
     <Content Include="bin\Release\Resources\botones\analisis1.png" />
     <Content Include="bin\Release\Resources\botones\analisis2.png" />
     <Content Include="bin\Release\Resources\botones\analisis3.png" />

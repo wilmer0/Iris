@@ -91,7 +91,7 @@ namespace IrisContabilidad.modulo_empresa
 
         public void salir()
         {
-            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Close();
             }
@@ -139,7 +139,7 @@ namespace IrisContabilidad.modulo_empresa
         {
             try
             {
-                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
+                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
                 }
@@ -167,6 +167,8 @@ namespace IrisContabilidad.modulo_empresa
                 {
                     if ((modeloSucursal.agregarSucursal(sucursal)) == true)
                     {
+                        sucursal = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -178,6 +180,8 @@ namespace IrisContabilidad.modulo_empresa
                 {
                     if ((modeloSucursal.modificarSucursal(sucursal)) == true)
                     {
+                        sucursal = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,6 +41,11 @@ namespace IrisContabilidad.modulo_nomina
         modeloSituacionEmpleado modeloSituacionEmpleado=new modeloSituacionEmpleado();
 
 
+        //variables
+        private string rutaResources = "";
+        private string rutaImagenesEmpleados = "";
+
+
 
         public ventana_empleado()
         {
@@ -47,6 +53,9 @@ namespace IrisContabilidad.modulo_nomina
             empleadoSingleton = singleton.getEmpleado();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana empleado");
             this.Text = tituloLabel.Text;
+            rutaResources = Directory.GetCurrentDirectory().ToString() + @"\Resources\";
+            rutaImagenesEmpleados = rutaResources + @"imagenes_empleados\";
+            imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + "default1.png");
             loadVentana();
         }
 
@@ -79,6 +88,15 @@ namespace IrisContabilidad.modulo_nomina
                     sueldoText.Text = empleado.sueldo.ToString();
                     situacion = modeloSituacionEmpleado.getSituacionEmpleadoById(empleado.codigo_situacion);
                     loadSituacionEmpleado();
+                    if (empleado.foto != "")
+                    {
+                        rutaImagenText.Text = rutaImagenesEmpleados + empleado.foto;
+                        imagen_empleado.BackgroundImage =Image.FromFile(rutaImagenesEmpleados + empleado.foto);
+                    }
+                    else
+                    {
+                        imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + "default1.png");
+                    }
                     activoCheck.Checked = Convert.ToBoolean(empleado.activo);
                 }
                 else
@@ -101,6 +119,8 @@ namespace IrisContabilidad.modulo_nomina
                     sueldoText.Text = "";
                     situacionIdText.Text = "";
                     situacionText.Text = "";
+                    rutaImagenText.Text = "";
+                    imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + "default1.png");
                     activoCheck.Checked =false;
                 }
             }
@@ -112,7 +132,7 @@ namespace IrisContabilidad.modulo_nomina
 
         public void salir()
         {
-            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Close();
             }
@@ -215,7 +235,7 @@ namespace IrisContabilidad.modulo_nomina
                     return;
                 }
 
-                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
+                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
                 }
@@ -241,7 +261,14 @@ namespace IrisContabilidad.modulo_nomina
                 empleado.codigo_situacion = situacion.codigo;
                 empleado.codigo_departamento = departamento.codigo;
                 empleado.activo= Convert.ToBoolean(activoCheck.Checked);
-
+                if (rutaImagenText.Text != "")
+                {
+                    empleado.foto = rutaImagenText.Text;
+                }
+                else
+                {
+                    empleado.foto = "";
+                }
                 if (crear == true)
                 {
                     //se agrega
@@ -249,6 +276,7 @@ namespace IrisContabilidad.modulo_nomina
                     {
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         empleado = null;
+                        loadVentana();
                     }
                     else
                     {
@@ -262,6 +290,7 @@ namespace IrisContabilidad.modulo_nomina
                     {
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         empleado = null;
+                        loadVentana();
                     }
                     else
                     {
@@ -523,6 +552,49 @@ namespace IrisContabilidad.modulo_nomina
                 empleado = ventana.getObjeto();
                 loadVentana();
             }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                OpenFileDialog file = new OpenFileDialog();
+                if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    rutaImagenText.Text = file.FileName;
+                    imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenText.Text);
+                }
+            }
+            catch (Exception)
+            {
+                rutaImagenText.Text = "";
+                imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados+"default1.png");
+                MessageBox.Show("Debe seleccionar una imagen", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Desea eliminar la foto del empleado?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
+
+                rutaImagenText.Text = "";
+                imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + @"default1.png");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }

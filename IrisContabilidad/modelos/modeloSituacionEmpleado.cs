@@ -66,7 +66,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
                 sql = "update situacion_empleado set descripcion='" + situacion.descripcion + "',activo='" + activo.ToString() + "' where codigo='" + situacion.codigo + "'";
-                ds = utilidades.ejecutarcomando(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 MessageBox.Show(sql);
                 return true;
             }

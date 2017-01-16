@@ -186,9 +186,9 @@ namespace IrisContabilidad.modelos
                     {
                         itebis = new itebis();
                         itebis.codigo = Convert.ToInt16(row[0].ToString());
-                        itebis.porciento = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
                         itebis.nombre = row[1].ToString();
-                        itebis.activo = Convert.ToBoolean(row[2].ToString());
+                        itebis.porciento = Convert.ToDecimal(row[2].ToString());
+                        itebis.activo = Convert.ToBoolean(row[3].ToString());
 
                         lista.Add(itebis);
                     }

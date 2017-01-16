@@ -146,5 +146,10 @@ namespace IrisContabilidad.modulo_nomina
         {
 
         }
+
+        private void nombreText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

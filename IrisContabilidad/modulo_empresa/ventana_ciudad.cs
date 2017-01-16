@@ -60,7 +60,7 @@ namespace IrisContabilidad.modulo_empresa
         }
         public void salir()
         {
-            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Close();
             }
@@ -96,7 +96,7 @@ namespace IrisContabilidad.modulo_empresa
                     return;
                 }
 
-                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
+                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
                 }
@@ -117,8 +117,10 @@ namespace IrisContabilidad.modulo_empresa
                     //se agrega
                     if ((modeloCiudad.agregarCiudad(ciudad)) == true)
                     {
-                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ciudad = null;
+                        loadVentana();
+                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     else
                     {
@@ -130,8 +132,10 @@ namespace IrisContabilidad.modulo_empresa
                     //se modifica
                     if ((modeloCiudad.modificarCiudad(ciudad)) == true)
                     {
-                        MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         ciudad = null;
+                        loadVentana();
+                        MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
                     }
                     else
                     {
