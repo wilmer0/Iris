@@ -19,71 +19,104 @@ namespace IrisContabilidad.modelos
 
 
         //agregar 
-        public bool agregarAlmacen(almacen almacen)
+        public bool agregarCliente(cliente cliente)
         {
             try
             {
+                int abrir_credito = 0;
+                int cliente_contado = 0;
                 int activo = 0;
-                //validar nombre
-                string sql = "select *from almacen where nombre='" + almacen.nombre + "' and codigo!='" + almacen.codigo + "'";
+                //validar cedula
+                string sql = "select * from cliente where cedula='" + cliente.cedula + "' and codigo!='" + cliente.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un cliente con la misma cedula", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar rnc
+                sql = "select * from cliente where rnc='" + cliente.rnc + "' and codigo!='" + cliente.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un cliente con el mismo rnc", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
 
 
 
-
-
-                if (almacen.activo == true)
+                if (cliente.activo == true)
                 {
                     activo = 1;
                 }
+                if (cliente.abrir_credito == true)
+                {
+                    abrir_credito = 1;
+                }
+                if (cliente.cliente_contado == true)
+                {
+                    cliente_contado = 1;
+                }
 
-                sql = "insert into almacen(codigo,nombre,cod_sucursal,activo) values('" + almacen.codigo + "','" + almacen.nombre + "','" + almacen.codigo_sucursal + "','" + activo.ToString() + "')";
+                sql = "insert cliente (codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante) values('" + cliente.codigo + "','" + cliente.nombre + "','" + cliente.limite_credito + "','" + cliente.codigo_categoria + "','" + activo + "','" + cliente.fecha_creado + "','" + abrir_credito + "','" + cliente.codigo_sucursal_creado + "','" + cliente_contado + "','" + cliente.telefono1 + "','" + cliente.telefono2 + "','" + cliente.cedula + "','" + cliente.rnc + "','" + cliente.codigo_tipo_comprobante_fiscal + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarAlmacen.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error agregarCliente.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
         //modificar
-        public bool modificarAlmacen(almacen almacen)
+        public bool modificarCliente(cliente cliente)
         {
             try
             {
+                int abrir_credito = 0;
+                int cliente_contado = 0;
                 int activo = 0;
-                //validar nombre
-                string sql = "select *from almacen where nombre='" + almacen.nombre + "' and codigo!='" + almacen.codigo + "'";
+                //validar cedula
+                string sql = "select * from cliente where cedula='" + cliente.cedula + "' and codigo!='" + cliente.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un cliente con la misma cedula", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar rnc
+                sql = "select * from cliente where rnc='" + cliente.rnc + "' and codigo!='" + cliente.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un cliente con el mismo rnc", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
 
 
 
-                if (almacen.activo == true)
+                if (cliente.activo == true)
                 {
                     activo = 1;
                 }
-                sql = "update almacen set nombre='" + almacen.nombre + "',cod_sucursal='" + almacen.codigo_sucursal + "',activo='" + activo.ToString() + "' where codigo='" + almacen.codigo + "'";
+                if (cliente.abrir_credito == true)
+                {
+                    abrir_credito = 1;
+                }
+                if (cliente.cliente_contado == true)
+                {
+                    cliente_contado = 1;
+                }
+                sql = "update cliente set nombre='" + cliente.nombre + "',limite_credito='" + cliente.limite_credito + "',cod_Categoria='" + cliente.codigo_categoria+ "',activo='"+activo+"',fecha_creado='"+cliente.fecha_creado+"',abrir_credito='"+abrir_credito+"',cod_sucursal_creado='"+cliente.codigo_sucursal_creado+"',cliente_contado='"+cliente_contado+"',telefono1='"+cliente.telefono1+"',telefono2='"+cliente.telefono2+"',cedula='"+cliente.cedula+"',rnc='"+cliente.rnc+"',cod_tipo_comprobante='"+cliente.codigo_tipo_comprobante_fiscal+"' where codigo='" + cliente.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error modificarAlmacen.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error modificarCliente.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -94,7 +127,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                string sql = "select max(codigo)from almacen";
+                string sql = "select max(codigo)from cliente";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 int id = 0;
@@ -118,39 +151,48 @@ namespace IrisContabilidad.modelos
 
 
         //get objeto
-        public almacen getAlmacenById(int id)
+        public cliente getClienteById(int id)
         {
             try
             {
-                almacen almacen = new almacen();
-                string sql = "select codigo,nombre,cod_sucursal,activo from almacen where codigo='" + id + "'";
+                cliente cliente = new cliente();
+                string sql = "select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante  * from cliente where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    almacen.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    almacen.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    almacen.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    almacen.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    cliente.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    cliente.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    cliente.limite_credito = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
+                    cliente.codigo_categoria = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    cliente.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4].ToString());
+                    cliente.fecha_creado = Convert.ToDateTime(ds.Tables[0].Rows[0][5].ToString());
+                    cliente.abrir_credito = Convert.ToBoolean(ds.Tables[0].Rows[0][6].ToString());
+                    cliente.codigo_sucursal_creado = Convert.ToInt16(ds.Tables[0].Rows[0][7].ToString());
+                    cliente.cliente_contado = Convert.ToBoolean(ds.Tables[0].Rows[0][8].ToString());
+                    cliente.telefono1 = ds.Tables[0].Rows[0][9].ToString();
+                    cliente.telefono2 = ds.Tables[0].Rows[0][10].ToString();
+                    cliente.cedula = ds.Tables[0].Rows[0][11].ToString();
+                    cliente.rnc = ds.Tables[0].Rows[0][12].ToString();
+                    cliente.codigo_tipo_comprobante_fiscal = Convert.ToInt16(ds.Tables[0].Rows[0][13].ToString());
                 }
-                return almacen;
+                return cliente;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getAlmacenById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getClienteById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
 
         //get lista completa
-        public List<almacen> getListaCompleta(bool mantenimiento = false)
+        public List<cliente> getListaCompleta(bool mantenimiento = false)
         {
             try
             {
 
-                List<almacen> lista = new List<almacen>();
-                string sql = "";
-                sql = "select codigo,nombre,cod_sucursal,activo from almacen";
+                List<cliente> lista = new List<cliente>();
+                string sql = "select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante  * from cliente";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -160,12 +202,22 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        almacen almacen = new almacen();
-                        almacen.codigo = Convert.ToInt16(row[0].ToString());
-                        almacen.nombre = row[1].ToString();
-                        almacen.codigo_sucursal = Convert.ToInt16(row[2].ToString());
-                        almacen.activo = Convert.ToBoolean(row[3].ToString());
-                        lista.Add(almacen);
+                        cliente cliente = new cliente();
+                        cliente.codigo = Convert.ToInt16(row[0].ToString());
+                        cliente.nombre = row[1].ToString();
+                        cliente.limite_credito = Convert.ToDecimal(row[2].ToString());
+                        cliente.codigo_categoria = Convert.ToInt16(row[3].ToString());
+                        cliente.activo = Convert.ToBoolean(row[4].ToString());
+                        cliente.fecha_creado = Convert.ToDateTime(row[5].ToString());
+                        cliente.abrir_credito = Convert.ToBoolean(row[6].ToString());
+                        cliente.codigo_sucursal_creado = Convert.ToInt16(row[7].ToString());
+                        cliente.cliente_contado = Convert.ToBoolean(row[8].ToString());
+                        cliente.telefono1 = row[9].ToString();
+                        cliente.telefono2 = row[10].ToString();
+                        cliente.cedula = row[11].ToString();
+                        cliente.rnc = row[12].ToString();
+                        cliente.codigo_tipo_comprobante_fiscal = Convert.ToInt16(row[13].ToString());
+                        lista.Add(cliente);
                     }
                 }
                 return lista;
@@ -178,26 +230,34 @@ namespace IrisContabilidad.modelos
             }
         }
         //get lista completa por nombre
-        public List<almacen> getListaByNombre(string nombre)
+        public List<cliente> getListaByNombre(string nombre)
         {
             try
             {
 
-                List<almacen> lista = new List<almacen>();
-                string sql = "";
-                sql = "select codigo,nombre,cod_sucursal,activo from almacen where activo='1'";
-
+                List<cliente> lista = new List<cliente>();
+                string sql = "select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante  * from cliente where activo='1'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        almacen almacen = new almacen();
-                        almacen.codigo = Convert.ToInt16(row[0].ToString());
-                        almacen.nombre = row[1].ToString();
-                        almacen.codigo_sucursal = Convert.ToInt16(row[2].ToString());
-                        almacen.activo = Convert.ToBoolean(row[3].ToString());
-                        lista.Add(almacen);
+                        cliente cliente = new cliente();
+                        cliente.codigo = Convert.ToInt16(row[0].ToString());
+                        cliente.nombre = row[1].ToString();
+                        cliente.limite_credito = Convert.ToDecimal(row[2].ToString());
+                        cliente.codigo_categoria = Convert.ToInt16(row[3].ToString());
+                        cliente.activo = Convert.ToBoolean(row[4].ToString());
+                        cliente.fecha_creado = Convert.ToDateTime(row[5].ToString());
+                        cliente.abrir_credito = Convert.ToBoolean(row[6].ToString());
+                        cliente.codigo_sucursal_creado = Convert.ToInt16(row[7].ToString());
+                        cliente.cliente_contado = Convert.ToBoolean(row[8].ToString());
+                        cliente.telefono1 = row[9].ToString();
+                        cliente.telefono2 = row[10].ToString();
+                        cliente.cedula = row[11].ToString();
+                        cliente.rnc = row[12].ToString();
+                        cliente.codigo_tipo_comprobante_fiscal = Convert.ToInt16(row[13].ToString());
+                        lista.Add(cliente);
                     }
                 }
                 lista = lista.FindAll(x => x.nombre.ToLower().Contains(nombre.ToLower()));

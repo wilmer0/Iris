@@ -96,6 +96,7 @@
     <Compile Include="clases\cargo.cs" />
     <Compile Include="clases\categoria_producto.cs" />
     <Compile Include="clases\ciudad.cs" />
+    <Compile Include="clases\cliente.cs" />
     <Compile Include="clases\compra.cs" />
     <Compile Include="clases\compra_detalle.cs" />
     <Compile Include="clases\compra_vs_pagos.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="modelos\modeloCargo.cs" />
     <Compile Include="modelos\modeloCategoriaProducto.cs" />
     <Compile Include="modelos\modeloCiudad.cs" />
+    <Compile Include="modelos\modeloCliente.cs" />
     <Compile Include="modelos\modeloCompra.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
