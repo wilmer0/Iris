@@ -15,7 +15,7 @@ using IrisContabilidad.modulo_sistema;
 using Microsoft.Reporting.WinForms;
 using _7ADMFIC_1._0.VentanasComunes;
 
-namespace IrisContabilidad.modulo_inventario
+namespace IrisContabilidad.modulo_facturacion
 {
     public partial class ventana_reporte_producto : formBase
     {

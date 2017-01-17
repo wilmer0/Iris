@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.modulo_inventario
+﻿namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_categoria_producto
     {

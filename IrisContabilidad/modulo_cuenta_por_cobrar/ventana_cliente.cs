@@ -179,7 +179,6 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                         MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
             catch (Exception ex)
             {
