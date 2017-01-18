@@ -12,7 +12,7 @@ using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_inventario
+namespace IrisContabilidad.modulo_facturacion
 {
     public partial class ventana_itebis : formBase
     {

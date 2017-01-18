@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
-using IrisContabilidad.modulo_inventario;
+using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 

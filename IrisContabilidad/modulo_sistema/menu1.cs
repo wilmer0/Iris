@@ -183,17 +183,25 @@ namespace IrisContabilidad.modulo_sistema
 
         private void BotonVentanaOnClick(object sender, EventArgs eventArgs)
         {
-            Button boton = new Button();
-            boton = (Button) sender;
-            ventana = new ventana();
-            ventana = modeloModulo.getVentanaById(Convert.ToInt16(boton.Tag));
-            if (ventana != null)
+            try
             {
-                Assembly asm = Assembly.GetEntryAssembly();
-                Type formtype = asm.GetType(ventana.nombre_logico);
-                Form f = (Form) Activator.CreateInstance(formtype);
-                f.Owner = this;
-                f.ShowDialog();
+                Button boton = new Button();
+                boton = (Button)sender;
+                ventana = new ventana();
+                ventana = modeloModulo.getVentanaById(Convert.ToInt16(boton.Tag));
+                if (ventana != null)
+                {
+                    Assembly asm = Assembly.GetEntryAssembly();
+                    Type formtype = asm.GetType(ventana.nombre_logico);
+                    Form f = (Form)Activator.CreateInstance(formtype);
+                    f.Owner = this;
+                    f.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error instanciando la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 

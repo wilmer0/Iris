@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.clases_reportes;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
 using Microsoft.Reporting.WinForms;
 using _7ADMFIC_1._0.VentanasComunes;
