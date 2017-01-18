@@ -33,7 +33,7 @@ namespace IrisContabilidad.modelos
                     return false;
                 }
                 //validar secuencia
-                sql = "select *from tipo_comprobante_fiscal where secuencia='" + tipo.nombre + "' and codigo!='" + tipo.codigo + "'";
+                sql = "select *from tipo_comprobante_fiscal where secuencia='" + tipo.secuencia + "' and codigo!='" + tipo.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -74,7 +74,7 @@ namespace IrisContabilidad.modelos
                     return false;
                 }
                 //validar secuencia
-                sql = "select *from tipo_comprobante_fiscal where secuencia='" + tipo.nombre + "' and codigo!='" + tipo.codigo + "'";
+                sql = "select *from tipo_comprobante_fiscal where secuencia='" + tipo.secuencia + "' and codigo!='" + tipo.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
