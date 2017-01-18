@@ -424,7 +424,14 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "cajero1.png";
                 listaVentana.Add(ventana);
-                
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana tipo comprobante fiscal";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_tipo_comprobante_fiscal";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "tipo_comprobante_fiscal1.png";
+                listaVentana.Add(ventana);
                 #endregion
                 
                 

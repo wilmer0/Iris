@@ -13,25 +13,27 @@ using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_facturacion
 {
-    public partial class ventana_caja : formBase
+    public partial class ventana_tipo_comprobante_fiscal : formBase
     {
+
         //objetos
         empleado empleado;
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
-        caja caja;
+        tipo_comprobante_fiscal tipoComprobante;
 
 
 
 
         //modelos
-        modeloCaja modeloCaja = new modeloCaja();
+        modeloTipoComprobanteFiscal modeloTipoComprobanteFiscal = new modeloTipoComprobanteFiscal();
 
-        public ventana_caja()
+
+        public ventana_tipo_comprobante_fiscal()
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana caja");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana tipo de comprobante fiscal");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
@@ -39,14 +41,18 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-                if (caja != null)
+                if (tipoComprobante != null)
                 {
-                    nombreText.Text = caja.nombre;
-                    secuenciaText.Text = caja.secuencia;
-                    activoCheck.Checked = Convert.ToBoolean(caja.activo);
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+                    nombreText.Text = tipoComprobante.nombre;
+                    secuenciaText.Text = tipoComprobante.secuencia;
+                    activoCheck.Checked = Convert.ToBoolean(tipoComprobante.activo);
                 }
                 else
                 {
+                    tipoComprobanteIdText.Focus();
+                    tipoComprobanteIdText.SelectAll();
                     nombreText.Text = "";
                     secuenciaText.Text = "";
                     activoCheck.Checked = false;
@@ -71,7 +77,7 @@ namespace IrisContabilidad.modulo_facturacion
                 //validar nombre
                 if (nombreText.Text == "")
                 {
-                    MessageBox.Show("Falta el nombre de la caja ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Falta el nombre del tipo de comprobante ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     nombreText.Focus();
                     nombreText.SelectAll();
                     return false;
@@ -79,13 +85,13 @@ namespace IrisContabilidad.modulo_facturacion
                 //validar numero secuencia
                 if (secuenciaText.Text == "")
                 {
-                    MessageBox.Show("Falta la secuencia de la caja", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Falta la secuencia del tipo de comprobante", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     secuenciaText.Focus();
                     secuenciaText.SelectAll();
                     return false;
                 }
                 //validar tamano de la secuencia
-                if (secuenciaText.Text.Length !=2)
+                if (secuenciaText.Text.Length != 2)
                 {
                     MessageBox.Show("La secuencia no esta completa,deben ser 2 digitos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     secuenciaText.Focus();
@@ -118,23 +124,22 @@ namespace IrisContabilidad.modulo_facturacion
 
                 bool crear = false;
                 //se instancia el empleado si esta nulo
-                if (caja == null)
+                if (tipoComprobante == null)
                 {
-                    caja=new caja();
+                    tipoComprobante = new tipo_comprobante_fiscal();
                     crear = true;
-                    caja.codigo = modeloCaja.getNext();
+                    tipoComprobante.codigo = modeloTipoComprobanteFiscal.getNext();
                 }
-                caja.nombre = nombreText.Text;
-                caja.secuencia = secuenciaText.Text.Trim();
-                caja.codigo_sucursal = empleado.codigo_sucursal;
-                caja.activo = Convert.ToBoolean(activoCheck.Checked);
+                tipoComprobante.nombre = nombreText.Text;
+                tipoComprobante.secuencia = secuenciaText.Text.Trim();
+                tipoComprobante.activo = Convert.ToBoolean(activoCheck.Checked);
 
                 if (crear == true)
                 {
                     //se agrega
-                    if ((modeloCaja.agregarCaja(caja)) == true)
+                    if ((modeloTipoComprobanteFiscal.agregarTipoComprobante(tipoComprobante)) == true)
                     {
-                        caja = null;
+                        tipoComprobante = null;
                         loadVentana();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -147,9 +152,9 @@ namespace IrisContabilidad.modulo_facturacion
                 else
                 {
                     //se modifica
-                    if ((modeloCaja.modificarCaja(caja)) == true)
+                    if ((modeloTipoComprobanteFiscal.modificarTipoComprobante(tipoComprobante)) == true)
                     {
-                        caja = null;
+                        tipoComprobante = null;
                         loadVentana();
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -163,13 +168,12 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception ex)
             {
-                caja = null;
+                tipoComprobante = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
-
-        private void ventana_caja_Load(object sender, EventArgs e)
+        private void ventana_tipo_comprobante_fiscal_Load(object sender, EventArgs e)
         {
 
         }
@@ -186,20 +190,46 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            caja = null;
+            tipoComprobante = null;
             loadVentana();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void tipoComprobanteIdText_KeyDown(object sender, KeyEventArgs e)
         {
-            ventana_busqueda_caja ventana = new ventana_busqueda_caja(true);
-            ventana.mantenimiento = true;
-            ventana.Owner = this;
-            ventana.ShowDialog();
-            if (ventana.DialogResult == DialogResult.OK)
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                caja = ventana.getObjeto();
-                loadVentana();
+                nombreText.Focus();
+                nombreText.SelectAll();
+            }
+        }
+
+        private void nombreText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nombreText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                secuenciaText.Focus();
+                secuenciaText.SelectAll();
+            }
+        }
+
+        private void secuenciaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                activoCheck.Focus();
+            }
+        }
+
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                button1.Focus();
             }
         }
     }
