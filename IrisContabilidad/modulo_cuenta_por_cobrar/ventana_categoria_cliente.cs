@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IrisContabilidad.modulo_empresa;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_cuenta_por_cobrar
@@ -21,6 +22,18 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private void ventana_categoria_cliente_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_categoria_cliente ventana = new ventana_busqueda_categoria_cliente();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                //cate = ventana.getObjeto();
+                //loadve();
+            }
         }
     }
 }

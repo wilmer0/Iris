@@ -158,6 +158,12 @@
     <Compile Include="modelos\modeloTipoComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_categoria_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_categoria_cliente.Designer.cs">
+      <DependentUpon>ventana_busqueda_categoria_cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_categoria_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,6 +247,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_itbis.Designer.cs">
       <DependentUpon>ventana_busqueda_itbis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_tipo_comprobante_fiscal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_tipo_comprobante_fiscal.Designer.cs">
+      <DependentUpon>ventana_busqueda_tipo_comprobante_fiscal.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_caja.cs">
       <SubType>Form</SubType>
@@ -430,6 +442,9 @@
     <Compile Include="ventanas_comunes\VisorReporteComun.Designer.cs">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_busqueda_categoria_cliente.resx">
+      <DependentUpon>ventana_busqueda_categoria_cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_categoria_cliente.resx">
       <DependentUpon>ventana_categoria_cliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -471,6 +486,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_itbis.resx">
       <DependentUpon>ventana_busqueda_itbis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_tipo_comprobante_fiscal.resx">
+      <DependentUpon>ventana_busqueda_tipo_comprobante_fiscal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_caja.resx">
       <DependentUpon>ventana_caja.cs</DependentUpon>
