@@ -11,7 +11,7 @@ using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_facturacion
+namespace IrisContabilidad.modulo_inventario
 {
     public partial class ventana_almacen : formBase
     {

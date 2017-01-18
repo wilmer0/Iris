@@ -302,6 +302,12 @@
     <Compile Include="modulo_inventario\ventana_busqueda_subcategoria_producto.Designer.cs">
       <DependentUpon>ventana_busqueda_subcategoria_producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_unidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_unidad.Designer.cs">
+      <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_categoria_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,12 +325,6 @@
     </Compile>
     <Compile Include="modulo_inventario\ventana_producto.Designer.cs">
       <DependentUpon>ventana_producto.cs</DependentUpon>
-    </Compile>
-    <Compile Include="modulo_inventario\ventana_busqueda_unidad.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="modulo_inventario\ventana_busqueda_unidad.Designer.cs">
-      <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_reporte_producto.cs">
       <SubType>Form</SubType>
@@ -502,6 +502,9 @@
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_subcategoria_producto.resx">
       <DependentUpon>ventana_busqueda_subcategoria_producto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">
+      <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_categoria_producto.resx">
       <DependentUpon>ventana_categoria_producto.cs</DependentUpon>
     </EmbeddedResource>
@@ -510,9 +513,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_producto.resx">
       <DependentUpon>ventana_producto.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">
-      <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_reporte_producto.resx">
       <DependentUpon>ventana_reporte_producto.cs</DependentUpon>
