@@ -395,6 +395,13 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "cliente1.png";
                 listaVentana.Add(ventana);
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana categoria cliente";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_categoria_cliente";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "categoria_cliente1.png";
+                listaVentana.Add(ventana);
                 #endregion
                 
                 

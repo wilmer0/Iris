@@ -54,6 +54,7 @@
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(372, 5);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 

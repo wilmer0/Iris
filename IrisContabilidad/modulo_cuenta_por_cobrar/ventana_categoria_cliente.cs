@@ -35,5 +35,10 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 //loadve();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
