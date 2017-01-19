@@ -58,7 +58,7 @@ namespace IrisContabilidad.modelos
                     cliente_contado = 1;
                 }
 
-                sql = "insert cliente (codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante) values('" + cliente.codigo + "','" + cliente.nombre + "','" + cliente.limite_credito + "','" + cliente.codigo_categoria + "','" + activo + "','" + cliente.fecha_creado + "','" + abrir_credito + "','" + cliente.codigo_sucursal_creado + "','" + cliente_contado + "','" + cliente.telefono1 + "','" + cliente.telefono2 + "','" + cliente.cedula + "','" + cliente.rnc + "','" + cliente.codigo_tipo_comprobante_fiscal + "')";
+                sql = "insert cliente (codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante) values('" + cliente.codigo + "','" + cliente.nombre + "','" + cliente.limite_credito + "','" + cliente.codigo_categoria + "','" + activo + "','" + cliente.fecha_creado.ToString("dd/MM/yyyy") + "','" + abrir_credito + "','" + cliente.codigo_sucursal_creado + "','" + cliente_contado + "','" + cliente.telefono1 + "','" + cliente.telefono2 + "','" + cliente.cedula + "','" + cliente.rnc + "','" + cliente.codigo_tipo_comprobante_fiscal + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -109,7 +109,7 @@ namespace IrisContabilidad.modelos
                 {
                     cliente_contado = 1;
                 }
-                sql = "update cliente set nombre='" + cliente.nombre + "',limite_credito='" + cliente.limite_credito + "',cod_Categoria='" + cliente.codigo_categoria+ "',activo='"+activo+"',fecha_creado='"+cliente.fecha_creado+"',abrir_credito='"+abrir_credito+"',cod_sucursal_creado='"+cliente.codigo_sucursal_creado+"',cliente_contado='"+cliente_contado+"',telefono1='"+cliente.telefono1+"',telefono2='"+cliente.telefono2+"',cedula='"+cliente.cedula+"',rnc='"+cliente.rnc+"',cod_tipo_comprobante='"+cliente.codigo_tipo_comprobante_fiscal+"' where codigo='" + cliente.codigo + "'";
+                sql = "update cliente set nombre='" + cliente.nombre + "',limite_credito='" + cliente.limite_credito + "',cod_Categoria='" + cliente.codigo_categoria + "',activo='" + activo + "',fecha_creado='" + cliente.fecha_creado.ToString("dd/MM/yyyy") + "',abrir_credito='" + abrir_credito + "',cod_sucursal_creado='" + cliente.codigo_sucursal_creado + "',cliente_contado='" + cliente_contado + "',telefono1='" + cliente.telefono1 + "',telefono2='" + cliente.telefono2 + "',cedula='" + cliente.cedula + "',rnc='" + cliente.rnc + "',cod_tipo_comprobante='" + cliente.codigo_tipo_comprobante_fiscal + "' where codigo='" + cliente.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;

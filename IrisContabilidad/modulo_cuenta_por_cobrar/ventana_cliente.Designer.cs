@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_cliente));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.activoCheck = new System.Windows.Forms.CheckBox();
             this.clienteContadoCheck = new System.Windows.Forms.CheckBox();
             this.tipoNcfText = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.clienteIdText = new System.Windows.Forms.TextBox();
-            this.activoCheck = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -134,6 +134,21 @@
             this.tabPage1.Text = "Cliente";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // activoCheck
+            // 
+            this.activoCheck.AutoSize = true;
+            this.activoCheck.Checked = true;
+            this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activoCheck.Location = new System.Drawing.Point(476, 214);
+            this.activoCheck.Name = "activoCheck";
+            this.activoCheck.Size = new System.Drawing.Size(68, 21);
+            this.activoCheck.TabIndex = 61;
+            this.activoCheck.Text = "Activo";
+            this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
+            // 
             // clienteContadoCheck
             // 
             this.clienteContadoCheck.AutoSize = true;
@@ -145,6 +160,7 @@
             this.clienteContadoCheck.TabIndex = 60;
             this.clienteContadoCheck.Text = "Cliente al contado";
             this.clienteContadoCheck.UseVisualStyleBackColor = true;
+            this.clienteContadoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clienteContadoCheck_KeyDown);
             // 
             // tipoNcfText
             // 
@@ -167,6 +183,7 @@
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 58;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label9
             // 
@@ -186,6 +203,8 @@
             this.tipoNcfIdText.Name = "tipoNcfIdText";
             this.tipoNcfIdText.Size = new System.Drawing.Size(183, 26);
             this.tipoNcfIdText.TabIndex = 56;
+            this.tipoNcfIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoNcfIdText_KeyDown);
+            this.tipoNcfIdText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipoNcfIdText_KeyPress);
             // 
             // abrirCreditoCheck
             // 
@@ -198,6 +217,7 @@
             this.abrirCreditoCheck.TabIndex = 55;
             this.abrirCreditoCheck.Text = "Puede comprar a credito";
             this.abrirCreditoCheck.UseVisualStyleBackColor = true;
+            this.abrirCreditoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.abrirCreditoCheck_KeyDown);
             // 
             // creditoText
             // 
@@ -210,6 +230,7 @@
             this.creditoText.TabIndex = 38;
             this.creditoText.Text = "0.00";
             this.creditoText.TextChanged += new System.EventHandler(this.creditoText_TextChanged);
+            this.creditoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.creditoText_KeyDown);
             this.creditoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.creditoText_KeyPress);
             // 
             // label8
@@ -243,6 +264,7 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 27;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // telefono2Text
             // 
@@ -253,6 +275,7 @@
             this.telefono2Text.Name = "telefono2Text";
             this.telefono2Text.Size = new System.Drawing.Size(236, 26);
             this.telefono2Text.TabIndex = 35;
+            this.telefono2Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.telefono2Text_KeyDown);
             // 
             // label7
             // 
@@ -282,6 +305,7 @@
             this.categoriaIdText.Name = "categoriaIdText";
             this.categoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.categoriaIdText.TabIndex = 25;
+            this.categoriaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.categoriaIdText_KeyDown);
             // 
             // telefono1Text
             // 
@@ -312,6 +336,7 @@
             this.rncText.Name = "rncText";
             this.rncText.Size = new System.Drawing.Size(236, 26);
             this.rncText.TabIndex = 31;
+            this.rncText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rncText_KeyDown);
             // 
             // label4
             // 
@@ -332,6 +357,7 @@
             this.cedulaText.Name = "cedulaText";
             this.cedulaText.Size = new System.Drawing.Size(236, 26);
             this.cedulaText.TabIndex = 29;
+            this.cedulaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cedulaText_KeyDown);
             // 
             // label3
             // 
@@ -352,6 +378,7 @@
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(236, 26);
             this.nombreText.TabIndex = 27;
+            this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyDown);
             // 
             // label2
             // 
@@ -404,20 +431,8 @@
             this.clienteIdText.Name = "clienteIdText";
             this.clienteIdText.Size = new System.Drawing.Size(183, 26);
             this.clienteIdText.TabIndex = 0;
-            // 
-            // activoCheck
-            // 
-            this.activoCheck.AutoSize = true;
-            this.activoCheck.Checked = true;
-            this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(476, 214);
-            this.activoCheck.Name = "activoCheck";
-            this.activoCheck.Size = new System.Drawing.Size(68, 21);
-            this.activoCheck.TabIndex = 61;
-            this.activoCheck.Text = "Activo";
-            this.activoCheck.UseVisualStyleBackColor = true;
+            this.clienteIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clienteIdText_KeyDown);
+            this.clienteIdText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.clienteIdText_KeyPress);
             // 
             // ventana_cliente
             // 

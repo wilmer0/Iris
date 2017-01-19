@@ -29,7 +29,7 @@ namespace IrisContabilidad.modelos
                 int cuadrado = 0;
                 //validar nombre
                 string sql = "";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                DataSet ds;
                 //if (ds.Tables[0].Rows.Count > 0)
                 //{
                 //    MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -98,7 +98,7 @@ namespace IrisContabilidad.modelos
                     cuadrado = 1;
                 }
 
-                sql = "update egresos_caja set cod_concepto='" + egreso.codigo_concepto + "',fecha=" + egreso.fecha+ ",cod_cajero='" + egreso.codigo_cajero + "',monto='" + egreso.monto + "',detalles='" + egreso.detalle + "',afecta_cuadre='1',activo='" + activo + "',cuadrado='" + cuadrado + "' where codigo='" + egreso.codigo + "'";
+                sql = "update egresos_caja set cod_concepto='" + egreso.codigo_concepto + "',fecha=" + egreso.fecha.ToString("dd/MM/yyyy") + ",cod_cajero='" + egreso.codigo_cajero + "',monto='" + egreso.monto + "',detalles='" + egreso.detalle + "',afecta_cuadre='1',activo='" + activo + "',cuadrado='" + cuadrado + "' where codigo='" + egreso.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
