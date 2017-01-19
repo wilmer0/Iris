@@ -17,10 +17,9 @@ namespace IrisContabilidad.modulo_facturacion
     {
 
         //objetos
-        empleado empleadoSingleton;
+        empleado empleado;
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
-        empleado empleado;
         egreso_caja egresoCaja;
         private caja_ingresos_egresos_conceptos concepto;
         private cajero cajero;
@@ -37,8 +36,8 @@ namespace IrisContabilidad.modulo_facturacion
         public ventana_egreso_caja()
         {
             InitializeComponent();
-            empleadoSingleton = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana egreso de caja");
+            empleado = singleton.getEmpleado();
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana egreso de caja");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
@@ -94,7 +93,7 @@ namespace IrisContabilidad.modulo_facturacion
             try
             {
                 //validar nombre
-                if (conceptoText.Text == "")
+                if (concepto==null)
                 {
                     MessageBox.Show("Falta el concepto del egreso", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     conceptoText.Focus();
@@ -148,7 +147,7 @@ namespace IrisContabilidad.modulo_facturacion
                     egresoCaja = new egreso_caja();
                     crear = true;
                     egresoCaja.codigo = modeloEgreso.getNext();
-                    egresoCaja.fecha = DateTime.Now;
+                    egresoCaja.fecha = DateTime.Today;
                     egresoCaja.cuadrado = false;
                     egresoCaja.codigo_cajero = cajero.codigo;
                 }

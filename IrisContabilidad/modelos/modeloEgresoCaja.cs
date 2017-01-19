@@ -53,7 +53,7 @@ namespace IrisContabilidad.modelos
                     cuadrado = 1;
                 }
 
-                sql = "insert into egresos_caja(codigo,cod_concepto,fecha,cod_cajero,monto,detalles,afecta_cuadre,activo,cuadrado) values('"+egreso.codigo+"','"+egreso.codigo_concepto+"','"+egreso.fecha.ToString("dd-MM-yyyy")+"','"+egreso.codigo_cajero+"','"+egreso.monto+"','"+egreso.detalle+"','1','"+activo+"','"+cuadrado+"')";
+                sql = "insert into egresos_caja(codigo,cod_concepto,fecha,cod_cajero,monto,detalles,afecta_cuadre,activo,cuadrado) values('"+egreso.codigo+"','"+egreso.codigo_concepto+"',"+egreso.fecha.ToString("dd/MM/yyyy")+",'"+egreso.codigo_cajero+"','"+egreso.monto+"','"+egreso.detalle+"','1','"+activo+"','"+cuadrado+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -98,7 +98,7 @@ namespace IrisContabilidad.modelos
                     cuadrado = 1;
                 }
 
-                sql = "update egresos_caja set cod_concepto='" + egreso.codigo_concepto + "',fecha='" + egreso.fecha.ToString("dd-MM-yyyy") + "',cod_cajero='" + egreso.codigo_cajero + "',monto='" + egreso.monto + "',detalles='" + egreso.detalle + "',afecta_cuadre='1',activo='" + activo + "',cuadrado='" + cuadrado + "' where codigo='" + egreso.codigo + "'";
+                sql = "update egresos_caja set cod_concepto='" + egreso.codigo_concepto + "',fecha=" + egreso.fecha+ ",cod_cajero='" + egreso.codigo_cajero + "',monto='" + egreso.monto + "',detalles='" + egreso.detalle + "',afecta_cuadre='1',activo='" + activo + "',cuadrado='" + cuadrado + "' where codigo='" + egreso.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
