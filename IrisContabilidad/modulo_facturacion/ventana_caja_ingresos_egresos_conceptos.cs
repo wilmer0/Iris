@@ -9,30 +9,32 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
-using IrisContabilidad.modulo_empresa;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_cuenta_por_cobrar
+namespace IrisContabilidad.modulo_facturacion
 {
-    public partial class ventana_categoria_cliente : formBase
+    public partial class ventana_caja_ingresos_egresos_conceptos : formBase
     {
+
         //objetos
         empleado empleado;
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
-        categoria_cliente categoriaCliente;
+        caja_ingresos_egresos_conceptos concepto;
 
 
 
 
         //modelos
-        modeloCategoriaCliente modeloCategoriaCliente = new modeloCategoriaCliente();
+        modeloCajaIngresosEgresosConceptos modeloConceptos = new modeloCajaIngresosEgresosConceptos();
 
-        public ventana_categoria_cliente()
+
+
+        public ventana_caja_ingresos_egresos_conceptos()
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana categoria cliente");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana conceptos de ingresos e ingresos");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
@@ -40,18 +42,16 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             try
             {
-                if (categoriaCliente != null)
+                if (concepto != null)
                 {
-                    nombreText.Focus();
-                    nombreText.SelectAll();
-                    nombreText.Text = categoriaCliente.nombre;
-                    activoCheck.Checked = Convert.ToBoolean(categoriaCliente.activo);
+                    nombreText.Text = concepto.nombre;
+                    activoCheck.Checked = Convert.ToBoolean(concepto.activo);
                 }
                 else
                 {
-                    categoriaIdText.Focus();
-                    categoriaIdText.SelectAll();
-                    categoriaIdText.Text = "";
+                    conceptoIdText.Text = "";
+                    conceptoIdText.Focus();
+                    conceptoIdText.SelectAll();
                     nombreText.Text = "";
                     activoCheck.Checked = true;
                 }
@@ -75,12 +75,13 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 //validar nombre
                 if (nombreText.Text == "")
                 {
-                    MessageBox.Show("Falta el nombre de la categoria ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Falta el nombre del concepto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     nombreText.Focus();
                     nombreText.SelectAll();
                     return false;
                 }
-               
+                
+                
                 return true;
             }
             catch (Exception ex)
@@ -107,21 +108,21 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
                 bool crear = false;
                 //se instancia el empleado si esta nulo
-                if (categoriaCliente == null)
+                if (concepto == null)
                 {
-                    categoriaCliente = new categoria_cliente();
+                    concepto = new caja_ingresos_egresos_conceptos();
                     crear = true;
-                    categoriaCliente.codigo = modeloCategoriaCliente.getNext();
+                    concepto.codigo = modeloConceptos.getNext();
                 }
-                categoriaCliente.nombre = nombreText.Text;
-                categoriaCliente.activo = Convert.ToBoolean(activoCheck.Checked);
+                concepto.nombre = nombreText.Text;
+                concepto.activo = Convert.ToBoolean(activoCheck.Checked);
 
                 if (crear == true)
                 {
                     //se agrega
-                    if ((modeloCategoriaCliente.agregarCategoriaCliente(categoriaCliente)) == true)
+                    if ((modeloConceptos.agregarConcepto(concepto)) == true)
                     {
-                        categoriaCliente = null;
+                        concepto = null;
                         loadVentana();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -133,61 +134,58 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 else
                 {
                     //se modifica
-                    if ((modeloCategoriaCliente.modificarCategoriaCliente(categoriaCliente)) == true)
+                    if ((modeloConceptos.modificarConcepto(concepto)) == true)
                     {
-                        categoriaCliente = null;
+                        concepto = null;
                         loadVentana();
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     }
                     else
                     {
                         MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+
             }
             catch (Exception ex)
             {
-                categoriaCliente = null;
+                concepto = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
-        private void ventana_categoria_cliente_Load(object sender, EventArgs e)
+
+        private void ventana_caja_ingresos_egresos_conceptos_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            ventana_busqueda_categoria_cliente ventana = new ventana_busqueda_categoria_cliente();
-            ventana.Owner = this;
-            ventana.ShowDialog();
-            if (ventana.DialogResult == DialogResult.OK)
-            {
-                categoriaCliente = ventana.getObjeto();
-                loadVentana();
-            }
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            getAction();
-        }
         private void button2_Click(object sender, EventArgs e)
         {
             salir();
         }
+
         private void button3_Click_1(object sender, EventArgs e)
         {
-            categoriaCliente = null;
+            concepto = null;
             loadVentana();
         }
 
-        private void categoriaIdText_KeyDown(object sender, KeyEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getAction();
+        }
+
+        private void conceptoIdText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 nombreText.Focus();
                 nombreText.SelectAll();
+
+                concepto = modeloConceptos.getConceptoById(Convert.ToInt16(conceptoIdText.Text));
+                loadVentana();
             }
             if (e.KeyCode == Keys.F1)
             {
@@ -195,21 +193,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             }
         }
 
-        private void categoriaIdText_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-        }
-
-        private void categoriaIdText_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
-            {
-                nombreText.Focus();
-                nombreText.SelectAll();
-            }
-        }
-
-        private void nombreText_KeyUp(object sender, KeyEventArgs e)
+        private void nombreText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
@@ -217,11 +201,24 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             }
         }
 
-        private void activoCheck_KeyUp(object sender, KeyEventArgs e)
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 button1.Focus();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_ingresos_egresos_conceptos ventana=new ventana_busqueda_ingresos_egresos_conceptos(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                concepto = ventana.getObjeto();
+                loadVentana();
             }
         }
     }

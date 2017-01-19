@@ -115,7 +115,7 @@ namespace IrisContabilidad.modelos
         }
 
 
-        //get objeto
+        //get by id
         public cajero getCajeroById(int id)
         {
             try
@@ -138,7 +138,29 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
+        //get by empleado
+        public cajero getCajeroByIdEmpleado(int id)
+        {
+            try
+            {
+                cajero cajero = new cajero();
+                string sql = "select codigo,cod_empleado,cod_caja,activo from cajero where cod_empleado='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    cajero.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    cajero.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                    cajero.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
+                    cajero.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                }
+                return cajero;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCajeroByIdEmpleado.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
 
         //get lista completa
         public List<cajero> getListaCompleta(bool mantenimiento = false)

@@ -601,7 +601,7 @@
   <Width>8.37375in</Width>
   <Page>
     <PageHeader>
-      <Height>2.55208in</Height>
+      <Height>2.72916in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -612,8 +612,9 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=First(Fields!empresa.Value, "reporte_encabezado")</Value>
                   <Style>
+                    <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -650,8 +651,9 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=First(Fields!direccion.Value, "reporte_encabezado")</Value>
                   <Style>
+                    <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -691,6 +693,7 @@
                 <TextRun>
                   <Value>REPORTE DE PRODUCTOS</Value>
                   <Style>
+                    <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -740,7 +743,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.38195in</Top>
+          <Top>1.63195in</Top>
           <Left>0.09719in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
@@ -774,7 +777,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.64584in</Top>
+          <Top>1.89584in</Top>
           <Left>0.09719in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
@@ -808,7 +811,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.90973in</Top>
+          <Top>2.15973in</Top>
           <Left>0.09719in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
@@ -842,7 +845,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>2.17362in</Top>
+          <Top>2.42362in</Top>
           <Left>0.09719in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
@@ -876,7 +879,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.63195in</Top>
+          <Top>1.88195in</Top>
           <Left>5.03122in</Left>
           <Height>0.25in</Height>
           <Width>1.125in</Width>
@@ -910,7 +913,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.89584in</Top>
+          <Top>2.14584in</Top>
           <Left>5.03122in</Left>
           <Height>0.25in</Height>
           <Width>1.125in</Width>
@@ -944,7 +947,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>2.15973in</Top>
+          <Top>2.40973in</Top>
           <Left>5.03122in</Left>
           <Height>0.25in</Height>
           <Width>1.125in</Width>
@@ -976,7 +979,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.38195in</Top>
+          <Top>1.63195in</Top>
           <Left>1.11108in</Left>
           <Height>0.25in</Height>
           <Width>2.62153in</Width>
@@ -1008,7 +1011,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.64584in</Top>
+          <Top>1.89584in</Top>
           <Left>1.11108in</Left>
           <Height>0.25in</Height>
           <Width>2.62153in</Width>
@@ -1040,7 +1043,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.90973in</Top>
+          <Top>2.15973in</Top>
           <Left>1.11108in</Left>
           <Height>0.25in</Height>
           <Width>2.62153in</Width>
@@ -1072,7 +1075,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>2.17362in</Top>
+          <Top>2.42362in</Top>
           <Left>1.11108in</Left>
           <Height>0.25in</Height>
           <Width>2.62153in</Width>
@@ -1104,7 +1107,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.63195in</Top>
+          <Top>1.88195in</Top>
           <Left>6.17011in</Left>
           <Height>0.25in</Height>
           <Width>1.97223in</Width>
@@ -1136,7 +1139,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.89584in</Top>
+          <Top>2.14584in</Top>
           <Left>6.17011in</Left>
           <Height>0.25in</Height>
           <Width>1.97223in</Width>
@@ -1170,7 +1173,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>2.15973in</Top>
+          <Top>2.40973in</Top>
           <Left>6.17011in</Left>
           <Height>0.25in</Height>
           <Width>1.97223in</Width>
@@ -1204,7 +1207,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.11806in</Top>
+          <Top>1.36806in</Top>
           <Left>0.0972in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
@@ -1236,7 +1239,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.11806in</Top>
+          <Top>1.36806in</Top>
           <Left>1.11109in</Left>
           <Height>0.25in</Height>
           <Width>2.62153in</Width>
@@ -1270,8 +1273,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.36806in</Top>
-          <Left>5.54511in</Left>
+          <Top>1.61806in</Top>
+          <Left>5.559in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
           <ZIndex>19</ZIndex>
@@ -1304,7 +1307,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.36806in</Top>
+          <Top>1.61806in</Top>
           <Left>6.57289in</Left>
           <Height>0.25in</Height>
           <Width>1.56945in</Width>
@@ -1338,7 +1341,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.10417in</Top>
+          <Top>1.35417in</Top>
           <Left>5.55553in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
@@ -1368,7 +1371,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>1.10417in</Top>
+          <Top>1.35417in</Top>
           <Left>6.55553in</Left>
           <Height>0.25in</Height>
           <Width>1in</Width>
@@ -1480,8 +1483,16 @@
           <DataField>categoria</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="direccion">
+          <DataField>direccion</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="empleado">
           <DataField>empleado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="empresa">
+          <DataField>empresa</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="fecha_impresion">

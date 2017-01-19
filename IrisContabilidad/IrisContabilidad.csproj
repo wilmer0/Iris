@@ -95,6 +95,7 @@
     <Compile Include="clases\caja.cs" />
     <Compile Include="clases\almacen.cs" />
     <Compile Include="clases\año.cs" />
+    <Compile Include="clases\caja_ingresos_egresos_conceptos.cs" />
     <Compile Include="clases\cajero.cs" />
     <Compile Include="clases\cargo.cs" />
     <Compile Include="clases\categoria_cliente.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\desglose_dinero.cs" />
     <Compile Include="clases\dias.cs" />
+    <Compile Include="clases\egreso_caja.cs" />
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
     <Compile Include="clases\FileFolderDialog.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCaja.cs" />
+    <Compile Include="modelos\modeloCajaIngresosEgresosConceptos.cs" />
     <Compile Include="modelos\modeloCajero.cs" />
     <Compile Include="modelos\modeloCargo.cs" />
     <Compile Include="modelos\modeloCategoriaCliente.cs" />
@@ -143,6 +146,7 @@
     <Compile Include="modelos\modeloCliente.cs" />
     <Compile Include="modelos\modeloCompra.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
+    <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
@@ -242,6 +246,12 @@
     <Compile Include="modulo_facturacion\ventana_busqueda_cajero.Designer.cs">
       <DependentUpon>ventana_busqueda_cajero.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_ingresos_egresos_conceptos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_ingresos_egresos_conceptos.Designer.cs">
+      <DependentUpon>ventana_busqueda_ingresos_egresos_conceptos.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_itbis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +269,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_caja.Designer.cs">
       <DependentUpon>ventana_caja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_caja_ingresos_egresos_conceptos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_caja_ingresos_egresos_conceptos.Designer.cs">
+      <DependentUpon>ventana_caja_ingresos_egresos_conceptos.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_cajero.cs">
       <SubType>Form</SubType>
@@ -283,6 +299,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_tipo_comprobante_fiscal.Designer.cs">
       <DependentUpon>ventana_tipo_comprobante_fiscal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_egreso_caja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_egreso_caja.Designer.cs">
+      <DependentUpon>ventana_egreso_caja.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_almacen.cs">
       <SubType>Form</SubType>
@@ -484,6 +506,9 @@
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_cajero.resx">
       <DependentUpon>ventana_busqueda_cajero.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_ingresos_egresos_conceptos.resx">
+      <DependentUpon>ventana_busqueda_ingresos_egresos_conceptos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_itbis.resx">
       <DependentUpon>ventana_busqueda_itbis.cs</DependentUpon>
     </EmbeddedResource>
@@ -492,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_caja.resx">
       <DependentUpon>ventana_caja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_caja_ingresos_egresos_conceptos.resx">
+      <DependentUpon>ventana_caja_ingresos_egresos_conceptos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_cajero.resx">
       <DependentUpon>ventana_cajero.cs</DependentUpon>
@@ -504,6 +532,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_tipo_comprobante_fiscal.resx">
       <DependentUpon>ventana_tipo_comprobante_fiscal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_egreso_caja.resx">
+      <DependentUpon>ventana_egreso_caja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_almacen.resx">
       <DependentUpon>ventana_almacen.cs</DependentUpon>

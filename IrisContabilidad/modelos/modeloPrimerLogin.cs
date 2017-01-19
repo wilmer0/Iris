@@ -439,6 +439,22 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.imagen = "tipo_comprobante_fiscal1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana egreso de caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_egreso_caja";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "egreso_caja1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana caja egresos e ingresos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_caja_ingresos_egresos_conceptos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.imagen = "egresos_ingresos1.png";
+                listaVentana.Add(ventana);
                 #endregion
                 
                 

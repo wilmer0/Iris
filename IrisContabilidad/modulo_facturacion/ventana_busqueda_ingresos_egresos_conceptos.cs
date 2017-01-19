@@ -13,26 +13,23 @@ using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_facturacion
 {
-    public partial class ventana_busqueda_itbis : formBase
+    public partial class ventana_busqueda_ingresos_egresos_conceptos : formBase
     {
+
         //objetos
-        private itebis itebis;
+        private caja_ingresos_egresos_conceptos concepto;
 
         //listas
-        private List<itebis> listaItebis;
-
-
+        private List<caja_ingresos_egresos_conceptos> listaConceptos;
 
         //modelos
-        private modeloItebis modeloItebis = new modeloItebis();
-
+        private modeloCajaIngresosEgresosConceptos modeloConcepto = new modeloCajaIngresosEgresosConceptos();
 
         //variables 
         public bool mantenimiento = false;
         private int fila = 0;
-
-
-        public ventana_busqueda_itbis(bool mantenimiento=false)
+        
+        public ventana_busqueda_ingresos_egresos_conceptos(bool mantenimiento=false)
         {
             InitializeComponent();
             this.tituloLabel.Text = this.Text;
@@ -44,10 +41,10 @@ namespace IrisContabilidad.modulo_facturacion
             try
             {
                 //si la lista esta null se inicializa
-                if (listaItebis == null)
+                if (listaConceptos == null)
                 {
-                    listaItebis = new List<itebis>();
-                    listaItebis = modeloItebis.getListaCompleta(mantenimiento);
+                    listaConceptos = new List<caja_ingresos_egresos_conceptos>();
+                    listaConceptos = modeloConcepto.getListaCompleta(mantenimiento);
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
@@ -55,9 +52,9 @@ namespace IrisContabilidad.modulo_facturacion
                     dataGridView1.Rows.Clear();
                 }
                 //se agrega todos los datos de la lista en el gridView
-                listaItebis.ForEach(x =>
+                listaConceptos.ForEach(x =>
                 {
-                    dataGridView1.Rows.Add(x.codigo, x.nombre,x.porciento, x.activo);
+                    dataGridView1.Rows.Add(x.codigo, x.nombre, x.activo);
 
                 });
             }
@@ -66,14 +63,14 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadLista.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public itebis getObjeto()
+        public caja_ingresos_egresos_conceptos getObjeto()
         {
             try
             {
                 //para pasar el objeto sucursal desde deonde se llamo
                 fila = dataGridView1.CurrentRow.Index;
-                itebis = modeloItebis.getItebisById(Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString()));
-                return itebis;
+                concepto = modeloConcepto.getConceptoById(Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString()));
+                return concepto;
             }
             catch (Exception ex)
             {
@@ -97,9 +94,14 @@ namespace IrisContabilidad.modulo_facturacion
             }
         }
 
-        private void ventana_busqueda_itbis_Load(object sender, EventArgs e)
+        private void ventana_busqueda_ingresos_egresos_conceptos_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getAction();
         }
 
         private void nombreText_KeyDown(object sender, KeyEventArgs e)
@@ -108,8 +110,8 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    listaItebis = modeloItebis.getListaCompleta();
-                    listaItebis = listaItebis.FindAll(x => x.nombre.Contains(nombreText.Text));
+                    listaConceptos = modeloConcepto.getListaCompleta();
+                    listaConceptos = listaConceptos.FindAll(x => x.nombre.Contains(nombreText.Text));
                     loadLista();
                 }
             }
@@ -126,18 +128,8 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            listaItebis = null;
+            listaConceptos = null;
             loadLista();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            getAction();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

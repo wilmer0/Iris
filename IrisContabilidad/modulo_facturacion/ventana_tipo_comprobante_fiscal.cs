@@ -143,7 +143,6 @@ namespace IrisContabilidad.modulo_facturacion
                         tipoComprobante = null;
                         loadVentana();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     else
                     {
@@ -165,7 +164,6 @@ namespace IrisContabilidad.modulo_facturacion
                         MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
             catch (Exception ex)
             {
