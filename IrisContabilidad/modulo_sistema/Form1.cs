@@ -208,7 +208,7 @@ namespace IrisContabilidad
             //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
             //modeloPrimerLogin.primerosDatos();
             //modeloPrimerLogin.agregarModulos();
-            //modeloPrimerLogin.agregarVentanas();
+            modeloPrimerLogin.agregarVentanas();
             //modeloPrimerLogin.agregarVentanasPrimerModulo();
             //modeloPrimerLogin.agregarPrimerEmpleado();
             //modeloPrimerLogin.agregarAccesosVentanas();

@@ -28,7 +28,7 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un modulo con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe una ventana con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 //validar nombre_logico
@@ -48,9 +48,19 @@ namespace IrisContabilidad.modelos
                     programador = 1;
                 }
 
+                //agregando la ventana
                 sql = "insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('" + ventana.codigo + "','" + ventana.nombre_ventana + "','" + ventana.nombre_logico + "','" + ventana.imagen + "','" + activo.ToString() + "','" + programador + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
+                //agregando el permiso al empleado
+                sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','"+ventana.codigo+"')";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                //agregando la ventana al modulo
+                if (ventana.codigo_modulo != null || ventana.codigo_modulo > 0)
+                {
+                    sql = "insert into modulos_vs_ventanas(id_modulo,id_ventana) values('" + ventana.codigo_modulo +"','" + ventana.codigo + "')";
+                    ds = utilidades.ejecutarcomando_mysql(sql);
+                }
                 return true;
             }
             catch (Exception ex)
