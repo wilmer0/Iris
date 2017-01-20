@@ -152,10 +152,9 @@ namespace IrisContabilidad.modelos
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         tipo_gasto tipoGasto = new tipo_gasto();
-                        tipoGasto.id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                        tipoGasto.nombre = ds.Tables[0].Rows[0][1].ToString();
-                        tipoGasto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
-
+                        tipoGasto.id = Convert.ToInt16(row[0].ToString());
+                        tipoGasto.nombre = row[1].ToString();
+                        tipoGasto.activo = Convert.ToBoolean(row[2].ToString());
                         lista.Add(tipoGasto);
                     }
                 }

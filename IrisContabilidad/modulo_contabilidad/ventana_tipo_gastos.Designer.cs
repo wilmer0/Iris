@@ -80,6 +80,7 @@
             this.activoCheck.TabIndex = 92;
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
             // 
             // nombreText
             // 
@@ -89,6 +90,7 @@
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(253, 26);
             this.nombreText.TabIndex = 91;
+            this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyDown);
             // 
             // label3
             // 
@@ -119,6 +121,7 @@
             this.tipoIdText.Name = "tipoIdText";
             this.tipoIdText.Size = new System.Drawing.Size(155, 26);
             this.tipoIdText.TabIndex = 18;
+            this.tipoIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoIdText_KeyDown);
             // 
             // label2
             // 
@@ -140,6 +143,7 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 23;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // ventana_tipo_gastos
             // 

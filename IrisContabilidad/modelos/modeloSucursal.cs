@@ -47,7 +47,7 @@ namespace IrisContabilidad.modelos
                 }
 
                 //se agrega  
-                sql = "insert into sucursal(codigo,codigo_empresa,secuencia,activo,direccion) values('" +sucursal.codigo + "','" + sucursal.codigo_empresa + "','" + sucursal.secuencia + "','" + activo.ToString() + "','" + sucursal.direccion + "')";
+                sql = "insert into sucursal(codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax) values('" +sucursal.codigo + "','" + sucursal.codigo_empresa + "','" + sucursal.secuencia + "','" + activo.ToString() + "','" + sucursal.direccion + "','"+sucursal.telefono1+"','"+sucursal.telefono2+"','"+sucursal.fax+"')";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
 
@@ -91,7 +91,7 @@ namespace IrisContabilidad.modelos
                 }
 
                 //se modifica  
-                sql = "update sucursal set codigo_empresa='" + sucursal.codigo_empresa + "',secuencia='" + sucursal.secuencia + "',activo='" + activo + "',direccion='" + sucursal.direccion + "' where codigo='" + sucursal.codigo + "'";
+                sql = "update sucursal set codigo_empresa='" + sucursal.codigo_empresa + "',secuencia='" + sucursal.secuencia + "',activo='" + activo + "',direccion='" + sucursal.direccion + "',telefono1='"+sucursal.telefono1+"',telefono2='"+sucursal.telefono2+"',fax='"+sucursal.fax+"' where codigo='" + sucursal.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
 
@@ -142,7 +142,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 sucursal sucursal = new sucursal();
-                string sql = "select codigo,codigo_empresa,secuencia,activo,direccion from sucursal where codigo='" + id +"'";
+                string sql = "select codigo,codigo_empresa,secuencia,activo,direccion from sucursal,telefono1,telefono2,fax where codigo='" + id +"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -180,7 +180,7 @@ namespace IrisContabilidad.modelos
                
                 List<sucursal> lista =new List<sucursal>();
                 string sql = "";
-                sql = "select codigo,codigo_empresa,secuencia,activo,direccion from sucursal ";
+                sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax from sucursal ";
                 if (mantenimiento == false)
                 {
                     sql+=" where activo=1";

@@ -86,15 +86,16 @@ namespace IrisContabilidad.modulo_sistema
                 MessageBox.Show("Error haciendo click en el módulo", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void loadModulos()
         {
             try
             {
-                listaTemp=new List<string>();
-                listaModulo=new List<modulo>();
+                listaTemp = new List<string>();
+                listaModulo = new List<modulo>();
                 listaTemp = modeloEmpleado.GetListaModulosByEmpleado(empleado);
-                List<string> listaTempVentanas=new List<string>();
-                
+                List<string> listaTempVentanas = new List<string>();
+
                 //limpiar el layout de modulos para empezar agregar
                 if (flowLayoutModulos.Controls.Count > 0)
                 {
@@ -110,26 +111,26 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo = new Button();
                     botonModulo.FlatStyle = FlatStyle.Flat;
                     botonModulo.BackgroundImageLayout = ImageLayout.Stretch;
-                    botonModulo.Width = 97;
-                    botonModulo.Height = 77;
+                    botonModulo.Width = 165;
+                    botonModulo.Height = 140;
                     botonModulo.BackgroundImage = Image.FromFile(RutaImagenesModulos + modulo.imagen);
                     botonModulo.Click += BotonModuloOnClick;
                     botonModulo.Tag = moduloActual;
+                    //letras
+                    botonModulo.TextAlign = ContentAlignment.BottomCenter;
+                    botonModulo.Text = modulo.nombre;
+                    botonModulo.ForeColor = Color.White;
+                    botonModulo.Font = new Font(botonModulo.Font.FontFamily.Name, 19);
                     flowLayoutModulos.Controls.Add(botonModulo);
-                    
-                });
 
+                });
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loadModulos.: " + ex.ToString(), "", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                    MessageBoxIcon.Error);
             }
         }
-
-        
-
-
         public void loadVentanas(int idModulo)
         {
             try

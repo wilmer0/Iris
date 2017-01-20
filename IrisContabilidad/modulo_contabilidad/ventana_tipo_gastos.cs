@@ -176,5 +176,69 @@ namespace IrisContabilidad.modulo_contabilidad
             tipoGasto = null;
             loadVentana();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_tipo_gastos ventana=new ventana_busqueda_tipo_gastos(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult== DialogResult.OK)
+            {
+                tipoGasto = ventana.getObjeto();
+                loadVentana();
+            }
+        }
+
+        private void tipoIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+
+
+                    tipoGasto = modeloTipoGastos.getTipoGastoById(Convert.ToInt16(tipoIdText.Text));
+                    loadVentana();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void nombreText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    activoCheck.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    button1.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 }

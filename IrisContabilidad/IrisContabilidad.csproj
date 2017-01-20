@@ -164,6 +164,12 @@
     <Compile Include="modelos\modeloTipoComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
+    <Compile Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.Designer.cs">
+      <DependentUpon>ventana_busqueda_tipo_gastos.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_contabilidad\ventana_tipo_gastos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -472,6 +478,9 @@
     <Compile Include="ventanas_comunes\VisorReporteComun.Designer.cs">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.resx">
+      <DependentUpon>ventana_busqueda_tipo_gastos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
     </EmbeddedResource>
