@@ -63,6 +63,8 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     creditoText.Text = cliente.limite_credito.ToString("N");
                     tipoComprobante =modeloTipoComprobante.getTipoComprobanteById(cliente.codigo_tipo_comprobante_fiscal);
                     loadTipocomprobante();
+                    direccion1Text.Text = cliente.direccion1;
+                    direccion2Text.Text = cliente.direccion2;
                     clienteContadoCheck.Checked = Convert.ToBoolean(cliente.cliente_contado);
                     activoCheck.Checked = Convert.ToBoolean(cliente.activo);
                 }
@@ -84,6 +86,8 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     tipoNcfIdText.Text = "";
                     tipoNcfText.Text = "";
                     creditoText.Text = "";
+                    direccion1Text.Text = "";
+                    direccion2Text.Text = "";
                     clienteContadoCheck.Checked = false;
                     activoCheck.Checked = true;
                 }
@@ -367,17 +371,24 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
         private void categoriaIdText_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            try
             {
-                abrirCreditoCheck.Focus();
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    abrirCreditoCheck.Focus();
 
-                categoriaCliente = modeloCategoriaCliente.getCategoriaClienteById(Convert.ToInt16(categoriaIdText.Text));
-                loadCategoriaCliente();
+                    categoriaCliente = modeloCategoriaCliente.getCategoriaClienteById(Convert.ToInt16(categoriaIdText.Text));
+                    loadCategoriaCliente();
+                }
+                if (e.KeyCode == Keys.F1)
+                {
+                    button5_Click(null, null);
+                }
             }
-            if (e.KeyCode == Keys.F1)
+            catch (Exception)
             {
-                button5_Click(null,null);
             }
+            
         }
 
         private void clienteIdText_KeyPress(object sender, KeyPressEventArgs e)
@@ -410,17 +421,23 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
         private void tipoNcfIdText_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            try
             {
-                clienteContadoCheck.Focus();
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    direccion1Text.Focus();
+                    direccion1Text.SelectAll();
 
-                tipoComprobante = modeloTipoComprobante.getTipoComprobanteById(Convert.ToInt16(tipoNcfIdText.Text));
-                loadTipocomprobante();
+                }
+                if (e.KeyCode == Keys.F1)
+                {
+                    button6_Click(null, null);
+                }
             }
-            if (e.KeyCode == Keys.F1)
+            catch (Exception)
             {
-                button6_Click(null, null);
             }
+           
         }
 
         private void clienteContadoCheck_KeyDown(object sender, KeyEventArgs e)
@@ -437,6 +454,34 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             {
                 button1.Focus();
             }
+        }
+
+        private void direccion2Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                clienteContadoCheck.Focus();
+            }
+        }
+
+        private void direccion1Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                direccion2Text.Focus();
+                direccion2Text.SelectAll();
+
+            }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

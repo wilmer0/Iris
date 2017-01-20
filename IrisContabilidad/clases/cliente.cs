@@ -22,6 +22,9 @@ namespace IrisContabilidad.clases
         public string cedula { get; set; }
         public string rnc { get; set; }
         public int codigo_tipo_comprobante_fiscal { get; set; }
+        public string direccion1 { get; set; }
+        public string direccion2 { get; set; }
+
 
     }
 }

@@ -115,8 +115,6 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo.BackgroundImage = Image.FromFile(RutaImagenesModulos + modulo.imagen);
                     botonModulo.Click += BotonModuloOnClick;
                     botonModulo.Tag = moduloActual;
-                    //loadVentanas(Convert.ToInt16(moduloActual));
-                    //MessageBox.Show("ventanas cargadas");
                     flowLayoutModulos.Controls.Add(botonModulo);
                     
                 });
@@ -162,10 +160,10 @@ namespace IrisContabilidad.modulo_sistema
                     
                     
                     //dando estilo al texto del boton
-                    //botonVentana.TextAlign= ContentAlignment.BottomCenter;
-                    //botonVentana.Text = ventana.nombre_ventana;
-                    //botonVentana.ForeColor = Color.Blue;
-                    //botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, 20);
+                    botonVentana.TextAlign = ContentAlignment.BottomCenter;
+                    botonVentana.Text = ventana.nombre_ventana;
+                    botonVentana.ForeColor = Color.White;
+                    botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, 20);
                     
                     
                     //estableciendo la imagen de fondo del boton

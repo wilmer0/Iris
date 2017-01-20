@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_cliente));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.direccion2Text = new System.Windows.Forms.TextBox();
+            this.direccion1Text = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.activoCheck = new System.Windows.Forms.CheckBox();
             this.clienteContadoCheck = new System.Windows.Forms.CheckBox();
             this.tipoNcfText = new System.Windows.Forms.TextBox();
@@ -69,6 +73,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(12, 597);
             this.panel1.Size = new System.Drawing.Size(948, 54);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button2
             // 
@@ -102,6 +107,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.direccion2Text);
+            this.tabPage1.Controls.Add(this.direccion1Text);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.activoCheck);
             this.tabPage1.Controls.Add(this.clienteContadoCheck);
             this.tabPage1.Controls.Add(this.tipoNcfText);
@@ -133,6 +142,51 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cliente";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // direccion2Text
+            // 
+            this.direccion2Text.BackColor = System.Drawing.Color.White;
+            this.direccion2Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.direccion2Text.Location = new System.Drawing.Point(476, 275);
+            this.direccion2Text.MaxLength = 30;
+            this.direccion2Text.Multiline = true;
+            this.direccion2Text.Name = "direccion2Text";
+            this.direccion2Text.Size = new System.Drawing.Size(421, 67);
+            this.direccion2Text.TabIndex = 65;
+            this.direccion2Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.direccion2Text_KeyDown);
+            // 
+            // direccion1Text
+            // 
+            this.direccion1Text.BackColor = System.Drawing.Color.White;
+            this.direccion1Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.direccion1Text.Location = new System.Drawing.Point(476, 176);
+            this.direccion1Text.MaxLength = 30;
+            this.direccion1Text.Multiline = true;
+            this.direccion1Text.Name = "direccion1Text";
+            this.direccion1Text.Size = new System.Drawing.Size(421, 76);
+            this.direccion1Text.TabIndex = 64;
+            this.direccion1Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.direccion1Text_KeyDown);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(383, 278);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(73, 20);
+            this.label11.TabIndex = 63;
+            this.label11.Text = "Tipo ncf";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(383, 179);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 20);
+            this.label10.TabIndex = 62;
+            this.label10.Text = "Tipo ncf";
             // 
             // activoCheck
             // 
@@ -141,7 +195,7 @@
             this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(476, 214);
+            this.activoCheck.Location = new System.Drawing.Point(476, 422);
             this.activoCheck.Name = "activoCheck";
             this.activoCheck.Size = new System.Drawing.Size(68, 21);
             this.activoCheck.TabIndex = 61;
@@ -154,7 +208,7 @@
             this.clienteContadoCheck.AutoSize = true;
             this.clienteContadoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clienteContadoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteContadoCheck.Location = new System.Drawing.Point(476, 179);
+            this.clienteContadoCheck.Location = new System.Drawing.Point(476, 375);
             this.clienteContadoCheck.Name = "clienteContadoCheck";
             this.clienteContadoCheck.Size = new System.Drawing.Size(155, 21);
             this.clienteContadoCheck.TabIndex = 60;
@@ -490,5 +544,9 @@
         private System.Windows.Forms.TextBox tipoNcfIdText;
         private System.Windows.Forms.CheckBox clienteContadoCheck;
         private System.Windows.Forms.CheckBox activoCheck;
+        private System.Windows.Forms.TextBox direccion2Text;
+        private System.Windows.Forms.TextBox direccion1Text;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

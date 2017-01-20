@@ -135,6 +135,8 @@
     <Compile Include="clases\ventana.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_venta_encabezado.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCaja.cs" />
     <Compile Include="modelos\modeloCajaIngresosEgresosConceptos.cs" />
@@ -162,6 +164,12 @@
     <Compile Include="modelos\modeloTipoComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
+    <Compile Include="modulo_contabilidad\ventana_tipo_gastos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_contabilidad\ventana_tipo_gastos.Designer.cs">
+      <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_categoria_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -464,6 +472,9 @@
     <Compile Include="ventanas_comunes\VisorReporteComun.Designer.cs">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
+      <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_busqueda_categoria_cliente.resx">
       <DependentUpon>ventana_busqueda_categoria_cliente.cs</DependentUpon>
     </EmbeddedResource>

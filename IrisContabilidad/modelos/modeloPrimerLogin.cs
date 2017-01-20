@@ -250,6 +250,7 @@ namespace IrisContabilidad.modelos
                    6-modulo opciones
                    7-modulo nomina
                    8-modulo inicio rapido
+                   9-modulo contabilidad
                 */
                 #region
                 List<modulo> listaModulo = new List<modulo>();
@@ -317,6 +318,14 @@ namespace IrisContabilidad.modelos
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_inicio_rapido";
                 listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = 7;
+                modulo.nombre = "modulo contabilidad";
+                modulo.imagen = "contabilidad1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_contabilidad";
+                listaModulo.Add(modulo);
 
                 #endregion
 
@@ -348,6 +357,7 @@ namespace IrisContabilidad.modelos
                 //6-modulo opciones
                 //7-modulo nomina
                 //8-modulo inicio rapido
+                //9-modulo contabilidad
                 List<ventana> listaVentana=new List<ventana>();
 
                 //modulo empresa
@@ -381,6 +391,7 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                
                 #endregion
+
 
 
                 //modulo facturacion
@@ -442,6 +453,7 @@ namespace IrisContabilidad.modelos
                 #endregion
 
 
+
                 //modulo cuentas por cobrar
                 #region
                 //nueva ventana
@@ -464,7 +476,8 @@ namespace IrisContabilidad.modelos
                 #endregion
 
 
-               //modulo cuentas por pagar
+
+                //modulo cuentas por pagar
                 #region
                 //nueva ventana
                 ventana = new ventana();
@@ -478,6 +491,7 @@ namespace IrisContabilidad.modelos
                 #endregion
 
                 
+
                 //modulo inventario
                 #region
                 //nueva ventana
@@ -537,9 +551,12 @@ namespace IrisContabilidad.modelos
                 #endregion
 
 
+
                 //modulo opciones
                 #region
                 #endregion
+
+
 
                 //modulo nomina
                 #region
@@ -591,16 +608,30 @@ namespace IrisContabilidad.modelos
                 #endregion
 
 
+
                 //modulo inicio rapido
                 #region
                 #endregion
+
+
 
                 //modulo sistema
                 #region
                 #endregion
 
 
-               
+                //modulo contabilidad
+                #region
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana tipo gastos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_contabilidad.ventana_tipo_gastos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 7;
+                ventana.imagen = "tipo_gastos1.png";
+                listaVentana.Add(ventana);
+                #endregion
 
 
                 listaVentana.ForEach(ventanaActual =>
