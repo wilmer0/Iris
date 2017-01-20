@@ -605,7 +605,7 @@ namespace IrisContabilidad.modelos
 
                 listaVentana.ForEach(ventanaActual =>
                 {
-                    modeloModulo.agregarVentana(ventanaActual);
+                    modeloModulo.agregarPoolVentana(ventanaActual);
                 });
                 
 
