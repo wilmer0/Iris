@@ -145,6 +145,7 @@ namespace IrisContabilidad.modulo_sistema
                 //agregando las ventanas nuevas al flow layout
                 string sql = "SELECT id_modulo,id_ventana from modulos_vs_ventanas where id_modulo='"+idModulo+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                List<Button> listaBotonesVentanas=new List<Button>();
                 foreach (DataRow rowVentana  in ds.Tables[0].Rows)
                 {
                     botonVentana = new Button();
@@ -171,8 +172,15 @@ namespace IrisContabilidad.modulo_sistema
                     botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + ventana.imagen);
                     botonVentana.Tag = ventana.codigo;
                     botonVentana.Click += BotonVentanaOnClick;
-                    flowLayoutVentanas.Controls.Add(botonVentana);
+                    listaBotonesVentanas.Add(botonVentana);
+                    //flowLayoutVentanas.Controls.Add(botonVentana);
                 }
+                //ordenar las ventanas en orden alfabetico
+                listaBotonesVentanas = listaBotonesVentanas.OrderBy(x => x.Text).ToList();
+                listaBotonesVentanas.ForEach(x =>
+                {
+                    flowLayoutVentanas.Controls.Add(x);
+                });
             }
             catch (Exception ex)
             {

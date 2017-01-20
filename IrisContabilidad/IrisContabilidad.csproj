@@ -165,6 +165,7 @@
     <Compile Include="modelos\modeloTipoComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
+    <Compile Include="modelos\modeloVendedor.cs" />
     <Compile Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.cs">
       <SubType>Form</SubType>
     </Compile>
