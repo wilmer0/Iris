@@ -450,6 +450,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "egresos_ingresos1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "ventana vendedor";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_vendedor";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "vendedor1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
