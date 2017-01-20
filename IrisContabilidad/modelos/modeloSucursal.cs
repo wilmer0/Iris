@@ -142,7 +142,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 sucursal sucursal = new sucursal();
-                string sql = "select codigo,codigo_empresa,secuencia,activo,direccion from sucursal,telefono1,telefono2,fax where codigo='" + id +"'";
+                string sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax from sucursal where codigo='" + id +"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

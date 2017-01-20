@@ -633,11 +633,6 @@
             <Border>
               <Style>None</Style>
             </Border>
-            <BottomBorder>
-              <Color>Black</Color>
-              <Style>Solid</Style>
-              <Width>1pt</Width>
-            </BottomBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -673,11 +668,6 @@
             <Border>
               <Style>None</Style>
             </Border>
-            <BottomBorder>
-              <Color>Black</Color>
-              <Style>Solid</Style>
-              <Width>1pt</Width>
-            </BottomBorder>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -704,8 +694,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.72223in</Top>
-          <Left>0.09719in</Left>
+          <Top>0.70834in</Top>
+          <Left>0.0972in</Left>
           <Height>0.3125in</Height>
           <Width>8.03125in</Width>
           <ZIndex>2</ZIndex>
@@ -713,11 +703,7 @@
             <Border>
               <Style>None</Style>
             </Border>
-            <BottomBorder>
-              <Color>Black</Color>
-              <Style>Solid</Style>
-              <Width>1pt</Width>
-            </BottomBorder>
+            <BackgroundColor>LightGrey</BackgroundColor>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -1110,7 +1096,7 @@
           <Top>1.88195in</Top>
           <Left>6.17011in</Left>
           <Height>0.25in</Height>
-          <Width>1.97223in</Width>
+          <Width>1.95833in</Width>
           <ZIndex>14</ZIndex>
           <Style>
             <Border>
@@ -1142,7 +1128,7 @@
           <Top>2.14584in</Top>
           <Left>6.17011in</Left>
           <Height>0.25in</Height>
-          <Width>1.97223in</Width>
+          <Width>1.95833in</Width>
           <ZIndex>15</ZIndex>
           <Style>
             <Border>
@@ -1176,7 +1162,7 @@
           <Top>2.40973in</Top>
           <Left>6.17011in</Left>
           <Height>0.25in</Height>
-          <Width>1.97223in</Width>
+          <Width>1.95833in</Width>
           <ZIndex>16</ZIndex>
           <Style>
             <Border>
@@ -1310,7 +1296,7 @@
           <Top>1.61806in</Top>
           <Left>6.17011in</Left>
           <Height>0.25in</Height>
-          <Width>1.56945in</Width>
+          <Width>1.95833in</Width>
           <ZIndex>20</ZIndex>
           <Style>
             <Border>
@@ -1374,7 +1360,7 @@
           <Top>1.35417in</Top>
           <Left>6.17011in</Left>
           <Height>0.25in</Height>
-          <Width>1in</Width>
+          <Width>1.95833in</Width>
           <ZIndex>22</ZIndex>
           <Style>
             <Border>

@@ -112,7 +112,8 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
 
-                if (MessageBox.Show("Desea imprimir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                if (MessageBox.Show("Desea imprimir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
+                    DialogResult.No)
                 {
                     return;
                 }
@@ -120,20 +121,21 @@ namespace IrisContabilidad.modulo_inventario
                 {
                     return;
                 }
+
                 #region
-               
+
 
                 //datos generales
                 String reporte = "IrisContabilidad.reportes.reporte_producto.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
                 listaReporteProductoEncabezado = new List<reporte_producto_encabezado>();
-                listaReporteProductoDetalle=new List<reporte_producto_detalle>();
-                reporteProductoEncabezado=new reporte_producto_encabezado();
-                listaProducto=new List<producto>();
-                
+                listaReporteProductoDetalle = new List<reporte_producto_detalle>();
+                reporteProductoEncabezado = new reporte_producto_encabezado();
+                listaProducto = new List<producto>();
+
 
                 //llenar encabezado
-                reporteProductoEncabezado.empresa = modeloEmpresa.getEmpresaById(1).nombre;
+                reporteProductoEncabezado.empresa = modeloEmpresa.getEmpresaBySucursalId(empleado.codigo_sucursal).nombre;
                 reporteProductoEncabezado.direccion = modeloSucursal.getSucursalById(empleado.codigo_sucursal).direccion;
                 reporteProductoEncabezado.empleado = empleado.nombre;
                 reporteProductoEncabezado.fecha_impresion = DateTime.Now;
@@ -145,28 +147,33 @@ namespace IrisContabilidad.modulo_inventario
                 reporteProductoEncabezado.subcategoria = subcategoriaText.Text;
                 reporteProductoEncabezado.unidad_minima = unidadMinimaText.Text;
                 listaReporteProductoEncabezado.Add(reporteProductoEncabezado);
-                
+
                 //llenar lista detalle
                 listaProducto = modeloProducto.getListaCompleta();
 
 
                 //filtar lista
+
                 #region
+
                 //nombre
                 if (productoText.Text != "")
                 {
 
-                    listaProducto = listaProducto.FindAll(x => x.nombre.ToLower().Contains(productoText.Text.ToLower())).ToList();
+                    listaProducto =
+                        listaProducto.FindAll(x => x.nombre.ToLower().Contains(productoText.Text.ToLower())).ToList();
                 }
                 //referencia
                 if (referenciaText.Text != "")
                 {
-                    listaProducto =listaProducto.FindAll(x => x.referencia.ToLower().Contains(referenciaText.Text.ToLower()));
+                    listaProducto =
+                        listaProducto.FindAll(x => x.referencia.ToLower().Contains(referenciaText.Text.ToLower()));
                 }
                 //unidad minima
-                if (unidadMinimaIdText.Text !="")
+                if (unidadMinimaIdText.Text != "")
                 {
-                    listaProducto = listaProducto.FindAll(x => x.codigo_unidad_minima == Convert.ToInt16(unidadMinimaIdText.Text));
+                    listaProducto =
+                        listaProducto.FindAll(x => x.codigo_unidad_minima == Convert.ToInt16(unidadMinimaIdText.Text));
                 }
                 //itebis
                 if (itebisIdText.Text != "")
@@ -176,26 +183,29 @@ namespace IrisContabilidad.modulo_inventario
                 //categoria
                 if (categoriaIdText.Text != "")
                 {
-                    listaProducto = listaProducto.FindAll(x => x.codigo_categoria == Convert.ToInt16(categoriaIdText.Text));
+                    listaProducto =
+                        listaProducto.FindAll(x => x.codigo_categoria == Convert.ToInt16(categoriaIdText.Text));
                 }
                 //subcategoria
                 if (subcategoriaIdText.Text != "")
                 {
-                    listaProducto = listaProducto.FindAll(x => x.codigo_subcategoria == Convert.ToInt16(subcategoriaIdText.Text));
+                    listaProducto =
+                        listaProducto.FindAll(x => x.codigo_subcategoria == Convert.ToInt16(subcategoriaIdText.Text));
                 }
                 //almacen
                 if (almacenIdText.Text != "")
                 {
                     listaProducto = listaProducto.FindAll(x => x.codigo_almacen == Convert.ToInt16(almacenIdText.Text));
                 }
+
                 #endregion
 
 
                 //llelando la lista reporteProductoDetalle
-                foreach(var x in listaProducto)
+                foreach (var x in listaProducto)
                 {
-                    reporteProductoDetalle=new reporte_producto_detalle();
-                    
+                    reporteProductoDetalle = new reporte_producto_detalle();
+
                     almacen = modeloAlmacen.getAlmacenById(x.codigo_almacen);
                     reporteProductoDetalle.almacen = almacen.nombre;
                     categoria = modeloCategoriaProducto.getCategoriaById(x.codigo_categoria);
@@ -222,7 +232,8 @@ namespace IrisContabilidad.modulo_inventario
                 }
 
 
-                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteProductoEncabezado);
+                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado",
+                    listaReporteProductoEncabezado);
                 listaReportDataSource.Add(reporteGrafico);
 
                 ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", listaReporteProductoDetalle);
@@ -231,16 +242,12 @@ namespace IrisContabilidad.modulo_inventario
 
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, false);
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter,
+                    false);
                 ventana.ShowDialog();
 
                 #endregion
 
-
-
-
-
-               
             }
             catch (Exception ex)
             {
@@ -289,10 +296,10 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                subcategoriaIdText.Text = "";
+                subcategoriaText.Text = "";
                 if (subCategoria == null)
                 {
-                    subcategoriaIdText.Text = "";
-                    subcategoriaText.Text = "";
                     return;
                 }
                 subcategoriaIdText.Text = subCategoria.codigo.ToString();
@@ -322,10 +329,10 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                categoriaIdText.Text = "";
+                categoriaText.Text = "";
                 if (categoria == null)
                 {
-                    categoriaIdText.Text = "";
-                    categoriaText.Text = "";
                     return;
                 }
                 
@@ -357,10 +364,10 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                itebisIdText.Text = "";
+                itebisText.Text = "";
                 if (itebis == null)
                 {
-                    itebisIdText.Text = "";
-                    itebisText.Text = "";
                     return;
                 }
 
@@ -392,10 +399,10 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                almacenIdText.Text = "";
+                almacenText.Text = "";
                 if (almacen == null)
                 {
-                    almacenIdText.Text = "";
-                    almacenText.Text = "";
                     return;
                 }
 
@@ -426,10 +433,10 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                unidadMinimaIdText.Text = "";
+                unidadMinimaText.Text = "";
                 if (unidad == null)
                 {
-                    unidadMinimaIdText.Text = "";
-                    unidadMinimaText.Text = "";
                     return;
                 }
                 unidadMinimaIdText.Text = unidad.codigo.ToString();
@@ -459,6 +466,118 @@ namespace IrisContabilidad.modulo_inventario
             {
                 unidadMinimaIdText.Focus();
                 unidadMinimaIdText.SelectAll();
+            }
+        }
+
+        private void unidadMinimaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button8_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    itebisIdText.Focus();
+                    itebisIdText.SelectAll();
+
+                    unidad = modeloUnidad.getUnidadById(Convert.ToInt16(unidadMinimaIdText.Text));
+                    loadUnidad();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void categoriaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    subcategoriaIdText.Focus();
+                    subcategoriaIdText.SelectAll();
+
+                    categoria = modeloCategoriaProducto.getCategoriaById(Convert.ToInt16(categoriaIdText.Text));
+                    loadCategoria();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void itebisIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button5_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    categoriaIdText.Focus();
+                    categoriaIdText.SelectAll();
+
+                    itebis = modeloItebis.getItebisById(Convert.ToInt16(itebisIdText.Text));
+                    loadItebis();
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void subcategoriaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button6_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    almacenIdText.Focus();
+                    almacenIdText.SelectAll();
+
+                    subCategoria =modeloSubcategoriaProducto.getSubCategoriaById(Convert.ToInt16(subcategoriaIdText.Text));
+                    loadSubCategoria();
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void almacenIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button7_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    button1.Focus();
+
+                    almacen = modeloAlmacen.getAlmacenById(Convert.ToInt16(almacenIdText.Text));
+                    loadAlmacen();
+                }
+            }
+            catch (Exception)
+            {
+                
             }
         }
     }
