@@ -38,7 +38,7 @@ namespace IrisContabilidad.modulo_opciones
         {
             try
             {
-                usuarioLabelText.Text = empleado.nombre;
+                usuarioLabelText.Text = "Usuario.:"+empleado.nombre;
 
                 claveActualText.Focus();
                 claveActualText.SelectAll();
@@ -109,6 +109,7 @@ namespace IrisContabilidad.modulo_opciones
                 if (modeloEmpleado.cambiarClave(empleado,claveActualText.Text,claveNuevaText.Text,claveConfirmarText.Text) == true)
                 {
                     MessageBox.Show("Se efectuó el cambio correctamente", "", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                   button3_Click_1(null,null);
                 }
                 else
                 {

@@ -90,10 +90,7 @@ namespace IrisContabilidad.modulo_sistema
             }
         }
 
-        public void button3_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void formBase_Load_1(object sender, EventArgs e)
         {

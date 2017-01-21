@@ -120,7 +120,7 @@ namespace IrisContabilidad.modulo_empresa
             }
             if (e.KeyCode == Keys.F2)
             {
-                button3_Click(null, null);
+                button3_Click_1(null, null);
             }
         }
 

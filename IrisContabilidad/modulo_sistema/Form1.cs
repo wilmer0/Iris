@@ -205,6 +205,9 @@ namespace IrisContabilidad
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //empleado = modeloEmpleado.getEmpleadoById(1);
+            //empleado.clave = utilidades.encriptar("123");
+            //modeloEmpleado.modificarEmpleado(empleado);
             //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
             //modeloPrimerLogin.primerosDatos();
             //modeloPrimerLogin.agregarModulos();
