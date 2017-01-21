@@ -13,7 +13,7 @@ namespace IrisContabilidad.modelos
     {
         //objetos
         utilidades utilidades = new utilidades();
-
+        private tipo_gasto tipoGasto;
 
 
 
@@ -114,15 +114,14 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                tipo_gasto tipoGasto = new tipo_gasto();
                 string sql = "select id,nombre,activo from tipo_gasto where id='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count > 0)
+                tipoGasto=new tipo_gasto();
+                if (ds.Tables[0].Rows.Count>0)
                 {
                     tipoGasto.id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     tipoGasto.nombre = ds.Tables[0].Rows[0][1].ToString();
                     tipoGasto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
-
                 }
                 return tipoGasto;
             }

@@ -45,17 +45,21 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
-                ciudadIdText.Text = "";
-                ciudadText.Text = "";
+
                 if (ciudad != null)
                 {
                     ciudadIdText.Text = ciudad.codigo.ToString();
                     ciudadText.Text = ciudad.nombre;
                 }
+                else
+                {
+                    ciudadIdText.Text = "";
+                    ciudadText.Text = "";
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loadNominaTipo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loadCiudad.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //load tipo gasto
@@ -63,17 +67,21 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
-                tipoGastoIdText.Text = "";
-                tipoGastoText.Text = "";
+              
                 if (tipoGasto != null)
                 {
                     tipoGastoIdText.Text = tipoGasto.id.ToString();
                     tipoGastoText.Text = tipoGasto.nombre;
                 }
+                else
+                {
+                    tipoGastoIdText.Text = "";
+                    tipoGastoText.Text = "";
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loadNominaTipo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loadTipoGasto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void loadVentana()
@@ -437,6 +445,8 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
 
                     ciudad = modeloCiudad.getCiudadById(Convert.ToInt16(ciudadIdText.Text));
+                    ciudadIdText.Text="";
+                    ciudadText.Text="";
                     loadCiudad();
                 }
             }
@@ -459,6 +469,8 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     direccionText.SelectAll();
 
                     tipoGasto = modeloTipoGasto.getTipoGastoById(Convert.ToInt16(tipoGastoIdText.Text));
+                    tipoGastoIdText.Text = "";
+                    tipoGastoText.Text = "";
                     loadTipoGasto();
                 }
             }

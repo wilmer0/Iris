@@ -199,7 +199,7 @@ namespace IrisContabilidad
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button1.Focus();
+                button1_Click(null,null);
             }
         }
 
