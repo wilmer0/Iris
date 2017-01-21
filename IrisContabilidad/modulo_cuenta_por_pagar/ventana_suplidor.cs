@@ -45,15 +45,12 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
+                ciudadIdText.Text = "";
+                ciudadText.Text = "";
                 if (ciudad != null)
                 {
                     ciudadIdText.Text = ciudad.codigo.ToString();
                     ciudadText.Text = ciudad.nombre;
-                }
-                else
-                {
-                    ciudadIdText.Text = "";
-                    ciudadText.Text = "";
                 }
             }
             catch (Exception ex)
@@ -66,15 +63,12 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
+                tipoGastoIdText.Text = "";
+                tipoGastoText.Text = "";
                 if (tipoGasto != null)
                 {
                     tipoGastoIdText.Text = tipoGasto.id.ToString();
                     tipoGastoText.Text = tipoGasto.nombre;
-                }
-                else
-                {
-                    tipoGastoIdText.Text = "";
-                    tipoGastoText.Text = "";
                 }
             }
             catch (Exception ex)
@@ -201,9 +195,9 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     crear = true;
                     suplidor.codigo = modeloSuplidor.getNext();
                     suplidor.fecha_creacion = DateTime.Today;
-                    suplidor.fecha_modificacion = DateTime.Today;
                     suplidor.codigo_sucursal_creado = empleadoSingleton.codigo_sucursal;
                 }
+                suplidor.fecha_modificacion = DateTime.Today;
                 suplidor.nombre = nombreText.Text;
                 suplidor.rnc = rncText.Text;
                 suplidor.telefono1 = telefono1Text.Text;
@@ -221,7 +215,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     if ((modeloSuplidor.agregarSuplidor(suplidor)) == true)
                     {
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        empleado = null;
+                        suplidor = null;
                         loadVentana();
                     }
                     else
@@ -236,7 +230,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     if ((modeloSuplidor.modificarSuplidor(suplidor)) == true)
                     {
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        empleado = null;
+                        suplidor = null;
                         loadVentana();
                     }
                     else
@@ -315,7 +309,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             if (ventana.DialogResult == DialogResult.OK)
             {
                 ciudad = ventana.getObjeto();
-               loadCiudad();
+                loadCiudad();
             }
         }
 
@@ -434,7 +428,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             {
                 if (e.KeyCode == Keys.F1)
                 {
-                    button8_Click(null,null);
+                    button8_Click(null, null);
                 }
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
                 {
@@ -442,14 +436,13 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     tipoGastoIdText.SelectAll();
 
 
-                    ciudad = modeloCiudad.getCiudadById(Convert.ToInt16(ciudadText.Text));
+                    ciudad = modeloCiudad.getCiudadById(Convert.ToInt16(ciudadIdText.Text));
                     loadCiudad();
                 }
             }
             catch (Exception)
             {
             }
-            
         }
 
         private void tipoGastoIdText_KeyDown(object sender, KeyEventArgs e)
@@ -472,7 +465,6 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             catch (Exception)
             {
             }
-            
         }
 
         private void ciudadIdText_KeyPress(object sender, KeyPressEventArgs e)
