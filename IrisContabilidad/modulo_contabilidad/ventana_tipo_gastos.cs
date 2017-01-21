@@ -193,7 +193,6 @@ namespace IrisContabilidad.modulo_contabilidad
         {
             try
             {
-
                 if (e.KeyCode == Keys.F1)
                 {
                     button4_Click(null,null);
