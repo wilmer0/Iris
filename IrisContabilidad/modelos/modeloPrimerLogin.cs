@@ -680,7 +680,6 @@ namespace IrisContabilidad.modelos
                         utilidades.ejecutarcomando_mysql(sql);
                     }
                 }
-
             }
             catch (Exception ex)
             {
