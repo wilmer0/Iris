@@ -32,7 +32,7 @@ namespace IrisContabilidad.modulo_opciones
         {
             InitializeComponent();
             this.empleado = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana sucursal");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana documentos");
             this.Text = tituloLabel.Text;
         }
 

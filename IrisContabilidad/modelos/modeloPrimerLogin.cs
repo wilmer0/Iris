@@ -563,6 +563,15 @@ namespace IrisContabilidad.modelos
 
                 //modulo opciones
                 #region
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Cambio de clave";
+                ventana.nombre_logico = "IrisContabilidad.modulo_opciones.ventana_cambio_clave";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 6;
+                ventana.imagen = "cambio_clave1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 

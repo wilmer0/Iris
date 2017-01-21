@@ -426,5 +426,56 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                 return null;
             }
         }
+
+        public Boolean cambiarClave(empleado empleado,string claveActual,string claveNueva,string claveConfirmar)
+        {
+            try
+            {
+                //empleado vacio
+                if (empleado == null)
+                {
+                    MessageBox.Show("Empleado nulo", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //clave nueva vacia
+                if (claveNueva == "")
+                {
+                    MessageBox.Show("Clave nueva esta vacia", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //clave confirmar
+                if (claveConfirmar == "")
+                {
+                    MessageBox.Show("Clave confirmación esta vacia", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //clave actual es la de verdad
+                if (utilidades.encriptar(claveActual) != empleado.clave)
+                {
+                    MessageBox.Show("La clave actual no es la correcta", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //claves iguales
+                if (claveNueva != claveConfirmar)
+                {
+                    MessageBox.Show("Las claves no coinciden", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                
+                
+                //se cambia la clave
+                empleado.clave = utilidades.encriptar(claveNueva);
+                modificarEmpleado(empleado);
+
+
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cambiarClave.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

@@ -460,6 +460,12 @@
     <Compile Include="modulo_nomina\ventana_cargo.Designer.cs">
       <DependentUpon>ventana_cargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_opciones\ventana_cambio_clave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_opciones\ventana_cambio_clave.Designer.cs">
+      <DependentUpon>ventana_cambio_clave.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_opciones\ventana_carga_documentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -638,6 +644,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_tipo_nomina.resx">
       <DependentUpon>ventana_tipo_nomina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_opciones\ventana_cambio_clave.resx">
+      <DependentUpon>ventana_cambio_clave.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_opciones\ventana_carga_documentos.resx">
       <DependentUpon>ventana_carga_documentos.cs</DependentUpon>
