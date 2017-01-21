@@ -107,8 +107,6 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
-
         //get objeto
         public tipo_gasto getTipoGastoById(int id)
         {
