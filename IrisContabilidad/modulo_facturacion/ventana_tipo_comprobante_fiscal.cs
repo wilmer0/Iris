@@ -53,9 +53,10 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     tipoComprobanteIdText.Focus();
                     tipoComprobanteIdText.SelectAll();
+                    tipoComprobanteIdText.Text = "";
                     nombreText.Text = "";
                     secuenciaText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -142,7 +143,6 @@ namespace IrisContabilidad.modulo_facturacion
                         tipoComprobante = null;
                         loadVentana();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     else
                     {
@@ -164,7 +164,6 @@ namespace IrisContabilidad.modulo_facturacion
                         MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -196,10 +195,20 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void tipoComprobanteIdText_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            try
             {
-                nombreText.Focus();
-                nombreText.SelectAll();
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+
+                    tipoComprobante =modeloTipoComprobanteFiscal.getTipoComprobanteById(Convert.ToInt16(tipoComprobanteIdText.Text));
+                    loadVentana();
+                }
+            }
+            catch (Exception)
+            {
+                
             }
         }
 
@@ -230,6 +239,19 @@ namespace IrisContabilidad.modulo_facturacion
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
                 button1.Focus();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_tipo_comprobante_fiscal ventana = new ventana_busqueda_tipo_comprobante_fiscal(true);
+            ventana.mantenimiento = true;
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                tipoComprobante = ventana.getObjeto();
+                loadVentana();
             }
         }
     }

@@ -121,9 +121,9 @@
             this.itebisIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.itebisIdText.Location = new System.Drawing.Point(141, 223);
             this.itebisIdText.Name = "itebisIdText";
-            this.itebisIdText.ReadOnly = true;
             this.itebisIdText.Size = new System.Drawing.Size(183, 26);
             this.itebisIdText.TabIndex = 28;
+            this.itebisIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.itebisIdText_KeyDown);
             // 
             // label2
             // 
@@ -200,9 +200,9 @@
             this.categoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.categoriaIdText.Location = new System.Drawing.Point(543, 52);
             this.categoriaIdText.Name = "categoriaIdText";
-            this.categoriaIdText.ReadOnly = true;
             this.categoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.categoriaIdText.TabIndex = 34;
+            this.categoriaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.categoriaIdText_KeyDown);
             // 
             // subcategoriaText
             // 
@@ -241,9 +241,9 @@
             this.subcategoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.subcategoriaIdText.Location = new System.Drawing.Point(543, 137);
             this.subcategoriaIdText.Name = "subcategoriaIdText";
-            this.subcategoriaIdText.ReadOnly = true;
             this.subcategoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.subcategoriaIdText.TabIndex = 38;
+            this.subcategoriaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.subcategoriaIdText_KeyDown);
             // 
             // almacenText
             // 
@@ -282,9 +282,9 @@
             this.almacenIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.almacenIdText.Location = new System.Drawing.Point(543, 223);
             this.almacenIdText.Name = "almacenIdText";
-            this.almacenIdText.ReadOnly = true;
             this.almacenIdText.Size = new System.Drawing.Size(183, 26);
             this.almacenIdText.TabIndex = 42;
+            this.almacenIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.almacenIdText_KeyDown);
             // 
             // unidadMinimaText
             // 
@@ -323,9 +323,9 @@
             this.unidadMinimaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.unidadMinimaIdText.Location = new System.Drawing.Point(141, 137);
             this.unidadMinimaIdText.Name = "unidadMinimaIdText";
-            this.unidadMinimaIdText.ReadOnly = true;
             this.unidadMinimaIdText.Size = new System.Drawing.Size(183, 26);
             this.unidadMinimaIdText.TabIndex = 46;
+            this.unidadMinimaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.unidadMinimaIdText_KeyDown);
             // 
             // ventana_reporte_producto
             // 

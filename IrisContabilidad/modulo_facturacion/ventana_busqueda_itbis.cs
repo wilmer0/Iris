@@ -134,5 +134,10 @@ namespace IrisContabilidad.modulo_facturacion
         {
             getAction();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

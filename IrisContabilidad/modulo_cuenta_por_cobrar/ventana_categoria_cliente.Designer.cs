@@ -33,7 +33,7 @@
             this.nombreText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tipoComprobanteIdText = new System.Windows.Forms.TextBox();
+            this.categoriaIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -49,11 +49,13 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(372, 5);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -63,6 +65,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(186, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // activoCheck
             // 
@@ -77,6 +80,7 @@
             this.activoCheck.TabIndex = 88;
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyUp += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyUp);
             // 
             // nombreText
             // 
@@ -86,6 +90,7 @@
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(253, 26);
             this.nombreText.TabIndex = 87;
+            this.nombreText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyUp);
             // 
             // label3
             // 
@@ -99,7 +104,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tipoComprobanteIdText);
+            this.groupBox1.Controls.Add(this.categoriaIdText);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
@@ -108,14 +113,17 @@
             this.groupBox1.TabIndex = 85;
             this.groupBox1.TabStop = false;
             // 
-            // tipoComprobanteIdText
+            // categoriaIdText
             // 
-            this.tipoComprobanteIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.tipoComprobanteIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipoComprobanteIdText.Location = new System.Drawing.Point(162, 22);
-            this.tipoComprobanteIdText.Name = "tipoComprobanteIdText";
-            this.tipoComprobanteIdText.Size = new System.Drawing.Size(155, 26);
-            this.tipoComprobanteIdText.TabIndex = 18;
+            this.categoriaIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.categoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.categoriaIdText.Location = new System.Drawing.Point(162, 22);
+            this.categoriaIdText.Name = "categoriaIdText";
+            this.categoriaIdText.Size = new System.Drawing.Size(155, 26);
+            this.categoriaIdText.TabIndex = 18;
+            this.categoriaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.categoriaIdText_KeyDown);
+            this.categoriaIdText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.categoriaIdText_KeyPress);
+            this.categoriaIdText.KeyUp += new System.Windows.Forms.KeyEventHandler(this.categoriaIdText_KeyUp);
             // 
             // label2
             // 
@@ -137,6 +145,7 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 23;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // ventana_categoria_cliente
             // 
@@ -172,7 +181,7 @@
         public System.Windows.Forms.TextBox nombreText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox tipoComprobanteIdText;
+        private System.Windows.Forms.TextBox categoriaIdText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
     }

@@ -82,14 +82,15 @@ namespace IrisContabilidad.modulo_sistema
             }
             if (e.KeyCode == Keys.F8)
             {
-                
+                //proceso
+            }
+            if (e.KeyCode == Keys.F5)
+            {
+                //limpiar
             }
         }
 
-        public void button3_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void formBase_Load_1(object sender, EventArgs e)
         {

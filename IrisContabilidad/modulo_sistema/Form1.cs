@@ -199,16 +199,19 @@ namespace IrisContabilidad
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button1.Focus();
+                button1_Click(null,null);
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //empleado = modeloEmpleado.getEmpleadoById(1);
+            //empleado.clave = utilidades.encriptar("123");
+            //modeloEmpleado.modificarEmpleado(empleado);
             //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
             //modeloPrimerLogin.primerosDatos();
             //modeloPrimerLogin.agregarModulos();
-            //modeloPrimerLogin.agregarVentanas();
+            modeloPrimerLogin.agregarVentanas();
             //modeloPrimerLogin.agregarVentanasPrimerModulo();
             //modeloPrimerLogin.agregarPrimerEmpleado();
             //modeloPrimerLogin.agregarAccesosVentanas();

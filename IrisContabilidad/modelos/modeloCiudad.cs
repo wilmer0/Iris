@@ -148,7 +148,7 @@ namespace IrisContabilidad.modelos
                 ciudad ciudad = new ciudad();
                 string sql = "select codigo,nombre,activo from ciudad where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count > 0)
+                if (ds.Tables[0].Rows.Count>0)
                 {
                     ciudad.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     ciudad.nombre = ds.Tables[0].Rows[0][1].ToString();

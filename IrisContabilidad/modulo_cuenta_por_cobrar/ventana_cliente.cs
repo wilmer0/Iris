@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_cuenta_por_cobrar
@@ -22,12 +23,17 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
         private cliente cliente;
-
+        private categoria_cliente categoriaCliente;
+        private tipo_comprobante_fiscal tipoComprobante;
 
 
 
         //modelos
         modeloCliente modeloCliente =new modeloCliente();
+        private modeloCategoriaCliente modeloCategoriaCliente=new modeloCategoriaCliente();
+        modeloTipoComprobanteFiscal modeloTipoComprobante=new modeloTipoComprobanteFiscal();
+
+
 
         public ventana_cliente()
         {
@@ -43,16 +49,22 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             {
                 if (cliente != null)
                 {
-                    clienteIdText.Focus();
-                    clienteIdText.SelectAll();
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+
+
                     nombreText.Text = cliente.nombre;
                     cedulaText.Text = cliente.cedula;
                     rncText.Text = cliente.rnc;
                     telefono1Text.Text = cliente.telefono1;
                     telefono2Text.Text = cliente.telefono2;
-                    //categoria
+                    categoriaCliente = modeloCategoriaCliente.getCategoriaClienteById(cliente.codigo_categoria);
+                    loadCategoriaCliente();
                     creditoText.Text = cliente.limite_credito.ToString("N");
-                    //tipo comprobante fiscal
+                    tipoComprobante =modeloTipoComprobante.getTipoComprobanteById(cliente.codigo_tipo_comprobante_fiscal);
+                    loadTipocomprobante();
+                    direccion1Text.Text = cliente.direccion1;
+                    direccion2Text.Text = cliente.direccion2;
                     clienteContadoCheck.Checked = Convert.ToBoolean(cliente.cliente_contado);
                     activoCheck.Checked = Convert.ToBoolean(cliente.activo);
                 }
@@ -60,14 +72,22 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 {
                     clienteIdText.Focus();
                     clienteIdText.SelectAll();
+
+
                     nombreText.Text = "";
                     cedulaText.Text = "";
                     rncText.Text = "";
                     telefono1Text.Text = "";
                     telefono2Text.Text = "";
-                    //categoria
+                    categoriaCliente = null;
+                    categoriaIdText.Text = "";
+                    categoriaText.Text = "";
+                    tipoComprobante = null;
+                    tipoNcfIdText.Text = "";
+                    tipoNcfText.Text = "";
                     creditoText.Text = "";
-                    //tipo comprobante fiscal
+                    direccion1Text.Text = "";
+                    direccion2Text.Text = "";
                     clienteContadoCheck.Checked = false;
                     activoCheck.Checked = true;
                 }
@@ -104,6 +124,22 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     cedulaText.SelectAll();
                     return false;
                 }
+                //validar categoria
+                if (categoriaCliente == null)
+                {
+                    MessageBox.Show("Falta la categoria", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    categoriaIdText.Focus();
+                    categoriaIdText.SelectAll();
+                    return false;
+                }
+                //validar tipo comprobante fiscal
+                if (tipoComprobante == null)
+                {
+                    MessageBox.Show("Falta el tipo de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tipoNcfIdText.Focus();
+                    tipoNcfIdText.SelectAll();
+                    return false;
+                }
                 
                 return true;
             }
@@ -136,16 +172,17 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     cliente = new cliente();
                     crear = true;
                     cliente.codigo = modeloCliente.getNext();
+                    cliente.fecha_creado=DateTime.Today;
                 }
                 cliente.nombre = nombreText.Text;
                 cliente.cedula = cedulaText.Text;
                 cliente.rnc = rncText.Text;
                 cliente.telefono1 = telefono1Text.Text;
                 cliente.telefono2 = telefono2Text.Text;
-                //categoria
+                cliente.codigo_categoria = categoriaCliente.codigo;
                 cliente.abrir_credito = Convert.ToBoolean(abrirCreditoCheck.Checked);
                 cliente.limite_credito = Convert.ToDecimal(creditoText.Text);
-                //tipo comprobante fiscal
+                cliente.codigo_tipo_comprobante_fiscal = tipoComprobante.codigo;
                 cliente.cliente_contado = Convert.ToBoolean(clienteContadoCheck.Checked);
                 cliente.activo = Convert.ToBoolean(activoCheck.Checked);
 
@@ -221,6 +258,230 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             cliente = null;
             loadVentana();
+        }
+
+        public void loadCategoriaCliente()
+        {
+            try
+            {
+                if(categoriaCliente==null)
+                {
+                    categoriaIdText.Text = "";
+                    categoriaText.Text = "";
+                    return;
+                }
+
+                categoriaIdText.Text = categoriaCliente.codigo.ToString();
+                categoriaText.Text = categoriaCliente.nombre;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadCategoriaCliente.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_categoria_cliente ventana=new ventana_busqueda_categoria_cliente();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                categoriaCliente = ventana.getObjeto();
+                loadCategoriaCliente();
+            }
+        }
+
+        public void loadTipocomprobante()
+        {
+            try
+            {
+                if (tipoComprobante == null)
+                {
+                    tipoNcfIdText.Text = "";
+                    tipoNcfText.Text = "";
+                    return;
+                }
+
+                tipoNcfIdText.Text = tipoComprobante.codigo.ToString();
+                tipoNcfText.Text = tipoComprobante.nombre;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTipocomprobante.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_tipo_comprobante_fiscal ventana = new ventana_busqueda_tipo_comprobante_fiscal();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                tipoComprobante = ventana.getObjeto();
+                loadTipocomprobante();
+            }
+        }
+
+        private void clienteIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                nombreText.Focus();
+                nombreText.SelectAll();
+            }
+        }
+
+        private void nombreText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                cedulaText.Focus();
+                cedulaText.SelectAll();
+            }
+        }
+
+        private void cedulaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                rncText.Focus();
+                rncText.SelectAll();
+            }
+        }
+
+        private void rncText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                telefono1Text.Focus();
+                telefono1Text.SelectAll();
+            }
+        }
+
+        private void telefono2Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                categoriaIdText.Focus();
+                categoriaIdText.SelectAll();
+            }
+        }
+
+        private void categoriaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    abrirCreditoCheck.Focus();
+
+                    categoriaCliente = modeloCategoriaCliente.getCategoriaClienteById(Convert.ToInt16(categoriaIdText.Text));
+                    loadCategoriaCliente();
+                }
+                if (e.KeyCode == Keys.F1)
+                {
+                    button5_Click(null, null);
+                }
+            }
+            catch (Exception)
+            {
+            }
+            
+        }
+
+        private void clienteIdText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void abrirCreditoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                creditoText.Focus();
+                creditoText.SelectAll();
+            }
+        }
+
+        private void creditoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                tipoNcfIdText.Focus();
+                tipoNcfIdText.SelectAll();
+            }
+        }
+
+        private void tipoNcfIdText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void tipoNcfIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    direccion1Text.Focus();
+                    direccion1Text.SelectAll();
+
+                }
+                if (e.KeyCode == Keys.F1)
+                {
+                    button6_Click(null, null);
+                }
+            }
+            catch (Exception)
+            {
+            }
+           
+        }
+
+        private void clienteContadoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                activoCheck.Focus();
+            }
+        }
+
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                button1.Focus();
+            }
+        }
+
+        private void direccion2Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                clienteContadoCheck.Focus();
+            }
+        }
+
+        private void direccion1Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                direccion2Text.Focus();
+                direccion2Text.SelectAll();
+
+            }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

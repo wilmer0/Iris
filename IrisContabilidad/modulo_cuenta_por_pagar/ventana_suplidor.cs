@@ -58,7 +58,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loadNominaTipo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loadCiudad.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         //load tipo gasto
@@ -79,7 +79,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loadNominaTipo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loadTipoGasto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void loadVentana()
@@ -89,6 +89,10 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 if (suplidor != null)
                 {
                     //llenar campos
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+
+
                     nombreText.Text = suplidor.nombre;
                     rncText.Text = suplidor.rnc;
                     telefono1Text.Text = suplidor.telefono1;
@@ -105,6 +109,9 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 else
                 {
                     //blanquear campos
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+
                     nombreText.Text = "";
                     rncText.Text = "";
                     telefono1Text.Text = "";
@@ -194,9 +201,9 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     crear = true;
                     suplidor.codigo = modeloSuplidor.getNext();
                     suplidor.fecha_creacion = DateTime.Today;
-                    suplidor.fecha_modificacion = DateTime.Today;
                     suplidor.codigo_sucursal_creado = empleadoSingleton.codigo_sucursal;
                 }
+                suplidor.fecha_modificacion = DateTime.Today;
                 suplidor.nombre = nombreText.Text;
                 suplidor.rnc = rncText.Text;
                 suplidor.telefono1 = telefono1Text.Text;
@@ -214,7 +221,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     if ((modeloSuplidor.agregarSuplidor(suplidor)) == true)
                     {
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        empleado = null;
+                        suplidor = null;
                         loadVentana();
                     }
                     else
@@ -229,7 +236,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     if ((modeloSuplidor.modificarSuplidor(suplidor)) == true)
                     {
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        empleado = null;
+                        suplidor = null;
                         loadVentana();
                     }
                     else
@@ -244,10 +251,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 suplidor = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-       
-        
        
         private void ventana_suplidor_Load(object sender, EventArgs e)
         {
@@ -308,7 +312,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             if (ventana.DialogResult == DialogResult.OK)
             {
                 ciudad = ventana.getObjeto();
-               loadCiudad();
+                loadCiudad();
             }
         }
 
@@ -333,6 +337,166 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             {
                 suplidor = ventana.getObjeto();
                 loadVentana();
+            }
+        }
+
+        private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+
+                    suplidor = modeloSuplidor.getSuplidorById(Convert.ToInt16(suplidorIdText.Text));
+                    if (suplidor != null)
+                    {
+                        loadVentana();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void nombreText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                rncText.Focus();
+                rncText.SelectAll();
+            }
+        }
+
+        private void rncText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                telefono1Text.Focus();
+                telefono1Text.SelectAll();
+            }
+        }
+
+        private void telefono1Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                telefono2Text.Focus();
+                telefono2Text.SelectAll();
+            }
+        }
+
+        private void telefono2Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                faxText.Focus();
+                faxText.SelectAll();
+            }
+        }
+
+        private void faxText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                limiteCreditoText.Focus();
+                limiteCreditoText.SelectAll();
+            }
+        }
+
+        private void limiteCreditoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                ciudadIdText.Focus();
+                ciudadIdText.SelectAll();
+            }
+        }
+
+        private void ciudadIdText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ciudadIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button8_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    tipoGastoIdText.Focus();
+                    tipoGastoIdText.SelectAll();
+
+
+                    ciudad = modeloCiudad.getCiudadById(Convert.ToInt16(ciudadIdText.Text));
+                    ciudadIdText.Text="";
+                    ciudadText.Text="";
+                    loadCiudad();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void tipoGastoIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button5_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    direccionText.Focus();
+                    direccionText.SelectAll();
+
+                    tipoGasto = modeloTipoGasto.getTipoGastoById(Convert.ToInt16(tipoGastoIdText.Text));
+                    tipoGastoIdText.Text = "";
+                    tipoGastoText.Text = "";
+                    loadTipoGasto();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void ciudadIdText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void tipoGastoIdText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void direccionText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                activoCheck.Focus();
+            }
+        }
+
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                button1.Focus();
             }
         }
     }

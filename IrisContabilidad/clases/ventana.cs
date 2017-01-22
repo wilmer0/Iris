@@ -14,5 +14,6 @@ namespace IrisContabilidad.clases
         public string imagen { get; set; }
         public bool activo { get; set; }
         public bool programador { get; set; }//true-> no puede verla el usuario para modificarla---false-> si puede verla y ser modificada
+        public int codigo_modulo { get; set; }
     }
 }
