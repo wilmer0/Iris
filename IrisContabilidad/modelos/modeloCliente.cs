@@ -57,8 +57,7 @@ namespace IrisContabilidad.modelos
                 {
                     cliente_contado = 1;
                 }
-
-                sql = "insert cliente (codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2) values('" + cliente.codigo + "','" + cliente.nombre + "','" + cliente.limite_credito + "','" + cliente.codigo_categoria + "','" + activo + "','" + cliente.fecha_creado.ToString("dd/MM/yyyy") + "','" + abrir_credito + "','" + cliente.codigo_sucursal_creado + "','" + cliente_contado + "','" + cliente.telefono1 + "','" + cliente.telefono2 + "','" + cliente.cedula + "','" + cliente.rnc + "','" + cliente.codigo_tipo_comprobante_fiscal + "','"+cliente.direccion1+"','"+cliente.direccion2+"')";
+                sql = "insert cliente (codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2) values('" + cliente.codigo + "','" + cliente.nombre + "','" + cliente.limite_credito + "','" + cliente.codigo_categoria + "','" + activo + "','" + cliente.fecha_creado.ToString("yyyy-MM-dd") + "','" + abrir_credito + "','" + cliente.codigo_sucursal_creado + "','" + cliente_contado + "','" + cliente.telefono1 + "','" + cliente.telefono2 + "','" + cliente.cedula + "','" + cliente.rnc + "','" + cliente.codigo_tipo_comprobante_fiscal + "','" + cliente.direccion1 + "','" + cliente.direccion2 + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;

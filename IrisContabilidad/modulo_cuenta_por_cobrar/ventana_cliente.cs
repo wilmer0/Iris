@@ -173,6 +173,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     crear = true;
                     cliente.codigo = modeloCliente.getNext();
                     cliente.fecha_creado=DateTime.Today;
+                    cliente.codigo_sucursal_creado = empleado.codigo_sucursal;
                 }
                 cliente.nombre = nombreText.Text;
                 cliente.cedula = cedulaText.Text;
@@ -428,6 +429,9 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     direccion1Text.Focus();
                     direccion1Text.SelectAll();
 
+                    tipoComprobante = modeloTipoComprobante.getTipoComprobanteById(Convert.ToInt16(tipoNcfIdText.Text));
+                    loadTipocomprobante();
+
                 }
                 if (e.KeyCode == Keys.F1)
                 {
@@ -482,6 +486,15 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void telefono1Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                telefono2Text.Focus();
+                telefono2Text.SelectAll();
+            }
         }
     }
 }
