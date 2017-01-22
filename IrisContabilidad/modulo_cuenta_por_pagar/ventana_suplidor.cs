@@ -45,7 +45,6 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
-
                 if (ciudad != null)
                 {
                     ciudadIdText.Text = ciudad.codigo.ToString();
@@ -67,7 +66,6 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
-              
                 if (tipoGasto != null)
                 {
                     tipoGastoIdText.Text = tipoGasto.id.ToString();
@@ -253,10 +251,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 suplidor = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
-       
-        
        
         private void ventana_suplidor_Load(object sender, EventArgs e)
         {
