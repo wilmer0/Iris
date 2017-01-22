@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_cuenta_por_pagar;
 using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
 
@@ -73,7 +74,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     clienteIdText.Focus();
                     clienteIdText.SelectAll();
 
-
+                    clienteIdText.Text = "";
                     nombreText.Text = "";
                     cedulaText.Text = "";
                     rncText.Text = "";
@@ -247,7 +248,14 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            ventana_busqueda_cliente ventana = new ventana_busqueda_cliente(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                cliente = ventana.getObjeto();
+                loadVentana();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -331,6 +339,9 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             {
                 nombreText.Focus();
                 nombreText.SelectAll();
+
+                cliente = modeloCliente.getClienteById(Convert.ToInt16(clienteIdText.Text));
+                loadVentana();
             }
         }
 

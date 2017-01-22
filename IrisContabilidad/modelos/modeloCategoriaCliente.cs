@@ -113,7 +113,7 @@ namespace IrisContabilidad.modelos
         }
 
 
-        //get objeto
+        //get objeto by id
         public categoria_cliente getCategoriaClienteById(int id)
         {
             try
@@ -135,7 +135,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
+       
 
         //get lista completa
         public List<categoria_cliente> getListaCompleta(bool mantenimiento = false)

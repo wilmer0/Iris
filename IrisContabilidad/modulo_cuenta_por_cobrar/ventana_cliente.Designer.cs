@@ -389,7 +389,7 @@
             this.rncText.BackColor = System.Drawing.Color.White;
             this.rncText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rncText.Location = new System.Drawing.Point(115, 179);
-            this.rncText.MaxLength = 30;
+            this.rncText.MaxLength = 9;
             this.rncText.Name = "rncText";
             this.rncText.Size = new System.Drawing.Size(236, 26);
             this.rncText.TabIndex = 31;
@@ -410,7 +410,7 @@
             this.cedulaText.BackColor = System.Drawing.Color.White;
             this.cedulaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cedulaText.Location = new System.Drawing.Point(115, 136);
-            this.cedulaText.MaxLength = 30;
+            this.cedulaText.MaxLength = 11;
             this.cedulaText.Name = "cedulaText";
             this.cedulaText.Size = new System.Drawing.Size(236, 26);
             this.cedulaText.TabIndex = 29;
