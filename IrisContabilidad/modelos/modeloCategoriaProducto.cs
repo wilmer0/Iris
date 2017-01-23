@@ -175,7 +175,7 @@ namespace IrisContabilidad.modelos
 
                 List<categoria_producto> lista = new List<categoria_producto>();
                 string sql = "";
-                sql = "select codigo,nombre,activo from categoria_producto where estado='1'";
+                sql = "select codigo,nombre,activo from categoria_producto where activo='1'";
                 
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -196,6 +196,40 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error getListaByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get categoria completa por nombre
+        public categoria_producto getCategoriaByNombre(string nombre)
+        {
+            try
+            {
+                bool existe = false;
+                List<categoria_producto> lista=new List<categoria_producto>();
+                categoria_producto categoria = new categoria_producto();
+                lista = getListaCompleta();
+                lista.ForEach(x =>
+                {
+                    if (x.nombre.ToLower().Contains(nombre.ToLower()) && existe==false)
+                    {
+                        categoria.codigo = x.codigo;
+                        categoria.nombre = x.nombre;
+                        categoria.activo = x.activo;
+                        existe = true;
+                    }
+                });
+                if (existe == true)
+                {
+                    return categoria;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCategoriaByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
         }
