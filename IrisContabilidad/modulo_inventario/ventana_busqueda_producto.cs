@@ -25,7 +25,7 @@ namespace IrisContabilidad.modulo_inventario
 
         //listas
         private List<producto> listaProducto;
-        private List<producto> listaProductoFiltrada; 
+        private List<producto> listaTemporal; 
 
 
         //modelos
@@ -34,10 +34,12 @@ namespace IrisContabilidad.modulo_inventario
         modeloCategoriaProducto modeloCategoria=new modeloCategoriaProducto();
         modeloSubCategoriaProducto modeloSubCategoria=new modeloSubCategoriaProducto();
         modeloAlmacen modeloAlmacen=new modeloAlmacen();
+
+
         //variables 
         public bool mantenimiento = false;
         private int fila = 0;
-
+        private int index = 0;
 
 
         public ventana_busqueda_producto(bool mantenimiento=false)
@@ -57,18 +59,18 @@ namespace IrisContabilidad.modulo_inventario
                     listaProducto = new List<producto>();
                     listaProducto = modeloProducto.getListaCompleta(mantenimiento);
                 }
-                if (listaProductoFiltrada == null)
+                if (listaProducto == null)
                 {
-                    listaProductoFiltrada = new List<producto>();
+                    listaProducto = new List<producto>();
                 }
-                listaProductoFiltrada = listaProducto.ToList();
+                listaProducto = listaProducto.ToList();
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
                 {
                     dataGridView1.Rows.Clear();
                 }
                 //se agrega todos los datos de la lista en el gridView
-                listaProductoFiltrada.ForEach(x =>
+                listaProducto.ForEach(x =>
                 {
                     producto = new producto();
                     producto = modeloProducto.getProductoById(x.codigo);
@@ -131,7 +133,7 @@ namespace IrisContabilidad.modulo_inventario
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            listaProductoFiltrada = null;
+            listaProducto = null;
             loadLista();
         }
 
@@ -141,50 +143,45 @@ namespace IrisContabilidad.modulo_inventario
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    listaProductoFiltrada = modeloProducto.getListaCompleta();
-
-
+                    listaProducto = modeloProducto.getListaCompleta();
                     //nombre
                     if (nombreRadioButton.Checked == true)
                     {
-                        listaProductoFiltrada = listaProducto.FindAll(x => x.nombre.Contains(nombreText.Text));
+                        listaProducto =
+                            listaProducto.FindAll(x => x.nombre.ToLower().Contains(nombreText.Text.ToLower()));
                     }
                     //referencia
                     if (referenciaRadioButton.Checked == true)
                     {
-                        listaProductoFiltrada = listaProducto.FindAll(x => x.referencia.Contains(nombreText.Text));
+                        listaProducto = listaProducto.FindAll(x => x.referencia.ToLower().Contains(nombreText.Text.ToLower()));
                     }
                     //categoria
                     if (categoriaRadionButton.Checked == true)
                     {
-                        categoria=new categoria_producto();
-                        //seleccionando el primero que me trae la lista
-                        categoria = modeloCategoria.getListaByNombre(nombreText.Text).FirstOrDefault();
+                        index = 0;
+                        categoria = modeloCategoria.getCategoriaByNombre(nombreText.Text);
                         if (categoria != null)
                         {
-                            listaProductoFiltrada = listaProducto.FindAll(x => x.codigo_categoria == categoria.codigo);
+                            listaProducto = listaProducto.FindAll(x => x.codigo_categoria == categoria.codigo).ToList();
                         }
                     }
                     //subcategoria
                     if (subCategoriaRadionButton.Checked == true)
                     {
-                        subCategoria = new subCategoriaProducto();
-                        //seleccionando el primero que me trae la lista
-                        subCategoria = modeloSubCategoria.getListaByNombre(nombreText.Text).FirstOrDefault();
+                        index = 0;
+                        subCategoria = modeloSubCategoria.getSubCategoriaByNombre(nombreText.Text);
                         if (subCategoria != null)
                         {
-                            listaProductoFiltrada = listaProducto.FindAll(x => x.codigo_subcategoria == subCategoria.codigo);
+                            listaProducto = listaProducto.FindAll(x => x.codigo_subcategoria == subCategoria.codigo).ToList();
                         }
                     }
                     //almacen
                     if (almacenRadionButton.Checked == true)
                     {
-                        almacen = new almacen();
-                        //seleccionando el primero que me trae la lista
-                        almacen = modeloAlmacen.getListaByNombre(nombreText.Text).FirstOrDefault();
+                        almacen = modeloAlmacen.getAlmacenByNombre(nombreText.Text);
                         if (almacen != null)
                         {
-                            listaProductoFiltrada =listaProducto.FindAll(x => x.codigo_subcategoria == subCategoria.codigo);
+                            listaProducto = listaProducto.FindAll(x => x.codigo_almacen == almacen.codigo);
                         }
                     }
                     loadLista();

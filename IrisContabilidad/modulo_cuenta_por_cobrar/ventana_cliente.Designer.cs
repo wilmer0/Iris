@@ -172,21 +172,21 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(383, 278);
+            this.label11.Location = new System.Drawing.Point(371, 276);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(73, 20);
+            this.label11.Size = new System.Drawing.Size(99, 20);
             this.label11.TabIndex = 63;
-            this.label11.Text = "Tipo ncf";
+            this.label11.Text = "Dirección 2";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(383, 179);
+            this.label10.Location = new System.Drawing.Point(376, 177);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 20);
+            this.label10.Size = new System.Drawing.Size(94, 20);
             this.label10.TabIndex = 62;
-            this.label10.Text = "Tipo ncf";
+            this.label10.Text = "Dirección1";
             // 
             // activoCheck
             // 
@@ -206,6 +206,8 @@
             // clienteContadoCheck
             // 
             this.clienteContadoCheck.AutoSize = true;
+            this.clienteContadoCheck.Checked = true;
+            this.clienteContadoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.clienteContadoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clienteContadoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clienteContadoCheck.Location = new System.Drawing.Point(476, 375);
@@ -243,7 +245,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(383, 94);
+            this.label9.Location = new System.Drawing.Point(397, 92);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 20);
             this.label9.TabIndex = 57;
@@ -370,6 +372,7 @@
             this.telefono1Text.Name = "telefono1Text";
             this.telefono1Text.Size = new System.Drawing.Size(236, 26);
             this.telefono1Text.TabIndex = 33;
+            this.telefono1Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.telefono1Text_KeyDown);
             // 
             // label5
             // 
@@ -386,7 +389,7 @@
             this.rncText.BackColor = System.Drawing.Color.White;
             this.rncText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rncText.Location = new System.Drawing.Point(115, 179);
-            this.rncText.MaxLength = 30;
+            this.rncText.MaxLength = 9;
             this.rncText.Name = "rncText";
             this.rncText.Size = new System.Drawing.Size(236, 26);
             this.rncText.TabIndex = 31;
@@ -407,7 +410,7 @@
             this.cedulaText.BackColor = System.Drawing.Color.White;
             this.cedulaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cedulaText.Location = new System.Drawing.Point(115, 136);
-            this.cedulaText.MaxLength = 30;
+            this.cedulaText.MaxLength = 11;
             this.cedulaText.Name = "cedulaText";
             this.cedulaText.Size = new System.Drawing.Size(236, 26);
             this.cedulaText.TabIndex = 29;

@@ -57,8 +57,7 @@ namespace IrisContabilidad.modelos
                 {
                     cliente_contado = 1;
                 }
-
-                sql = "insert cliente (codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2) values('" + cliente.codigo + "','" + cliente.nombre + "','" + cliente.limite_credito + "','" + cliente.codigo_categoria + "','" + activo + "','" + cliente.fecha_creado.ToString("dd/MM/yyyy") + "','" + abrir_credito + "','" + cliente.codigo_sucursal_creado + "','" + cliente_contado + "','" + cliente.telefono1 + "','" + cliente.telefono2 + "','" + cliente.cedula + "','" + cliente.rnc + "','" + cliente.codigo_tipo_comprobante_fiscal + "','"+cliente.direccion1+"','"+cliente.direccion2+"')";
+                sql = "insert cliente (codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2) values('" + cliente.codigo + "','" + cliente.nombre + "','" + cliente.limite_credito + "','" + cliente.codigo_categoria + "','" + activo + "','" + cliente.fecha_creado.ToString("yyyy-MM-dd") + "','" + abrir_credito + "','" + cliente.codigo_sucursal_creado + "','" + cliente_contado + "','" + cliente.telefono1 + "','" + cliente.telefono2 + "','" + cliente.cedula + "','" + cliente.rnc + "','" + cliente.codigo_tipo_comprobante_fiscal + "','" + cliente.direccion1 + "','" + cliente.direccion2 + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -109,7 +108,7 @@ namespace IrisContabilidad.modelos
                 {
                     cliente_contado = 1;
                 }
-                sql = "update cliente set nombre='" + cliente.nombre + "',limite_credito='" + cliente.limite_credito + "',cod_Categoria='" + cliente.codigo_categoria + "',activo='" + activo + "',fecha_creado='" + cliente.fecha_creado.ToString("dd/MM/yyyy") + "',abrir_credito='" + abrir_credito + "',cod_sucursal_creado='" + cliente.codigo_sucursal_creado + "',cliente_contado='" + cliente_contado + "',telefono1='" + cliente.telefono1 + "',telefono2='" + cliente.telefono2 + "',cedula='" + cliente.cedula + "',rnc='" + cliente.rnc + "',cod_tipo_comprobante='" + cliente.codigo_tipo_comprobante_fiscal + "',direccion1='"+cliente.direccion1+"',direccion2='"+cliente.direccion2+"' where codigo='" + cliente.codigo + "'";
+                sql = "update cliente set nombre='" + cliente.nombre + "',limite_credito='" + cliente.limite_credito + "',cod_Categoria='" + cliente.codigo_categoria + "',activo='" + activo + "',abrir_credito='" + abrir_credito + "',cod_sucursal_creado='" + cliente.codigo_sucursal_creado + "',cliente_contado='" + cliente_contado + "',telefono1='" + cliente.telefono1 + "',telefono2='" + cliente.telefono2 + "',cedula='" + cliente.cedula + "',rnc='" + cliente.rnc + "',cod_tipo_comprobante='" + cliente.codigo_tipo_comprobante_fiscal + "',direccion1='"+cliente.direccion1+"',direccion2='"+cliente.direccion2+"' where codigo='" + cliente.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
@@ -156,7 +155,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 cliente cliente = new cliente();
-                string sql = "select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2  * from cliente where codigo='" + id + "'";
+                string sql = "select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2  from cliente where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -164,11 +163,14 @@ namespace IrisContabilidad.modelos
                     cliente.nombre = ds.Tables[0].Rows[0][1].ToString();
                     cliente.limite_credito = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
                     cliente.codigo_categoria = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
-                    cliente.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4].ToString());
+                    //cliente.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4].ToString());
+                    cliente.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
                     cliente.fecha_creado = Convert.ToDateTime(ds.Tables[0].Rows[0][5].ToString());
-                    cliente.abrir_credito = Convert.ToBoolean(ds.Tables[0].Rows[0][6].ToString());
+                    //cliente.abrir_credito = Convert.ToBoolean(ds.Tables[0].Rows[0][6].ToString());
+                    cliente.abrir_credito = Convert.ToBoolean(ds.Tables[0].Rows[0][6]);
                     cliente.codigo_sucursal_creado = Convert.ToInt16(ds.Tables[0].Rows[0][7].ToString());
-                    cliente.cliente_contado = Convert.ToBoolean(ds.Tables[0].Rows[0][8].ToString());
+                    //cliente.cliente_contado = Convert.ToBoolean(ds.Tables[0].Rows[0][8].ToString());
+                    cliente.cliente_contado = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
                     cliente.telefono1 = ds.Tables[0].Rows[0][9].ToString();
                     cliente.telefono2 = ds.Tables[0].Rows[0][10].ToString();
                     cliente.cedula = ds.Tables[0].Rows[0][11].ToString();
@@ -192,7 +194,7 @@ namespace IrisContabilidad.modelos
             {
 
                 List<cliente> lista = new List<cliente>();
-                string sql = "select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2  * from cliente";
+                string sql = "select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2  from cliente";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -207,11 +209,14 @@ namespace IrisContabilidad.modelos
                         cliente.nombre = row[1].ToString();
                         cliente.limite_credito = Convert.ToDecimal(row[2].ToString());
                         cliente.codigo_categoria = Convert.ToInt16(row[3].ToString());
-                        cliente.activo = Convert.ToBoolean(row[4].ToString());
+                        //cliente.activo = Convert.ToBoolean(row[4].ToString());
+                        cliente.activo = Convert.ToBoolean(row[4]);
                         cliente.fecha_creado = Convert.ToDateTime(row[5].ToString());
-                        cliente.abrir_credito = Convert.ToBoolean(row[6].ToString());
+                        //cliente.abrir_credito = Convert.ToBoolean(row[6].ToString());
+                        cliente.abrir_credito = Convert.ToBoolean(row[6]);
                         cliente.codigo_sucursal_creado = Convert.ToInt16(row[7].ToString());
-                        cliente.cliente_contado = Convert.ToBoolean(row[8].ToString());
+                        //cliente.cliente_contado = Convert.ToBoolean(row[8].ToString());
+                        cliente.cliente_contado = Convert.ToBoolean(row[8]);
                         cliente.telefono1 = row[9].ToString();
                         cliente.telefono2 = row[10].ToString();
                         cliente.cedula = row[11].ToString();
@@ -238,7 +243,7 @@ namespace IrisContabilidad.modelos
             {
 
                 List<cliente> lista = new List<cliente>();
-                string sql = "select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2  * from cliente where activo='1'";
+                string sql = "select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2   from cliente where activo='1'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

@@ -125,7 +125,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     tipoGastoText.Text = "";
                     direccionText.Text = "";
                     limiteCreditoText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

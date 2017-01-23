@@ -196,6 +196,12 @@
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.Designer.cs">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_cliente.Designer.cs">
+      <DependentUpon>ventana_busqueda_cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_suplidor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -512,6 +518,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_cliente.resx">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_cliente.resx">
+      <DependentUpon>ventana_busqueda_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_suplidor.resx">
       <DependentUpon>ventana_busqueda_suplidor.cs</DependentUpon>

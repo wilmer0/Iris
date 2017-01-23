@@ -557,6 +557,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 5;
                 ventana.imagen = "compra1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Reporte productos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_reporte_producto";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 5;
+                ventana.imagen = "reporte_producto1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
