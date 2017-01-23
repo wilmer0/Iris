@@ -197,5 +197,42 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        //get subcategoria por nombre
+        public subCategoriaProducto getSubCategoriaByNombre(string nombre)
+        {
+            try
+            {
+
+                bool existe = false;
+                List<subCategoriaProducto> lista = new List<subCategoriaProducto>();
+                subCategoriaProducto subcategoria = new subCategoriaProducto();
+                lista = getListaCompleta();
+                lista.ForEach(x =>
+                {
+                    if (x.nombre.ToLower().Contains(nombre.ToLower()) && existe == false)
+                    {
+                        subcategoria.codigo = x.codigo;
+                        subcategoria.nombre = x.nombre;
+                        subcategoria.codigo_categoria = x.codigo_categoria;
+                        subcategoria.activo = x.activo;
+                        existe = true;
+                    }
+                });
+                if (existe == true)
+                {
+                    return subcategoria;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getSubCategoriaByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

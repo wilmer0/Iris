@@ -144,19 +144,11 @@ namespace IrisContabilidad.modulo_inventario
                 if (e.KeyCode == Keys.Enter)
                 {
                     listaProducto = modeloProducto.getListaCompleta();
-                    listaTemporal = new List<producto>();
-                    if (listaProducto.Count > 0)
-                    {
-                        listaTemporal = listaProducto;
-                    }
-                    else
-                    {
-                        listaTemporal = modeloProducto.getListaCompleta();
-                    }
                     //nombre
                     if (nombreRadioButton.Checked == true)
                     {
-                        listaProducto = listaProducto.FindAll(x => x.nombre.ToLower().Contains(nombreText.Text.ToLower()));
+                        listaProducto =
+                            listaProducto.FindAll(x => x.nombre.ToLower().Contains(nombreText.Text.ToLower()));
                     }
                     //referencia
                     if (referenciaRadioButton.Checked == true)
@@ -166,56 +158,30 @@ namespace IrisContabilidad.modulo_inventario
                     //categoria
                     if (categoriaRadionButton.Checked == true)
                     {
-                            index = 0;
-                            categoria = modeloCategoria.getCategoriaByNombre(nombreText.Text);
-                            if (categoria != null)
-                            {
-                                foreach (var x in listaTemporal)
-                                {
-                                    if (!categoria.nombre.ToLower().Contains(nombreText.Text.ToLower()))
-                                    {
-                                        //si no contiene el nombre de la categoria escrita se borrara de la lista principal
-                                        listaProducto.RemoveAt(index);
-                                    }
-                                }
-                                index++;
-                            }
-                        
+                        index = 0;
+                        categoria = modeloCategoria.getCategoriaByNombre(nombreText.Text);
+                        if (categoria != null)
+                        {
+                            listaProducto = listaProducto.FindAll(x => x.codigo_categoria == categoria.codigo).ToList();
+                        }
                     }
                     //subcategoria
                     if (subCategoriaRadionButton.Checked == true)
                     {
                         index = 0;
-                        foreach (var x in listaTemporal)
+                        subCategoria = modeloSubCategoria.getSubCategoriaByNombre(nombreText.Text);
+                        if (subCategoria != null)
                         {
-                            subCategoria = modeloSubCategoria.getSubCategoriaById(x.codigo_subcategoria);
-                            if (subCategoria != null)
-                            {
-                                if (!subCategoria.nombre.ToLower().Contains(nombreText.Text.ToLower()))
-                                {
-                                    //si no contiene el nombre de la categoria escrita se borrara de la lista principal
-                                    try
-                                    {
-                                        listaProducto.RemoveAt(index);
-                                    }
-                                    catch (Exception ex)
-                                    {
-
-                                    }
-                                }
-                            }
-                            index++;
+                            listaProducto = listaProducto.FindAll(x => x.codigo_subcategoria == subCategoria.codigo).ToList();
                         }
                     }
                     //almacen
                     if (almacenRadionButton.Checked == true)
                     {
-                        almacen = new almacen();
-                        //seleccionando el primero que me trae la lista
-                        almacen = modeloAlmacen.getListaByNombre(nombreText.Text).FirstOrDefault();
+                        almacen = modeloAlmacen.getAlmacenByNombre(nombreText.Text);
                         if (almacen != null)
                         {
-                            listaProducto =listaProducto.FindAll(x => x.codigo_subcategoria == subCategoria.codigo);
+                            listaProducto = listaProducto.FindAll(x => x.codigo_almacen == almacen.codigo);
                         }
                     }
                     loadLista();
