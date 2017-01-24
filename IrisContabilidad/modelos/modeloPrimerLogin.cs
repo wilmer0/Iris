@@ -632,6 +632,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 7;
                 ventana.imagen = "empleado1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "grupo de usuarios";
+                ventana.nombre_logico = "IrisContabilidad.modulo_nomina.ventana_grupo_usuarios";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 7;
+                ventana.imagen = "grupo_usuario1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
