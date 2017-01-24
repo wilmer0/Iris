@@ -46,8 +46,8 @@ namespace IrisContabilidad.modulo_nomina
             {
                 if (grupoUsuarios != null)
                 {
-                    grupoIdText.Focus();
-                    grupoIdText.SelectAll();
+                    grupoText.Focus();
+                    grupoText.SelectAll();
 
                     grupoIdText.Text = grupoUsuarios.codigo.ToString();
                     grupoText.Text = grupoUsuarios.nombre;
@@ -56,8 +56,8 @@ namespace IrisContabilidad.modulo_nomina
                 }
                 else
                 {
-                    grupoText.Focus();
-                    grupoText.SelectAll();
+                    grupoIdText.Focus();
+                    grupoIdText.SelectAll();
                     
                     grupoIdText.Text = "";
                     grupoText.Text = "";

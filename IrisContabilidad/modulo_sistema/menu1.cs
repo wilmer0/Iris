@@ -8,12 +8,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 using empleado = IrisContabilidad.clases.empleado;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 
 namespace IrisContabilidad.modulo_sistema
@@ -168,10 +170,12 @@ namespace IrisContabilidad.modulo_sistema
                     botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, 20);
                     
                     
+                    
                     //estableciendo la imagen de fondo del boton
                     botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + ventana.imagen);
                     botonVentana.Tag = ventana.codigo;
                     botonVentana.Click += BotonVentanaOnClick;
+                    
                     listaBotonesVentanas.Add(botonVentana);
                     //flowLayoutVentanas.Controls.Add(botonVentana);
                 }
