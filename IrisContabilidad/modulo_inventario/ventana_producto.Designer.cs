@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -70,7 +70,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cargoIdText = new System.Windows.Forms.TextBox();
+            this.productoIdText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button14 = new System.Windows.Forms.Button();
@@ -334,6 +334,7 @@
             this.unidadMinimaIdText.Name = "unidadMinimaIdText";
             this.unidadMinimaIdText.Size = new System.Drawing.Size(183, 26);
             this.unidadMinimaIdText.TabIndex = 49;
+            this.unidadMinimaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.unidadMinimaIdText_KeyDown);
             // 
             // button9
             // 
@@ -365,6 +366,7 @@
             this.rutaImagenText.Name = "rutaImagenText";
             this.rutaImagenText.Size = new System.Drawing.Size(183, 26);
             this.rutaImagenText.TabIndex = 46;
+            this.rutaImagenText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rutaImagenText_KeyDown);
             // 
             // almacenText
             // 
@@ -397,6 +399,7 @@
             this.almacenIdText.Name = "almacenIdText";
             this.almacenIdText.Size = new System.Drawing.Size(183, 26);
             this.almacenIdText.TabIndex = 42;
+            this.almacenIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.almacenIdText_KeyDown);
             // 
             // itebisText
             // 
@@ -439,6 +442,7 @@
             this.itebisIdText.Name = "itebisIdText";
             this.itebisIdText.Size = new System.Drawing.Size(183, 26);
             this.itebisIdText.TabIndex = 38;
+            this.itebisIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.itebisIdText_KeyDown);
             // 
             // puntoReordenText
             // 
@@ -450,6 +454,7 @@
             this.puntoReordenText.Size = new System.Drawing.Size(236, 26);
             this.puntoReordenText.TabIndex = 36;
             this.puntoReordenText.Text = "0";
+            this.puntoReordenText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.puntoReordenText_KeyDown);
             this.puntoReordenText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.puntoReordenText_KeyPress);
             // 
             // label7
@@ -472,6 +477,7 @@
             this.puntoMaximoText.Size = new System.Drawing.Size(236, 26);
             this.puntoMaximoText.TabIndex = 34;
             this.puntoMaximoText.Text = "0";
+            this.puntoMaximoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.puntoMaximoText_KeyDown);
             this.puntoMaximoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label6
@@ -515,6 +521,7 @@
             this.subcategoriaIdText.Name = "subcategoriaIdText";
             this.subcategoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.subcategoriaIdText.TabIndex = 30;
+            this.subcategoriaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.subcategoriaIdText_KeyDown);
             // 
             // categoriaText
             // 
@@ -548,6 +555,7 @@
             this.referenciaText.Name = "referenciaText";
             this.referenciaText.Size = new System.Drawing.Size(236, 26);
             this.referenciaText.TabIndex = 27;
+            this.referenciaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.referenciaText_KeyDown);
             // 
             // label3
             // 
@@ -567,6 +575,7 @@
             this.categoriaIdText.Name = "categoriaIdText";
             this.categoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.categoriaIdText.TabIndex = 25;
+            this.categoriaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.categoriaIdText_KeyDown);
             // 
             // productoText
             // 
@@ -577,6 +586,7 @@
             this.productoText.Name = "productoText";
             this.productoText.Size = new System.Drawing.Size(236, 26);
             this.productoText.TabIndex = 25;
+            this.productoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.productoText_KeyDown);
             // 
             // label2
             // 
@@ -592,7 +602,7 @@
             // 
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cargoIdText);
+            this.groupBox1.Controls.Add(this.productoIdText);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(917, 61);
@@ -622,14 +632,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Producto";
             // 
-            // cargoIdText
+            // productoIdText
             // 
-            this.cargoIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.cargoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cargoIdText.Location = new System.Drawing.Point(152, 19);
-            this.cargoIdText.Name = "cargoIdText";
-            this.cargoIdText.Size = new System.Drawing.Size(183, 26);
-            this.cargoIdText.TabIndex = 0;
+            this.productoIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.productoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productoIdText.Location = new System.Drawing.Point(152, 19);
+            this.productoIdText.Name = "productoIdText";
+            this.productoIdText.Size = new System.Drawing.Size(183, 26);
+            this.productoIdText.TabIndex = 0;
+            this.productoIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.productoIdText_KeyDown);
             // 
             // tabPage2
             // 
@@ -1111,8 +1122,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn5.FillWeight = 70F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Precio costo";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -1120,8 +1131,8 @@
             // 
             // precioVentaColumn
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.precioVentaColumn.FillWeight = 70F;
             this.precioVentaColumn.HeaderText = "Precio venta";
             this.precioVentaColumn.Name = "precioVentaColumn";
@@ -1172,7 +1183,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox cargoIdText;
+        private System.Windows.Forms.TextBox productoIdText;
         private System.Windows.Forms.TextBox referenciaText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox productoText;
