@@ -33,6 +33,8 @@ namespace IrisContabilidad.modulo_inventario
         private unidad unidadConversion;
         private producto productoTemporal;
         private productoUnidadConversion productoUnidadConversion;
+        private producto_productos_requisitos productosRequisitos;
+        private unidad unidadProduccion;
 
         //modelos
         private modeloItebis modeloItebis = new modeloItebis();
@@ -51,8 +53,8 @@ namespace IrisContabilidad.modulo_inventario
 
         //listas
         private List<producto_vs_codigobarra> listaCodigoBarra;
-        private List<productoUnidadConversion> listaProductoUnidadConversion; 
-
+        private List<productoUnidadConversion> listaProductoUnidadConversion;
+        private List<producto_productos_requisitos> listaProductosRequisitos; 
 
         public ventana_producto()
         {
@@ -163,8 +165,33 @@ namespace IrisContabilidad.modulo_inventario
         {
 
         }
-     
-      
+
+        public void loadProductosRequisitos()
+        {
+            try
+            {
+                if (listaProductosRequisitos == null)
+                {
+                    return;
+                }
+                if (dataGridView4.Rows.Count > 0)
+                {
+                    dataGridView4.Rows.Clear();
+                }
+                foreach (var x in listaProductosRequisitos)
+                {
+                    unidadProduccion = modeloUnidad.getUnidadById(x.codigo_unidad);
+                    dataGridView4.Rows.Add(x.codigo_producto_requisito, x.codigo_unidad, unidadProduccion.nombre,
+                        x.cantidad);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadProductosRequisitos.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
         public void loadItebis()
         {
             try
@@ -1135,6 +1162,27 @@ namespace IrisContabilidad.modulo_inventario
             catch (Exception)
             {
             }
+        }
+
+        public void actualizaProductosProduccion()
+        {
+            try
+            {
+                //para actualizar los productos que son requisitos para la fabricacion de este produco
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error actualizaProductosProduccion.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void cantidadProduccionText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e,cantidadProduccionText.Text);
         }
     }
 }

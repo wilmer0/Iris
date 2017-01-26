@@ -122,6 +122,7 @@
     <Compile Include="clases\nomina_tipo.cs" />
     <Compile Include="clases\producto.cs" />
     <Compile Include="clases\productoUnidadConversion.cs" />
+    <Compile Include="clases\producto_productos_requisitos.cs" />
     <Compile Include="clases\producto_vs_codigobarra.cs" />
     <Compile Include="clases\singleton.cs" />
     <Compile Include="clases\situacion_empleado.cs" />

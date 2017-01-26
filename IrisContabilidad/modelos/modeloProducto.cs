@@ -15,11 +15,10 @@ namespace IrisContabilidad.modelos
     {
         //objetos
         private utilidades utilidades = new utilidades();
-        private producto producto;
 
         //variables
         private string rutaImagenesProductos = Directory.GetCurrentDirectory().ToString() + @"\Resources\productos\";
-
+         
 
 
         //agregar 
@@ -377,7 +376,7 @@ namespace IrisContabilidad.modelos
                 {
                     return null;
                 }
-                producto = getProductoById(Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString()));
+                producto producto = getProductoById(Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString()));
                 return producto;
             }
             catch (Exception ex)
@@ -447,6 +446,37 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error getPrecioProductoUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get lista productos requisitos
+        public List<producto_productos_requisitos> getListaProductoRequisitos(int codigoProducto)
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds = new DataSet();
+                List<producto_productos_requisitos> lista = new List<producto_productos_requisitos>();
+                producto_productos_requisitos productoRequisitos;
+
+                //borrar todos los codigo barra que son de este producto
+                sql = "select codpro_titular,codpro_requisito,cod_unidad,cantidad FROM producto_productos_requisitos where codpro_titular='" + codigoProducto + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    productoRequisitos = new producto_productos_requisitos();
+                    productoRequisitos.codigo_producto_titular = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    productoRequisitos.codigo_producto_requisito = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                    productoRequisitos.codigo_unidad = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
+                    productoRequisitos.cantidad = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
+                    lista.Add(productoRequisitos);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaProductoRequisitos.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }
