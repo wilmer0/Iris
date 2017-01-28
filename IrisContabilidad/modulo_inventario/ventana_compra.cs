@@ -23,6 +23,7 @@ namespace IrisContabilidad.modulo_inventario
         singleton singleton = new singleton();
         empleado empleado;
         private compra compra;
+        private compra_detalle compraDetalle;
         private producto producto;
         private itebis itebis;
         private unidad unidad;
@@ -129,6 +130,187 @@ namespace IrisContabilidad.modulo_inventario
             }
         }
 
+
+        public bool validarGetAcion()
+        {
+            try
+            {
+                
+                //suplidor
+                if (suplidor == null)
+                {
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+                    MessageBox.Show("Falta el suplidor", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                
+                //numero factura
+                if (numeroFacturaText.Text.Trim() == "")
+                {
+                    numeroFacturaText.Focus();
+                    numeroFacturaText.SelectAll();
+                    MessageBox.Show("Falta el número de factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                else
+                {
+                    //validar que ese numero de factura de ese suplidor no se repita
+                    listaCompra = modeloCompra.getListaCompraBySuplidor(suplidor.codigo);
+                    if (listaCompra.FindAll(x => x.numero_factura.ToLower() == numeroFacturaText.Text.ToLower()).Count > 0)
+                    {
+                        MessageBox.Show("Existe una compra con ese mismo número de factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                
+                //numero comprobante fiscal que no lo tenga ese mismo suplidor
+                if (numerocComprobanteFiscalText.Text.Trim() == "")
+                {
+                    numerocComprobanteFiscalText.Focus();
+                    numerocComprobanteFiscalText.SelectAll();
+                    MessageBox.Show("Falta el número de comprobante fiscal", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return false;
+                }
+                else
+                {
+                    //vlaidar que ese comprobante no se repita con el suplidor
+                    if (listaCompra.FindAll(x => x.ncf.ToLower() == numerocComprobanteFiscalText.Text.ToLower()).Count > 0)
+                    {
+                        MessageBox.Show("Existe una compra con ese mismo número de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                
+                //tipo de compra
+                if (tipoCompraComboBox.Text.Trim() == "")
+                {
+                    tipoCompraComboBox.Focus();
+                    tipoCompraComboBox.SelectAll();
+                    MessageBox.Show("Falta el tipo de compra", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                
+                //fecha inicial
+                DateTime fecha1;
+                if (DateTime.TryParse(fechaInicialText.Text,out fecha1)==false)
+                {
+                    fechaInicialText.Focus();
+                    fechaInicialText.SelectAll();
+                    MessageBox.Show("Formato de fecha no es valido", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                
+                //fecha a credito
+                DateTime fecha2;
+                if (DateTime.TryParse(fechaFinalText.Text, out fecha2) == false)
+                {
+                    fechaFinalText.Focus();
+                    fechaFinalText.SelectAll();
+                    MessageBox.Show("Formato de fecha no es valido", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                
+                //que hayan productos
+                if (dataGridView1.Rows.Count < 0)
+                {
+                    productoIdText.Focus();
+                    productoIdText.SelectAll();
+                    MessageBox.Show("Debe de seleccionar productos para la compra", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validarGetAcion.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public void getAction()
+        {
+            try
+            {
+                if (!validarGetAcion())
+                {
+                    return;
+                }
+
+                bool crear = false;
+                if (compra == null)
+                {
+                    crear = true;
+                    compra.codigo = modeloCompra.getNext();
+                }
+                compra.numero_factura = numeroFacturaText.Text;
+                compra.cod_suplidor = suplidor.codigo;
+                compra.fecha = Convert.ToDateTime(fechaInicialText.Text);
+                compra.fecha_limite = Convert.ToDateTime(fechaFinalText.Text);
+                compra.ncf = numerocComprobanteFiscalText.Text;
+                compra.tipo_compra = tipoCompraComboBox.Text;
+                compra.activo = true;
+                compra.pagada = false;
+                compra.codigo_sucursal = empleado.codigo_sucursal;
+                compra.codigo_empleado = empleado.codigo;
+                compra.codigo_empleado_anular = 0;
+                compra.motivo_anulada = "";
+                compra.detalle = detalleText.Text;
+                compra.suplidor_informal = Convert.ToBoolean(suplidorInformalCheck.Checked);
+
+
+                //hacer lista del detalle de la compra
+                listaCompraDetalle = new List<compra_detalle>();
+                int cont = 1;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    compraDetalle = new compra_detalle();
+                    compraDetalle.codigo = cont;
+                    compraDetalle.cod_compra = compra.codigo;
+                    compraDetalle.cod_producto = Convert.ToInt16(row.Cells[1].Value.ToString());
+                    compraDetalle.cod_unidad = Convert.ToInt16(row.Cells[2].Value.ToString());
+                    compraDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
+                    compraDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                    compraDetalle.monto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    compraDetalle.monto_descuento = Convert.ToDecimal(row.Cells[7].Value.ToString());
+                    compraDetalle.activo = true;
+                    listaCompraDetalle.Add(compraDetalle);
+                    cont++;
+                }
+
+
+                if (crear == true)
+                {
+                    //agregar
+                    if (modeloCompra.agregarCompra(compra, listaCompraDetalle) == true)
+                    {
+                        MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    //modificar
+                    if (modeloCompra.modificarCompra(compra) == true)
+                    {
+                        MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
         public void loadListaCompraDetalle()
         {
             try
@@ -427,7 +609,7 @@ namespace IrisContabilidad.modulo_inventario
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            getAction();
         }
 
         private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)
