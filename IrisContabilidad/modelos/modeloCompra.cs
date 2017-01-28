@@ -199,7 +199,7 @@ namespace IrisContabilidad.modelos
                         compraDetalle.precio=Convert.ToDecimal(row[4].ToString());
                         compraDetalle.cantidad=Convert.ToDecimal(row[5].ToString());
                         compraDetalle.monto=Convert.ToDecimal(row[6].ToString());
-                        compraDetalle.descuento=Convert.ToDecimal(row[7].ToString());
+                        compraDetalle.monto_descuento=Convert.ToDecimal(row[7].ToString());
                         compraDetalle.activo = Convert.ToBoolean(row[8].ToString());
                         lista.Add(compraDetalle);
                     }

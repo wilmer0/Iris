@@ -83,7 +83,7 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.totalItebisText = new System.Windows.Forms.TextBox();
-            this.totalMontoText = new System.Windows.Forms.TextBox();
+            this.totalCompraText = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -664,24 +664,24 @@
             this.totalItebisText.TabIndex = 88;
             this.totalItebisText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // totalMontoText
+            // totalCompraText
             // 
-            this.totalMontoText.BackColor = System.Drawing.Color.SkyBlue;
-            this.totalMontoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalMontoText.Location = new System.Drawing.Point(863, 660);
-            this.totalMontoText.MaxLength = 200;
-            this.totalMontoText.Name = "totalMontoText";
-            this.totalMontoText.ReadOnly = true;
-            this.totalMontoText.Size = new System.Drawing.Size(150, 26);
-            this.totalMontoText.TabIndex = 102;
-            this.totalMontoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.totalCompraText.BackColor = System.Drawing.Color.SkyBlue;
+            this.totalCompraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalCompraText.Location = new System.Drawing.Point(863, 660);
+            this.totalCompraText.MaxLength = 200;
+            this.totalCompraText.Name = "totalCompraText";
+            this.totalCompraText.ReadOnly = true;
+            this.totalCompraText.Size = new System.Drawing.Size(150, 26);
+            this.totalCompraText.TabIndex = 102;
+            this.totalCompraText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ventana_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 757);
-            this.Controls.Add(this.totalMontoText);
+            this.Controls.Add(this.totalCompraText);
             this.Controls.Add(this.totalItebisText);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -700,7 +700,7 @@
             this.Controls.SetChildIndex(this.label13, 0);
             this.Controls.SetChildIndex(this.label14, 0);
             this.Controls.SetChildIndex(this.totalItebisText, 0);
-            this.Controls.SetChildIndex(this.totalMontoText, 0);
+            this.Controls.SetChildIndex(this.totalCompraText, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -753,7 +753,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox totalItebisText;
-        private System.Windows.Forms.TextBox totalMontoText;
+        private System.Windows.Forms.TextBox totalCompraText;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPrductoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idUnidadColumn;

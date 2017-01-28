@@ -44,7 +44,8 @@ namespace IrisContabilidad.modulo_inventario
         
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
-
+        private decimal totalItebisMonto = 0;
+        private decimal totalCompraMonto = 0;
 
         //listas
         private List<producto_vs_codigobarra> listaCodigoBarra;
@@ -70,6 +71,7 @@ namespace IrisContabilidad.modulo_inventario
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana compra");
             this.Text = tituloLabel.Text;
             loadVentana();
+            button3_Click_1(null,null);
         }
         public void loadVentana()
         {
@@ -93,6 +95,7 @@ namespace IrisContabilidad.modulo_inventario
                     suplidorInformalCheck.Checked = Convert.ToBoolean(compra.suplidor_informal);
                     //llenar el detalle de la compra
                     listaCompraDetalle = modeloCompra.getListaCompraDetalle(compra.codigo,true);
+                    loadListaCompraDetalle();
                 }
                 else
                 {
@@ -140,7 +143,7 @@ namespace IrisContabilidad.modulo_inventario
                     producto = modeloProducto.getProductoById(x.cod_producto);
                     unidad = modeloUnidad.getUnidadById(x.cod_unidad);
                     itebis = modeloItebis.getItebisById(producto.codigo_itebis);
-                    dataGridView1.Rows.Add(x.cod_producto, producto.nombre, x.cod_unidad, unidad.unidad_abreviada,x.cantidad,x.precio,(itebis.porciento*x.monto),x.descuento,x.monto);
+                    dataGridView1.Rows.Add(x.cod_producto, producto.nombre, x.cod_unidad, unidad.unidad_abreviada,x.cantidad,x.precio,(itebis.porciento*x.monto),x.monto_descuento,x.monto);
                 });
             }
             catch (Exception ex)
@@ -173,6 +176,7 @@ namespace IrisContabilidad.modulo_inventario
         private void button19_Click(object sender, EventArgs e)
         {
             eliminarProducto();
+            calcularTotal();
         }
 
         public void eliminarProducto()
@@ -200,6 +204,7 @@ namespace IrisContabilidad.modulo_inventario
         private void button20_Click(object sender, EventArgs e)
         {
             agregarProducto();
+            calcularTotal();
         }
         public void agregarProducto()
         {
@@ -254,43 +259,39 @@ namespace IrisContabilidad.modulo_inventario
                
                 //validar que si existe el producto y unidad se sume la cantidad
                 int fila = 0;
+                existe = false;
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     if (row.Cells[0].Value.ToString() == producto.codigo.ToString() && row.Cells[2].Value.ToString()==unidad.codigo.ToString())
                     {
-                        //son iguales se sacan los valores del grid
-                        cantidad_monto = Convert.ToDecimal(dataGridView1.Rows[fila].Cells[4].Value.ToString());
-                        precio_monto = Convert.ToDecimal(dataGridView1.Rows[fila].Cells[5].Value.ToString());
-                        descuento_porciento = Convert.ToDecimal(dataGridView1.Rows[fila].Cells[7].Value.ToString());
-                        importe_monto = Convert.ToDecimal(dataGridView1.Rows[fila].Cells[8].Value.ToString());
-                        
-                        //sumar lo que se quiere agregar
-                        cantidad_monto += Convert.ToDecimal(cantidadText.Text);
-                        if (precio_monto != Convert.ToDecimal(precioText.Text))
+                        existe = true;
+                        //son iguales se sacan los valores de los textBox
+                        //para saber si el porciento descuento sea siempre 50->0.50 o 23->0.23
+                        if (Convert.ToDecimal(descuentoText.Text) > 1)
                         {
-                            precio_monto = Convert.ToDecimal(precioText.Text);
+                            descuentoText.Text = (Convert.ToDecimal(descuentoText.Text) / 100).ToString();
                         }
-                        descuento_porciento = Convert.ToDecimal(descuentoText.Text);
-                        importe_monto = (cantidad_monto * precio_monto);
-                        descuento_monto = importe_monto * descuento_porciento;
+                        cantidad_monto = Convert.ToDecimal(cantidadText.Text);
+                        precio_monto = Convert.ToDecimal(precioText.Text);
+                        importe_monto = Convert.ToDecimal(importeText.Text);
+                        itebis = modeloItebis.getItebisById(producto.codigo_itebis);
+                        
+                        //sumar y procesar
+                        cantidad_monto += Convert.ToDecimal(row.Cells[4].Value.ToString());
+                        importe_monto = cantidad_monto*precio_monto;
+                        itebis_monto = Convert.ToDecimal(itebis.porciento * Convert.ToDecimal(importe_monto));
+                        descuento_monto = Convert.ToDecimal(descuentoText.Text) * importe_monto;
                         importe_monto = importe_monto - descuento_monto;
 
 
                         //asignar los nuevos valores en el grid
-                        dataGridView1.Rows[fila].Cells[4].Value = cantidad_monto.ToString("N");
-                        dataGridView1.Rows[fila].Cells[5].Value = precio_monto.ToString("N");
-                        dataGridView1.Rows[fila].Cells[7].Value = descuento_monto.ToString("N");
-                        dataGridView1.Rows[fila].Cells[8].Value = importe_monto.ToString("N");
+                        row.Cells[4].Value = cantidad_monto.ToString("N");
+                        row.Cells[5].Value = precio_monto.ToString("N");
+                        row.Cells[6].Value = itebis_monto.ToString("N");
+                        row.Cells[7].Value = descuento_monto.ToString("N");
+                        row.Cells[8].Value = importe_monto.ToString("N");
                     }
                     //si no se repite el producto y unidad entonces se agrega los valores del textbox
-                    cantidad_monto = Convert.ToDecimal(cantidadText.Text);
-                    precio_monto = Convert.ToDecimal(precioText.Text);
-                    descuento_porciento = Convert.ToDecimal(descuentoText.Text);
-                    importe_monto = Convert.ToDecimal(importeText.Text);
-                    itebis = modeloItebis.getItebisById(producto.codigo_itebis);
-                    itebis_monto = importe_monto*itebis.porciento;
-                    dataGridView1.Rows.Add(producto.codigo, producto.nombre, unidad.codigo, unidad.nombre, cantidad_monto.ToString("N"),precio_monto.ToString("N"),itebis_monto.ToString("N"),descuento_monto.ToString("N"),importe_monto.ToString("N"));
-                    fila++;
                 }
 
                 if (existe == false)
@@ -299,13 +300,13 @@ namespace IrisContabilidad.modulo_inventario
                     itebis = modeloItebis.getItebisById(producto.codigo_itebis);
                     itebis_monto = itebis.porciento*importe_monto;
                     //para saber si el porciento descuento sea siempre 50->0.50 o 23->0.23
-                    if (Convert.ToDecimal(descuentoText.Text) > 0)
+                    if (Convert.ToDecimal(descuentoText.Text) > 1)
                     {
                         descuentoText.Text = (Convert.ToDecimal(descuentoText.Text)/100).ToString();
                     }
                     descuento_monto = Convert.ToDecimal(descuentoText.Text)*importe_monto;
                     importe_monto = importe_monto - descuento_monto;
-                    dataGridView1.Rows.Add(producto.codigo.ToString(), producto.nombre, unidad.codigo.ToString(), unidad.nombre, cantidadText.Text, precioText.Text, itebis_monto.ToString("n"), descuento_monto.ToString("n"), importe_monto.ToString("n"));
+                    dataGridView1.Rows.Add(producto.codigo.ToString(), producto.nombre, unidad.codigo.ToString(), unidad.nombre, cantidadText.Text, precioText.Text, itebis_monto.ToString("N"), descuento_monto.ToString("N"), importe_monto.ToString("N"));
                 }
             }
             catch (Exception ex)
@@ -314,6 +315,34 @@ namespace IrisContabilidad.modulo_inventario
             }
         }
 
+        private void calcularTotal()
+        {
+            try
+            {
+                if (dataGridView1.Rows.Count <= 0)
+                {
+                    totalItebisText.Text = "0.00";
+                    totalCompraText.Text = "0.00";
+                    return;
+                }
+
+                totalItebisMonto = 0;
+                totalCompraMonto = 0;
+
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    totalItebisMonto += Convert.ToDecimal(row.Cells[6].Value.ToString());
+                    totalCompraMonto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                }
+                totalItebisText.Text = totalItebisMonto.ToString("N");
+                totalCompraText.Text = totalCompraMonto.ToString("N");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calcularTotal.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void button4_Click(object sender, EventArgs e)
         {
             ventana_busqueda_producto ventana = new ventana_busqueda_producto();
@@ -323,6 +352,8 @@ namespace IrisContabilidad.modulo_inventario
             {
                 producto = ventana.getObjeto();
                 loadProducto();
+                unidadComboText.Focus();
+                unidadComboText.SelectAll();
             }
         }
 
@@ -330,10 +361,10 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                productoIdText.Text = "";
+                productoText.Text = "";
                 if (producto == null)
                 {
-                    productoIdText.Text = "";
-                    productoText.Text = "";
                     return;
                 }
                 productoIdText.Text = producto.codigo.ToString();
@@ -479,15 +510,28 @@ namespace IrisContabilidad.modulo_inventario
 
         private void productoIdText_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            try
             {
-                unidadComboText.Focus();
-                unidadComboText.SelectAll();
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    producto = modeloProducto.getProductoById(Convert.ToInt16(productoIdText.Text));
+                    if (producto != null)
+                    {
+                        loadProducto();
+                    }
+                    unidadComboText.Focus();
+                    unidadComboText.SelectAll();
+                }
             }
-            if (e.KeyCode == Keys.F1)
+            catch (Exception)
             {
-                button4_Click(null,null);
+                
             }
+           
         }
 
         private void unidadComboText_KeyDown(object sender, KeyEventArgs e)
@@ -567,6 +611,8 @@ namespace IrisContabilidad.modulo_inventario
             {
                 suplidor = ventana.getObjeto();
                 loadSuplidor();
+                numeroFacturaText.Focus();
+                numeroFacturaText.SelectAll();
             }
         }
         public void cargarPrecioProductoUnidad()
@@ -680,6 +726,24 @@ namespace IrisContabilidad.modulo_inventario
             {
                 detalleText.Focus();
                 detalleText.SelectAll();
+            }
+        }
+
+        private void actualizarCompraDetalle()
+        {
+            try
+            {
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    string sql ="insert into compra_detalle(codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo) values('','','','','','','','','')";
+                    utilidades.ejecutarcomando_mysql(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }
