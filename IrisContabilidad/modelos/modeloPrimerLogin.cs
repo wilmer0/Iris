@@ -228,7 +228,18 @@ namespace IrisContabilidad.modelos
                     modeloCiudad.agregarCiudad(listaCiudades);
                 #endregion
 
-                
+
+                //permisos productos
+                #region
+                sql = "insert into producto_permisos(codigo,nombre,activo) values('1','vender a precio diferente','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into producto_permisos(codigo,nombre,activo) values('2','vender sin existencia','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+                #endregion
+
+
             }
             catch (Exception ex)
             {

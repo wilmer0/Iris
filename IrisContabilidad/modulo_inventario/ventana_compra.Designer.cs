@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_compra));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.fechaFinalText = new System.Windows.Forms.MaskedTextBox();
+            this.fechaInicialText = new System.Windows.Forms.MaskedTextBox();
             this.suplidorInformalCheck = new System.Windows.Forms.CheckBox();
             this.detalleText = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.fechaLimiteTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.fechaCreadaPicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.tipoCompraComboBox = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -119,13 +119,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.fechaFinalText);
+            this.groupBox1.Controls.Add(this.fechaInicialText);
             this.groupBox1.Controls.Add(this.suplidorInformalCheck);
             this.groupBox1.Controls.Add(this.detalleText);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.fechaLimiteTimePicker);
-            this.groupBox1.Controls.Add(this.fechaCreadaPicker);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tipoCompraComboBox);
             this.groupBox1.Controls.Add(this.linkLabel1);
@@ -142,6 +142,24 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // fechaFinalText
+            // 
+            this.fechaFinalText.Location = new System.Drawing.Point(529, 60);
+            this.fechaFinalText.Mask = "00/00/0000";
+            this.fechaFinalText.Name = "fechaFinalText";
+            this.fechaFinalText.Size = new System.Drawing.Size(125, 20);
+            this.fechaFinalText.TabIndex = 89;
+            this.fechaFinalText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaFinalText_KeyDown);
+            // 
+            // fechaInicialText
+            // 
+            this.fechaInicialText.Location = new System.Drawing.Point(529, 19);
+            this.fechaInicialText.Mask = "00/00/0000";
+            this.fechaInicialText.Name = "fechaInicialText";
+            this.fechaInicialText.Size = new System.Drawing.Size(125, 20);
+            this.fechaInicialText.TabIndex = 88;
+            this.fechaInicialText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaInicialText_KeyDown);
             // 
             // suplidorInformalCheck
             // 
@@ -195,23 +213,6 @@
             this.label4.Size = new System.Drawing.Size(59, 20);
             this.label4.TabIndex = 83;
             this.label4.Text = "Fecha";
-            // 
-            // fechaLimiteTimePicker
-            // 
-            this.fechaLimiteTimePicker.Location = new System.Drawing.Point(528, 60);
-            this.fechaLimiteTimePicker.Name = "fechaLimiteTimePicker";
-            this.fechaLimiteTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaLimiteTimePicker.TabIndex = 82;
-            this.fechaLimiteTimePicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaLimiteTimePicker_KeyDown);
-            // 
-            // fechaCreadaPicker
-            // 
-            this.fechaCreadaPicker.Enabled = false;
-            this.fechaCreadaPicker.Location = new System.Drawing.Point(528, 19);
-            this.fechaCreadaPicker.Name = "fechaCreadaPicker";
-            this.fechaCreadaPicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaCreadaPicker.TabIndex = 81;
-            this.fechaCreadaPicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaCreadaPicker_KeyDown);
             // 
             // label1
             // 
@@ -389,32 +390,32 @@
             // 
             // precioColumn
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.precioColumn.HeaderText = "Precio";
             this.precioColumn.Name = "precioColumn";
             this.precioColumn.ReadOnly = true;
             // 
             // itebisColumn
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.itebisColumn.HeaderText = "Itbis";
             this.itebisColumn.Name = "itebisColumn";
             this.itebisColumn.ReadOnly = true;
             // 
             // descuentoColumn
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.descuentoColumn.HeaderText = "Descuento";
             this.descuentoColumn.Name = "descuentoColumn";
             this.descuentoColumn.ReadOnly = true;
             // 
             // importeColumn
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.importeColumn.HeaderText = "Importe";
             this.importeColumn.Name = "importeColumn";
             this.importeColumn.ReadOnly = true;
@@ -728,8 +729,6 @@
         private System.Windows.Forms.ComboBox tipoCompraComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker fechaLimiteTimePicker;
-        private System.Windows.Forms.DateTimePicker fechaCreadaPicker;
         private System.Windows.Forms.TextBox detalleText;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -766,5 +765,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn importeColumn;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.MaskedTextBox fechaFinalText;
+        private System.Windows.Forms.MaskedTextBox fechaInicialText;
     }
 }

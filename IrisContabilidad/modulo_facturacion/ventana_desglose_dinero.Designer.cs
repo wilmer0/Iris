@@ -39,10 +39,12 @@
             this.depositoText = new System.Windows.Forms.TextBox();
             this.devueltoText = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.descuentoText = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -180,17 +182,41 @@
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.descuentoText);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(16, 232);
+            this.groupBox1.Location = new System.Drawing.Point(16, 194);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(875, 124);
+            this.groupBox1.Size = new System.Drawing.Size(878, 116);
             this.groupBox1.TabIndex = 84;
             this.groupBox1.TabStop = false;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton2.Location = new System.Drawing.Point(314, 19);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(119, 21);
+            this.radioButton2.TabIndex = 88;
+            this.radioButton2.Text = "% descuento";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButton1.Location = new System.Drawing.Point(121, 19);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(150, 21);
+            this.radioButton1.TabIndex = 87;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "Monto descuento";
+            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // descuentoText
             // 
             this.descuentoText.BackColor = System.Drawing.Color.Tomato;
             this.descuentoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descuentoText.Location = new System.Drawing.Point(138, 62);
+            this.descuentoText.Location = new System.Drawing.Point(121, 61);
             this.descuentoText.Name = "descuentoText";
             this.descuentoText.Size = new System.Drawing.Size(312, 38);
             this.descuentoText.TabIndex = 86;
@@ -200,41 +226,39 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(30, 69);
+            this.label6.Location = new System.Drawing.Point(13, 68);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 20);
             this.label6.TabIndex = 85;
             this.label6.Text = "Descuento";
             // 
-            // radioButton1
+            // textBox1
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton1.Location = new System.Drawing.Point(138, 20);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(150, 21);
-            this.radioButton1.TabIndex = 87;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Monto descuento";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.textBox1.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(100, 452);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(312, 38);
+            this.textBox1.TabIndex = 86;
             // 
-            // radioButton2
+            // label7
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton2.Location = new System.Drawing.Point(331, 20);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(119, 21);
-            this.radioButton2.TabIndex = 88;
-            this.radioButton2.Text = "% descuento";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(8, 465);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 20);
+            this.label7.TabIndex = 85;
+            this.label7.Text = "Esperado";
             // 
             // ventana_desglose_dinero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(906, 566);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.devueltoText);
             this.Controls.Add(this.depositoText);
@@ -262,6 +286,8 @@
             this.Controls.SetChildIndex(this.depositoText, 0);
             this.Controls.SetChildIndex(this.devueltoText, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
+            this.Controls.SetChildIndex(this.textBox1, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -289,5 +315,7 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.TextBox descuentoText;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label7;
     }
 }

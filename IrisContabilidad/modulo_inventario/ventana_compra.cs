@@ -87,8 +87,8 @@ namespace IrisContabilidad.modulo_inventario
                     numerocComprobanteFiscalText.Text = compra.ncf;
                     tipoCompraComboBox.Enabled = false;
                     tipoCompraComboBox.Text = compra.tipo_compra;
-                    fechaCreadaPicker.Value = compra.fecha;
-                    fechaLimiteTimePicker.Value = compra.fecha_limite;
+                    fechaInicialText.Text = compra.fecha.ToString("d");
+                    fechaFinalText.Text = compra.fecha_limite.ToString("d");
                     detalleText.Text = compra.detalle;
                     suplidorInformalCheck.Checked = Convert.ToBoolean(compra.suplidor_informal);
                     //llenar el detalle de la compra
@@ -105,8 +105,8 @@ namespace IrisContabilidad.modulo_inventario
                     numerocComprobanteFiscalText.Text = "";
                     tipoCompraComboBox.Enabled = true;
                     tipoCompraComboBox.Text = "";
-                    fechaCreadaPicker.Value = DateTime.Today;
-                    fechaLimiteTimePicker.Value = DateTime.Today;
+                    fechaInicialText.Text = DateTime.Today.ToString("d");
+                    fechaFinalText.Text = DateTime.Today.ToString("d");
                     detalleText.Text = "";
                     suplidorInformalCheck.Checked = false;
                     suplidorInformalCheck.Checked = false;
@@ -116,6 +116,8 @@ namespace IrisContabilidad.modulo_inventario
                     {
                         dataGridView1.Rows.Clear();
                     }
+                    fechaInicialText.Text = DateTime.Today.ToString("dd-MM-yyyy");
+                    fechaFinalText.Text = DateTime.Today.ToString("dd-MM-yyyy");
                 }
             }
             catch (Exception ex)
@@ -178,7 +180,7 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //validar que tenga filas el datagrid
-                if (dataGridView1.Rows.Count < 0)
+                if (dataGridView1==null || dataGridView1.Rows.Count < 0)
                 {
                     return;
                 }
@@ -205,7 +207,7 @@ namespace IrisContabilidad.modulo_inventario
             {
                 //validaciones
 
-                //validar que tenga procuto seleccionada
+                //validar que tenga producto seleccionado
                 if (producto == null)
                 {
                     productoIdText.Focus();
@@ -293,7 +295,17 @@ namespace IrisContabilidad.modulo_inventario
 
                 if (existe == false)
                 {
-                    //dataGridView1.Rows.Add(unidadConversion.codigo.ToString(), unidadConversion.nombre, cantidadText.Text.Trim(), precioCostoText.Text.Trim(), precioVentaText.Text.Trim());
+                    importe_monto = Convert.ToDecimal(cantidadText.Text)*Convert.ToDecimal(precioText.Text);
+                    itebis = modeloItebis.getItebisById(producto.codigo_itebis);
+                    itebis_monto = itebis.porciento*importe_monto;
+                    //para saber si el porciento descuento sea siempre 50->0.50 o 23->0.23
+                    if (Convert.ToDecimal(descuentoText.Text) > 0)
+                    {
+                        descuentoText.Text = (Convert.ToDecimal(descuentoText.Text)/100).ToString();
+                    }
+                    descuento_monto = Convert.ToDecimal(descuentoText.Text)*importe_monto;
+                    importe_monto = importe_monto - descuento_monto;
+                    dataGridView1.Rows.Add(producto.codigo.ToString(), producto.nombre, unidad.codigo.ToString(), unidad.nombre, cantidadText.Text, precioText.Text, itebis_monto.ToString("n"), descuento_monto.ToString("n"), importe_monto.ToString("n"));
                 }
             }
             catch (Exception ex)
@@ -432,20 +444,12 @@ namespace IrisContabilidad.modulo_inventario
 
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                fechaCreadaPicker.Focus();
-                fechaCreadaPicker.Select();
+                fechaInicialText.Focus();
+                fechaInicialText.SelectAll();
             }
         }
 
-        private void fechaCreadaPicker_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
-            {
-                fechaLimiteTimePicker.Focus();
-                fechaLimiteTimePicker.Select();
-            }
-        }
+        
 
         private void fechaLimiteTimePicker_KeyDown(object sender, KeyEventArgs e)
         {
@@ -659,6 +663,24 @@ namespace IrisContabilidad.modulo_inventario
         private void descuentoText_TextChanged(object sender, EventArgs e)
         {
             calularImporte();
+        }
+
+        private void fechaInicialText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                fechaFinalText.Focus();
+                fechaFinalText.SelectAll();
+            }
+        }
+
+        private void fechaFinalText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                detalleText.Focus();
+                detalleText.SelectAll();
+            }
         }
     }
 }
