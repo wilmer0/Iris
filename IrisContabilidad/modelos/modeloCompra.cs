@@ -40,8 +40,8 @@ namespace IrisContabilidad.modelos
                 {
                     pagada = 1;
                 }
-
-                string sql = "insert into compra(codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal) values('" + compra.codigo + "','" + compra.numero_factura + "','" + compra.cod_suplidor + "'," + compra.fecha.ToString("dd/MM/yyyy") + "," + compra.fecha_limite.ToString("dd/MM/yyyy") + ",'" + compra.ncf + "','" + compra.tipo_compra + "','" + activo + "','" + pagada + "','" + compra.codigo_sucursal + "','" + compra.codigo_empleado + "','0','','" + compra.detalle + "','" + suplidorInformal + "')";
+                DateTime fecha=DateTime.Today;
+                string sql = "insert into compra(codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal) values('" + compra.codigo + "','" + compra.numero_factura + "','" + compra.cod_suplidor + "'," + compra.fecha.ToString("dd/MM/yyyy") + "," + compra.fecha_limite.AddDays(120).ToString("dd/MM/yyyy") + ",'" + compra.ncf + "','" + compra.tipo_compra + "','" + activo + "','" + pagada + "','" + compra.codigo_sucursal + "','" + compra.codigo_empleado + "','0','','" + compra.detalle + "','" + suplidorInformal + "')";
                 //MessageBox.Show(sql);
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
 
@@ -59,7 +59,7 @@ namespace IrisContabilidad.modelos
                 {
                     x.codigo = getNextInventario();
                     DateTime fechaHoy=DateTime.Today;
-                    sql = "insert into inventario(codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento) values('" + x.codigo + "','" + x.cod_producto + "','" + x.cod_unidad + "','" + x.cantidad + "'," + fechaHoy.ToString("dd/MM/yyyy") + "," + fechaHoy.AddDays(120).ToString("dd/MM/yyyy")+ ")";
+                    sql = "insert into inventario(codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento) values('" + x.codigo + "','" + x.cod_producto + "','" + x.cod_unidad + "','" + x.cantidad + "'," + fechaHoy.ToString("dd/MM/yyyy") + "," + fechaHoy.AddDays(120).ToString("dd/MM/yyyy") + ")";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
 
@@ -322,6 +322,7 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
+                    compra = new compra();
                     compra.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     compra.numero_factura = ds.Tables[0].Rows[0][1].ToString();
                     compra.cod_suplidor = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());

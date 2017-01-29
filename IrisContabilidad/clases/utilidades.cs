@@ -1181,5 +1181,45 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+
+        public string getFechaHoraMinutosSegundos(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy hh:mm:ss");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaHoraMinutosSegundos.:" + ex.ToString());
+                return null;
+            }
+        }
+        public string getFechaddMMyyyy(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaddMMyyyy.:" + ex.ToString());
+                return null;
+            }
+        }
+        public string getFechayyyyMMdd(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("yyyy/MM/dd");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechayyyyMMdd.:" + ex.ToString());
+                return null;
+            }
+        }
     }
 }
