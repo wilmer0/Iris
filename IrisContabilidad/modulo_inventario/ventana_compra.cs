@@ -267,7 +267,8 @@ namespace IrisContabilidad.modulo_inventario
                     compraDetalle = new compra_detalle();
                     compraDetalle.codigo = cont;
                     compraDetalle.cod_compra = compra.codigo;
-                    compraDetalle.cod_producto = Convert.ToInt16(row.Cells[1].Value);
+                    //MessageBox.Show(row.Cells[0].ToString() + "-" + row.Cells[2].Value.ToString() + "-" + row.Cells[5].Value.ToString() + "-" + row.Cells[4].Value.ToString() + "-" + row.Cells[8].Value.ToString() + "-" + row.Cells[7].Value.ToString());
+                    compraDetalle.cod_producto = Convert.ToInt16(row.Cells[0].Value);
                     compraDetalle.cod_unidad = Convert.ToInt16(row.Cells[2].Value);
                     compraDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
                     compraDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
