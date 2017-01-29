@@ -18,7 +18,6 @@ namespace IrisContabilidad.modulo_inventario
     public partial class ventana_compra : formBase
     {
         //objetos
-        empleado empleadoSingleton;
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
         empleado empleado;
@@ -68,8 +67,8 @@ namespace IrisContabilidad.modulo_inventario
         public ventana_compra()
         {
             InitializeComponent();
-            empleadoSingleton = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana compra");
+            empleado = singleton.getEmpleado();
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana compra");
             this.Text = tituloLabel.Text;
             loadVentana();
             button3_Click_1(null,null);
@@ -241,6 +240,7 @@ namespace IrisContabilidad.modulo_inventario
                 if (compra == null)
                 {
                     crear = true;
+                    compra=new compra();
                     compra.codigo = modeloCompra.getNext();
                 }
                 compra.numero_factura = numeroFacturaText.Text;
@@ -267,8 +267,8 @@ namespace IrisContabilidad.modulo_inventario
                     compraDetalle = new compra_detalle();
                     compraDetalle.codigo = cont;
                     compraDetalle.cod_compra = compra.codigo;
-                    compraDetalle.cod_producto = Convert.ToInt16(row.Cells[1].Value.ToString());
-                    compraDetalle.cod_unidad = Convert.ToInt16(row.Cells[2].Value.ToString());
+                    compraDetalle.cod_producto = Convert.ToInt16(row.Cells[1].Value);
+                    compraDetalle.cod_unidad = Convert.ToInt16(row.Cells[2].Value);
                     compraDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
                     compraDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
                     compraDetalle.monto = Convert.ToDecimal(row.Cells[8].Value.ToString());
@@ -284,10 +284,12 @@ namespace IrisContabilidad.modulo_inventario
                     //agregar
                     if (modeloCompra.agregarCompra(compra, listaCompraDetalle) == true)
                     {
+                        compra = null;
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
+                        compra = null;
                         MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
@@ -296,6 +298,7 @@ namespace IrisContabilidad.modulo_inventario
                     //modificar
                     if (modeloCompra.modificarCompra(compra) == true)
                     {
+                        compra = null;
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -308,6 +311,7 @@ namespace IrisContabilidad.modulo_inventario
             }
             catch (Exception ex)
             {
+                compra = null;
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
@@ -614,15 +618,26 @@ namespace IrisContabilidad.modulo_inventario
 
         private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            try
             {
-                suplidorText.Focus();
-                suplidorText.SelectAll();
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    suplidorText.Focus();
+                    suplidorText.SelectAll();
+
+                    suplidor = modeloSuplidor.getSuplidorById(Convert.ToInt16(suplidorIdText.Text));
+                    loadSuplidor();
+                }
+                if (e.KeyCode == Keys.F1)
+                {
+                    button5_Click(null, null);
+                }
             }
-            if (e.KeyCode == Keys.F1)
+            catch (Exception)
             {
-                button5_Click(null, null);
+                
             }
+            
         }
 
         private void suplidorText_KeyDown(object sender, KeyEventArgs e)
