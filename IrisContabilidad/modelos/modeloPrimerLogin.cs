@@ -228,7 +228,18 @@ namespace IrisContabilidad.modelos
                     modeloCiudad.agregarCiudad(listaCiudades);
                 #endregion
 
-                
+
+                //permisos productos
+                #region
+                sql = "insert into producto_permisos(codigo,nombre,activo) values('1','vender a precio diferente','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into producto_permisos(codigo,nombre,activo) values('2','vender sin existencia','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+                #endregion
+
+
             }
             catch (Exception ex)
             {
@@ -631,6 +642,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 7;
                 ventana.imagen = "empleado1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "grupo de usuarios";
+                ventana.nombre_logico = "IrisContabilidad.modulo_nomina.ventana_grupo_usuarios";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 7;
+                ventana.imagen = "grupo_usuario1.png";
                 listaVentana.Add(ventana);
                 #endregion
 

@@ -33,6 +33,8 @@ namespace IrisContabilidad.modulo_inventario
         private unidad unidadConversion;
         private producto productoTemporal;
         private productoUnidadConversion productoUnidadConversion;
+        private producto_productos_requisitos productosRequisitos;
+        private unidad unidadProduccion;
 
         //modelos
         private modeloItebis modeloItebis = new modeloItebis();
@@ -51,8 +53,8 @@ namespace IrisContabilidad.modulo_inventario
 
         //listas
         private List<producto_vs_codigobarra> listaCodigoBarra;
-        private List<productoUnidadConversion> listaProductoUnidadConversion; 
-
+        private List<productoUnidadConversion> listaProductoUnidadConversion;
+        private List<producto_productos_requisitos> listaProductosRequisitos; 
 
         public ventana_producto()
         {
@@ -72,6 +74,9 @@ namespace IrisContabilidad.modulo_inventario
                 if (producto != null)
                 {
                     //llenar campos
+                    productoText.Focus();
+                    productoText.SelectAll();
+
                     productoText.Text = producto.nombre;
                     referenciaText.Text = producto.referencia;
                     categoria = modeloCategoria.getCategoriaById(producto.codigo_categoria);
@@ -85,7 +90,7 @@ namespace IrisContabilidad.modulo_inventario
                     almacen = modeloAlmacen.getAlmacenById(producto.codigo_almacen);
                     loadAlmacen();
                     unidadMinima = modeloUnidad.getUnidadById(producto.codigo_unidad_minima);
-                    loadUnidad();
+                    loadUnidadMinima();
                     if (producto.imagen != "")
                     {
                         rutaImagenText.Text = rutaImagenesProductos + producto.imagen;
@@ -104,6 +109,9 @@ namespace IrisContabilidad.modulo_inventario
                 else
                 {
                     //blanquear campos
+                    productoIdText.Focus();
+                    productoIdText.SelectAll();
+
                     productoText.Text = "";
                     referenciaText.Text = "";
                     categoria = null;
@@ -115,11 +123,14 @@ namespace IrisContabilidad.modulo_inventario
                     puntoMaximoText.Text = "";
                     puntoReordenText.Text = "";
                     itebis = null;
-                    loadItebis();
+                    itebisIdText.Text = "";
+                    itebisText.Text = "";
                     almacen = null;
-                    loadAlmacen();
+                    almacenIdText.Text = "";
+                    almacenText.Text = "";
                     unidadMinima = null;
-                    loadUnidad();
+                    unidadMinimaIdText.Text = "";
+                    unidadMinimaText.Text = "";
                     rutaImagenText.Text = "";
                     imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
                     activoCheck.Checked = true;
@@ -142,7 +153,6 @@ namespace IrisContabilidad.modulo_inventario
                     {
                         dataGridView3.Rows.Clear();
                     }
-                    
                 }
             }
             catch (Exception ex)
@@ -155,8 +165,33 @@ namespace IrisContabilidad.modulo_inventario
         {
 
         }
-     
-      
+
+        public void loadProductosRequisitos()
+        {
+            try
+            {
+                if (listaProductosRequisitos == null)
+                {
+                    return;
+                }
+                if (dataGridView4.Rows.Count > 0)
+                {
+                    dataGridView4.Rows.Clear();
+                }
+                foreach (var x in listaProductosRequisitos)
+                {
+                    unidadProduccion = modeloUnidad.getUnidadById(x.codigo_unidad);
+                    dataGridView4.Rows.Add(x.codigo_producto_requisito, x.codigo_unidad, unidadProduccion.nombre,
+                        x.cantidad);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadProductosRequisitos.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
         public void loadItebis()
         {
             try
@@ -438,7 +473,7 @@ namespace IrisContabilidad.modulo_inventario
                 loadAlmacen();
             }
         }
-        public void loadUnidad()
+        public void loadUnidadMinima()
         {
             try
             {
@@ -465,7 +500,7 @@ namespace IrisContabilidad.modulo_inventario
             if (ventana.DialogResult == DialogResult.OK)
             {
                 unidadMinima = ventana.getObjeto();
-                loadUnidad();
+                loadUnidadMinima();
             }
         }
 
@@ -917,6 +952,237 @@ namespace IrisContabilidad.modulo_inventario
             ventana_unidad ventana = new ventana_unidad();
             ventana.Owner = this;
             ventana.ShowDialog();
+        }
+
+        private void productoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    referenciaText.Focus();
+                    referenciaText.SelectAll();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void referenciaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                categoriaIdText.Focus();
+                categoriaIdText.SelectAll();
+            }
+        }
+
+        private void categoriaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button5_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    subcategoriaIdText.Focus();
+                    subcategoriaIdText.SelectAll();
+
+                    categoria = modeloCategoria.getCategoriaById(Convert.ToInt16(categoriaIdText.Text));
+                    loadCategoria();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void subcategoriaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button6_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    puntoMaximoText.Focus();
+                    puntoMaximoText.SelectAll();
+
+                    subCategoria = modeloSubcategoria.getSubCategoriaById(Convert.ToInt16(subcategoriaIdText.Text));
+                    loadSubCategoria();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void puntoMaximoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+               
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    puntoReordenText.Focus();
+                    puntoReordenText.SelectAll();
+
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void puntoReordenText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    itebisIdText.Focus();
+                    itebisIdText.SelectAll();
+
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void itebisIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button7_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    almacenIdText.Focus();
+                    almacenIdText.SelectAll();
+
+                    itebis = modeloItebis.getItebisById(Convert.ToInt16(itebisIdText.Text));
+                    loadItebis();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void almacenIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button8_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    unidadMinimaIdText.Focus();
+                    unidadMinimaIdText.SelectAll();
+
+                    almacen = modeloAlmacen.getAlmacenById(Convert.ToInt16(almacenIdText.Text));
+                    loadAlmacen();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void unidadMinimaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button9_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    rutaImagenText.Focus();
+                    rutaImagenText.SelectAll();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void productoIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    productoText.Focus();
+                    productoText.SelectAll();
+
+
+                    producto = modeloProducto.getProductoById(Convert.ToInt16(productoIdText.Text));
+                    loadVentana();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void rutaImagenText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    button1.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        public void actualizaProductosProduccion()
+        {
+            try
+            {
+                //para actualizar los productos que son requisitos para la fabricacion de este produco
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error actualizaProductosProduccion.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void cantidadProduccionText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e,cantidadProduccionText.Text);
         }
     }
 }

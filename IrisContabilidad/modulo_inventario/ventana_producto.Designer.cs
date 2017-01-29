@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -70,7 +71,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cargoIdText = new System.Windows.Forms.TextBox();
+            this.productoIdText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button14 = new System.Windows.Forms.Button();
@@ -116,6 +117,20 @@
             this.cantidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioVentaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cantidadProduccionText = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.unidadTextProduccion = new System.Windows.Forms.TextBox();
+            this.button21 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.unidadIdProduccionText = new System.Windows.Forms.TextBox();
+            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -130,6 +145,9 @@
             this.tabPage4.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -164,6 +182,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(16, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -334,6 +353,7 @@
             this.unidadMinimaIdText.Name = "unidadMinimaIdText";
             this.unidadMinimaIdText.Size = new System.Drawing.Size(183, 26);
             this.unidadMinimaIdText.TabIndex = 49;
+            this.unidadMinimaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.unidadMinimaIdText_KeyDown);
             // 
             // button9
             // 
@@ -365,6 +385,7 @@
             this.rutaImagenText.Name = "rutaImagenText";
             this.rutaImagenText.Size = new System.Drawing.Size(183, 26);
             this.rutaImagenText.TabIndex = 46;
+            this.rutaImagenText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rutaImagenText_KeyDown);
             // 
             // almacenText
             // 
@@ -397,6 +418,7 @@
             this.almacenIdText.Name = "almacenIdText";
             this.almacenIdText.Size = new System.Drawing.Size(183, 26);
             this.almacenIdText.TabIndex = 42;
+            this.almacenIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.almacenIdText_KeyDown);
             // 
             // itebisText
             // 
@@ -439,6 +461,7 @@
             this.itebisIdText.Name = "itebisIdText";
             this.itebisIdText.Size = new System.Drawing.Size(183, 26);
             this.itebisIdText.TabIndex = 38;
+            this.itebisIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.itebisIdText_KeyDown);
             // 
             // puntoReordenText
             // 
@@ -450,6 +473,7 @@
             this.puntoReordenText.Size = new System.Drawing.Size(236, 26);
             this.puntoReordenText.TabIndex = 36;
             this.puntoReordenText.Text = "0";
+            this.puntoReordenText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.puntoReordenText_KeyDown);
             this.puntoReordenText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.puntoReordenText_KeyPress);
             // 
             // label7
@@ -472,6 +496,7 @@
             this.puntoMaximoText.Size = new System.Drawing.Size(236, 26);
             this.puntoMaximoText.TabIndex = 34;
             this.puntoMaximoText.Text = "0";
+            this.puntoMaximoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.puntoMaximoText_KeyDown);
             this.puntoMaximoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox6_KeyPress);
             // 
             // label6
@@ -515,6 +540,7 @@
             this.subcategoriaIdText.Name = "subcategoriaIdText";
             this.subcategoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.subcategoriaIdText.TabIndex = 30;
+            this.subcategoriaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.subcategoriaIdText_KeyDown);
             // 
             // categoriaText
             // 
@@ -548,6 +574,7 @@
             this.referenciaText.Name = "referenciaText";
             this.referenciaText.Size = new System.Drawing.Size(236, 26);
             this.referenciaText.TabIndex = 27;
+            this.referenciaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.referenciaText_KeyDown);
             // 
             // label3
             // 
@@ -567,6 +594,7 @@
             this.categoriaIdText.Name = "categoriaIdText";
             this.categoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.categoriaIdText.TabIndex = 25;
+            this.categoriaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.categoriaIdText_KeyDown);
             // 
             // productoText
             // 
@@ -577,6 +605,7 @@
             this.productoText.Name = "productoText";
             this.productoText.Size = new System.Drawing.Size(236, 26);
             this.productoText.TabIndex = 25;
+            this.productoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.productoText_KeyDown);
             // 
             // label2
             // 
@@ -592,7 +621,7 @@
             // 
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cargoIdText);
+            this.groupBox1.Controls.Add(this.productoIdText);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(917, 61);
@@ -622,14 +651,15 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Producto";
             // 
-            // cargoIdText
+            // productoIdText
             // 
-            this.cargoIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.cargoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cargoIdText.Location = new System.Drawing.Point(152, 19);
-            this.cargoIdText.Name = "cargoIdText";
-            this.cargoIdText.Size = new System.Drawing.Size(183, 26);
-            this.cargoIdText.TabIndex = 0;
+            this.productoIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.productoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productoIdText.Location = new System.Drawing.Point(152, 19);
+            this.productoIdText.Name = "productoIdText";
+            this.productoIdText.Size = new System.Drawing.Size(183, 26);
+            this.productoIdText.TabIndex = 0;
+            this.productoIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.productoIdText_KeyDown);
             // 
             // tabPage2
             // 
@@ -1111,8 +1141,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTextBoxColumn5.FillWeight = 70F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Precio costo";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -1120,12 +1150,168 @@
             // 
             // precioVentaColumn
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.precioVentaColumn.FillWeight = 70F;
             this.precioVentaColumn.HeaderText = "Precio venta";
             this.precioVentaColumn.Name = "precioVentaColumn";
             this.precioVentaColumn.ReadOnly = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.groupBox5);
+            this.tabPage5.Controls.Add(this.dataGridView4);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(929, 540);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Producción";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cantidadProduccionText);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.unidadTextProduccion);
+            this.groupBox5.Controls.Add(this.button21);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.unidadIdProduccionText);
+            this.groupBox5.Controls.Add(this.button22);
+            this.groupBox5.Controls.Add(this.button23);
+            this.groupBox5.Location = new System.Drawing.Point(12, 20);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(904, 91);
+            this.groupBox5.TabIndex = 71;
+            this.groupBox5.TabStop = false;
+            // 
+            // cantidadProduccionText
+            // 
+            this.cantidadProduccionText.BackColor = System.Drawing.Color.White;
+            this.cantidadProduccionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cantidadProduccionText.Location = new System.Drawing.Point(338, 55);
+            this.cantidadProduccionText.MaxLength = 30;
+            this.cantidadProduccionText.Name = "cantidadProduccionText";
+            this.cantidadProduccionText.Size = new System.Drawing.Size(104, 26);
+            this.cantidadProduccionText.TabIndex = 62;
+            this.cantidadProduccionText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cantidadProduccionText_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(336, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 20);
+            this.label4.TabIndex = 61;
+            this.label4.Text = "Cantidad";
+            // 
+            // unidadTextProduccion
+            // 
+            this.unidadTextProduccion.BackColor = System.Drawing.Color.White;
+            this.unidadTextProduccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadTextProduccion.Location = new System.Drawing.Point(76, 55);
+            this.unidadTextProduccion.MaxLength = 200;
+            this.unidadTextProduccion.Name = "unidadTextProduccion";
+            this.unidadTextProduccion.ReadOnly = true;
+            this.unidadTextProduccion.Size = new System.Drawing.Size(236, 26);
+            this.unidadTextProduccion.TabIndex = 56;
+            // 
+            // button21
+            // 
+            this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
+            this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button21.Location = new System.Drawing.Point(265, 15);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(47, 37);
+            this.button21.TabIndex = 55;
+            this.button21.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(4, 21);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(66, 20);
+            this.label11.TabIndex = 54;
+            this.label11.Text = "Unidad";
+            // 
+            // unidadIdProduccionText
+            // 
+            this.unidadIdProduccionText.BackColor = System.Drawing.Color.SkyBlue;
+            this.unidadIdProduccionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadIdProduccionText.Location = new System.Drawing.Point(76, 19);
+            this.unidadIdProduccionText.Name = "unidadIdProduccionText";
+            this.unidadIdProduccionText.Size = new System.Drawing.Size(183, 26);
+            this.unidadIdProduccionText.TabIndex = 53;
+            // 
+            // button22
+            // 
+            this.button22.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button22.BackgroundImage")));
+            this.button22.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button22.Location = new System.Drawing.Point(834, 23);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(64, 58);
+            this.button22.TabIndex = 26;
+            this.button22.UseVisualStyleBackColor = true;
+            // 
+            // button23
+            // 
+            this.button23.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button23.BackgroundImage")));
+            this.button23.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button23.Location = new System.Drawing.Point(763, 23);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(65, 58);
+            this.button23.TabIndex = 25;
+            this.button23.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.AllowUserToResizeRows = false;
+            this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView4.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            this.dataGridView4.Location = new System.Drawing.Point(12, 117);
+            this.dataGridView4.MultiSelect = false;
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.ReadOnly = true;
+            this.dataGridView4.RowHeadersVisible = false;
+            this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView4.Size = new System.Drawing.Size(904, 403);
+            this.dataGridView4.TabIndex = 70;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.FillWeight = 50F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Unidad";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewTextBoxColumn8.FillWeight = 80F;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Cantidad";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
             // ventana_producto
             // 
@@ -1159,6 +1345,10 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1172,7 +1362,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox cargoIdText;
+        private System.Windows.Forms.TextBox productoIdText;
         private System.Windows.Forms.TextBox referenciaText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox productoText;
@@ -1251,5 +1441,19 @@
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.TextBox cantidadProduccionText;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox unidadTextProduccion;
+        private System.Windows.Forms.Button button21;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox unidadIdProduccionText;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
     }
 }

@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_compra));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.fechaFinalText = new System.Windows.Forms.MaskedTextBox();
+            this.fechaInicialText = new System.Windows.Forms.MaskedTextBox();
             this.suplidorInformalCheck = new System.Windows.Forms.CheckBox();
             this.detalleText = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.fechaLimiteTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.fechaCreadaPicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.tipoCompraComboBox = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -52,15 +52,6 @@
             this.suplidorIdText = new System.Windows.Forms.TextBox();
             this.numerocComprobanteFiscalText = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idUnidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.itebisColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descuentoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.importeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.productoIdText = new System.Windows.Forms.TextBox();
@@ -83,7 +74,16 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.totalItebisText = new System.Windows.Forms.TextBox();
-            this.totalMontoText = new System.Windows.Forms.TextBox();
+            this.totalCompraText = new System.Windows.Forms.TextBox();
+            this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idUnidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cantidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.itebisColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuentoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.importeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -119,13 +119,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.fechaFinalText);
+            this.groupBox1.Controls.Add(this.fechaInicialText);
             this.groupBox1.Controls.Add(this.suplidorInformalCheck);
             this.groupBox1.Controls.Add(this.detalleText);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.fechaLimiteTimePicker);
-            this.groupBox1.Controls.Add(this.fechaCreadaPicker);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.tipoCompraComboBox);
             this.groupBox1.Controls.Add(this.linkLabel1);
@@ -143,6 +143,24 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // fechaFinalText
+            // 
+            this.fechaFinalText.Location = new System.Drawing.Point(529, 60);
+            this.fechaFinalText.Mask = "00/00/0000";
+            this.fechaFinalText.Name = "fechaFinalText";
+            this.fechaFinalText.Size = new System.Drawing.Size(125, 20);
+            this.fechaFinalText.TabIndex = 89;
+            this.fechaFinalText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaFinalText_KeyDown);
+            // 
+            // fechaInicialText
+            // 
+            this.fechaInicialText.Location = new System.Drawing.Point(529, 19);
+            this.fechaInicialText.Mask = "00/00/0000";
+            this.fechaInicialText.Name = "fechaInicialText";
+            this.fechaInicialText.Size = new System.Drawing.Size(125, 20);
+            this.fechaInicialText.TabIndex = 88;
+            this.fechaInicialText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaInicialText_KeyDown);
+            // 
             // suplidorInformalCheck
             // 
             this.suplidorInformalCheck.AutoSize = true;
@@ -159,7 +177,7 @@
             // detalleText
             // 
             this.detalleText.Location = new System.Drawing.Point(529, 98);
-            this.detalleText.MaxLength = 200;
+            this.detalleText.MaxLength = 500;
             this.detalleText.Multiline = true;
             this.detalleText.Name = "detalleText";
             this.detalleText.Size = new System.Drawing.Size(406, 66);
@@ -195,23 +213,6 @@
             this.label4.Size = new System.Drawing.Size(59, 20);
             this.label4.TabIndex = 83;
             this.label4.Text = "Fecha";
-            // 
-            // fechaLimiteTimePicker
-            // 
-            this.fechaLimiteTimePicker.Location = new System.Drawing.Point(528, 60);
-            this.fechaLimiteTimePicker.Name = "fechaLimiteTimePicker";
-            this.fechaLimiteTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaLimiteTimePicker.TabIndex = 82;
-            this.fechaLimiteTimePicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaLimiteTimePicker_KeyDown);
-            // 
-            // fechaCreadaPicker
-            // 
-            this.fechaCreadaPicker.Enabled = false;
-            this.fechaCreadaPicker.Location = new System.Drawing.Point(528, 19);
-            this.fechaCreadaPicker.Name = "fechaCreadaPicker";
-            this.fechaCreadaPicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaCreadaPicker.TabIndex = 81;
-            this.fechaCreadaPicker.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaCreadaPicker_KeyDown);
             // 
             // label1
             // 
@@ -354,70 +355,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1001, 294);
             this.dataGridView1.TabIndex = 87;
-            // 
-            // idPrductoColumn
-            // 
-            this.idPrductoColumn.FillWeight = 50F;
-            this.idPrductoColumn.HeaderText = "Id";
-            this.idPrductoColumn.Name = "idPrductoColumn";
-            this.idPrductoColumn.ReadOnly = true;
-            // 
-            // ProductoColumn
-            // 
-            this.ProductoColumn.HeaderText = "Producto";
-            this.ProductoColumn.Name = "ProductoColumn";
-            this.ProductoColumn.ReadOnly = true;
-            // 
-            // idUnidadColumn
-            // 
-            this.idUnidadColumn.FillWeight = 50F;
-            this.idUnidadColumn.HeaderText = "Id";
-            this.idUnidadColumn.Name = "idUnidadColumn";
-            this.idUnidadColumn.ReadOnly = true;
-            // 
-            // unidadColumn
-            // 
-            this.unidadColumn.HeaderText = "Unidad";
-            this.unidadColumn.Name = "unidadColumn";
-            this.unidadColumn.ReadOnly = true;
-            // 
-            // cantidadColumn
-            // 
-            this.cantidadColumn.HeaderText = "Cantidad";
-            this.cantidadColumn.Name = "cantidadColumn";
-            this.cantidadColumn.ReadOnly = true;
-            // 
-            // precioColumn
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.precioColumn.HeaderText = "Precio";
-            this.precioColumn.Name = "precioColumn";
-            this.precioColumn.ReadOnly = true;
-            // 
-            // itebisColumn
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.itebisColumn.HeaderText = "Itbis";
-            this.itebisColumn.Name = "itebisColumn";
-            this.itebisColumn.ReadOnly = true;
-            // 
-            // descuentoColumn
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.descuentoColumn.HeaderText = "Descuento";
-            this.descuentoColumn.Name = "descuentoColumn";
-            this.descuentoColumn.ReadOnly = true;
-            // 
-            // importeColumn
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.importeColumn.HeaderText = "Importe";
-            this.importeColumn.Name = "importeColumn";
-            this.importeColumn.ReadOnly = true;
             // 
             // label7
             // 
@@ -663,24 +600,88 @@
             this.totalItebisText.TabIndex = 88;
             this.totalItebisText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // totalMontoText
+            // totalCompraText
             // 
-            this.totalMontoText.BackColor = System.Drawing.Color.SkyBlue;
-            this.totalMontoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalMontoText.Location = new System.Drawing.Point(863, 660);
-            this.totalMontoText.MaxLength = 200;
-            this.totalMontoText.Name = "totalMontoText";
-            this.totalMontoText.ReadOnly = true;
-            this.totalMontoText.Size = new System.Drawing.Size(150, 26);
-            this.totalMontoText.TabIndex = 102;
-            this.totalMontoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.totalCompraText.BackColor = System.Drawing.Color.SkyBlue;
+            this.totalCompraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalCompraText.Location = new System.Drawing.Point(863, 660);
+            this.totalCompraText.MaxLength = 200;
+            this.totalCompraText.Name = "totalCompraText";
+            this.totalCompraText.ReadOnly = true;
+            this.totalCompraText.Size = new System.Drawing.Size(150, 26);
+            this.totalCompraText.TabIndex = 102;
+            this.totalCompraText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // idPrductoColumn
+            // 
+            this.idPrductoColumn.FillWeight = 50F;
+            this.idPrductoColumn.HeaderText = "ID";
+            this.idPrductoColumn.Name = "idPrductoColumn";
+            this.idPrductoColumn.ReadOnly = true;
+            // 
+            // ProductoColumn
+            // 
+            this.ProductoColumn.HeaderText = "Producto";
+            this.ProductoColumn.Name = "ProductoColumn";
+            this.ProductoColumn.ReadOnly = true;
+            // 
+            // idUnidadColumn
+            // 
+            this.idUnidadColumn.FillWeight = 50F;
+            this.idUnidadColumn.HeaderText = "ID";
+            this.idUnidadColumn.Name = "idUnidadColumn";
+            this.idUnidadColumn.ReadOnly = true;
+            // 
+            // unidadColumn
+            // 
+            this.unidadColumn.HeaderText = "Unidad";
+            this.unidadColumn.Name = "unidadColumn";
+            this.unidadColumn.ReadOnly = true;
+            // 
+            // cantidadColumn
+            // 
+            this.cantidadColumn.HeaderText = "Cantidad";
+            this.cantidadColumn.Name = "cantidadColumn";
+            this.cantidadColumn.ReadOnly = true;
+            // 
+            // precioColumn
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.precioColumn.HeaderText = "Precio";
+            this.precioColumn.Name = "precioColumn";
+            this.precioColumn.ReadOnly = true;
+            // 
+            // itebisColumn
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            this.itebisColumn.HeaderText = "Itbis";
+            this.itebisColumn.Name = "itebisColumn";
+            this.itebisColumn.ReadOnly = true;
+            // 
+            // descuentoColumn
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.descuentoColumn.HeaderText = "Descuento";
+            this.descuentoColumn.Name = "descuentoColumn";
+            this.descuentoColumn.ReadOnly = true;
+            // 
+            // importeColumn
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            this.importeColumn.HeaderText = "Importe";
+            this.importeColumn.Name = "importeColumn";
+            this.importeColumn.ReadOnly = true;
             // 
             // ventana_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 757);
-            this.Controls.Add(this.totalMontoText);
+            this.Controls.Add(this.totalCompraText);
             this.Controls.Add(this.totalItebisText);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -699,7 +700,7 @@
             this.Controls.SetChildIndex(this.label13, 0);
             this.Controls.SetChildIndex(this.label14, 0);
             this.Controls.SetChildIndex(this.totalItebisText, 0);
-            this.Controls.SetChildIndex(this.totalMontoText, 0);
+            this.Controls.SetChildIndex(this.totalCompraText, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -728,8 +729,6 @@
         private System.Windows.Forms.ComboBox tipoCompraComboBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker fechaLimiteTimePicker;
-        private System.Windows.Forms.DateTimePicker fechaCreadaPicker;
         private System.Windows.Forms.TextBox detalleText;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -754,7 +753,11 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox totalItebisText;
-        private System.Windows.Forms.TextBox totalMontoText;
+        private System.Windows.Forms.TextBox totalCompraText;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.MaskedTextBox fechaFinalText;
+        private System.Windows.Forms.MaskedTextBox fechaInicialText;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPrductoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn idUnidadColumn;
@@ -764,7 +767,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itebisColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn importeColumn;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
     }
 }

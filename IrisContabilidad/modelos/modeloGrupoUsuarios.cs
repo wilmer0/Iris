@@ -56,7 +56,7 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validaciones
-                string sql = "select *from grupo_usuarios where nombre='" + grupoUsuario.nombre + "' and id!='" + grupoUsuario.codigo + "'";
+                string sql = "select *from grupo_usuarios where nombre='" + grupoUsuario.nombre + "' and codigo!='" + grupoUsuario.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -85,7 +85,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                string sql = "select max(id)from grupo_usuarios";
+                string sql = "select max(codigo)from grupo_usuarios";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 int id = 0;
