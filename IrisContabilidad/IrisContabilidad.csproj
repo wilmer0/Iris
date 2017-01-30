@@ -134,7 +134,9 @@
     <Compile Include="clases\unidad.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\vendedor.cs" />
+    <Compile Include="clases\venta.cs" />
     <Compile Include="clases\ventana.cs" />
+    <Compile Include="clases\venta_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
@@ -167,6 +169,7 @@
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modelos\modeloVendedor.cs" />
+    <Compile Include="modelos\modeloVenta.cs" />
     <Compile Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.cs">
       <SubType>Form</SubType>
     </Compile>

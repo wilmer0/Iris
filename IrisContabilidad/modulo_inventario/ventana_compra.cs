@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_cuenta_por_pagar;
+using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_inventario
@@ -30,7 +31,7 @@ namespace IrisContabilidad.modulo_inventario
         private subCategoriaProducto subCategoria;
         private productoUnidadConversion productoUnidadConversion;
         private suplidor suplidor;
-        
+        private ventana_desglose_dinero ventanaDesglose;
 
 
         //modelos
@@ -159,6 +160,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (listaCompra.FindAll(x => x.numero_factura.ToLower() == numeroFacturaText.Text.ToLower()).Count > 0)
                     {
                         MessageBox.Show("Existe una compra con ese mismo número de factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
                     }
                 }
                 
@@ -176,6 +178,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (listaCompra.FindAll(x => x.ncf.ToLower() == numerocComprobanteFiscalText.Text.ToLower()).Count > 0)
                     {
                         MessageBox.Show("Existe una compra con ese mismo número de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
                     }
                 }
                 
@@ -273,6 +276,7 @@ namespace IrisContabilidad.modulo_inventario
                     compraDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
                     compraDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
                     compraDetalle.monto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    compraDetalle.monto_itebis = Convert.ToDecimal(row.Cells[6].Value.ToString());
                     compraDetalle.monto_descuento = Convert.ToDecimal(row.Cells[7].Value.ToString());
                     compraDetalle.activo = true;
                     listaCompraDetalle.Add(compraDetalle);
@@ -283,16 +287,27 @@ namespace IrisContabilidad.modulo_inventario
                 if (crear == true)
                 {
                     //agregar
-                    if (modeloCompra.agregarCompra(compra, listaCompraDetalle) == true)
+                    ventanaDesglose=new ventana_desglose_dinero(compra,listaCompraDetalle);
+                    ventanaDesglose.ShowDialog();
+                    //validar si la compra es al contado para proceder hacer el cobro
+                    if (compra.tipo_compra == "CON")
                     {
-                        compra = null;
-                        MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (ventanaDesglose.DialogResult == DialogResult.OK)
+                        {
+                            compra = null;
+                            loadVentana();
+                        }
                     }
-                    else
-                    {
-                        compra = null;
-                        MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    //if (modeloCompra.agregarCompra(compra, listaCompraDetalle) == true)
+                    //{
+                    //    compra = null;
+                    //    MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    //else
+                    //{
+                    //    compra = null;
+                    //    MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
                 }
                 else
                 {
@@ -943,6 +958,11 @@ namespace IrisContabilidad.modulo_inventario
                 MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

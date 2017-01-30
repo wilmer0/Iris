@@ -195,6 +195,58 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+        //obtener el codigo siguiente pago
+        public int getNextPago()
+        {
+            try
+            {
+                string sql = "select max(codigo)from compra_vs_pagos";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
+                {
+                    id = 0;
+                }
+                else
+                {
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                }
+                id += 1;
+                return id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getNextPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+        //obtener el codigo siguiente pago detalle
+        public int getNextPagoDetalle()
+        {
+            try
+            {
+                string sql = "select max(codigo)from compra_vs_pagos_detalles";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
+                {
+                    id = 0;
+                }
+                else
+                {
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                }
+                id += 1;
+                return id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getNextPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
 
         //get objeto
         public compra getCompraById(int id)
@@ -345,6 +397,76 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error getListaCompraBySuplidor.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+        }
+        //compra pagos
+        public bool getCompraPago(compra compra,compra_vs_pagos pago,List<compra_vs_pagos_detalles> listaPagoDetalle)
+        {
+            try
+            {
+                //si la compra es a credito entonces no debe hacer ningun pago
+                if (compra.tipo_compra != "CON")
+                {
+                    return true;
+                }
+
+                //compra vs pagos
+                //insert into compra_vs_pagos(codigo,fecha,detalle,cod_empleado,activo,cod_empleado,motivo_anulado,cuadrdo) values('','','','','','','','');
+                int activo = 0;
+                int cuadrado = 0;
+                if (pago.activo == true)
+                {
+                    activo = 1;
+                }
+                if (pago.cuadrado == true)
+                {
+                    cuadrado = 1;
+                }
+                
+                //pago encabezado
+                string sql = "insert into compra_vs_pagos(codigo,fecha,detalle,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado) values('"+pago.codigo+"',"+utilidades.getFechayyyyMMdd(pago.fecha)+",'"+pago.detalle+"','"+pago.cod_empleado+"','"+activo+"','"+pago.cod_empleado_anular+"','"+pago.motivo_anulado+"','"+cuadrado+"')";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                
+                //pago detalles
+                listaPagoDetalle.ForEach(x =>
+                {
+                    x.codigo = getNextPagoDetalle();
+                    x.codigo_pago = pago.codigo;
+                    activo = 0;
+                    if (x.activo == true)
+                    {
+                        activo = 1;
+                    }
+                    x.codigo_compra = compra.codigo;
+                    sql = "insert into compra_vs_pagos_detalles(codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,activo) values('"+x.codigo+"','"+x.codigo_pago+"','"+x.codigo_compra+"','"+x.codigo_metodo_pago+"','"+x.monto_pagado+"','"+x.monto_descontado+"','"+activo+"')";
+                    utilidades.ejecutarcomando_mysql(sql);
+                });
+                //if (ds.Tables[0].Rows.Count > 0)
+                //{
+                //    compra = new compra();
+                //    compra.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                //    compra.numero_factura = ds.Tables[0].Rows[0][1].ToString();
+                //    compra.cod_suplidor = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
+                //    compra.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
+                //    compra.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
+                //    compra.ncf = ds.Tables[0].Rows[0][5].ToString();
+                //    compra.tipo_compra = ds.Tables[0].Rows[0][6].ToString();
+                //    compra.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
+                //    compra.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                //    compra.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
+                //    compra.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
+                //    compra.codigo_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
+                //    compra.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
+                //    compra.detalle = ds.Tables[0].Rows[0][13].ToString();
+                //    compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14]);
+                  
+                //}
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }
