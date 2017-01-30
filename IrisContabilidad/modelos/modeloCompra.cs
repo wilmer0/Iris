@@ -40,7 +40,6 @@ namespace IrisContabilidad.modelos
                 {
                     pagada = 1;
                 }
-                DateTime fecha=DateTime.Today;
                 string sql = "insert into compra(codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal) values('" + compra.codigo + "','" + compra.numero_factura + "','" + compra.cod_suplidor + "'," + compra.fecha.ToString("dd/MM/yyyy") + "," + compra.fecha_limite.AddDays(120).ToString("dd/MM/yyyy") + ",'" + compra.ncf + "','" + compra.tipo_compra + "','" + activo + "','" + pagada + "','" + compra.codigo_sucursal + "','" + compra.codigo_empleado + "','0','','" + compra.detalle + "','" + suplidorInformal + "')";
                 //MessageBox.Show(sql);
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
