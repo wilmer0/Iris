@@ -1212,7 +1212,7 @@ namespace IrisContabilidad.clases
         {
             try
             {
-                string fechaConvertida = fecha.ToString("yyyy/MM/dd");
+                string fechaConvertida = fecha.ToString("yyyyMMdd");
                 return fechaConvertida;
             }
             catch (Exception ex)

@@ -40,7 +40,7 @@ namespace IrisContabilidad.modelos
                 {
                     pagada = 1;
                 }
-                string sql = "insert into compra(codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal) values('" + compra.codigo + "','" + compra.numero_factura + "','" + compra.cod_suplidor + "'," + compra.fecha.ToString("dd/MM/yyyy") + "," + compra.fecha_limite.AddDays(120).ToString("dd/MM/yyyy") + ",'" + compra.ncf + "','" + compra.tipo_compra + "','" + activo + "','" + pagada + "','" + compra.codigo_sucursal + "','" + compra.codigo_empleado + "','0','','" + compra.detalle + "','" + suplidorInformal + "')";
+                string sql = "insert into compra(codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal) values('" + compra.codigo + "','" + compra.numero_factura + "','" + compra.cod_suplidor + "'," + utilidades.getFechayyyyMMdd(compra.fecha) + "," + utilidades.getFechayyyyMMdd(compra.fecha_limite.AddDays(120)) + ",'" + compra.ncf + "','" + compra.tipo_compra + "','" + activo + "','" + pagada + "','" + compra.codigo_sucursal + "','" + compra.codigo_empleado + "','0','','" + compra.detalle + "','" + suplidorInformal + "')";
                 //MessageBox.Show(sql);
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
 
@@ -48,7 +48,7 @@ namespace IrisContabilidad.modelos
                 //insertar compra detalle
                 listaDetalle.ForEach(x =>
                 {
-                     x.codigo = getNextCompraDetalle();
+                    x.codigo = getNextCompraDetalle();
                     sql = "insert into compra_detalle(codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo) values('"+x.codigo+"','"+compra.codigo+"','"+x.cod_producto+"','"+x.cod_unidad+"','"+x.precio+"','"+x.cantidad+"','"+x.monto+"','"+x.monto_descuento+"','1')";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
@@ -58,7 +58,7 @@ namespace IrisContabilidad.modelos
                 {
                     x.codigo = getNextInventario();
                     DateTime fechaHoy=DateTime.Today;
-                    sql = "insert into inventario(codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento) values('" + x.codigo + "','" + x.cod_producto + "','" + x.cod_unidad + "','" + x.cantidad + "'," + fechaHoy.ToString("dd/MM/yyyy") + "," + fechaHoy.AddDays(120).ToString("dd/MM/yyyy") + ")";
+                    sql = "insert into inventario(codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento) values('" + x.codigo + "','" + x.cod_producto + "','" + x.cod_unidad + "','" + x.cantidad + "'," + utilidades.getFechayyyyMMdd(fechaHoy) + "," + utilidades.getFechayyyyMMdd(fechaHoy.AddDays(120)) + ")";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
 
@@ -329,14 +329,14 @@ namespace IrisContabilidad.modelos
                     compra.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
                     compra.ncf = ds.Tables[0].Rows[0][5].ToString();
                     compra.tipo_compra = ds.Tables[0].Rows[0][6].ToString();
-                    compra.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7].ToString());
-                    compra.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8].ToString());
+                    compra.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
+                    compra.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
                     compra.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
                     compra.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
                     compra.codigo_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
                     compra.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
                     compra.detalle = ds.Tables[0].Rows[0][13].ToString();
-                    compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14].ToString());
+                    compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14]);
                     lista.Add(compra);
                 }
                 return lista;

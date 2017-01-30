@@ -16,24 +16,23 @@ namespace IrisContabilidad.modulo_facturacion
     public partial class ventana_desglose_dinero : formBase
     {
         //objetos
-        empleado empleadoSingleton;
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
         empleado empleado;
         private desglose_dinero desgloseDinero;
-
-
+        private compra compra;
+        
 
 
         //modelos
-        
+        modeloCompra modeloCompra=new modeloCompra();
 
 
         public ventana_desglose_dinero()
         {
             InitializeComponent();
-            empleadoSingleton = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "ventana desglose dinero");
+            empleado = singleton.getEmpleado();
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana desglose dinero");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
