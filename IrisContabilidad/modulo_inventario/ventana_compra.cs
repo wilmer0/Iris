@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_cuenta_por_pagar;
+using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_inventario
@@ -30,7 +31,7 @@ namespace IrisContabilidad.modulo_inventario
         private subCategoriaProducto subCategoria;
         private productoUnidadConversion productoUnidadConversion;
         private suplidor suplidor;
-        
+        private ventana_desglose_dinero ventanaDesglose;
 
 
         //modelos
@@ -71,7 +72,6 @@ namespace IrisContabilidad.modulo_inventario
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana compra");
             this.Text = tituloLabel.Text;
             loadVentana();
-            button3_Click_1(null,null);
         }
         public void loadVentana()
         {
@@ -94,7 +94,7 @@ namespace IrisContabilidad.modulo_inventario
                     detalleText.Text = compra.detalle;
                     suplidorInformalCheck.Checked = Convert.ToBoolean(compra.suplidor_informal);
                     //llenar el detalle de la compra
-                    listaCompraDetalle = modeloCompra.getListaCompraDetalle(compra.codigo,true);
+                    listaCompraDetalle = modeloCompra.getListaCompraDetalleByCompra(compra.codigo,true);
                     loadListaCompraDetalle();
                 }
                 else
@@ -159,6 +159,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (listaCompra.FindAll(x => x.numero_factura.ToLower() == numeroFacturaText.Text.ToLower()).Count > 0)
                     {
                         MessageBox.Show("Existe una compra con ese mismo número de factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
                     }
                 }
                 
@@ -176,6 +177,7 @@ namespace IrisContabilidad.modulo_inventario
                     if (listaCompra.FindAll(x => x.ncf.ToLower() == numerocComprobanteFiscalText.Text.ToLower()).Count > 0)
                     {
                         MessageBox.Show("Existe una compra con ese mismo número de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
                     }
                 }
                 
@@ -273,6 +275,7 @@ namespace IrisContabilidad.modulo_inventario
                     compraDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
                     compraDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
                     compraDetalle.monto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    compraDetalle.monto_itebis = Convert.ToDecimal(row.Cells[6].Value.ToString());
                     compraDetalle.monto_descuento = Convert.ToDecimal(row.Cells[7].Value.ToString());
                     compraDetalle.activo = true;
                     listaCompraDetalle.Add(compraDetalle);
@@ -283,16 +286,27 @@ namespace IrisContabilidad.modulo_inventario
                 if (crear == true)
                 {
                     //agregar
-                    if (modeloCompra.agregarCompra(compra, listaCompraDetalle) == true)
+                    ventanaDesglose=new ventana_desglose_dinero(compra,listaCompraDetalle);
+                    ventanaDesglose.ShowDialog();
+                    //validar si la compra es al contado para proceder hacer el cobro
+                    if (compra.tipo_compra == "CON")
                     {
-                        compra = null;
-                        MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (ventanaDesglose.DialogResult == DialogResult.OK)
+                        {
+                            compra = null;
+                            loadVentana();
+                        }
                     }
-                    else
-                    {
-                        compra = null;
-                        MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    //if (modeloCompra.agregarCompra(compra, listaCompraDetalle) == true)
+                    //{
+                    //    compra = null;
+                    //    MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //}
+                    //else
+                    //{
+                    //    compra = null;
+                    //    MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
                 }
                 else
                 {
@@ -652,10 +666,25 @@ namespace IrisContabilidad.modulo_inventario
 
         private void numeroFacturaText_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            try
             {
-                numerocComprobanteFiscalText.Focus();
-                numerocComprobanteFiscalText.SelectAll();
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    numerocComprobanteFiscalText.Focus();
+                    numerocComprobanteFiscalText.SelectAll();
+
+                    compra = modeloCompra.getCompraBySuplidorNumeroCompra(suplidor, numeroFacturaText.Text);
+                    //validar si el suplidor tiene una compra con ese mismo numero que la traiga.
+                    if (compra.codigo>0)
+                    {
+                        loadVentana();
+                        MessageBox.Show("Existe una compra registrada con esete número de compra asociada a este suplidor");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
             }
         }
 
@@ -943,6 +972,11 @@ namespace IrisContabilidad.modulo_inventario
                 MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

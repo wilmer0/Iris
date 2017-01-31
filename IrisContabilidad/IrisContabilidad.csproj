@@ -134,7 +134,11 @@
     <Compile Include="clases\unidad.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\vendedor.cs" />
+    <Compile Include="clases\venta.cs" />
     <Compile Include="clases\ventana.cs" />
+    <Compile Include="clases\venta_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_compra_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
@@ -167,6 +171,7 @@
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modelos\modeloVendedor.cs" />
+    <Compile Include="modelos\modeloVenta.cs" />
     <Compile Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +219,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_tipo_gasto.Designer.cs">
       <DependentUpon>ventana_busqueda_tipo_gasto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_compra_pagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_compra_pagos.Designer.cs">
+      <DependentUpon>ventana_compra_pagos.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_suplidor.cs">
       <SubType>Form</SubType>
@@ -534,6 +545,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_tipo_gasto.resx">
       <DependentUpon>ventana_busqueda_tipo_gasto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_compra_pagos.resx">
+      <DependentUpon>ventana_compra_pagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_suplidor.resx">
       <DependentUpon>ventana_suplidor.cs</DependentUpon>

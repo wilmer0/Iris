@@ -229,6 +229,8 @@ namespace IrisContabilidad.modelos
                 #endregion
 
 
+                
+                
                 //permisos productos
                 #region
                 sql = "insert into producto_permisos(codigo,nombre,activo) values('1','vender a precio diferente','1');";
@@ -236,6 +238,16 @@ namespace IrisContabilidad.modelos
                 sql = "insert into producto_permisos(codigo,nombre,activo) values('2','vender sin existencia','1');";
                 utilidades.ejecutarcomando_mysql(sql);
 
+
+
+
+                //metodos de pago
+                sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('1','Efectivo','cuando se recive el dinero en metal','1')";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql ="insert into metodo_pago(codigo,metodo,descripcion,activo) values('2','Deposito','cuando se recive el dinero por transferencia bancaria','1')";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('3','cheque','cuando se recive el dinero en base a un cheque bancario','1')";
+                utilidades.ejecutarcomando_mysql(sql);
 
                 #endregion
 
@@ -507,6 +519,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 4;
                 ventana.imagen = "suplidor1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "compra pagos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_compra_pagos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "compra_pagos1.png";
                 listaVentana.Add(ventana);
                 #endregion
 
