@@ -164,11 +164,15 @@ namespace IrisContabilidad.modulo_sistema
                     
                     
                     //dando estilo al texto del boton
+                    //izquierda-arriba-derecha-abajo
+                    Padding espacio=new Padding(25,25,25,25);
+                    botonVentana.Margin= espacio;
                     botonVentana.TextAlign = ContentAlignment.BottomCenter;
                     botonVentana.Text = ventana.nombre_ventana;
                     botonVentana.ForeColor = Color.White;
                     botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, 20);
-                    
+                    botonVentana.MouseHover+= BotonVentanaOnMouseHover;
+                    botonVentana.MouseLeave+= BotonVentanaOnMouseLeave;
                     
                     
                     //estableciendo la imagen de fondo del boton
@@ -189,6 +193,39 @@ namespace IrisContabilidad.modulo_sistema
             catch (Exception ex)
             {
                 MessageBox.Show("Error loadVentanas.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void BotonVentanaOnMouseLeave(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                Button boton = new Button();
+                boton = (Button)sender;
+                
+                boton.Width = 200;
+                boton.Height = 170;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error hover de la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void BotonVentanaOnMouseHover(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                Button boton = new Button();
+                boton = (Button)sender;
+                boton.Height = boton.Height+10;
+                boton.Width = boton.Width+10;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error hover de la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
@@ -294,6 +331,11 @@ namespace IrisContabilidad.modulo_sistema
         private void menu1_Load_1(object sender, EventArgs e)
         {
             LoadVentana();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
