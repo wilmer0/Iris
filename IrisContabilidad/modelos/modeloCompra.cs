@@ -320,7 +320,7 @@ namespace IrisContabilidad.modelos
         }
 
         //get lista compra detalle
-        public List<compra_detalle> getListaCompraDetalleByCompra(int id, bool incluirTodos = false)
+        public List<compra_detalle> getListaCompraDetalleByCompra(int id, bool SoloActivo = true)
         {
             try
             {
@@ -328,7 +328,7 @@ namespace IrisContabilidad.modelos
                 List<compra_detalle> lista = new List<compra_detalle>();
                 string sql = "";
                 sql = "select codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo from compra_detalle where cod_compra='"+id+"'";
-                if (incluirTodos == false)
+                if (SoloActivo == true)
                 {
                     //se traen solo los activo
                     sql += " and activo='1'";
@@ -508,6 +508,84 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error getCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+        //get monto pendiente compra by compra
+        public List<compra_vs_pagos_detalles> getListaPagosByCompra(int id, bool SoloActivo = true)
+        {
+            try
+            {
+                List<compra_vs_pagos_detalles> lista = new List<compra_vs_pagos_detalles>();
+                compra_vs_pagos_detalles pagoDetalle = new compra_vs_pagos_detalles();
+                string sql = "select sum(monto_pagado+monto_descontado) from compra_vs_pagos_detalles where cod_compra='" + id + "'";
+                if (SoloActivo == true)
+                {
+                    sql += " and activo='1'";
+                }
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    pagoDetalle = new compra_vs_pagos_detalles();
+                    pagoDetalle.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    pagoDetalle.codigo_pago = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                    pagoDetalle.codigo_compra = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
+                    pagoDetalle.codigo_metodo_pago = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    pagoDetalle.monto_pagado = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                    pagoDetalle.monto_descontado = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
+                    pagoDetalle.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
+                    lista.Add(pagoDetalle);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaPagosByCompra.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        
+        //get monto pendiente by compra
+        public decimal getMontoPendienteBycompra(int id)
+        {
+            try
+            {
+                decimal montoCompra = 0;
+                decimal montoPendiente = 0;
+                decimal montoPagado = 0;
+
+
+                List<compra_detalle> listaCompraDetalle = new List<compra_detalle>();
+                List<compra_vs_pagos_detalles> listaPagos = new List<compra_vs_pagos_detalles>();
+
+                listaCompraDetalle = getListaCompraDetalleByCompra(id);
+                listaPagos = getListaPagosByCompra(id);
+
+                if (listaCompraDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaCompraDetalle.ForEach(x =>
+                    {
+                        montoCompra += x.monto + x.monto_descuento;
+                    });
+                }
+
+                if (listaPagos.Count > 0)
+                {
+                    listaPagos.ForEach(x =>
+                    {
+                        montoPagado += x.monto_pagado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoCompra - montoPagado;
+                
+                return montoPendiente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoPendienteBycompra.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return -1;
             }
         }
     }

@@ -23,24 +23,14 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         empleado empleado;
         private compra compra;
         private compra_detalle compraDetalle;
-        private producto producto;
-        private itebis itebis;
-        private unidad unidad;
-        private categoria_producto categoria;
-        private subCategoriaProducto subCategoria;
-        private productoUnidadConversion productoUnidadConversion;
-        private suplidor suplidor;
         private ventana_desglose_dinero ventanaDesglose;
-
+        private compra_vs_pagos compraPago;
+        private compra_vs_pagos_detalles compraPagoDetalle;
+        private suplidor suplidor;
 
         //modelos
-        private modeloItebis modeloItebis = new modeloItebis();
-        private modeloUnidad modeloUnidad = new modeloUnidad();
-        private modeloAlmacen modeloAlmacen = new modeloAlmacen();
-        private modeloProducto modeloProducto = new modeloProducto();
-        modeloSuplidor modeloSuplidor = new modeloSuplidor();
         modeloCompra modeloCompra = new modeloCompra();
-
+        modeloSuplidor modeloSuplidor=new modeloSuplidor();
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
@@ -48,12 +38,10 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private decimal totalCompraMonto = 0;
 
         //listas
-        private List<producto_vs_codigobarra> listaCodigoBarra;
-        private List<productoUnidadConversion> listaProductoUnidadConversion;
+        private List<compra_vs_pagos> listaCompraPago;
+        private List<compra_vs_pagos_detalles> listaCompraPagoDetalle;
         private List<compra> listaCompra;
-        private List<compra_detalle> listaCompraDetalle;
-        private List<unidad> listaUnidad;
-
+        private List<compra_detalle> listaCompraDetalle; 
 
         //variables
         private decimal cantidad_monto = 0;
@@ -77,13 +65,15 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             try
             {
                 tipoCompraComboBox.SelectedIndex = 0;
-                if (compra != null)
-                {
-                  
+                if (compraPago != null)
+                { 
+                    //llenar
+
                 }
                 else
                 {
-                  
+                    //limpiar
+                    dataGridView1.Rows.Clear();
                 }
             }
             catch (Exception ex)
@@ -123,7 +113,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void agregarProducto()
+        public void agregar()
         {
             try
             {
@@ -173,7 +163,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 this.Close();
             }
         }
-        public void eliminarProducto()
+        public void eliminar()
         {
             try
             {
@@ -218,6 +208,54 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             suplidor = null;
             loadVentana();
+        }
+
+        public void loadCompras()
+        {
+            try
+            {
+                if (suplidor == null)
+                {
+                    return;
+                }
+                listaCompra = modeloCompra.getListaCompraBySuplidor(suplidor.codigo);
+                //filtrando las compra que esten activa, que no esten pagada y que no sean a contado
+                listaCompra = listaCompra.FindAll(x => x.pagada == false && x.activo==true && x.tipo_compra!="CON");
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadCompras.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void loadSuplidor()
+        {
+            try
+            {
+                suplidorIdText.Text = "";
+                suplidorText.Text = "";
+                if (suplidor != null)
+                {
+                    suplidorIdText.Text = suplidor.codigo.ToString();
+                    suplidorText.Text = suplidor.nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadSuplidor.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_suplidor ventana=new ventana_busqueda_suplidor();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                suplidor = ventana.getObjeto();
+                loadSuplidor();
+            }
         }
     }
 }

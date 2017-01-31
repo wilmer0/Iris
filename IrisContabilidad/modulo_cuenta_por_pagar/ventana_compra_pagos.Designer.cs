@@ -33,16 +33,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.detalleText = new System.Windows.Forms.TextBox();
             this.suplidorText = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.suplidorIdText = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button19 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tipoCompraComboBox = new System.Windows.Forms.ComboBox();
             this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numerCompraColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +46,10 @@
             this.FechaLimiteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoPendienteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoAbonoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tipoCompraComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -106,25 +104,6 @@
             this.label2.TabIndex = 78;
             this.label2.Text = "Suplidor";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(12, 168);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 20);
-            this.label6.TabIndex = 85;
-            this.label6.Text = "Detalle";
-            // 
-            // detalleText
-            // 
-            this.detalleText.Location = new System.Drawing.Point(84, 166);
-            this.detalleText.MaxLength = 500;
-            this.detalleText.Multiline = true;
-            this.detalleText.Name = "detalleText";
-            this.detalleText.Size = new System.Drawing.Size(399, 61);
-            this.detalleText.TabIndex = 86;
-            // 
             // suplidorText
             // 
             this.suplidorText.BackColor = System.Drawing.Color.White;
@@ -146,6 +125,7 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 74;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // suplidorIdText
             // 
@@ -174,61 +154,14 @@
             this.FechaLimiteColumn,
             this.MontoPendienteColumn,
             this.MontoAbonoColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 233);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 194);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1040, 355);
+            this.dataGridView1.Size = new System.Drawing.Size(1040, 394);
             this.dataGridView1.TabIndex = 88;
-            // 
-            // button19
-            // 
-            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
-            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Location = new System.Drawing.Point(988, 169);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(64, 58);
-            this.button19.TabIndex = 103;
-            this.button19.UseVisualStyleBackColor = true;
-            // 
-            // button20
-            // 
-            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Location = new System.Drawing.Point(917, 169);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(65, 58);
-            this.button20.TabIndex = 102;
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 131);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 20);
-            this.label1.TabIndex = 105;
-            this.label1.Text = "Metodo pago";
-            // 
-            // tipoCompraComboBox
-            // 
-            this.tipoCompraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tipoCompraComboBox.FormattingEnabled = true;
-            this.tipoCompraComboBox.Items.AddRange(new object[] {
-            "Efectivo",
-            "Deposito",
-            "Cheque"});
-            this.tipoCompraComboBox.Location = new System.Drawing.Point(133, 132);
-            this.tipoCompraComboBox.Name = "tipoCompraComboBox";
-            this.tipoCompraComboBox.Size = new System.Drawing.Size(189, 21);
-            this.tipoCompraComboBox.TabIndex = 104;
-            this.tipoCompraComboBox.Tag = "";
             // 
             // idPrductoColumn
             // 
@@ -299,15 +232,60 @@
             this.MontoAbonoColumn.Name = "MontoAbonoColumn";
             this.MontoAbonoColumn.ReadOnly = true;
             // 
+            // button19
+            // 
+            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Location = new System.Drawing.Point(988, 130);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(64, 58);
+            this.button19.TabIndex = 103;
+            this.button19.UseVisualStyleBackColor = true;
+            // 
+            // button20
+            // 
+            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Location = new System.Drawing.Point(917, 130);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(65, 58);
+            this.button20.TabIndex = 102;
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(19, 149);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 20);
+            this.label1.TabIndex = 105;
+            this.label1.Text = "Metodo pago";
+            // 
+            // tipoCompraComboBox
+            // 
+            this.tipoCompraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoCompraComboBox.FormattingEnabled = true;
+            this.tipoCompraComboBox.Items.AddRange(new object[] {
+            "Efectivo",
+            "Deposito",
+            "Cheque"});
+            this.tipoCompraComboBox.Location = new System.Drawing.Point(139, 150);
+            this.tipoCompraComboBox.Name = "tipoCompraComboBox";
+            this.tipoCompraComboBox.Size = new System.Drawing.Size(189, 21);
+            this.tipoCompraComboBox.TabIndex = 104;
+            this.tipoCompraComboBox.Tag = "";
+            // 
             // ventana_compra_pagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 660);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.tipoCompraComboBox);
-            this.Controls.Add(this.detalleText);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.dataGridView1);
@@ -321,9 +299,7 @@
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.button20, 0);
             this.Controls.SetChildIndex(this.button19, 0);
-            this.Controls.SetChildIndex(this.detalleText, 0);
             this.Controls.SetChildIndex(this.tipoCompraComboBox, 0);
-            this.Controls.SetChildIndex(this.label6, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -339,8 +315,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox detalleText;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox suplidorText;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox suplidorIdText;
