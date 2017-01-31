@@ -179,20 +179,20 @@ namespace IrisContabilidad.modelos
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         suplidor suplidor = new suplidor();
-                        suplidor.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                        suplidor.nombre = ds.Tables[0].Rows[0][1].ToString();
-                        suplidor.rnc = ds.Tables[0].Rows[0][2].ToString();
-                        suplidor.fecha_creacion = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
-                        suplidor.codigo_sucursal_creado = Convert.ToInt16(ds.Tables[0].Rows[0][4].ToString());
-                        suplidor.limite_credito = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
-                        suplidor.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][6].ToString());
-                        suplidor.direccion = ds.Tables[0].Rows[0][7].ToString();
-                        suplidor.telefono1 = ds.Tables[0].Rows[0][8].ToString();
-                        suplidor.telefono2 = ds.Tables[0].Rows[0][9].ToString();
-                        suplidor.cod_tipo_gasto = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
-                        suplidor.fecha_modificacion = Convert.ToDateTime(ds.Tables[0].Rows[0][11].ToString());
-                        suplidor.fax = ds.Tables[0].Rows[0][12].ToString();
-                        suplidor.codigo_ciudad = Convert.ToInt16(ds.Tables[0].Rows[0][13].ToString());
+                        suplidor.codigo = Convert.ToInt16(row[0].ToString());
+                        suplidor.nombre = row[1].ToString();
+                        suplidor.rnc = row[2].ToString();
+                        suplidor.fecha_creacion = Convert.ToDateTime(row[3].ToString());
+                        suplidor.codigo_sucursal_creado = Convert.ToInt16(row[4].ToString());
+                        suplidor.limite_credito = Convert.ToDecimal(row[5].ToString());
+                        suplidor.activo = Convert.ToBoolean(row[6].ToString());
+                        suplidor.direccion = row[7].ToString();
+                        suplidor.telefono1 = row[8].ToString();
+                        suplidor.telefono2 = row[9].ToString();
+                        suplidor.cod_tipo_gasto = Convert.ToInt16(row[10].ToString());
+                        suplidor.fecha_modificacion = Convert.ToDateTime(row[11].ToString());
+                        suplidor.fax = row[12].ToString();
+                        suplidor.codigo_ciudad = Convert.ToInt16(row[13].ToString());
 
                         lista.Add(suplidor);
                     }

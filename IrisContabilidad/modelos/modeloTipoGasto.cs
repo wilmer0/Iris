@@ -13,7 +13,7 @@ namespace IrisContabilidad.modelos
     {
         //objetos
         utilidades utilidades = new utilidades();
-
+        private tipo_gasto tipoGasto;
 
 
 
@@ -107,22 +107,19 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
-
         //get objeto
         public tipo_gasto getTipoGastoById(int id)
         {
             try
             {
-                tipo_gasto tipoGasto = new tipo_gasto();
                 string sql = "select id,nombre,activo from tipo_gasto where id='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count > 0)
+                tipoGasto=new tipo_gasto();
+                if (ds.Tables[0].Rows.Count>0)
                 {
                     tipoGasto.id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     tipoGasto.nombre = ds.Tables[0].Rows[0][1].ToString();
                     tipoGasto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
-
                 }
                 return tipoGasto;
             }
@@ -152,10 +149,9 @@ namespace IrisContabilidad.modelos
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         tipo_gasto tipoGasto = new tipo_gasto();
-                        tipoGasto.id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                        tipoGasto.nombre = ds.Tables[0].Rows[0][1].ToString();
-                        tipoGasto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
-
+                        tipoGasto.id = Convert.ToInt16(row[0].ToString());
+                        tipoGasto.nombre = row[1].ToString();
+                        tipoGasto.activo = Convert.ToBoolean(row[2].ToString());
                         lista.Add(tipoGasto);
                     }
                 }

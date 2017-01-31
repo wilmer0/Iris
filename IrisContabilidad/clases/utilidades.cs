@@ -191,7 +191,7 @@ namespace IrisContabilidad.clases
         {
             try
             {
-                MySqlConnection conn = new MySqlConnection("server=localhost;uid=bc;" + "pwd=BlackCode123;database=iris_contabilidad;");
+                MySqlConnection conn = new MySqlConnection("server=localhost;uid=bc;" + "pwd=BlackCode123;database=iris_contabilidad;Allow Zero Datetime=false;");
                 //MySqlConnection conn = new MySqlConnection("server=153.92.11.223;uid=bc1;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
@@ -1178,6 +1178,46 @@ namespace IrisContabilidad.clases
             catch (Exception ex)
             {
                 MessageBox.Show("Error rellenarIzquierda.:" + ex.ToString());
+                return null;
+            }
+        }
+
+        public string getFechaHoraMinutosSegundos(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy hh:mm:ss");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaHoraMinutosSegundos.:" + ex.ToString());
+                return null;
+            }
+        }
+        public string getFechaddMMyyyy(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaddMMyyyy.:" + ex.ToString());
+                return null;
+            }
+        }
+        public string getFechayyyyMMdd(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("yyyyMMdd");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechayyyyMMdd.:" + ex.ToString());
                 return null;
             }
         }

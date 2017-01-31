@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.modulo_inventario
+﻿namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_busqueda_itbis
     {
@@ -46,6 +46,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(12, 376);
             this.panel1.Size = new System.Drawing.Size(667, 54);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button2
             // 

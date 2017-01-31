@@ -210,5 +210,40 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+         //get almacen by nombre
+        public almacen getAlmacenByNombre(string nombre)
+        {
+            try
+            {
+                bool existe = false;
+                List<almacen> lista = new List<almacen>();
+                almacen almacen = new almacen();
+                lista = getListaCompleta();
+                lista.ForEach(x =>
+                {
+                    if (x.nombre.ToLower().Contains(nombre.ToLower()) && existe == false)
+                    {
+                        almacen.codigo = x.codigo;
+                        almacen.nombre = x.nombre;
+                        almacen.codigo_sucursal = x.codigo_sucursal;
+                        almacen.activo = x.activo;
+                        existe = true;
+                    }
+                });
+                if (existe == true)
+                {
+                    return almacen;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getAlmacenByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

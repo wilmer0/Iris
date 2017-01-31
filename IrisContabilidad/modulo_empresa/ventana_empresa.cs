@@ -41,6 +41,9 @@ namespace IrisContabilidad.modulo_empresa
                 empresa = modeloEmpresa.getEmpresaById(1);
                 if (empresa != null)
                 {
+                    empresaText.Focus();
+                    empresaText.SelectAll();
+
                     empresaIdText.Text = empresa.codigo.ToString();
                     empresaText.Text = empresa.nombre;
                     RncText.Text = empresa.rnc;
@@ -49,11 +52,14 @@ namespace IrisContabilidad.modulo_empresa
                 }
                 else
                 {
+                    empresaIdText.Focus();
+                    empresaIdText.SelectAll();
+
                     empresaIdText.Text = "";
                     empresaText.Text = "";
                     RncText.Text = "";
                     divisionText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
                 empresaText.Focus();
                 empresaText.SelectAll();
@@ -228,6 +234,21 @@ namespace IrisContabilidad.modulo_empresa
         private void RncText_KeyPress(object sender, KeyPressEventArgs e)
         {
             utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void empresaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                empresaText.Focus();
+                empresaText.SelectAll();
+
+                empresa = modeloEmpresa.getEmpresaById(Convert.ToInt16(empresaIdText.Text));
+                if (empresa != null)
+                {
+                    loadVentana();
+                }
+            }
         }
     }
 }

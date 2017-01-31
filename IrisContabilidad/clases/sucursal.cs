@@ -13,5 +13,9 @@ namespace IrisContabilidad.clases
         public string secuencia { get; set; }
         public bool activo { get; set; }
         public string direccion { get; set; }
+        public string telefono1 { get;set;}
+        public string telefono2 { get; set; }
+        public string fax { get; set; }
+
     }
 }

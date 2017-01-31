@@ -31,6 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_cliente));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.direccion2Text = new System.Windows.Forms.TextBox();
+            this.direccion1Text = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.activoCheck = new System.Windows.Forms.CheckBox();
             this.clienteContadoCheck = new System.Windows.Forms.CheckBox();
             this.tipoNcfText = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
@@ -57,7 +62,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.clienteIdText = new System.Windows.Forms.TextBox();
-            this.activoCheck = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -69,6 +73,7 @@
             // 
             this.panel1.Location = new System.Drawing.Point(12, 597);
             this.panel1.Size = new System.Drawing.Size(948, 54);
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button2
             // 
@@ -102,6 +107,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.direccion2Text);
+            this.tabPage1.Controls.Add(this.direccion1Text);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.activoCheck);
             this.tabPage1.Controls.Add(this.clienteContadoCheck);
             this.tabPage1.Controls.Add(this.tipoNcfText);
@@ -133,18 +142,81 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cliente";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // direccion2Text
+            // 
+            this.direccion2Text.BackColor = System.Drawing.Color.White;
+            this.direccion2Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.direccion2Text.Location = new System.Drawing.Point(476, 275);
+            this.direccion2Text.MaxLength = 30;
+            this.direccion2Text.Multiline = true;
+            this.direccion2Text.Name = "direccion2Text";
+            this.direccion2Text.Size = new System.Drawing.Size(421, 67);
+            this.direccion2Text.TabIndex = 65;
+            this.direccion2Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.direccion2Text_KeyDown);
+            // 
+            // direccion1Text
+            // 
+            this.direccion1Text.BackColor = System.Drawing.Color.White;
+            this.direccion1Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.direccion1Text.Location = new System.Drawing.Point(476, 176);
+            this.direccion1Text.MaxLength = 30;
+            this.direccion1Text.Multiline = true;
+            this.direccion1Text.Name = "direccion1Text";
+            this.direccion1Text.Size = new System.Drawing.Size(421, 76);
+            this.direccion1Text.TabIndex = 64;
+            this.direccion1Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.direccion1Text_KeyDown);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(371, 276);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(99, 20);
+            this.label11.TabIndex = 63;
+            this.label11.Text = "Dirección 2";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(376, 177);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 20);
+            this.label10.TabIndex = 62;
+            this.label10.Text = "Dirección1";
+            // 
+            // activoCheck
+            // 
+            this.activoCheck.AutoSize = true;
+            this.activoCheck.Checked = true;
+            this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activoCheck.Location = new System.Drawing.Point(476, 422);
+            this.activoCheck.Name = "activoCheck";
+            this.activoCheck.Size = new System.Drawing.Size(68, 21);
+            this.activoCheck.TabIndex = 61;
+            this.activoCheck.Text = "Activo";
+            this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
             // 
             // clienteContadoCheck
             // 
             this.clienteContadoCheck.AutoSize = true;
+            this.clienteContadoCheck.Checked = true;
+            this.clienteContadoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.clienteContadoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.clienteContadoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteContadoCheck.Location = new System.Drawing.Point(476, 179);
+            this.clienteContadoCheck.Location = new System.Drawing.Point(476, 375);
             this.clienteContadoCheck.Name = "clienteContadoCheck";
             this.clienteContadoCheck.Size = new System.Drawing.Size(155, 21);
             this.clienteContadoCheck.TabIndex = 60;
             this.clienteContadoCheck.Text = "Cliente al contado";
             this.clienteContadoCheck.UseVisualStyleBackColor = true;
+            this.clienteContadoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clienteContadoCheck_KeyDown);
             // 
             // tipoNcfText
             // 
@@ -167,12 +239,13 @@
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 58;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(383, 94);
+            this.label9.Location = new System.Drawing.Point(397, 92);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 20);
             this.label9.TabIndex = 57;
@@ -186,6 +259,8 @@
             this.tipoNcfIdText.Name = "tipoNcfIdText";
             this.tipoNcfIdText.Size = new System.Drawing.Size(183, 26);
             this.tipoNcfIdText.TabIndex = 56;
+            this.tipoNcfIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoNcfIdText_KeyDown);
+            this.tipoNcfIdText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipoNcfIdText_KeyPress);
             // 
             // abrirCreditoCheck
             // 
@@ -198,6 +273,7 @@
             this.abrirCreditoCheck.TabIndex = 55;
             this.abrirCreditoCheck.Text = "Puede comprar a credito";
             this.abrirCreditoCheck.UseVisualStyleBackColor = true;
+            this.abrirCreditoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.abrirCreditoCheck_KeyDown);
             // 
             // creditoText
             // 
@@ -210,6 +286,7 @@
             this.creditoText.TabIndex = 38;
             this.creditoText.Text = "0.00";
             this.creditoText.TextChanged += new System.EventHandler(this.creditoText_TextChanged);
+            this.creditoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.creditoText_KeyDown);
             this.creditoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.creditoText_KeyPress);
             // 
             // label8
@@ -243,6 +320,7 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 27;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // telefono2Text
             // 
@@ -253,6 +331,7 @@
             this.telefono2Text.Name = "telefono2Text";
             this.telefono2Text.Size = new System.Drawing.Size(236, 26);
             this.telefono2Text.TabIndex = 35;
+            this.telefono2Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.telefono2Text_KeyDown);
             // 
             // label7
             // 
@@ -282,6 +361,7 @@
             this.categoriaIdText.Name = "categoriaIdText";
             this.categoriaIdText.Size = new System.Drawing.Size(183, 26);
             this.categoriaIdText.TabIndex = 25;
+            this.categoriaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.categoriaIdText_KeyDown);
             // 
             // telefono1Text
             // 
@@ -292,6 +372,7 @@
             this.telefono1Text.Name = "telefono1Text";
             this.telefono1Text.Size = new System.Drawing.Size(236, 26);
             this.telefono1Text.TabIndex = 33;
+            this.telefono1Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.telefono1Text_KeyDown);
             // 
             // label5
             // 
@@ -308,10 +389,11 @@
             this.rncText.BackColor = System.Drawing.Color.White;
             this.rncText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rncText.Location = new System.Drawing.Point(115, 179);
-            this.rncText.MaxLength = 30;
+            this.rncText.MaxLength = 9;
             this.rncText.Name = "rncText";
             this.rncText.Size = new System.Drawing.Size(236, 26);
             this.rncText.TabIndex = 31;
+            this.rncText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rncText_KeyDown);
             // 
             // label4
             // 
@@ -328,10 +410,11 @@
             this.cedulaText.BackColor = System.Drawing.Color.White;
             this.cedulaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cedulaText.Location = new System.Drawing.Point(115, 136);
-            this.cedulaText.MaxLength = 30;
+            this.cedulaText.MaxLength = 11;
             this.cedulaText.Name = "cedulaText";
             this.cedulaText.Size = new System.Drawing.Size(236, 26);
             this.cedulaText.TabIndex = 29;
+            this.cedulaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cedulaText_KeyDown);
             // 
             // label3
             // 
@@ -352,6 +435,7 @@
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(236, 26);
             this.nombreText.TabIndex = 27;
+            this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyDown);
             // 
             // label2
             // 
@@ -404,20 +488,8 @@
             this.clienteIdText.Name = "clienteIdText";
             this.clienteIdText.Size = new System.Drawing.Size(183, 26);
             this.clienteIdText.TabIndex = 0;
-            // 
-            // activoCheck
-            // 
-            this.activoCheck.AutoSize = true;
-            this.activoCheck.Checked = true;
-            this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(476, 214);
-            this.activoCheck.Name = "activoCheck";
-            this.activoCheck.Size = new System.Drawing.Size(68, 21);
-            this.activoCheck.TabIndex = 61;
-            this.activoCheck.Text = "Activo";
-            this.activoCheck.UseVisualStyleBackColor = true;
+            this.clienteIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clienteIdText_KeyDown);
+            this.clienteIdText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.clienteIdText_KeyPress);
             // 
             // ventana_cliente
             // 
@@ -475,5 +547,9 @@
         private System.Windows.Forms.TextBox tipoNcfIdText;
         private System.Windows.Forms.CheckBox clienteContadoCheck;
         private System.Windows.Forms.CheckBox activoCheck;
+        private System.Windows.Forms.TextBox direccion2Text;
+        private System.Windows.Forms.TextBox direccion1Text;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
     }
 }

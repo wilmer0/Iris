@@ -145,6 +145,7 @@
             this.direccionText.Name = "direccionText";
             this.direccionText.Size = new System.Drawing.Size(459, 165);
             this.direccionText.TabIndex = 73;
+            this.direccionText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.direccionText_KeyDown);
             // 
             // tipoGastoText
             // 
@@ -164,6 +165,8 @@
             this.tipoGastoIdText.Name = "tipoGastoIdText";
             this.tipoGastoIdText.Size = new System.Drawing.Size(141, 26);
             this.tipoGastoIdText.TabIndex = 70;
+            this.tipoGastoIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoGastoIdText_KeyDown);
+            this.tipoGastoIdText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipoGastoIdText_KeyPress);
             // 
             // button5
             // 
@@ -195,6 +198,7 @@
             this.faxText.Name = "faxText";
             this.faxText.Size = new System.Drawing.Size(253, 26);
             this.faxText.TabIndex = 68;
+            this.faxText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.faxText_KeyDown);
             this.faxText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.faxText_KeyPress);
             // 
             // label5
@@ -215,6 +219,7 @@
             this.telefono2Text.Name = "telefono2Text";
             this.telefono2Text.Size = new System.Drawing.Size(253, 26);
             this.telefono2Text.TabIndex = 66;
+            this.telefono2Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.telefono2Text_KeyDown);
             this.telefono2Text.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.telefono2Text_KeyPress);
             // 
             // label4
@@ -235,6 +240,7 @@
             this.telefono1Text.Name = "telefono1Text";
             this.telefono1Text.Size = new System.Drawing.Size(253, 26);
             this.telefono1Text.TabIndex = 64;
+            this.telefono1Text.KeyDown += new System.Windows.Forms.KeyEventHandler(this.telefono1Text_KeyDown);
             this.telefono1Text.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.telefono1Text_KeyPress);
             // 
             // label1
@@ -265,6 +271,7 @@
             this.rncText.Name = "rncText";
             this.rncText.Size = new System.Drawing.Size(253, 26);
             this.rncText.TabIndex = 45;
+            this.rncText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rncText_KeyDown);
             this.rncText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rncText_KeyPress);
             // 
             // limiteCreditoText
@@ -275,6 +282,7 @@
             this.limiteCreditoText.Name = "limiteCreditoText";
             this.limiteCreditoText.Size = new System.Drawing.Size(253, 26);
             this.limiteCreditoText.TabIndex = 43;
+            this.limiteCreditoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.limiteCreditoText_KeyDown);
             this.limiteCreditoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sueldoText_KeyPress);
             // 
             // ciudadIdText
@@ -285,6 +293,9 @@
             this.ciudadIdText.Name = "ciudadIdText";
             this.ciudadIdText.Size = new System.Drawing.Size(141, 26);
             this.ciudadIdText.TabIndex = 41;
+            this.ciudadIdText.TextChanged += new System.EventHandler(this.ciudadIdText_TextChanged);
+            this.ciudadIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ciudadIdText_KeyDown);
+            this.ciudadIdText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ciudadIdText_KeyPress);
             // 
             // nombreText
             // 
@@ -294,6 +305,7 @@
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(253, 26);
             this.nombreText.TabIndex = 11;
+            this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyDown);
             // 
             // groupBox1
             // 
@@ -315,6 +327,7 @@
             this.suplidorIdText.Name = "suplidorIdText";
             this.suplidorIdText.Size = new System.Drawing.Size(155, 26);
             this.suplidorIdText.TabIndex = 18;
+            this.suplidorIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suplidorIdText_KeyDown);
             // 
             // label2
             // 
@@ -341,6 +354,8 @@
             // activoCheck
             // 
             this.activoCheck.AutoSize = true;
+            this.activoCheck.Checked = true;
+            this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activoCheck.Location = new System.Drawing.Point(451, 286);
@@ -349,6 +364,7 @@
             this.activoCheck.TabIndex = 55;
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
             // 
             // label10
             // 

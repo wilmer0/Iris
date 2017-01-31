@@ -12,8 +12,8 @@ using IrisContabilidad.clases;
 using IrisContabilidad.modulo_cuenta_por_cobrar;
 using IrisContabilidad.modulo_cuenta_por_pagar;
 using IrisContabilidad.modulo_empresa;
-using IrisContabilidad.modulo_inventario;
-using IrisContabilidad.modulo_inventario;
+using IrisContabilidad.modulo_facturacion;
+using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
@@ -82,14 +82,15 @@ namespace IrisContabilidad.modulo_sistema
             }
             if (e.KeyCode == Keys.F8)
             {
-                
+                //proceso
+            }
+            if (e.KeyCode == Keys.F5)
+            {
+                //limpiar
             }
         }
 
-        public void button3_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void formBase_Load_1(object sender, EventArgs e)
         {

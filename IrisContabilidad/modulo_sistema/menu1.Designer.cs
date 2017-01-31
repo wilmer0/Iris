@@ -54,6 +54,7 @@
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(799, 5);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -74,7 +75,7 @@
             this.flowLayoutVentanas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.flowLayoutVentanas.Location = new System.Drawing.Point(12, 110);
             this.flowLayoutVentanas.Name = "flowLayoutVentanas";
-            this.flowLayoutVentanas.Size = new System.Drawing.Size(940, 386);
+            this.flowLayoutVentanas.Size = new System.Drawing.Size(940, 324);
             this.flowLayoutVentanas.TabIndex = 13;
             this.flowLayoutVentanas.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutVentanas_Paint);
             // 
@@ -98,9 +99,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutModulos.AutoScroll = true;
             this.flowLayoutModulos.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.flowLayoutModulos.Location = new System.Drawing.Point(12, 502);
+            this.flowLayoutModulos.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutModulos.Location = new System.Drawing.Point(12, 440);
             this.flowLayoutModulos.Name = "flowLayoutModulos";
-            this.flowLayoutModulos.Size = new System.Drawing.Size(940, 86);
+            this.flowLayoutModulos.Size = new System.Drawing.Size(940, 148);
             this.flowLayoutModulos.TabIndex = 12;
             // 
             // panel3

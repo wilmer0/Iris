@@ -8,12 +8,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 using empleado = IrisContabilidad.clases.empleado;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 
 namespace IrisContabilidad.modulo_sistema
@@ -86,15 +88,16 @@ namespace IrisContabilidad.modulo_sistema
                 MessageBox.Show("Error haciendo click en el módulo", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void loadModulos()
         {
             try
             {
-                listaTemp=new List<string>();
-                listaModulo=new List<modulo>();
+                listaTemp = new List<string>();
+                listaModulo = new List<modulo>();
                 listaTemp = modeloEmpleado.GetListaModulosByEmpleado(empleado);
-                List<string> listaTempVentanas=new List<string>();
-                
+                List<string> listaTempVentanas = new List<string>();
+
                 //limpiar el layout de modulos para empezar agregar
                 if (flowLayoutModulos.Controls.Count > 0)
                 {
@@ -110,28 +113,26 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo = new Button();
                     botonModulo.FlatStyle = FlatStyle.Flat;
                     botonModulo.BackgroundImageLayout = ImageLayout.Stretch;
-                    botonModulo.Width = 97;
-                    botonModulo.Height = 77;
+                    botonModulo.Width = 165;
+                    botonModulo.Height = 140;
                     botonModulo.BackgroundImage = Image.FromFile(RutaImagenesModulos + modulo.imagen);
                     botonModulo.Click += BotonModuloOnClick;
                     botonModulo.Tag = moduloActual;
-                    //loadVentanas(Convert.ToInt16(moduloActual));
-                    //MessageBox.Show("ventanas cargadas");
+                    //letras
+                    botonModulo.TextAlign = ContentAlignment.BottomCenter;
+                    botonModulo.Text = modulo.nombre;
+                    botonModulo.ForeColor = Color.White;
+                    botonModulo.Font = new Font(botonModulo.Font.FontFamily.Name, 19);
                     flowLayoutModulos.Controls.Add(botonModulo);
-                    
-                });
 
+                });
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loadModulos.: " + ex.ToString(), "", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                    MessageBoxIcon.Error);
             }
         }
-
-        
-
-
         public void loadVentanas(int idModulo)
         {
             try
@@ -146,6 +147,7 @@ namespace IrisContabilidad.modulo_sistema
                 //agregando las ventanas nuevas al flow layout
                 string sql = "SELECT id_modulo,id_ventana from modulos_vs_ventanas where id_modulo='"+idModulo+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                List<Button> listaBotonesVentanas=new List<Button>();
                 foreach (DataRow rowVentana  in ds.Tables[0].Rows)
                 {
                     botonVentana = new Button();
@@ -162,18 +164,31 @@ namespace IrisContabilidad.modulo_sistema
                     
                     
                     //dando estilo al texto del boton
-                    //botonVentana.TextAlign= ContentAlignment.BottomCenter;
-                    //botonVentana.Text = ventana.nombre_ventana;
-                    //botonVentana.ForeColor = Color.Blue;
-                    //botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, 20);
+                    //izquierda-arriba-derecha-abajo
+                    Padding espacio=new Padding(25,25,25,25);
+                    botonVentana.Margin= espacio;
+                    botonVentana.TextAlign = ContentAlignment.BottomCenter;
+                    botonVentana.Text = ventana.nombre_ventana;
+                    botonVentana.ForeColor = Color.White;
+                    botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, 20);
+                    botonVentana.MouseHover+= BotonVentanaOnMouseHover;
+                    botonVentana.MouseLeave+= BotonVentanaOnMouseLeave;
                     
                     
                     //estableciendo la imagen de fondo del boton
                     botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + ventana.imagen);
                     botonVentana.Tag = ventana.codigo;
                     botonVentana.Click += BotonVentanaOnClick;
-                    flowLayoutVentanas.Controls.Add(botonVentana);
+                    
+                    listaBotonesVentanas.Add(botonVentana);
+                    //flowLayoutVentanas.Controls.Add(botonVentana);
                 }
+                //ordenar las ventanas en orden alfabetico
+                listaBotonesVentanas = listaBotonesVentanas.OrderBy(x => x.Text).ToList();
+                listaBotonesVentanas.ForEach(x =>
+                {
+                    flowLayoutVentanas.Controls.Add(x);
+                });
             }
             catch (Exception ex)
             {
@@ -181,19 +196,60 @@ namespace IrisContabilidad.modulo_sistema
             }
         }
 
+        private void BotonVentanaOnMouseLeave(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                Button boton = new Button();
+                boton = (Button)sender;
+
+                boton.FlatAppearance.BorderSize = 0;
+                boton.FlatAppearance.BorderColor = Color.White;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error hover de la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void BotonVentanaOnMouseHover(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                Button boton = new Button();
+                boton = (Button)sender;
+                boton.FlatAppearance.BorderSize = 10;
+                boton.FlatAppearance.BorderColor = Color.Tomato;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error hover de la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
         private void BotonVentanaOnClick(object sender, EventArgs eventArgs)
         {
-            Button boton = new Button();
-            boton = (Button) sender;
-            ventana = new ventana();
-            ventana = modeloModulo.getVentanaById(Convert.ToInt16(boton.Tag));
-            if (ventana != null)
+            try
             {
-                Assembly asm = Assembly.GetEntryAssembly();
-                Type formtype = asm.GetType(ventana.nombre_logico);
-                Form f = (Form) Activator.CreateInstance(formtype);
-                f.Owner = this;
-                f.ShowDialog();
+                Button boton = new Button();
+                boton = (Button)sender;
+                ventana = new ventana();
+                ventana = modeloModulo.getVentanaById(Convert.ToInt16(boton.Tag));
+                if (ventana != null)
+                {
+                    Assembly asm = Assembly.GetEntryAssembly();
+                    Type formtype = asm.GetType(ventana.nombre_logico);
+                    Form f = (Form)Activator.CreateInstance(formtype);
+                    f.Owner = this;
+                    f.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error instanciando la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
@@ -275,6 +331,11 @@ namespace IrisContabilidad.modulo_sistema
         private void menu1_Load_1(object sender, EventArgs e)
         {
             LoadVentana();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

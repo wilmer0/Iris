@@ -75,6 +75,8 @@
             // activoCheck
             // 
             this.activoCheck.AutoSize = true;
+            this.activoCheck.Checked = true;
+            this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activoCheck.Location = new System.Drawing.Point(163, 178);
@@ -111,7 +113,7 @@
             this.RncText.BackColor = System.Drawing.Color.White;
             this.RncText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RncText.Location = new System.Drawing.Point(163, 91);
-            this.RncText.MaxLength = 19;
+            this.RncText.MaxLength = 9;
             this.RncText.Name = "RncText";
             this.RncText.Size = new System.Drawing.Size(256, 26);
             this.RncText.TabIndex = 17;
@@ -177,6 +179,7 @@
             this.empresaIdText.Name = "empresaIdText";
             this.empresaIdText.Size = new System.Drawing.Size(323, 26);
             this.empresaIdText.TabIndex = 0;
+            this.empresaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.empresaIdText_KeyDown);
             // 
             // groupBox2
             // 
