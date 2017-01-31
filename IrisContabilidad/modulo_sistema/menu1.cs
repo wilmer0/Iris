@@ -202,9 +202,9 @@ namespace IrisContabilidad.modulo_sistema
             {
                 Button boton = new Button();
                 boton = (Button)sender;
-                
-                boton.Width = 200;
-                boton.Height = 170;
+
+                boton.FlatAppearance.BorderSize = 0;
+                boton.FlatAppearance.BorderColor = Color.White;
             }
             catch (Exception ex)
             {
@@ -219,8 +219,8 @@ namespace IrisContabilidad.modulo_sistema
             {
                 Button boton = new Button();
                 boton = (Button)sender;
-                boton.Height = boton.Height+10;
-                boton.Width = boton.Width+10;
+                boton.FlatAppearance.BorderSize = 10;
+                boton.FlatAppearance.BorderColor = Color.Tomato;
             }
             catch (Exception ex)
             {
