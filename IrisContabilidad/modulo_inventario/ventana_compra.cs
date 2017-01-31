@@ -72,7 +72,6 @@ namespace IrisContabilidad.modulo_inventario
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana compra");
             this.Text = tituloLabel.Text;
             loadVentana();
-            button3_Click_1(null,null);
         }
         public void loadVentana()
         {
@@ -95,7 +94,7 @@ namespace IrisContabilidad.modulo_inventario
                     detalleText.Text = compra.detalle;
                     suplidorInformalCheck.Checked = Convert.ToBoolean(compra.suplidor_informal);
                     //llenar el detalle de la compra
-                    listaCompraDetalle = modeloCompra.getListaCompraDetalle(compra.codigo,true);
+                    listaCompraDetalle = modeloCompra.getListaCompraDetalleByCompra(compra.codigo,true);
                     loadListaCompraDetalle();
                 }
                 else
@@ -667,10 +666,25 @@ namespace IrisContabilidad.modulo_inventario
 
         private void numeroFacturaText_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            try
             {
-                numerocComprobanteFiscalText.Focus();
-                numerocComprobanteFiscalText.SelectAll();
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    numerocComprobanteFiscalText.Focus();
+                    numerocComprobanteFiscalText.SelectAll();
+
+                    compra = modeloCompra.getCompraBySuplidorNumeroCompra(suplidor, numeroFacturaText.Text);
+                    //validar si el suplidor tiene una compra con ese mismo numero que la traiga.
+                    if (compra.codigo>0)
+                    {
+                        loadVentana();
+                        MessageBox.Show("Existe una compra registrada con esete número de compra asociada a este suplidor");
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
             }
         }
 

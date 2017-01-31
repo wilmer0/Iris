@@ -520,6 +520,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 4;
                 ventana.imagen = "suplidor1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "compra pagos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_compra_pagos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "suplidor1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
                 

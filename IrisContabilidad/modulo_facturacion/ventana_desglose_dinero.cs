@@ -283,7 +283,7 @@ namespace IrisContabilidad.modulo_facturacion
                 }
                   
                 
-                this.DialogResult = DialogResult.OK;
+                    this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
