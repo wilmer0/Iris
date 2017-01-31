@@ -527,7 +527,7 @@ namespace IrisContabilidad.modelos
                 ventana.activo = true;
                 ventana.programador = false;
                 ventana.codigo_modulo = 4;
-                ventana.imagen = "suplidor1.png";
+                ventana.imagen = "compra_pagos1.png";
                 listaVentana.Add(ventana);
                 #endregion
 
