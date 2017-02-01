@@ -37,6 +37,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
         private decimal totalPendienteMonto = 0;
         private decimal totalAbonadoMonto = 0;
+        private string metodoPago = "";
 
         //listas
         private List<compra_vs_pagos> listaCompraPago;
@@ -108,7 +109,54 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     return;
                 }
 
-               
+                //pago enzabezado
+                compraPago = new compra_vs_pagos();
+                compraPago.codigo = modeloCompra.getNextPago();
+                compraPago.fecha = DateTime.Today;
+                compraPago.detalle = "";
+                compraPago.cod_empleado = empleado.codigo;
+                compraPago.activo = true;
+                compraPago.cod_empleado_anular = 0;
+                compraPago.motivo_anulado = "";
+                compraPago.cuadrado = false;
+
+
+                //pago detalle
+                listaCompraPagoDetalle=new List<compra_vs_pagos_detalles>();
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    compraPagoDetalle = new compra_vs_pagos_detalles();
+                    compraPagoDetalle.codigo = 0;
+                    compraPagoDetalle.codigo_pago = compraPago.codigo;
+                    compraPagoDetalle.codigo_compra = Convert.ToInt16(row.Cells[0].Value.ToString());
+                    if (row.Cells[9].Value.ToString().ToLower() == "efe")
+                    {
+                        compraPagoDetalle.codigo_metodo_pago = 1;
+                    }
+                    if (row.Cells[9].Value.ToString().ToLower() == "dep")
+                    {
+                        compraPagoDetalle.codigo_metodo_pago = 2;
+                    }
+                    if (row.Cells[9].Value.ToString().ToLower() == "che")
+                    {
+                        compraPagoDetalle.codigo_metodo_pago = 3;
+                    }
+                    compraPagoDetalle.monto_pagado = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    compraPagoDetalle.monto_descontado = 0;
+                    compraPagoDetalle.activo = true;
+
+
+                    listaCompraPagoDetalle.Add(compraPagoDetalle);
+                }
+
+                if((modeloCompra.setCompraPago(compraPago, listaCompraPagoDetalle)==true))
+                {
+                    MessageBox.Show("Se agregó el pago", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se agregó el pago", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {
@@ -131,6 +179,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 {
                     //dataGridView1.Rows.Remove(dataGridView1.Rows[fila]);
                     dataGridView1.Rows[fila].Cells[8].Value = "0.00";
+                    dataGridView1.Rows[fila].Cells[9].Value = "";
                 }
                 calcularTotal();
             }
@@ -170,10 +219,11 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     MessageBox.Show("El abono debe ser menor que el monto pendiente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-                
+                getMetodoPago();
                 if (fila >= 0)
                 {
                     dataGridView1.Rows[fila].Cells[8].Value = Convert.ToDecimal(montoAbonoText.Text).ToString("N");
+                    dataGridView1.Rows[fila].Cells[9].Value =metodoPago.ToString();
                 }
                 calcularTotal();
             }
@@ -264,7 +314,6 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
                     dataGridView1.Rows.Add(x.codigo,x.fecha.ToString("dd/MM/yyyy"),utilidades.getDiasByRangoFecha(x.fecha_limite,DateTime.Today),empleado.nombre,x.tipo_compra,x.ncf,x.fecha_limite.ToString("dd/MM/yyyy"),montoPendiente.ToString("N"));
                 }
-
             }
             catch (Exception ex)
             {
@@ -332,6 +381,91 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private void button19_Click(object sender, EventArgs e)
         {
             eliminar();
+        }
+
+        public void getMetodoPago()
+        {
+            try
+            {
+                if (metodoPagoComboBox.Text == "")
+                {
+                    return;
+                }
+                if (metodoPagoComboBox.Text.ToLower() == "efectivo")
+                {
+                    metodoPago = "EFE";
+                }
+                else if (metodoPagoComboBox.Text.ToLower() == "deposito")
+                {
+                    metodoPago = "DEP";
+                }
+                else if (metodoPagoComboBox.Text.ToLower() == "cheque")
+                {
+                    metodoPago = "CHE";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMetodoPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void montoAbonoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                button20.Focus();
+                
+            }
+        }
+
+        private void button20_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                button19.Focus();
+
+            }
+        }
+
+        private void ventana_compra_pagos_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Escape)
+                {
+                    salir();
+
+                }
+                if (e.KeyCode == Keys.F2)
+                {
+                    int cantItems = 0;
+                    cantItems = metodoPagoComboBox.Items.Count;
+                    if (metodoPagoComboBox.SelectedIndex == (cantItems - 1))
+                    {
+                        metodoPagoComboBox.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        metodoPagoComboBox.SelectedIndex += 1;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+           
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
