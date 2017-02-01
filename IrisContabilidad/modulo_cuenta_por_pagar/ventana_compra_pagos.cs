@@ -66,19 +66,15 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
-                metodoPagoComboBox.SelectedIndex = 0;
-                
-                if (compraPago != null)
-                { 
-                    //llenar
+                suplidorIdText.Focus();
+                suplidorIdText.SelectAll();
 
-                }
-                else
-                {
-                    //limpiar
-                    dataGridView1.Rows.Clear();
-                }
-                calcularTotal();
+
+                metodoPagoComboBox.SelectedIndex = 0;
+                suplidor = null;
+                loadSuplidor();
+                dataGridView1.Rows.Clear();
+                
             }
             catch (Exception ex)
             {
@@ -239,10 +235,11 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
-                if (dataGridView1.Rows.Count <= 0)
+                totalPendienteText.Text = "0.00";
+                totalAbonadoText.Text = "0.00";
+
+                if (dataGridView1.Rows.Count == 0 || dataGridView1.Rows == null)
                 {
-                    totalPendienteText.Text = "0.00";
-                    totalAbonadoText.Text = "0.00";
                     return;
                 }
 
@@ -253,14 +250,14 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value.ToString());
-                    totalAbonadoMonto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalAbonadoMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
                 }
                 totalPendienteText.Text = totalPendienteMonto.ToString("N");
                 totalAbonadoText.Text = totalAbonadoMonto.ToString("N");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error calcularTotal.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Error calcularTotal.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void salir()
@@ -322,6 +319,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
                     dataGridView1.Rows.Add(x.codigo,x.fecha.ToString("dd/MM/yyyy"),utilidades.getDiasByRangoFecha(x.fecha_limite,DateTime.Today),empleado.nombre,x.tipo_compra,x.ncf,x.fecha_limite.ToString("dd/MM/yyyy"),montoPendiente.ToString("N"));
                 }
+                calcularTotal();
             }
             catch (Exception ex)
             {
@@ -339,7 +337,9 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     suplidorIdText.Text = suplidor.codigo.ToString();
                     suplidorText.Text = suplidor.nombre;
                     loadCompras();
+
                 }
+                
             }
             catch (Exception ex)
             {
@@ -356,6 +356,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 suplidor = ventana.getObjeto();
                 loadSuplidor();
             }
+            calcularTotal();
         }
 
         private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)
@@ -434,10 +435,13 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
         private void button20_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                dataGridView1.Focus();
+            }
             if (e.KeyCode == Keys.Tab)
             {
                 button19.Focus();
-
             }
         }
 
@@ -474,6 +478,24 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private void label5_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void metodoPagoComboBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                montoAbonoText.Focus();
+                montoAbonoText.SelectAll();
+            }
+        }
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode==Keys.Enter ||e.KeyCode == Keys.Tab)
+            {
+                metodoPagoComboBox.Focus();
+                metodoPagoComboBox.SelectAll();
+            }
         }
     }
 }
