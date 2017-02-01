@@ -33,7 +33,7 @@
             this.nombreText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.suplidorIdText = new System.Windows.Forms.TextBox();
+            this.itbisIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.porcientoText = new System.Windows.Forms.TextBox();
@@ -102,7 +102,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.suplidorIdText);
+            this.groupBox1.Controls.Add(this.itbisIdText);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
@@ -111,14 +111,15 @@
             this.groupBox1.TabIndex = 67;
             this.groupBox1.TabStop = false;
             // 
-            // suplidorIdText
+            // itbisIdText
             // 
-            this.suplidorIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.suplidorIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suplidorIdText.Location = new System.Drawing.Point(138, 22);
-            this.suplidorIdText.Name = "suplidorIdText";
-            this.suplidorIdText.Size = new System.Drawing.Size(155, 26);
-            this.suplidorIdText.TabIndex = 18;
+            this.itbisIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.itbisIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.itbisIdText.Location = new System.Drawing.Point(138, 22);
+            this.itbisIdText.Name = "itbisIdText";
+            this.itbisIdText.Size = new System.Drawing.Size(155, 26);
+            this.itbisIdText.TabIndex = 18;
+            this.itbisIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.itbisIdText_KeyDown);
             // 
             // label2
             // 
@@ -201,7 +202,7 @@
         public System.Windows.Forms.TextBox nombreText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox suplidorIdText;
+        private System.Windows.Forms.TextBox itbisIdText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
         public System.Windows.Forms.TextBox porcientoText;

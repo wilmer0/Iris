@@ -94,6 +94,7 @@ namespace IrisContabilidad.modulo_inventario
                     detalleText.Text = compra.detalle;
                     suplidorInformalCheck.Checked = Convert.ToBoolean(compra.suplidor_informal);
                     //llenar el detalle de la compra
+                    dataGridView1.Rows.Clear();
                     listaCompraDetalle = modeloCompra.getListaCompraDetalleByCompra(compra.codigo,true);
                     loadListaCompraDetalle();
                 }
@@ -134,7 +135,14 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
-                
+                //si tiene una compra existente abierta
+                if (compra != null)
+                {
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+                    MessageBox.Show("Tiene una compra existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
                 //suplidor
                 if (suplidor == null)
                 {
@@ -238,13 +246,17 @@ namespace IrisContabilidad.modulo_inventario
                     return;
                 }
 
-                bool crear = false;
-                if (compra == null)
-                {
-                    crear = true;
-                    compra=new compra();
-                    compra.codigo = modeloCompra.getNext();
-                }
+                //en esta ventana siempre va ser true el crear, siempre se va crear
+                //bool crear = true;
+                //if (compra == null)
+                //{
+                //    crear = true;
+                //    compra=new compra();
+                //    compra.codigo = modeloCompra.getNext();
+                //}
+                bool crear = true;
+                compra = new compra();
+                compra.codigo = modeloCompra.getNext();
                 compra.numero_factura = numeroFacturaText.Text;
                 compra.cod_suplidor = suplidor.codigo;
                 compra.fecha = Convert.ToDateTime(fechaInicialText.Text);
@@ -282,47 +294,35 @@ namespace IrisContabilidad.modulo_inventario
                     cont++;
                 }
 
-
                 if (crear == true)
                 {
                     //agregar
-                    ventanaDesglose=new ventana_desglose_dinero(compra,listaCompraDetalle);
-                    ventanaDesglose.ShowDialog();
                     //validar si la compra es al contado para proceder hacer el cobro
                     if (compra.tipo_compra == "CON")
                     {
+                        ventanaDesglose = new ventana_desglose_dinero(compra, listaCompraDetalle);
+                        ventanaDesglose.ShowDialog();
                         if (ventanaDesglose.DialogResult == DialogResult.OK)
                         {
                             compra = null;
                             loadVentana();
                         }
                     }
-                    //if (modeloCompra.agregarCompra(compra, listaCompraDetalle) == true)
-                    //{
-                    //    compra = null;
-                    //    MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
-                    //else
-                    //{
-                    //    compra = null;
-                    //    MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //}
-                }
-                else
-                {
-                    //modificar
-                    if (modeloCompra.modificarCompra(compra) == true)
-                    {
-                        compra = null;
-                        MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
                     else
                     {
-                        MessageBox.Show("No se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //la compra no es al contado entonces solo se guarda pero no hay desglose de pago
+                        if(modeloCompra.agregarCompra(compra,listaCompraDetalle)==true)
+                        {
+                            compra = null;
+                            MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            compra = null;
+                            MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
                 }
-
-               
             }
             catch (Exception ex)
             {
@@ -628,7 +628,10 @@ namespace IrisContabilidad.modulo_inventario
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getAction();
+            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                getAction();
+            }
         }
 
         private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)
@@ -678,7 +681,9 @@ namespace IrisContabilidad.modulo_inventario
                     if (compra.codigo>0)
                     {
                         loadVentana();
+                        calcularTotal();
                         MessageBox.Show("Existe una compra registrada con esete número de compra asociada a este suplidor");
+                        
                     }
                 }
             }

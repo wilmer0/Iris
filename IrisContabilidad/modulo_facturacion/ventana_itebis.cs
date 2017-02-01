@@ -45,15 +45,23 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (itebis != null)
                 {
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+                    
+
+                    itbisIdText.Text = itebis.codigo.ToString();
                     nombreText.Text = itebis.nombre;
                     porcientoText.Text = itebis.porciento.ToString("N");
                     activoCheck.Checked = Convert.ToBoolean(itebis.activo);
                 }
                 else
                 {
+                    itbisIdText.Focus();
+                    itbisIdText.SelectAll();
+
                     nombreText.Text = "";
                     porcientoText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -204,6 +212,30 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 itebis = ventana.getObjeto();
                 loadVentana();
+            }
+        }
+
+        private void itbisIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+
+                    itebis = modeloItebis.getItebisById(Convert.ToInt16(itbisIdText.Text));
+                    loadVentana();
+
+                }
+            }
+            catch (Exception)
+            {
+                
             }
         }
     }

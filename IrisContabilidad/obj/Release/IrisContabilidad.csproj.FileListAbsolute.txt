@@ -13,7 +13,6 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\M
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\MySql.Data.dll
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\Gmap.net.pdb
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GMap.NET.WindowsPresentation.xml
-C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_busqueda_tipo_gastos.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_tipo_gastos.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_cuenta_por_cobrar.ventana_busqueda_categoria_cliente.resources
@@ -78,3 +77,4 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\R
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.exe
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.pdb
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_cuenta_por_pagar.ventana_compra_pagos.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache

@@ -87,7 +87,7 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validar nombre
-                string sql = "select *from ciudad where nombre='" + itebis.nombre + "' and codigo!='" + itebis.codigo + "'";
+                string sql = "select *from itebis where nombre='" + itebis.nombre + "' and codigo!='" + itebis.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -99,7 +99,8 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
 
-                sql = "update ciudad set nombre='" + itebis.nombre + "',porciento='"+itebis.porciento+"',activo='" + activo + "' where codigo='" + itebis.codigo + "'";
+
+                sql = "update itebis set nombre='" + itebis.nombre + "',porciento='" + itebis.porciento + "',activo='" + activo + "' where codigo='" + itebis.codigo + "'";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
