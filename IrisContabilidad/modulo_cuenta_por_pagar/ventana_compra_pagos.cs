@@ -291,6 +291,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 getAction();
+                calcularTotal();
             }
            
         }

@@ -621,7 +621,10 @@ namespace IrisContabilidad.modulo_inventario
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getAction();
+            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                getAction();
+            }
         }
 
         private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)
