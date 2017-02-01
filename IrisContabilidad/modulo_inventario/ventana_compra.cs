@@ -135,7 +135,14 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
-                
+                //si tiene una compra existente abierta
+                if (compra != null)
+                {
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+                    MessageBox.Show("Tiene una compra existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
                 //suplidor
                 if (suplidor == null)
                 {
