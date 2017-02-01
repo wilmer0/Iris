@@ -1221,5 +1221,20 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+
+        public string getDiasByRangoFecha(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            try
+            {
+                TimeSpan ts = fechaFinal - fechaInicial;
+                return ts.Days.ToString();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getDiasByRangoFecha.:" + ex.ToString());
+                return null;
+            }
+        }
     }
 }

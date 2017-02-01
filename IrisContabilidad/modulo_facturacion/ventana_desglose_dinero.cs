@@ -266,7 +266,7 @@ namespace IrisContabilidad.modulo_facturacion
                         //asigando que todos los pagos afecten a esta compra
                         listaPagoDetalle.ForEach(x=> x.codigo_compra=compra.codigo);
 
-                        if (modeloCompra.getCompraPago(compra, pago, listaPagoDetalle) == true)
+                        if (modeloCompra.setCompraPago(compra, pago, listaPagoDetalle) == true)
                         {
                             MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }

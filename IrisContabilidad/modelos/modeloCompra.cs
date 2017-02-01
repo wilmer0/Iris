@@ -101,7 +101,7 @@ namespace IrisContabilidad.modelos
                 {
                     pagada = 1;
                 }
-                sql = "update compra set num_factura='" + compra.numero_factura + "',cod_suplidor='" + compra.cod_suplidor + "',fecha='" + compra.fecha + "',fecha_limite='" + compra.fecha_limite + "',ncf='" + compra.ncf + "',tipo_compra='" + compra.tipo_compra + "',activo'" + activo + "',pagada='" + pagada + "',cod_sucursal='" + compra.codigo_sucursal + "',codigo_empleado='" + compra.codigo_empleado + "',codigo_empleado_anular='" + compra.codigo_empleado_anular + "',motivo_anulado='" + compra.motivo_anulada + "',detalle='" + compra.detalle + "',suplidor_informal='"+suplidorInformal+"' where codigo='" + compra.codigo + "'";
+                sql = "update compra set num_factura='" + compra.numero_factura + "',cod_suplidor='" + compra.cod_suplidor + "',fecha=" + utilidades.getFechaddMMyyyy(compra.fecha) + ",fecha_limite=" + utilidades.getFechaddMMyyyy(compra.fecha_limite) + ",ncf='" + compra.ncf + "',tipo_compra='" + compra.tipo_compra + "',activo'" + activo + "',pagada='" + pagada + "',cod_sucursal='" + compra.codigo_sucursal + "',codigo_empleado='" + compra.codigo_empleado + "',codigo_empleado_anular='" + compra.codigo_empleado_anular + "',motivo_anulado='" + compra.motivo_anulada + "',detalle='" + compra.detalle + "',suplidor_informal='"+suplidorInformal+"' where codigo='" + compra.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
@@ -320,7 +320,7 @@ namespace IrisContabilidad.modelos
         }
 
         //get lista compra detalle
-        public List<compra_detalle> getListaCompraDetalleByCompra(int id, bool incluirTodos = false)
+        public List<compra_detalle> getListaCompraDetalleByCompra(int id, bool SoloActivo = true)
         {
             try
             {
@@ -328,7 +328,7 @@ namespace IrisContabilidad.modelos
                 List<compra_detalle> lista = new List<compra_detalle>();
                 string sql = "";
                 sql = "select codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo from compra_detalle where cod_compra='"+id+"'";
-                if (incluirTodos == false)
+                if (SoloActivo == true)
                 {
                     //se traen solo los activo
                     sql += " and activo='1'";
@@ -371,22 +371,26 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    compra.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    compra.numero_factura = ds.Tables[0].Rows[0][1].ToString();
-                    compra.cod_suplidor = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    compra.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
-                    compra.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
-                    compra.ncf = ds.Tables[0].Rows[0][5].ToString();
-                    compra.tipo_compra = ds.Tables[0].Rows[0][6].ToString();
-                    compra.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7].ToString());
-                    compra.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8].ToString());
-                    compra.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
-                    compra.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
-                    compra.codigo_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
-                    compra.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
-                    compra.detalle = ds.Tables[0].Rows[0][13].ToString();
-                    compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14].ToString());
-                    lista.Add(compra);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        compra = new compra();
+                        compra.codigo = Convert.ToInt16(row[0].ToString());
+                        compra.numero_factura = row[1].ToString();
+                        compra.cod_suplidor = Convert.ToInt16(row[2].ToString());
+                        compra.fecha = Convert.ToDateTime(row[3].ToString());
+                        compra.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        compra.ncf = row[5].ToString();
+                        compra.tipo_compra = row[6].ToString();
+                        compra.activo = Convert.ToBoolean(row[7]);
+                        compra.pagada = Convert.ToBoolean(row[8]);
+                        compra.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        compra.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        compra.codigo_empleado_anular = Convert.ToInt16(row[11].ToString());
+                        compra.motivo_anulada = row[12].ToString();
+                        compra.detalle = row[13].ToString();
+                        compra.suplidor_informal = Convert.ToBoolean(row[14]);
+                        lista.Add(compra);
+                    }
                 }
                 return lista;
             }
@@ -407,23 +411,26 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    compra = new compra();
-                    compra.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    compra.numero_factura = ds.Tables[0].Rows[0][1].ToString();
-                    compra.cod_suplidor = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    compra.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
-                    compra.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
-                    compra.ncf = ds.Tables[0].Rows[0][5].ToString();
-                    compra.tipo_compra = ds.Tables[0].Rows[0][6].ToString();
-                    compra.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
-                    compra.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
-                    compra.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
-                    compra.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
-                    compra.codigo_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
-                    compra.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
-                    compra.detalle = ds.Tables[0].Rows[0][13].ToString();
-                    compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14]);
-                    lista.Add(compra);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        compra = new compra();
+                        compra.codigo = Convert.ToInt16(row[0].ToString());
+                        compra.numero_factura = row[1].ToString();
+                        compra.cod_suplidor = Convert.ToInt16(row[2].ToString());
+                        compra.fecha = Convert.ToDateTime(row[3].ToString());
+                        compra.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        compra.ncf = row[5].ToString();
+                        compra.tipo_compra = row[6].ToString();
+                        compra.activo = Convert.ToBoolean(row[7]);
+                        compra.pagada = Convert.ToBoolean(row[8]);
+                        compra.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        compra.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        compra.codigo_empleado_anular = Convert.ToInt16(row[11].ToString());
+                        compra.motivo_anulada = row[12].ToString();
+                        compra.detalle = row[13].ToString();
+                        compra.suplidor_informal = Convert.ToBoolean(row[14]);
+                        lista.Add(compra);
+                    }
                 }
                 return lista;
             }
@@ -433,8 +440,8 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-        //compra pagos
-        public bool getCompraPago(compra compra,compra_vs_pagos pago,List<compra_vs_pagos_detalles> listaPagoDetalle)
+        //hacer pagos a compra
+        public bool setCompraPago(compra compra,compra_vs_pagos pago,List<compra_vs_pagos_detalles> listaPagoDetalle)
         {
             try
             {
@@ -482,32 +489,152 @@ namespace IrisContabilidad.modelos
                     utilidades.ejecutarcomando_mysql(sql);
                     
                 }
-                //if (ds.Tables[0].Rows.Count > 0)
-                //{
-                //    compra = new compra();
-                //    compra.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                //    compra.numero_factura = ds.Tables[0].Rows[0][1].ToString();
-                //    compra.cod_suplidor = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                //    compra.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
-                //    compra.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
-                //    compra.ncf = ds.Tables[0].Rows[0][5].ToString();
-                //    compra.tipo_compra = ds.Tables[0].Rows[0][6].ToString();
-                //    compra.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
-                //    compra.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
-                //    compra.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
-                //    compra.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
-                //    compra.codigo_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
-                //    compra.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
-                //    compra.detalle = ds.Tables[0].Rows[0][13].ToString();
-                //    compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14]);
-                  
-                //}
+                
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error getCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        //hacer pagos a compra
+        public bool setCompraPago(compra_vs_pagos compraPago,List<compra_vs_pagos_detalles>listaPagoDetalles )
+        {
+            try
+            {
+                //si la compra es a credito entonces no debe hacer ningun pago
+                if (compraPago==null)
+                {
+                    return false;
+                }
+                if (listaPagoDetalles == null)
+                {
+                    return false;
+                }
+
+                //compra vs pagos
+                //insert into compra_vs_pagos(codigo,fecha,detalle,cod_empleado,activo,cod_empleado,motivo_anulado,cuadrdo) values('','','','','','','','');
+                int activo = 0;
+                int cuadrado = 0;
+                if (compraPago.activo == true)
+                {
+                    activo = 1;
+                }
+                if (compraPago.cuadrado == true)
+                {
+                    cuadrado = 1;
+                }
+
+                //pago encabezado
+                string sql = "insert into compra_vs_pagos(codigo,fecha,detalle,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado) values('" + compraPago.codigo + "'," + utilidades.getFechayyyyMMdd(compraPago.fecha) + ",'" + compraPago.detalle + "','" + compraPago.cod_empleado + "','" + activo + "','" + compraPago.cod_empleado_anular + "','" + compraPago.motivo_anulado + "','" + cuadrado + "')";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+
+                //pago detalles
+                listaPagoDetalles.ForEach(x =>
+                {
+                    x.codigo = getNextPagoDetalle();
+                    x.codigo_pago = compraPago.codigo;
+                    activo = 0;
+                    if (x.activo == true)
+                    {
+                        activo = 1;
+                    }
+                    sql = "insert into compra_vs_pagos_detalles(codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,activo) values('" + x.codigo + "','" + x.codigo_pago + "','" + x.codigo_compra + "','" + x.codigo_metodo_pago + "','" + x.monto_pagado + "','" + x.monto_descontado + "','" + activo + "')";
+                    utilidades.ejecutarcomando_mysql(sql);
+
+                });
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+
+        //get monto pendiente compra by compra
+        public List<compra_vs_pagos_detalles> getListaPagosByCompra(int id, bool SoloActivo = true)
+        {
+            try
+            {
+                List<compra_vs_pagos_detalles> lista = new List<compra_vs_pagos_detalles>();
+                compra_vs_pagos_detalles pagoDetalle = new compra_vs_pagos_detalles();
+                string sql = "select codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,activo from compra_vs_pagos_detalles where cod_compra='" + id + "'";
+                if (SoloActivo == true)
+                {
+                    sql += " and activo='1'";
+                }
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        pagoDetalle = new compra_vs_pagos_detalles();
+                        pagoDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        pagoDetalle.codigo_pago = Convert.ToInt16(row[1].ToString());
+                        pagoDetalle.codigo_compra = Convert.ToInt16(row[2].ToString());
+                        pagoDetalle.codigo_metodo_pago = Convert.ToInt16(row[3].ToString());
+                        pagoDetalle.monto_pagado = Convert.ToDecimal(row[4].ToString());
+                        pagoDetalle.monto_descontado = Convert.ToDecimal(row[5].ToString());
+                        pagoDetalle.activo = Convert.ToBoolean(row[6]);
+                        lista.Add(pagoDetalle);   
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaPagosByCompra.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        
+        //get monto pendiente by compra
+        public decimal getMontoPendienteBycompra(int id)
+        {
+            try
+            {
+                decimal montoCompra = 0;
+                decimal montoPendiente = 0;
+                decimal montoPagado = 0;
+
+
+                List<compra_detalle> listaCompraDetalle = new List<compra_detalle>();
+                List<compra_vs_pagos_detalles> listaPagos = new List<compra_vs_pagos_detalles>();
+
+                listaCompraDetalle = getListaCompraDetalleByCompra(id);
+                listaPagos = getListaPagosByCompra(id);
+
+                if (listaCompraDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaCompraDetalle.ForEach(x =>
+                    {
+                        montoCompra += x.monto + x.monto_descuento;
+                    });
+                }
+
+                if (listaPagos.Count > 0)
+                {
+                    listaPagos.ForEach(x =>
+                    {
+                        montoPagado += x.monto_pagado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoCompra - montoPagado;
+                
+                return montoPendiente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoPendienteBycompra.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return -1;
             }
         }
     }
