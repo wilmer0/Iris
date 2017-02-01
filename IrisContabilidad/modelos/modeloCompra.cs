@@ -101,7 +101,7 @@ namespace IrisContabilidad.modelos
                 {
                     pagada = 1;
                 }
-                sql = "update compra set num_factura='" + compra.numero_factura + "',cod_suplidor='" + compra.cod_suplidor + "',fecha='" + compra.fecha + "',fecha_limite='" + compra.fecha_limite + "',ncf='" + compra.ncf + "',tipo_compra='" + compra.tipo_compra + "',activo'" + activo + "',pagada='" + pagada + "',cod_sucursal='" + compra.codigo_sucursal + "',codigo_empleado='" + compra.codigo_empleado + "',codigo_empleado_anular='" + compra.codigo_empleado_anular + "',motivo_anulado='" + compra.motivo_anulada + "',detalle='" + compra.detalle + "',suplidor_informal='"+suplidorInformal+"' where codigo='" + compra.codigo + "'";
+                sql = "update compra set num_factura='" + compra.numero_factura + "',cod_suplidor='" + compra.cod_suplidor + "',fecha=" + utilidades.getFechaddMMyyyy(compra.fecha) + ",fecha_limite=" + utilidades.getFechaddMMyyyy(compra.fecha_limite) + ",ncf='" + compra.ncf + "',tipo_compra='" + compra.tipo_compra + "',activo'" + activo + "',pagada='" + pagada + "',cod_sucursal='" + compra.codigo_sucursal + "',codigo_empleado='" + compra.codigo_empleado + "',codigo_empleado_anular='" + compra.codigo_empleado_anular + "',motivo_anulado='" + compra.motivo_anulada + "',detalle='" + compra.detalle + "',suplidor_informal='"+suplidorInformal+"' where codigo='" + compra.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
@@ -371,22 +371,26 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    compra.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    compra.numero_factura = ds.Tables[0].Rows[0][1].ToString();
-                    compra.cod_suplidor = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    compra.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
-                    compra.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
-                    compra.ncf = ds.Tables[0].Rows[0][5].ToString();
-                    compra.tipo_compra = ds.Tables[0].Rows[0][6].ToString();
-                    compra.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7].ToString());
-                    compra.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8].ToString());
-                    compra.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
-                    compra.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
-                    compra.codigo_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
-                    compra.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
-                    compra.detalle = ds.Tables[0].Rows[0][13].ToString();
-                    compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14].ToString());
-                    lista.Add(compra);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        compra = new compra();
+                        compra.codigo = Convert.ToInt16(row[0].ToString());
+                        compra.numero_factura = row[1].ToString();
+                        compra.cod_suplidor = Convert.ToInt16(row[2].ToString());
+                        compra.fecha = Convert.ToDateTime(row[3].ToString());
+                        compra.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        compra.ncf = row[5].ToString();
+                        compra.tipo_compra = row[6].ToString();
+                        compra.activo = Convert.ToBoolean(row[7]);
+                        compra.pagada = Convert.ToBoolean(row[8]);
+                        compra.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        compra.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        compra.codigo_empleado_anular = Convert.ToInt16(row[11].ToString());
+                        compra.motivo_anulada = row[12].ToString();
+                        compra.detalle = row[13].ToString();
+                        compra.suplidor_informal = Convert.ToBoolean(row[14]);
+                        lista.Add(compra);
+                    }
                 }
                 return lista;
             }
@@ -407,23 +411,26 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    compra = new compra();
-                    compra.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    compra.numero_factura = ds.Tables[0].Rows[0][1].ToString();
-                    compra.cod_suplidor = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    compra.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
-                    compra.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
-                    compra.ncf = ds.Tables[0].Rows[0][5].ToString();
-                    compra.tipo_compra = ds.Tables[0].Rows[0][6].ToString();
-                    compra.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
-                    compra.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
-                    compra.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
-                    compra.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
-                    compra.codigo_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
-                    compra.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
-                    compra.detalle = ds.Tables[0].Rows[0][13].ToString();
-                    compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14]);
-                    lista.Add(compra);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        compra = new compra();
+                        compra.codigo = Convert.ToInt16(row[0].ToString());
+                        compra.numero_factura = row[1].ToString();
+                        compra.cod_suplidor = Convert.ToInt16(row[2].ToString());
+                        compra.fecha = Convert.ToDateTime(row[3].ToString());
+                        compra.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        compra.ncf = row[5].ToString();
+                        compra.tipo_compra = row[6].ToString();
+                        compra.activo = Convert.ToBoolean(row[7]);
+                        compra.pagada = Convert.ToBoolean(row[8]);
+                        compra.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        compra.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        compra.codigo_empleado_anular = Convert.ToInt16(row[11].ToString());
+                        compra.motivo_anulada = row[12].ToString();
+                        compra.detalle = row[13].ToString();
+                        compra.suplidor_informal = Convert.ToBoolean(row[14]);
+                        lista.Add(compra);
+                    }
                 }
                 return lista;
             }
@@ -517,7 +524,7 @@ namespace IrisContabilidad.modelos
             {
                 List<compra_vs_pagos_detalles> lista = new List<compra_vs_pagos_detalles>();
                 compra_vs_pagos_detalles pagoDetalle = new compra_vs_pagos_detalles();
-                string sql = "select sum(monto_pagado+monto_descontado) from compra_vs_pagos_detalles where cod_compra='" + id + "'";
+                string sql = "select codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,activo from compra_vs_pagos_detalles where cod_compra='" + id + "'";
                 if (SoloActivo == true)
                 {
                     sql += " and activo='1'";
@@ -525,15 +532,18 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    pagoDetalle = new compra_vs_pagos_detalles();
-                    pagoDetalle.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    pagoDetalle.codigo_pago = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
-                    pagoDetalle.codigo_compra = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    pagoDetalle.codigo_metodo_pago = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
-                    pagoDetalle.monto_pagado = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
-                    pagoDetalle.monto_descontado = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
-                    pagoDetalle.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
-                    lista.Add(pagoDetalle);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        pagoDetalle = new compra_vs_pagos_detalles();
+                        pagoDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        pagoDetalle.codigo_pago = Convert.ToInt16(row[1].ToString());
+                        pagoDetalle.codigo_compra = Convert.ToInt16(row[2].ToString());
+                        pagoDetalle.codigo_metodo_pago = Convert.ToInt16(row[3].ToString());
+                        pagoDetalle.monto_pagado = Convert.ToDecimal(row[4].ToString());
+                        pagoDetalle.monto_descontado = Convert.ToDecimal(row[5].ToString());
+                        pagoDetalle.activo = Convert.ToBoolean(row[7]);
+                        lista.Add(pagoDetalle);   
+                    }
                 }
                 return lista;
             }
