@@ -580,7 +580,7 @@ namespace IrisContabilidad.modelos
                         pagoDetalle.codigo_metodo_pago = Convert.ToInt16(row[3].ToString());
                         pagoDetalle.monto_pagado = Convert.ToDecimal(row[4].ToString());
                         pagoDetalle.monto_descontado = Convert.ToDecimal(row[5].ToString());
-                        pagoDetalle.activo = Convert.ToBoolean(row[7]);
+                        pagoDetalle.activo = Convert.ToBoolean(row[6]);
                         lista.Add(pagoDetalle);   
                     }
                 }

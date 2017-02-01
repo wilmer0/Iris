@@ -125,30 +125,33 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 listaCompraPagoDetalle=new List<compra_vs_pagos_detalles>();
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    compraPagoDetalle = new compra_vs_pagos_detalles();
-                    compraPagoDetalle.codigo = 0;
-                    compraPagoDetalle.codigo_pago = compraPago.codigo;
-                    compraPagoDetalle.codigo_compra = Convert.ToInt16(row.Cells[0].Value.ToString());
-                    if (row.Cells[9].Value.ToString().ToLower() == "efe")
+                    //validar que tenga monto > 0 y que tenga metodo de pago
+                    if (Convert.ToDecimal(row.Cells[8].Value.ToString()) > 0 && (row.Cells[9].Value.ToString() != ""))
                     {
-                        compraPagoDetalle.codigo_metodo_pago = 1;
-                    }
-                    if (row.Cells[9].Value.ToString().ToLower() == "dep")
-                    {
-                        compraPagoDetalle.codigo_metodo_pago = 2;
-                    }
-                    if (row.Cells[9].Value.ToString().ToLower() == "che")
-                    {
-                        compraPagoDetalle.codigo_metodo_pago = 3;
-                    }
-                    compraPagoDetalle.monto_pagado = Convert.ToDecimal(row.Cells[8].Value.ToString());
-                    compraPagoDetalle.monto_descontado = 0;
-                    compraPagoDetalle.activo = true;
+                        compraPagoDetalle = new compra_vs_pagos_detalles();
+                        compraPagoDetalle.codigo = 0;
+                        compraPagoDetalle.codigo_pago = compraPago.codigo;
+                        compraPagoDetalle.codigo_compra = Convert.ToInt16(row.Cells[0].Value.ToString());
+                        if (row.Cells[9].Value.ToString().ToLower() == "efe")
+                        {
+                            compraPagoDetalle.codigo_metodo_pago = 1;
+                        }
+                        if (row.Cells[9].Value.ToString().ToLower() == "dep")
+                        {
+                            compraPagoDetalle.codigo_metodo_pago = 2;
+                        }
+                        if (row.Cells[9].Value.ToString().ToLower() == "che")
+                        {
+                            compraPagoDetalle.codigo_metodo_pago = 3;
+                        }
+                        compraPagoDetalle.monto_pagado = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                        compraPagoDetalle.monto_descontado = 0;
+                        compraPagoDetalle.activo = true;
 
 
-                    listaCompraPagoDetalle.Add(compraPagoDetalle);
+                        listaCompraPagoDetalle.Add(compraPagoDetalle);
+                    }
                 }
-
                 if((modeloCompra.setCompraPago(compraPago, listaCompraPagoDetalle)==true))
                 {
                     MessageBox.Show("Se agregó el pago", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -285,7 +288,11 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getAction();
+            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                getAction();
+            }
+           
         }
 
         private void button3_Click(object sender, EventArgs e)
