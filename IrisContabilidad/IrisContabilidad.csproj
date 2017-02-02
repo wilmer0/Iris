@@ -163,6 +163,7 @@
     <Compile Include="modelos\modeloNominaTipo.cs" />
     <Compile Include="modelos\modeloPrimerLogin.cs" />
     <Compile Include="modelos\modeloProducto.cs" />
+    <Compile Include="modelos\ModeloReporte.cs" />
     <Compile Include="modelos\modeloSituacionEmpleado.cs" />
     <Compile Include="modelos\modeloSubCategoriaProducto.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />
@@ -702,11 +703,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\Settings.settings">
