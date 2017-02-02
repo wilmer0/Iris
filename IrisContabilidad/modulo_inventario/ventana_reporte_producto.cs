@@ -232,8 +232,7 @@ namespace IrisContabilidad.modulo_inventario
                 }
 
 
-                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado",
-                    listaReporteProductoEncabezado);
+                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado",listaReporteProductoEncabezado);
                 listaReportDataSource.Add(reporteGrafico);
 
                 ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", listaReporteProductoDetalle);
@@ -242,8 +241,7 @@ namespace IrisContabilidad.modulo_inventario
 
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter,
-                    false);
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
                 ventana.ShowDialog();
 
                 #endregion

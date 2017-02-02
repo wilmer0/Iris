@@ -265,8 +265,8 @@ namespace IrisContabilidad.modelos
                     compra.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
                     compra.ncf = ds.Tables[0].Rows[0][5].ToString();
                     compra.tipo_compra=ds.Tables[0].Rows[0][6].ToString();
-                    compra.activo=Convert.ToBoolean(ds.Tables[0].Rows[0][7].ToString());
-                    compra.pagada=Convert.ToBoolean(ds.Tables[0].Rows[0][8].ToString());
+                    compra.activo=Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
+                    compra.pagada=Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
                     compra.codigo_sucursal=Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
                     compra.codigo_empleado=Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
                     compra.codigo_empleado_anular=Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());

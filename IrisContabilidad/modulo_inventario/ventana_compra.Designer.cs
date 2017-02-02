@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.botonImprimir = new System.Windows.Forms.Button();
             this.fechaFinalText = new System.Windows.Forms.MaskedTextBox();
             this.fechaInicialText = new System.Windows.Forms.MaskedTextBox();
             this.suplidorInformalCheck = new System.Windows.Forms.CheckBox();
@@ -84,11 +85,13 @@
             this.label14 = new System.Windows.Forms.Label();
             this.totalItebisText = new System.Windows.Forms.TextBox();
             this.totalCompraText = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -119,6 +122,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.fechaFinalText);
             this.groupBox1.Controls.Add(this.fechaInicialText);
             this.groupBox1.Controls.Add(this.suplidorInformalCheck);
@@ -142,6 +146,18 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // botonImprimir
+            // 
+            this.botonImprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("botonImprimir.BackgroundImage")));
+            this.botonImprimir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.botonImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.botonImprimir.Location = new System.Drawing.Point(241, 7);
+            this.botonImprimir.Name = "botonImprimir";
+            this.botonImprimir.Size = new System.Drawing.Size(88, 68);
+            this.botonImprimir.TabIndex = 104;
+            this.botonImprimir.UseVisualStyleBackColor = true;
+            this.botonImprimir.Click += new System.EventHandler(this.botonImprimir_Click);
             // 
             // fechaFinalText
             // 
@@ -176,7 +192,7 @@
             // 
             // detalleText
             // 
-            this.detalleText.Location = new System.Drawing.Point(529, 98);
+            this.detalleText.Location = new System.Drawing.Point(529, 99);
             this.detalleText.MaxLength = 500;
             this.detalleText.Multiline = true;
             this.detalleText.Name = "detalleText";
@@ -188,7 +204,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(456, 94);
+            this.label6.Location = new System.Drawing.Point(456, 101);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 20);
             this.label6.TabIndex = 85;
@@ -677,6 +693,15 @@
             this.totalCompraText.TabIndex = 102;
             this.totalCompraText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.botonImprimir);
+            this.groupBox3.Location = new System.Drawing.Point(660, 11);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(335, 79);
+            this.groupBox3.TabIndex = 105;
+            this.groupBox3.TabStop = false;
+            // 
             // ventana_compra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,6 +735,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -768,5 +794,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itebisColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn importeColumn;
+        private System.Windows.Forms.Button botonImprimir;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
