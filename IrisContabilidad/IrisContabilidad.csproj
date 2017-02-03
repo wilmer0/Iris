@@ -107,6 +107,7 @@
     <Compile Include="clases\compra_detalle.cs" />
     <Compile Include="clases\compra_vs_pagos.cs" />
     <Compile Include="clases\compra_vs_pagos_detalles.cs" />
+    <Compile Include="clases\comprobante_fiscal.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\desglose_dinero.cs" />
     <Compile Include="clases\dias.cs" />
@@ -139,6 +140,8 @@
     <Compile Include="clases\venta_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_compra_pago_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_compra_pago_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
@@ -153,12 +156,14 @@
     <Compile Include="modelos\modeloCiudad.cs" />
     <Compile Include="modelos\modeloCliente.cs" />
     <Compile Include="modelos\modeloCompra.cs" />
+    <Compile Include="modelos\modeloComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
     <Compile Include="modelos\modeloItebis.cs" />
+    <Compile Include="modelos\modeloMetodoPago.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />
     <Compile Include="modelos\modeloPrimerLogin.cs" />
@@ -704,6 +709,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_compra_pago_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
@@ -711,6 +717,8 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\Settings.settings">

@@ -978,8 +978,7 @@ namespace IrisContabilidad.modulo_inventario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

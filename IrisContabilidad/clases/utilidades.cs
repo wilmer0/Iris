@@ -842,35 +842,7 @@ namespace IrisContabilidad.clases
             return decimal.TryParse(Cadena, out resul);
         }
 
-        public String getRellenarConCarracter(int longitud, Boolean derecha, string caracter, String cadena)
-        {
-            String caracteres = "";
-
-
-            for (int i = cadena.Length; i < longitud; i++)
-            {
-                caracteres = caracteres + caracter;
-
-
-            }
-            if (derecha)
-            {
-                cadena = cadena + caracteres;
-
-            }
-            else
-            {
-                cadena = caracteres + cadena;
-
-            }
-
-
-
-
-
-            return cadena;
-
-        }
+      
 
 
 

@@ -274,7 +274,6 @@ namespace IrisContabilidad.modulo_facturacion
                         {
                             if(MessageBox.Show("Se agregó, desea Imprimir la compra?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
                             {
-                                
                                 modeloReporte.imprimirCompra(compra.codigo);
                             }
                         }
