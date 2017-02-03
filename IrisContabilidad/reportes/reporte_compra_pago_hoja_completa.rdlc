@@ -652,7 +652,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>=First(Fields!fecha_impresion.Value, "reporte_encabezado")</Value>
-                  <Style />
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style>

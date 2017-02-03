@@ -68,7 +68,7 @@ namespace IrisContabilidad.modelos
                 {
                     x.codigo = getNextInventario();
                     DateTime fechaHoy = DateTime.Today;
-                    sql = "insert into inventario(codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento) values('" + x.codigo + "','" + x.cod_producto + "','" + x.cod_unidad + "','" + x.cantidad + "'," + utilidades.getFechayyyyMMdd(fechaHoy) + "," + utilidades.getFechayyyyMMdd(fechaHoy.AddDays(120)) + ")";
+                    sql = "insert into inventario(codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento) values('" + x.codigo + "','" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.cantidad + "'," + utilidades.getFechayyyyMMdd(fechaHoy) + "," + utilidades.getFechayyyyMMdd(fechaHoy.AddDays(120)) + ")";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
 
@@ -278,8 +278,8 @@ namespace IrisContabilidad.modelos
                         venta_detalle ventaDetalle = new venta_detalle();
                         ventaDetalle.codigo = Convert.ToInt16(row[0].ToString());
                         ventaDetalle.cod_venta = Convert.ToInt16(row[1].ToString());
-                        ventaDetalle.cod_producto = Convert.ToInt16(row[2].ToString());
-                        ventaDetalle.cod_unidad = Convert.ToInt16(row[3].ToString());
+                        ventaDetalle.codigo_producto = Convert.ToInt16(row[2].ToString());
+                        ventaDetalle.codigo_unidad = Convert.ToInt16(row[3].ToString());
                         ventaDetalle.cantidad = Convert.ToDecimal(row[4].ToString());
                         ventaDetalle.precio = Convert.ToDecimal(row[5].ToString());
                         ventaDetalle.monto = Convert.ToDecimal(row[6].ToString());

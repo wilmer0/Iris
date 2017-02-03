@@ -328,6 +328,12 @@
     <Compile Include="modulo_facturacion\ventana_desglose_dinero.Designer.cs">
       <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_normal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_normal.Designer.cs">
+      <DependentUpon>ventana_facturacion_normal.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_itebis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -602,6 +608,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_desglose_dinero.resx">
       <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_facturacion_normal.resx">
+      <DependentUpon>ventana_facturacion_normal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
