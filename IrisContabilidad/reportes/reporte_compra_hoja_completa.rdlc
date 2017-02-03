@@ -591,7 +591,7 @@
         <Top>0.06944in</Top>
         <Left>0.11979in</Left>
         <Height>0.5in</Height>
-        <Width>8.2361in</Width>
+        <Width>8.23611in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -718,7 +718,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Telefonos actualiza reporte </Value>
+                  <Value>=First(Fields!telefonos.Value, "reporte_encabezado")</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -1179,15 +1179,15 @@
         </Field>
         <Field Name="fecha_compa">
           <DataField>fecha_compa</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="fecha_impresion">
           <DataField>fecha_impresion</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="fecha_limite">
           <DataField>fecha_limite</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="numero_compra">
           <DataField>numero_compra</DataField>
@@ -1203,6 +1203,10 @@
         </Field>
         <Field Name="suplidor_rnc">
           <DataField>suplidor_rnc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="telefonos">
+          <DataField>telefonos</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="tipo_compra">
@@ -1248,6 +1252,10 @@
         </Field>
         <Field Name="unidad">
           <DataField>unidad</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="unidad_abreviada">
+          <DataField>unidad_abreviada</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>

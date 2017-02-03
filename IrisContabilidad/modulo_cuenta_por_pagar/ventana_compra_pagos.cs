@@ -32,6 +32,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         modeloCompra modeloCompra = new modeloCompra();
         modeloSuplidor modeloSuplidor=new modeloSuplidor();
         private modeloEmpleado modeloEmpleado=new modeloEmpleado();
+        ModeloReporte modeloReporte=new ModeloReporte();
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
@@ -150,10 +151,15 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 }
                 if((modeloCompra.setCompraPago(compraPago, listaCompraPagoDetalle)==true))
                 {
-                    MessageBox.Show("Se agregó el pago", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    loadSuplidor();
+                    if (MessageBox.Show("Se agregó el pago, desea imprimir el pago?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        modeloReporte.imprirmiCompraPago(compraPago.codigo);
+                    }
                 }
                 else
                 {
+                    loadSuplidor();
                     MessageBox.Show("No se agregó el pago", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
@@ -289,6 +295,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             {
                 getAction();
                 calcularTotal();
+
             }
            
         }
