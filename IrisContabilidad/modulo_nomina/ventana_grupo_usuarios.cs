@@ -26,12 +26,6 @@ namespace IrisContabilidad.modulo_nomina
         //modelos
         modeloGrupoUsuarios modeloGrupoUsuarios=new modeloGrupoUsuarios();
 
-     
-        //listas
-
-
-
-
         public ventana_grupo_usuarios()
         {
             InitializeComponent();
@@ -82,9 +76,6 @@ namespace IrisContabilidad.modulo_nomina
                     grupoText.SelectAll();
                     return false;
                 }
-
-
-
                 return true;
             }
             catch (Exception ex)
@@ -109,7 +100,6 @@ namespace IrisContabilidad.modulo_nomina
                 {
                     return;
                 }
-
 
                 bool crear = false;
                 if (grupoUsuarios == null)
@@ -150,7 +140,6 @@ namespace IrisContabilidad.modulo_nomina
                     {
                         MessageBox.Show("No se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
                 grupoUsuarios = null;
             }
@@ -203,9 +192,7 @@ namespace IrisContabilidad.modulo_nomina
             catch (Exception)
             {
             }
-            
         }
-
         private void grupoText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
