@@ -286,6 +286,12 @@
     <Compile Include="modulo_facturacion\ventana_busqueda_cajero.Designer.cs">
       <DependentUpon>ventana_busqueda_cajero.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_egreso_caja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_egreso_caja.Designer.cs">
+      <DependentUpon>ventana_busqueda_egreso_caja.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_ingresos_egresos_conceptos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -587,6 +593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_cajero.resx">
       <DependentUpon>ventana_busqueda_cajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_egreso_caja.resx">
+      <DependentUpon>ventana_busqueda_egreso_caja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_ingresos_egresos_conceptos.resx">
       <DependentUpon>ventana_busqueda_ingresos_egresos_conceptos.cs</DependentUpon>

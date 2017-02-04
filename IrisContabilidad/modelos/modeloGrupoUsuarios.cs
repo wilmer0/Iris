@@ -69,7 +69,6 @@ namespace IrisContabilidad.modelos
                 }
                 sql = "update grupo_usuarios set nombre='" + grupoUsuario.nombre + "',detalles='"+grupoUsuario.detalles+"',activo='" + activo.ToString() + "' where codigo='" + grupoUsuario.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
-                MessageBox.Show(sql);
                 return true;
             }
             catch (Exception ex)

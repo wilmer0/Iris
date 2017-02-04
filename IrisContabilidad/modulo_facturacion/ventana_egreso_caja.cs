@@ -96,8 +96,8 @@ namespace IrisContabilidad.modulo_facturacion
                 if (concepto==null)
                 {
                     MessageBox.Show("Falta el concepto del egreso", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    conceptoText.Focus();
-                    conceptoText.SelectAll();
+                    conceptoIdText.Focus();
+                    conceptoIdText.SelectAll();
                     return false;
                 }
                 //validar numero itebis
@@ -277,7 +277,15 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            ventana_busqueda_egreso_caja ventana = new ventana_busqueda_egreso_caja(true);
+            ventana.mantenimiento = true;
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                egresoCaja = ventana.getObjeto();
+                loadVentana();
+            }
         }
 
         private void egresoIdText_KeyPress(object sender, KeyPressEventArgs e)
@@ -289,6 +297,10 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button5_Click(null,null);
+                }
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
                 {
                     montoText.Focus();
