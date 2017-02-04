@@ -245,7 +245,14 @@ namespace IrisContabilidad.modulo_nomina
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            ventana_busqueda_grupo_usuario ventana = new ventana_busqueda_grupo_usuario(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                grupoUsuarios = ventana.getObjeto();
+                loadVentana();
+            }
         }
     }
 }

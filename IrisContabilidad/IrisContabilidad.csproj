@@ -454,6 +454,12 @@
     <Compile Include="modulo_nomina\ventana_busqueda_empleado.Designer.cs">
       <DependentUpon>ventana_busqueda_empleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_grupo_usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_grupo_usuario.Designer.cs">
+      <DependentUpon>ventana_busqueda_grupo_usuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_nomina\ventana_busqueda_situacion_empleado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -677,6 +683,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_empleado.resx">
       <DependentUpon>ventana_busqueda_empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_busqueda_grupo_usuario.resx">
+      <DependentUpon>ventana_busqueda_grupo_usuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_situacion_empleado.resx">
       <DependentUpon>ventana_busqueda_situacion_empleado.cs</DependentUpon>
