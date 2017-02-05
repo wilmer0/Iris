@@ -41,6 +41,8 @@ namespace IrisContabilidad.modulo_inventario
         private modeloProducto modeloProducto = new modeloProducto();
         modeloSuplidor modeloSuplidor=new modeloSuplidor();
         modeloCompra modeloCompra=new modeloCompra();
+        ModeloReporte modeloReporte=new ModeloReporte();
+        
 
         
         //variables
@@ -97,6 +99,7 @@ namespace IrisContabilidad.modulo_inventario
                     dataGridView1.Rows.Clear();
                     listaCompraDetalle = modeloCompra.getListaCompraDetalleByCompra(compra.codigo,true);
                     loadListaCompraDetalle();
+                    botonImprimir.Visible = true;
                 }
                 else
                 {
@@ -122,6 +125,7 @@ namespace IrisContabilidad.modulo_inventario
                     }
                     fechaInicialText.Text = DateTime.Today.ToString("dd-MM-yyyy");
                     fechaFinalText.Text = DateTime.Today.ToString("dd-MM-yyyy");
+                    botonImprimir.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -974,14 +978,21 @@ namespace IrisContabilidad.modulo_inventario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void botonImprimir_Click(object sender, EventArgs e)
+        {
+            if (compra != null)
+            {
+                modeloReporte.imprimirCompra(compra.codigo);
+            }
         }
     }
 }

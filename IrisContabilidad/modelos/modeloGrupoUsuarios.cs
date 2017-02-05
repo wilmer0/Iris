@@ -69,7 +69,6 @@ namespace IrisContabilidad.modelos
                 }
                 sql = "update grupo_usuarios set nombre='" + grupoUsuario.nombre + "',detalles='"+grupoUsuario.detalles+"',activo='" + activo.ToString() + "' where codigo='" + grupoUsuario.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
-                MessageBox.Show(sql);
                 return true;
             }
             catch (Exception ex)
@@ -134,12 +133,12 @@ namespace IrisContabilidad.modelos
 
 
         //get lista completa
-        public List<cargo> getListaCompleta(bool mantenimiento = false)
+        public List<grupo_usuarios> getListaCompleta(bool mantenimiento = false)
         {
             try
             {
 
-                List<cargo> lista = new List<cargo>();
+                List<grupo_usuarios> lista = new List<grupo_usuarios>();
                 string sql = "";
                 sql = "select codigo,nombre,detalles,activo from grupo_usuarios";
                 if (mantenimiento == false)
@@ -151,11 +150,12 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        cargo cargo = new cargo();
-                        cargo.id = Convert.ToInt16(row[0].ToString());
-                        cargo.nombre = row[1].ToString();
-                        cargo.activo = Convert.ToBoolean(row[2].ToString());
-                        lista.Add(cargo);
+                        grupo_usuarios grupoUsuarios = new grupo_usuarios();
+                        grupoUsuarios.codigo = Convert.ToInt16(row[0].ToString());
+                        grupoUsuarios.nombre = row[1].ToString();
+                        grupoUsuarios.detalles = row[2].ToString();
+                        grupoUsuarios.activo = Convert.ToBoolean(row[3]);
+                        lista.Add(grupoUsuarios);
                     }
                 }
                 return lista;

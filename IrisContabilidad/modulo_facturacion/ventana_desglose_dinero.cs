@@ -26,14 +26,18 @@ namespace IrisContabilidad.modulo_facturacion
         private compra_vs_pagos pago;
         compra_vs_pagos_detalles pagoDetalle;
 
+        
         //modelos
         modeloCompra modeloCompra=new modeloCompra();
         modeloVenta modeloVenta=new modeloVenta();
+        ModeloReporte modeloReporte = new ModeloReporte();
+
 
         //listas
         private List<compra_detalle> listaCompraDetalles;
         private List<venta_detalle> listaVentaDetalles;
         List<compra_vs_pagos_detalles> listaPagoDetalle = new List<compra_vs_pagos_detalles>();
+
 
         //variables
         private decimal montoEsperado=0;
@@ -268,7 +272,10 @@ namespace IrisContabilidad.modulo_facturacion
 
                         if (modeloCompra.setCompraPago(compra, pago, listaPagoDetalle) == true)
                         {
-                            MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if(MessageBox.Show("Se agregó, desea Imprimir la compra?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
+                            {
+                                modeloReporte.imprimirCompra(compra.codigo);
+                            }
                         }
                         else
                         {
@@ -304,7 +311,10 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getAction();
+            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                getAction();
+            }
         }
 
         private void efectivoText_KeyPress(object sender, KeyPressEventArgs e)
@@ -469,6 +479,29 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 montoDepositoText.Focus();
                 montoDepositoText.SelectAll();
+            }
+        }
+
+        private void imprimirVenta()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimircompra.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void imprimircompra()
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimircompra.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

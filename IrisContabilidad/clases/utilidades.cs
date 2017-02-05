@@ -842,35 +842,7 @@ namespace IrisContabilidad.clases
             return decimal.TryParse(Cadena, out resul);
         }
 
-        public String getRellenarConCarracter(int longitud, Boolean derecha, string caracter, String cadena)
-        {
-            String caracteres = "";
-
-
-            for (int i = cadena.Length; i < longitud; i++)
-            {
-                caracteres = caracteres + caracter;
-
-
-            }
-            if (derecha)
-            {
-                cadena = cadena + caracteres;
-
-            }
-            else
-            {
-                cadena = caracteres + cadena;
-
-            }
-
-
-
-
-
-            return cadena;
-
-        }
+      
 
 
 
@@ -1208,6 +1180,19 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+        public string getFechaddMMyyyyhhmmsstt(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy hh:mm:ss tt");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaddMMyyyyhhmmsstt.:" + ex.ToString());
+                return null;
+            }
+        }
         public string getFechayyyyMMdd(DateTime fecha)
         {
             try
@@ -1233,6 +1218,29 @@ namespace IrisContabilidad.clases
             catch (Exception ex)
             {
                 MessageBox.Show("Error getDiasByRangoFecha.:" + ex.ToString());
+                return null;
+            }
+        }
+
+        public string getRellenar(string dato,char caracterRelleno,int numeroPosiciones,bool rellenarIzquierda=true)
+        {
+            try
+            {
+                if (rellenarIzquierda == false)
+                {
+                    //derecha
+                    dato = dato.PadRight(numeroPosiciones, caracterRelleno);
+                }
+                else
+                {
+                    //izquierda
+                    dato = dato.PadLeft(numeroPosiciones, caracterRelleno);
+                }
+                return dato;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getRellenar.:" + ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
         }

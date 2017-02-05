@@ -36,7 +36,7 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //se agrega
-                    sql = "insert into empresa(codigo,secuencia,division,activo,rnc,nombre) values('"+empresaApp.codigo+"','"+empresaApp.secuencia+"','"+empresaApp.division+"','"+activo.ToString()+"','"+empresaApp.rnc+"','"+empresaApp.nombre+"')";
+                    sql = "insert into empresa(codigo,secuencia,division,activo,rnc,nombre,serie) values('"+empresaApp.codigo+"','"+empresaApp.secuencia+"','"+empresaApp.division+"','"+activo.ToString()+"','"+empresaApp.rnc+"','"+empresaApp.nombre+"','"+empresaApp.serie_comprobante+"')";
                     ds = utilidades.ejecutarcomando_mysql(sql);
                     return true;
                 }
@@ -44,7 +44,7 @@ namespace IrisContabilidad.modelos
                 {
                     sql = "update empresa set secuencia='" + empresaApp.secuencia + "',division='" + empresaApp.division +
                     "',activo='" + activo.ToString()+ "',rnc='" + empresaApp.rnc + "',nombre='" +
-                    empresaApp.nombre + "' where codigo='1'";
+                    empresaApp.nombre + "',serie='"+empresaApp.serie_comprobante+"' where codigo='1'";
                     ds = utilidades.ejecutarcomando_mysql(sql);
                     return true;
                 }
@@ -91,7 +91,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 empresa empresa = new empresa();
-                string sql = "select codigo,secuencia,division,activo,rnc,nombre from empresa where codigo='" + id + "'";
+                string sql = "select codigo,secuencia,division,activo,rnc,nombre,serie_comprobante from empresa where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -101,6 +101,7 @@ namespace IrisContabilidad.modelos
                     empresa.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
                     empresa.rnc = ds.Tables[0].Rows[0][4].ToString();
                     empresa.nombre = ds.Tables[0].Rows[0][5].ToString();
+                    empresa.serie_comprobante = ds.Tables[0].Rows[0][6].ToString();
                 }
                 return empresa;
             }
@@ -116,7 +117,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 empresa empresa = new empresa();
-                string sql = "select e.codigo,e.secuencia,e.division,e.activo,e.rnc,e.nombre from sucursal s join empresa e on s.codigo_empresa=e.codigo where s.codigo='" + id + "'";
+                string sql = "select e.codigo,e.secuencia,e.division,e.activo,e.rnc,e.nombre,e.serie_comprobante from sucursal s join empresa e on s.codigo_empresa=e.codigo where s.codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -126,6 +127,7 @@ namespace IrisContabilidad.modelos
                     empresa.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
                     empresa.rnc = ds.Tables[0].Rows[0][4].ToString();
                     empresa.nombre = ds.Tables[0].Rows[0][5].ToString();
+                    empresa.serie_comprobante = ds.Tables[0].Rows[0][6].ToString();
                 }
                 return empresa;
             }

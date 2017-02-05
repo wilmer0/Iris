@@ -102,11 +102,13 @@
     <Compile Include="clases\categoria_producto.cs" />
     <Compile Include="clases\ciudad.cs" />
     <Compile Include="clases\cliente.cs" />
-    <Compile Include="clases\CodeFile1.cs" />
     <Compile Include="clases\compra.cs" />
     <Compile Include="clases\compra_detalle.cs" />
     <Compile Include="clases\compra_vs_pagos.cs" />
     <Compile Include="clases\compra_vs_pagos_detalles.cs" />
+    <Compile Include="clases\comprobante_fiscal.cs" />
+    <Compile Include="clases\cuadre_caja.cs" />
+    <Compile Include="clases\cuadre_caja_detalle.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\desglose_dinero.cs" />
     <Compile Include="clases\dias.cs" />
@@ -139,6 +141,8 @@
     <Compile Include="clases\venta_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_compra_pago_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_compra_pago_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
@@ -153,16 +157,20 @@
     <Compile Include="modelos\modeloCiudad.cs" />
     <Compile Include="modelos\modeloCliente.cs" />
     <Compile Include="modelos\modeloCompra.cs" />
+    <Compile Include="modelos\modeloComprobanteFiscal.cs" />
+    <Compile Include="modelos\modeloCuadreCaja.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
     <Compile Include="modelos\modeloItebis.cs" />
+    <Compile Include="modelos\modeloMetodoPago.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />
     <Compile Include="modelos\modeloPrimerLogin.cs" />
     <Compile Include="modelos\modeloProducto.cs" />
+    <Compile Include="modelos\ModeloReporte.cs" />
     <Compile Include="modelos\modeloSituacionEmpleado.cs" />
     <Compile Include="modelos\modeloSubCategoriaProducto.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />
@@ -256,6 +264,12 @@
     <Compile Include="modulo_empresa\ventana_ciudad.Designer.cs">
       <DependentUpon>ventana_ciudad.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_empresa\ventana_configuracion_comprobante_fiscal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_configuracion_comprobante_fiscal.Designer.cs">
+      <DependentUpon>ventana_configuracion_comprobante_fiscal.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_empresa\ventana_empresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +293,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_cajero.Designer.cs">
       <DependentUpon>ventana_busqueda_cajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_egreso_caja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_egreso_caja.Designer.cs">
+      <DependentUpon>ventana_busqueda_egreso_caja.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_ingresos_egresos_conceptos.cs">
       <SubType>Form</SubType>
@@ -316,11 +336,23 @@
     <Compile Include="modulo_facturacion\ventana_cajero.Designer.cs">
       <DependentUpon>ventana_cajero.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_cuadre_caja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_cuadre_caja.Designer.cs">
+      <DependentUpon>ventana_cuadre_caja.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_desglose_dinero.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_desglose_dinero.Designer.cs">
       <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_normal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_normal.Designer.cs">
+      <DependentUpon>ventana_facturacion_normal.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_itebis.cs">
       <SubType>Form</SubType>
@@ -435,6 +467,12 @@
     </Compile>
     <Compile Include="modulo_nomina\ventana_busqueda_empleado.Designer.cs">
       <DependentUpon>ventana_busqueda_empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_grupo_usuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_nomina\ventana_busqueda_grupo_usuario.Designer.cs">
+      <DependentUpon>ventana_busqueda_grupo_usuario.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_nomina\ventana_busqueda_situacion_empleado.cs">
       <SubType>Form</SubType>
@@ -564,6 +602,9 @@
     <EmbeddedResource Include="modulo_empresa\ventana_ciudad.resx">
       <DependentUpon>ventana_ciudad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_empresa\ventana_configuracion_comprobante_fiscal.resx">
+      <DependentUpon>ventana_configuracion_comprobante_fiscal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_empresa.resx">
       <DependentUpon>ventana_empresa.cs</DependentUpon>
     </EmbeddedResource>
@@ -575,6 +616,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_cajero.resx">
       <DependentUpon>ventana_busqueda_cajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_egreso_caja.resx">
+      <DependentUpon>ventana_busqueda_egreso_caja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_ingresos_egresos_conceptos.resx">
       <DependentUpon>ventana_busqueda_ingresos_egresos_conceptos.cs</DependentUpon>
@@ -594,8 +638,14 @@
     <EmbeddedResource Include="modulo_facturacion\ventana_cajero.resx">
       <DependentUpon>ventana_cajero.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_cuadre_caja.resx">
+      <DependentUpon>ventana_cuadre_caja.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_desglose_dinero.resx">
       <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_facturacion_normal.resx">
+      <DependentUpon>ventana_facturacion_normal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
@@ -654,6 +704,9 @@
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_empleado.resx">
       <DependentUpon>ventana_busqueda_empleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_nomina\ventana_busqueda_grupo_usuario.resx">
+      <DependentUpon>ventana_busqueda_grupo_usuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_situacion_empleado.resx">
       <DependentUpon>ventana_busqueda_situacion_empleado.cs</DependentUpon>
     </EmbeddedResource>
@@ -702,11 +755,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_compra_pago_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\Settings.settings">

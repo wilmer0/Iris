@@ -206,5 +206,38 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        //get suplidor by compra pago
+        public suplidor getSuplidorByCompraPago(int id)
+        {
+            try
+            {
+                suplidor suplidor = new suplidor();
+                string sql = "select distinct s.codigo,s.nombre,s.rnc,s.fecha_creacion,s.cod_sucursal_creado,s.limite_credito,s.activo,s.direccion,s.telefono1,s.telefono2,s.tipo_gasto,s.fecha_modificacion,s.fax,s.cod_ciudad from suplidor s join compra c on c.cod_suplidor=s.codigo join compra_vs_pagos_detalles cd on cd.cod_compra=c.codigo where cd.cod_pago='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    suplidor.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    suplidor.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    suplidor.rnc = ds.Tables[0].Rows[0][2].ToString();
+                    suplidor.fecha_creacion = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
+                    suplidor.codigo_sucursal_creado = Convert.ToInt16(ds.Tables[0].Rows[0][4].ToString());
+                    suplidor.limite_credito = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
+                    suplidor.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][6].ToString());
+                    suplidor.direccion = ds.Tables[0].Rows[0][7].ToString();
+                    suplidor.telefono1 = ds.Tables[0].Rows[0][8].ToString();
+                    suplidor.telefono2 = ds.Tables[0].Rows[0][9].ToString();
+                    suplidor.cod_tipo_gasto = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
+                    suplidor.fecha_modificacion = Convert.ToDateTime(ds.Tables[0].Rows[0][11].ToString());
+                    suplidor.fax = ds.Tables[0].Rows[0][12].ToString();
+                    suplidor.codigo_ciudad = Convert.ToInt16(ds.Tables[0].Rows[0][13].ToString());
+                }
+                return suplidor;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getSuplidorByCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }
