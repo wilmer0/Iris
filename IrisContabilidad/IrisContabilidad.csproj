@@ -102,12 +102,13 @@
     <Compile Include="clases\categoria_producto.cs" />
     <Compile Include="clases\ciudad.cs" />
     <Compile Include="clases\cliente.cs" />
-    <Compile Include="clases\CodeFile1.cs" />
     <Compile Include="clases\compra.cs" />
     <Compile Include="clases\compra_detalle.cs" />
     <Compile Include="clases\compra_vs_pagos.cs" />
     <Compile Include="clases\compra_vs_pagos_detalles.cs" />
     <Compile Include="clases\comprobante_fiscal.cs" />
+    <Compile Include="clases\cuadre_caja.cs" />
+    <Compile Include="clases\cuadre_caja_detalle.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\desglose_dinero.cs" />
     <Compile Include="clases\dias.cs" />
@@ -157,6 +158,7 @@
     <Compile Include="modelos\modeloCliente.cs" />
     <Compile Include="modelos\modeloCompra.cs" />
     <Compile Include="modelos\modeloComprobanteFiscal.cs" />
+    <Compile Include="modelos\modeloCuadreCaja.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
@@ -333,6 +335,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_cajero.Designer.cs">
       <DependentUpon>ventana_cajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_cuadre_caja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_cuadre_caja.Designer.cs">
+      <DependentUpon>ventana_cuadre_caja.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_desglose_dinero.cs">
       <SubType>Form</SubType>
@@ -629,6 +637,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_cajero.resx">
       <DependentUpon>ventana_cajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_cuadre_caja.resx">
+      <DependentUpon>ventana_cuadre_caja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_desglose_dinero.resx">
       <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>

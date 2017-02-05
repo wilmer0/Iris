@@ -176,6 +176,8 @@ namespace IrisContabilidad.modulo_empresa
                 comprobanteFiscal.codigo_caja = caja.codigo;
                 comprobanteFiscal.codigo_tipo = tipoComprobanteFiscal.codigo;
                 comprobanteFiscal.serie = empresa.serie_comprobante;
+                comprobanteFiscal.numero_desde = Convert.ToInt16(numeroInicialText.Text);
+                comprobanteFiscal.numero_hasta = Convert.ToInt16(numeroFinalText.Text);
                 comprobanteFiscal.avisar = Convert.ToInt16(ultimoUsadoText.Text);
 
                 if (crear == true)
@@ -292,6 +294,85 @@ namespace IrisContabilidad.modulo_empresa
             {
                 tipoComprobanteFiscal = ventana.getObjeto();
                 loadComprobanteTipo();
+            }
+        }
+
+        private void cajaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    comprobanteTipoIdText.Focus();
+                    comprobanteTipoIdText.SelectAll();
+
+                    caja = modeloCaja.getCajaById(Convert.ToInt16(cajaIdText.Text));
+                    loadCaja();
+                }
+            }
+            catch (Exception ex)
+            {
+                
+            }
+        }
+
+        private void comprobanteTipoIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    numeroInicialText.Focus();
+                    numeroInicialText.SelectAll();
+
+                    tipoComprobanteFiscal = modeloTipoComprobanteFiscal.getTipoComprobanteById(Convert.ToInt16(comprobanteTipoIdText.Text));
+                    loadComprobanteTipo();
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void numeroInicialText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void numeroFinalText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void ultimoUsadoText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void numeroInicialText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                numeroFinalText.Focus();
+                numeroFinalText.SelectAll();
+            }
+        }
+
+        private void numeroFinalText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ultimoUsadoText.Focus();
+                ultimoUsadoText.SelectAll();
+            }
+        }
+
+        private void ultimoUsadoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1.Focus();
             }
         }
     }
