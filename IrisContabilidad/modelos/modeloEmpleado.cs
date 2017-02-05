@@ -477,5 +477,49 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                 return false;
             }
         }
+
+
+        //get empleado by cajero
+        public empleado getEmpleadoByCajeroId(int id)
+        {
+            try
+            {
+                empleado empleado = new empleado();
+                string sql = "select e.codigo,e.nombre,e.login,e.clave,e.sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento,e.cod_cargo,e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion,e.pasaporte,e.foto from empleado e join cajero c on e.codigo=c.cod_empleado where c.codigo='"+id+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    /* 
+                        codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,
+                        cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,
+                        cod_tipo_nomina,identificacion,pasaporte
+                     */
+                    empleado.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    empleado.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    empleado.login = ds.Tables[0].Rows[0][2].ToString();
+                    empleado.clave = ds.Tables[0].Rows[0][3].ToString();
+                    empleado.sueldo = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                    empleado.codigo_situacion = Convert.ToInt16(ds.Tables[0].Rows[0][5].ToString());
+                    empleado.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][6].ToString());
+                    empleado.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][7].ToString());
+                    empleado.codigo_departamento = Convert.ToInt16(ds.Tables[0].Rows[0][8].ToString());
+                    empleado.codigo_cargo = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
+                    empleado.codigo_grupo_usuario = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
+                    empleado.fecha_ingreso = Convert.ToDateTime(ds.Tables[0].Rows[0][11].ToString());
+                    empleado.tipo_permiso = ds.Tables[0].Rows[0][12].ToString();
+                    empleado.codigo_tipo_nomina = Convert.ToInt16(ds.Tables[0].Rows[0][13].ToString());
+                    empleado.identificacion = ds.Tables[0].Rows[0][14].ToString();
+                    empleado.pasaporte = ds.Tables[0].Rows[0][15].ToString();
+                    empleado.foto = ds.Tables[0].Rows[0][16].ToString();
+                }
+                return empleado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getEmpleadoByCajeroId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

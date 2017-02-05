@@ -196,14 +196,14 @@
               <TablixCells>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="codigoCompra">
+                    <Textbox Name="numero_compra">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!codigoCompra.Value</Value>
+                              <Value>=Fields!numero_compra.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -212,7 +212,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>codigoCompra</rd:DefaultName>
+                      <rd:DefaultName>numero_compra</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -652,7 +652,9 @@
               <TextRuns>
                 <TextRun>
                   <Value>=First(Fields!fecha_impresion.Value, "reporte_encabezado")</Value>
-                  <Style />
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
                 </TextRun>
               </TextRuns>
               <Style>
@@ -1020,6 +1022,10 @@
         <Field Name="monto_pagado">
           <DataField>monto_pagado</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="numero_compra">
+          <DataField>numero_compra</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>

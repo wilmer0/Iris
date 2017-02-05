@@ -121,6 +121,8 @@
             // activoCheck
             // 
             this.activoCheck.AutoSize = true;
+            this.activoCheck.Checked = true;
+            this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activoCheck.Location = new System.Drawing.Point(140, 219);
@@ -129,6 +131,7 @@
             this.activoCheck.TabIndex = 21;
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.CheckedChanged += new System.EventHandler(this.activoCheck_CheckedChanged);
             this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
             // 
             // label2

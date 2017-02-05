@@ -26,12 +26,6 @@ namespace IrisContabilidad.modulo_nomina
         //modelos
         modeloGrupoUsuarios modeloGrupoUsuarios=new modeloGrupoUsuarios();
 
-     
-        //listas
-
-
-
-
         public ventana_grupo_usuarios()
         {
             InitializeComponent();
@@ -62,7 +56,7 @@ namespace IrisContabilidad.modulo_nomina
                     grupoIdText.Text = "";
                     grupoText.Text = "";
                     descripcionText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -82,9 +76,6 @@ namespace IrisContabilidad.modulo_nomina
                     grupoText.SelectAll();
                     return false;
                 }
-
-
-
                 return true;
             }
             catch (Exception ex)
@@ -109,7 +100,6 @@ namespace IrisContabilidad.modulo_nomina
                 {
                     return;
                 }
-
 
                 bool crear = false;
                 if (grupoUsuarios == null)
@@ -150,7 +140,6 @@ namespace IrisContabilidad.modulo_nomina
                     {
                         MessageBox.Show("No se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                 }
                 grupoUsuarios = null;
             }
@@ -203,9 +192,7 @@ namespace IrisContabilidad.modulo_nomina
             catch (Exception)
             {
             }
-            
         }
-
         private void grupoText_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
@@ -244,6 +231,18 @@ namespace IrisContabilidad.modulo_nomina
         }
 
         private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_grupo_usuario ventana = new ventana_busqueda_grupo_usuario(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                grupoUsuarios = ventana.getObjeto();
+                loadVentana();
+            }
+        }
+
+        private void activoCheck_CheckedChanged(object sender, EventArgs e)
         {
 
         }

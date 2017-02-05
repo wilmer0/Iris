@@ -412,6 +412,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 1;
                 ventana.imagen = "sucursal1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "comprobante fiscal(NCF)";
+                ventana.nombre_logico = "IrisContabilidad.modulo_empresa.ventana_configuracion_comprobante_fiscal";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 7;
+                ventana.imagen = "configuracion_comprobante1.png";
+                listaVentana.Add(ventana);
                
                 #endregion
 
@@ -481,6 +490,24 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "vendedor1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "facturacion";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_facturacion_normal";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "facturacion_normal1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "cuadre caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_cuadre_caja";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "cuadre_caja1.png";
                 listaVentana.Add(ventana);
                 #endregion
 
@@ -685,6 +712,7 @@ namespace IrisContabilidad.modelos
 
                 //modulo sistema
                 #region
+                
                 #endregion
 
 
