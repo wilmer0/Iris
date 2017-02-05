@@ -412,6 +412,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 1;
                 ventana.imagen = "sucursal1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "comprobante fiscal(NCF)";
+                ventana.nombre_logico = "IrisContabilidad.modulo_empresa.ventana_configuracion_comprobante_fiscal";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 7;
+                ventana.imagen = "configuracion_comprobante1.png";
+                listaVentana.Add(ventana);
                
                 #endregion
 
@@ -685,6 +694,7 @@ namespace IrisContabilidad.modelos
 
                 //modulo sistema
                 #region
+                
                 #endregion
 
 

@@ -262,6 +262,12 @@
     <Compile Include="modulo_empresa\ventana_ciudad.Designer.cs">
       <DependentUpon>ventana_ciudad.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_empresa\ventana_configuracion_comprobante_fiscal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_empresa\ventana_configuracion_comprobante_fiscal.Designer.cs">
+      <DependentUpon>ventana_configuracion_comprobante_fiscal.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_empresa\ventana_empresa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -587,6 +593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_ciudad.resx">
       <DependentUpon>ventana_ciudad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_empresa\ventana_configuracion_comprobante_fiscal.resx">
+      <DependentUpon>ventana_configuracion_comprobante_fiscal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_empresa\ventana_empresa.resx">
       <DependentUpon>ventana_empresa.cs</DependentUpon>

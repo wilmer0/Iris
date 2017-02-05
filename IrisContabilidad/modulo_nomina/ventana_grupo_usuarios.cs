@@ -56,7 +56,7 @@ namespace IrisContabilidad.modulo_nomina
                     grupoIdText.Text = "";
                     grupoText.Text = "";
                     descripcionText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -240,6 +240,11 @@ namespace IrisContabilidad.modulo_nomina
                 grupoUsuarios = ventana.getObjeto();
                 loadVentana();
             }
+        }
+
+        private void activoCheck_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
