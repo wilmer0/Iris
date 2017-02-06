@@ -25,7 +25,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 //validar que la caja no acepte un numero de comprobante que ya se puede usar o se uso
-                string sql = "select *from comprobante_fiscal where codigo_tipo='" + comprobante.codigo_tipo + "' and cod_caja='" + comprobante.codigo_caja + "' and (" + comprobante.numero_desde + " between desde_numero and hasta_numero) or (" + comprobante.numero_hasta + " between desde_numero and hasta_numero) and codigo!='" + comprobante.codigo+ "'";
+                string sql = "select *from comprobante_fiscal where codigo_tipo='" + comprobante.codigo_tipo + "' and cod_caja='" + comprobante.codigo_caja + "' and ((" + comprobante.numero_desde + " between desde_numero and hasta_numero) or (" + comprobante.numero_hasta + " between desde_numero and hasta_numero)) and codigo!='" + comprobante.codigo+ "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -37,8 +37,13 @@ namespace IrisContabilidad.modelos
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
 
-                sql = "insert into comprobante_fiscal_notificaciones(codigo_caja,comprobante_tipo,avisar) values('"+comprobante.codigo_caja+"','"+comprobante.codigo_tipo+"','"+comprobante.avisar+"');";
-                utilidades.ejecutarcomando_mysql(sql);
+                sql = "select *from comprobante_fiscal_notificaciones where codigo_caja='"+comprobante.codigo_caja+"' and comprobante_tipo='"+comprobante.codigo_tipo+"'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    sql = "insert into comprobante_fiscal_notificaciones(codigo_caja,comprobante_tipo,avisar) values('" + comprobante.codigo_caja + "','" + comprobante.codigo_tipo + "','" + comprobante.avisar + "');";
+                    utilidades.ejecutarcomando_mysql(sql);    
+                }
                 return true;
             }
             catch (Exception ex)
@@ -54,7 +59,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 //validar que la caja no acepte un numero de comprobante que ya se puede usar o se uso
-                string sql = "select *from comprobante_fiscal where codigo_tipo='" + comprobante.codigo_tipo + "' and cod_caja='" + comprobante.codigo_caja + "' and (" + comprobante.numero_desde + " between desde_numero and hasta_numero) or (" + comprobante.numero_hasta + " between desde_numero and hasta_numero) and codigo!='" + comprobante.codigo + "'";
+                string sql = "select *from comprobante_fiscal where codigo_tipo='" + comprobante.codigo_tipo + "' and cod_caja='" + comprobante.codigo_caja + "' and ((" + comprobante.numero_desde + " between desde_numero and hasta_numero) or (" + comprobante.numero_hasta + " between desde_numero and hasta_numero)) and codigo!='" + comprobante.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -161,5 +166,69 @@ namespace IrisContabilidad.modelos
         
         //me trae la cantidad que tengo disponible de ese tipo de comprobante en mi caja
         //select sum(hasta_numero)-sum(contador) from comprobante_fiscal where cod_caja=1 and codigo_tipo=1;
+
+        //get next comprobante fiscal by tipo 
+        public string getNextComprobanteFiscalByTipoId(int codigoCaja,int codigoTipoComprobante)
+        {
+            try
+            {
+                singleton singleton=new singleton();
+
+
+                empleado empleado = singleton.getEmpleado();
+                cajero cajero;
+                cajero = new modeloCajero().getCajeroByIdEmpleado(empleado.codigo);
+                tipo_comprobante_fiscal tipocomprobante;
+                tipocomprobante = new modeloTipoComprobanteFiscal().getTipoComprobanteById(codigoTipoComprobante);
+
+
+                string ncf = "";
+                string serie = "";
+                string divisionNegocio = "";
+                string sucursal = "";
+                string caja = "";
+                string tipo = "";
+                string secuencia = "";
+
+                int contador = 0;
+               
+                string sql ="select contador from comprobante_fiscal where contador<>hasta_numero and cod_caja='"+codigoCaja+"' and codigo_tipo='"+codigoTipoComprobante+"' limit 1";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (int.TryParse(ds.Tables[0].Rows[0][0].ToString(),out contador)==true)
+                {
+                    //encontro un numero valido
+                    contador = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                }
+                else
+                {
+                    contador = 0;
+                }
+                contador+=1;
+
+                secuencia = contador.ToString();
+                secuencia = utilidades.getRellenar(secuencia, '0', 8);
+                //ahora el ncf saldra asi-> 00000999
+                serie = new modeloEmpresa().getEmpresaBySucursalId(empleado.codigo_sucursal).serie_comprobante;
+                divisionNegocio=new modeloEmpresa().getEmpresaBySucursalId(empleado.codigo_sucursal).division;
+                sucursal = new modeloSucursal().getSucursalById(empleado.codigo_sucursal).secuencia;
+                caja = new modeloCaja().getCajaById(cajero.codigo_caja).secuencia;
+                tipo = tipocomprobante.secuencia;
+                
+                
+                ncf = serie + divisionNegocio + sucursal + caja + tipo + secuencia;
+                if (ncf.Length != 19)
+                {
+                    MessageBox.Show("Se ha generado de forma incorrecta el comprobante fiscal->" + ncf);
+                }
+
+                return ncf;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getNextComprobanteFiscalByTipoId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

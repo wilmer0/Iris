@@ -35,6 +35,7 @@ namespace IrisContabilidad.modulo_facturacion
         private cliente cliente;
         private ventana_desglose_dinero ventanaDesglose;
         producto_precio_venta productoPrecioVenta;
+        private cajero cajero;
 
 
         //modelos
@@ -46,7 +47,8 @@ namespace IrisContabilidad.modulo_facturacion
         modeloCliente modeloCliente = new modeloCliente();
         ModeloReporte modeloReporte = new ModeloReporte();
         modeloVenta modeloVenta=new modeloVenta();
-
+        modeloComprobanteFiscal modeloComprobantefiscal=new modeloComprobanteFiscal();
+        modeloCajero modeloCajero=new modeloCajero();
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
@@ -156,6 +158,15 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+
+                //validar que el usuario actual es cajero
+                cajero = modeloCajero.getCajeroByIdEmpleado(empleado.codigo);
+                if (cajero == null)
+                {
+                    MessageBox.Show("Su usuario no es cajero, no puede realizar ventas", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
                 //si tiene una compra existente abierta
                 if (venta != null)
                 {
@@ -172,43 +183,24 @@ namespace IrisContabilidad.modulo_facturacion
                     MessageBox.Show("Falta el suplidor", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
-                //numero factura
-                //if (numeroFacturaText.Text.Trim() == "")
+                
+                //numero comprobante fiscal que no lo tenga ese mismo suplidor
+                //if (numerocComprobanteFiscalText.Text.Trim() == "")
                 //{
-                //    numeroFacturaText.Focus();
-                //    numeroFacturaText.SelectAll();
-                //    MessageBox.Show("Falta el número de factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    numerocComprobanteFiscalText.Focus();
+                //    numerocComprobanteFiscalText.SelectAll();
+                //    MessageBox.Show("Falta el número de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //    return false;
                 //}
                 //else
                 //{
-                //    //validar que ese numero de factura de ese suplidor no se repita
-                //    listaVenta = modeloVenta.getListaCompraBySuplidor(cliente.codigo);
-                //    if (listaVenta.FindAll(x => x.numero_factura.ToLower() == numeroFacturaText.Text.ToLower()).Count > 0)
+                //    //valaidar que ese comprobante no se repita
+                //    if (listaVenta.FindAll(x => x.ncf.ToLower() == numerocComprobanteFiscalText.Text.ToLower()).Count > 0)
                 //    {
-                //        MessageBox.Show("Existe una compra con ese mismo número de factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //        MessageBox.Show("Existe una compra con ese mismo número de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //        return false;
                 //    }
                 //}
-
-                //numero comprobante fiscal que no lo tenga ese mismo suplidor
-                if (numerocComprobanteFiscalText.Text.Trim() == "")
-                {
-                    numerocComprobanteFiscalText.Focus();
-                    numerocComprobanteFiscalText.SelectAll();
-                    MessageBox.Show("Falta el número de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
-                else
-                {
-                    //vlaidar que ese comprobante no se repita con el suplidor
-                    if (listaVenta.FindAll(x => x.ncf.ToLower() == numerocComprobanteFiscalText.Text.ToLower()).Count > 0)
-                    {
-                        MessageBox.Show("Existe una compra con ese mismo número de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
-                }
 
                 //tipo de compra
                 if (tipoVentaComboBox.Text.Trim() == "")
@@ -275,7 +267,7 @@ namespace IrisContabilidad.modulo_facturacion
                 venta.codigo_cliente = cliente.codigo;
                 venta.fecha = Convert.ToDateTime(fechaInicialText.Text);
                 venta.fecha_limite = Convert.ToDateTime(fechaFinalText.Text);
-                venta.ncf = numerocComprobanteFiscalText.Text;
+                venta.ncf =modeloComprobantefiscal.getNextComprobanteFiscalByTipoId(cajero.codigo_caja,Convert.ToInt16(tipoComprobanteCombo.SelectedValue));
                 venta.tipo_venta = tipoVentaComboBox.Text;
                 venta.activo = true;
                 venta.pagada = false;
@@ -284,6 +276,7 @@ namespace IrisContabilidad.modulo_facturacion
                 venta.codigo_empelado_anular = 0;
                 venta.motivo_anulada = "";
                 venta.detalle = detalleText.Text;
+                venta.codigo_tipo_comprobante = Convert.ToInt16(tipoComprobanteCombo.SelectedValue);
 
 
                 //hacer lista del detalle de la venta

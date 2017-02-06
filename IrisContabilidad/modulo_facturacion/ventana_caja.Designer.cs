@@ -73,7 +73,7 @@
             // 
             this.secuenciaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.secuenciaText.Location = new System.Drawing.Point(154, 182);
-            this.secuenciaText.MaxLength = 2;
+            this.secuenciaText.MaxLength = 3;
             this.secuenciaText.Name = "secuenciaText";
             this.secuenciaText.Size = new System.Drawing.Size(253, 26);
             this.secuenciaText.TabIndex = 78;
