@@ -668,11 +668,14 @@ namespace IrisContabilidad.modulo_facturacion
             agregarProducto();
             productoIdText.Focus();
             productoIdText.SelectAll();
+            calcularTotal();
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
             eliminarProducto();
+            productoIdText.Focus();
+            productoIdText.SelectAll();
             calcularTotal();
         }
 
