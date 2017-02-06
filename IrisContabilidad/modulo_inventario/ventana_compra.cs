@@ -875,7 +875,7 @@ namespace IrisContabilidad.modulo_inventario
                     return;
                 }
                 productoUnidadConversion = modeloProducto.getPrecioProductoUnidad(producto.codigo, unidad.codigo);
-                precioText.Text = productoUnidadConversion.precio_costo.ToString("N");
+                precioText.Text = productoUnidadConversion.precio_venta1.ToString("N");
             }
             catch (Exception ex)
             {
@@ -993,6 +993,11 @@ namespace IrisContabilidad.modulo_inventario
             {
                 modeloReporte.imprimirCompra(compra.codigo);
             }
+        }
+
+        private void unidadComboText_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

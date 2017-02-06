@@ -34,6 +34,7 @@ namespace IrisContabilidad.modulo_facturacion
         private productoUnidadConversion productoUnidadConversion;
         private cliente cliente;
         private ventana_desglose_dinero ventanaDesglose;
+        producto_precio_venta productoPrecioVenta;
 
 
         //modelos
@@ -680,6 +681,7 @@ namespace IrisContabilidad.modulo_facturacion
             try
             {
                 getInventarioByProductoUnidad();
+                getPrecioVentaProductoUnidad();
             }
             catch (Exception)
             {
@@ -897,6 +899,50 @@ namespace IrisContabilidad.modulo_facturacion
         {
             venta = null;
             loadVentana();
+        }
+
+        private void descuentoText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, descuentoText.Text);
+        }
+
+        private void descuentoText_TextChanged(object sender, EventArgs e)
+        {
+            calularImporte();
+        }
+
+        private void precioText_TextChanged(object sender, EventArgs e)
+        {
+            calularImporte();
+        }
+
+        private void precioText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, precioText.Text);
+        }
+
+        private void cantidadText_TextChanged(object sender, EventArgs e)
+        {
+            calularImporte();
+        }
+
+        private void cantidadText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, cantidadText.Text);
+        }
+
+        public void getPrecioVentaProductoUnidad()
+        {
+            try
+            {
+                 precioText.Text= modeloProducto.getPrecioProductoUnidad(producto.codigo, Convert.ToInt16(unidadComboText.SelectedValue)).precio_venta1.ToString("N");
+            }
+            catch (Exception ex)
+            {
+                precioText.Text = "0.00";
+                //MessageBox.Show("Error getPrecioVentaProductoUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+            }
+            
         }
     }
 }
