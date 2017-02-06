@@ -29,15 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_facturacion_normal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.totalCompraText = new System.Windows.Forms.TextBox();
             this.totalItebisText = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.existenciaText = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.ItebisText = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.button19 = new System.Windows.Forms.Button();
@@ -57,6 +61,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cantidadText = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.tipoComprobanteCombo = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.botonImprimir = new System.Windows.Forms.Button();
             this.fechaFinalText = new System.Windows.Forms.MaskedTextBox();
@@ -66,14 +74,14 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tipoCompraComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoVentaComboBox = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.numeroFacturaText = new System.Windows.Forms.TextBox();
-            this.suplidorText = new System.Windows.Forms.TextBox();
+            this.clienteText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.suplidorIdText = new System.Windows.Forms.TextBox();
+            this.clienteIdText = new System.Windows.Forms.TextBox();
             this.numerocComprobanteFiscalText = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,12 +93,6 @@
             this.itebisColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descuentoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItebisText = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -107,11 +109,13 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(859, 5);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -121,6 +125,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(430, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // totalCompraText
             // 
@@ -168,6 +173,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.existenciaText);
+            this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.ItebisText);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.label16);
@@ -193,6 +200,46 @@
             this.groupBox2.Size = new System.Drawing.Size(1001, 111);
             this.groupBox2.TabIndex = 107;
             this.groupBox2.TabStop = false;
+            // 
+            // existenciaText
+            // 
+            this.existenciaText.Location = new System.Drawing.Point(121, 85);
+            this.existenciaText.Name = "existenciaText";
+            this.existenciaText.ReadOnly = true;
+            this.existenciaText.Size = new System.Drawing.Size(108, 20);
+            this.existenciaText.TabIndex = 107;
+            this.existenciaText.Text = "0.00";
+            this.existenciaText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(119, 64);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(81, 17);
+            this.label21.TabIndex = 106;
+            this.label21.Text = "Existencia";
+            // 
+            // ItebisText
+            // 
+            this.ItebisText.Location = new System.Drawing.Point(8, 85);
+            this.ItebisText.Name = "ItebisText";
+            this.ItebisText.ReadOnly = true;
+            this.ItebisText.Size = new System.Drawing.Size(108, 20);
+            this.ItebisText.TabIndex = 105;
+            this.ItebisText.Text = "0.00";
+            this.ItebisText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(6, 64);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(38, 17);
+            this.label17.TabIndex = 104;
+            this.label17.Text = "Itbis";
             // 
             // label16
             // 
@@ -224,6 +271,7 @@
             this.button19.Size = new System.Drawing.Size(64, 58);
             this.button19.TabIndex = 101;
             this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // button20
             // 
@@ -235,6 +283,8 @@
             this.button20.Size = new System.Drawing.Size(65, 58);
             this.button20.TabIndex = 100;
             this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            this.button20.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button20_KeyDown);
             // 
             // button4
             // 
@@ -246,6 +296,7 @@
             this.button4.Size = new System.Drawing.Size(33, 30);
             this.button4.TabIndex = 88;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // descuentoText
             // 
@@ -255,6 +306,7 @@
             this.descuentoText.Size = new System.Drawing.Size(108, 20);
             this.descuentoText.TabIndex = 99;
             this.descuentoText.Text = "0.00";
+            this.descuentoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descuentoText_KeyDown);
             // 
             // label7
             // 
@@ -293,7 +345,9 @@
             this.importeText.ReadOnly = true;
             this.importeText.Size = new System.Drawing.Size(108, 20);
             this.importeText.TabIndex = 97;
+            this.importeText.Text = "0.00";
             this.importeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.importeText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.importeText_KeyDown);
             // 
             // productoIdText
             // 
@@ -302,6 +356,7 @@
             this.productoIdText.Name = "productoIdText";
             this.productoIdText.Size = new System.Drawing.Size(125, 20);
             this.productoIdText.TabIndex = 90;
+            this.productoIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.productoIdText_KeyDown);
             // 
             // label11
             // 
@@ -325,8 +380,11 @@
             // 
             this.precioText.Location = new System.Drawing.Point(501, 38);
             this.precioText.Name = "precioText";
+            this.precioText.ReadOnly = true;
             this.precioText.Size = new System.Drawing.Size(108, 20);
             this.precioText.TabIndex = 95;
+            this.precioText.Text = "0.00";
+            this.precioText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.precioText_KeyDown);
             // 
             // unidadComboText
             // 
@@ -337,6 +395,8 @@
             this.unidadComboText.Size = new System.Drawing.Size(122, 21);
             this.unidadComboText.TabIndex = 88;
             this.unidadComboText.Tag = "";
+            this.unidadComboText.TextChanged += new System.EventHandler(this.unidadComboText_TextChanged);
+            this.unidadComboText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.unidadComboText_KeyDown);
             // 
             // label10
             // 
@@ -364,12 +424,14 @@
             this.cantidadText.Name = "cantidadText";
             this.cantidadText.Size = new System.Drawing.Size(108, 20);
             this.cantidadText.TabIndex = 93;
+            this.cantidadText.Text = "0";
+            this.cantidadText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cantidadText_KeyDown);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label19);
             this.groupBox1.Controls.Add(this.label20);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.tipoComprobanteCombo);
             this.groupBox1.Controls.Add(this.label18);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.fechaFinalText);
@@ -379,20 +441,66 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.tipoCompraComboBox);
+            this.groupBox1.Controls.Add(this.tipoVentaComboBox);
             this.groupBox1.Controls.Add(this.linkLabel1);
             this.groupBox1.Controls.Add(this.numeroFacturaText);
-            this.groupBox1.Controls.Add(this.suplidorText);
+            this.groupBox1.Controls.Add(this.clienteText);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.suplidorIdText);
+            this.groupBox1.Controls.Add(this.clienteIdText);
             this.groupBox1.Controls.Add(this.numerocComprobanteFiscalText);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1001, 246);
             this.groupBox1.TabIndex = 103;
             this.groupBox1.TabStop = false;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(364, 177);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(97, 17);
+            this.label19.TabIndex = 109;
+            this.label19.Text = "Cambiar(F3)";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(33, 175);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(83, 20);
+            this.label20.TabIndex = 108;
+            this.label20.Text = "Tipo NCF";
+            // 
+            // tipoComprobanteCombo
+            // 
+            this.tipoComprobanteCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoComprobanteCombo.FormattingEnabled = true;
+            this.tipoComprobanteCombo.Items.AddRange(new object[] {
+            "CON",
+            "COT",
+            "CRE",
+            "PED"});
+            this.tipoComprobanteCombo.Location = new System.Drawing.Point(122, 175);
+            this.tipoComprobanteCombo.Name = "tipoComprobanteCombo";
+            this.tipoComprobanteCombo.Size = new System.Drawing.Size(236, 21);
+            this.tipoComprobanteCombo.TabIndex = 107;
+            this.tipoComprobanteCombo.Tag = "";
+            this.tipoComprobanteCombo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoComprobanteCombo_KeyDown);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Location = new System.Drawing.Point(364, 140);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(97, 17);
+            this.label18.TabIndex = 106;
+            this.label18.Text = "Cambiar(F2)";
             // 
             // groupBox3
             // 
@@ -421,6 +529,7 @@
             this.fechaFinalText.Name = "fechaFinalText";
             this.fechaFinalText.Size = new System.Drawing.Size(125, 20);
             this.fechaFinalText.TabIndex = 89;
+            this.fechaFinalText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaFinalText_KeyDown);
             // 
             // fechaInicialText
             // 
@@ -429,6 +538,7 @@
             this.fechaInicialText.Name = "fechaInicialText";
             this.fechaInicialText.Size = new System.Drawing.Size(125, 20);
             this.fechaInicialText.TabIndex = 88;
+            this.fechaInicialText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaInicialText_KeyDown);
             // 
             // detalleText
             // 
@@ -438,6 +548,7 @@
             this.detalleText.Name = "detalleText";
             this.detalleText.Size = new System.Drawing.Size(455, 133);
             this.detalleText.TabIndex = 86;
+            this.detalleText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.detalleText_KeyDown);
             // 
             // label6
             // 
@@ -473,26 +584,27 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 135);
+            this.label1.Location = new System.Drawing.Point(24, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 20);
             this.label1.TabIndex = 80;
             this.label1.Text = "Tipo venta";
             // 
-            // tipoCompraComboBox
+            // tipoVentaComboBox
             // 
-            this.tipoCompraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tipoCompraComboBox.FormattingEnabled = true;
-            this.tipoCompraComboBox.Items.AddRange(new object[] {
+            this.tipoVentaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoVentaComboBox.FormattingEnabled = true;
+            this.tipoVentaComboBox.Items.AddRange(new object[] {
             "CON",
             "COT",
             "CRE",
             "PED"});
-            this.tipoCompraComboBox.Location = new System.Drawing.Point(122, 138);
-            this.tipoCompraComboBox.Name = "tipoCompraComboBox";
-            this.tipoCompraComboBox.Size = new System.Drawing.Size(236, 21);
-            this.tipoCompraComboBox.TabIndex = 79;
-            this.tipoCompraComboBox.Tag = "";
+            this.tipoVentaComboBox.Location = new System.Drawing.Point(122, 138);
+            this.tipoVentaComboBox.Name = "tipoVentaComboBox";
+            this.tipoVentaComboBox.Size = new System.Drawing.Size(236, 21);
+            this.tipoVentaComboBox.TabIndex = 79;
+            this.tipoVentaComboBox.Tag = "";
+            this.tipoVentaComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoVentaComboBox_KeyDown);
             // 
             // linkLabel1
             // 
@@ -505,6 +617,7 @@
             this.linkLabel1.TabIndex = 78;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Cliente";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // numeroFacturaText
             // 
@@ -513,29 +626,30 @@
             this.numeroFacturaText.Location = new System.Drawing.Point(122, 93);
             this.numeroFacturaText.MaxLength = 30;
             this.numeroFacturaText.Name = "numeroFacturaText";
+            this.numeroFacturaText.ReadOnly = true;
             this.numeroFacturaText.Size = new System.Drawing.Size(236, 26);
             this.numeroFacturaText.TabIndex = 72;
             // 
-            // suplidorText
+            // clienteText
             // 
-            this.suplidorText.BackColor = System.Drawing.Color.White;
-            this.suplidorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suplidorText.Location = new System.Drawing.Point(122, 54);
-            this.suplidorText.MaxLength = 200;
-            this.suplidorText.Name = "suplidorText";
-            this.suplidorText.ReadOnly = true;
-            this.suplidorText.Size = new System.Drawing.Size(236, 26);
-            this.suplidorText.TabIndex = 77;
+            this.clienteText.BackColor = System.Drawing.Color.White;
+            this.clienteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clienteText.Location = new System.Drawing.Point(122, 54);
+            this.clienteText.MaxLength = 200;
+            this.clienteText.Name = "clienteText";
+            this.clienteText.ReadOnly = true;
+            this.clienteText.Size = new System.Drawing.Size(236, 26);
+            this.clienteText.TabIndex = 77;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(59, 94);
+            this.label2.Location = new System.Drawing.Point(44, 94);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
+            this.label2.Size = new System.Drawing.Size(72, 20);
             this.label2.TabIndex = 73;
-            this.label2.Text = "Venta";
+            this.label2.Text = "# Venta";
             // 
             // button5
             // 
@@ -547,6 +661,7 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 74;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label3
             // 
@@ -558,14 +673,15 @@
             this.label3.TabIndex = 76;
             this.label3.Text = "NCF";
             // 
-            // suplidorIdText
+            // clienteIdText
             // 
-            this.suplidorIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.suplidorIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suplidorIdText.Location = new System.Drawing.Point(122, 17);
-            this.suplidorIdText.Name = "suplidorIdText";
-            this.suplidorIdText.Size = new System.Drawing.Size(183, 26);
-            this.suplidorIdText.TabIndex = 71;
+            this.clienteIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.clienteIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clienteIdText.Location = new System.Drawing.Point(122, 17);
+            this.clienteIdText.Name = "clienteIdText";
+            this.clienteIdText.Size = new System.Drawing.Size(183, 26);
+            this.clienteIdText.TabIndex = 71;
+            this.clienteIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clienteIdText_KeyDown);
             // 
             // numerocComprobanteFiscalText
             // 
@@ -639,100 +755,35 @@
             // 
             // precioColumn
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.precioColumn.HeaderText = "Precio";
             this.precioColumn.Name = "precioColumn";
             this.precioColumn.ReadOnly = true;
             // 
             // itebisColumn
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.itebisColumn.HeaderText = "Itbis";
             this.itebisColumn.Name = "itebisColumn";
             this.itebisColumn.ReadOnly = true;
             // 
             // descuentoColumn
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.descuentoColumn.HeaderText = "Descuento";
             this.descuentoColumn.Name = "descuentoColumn";
             this.descuentoColumn.ReadOnly = true;
             // 
             // importeColumn
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.importeColumn.HeaderText = "Importe";
             this.importeColumn.Name = "importeColumn";
             this.importeColumn.ReadOnly = true;
-            // 
-            // ItebisText
-            // 
-            this.ItebisText.Location = new System.Drawing.Point(8, 85);
-            this.ItebisText.Name = "ItebisText";
-            this.ItebisText.ReadOnly = true;
-            this.ItebisText.Size = new System.Drawing.Size(108, 20);
-            this.ItebisText.TabIndex = 105;
-            this.ItebisText.Text = "0.00";
-            this.ItebisText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(6, 64);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(38, 17);
-            this.label17.TabIndex = 104;
-            this.label17.Text = "Itbis";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(364, 140);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(97, 17);
-            this.label18.TabIndex = 106;
-            this.label18.Text = "Cambiar(F2)";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(364, 177);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(97, 17);
-            this.label19.TabIndex = 109;
-            this.label19.Text = "Cambiar(F3)";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(33, 173);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(83, 20);
-            this.label20.TabIndex = 108;
-            this.label20.Text = "Tipo NCF";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "CON",
-            "COT",
-            "CRE",
-            "PED"});
-            this.comboBox1.Location = new System.Drawing.Point(122, 175);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(236, 21);
-            this.comboBox1.TabIndex = 107;
-            this.comboBox1.Tag = "";
             // 
             // ventana_facturacion_normal
             // 
@@ -807,14 +858,14 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox tipoCompraComboBox;
+        private System.Windows.Forms.ComboBox tipoVentaComboBox;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.TextBox numeroFacturaText;
-        private System.Windows.Forms.TextBox suplidorText;
+        private System.Windows.Forms.TextBox clienteText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox suplidorIdText;
+        private System.Windows.Forms.TextBox clienteIdText;
         private System.Windows.Forms.TextBox numerocComprobanteFiscalText;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPrductoColumn;
@@ -831,6 +882,8 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox tipoComprobanteCombo;
+        private System.Windows.Forms.TextBox existenciaText;
+        private System.Windows.Forms.Label label21;
     }
 }

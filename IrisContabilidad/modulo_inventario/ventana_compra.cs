@@ -457,8 +457,8 @@ namespace IrisContabilidad.modulo_inventario
                 //validar que tenga importe
                 if (importeText.Text == "")
                 {
-                    cantidadText.Focus();
-                    cantidadText.SelectAll();
+                    importeText.Focus();
+                    importeText.SelectAll();
                     MessageBox.Show("Falta el importe", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                

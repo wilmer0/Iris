@@ -101,11 +101,11 @@ namespace IrisContabilidad.modulo_facturacion
                     montoEfectivoText.Focus();
                     montoEfectivoText.SelectAll();
                 }
-                else
+                else if(venta!=null)
                 {
                     //venta
                     //sacando monto esperado, monto itebis, monto descuento
-                    foreach (var x in listaCompraDetalles)
+                    foreach (var x in listaVentaDetalles)
                     {
                         montoEsperado += x.cantidad * x.precio;
                         montoItebis += x.monto_itebis;
