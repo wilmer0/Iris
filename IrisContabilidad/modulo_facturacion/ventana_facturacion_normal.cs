@@ -944,5 +944,68 @@ namespace IrisContabilidad.modulo_facturacion
             }
             
         }
+
+        private void ventana_facturacion_normal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                agregarProducto();
+            }
+            if (e.KeyCode == Keys.F2)
+            {
+                eliminarProducto();
+            }
+            if (e.KeyCode == Keys.F3)
+            {
+                cambiarTipoVentacombo();
+            }
+            if (e.KeyCode == Keys.F4)
+            {
+                cambiarTipoComprobante();
+            }
+        }
+
+        public void cambiarTipoVentacombo()
+        {
+            try
+            {
+                int cantItems = 0;
+                cantItems = tipoVentaComboBox.Items.Count;
+                if (tipoVentaComboBox.SelectedIndex == (cantItems - 1))
+                {
+                    tipoVentaComboBox.SelectedIndex = 0;
+                }
+                else
+                {
+                    tipoVentaComboBox.SelectedIndex += 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cambiarTipoVentacombo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void cambiarTipoComprobante()
+        {
+            try
+            {
+                int cantItems = 0;
+                cantItems = tipoComprobanteCombo.Items.Count;
+                if (tipoComprobanteCombo.SelectedIndex == (cantItems - 1))
+                {
+                    tipoComprobanteCombo.SelectedIndex = 0;
+                }
+                else
+                {
+                    tipoComprobanteCombo.SelectedIndex += 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cambiarTipoComprobante.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
     }
 }
