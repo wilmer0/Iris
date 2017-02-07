@@ -55,6 +55,45 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+        public bool imprimirVenta(int idVenta)
+        {
+            try
+            {
+                //datos generales
+                String reporte = "IrisContabilidad.reportes.reporte_venta_hoja_completa.rdlc";
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                venta venta = new modeloVenta().getVentaById(idVenta);
+
+                if (venta == null)
+                {
+                    return false;
+                }
+
+
+                //llenar encabezado
+                //reporte_compra_encabezado reporteCompraEncabezado = new reporte_compra_encabezado(venta);
+                //List<reporte_compra_encabezado> listaReporteCompraencabezado = new List<reporte_compra_encabezado>();
+                //listaReporteCompraencabezado.Add(reporteCompraEncabezado);
+
+                //ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteCompraencabezado);
+                //listaReportDataSource.Add(reporteGrafico);
+
+                //ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", reporteCompraEncabezado.listaDetalles);
+                //listaReportDataSource.Add(reporteProblemas);
+
+
+                //List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                //VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                //ventana.ShowDialog();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
 
         public bool imprirmiCompraPago(int codigoPago)
         {
