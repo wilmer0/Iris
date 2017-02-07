@@ -41,6 +41,8 @@ namespace IrisContabilidad.modulo_inventario
         private modeloProducto modeloProducto = new modeloProducto();
         modeloSuplidor modeloSuplidor=new modeloSuplidor();
         modeloCompra modeloCompra=new modeloCompra();
+        ModeloReporte modeloReporte=new ModeloReporte();
+        
 
         
         //variables
@@ -97,6 +99,7 @@ namespace IrisContabilidad.modulo_inventario
                     dataGridView1.Rows.Clear();
                     listaCompraDetalle = modeloCompra.getListaCompraDetalleByCompra(compra.codigo,true);
                     loadListaCompraDetalle();
+                    botonImprimir.Visible = true;
                 }
                 else
                 {
@@ -122,6 +125,7 @@ namespace IrisContabilidad.modulo_inventario
                     }
                     fechaInicialText.Text = DateTime.Today.ToString("dd-MM-yyyy");
                     fechaFinalText.Text = DateTime.Today.ToString("dd-MM-yyyy");
+                    botonImprimir.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -136,13 +140,13 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //si tiene una compra existente abierta
-                if (compra != null)
-                {
-                    suplidorIdText.Focus();
-                    suplidorIdText.SelectAll();
-                    MessageBox.Show("Tiene una compra existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
+                //if (compra != null)
+                //{
+                //    suplidorIdText.Focus();
+                //    suplidorIdText.SelectAll();
+                //    MessageBox.Show("Tiene una compra existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return false;
+                //}
                 //suplidor
                 if (suplidor == null)
                 {
@@ -453,8 +457,8 @@ namespace IrisContabilidad.modulo_inventario
                 //validar que tenga importe
                 if (importeText.Text == "")
                 {
-                    cantidadText.Focus();
-                    cantidadText.SelectAll();
+                    importeText.Focus();
+                    importeText.SelectAll();
                     MessageBox.Show("Falta el importe", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                
@@ -871,7 +875,7 @@ namespace IrisContabilidad.modulo_inventario
                     return;
                 }
                 productoUnidadConversion = modeloProducto.getPrecioProductoUnidad(producto.codigo, unidad.codigo);
-                precioText.Text = productoUnidadConversion.precio_costo.ToString("N");
+                precioText.Text = productoUnidadConversion.precio_venta1.ToString("N");
             }
             catch (Exception ex)
             {
@@ -974,12 +978,24 @@ namespace IrisContabilidad.modulo_inventario
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void botonImprimir_Click(object sender, EventArgs e)
+        {
+            if (compra != null)
+            {
+                modeloReporte.imprimirCompra(compra.codigo);
+            }
+        }
+
+        private void unidadComboText_TextChanged_1(object sender, EventArgs e)
         {
 
         }

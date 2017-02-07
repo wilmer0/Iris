@@ -397,7 +397,7 @@ namespace IrisContabilidad.modelos
                 productoUnidadConversion productoUnidadConversion;
 
                 //borrar todos los codigo barra que son de este producto
-                sql = "select cod_producto,cod_unidad,cantidad,precio_venta,costo from producto_unidad_conversion where cod_producto='" +id + "'";
+                sql = "select cod_producto,cod_unidad,cantidad,precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5,costo from producto_unidad_conversion where cod_producto='" + id + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
@@ -405,8 +405,12 @@ namespace IrisContabilidad.modelos
                     productoUnidadConversion.codigo_producto = Convert.ToInt16(row[0].ToString());
                     productoUnidadConversion.codigo_unidad = Convert.ToInt16(row[1].ToString());
                     productoUnidadConversion.cantidad = Convert.ToDecimal(row[2].ToString());
-                    productoUnidadConversion.precio_venta = Convert.ToDecimal(row[3].ToString());
-                    productoUnidadConversion.precio_costo = Convert.ToDecimal(row[4].ToString());
+                    productoUnidadConversion.precio_venta1 = Convert.ToDecimal(row[3].ToString());
+                    productoUnidadConversion.precio_venta2 = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                    productoUnidadConversion.precio_venta3 = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
+                    productoUnidadConversion.precio_venta4 = Convert.ToDecimal(ds.Tables[0].Rows[0][6].ToString());
+                    productoUnidadConversion.precio_venta5 = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
+                    productoUnidadConversion.precio_costo = Convert.ToDecimal(row[8].ToString());
                     lista.Add(productoUnidadConversion);
                 }
                 return lista;
@@ -429,7 +433,7 @@ namespace IrisContabilidad.modelos
                 productoUnidadConversion productoUnidadConversion;
 
                 //borrar todos los codigo barra que son de este producto
-                sql = "select cod_producto,cod_unidad,cantidad,precio_venta,costo from producto_unidad_conversion where cod_producto='"+codigoProducto+"' and cod_unidad='"+codigoUnidad+"'";
+                sql = "select cod_producto,cod_unidad,cantidad,precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5,costo from producto_unidad_conversion where cod_producto='" + codigoProducto + "' and cod_unidad='" + codigoUnidad + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if(ds.Tables[0].Rows.Count>0)
                 {
@@ -437,8 +441,12 @@ namespace IrisContabilidad.modelos
                     productoUnidadConversion.codigo_producto = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     productoUnidadConversion.codigo_unidad = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
                     productoUnidadConversion.cantidad = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
-                    productoUnidadConversion.precio_venta = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
-                    productoUnidadConversion.precio_costo = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                    productoUnidadConversion.precio_venta1 = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
+                    productoUnidadConversion.precio_venta2 = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                    productoUnidadConversion.precio_venta3 = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
+                    productoUnidadConversion.precio_venta4 = Convert.ToDecimal(ds.Tables[0].Rows[0][6].ToString());
+                    productoUnidadConversion.precio_venta5 = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
+                    productoUnidadConversion.precio_costo = Convert.ToDecimal(ds.Tables[0].Rows[0][8].ToString());
                     return productoUnidadConversion;
                 }
                 return null;
@@ -446,6 +454,41 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error getPrecioProductoUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get lista precios producto unidad
+        public List<producto_precio_venta> getListaPrecioProductoUnidad(int codigoProducto, int codigoUnidad)
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds = new DataSet();
+                List<producto_precio_venta> lista = new List<producto_precio_venta>();
+                producto_precio_venta productoPrecioVenta;
+
+                //borrar todos los codigo barra que son de este producto
+                sql = "select precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5 from producto_unidad_conversion where cod_producto='" + codigoProducto + "' and cod_unidad='" + codigoUnidad + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        productoPrecioVenta = new producto_precio_venta();
+                        productoPrecioVenta.precio_venta1 = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
+                        productoPrecioVenta.precio_venta2 = Convert.ToDecimal(ds.Tables[0].Rows[0][1].ToString());
+                        productoPrecioVenta.precio_venta3 = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
+                        productoPrecioVenta.precio_venta4 = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
+                        productoPrecioVenta.precio_venta5 = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                        lista.Add(productoPrecioVenta);    
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaPrecioProductoUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }
@@ -476,8 +519,124 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaProductoRequisitos.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getListaProductoRequisitos.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public unidad getUnidadMinimaByProducto(int idProducto)
+        {
+            try
+            {
+                unidad unidad;
+                string sql = "select cod_unidad_minima from producto where codigo='"+idProducto+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                unidad = new modeloUnidad().getUnidadById(Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString()));
+                if (unidad.codigo != null)
+                {
+                    return unidad;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getUnidadMinimaByProducto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //obtiene la existencia de un producto con relacion a una unidad
+        public decimal getExistenciaByProductoAndUnidad(int codigoProducto, int codigoUnidadConvertir)
+        {
+            try
+            {
+                List<unidad> listaUnidad=new List<unidad>();
+                unidad unidadMinima;
+                decimal existencia = 0;
+                string sql = "";
+                DataSet ds = new DataSet();
+                decimal cantidadUnidadMinima = 0;//saber la cantidad de la unidad minima
+                decimal cantidadUnidadConvertir = 0;//saber la cantidad de la unidad a la que se quiere convertir
+                decimal cantidadUnidadMinimaExistencia = 0;//saber la cantidad que hay en existencia de la unidad minima
+
+
+                //lista de las unidad producto conversion que tiene este producto
+                listaUnidad = new modeloUnidad().getListaCompletaByProductoId(codigoProducto);
+                listaUnidad = listaUnidad.Distinct().ToList();
+
+
+                //obtiene la unidad minima del producto
+                unidadMinima = getUnidadMinimaByProducto(codigoProducto);
+
+                //obtiene la cantidad unidades que maneja la unidad minima
+                sql = "select cantidad from producto_unidad_conversion where cod_producto='"+codigoProducto+"' and cod_unidad='"+unidadMinima.codigo+"'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows[0][0].ToString() != "")
+                {
+                    cantidadUnidadMinima = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
+                }
+
+                //obtiene la cantidad unidades que maneja la unidad a convertir
+                sql = "select cantidad from producto_unidad_conversion where cod_producto='" + codigoProducto + "' and cod_unidad='" + codigoUnidadConvertir + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows[0][0].ToString() != "")
+                {
+                    cantidadUnidadConvertir = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
+                }
+
+                existencia = 0;
+                foreach (var unidadActual in listaUnidad)
+                {
+                    existencia = 0;
+                    sql = "select sum(cantidad) from inventario where codigo_producto='"+codigoProducto+"' and codigo_unidad='"+unidadActual.codigo+"'";
+                    ds = utilidades.ejecutarcomando_mysql(sql);
+                    if (ds.Tables[0].Rows[0][0].ToString() != "")
+                    {
+                        existencia = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
+                        cantidadUnidadMinimaExistencia += existencia*cantidadUnidadMinima;
+                    }
+                }
+
+                existencia = cantidadUnidadMinimaExistencia/cantidadUnidadConvertir;
+                return existencia;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getExistenciaByProductoAndUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+
+
+        //obtiene el precio venta de un producto con relacion a una unidad
+        public producto_precio_venta getPrecioVentaByProductoAndUnidad(int codigoProducto, int codigoUnidad)
+        {
+            try
+            {
+                List<unidad> listaUnidad = new List<unidad>();
+                unidad unidadMinima;
+                producto_precio_venta precioVenta =new producto_precio_venta();
+                string sql = "";
+                DataSet ds = new DataSet();
+                
+
+                //obtiene la cantidad unidades que maneja la unidad minima
+                sql = "select precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5 from producto_unidad_conversion where cod_producto='"+codigoProducto+"' and cod_unidad='"+codigoUnidad+"'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                precioVenta.precio_venta1 = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
+                precioVenta.precio_venta2 = Convert.ToDecimal(ds.Tables[0].Rows[0][1].ToString());
+                precioVenta.precio_venta3 = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
+                precioVenta.precio_venta4 = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
+                precioVenta.precio_venta5 = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+
+                return precioVenta;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getExistenciaByProductoAndUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
         }

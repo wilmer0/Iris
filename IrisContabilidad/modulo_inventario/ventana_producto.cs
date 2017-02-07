@@ -766,7 +766,7 @@ namespace IrisContabilidad.modulo_inventario
                 //recorriendo la lista para agregarlo uno a uno
                 foreach (DataGridViewRow row in dataGridView3.Rows)
                 {
-                    sql = "insert into producto_unidad_conversion(cod_producto,cod_unidad,cantidad,costo,precio_venta) values('" + producto.codigo + "','" + row.Cells[0].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "')";
+                    sql = "insert into producto_unidad_conversion(cod_producto,cod_unidad,cantidad,costo,precio_venta1) values('" + producto.codigo + "','" + row.Cells[0].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[3].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "')";
                     utilidades.ejecutarcomando_mysql(sql);
                 }
             }
@@ -812,7 +812,7 @@ namespace IrisContabilidad.modulo_inventario
                 {
                     unidadConversion = new unidad();
                     unidadConversion = modeloUnidad.getUnidadById(x.codigo_unidad);
-                    dataGridView3.Rows.Add(unidadConversion.codigo, unidadConversion.nombre,x.cantidad,x.precio_costo.ToString("N"),x.precio_venta.ToString("N"));
+                    dataGridView3.Rows.Add(unidadConversion.codigo, unidadConversion.nombre,x.cantidad,x.precio_costo.ToString("N"),x.precio_venta1.ToString("N"));
                 });
                 unidadConversion = null;
             }

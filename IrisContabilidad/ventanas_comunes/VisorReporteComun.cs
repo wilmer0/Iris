@@ -33,10 +33,10 @@ namespace _7ADMFIC_1._0.VentanasComunes
         //    lista.Add(usuarioDataSource);
         //    GetLoad(reporte, lista,null);
         //}
-        public VisorReporteComun(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter,Boolean ExportarExel = false)
+        public VisorReporteComun(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
         {
             InitializeComponent();
-            ExportarExel = ExportarExel;
+            //ExportarExel = ExportarExel;
             //List<empresa> listaempresa = new List<empresa>();
             //if (IncluirEmpresa)
             //{

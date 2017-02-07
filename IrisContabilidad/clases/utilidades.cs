@@ -842,35 +842,7 @@ namespace IrisContabilidad.clases
             return decimal.TryParse(Cadena, out resul);
         }
 
-        public String getRellenarConCarracter(int longitud, Boolean derecha, string caracter, String cadena)
-        {
-            String caracteres = "";
-
-
-            for (int i = cadena.Length; i < longitud; i++)
-            {
-                caracteres = caracteres + caracter;
-
-
-            }
-            if (derecha)
-            {
-                cadena = cadena + caracteres;
-
-            }
-            else
-            {
-                cadena = caracteres + cadena;
-
-            }
-
-
-
-
-
-            return cadena;
-
-        }
+      
 
 
 
@@ -1163,24 +1135,7 @@ namespace IrisContabilidad.clases
             }
         }
 
-        public string rellenarIzquierda(string cadena, int maximoDigitos,char relleno)
-        {
-            try
-            {
-                int digitos = 0;//saber la cantidad de digitos que tiene la cadena
-                digitos = cadena.Length;
-                int digitosRellenos = 0;//saber la cantidad que va rellenar
-                digitosRellenos = maximoDigitos - digitos;
-                cadena = cadena.PadLeft(digitosRellenos,relleno);
-                MessageBox.Show(cadena);
-                return cadena;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error rellenarIzquierda.:" + ex.ToString());
-                return null;
-            }
-        }
+       
 
         public string getFechaHoraMinutosSegundos(DateTime fecha)
         {
@@ -1205,6 +1160,19 @@ namespace IrisContabilidad.clases
             catch (Exception ex)
             {
                 MessageBox.Show("Error getFechaddMMyyyy.:" + ex.ToString());
+                return null;
+            }
+        }
+        public string getFechaddMMyyyyhhmmsstt(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy hh:mm:ss tt");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaddMMyyyyhhmmsstt.:" + ex.ToString());
                 return null;
             }
         }
@@ -1233,6 +1201,29 @@ namespace IrisContabilidad.clases
             catch (Exception ex)
             {
                 MessageBox.Show("Error getDiasByRangoFecha.:" + ex.ToString());
+                return null;
+            }
+        }
+
+        public string getRellenar(string dato,char caracterRelleno,int numeroPosiciones,bool rellenarIzquierda=true)
+        {
+            try
+            {
+                if (rellenarIzquierda == false)
+                {
+                    //derecha
+                    dato = dato.PadRight(numeroPosiciones, caracterRelleno);
+                }
+                else
+                {
+                    //izquierda
+                    dato = dato.PadLeft(numeroPosiciones, caracterRelleno);
+                }
+                return dato;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getRellenar.:" + ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
         }

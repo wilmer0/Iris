@@ -197,11 +197,9 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-
                 List<caja> lista = new List<caja>();
                 string sql = "";
                 sql = "select codigo,nombre,secuencia,cod_sucursal,activo from caja where activo='1'";
-
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -221,9 +219,24 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error getListaByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
+            }
+        }
+
+
+        public bool validarCajaAbiertaByIdCaja(int id)
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error "+ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }

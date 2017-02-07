@@ -14,5 +14,6 @@ namespace IrisContabilidad.clases
         public bool activo { get; set; }
         public string rnc { get; set; }
         public string nombre { get; set; }
+        public string serie_comprobante { get; set; }
     }
 }
