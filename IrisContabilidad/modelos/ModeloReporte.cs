@@ -71,21 +71,21 @@ namespace IrisContabilidad.modelos
 
 
                 //llenar encabezado
-                //reporte_compra_encabezado reporteCompraEncabezado = new reporte_compra_encabezado(venta);
-                //List<reporte_compra_encabezado> listaReporteCompraencabezado = new List<reporte_compra_encabezado>();
-                //listaReporteCompraencabezado.Add(reporteCompraEncabezado);
+                reporte_venta_encabezado reporteVentaEncabezado = new reporte_venta_encabezado(venta);
+                List<reporte_venta_encabezado> listaReporteCompraencabezado = new List<reporte_venta_encabezado>();
+                listaReporteCompraencabezado.Add(reporteVentaEncabezado);
 
-                //ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteCompraencabezado);
-                //listaReportDataSource.Add(reporteGrafico);
+                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteCompraencabezado);
+                listaReportDataSource.Add(reporteGrafico);
 
-                //ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", reporteCompraEncabezado.listaDetalles);
-                //listaReportDataSource.Add(reporteProblemas);
+                ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", reporteVentaEncabezado.listaDetalles);
+                listaReportDataSource.Add(reporteProblemas);
 
 
-                //List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 
-                //VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
-                //ventana.ShowDialog();
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                ventana.ShowDialog();
                 return true;
             }
             catch (Exception ex)

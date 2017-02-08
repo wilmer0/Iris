@@ -398,7 +398,7 @@ namespace IrisContabilidad.modulo_facturacion
                         {
                             if(MessageBox.Show("Se agregó, desea Imprimir la venta?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
                             {
-                                modeloReporte.imprimirVenta(compra.codigo);
+                                modeloReporte.imprimirVenta(venta.codigo);
                                 this.Close();
                             }
                         }
