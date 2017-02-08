@@ -40,13 +40,14 @@ namespace IrisContabilidad.clases_reportes
 
         public reporte_venta_encabezado(venta venta )
         {
+            clases.tipo_comprobante_fiscal tipoComprobante;
             singleton singleton=new singleton();
             empleado empleadoSingleton = singleton.getEmpleado();
             empleado empleado = new modeloEmpleado().getEmpleadoById(venta.codigo_empleado);
             empresa empresa = new modeloEmpresa().getEmpresaBySucursalId(empleado.codigo_sucursal);
             sucursal sucursal = new modeloSucursal().getSucursalById(empleado.codigo_sucursal);
             cliente cliente = new modeloCliente().getClienteById(venta.codigo_cliente);
-
+            tipoComprobante = new modeloTipoComprobanteFiscal().getTipoComprobanteByNCF(venta.ncf);
             listaDetalles = new List<reporte_venta_detalle>();
             List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
 
@@ -66,6 +67,7 @@ namespace IrisContabilidad.clases_reportes
             this.clienteIdentificacion = cliente.rnc;
             this.empleado = empleado.nombre;
             this.tipo_venta = venta.tipo_venta;
+            this.tipo_comprobante_fiscal = tipoComprobante.nombre;
 
 
             listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo);
