@@ -50,6 +50,7 @@ namespace IrisContabilidad.modelos
                     cuadrado = 1;
                 }
 
+                venta.numero_factura = utilidades.getRellenar(venta.codigo.ToString(), '0', 9);
                 string sql = "insert into venta(codigo,num_factura,fecha,fecha_limite,codigo_empleado,codigo_cliente,ncf,tipo_venta,cod_sucursal,activo,pagada,cod_empleado_anular,motivo_anulada,cod_vendedor,despachado,autorizar_pedido,cuadrado,detalles,cod_tipo_comprobante) values('" + venta.codigo + "','" + venta.numero_factura + "','" + utilidades.getFechayyyyMMdd(venta.fecha) + "','" + utilidades.getFechayyyyMMdd(venta.fecha_limite) + "','" + venta.codigo_empleado + "','" + venta.codigo_cliente + "','" + venta.ncf + "','" + venta.tipo_venta + "','" + venta.codigo_sucursal + "','" + activo + "','" + pagada + "','" + venta.codigo_empelado_anular + "','" + venta.motivo_anulada + "','" + venta.codigo_vendedor + "','" + despachado + "','" + autorizarPedido + "','" + cuadrado + "','" + venta.detalle + "','" + venta.codigo_tipo_comprobante + "')";
                 //MessageBox.Show(sql);
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
@@ -64,13 +65,13 @@ namespace IrisContabilidad.modelos
                 });
 
                 //sacar de inventario
-                listaDetalle.ForEach(x =>
-                {
-                    x.codigo = getNextInventario();
-                    DateTime fechaHoy = DateTime.Today;
-                    sql = "insert into inventario(codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento) values('" + x.codigo + "','" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.cantidad + "'," + utilidades.getFechayyyyMMdd(fechaHoy) + "," + utilidades.getFechayyyyMMdd(fechaHoy.AddDays(120)) + ")";
-                    utilidades.ejecutarcomando_mysql(sql);
-                });
+                //listaDetalle.ForEach(x =>
+                //{
+                //    x.codigo = getNextInventario();
+                //    DateTime fechaHoy = DateTime.Today;
+                //    sql = "insert into inventario(codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento) values('" + x.codigo + "','" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.cantidad + "'," + utilidades.getFechayyyyMMdd(fechaHoy) + "," + utilidades.getFechayyyyMMdd(fechaHoy.AddDays(120)) + ")";
+                //    utilidades.ejecutarcomando_mysql(sql);
+                //});
 
                 return true;
             }
@@ -250,7 +251,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 venta venta = new venta();
-                string sql = "elect codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta where codigo='"+id+"'";
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta where codigo='"+id+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

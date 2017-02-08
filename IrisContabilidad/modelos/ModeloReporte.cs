@@ -16,6 +16,8 @@ namespace IrisContabilidad.modelos
 
 
         utilidades utilidades=new utilidades();
+        
+        //compra
         public bool imprimirCompra(int idcompra)
         {
             try
@@ -55,46 +57,6 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
-        public bool imprimirVenta(int idVenta)
-        {
-            try
-            {
-                //datos generales
-                String reporte = "IrisContabilidad.reportes.reporte_venta_hoja_completa.rdlc";
-                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
-                venta venta = new modeloVenta().getVentaById(idVenta);
-
-                if (venta == null)
-                {
-                    return false;
-                }
-
-
-                //llenar encabezado
-                reporte_venta_encabezado reporteVentaEncabezado = new reporte_venta_encabezado(venta);
-                List<reporte_venta_encabezado> listaReporteCompraencabezado = new List<reporte_venta_encabezado>();
-                listaReporteCompraencabezado.Add(reporteVentaEncabezado);
-
-                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteCompraencabezado);
-                listaReportDataSource.Add(reporteGrafico);
-
-                ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", reporteVentaEncabezado.listaDetalles);
-                listaReportDataSource.Add(reporteProblemas);
-
-
-                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
-
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
-                ventana.ShowDialog();
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error imprimirVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
         public bool imprirmiCompraPago(int codigoPago)
         {
             try
@@ -145,6 +107,50 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+
+
+
+        //venta
+        public bool imprimirVenta(int idVenta)
+        {
+            try
+            {
+                //datos generales
+                String reporte = "IrisContabilidad.reportes.reporte_venta_hoja_completa.rdlc";
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                venta venta = new modeloVenta().getVentaById(idVenta);
+
+                if (venta == null)
+                {
+                    return false;
+                }
+
+
+                //llenar encabezado
+                reporte_venta_encabezado reporteVentaEncabezado = new reporte_venta_encabezado(venta);
+                List<reporte_venta_encabezado> listaReporteCompraencabezado = new List<reporte_venta_encabezado>();
+                listaReporteCompraencabezado.Add(reporteVentaEncabezado);
+
+                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteCompraencabezado);
+                listaReportDataSource.Add(reporteGrafico);
+
+                ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", reporteVentaEncabezado.listaDetalles);
+                listaReportDataSource.Add(reporteProblemas);
+
+
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                ventana.ShowDialog();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
 
     }
 }

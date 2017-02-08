@@ -461,7 +461,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -592,7 +591,7 @@
         <Top>0.06944in</Top>
         <Left>0.16145in</Left>
         <Height>0.5in</Height>
-        <Width>8.13543in</Width>
+        <Width>8.13545in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -829,7 +828,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=First(Fields!cajero.Value, "reporte_encabezado")</Value>
                   <Style />
                 </TextRun>
               </TextRuns>
