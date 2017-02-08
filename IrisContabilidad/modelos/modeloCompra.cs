@@ -440,7 +440,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-        //hacer pagos a compra
+        //hacer pagos a compra a contado
         public bool setCompraPago(compra compra,compra_vs_pagos pago,List<compra_vs_pagos_detalles> listaPagoDetalle)
         {
             try
@@ -499,7 +499,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //hacer pagos a compra
+        //hacer pagos abono a compra
         public bool setCompraPago(compra_vs_pagos compraPago,List<compra_vs_pagos_detalles>listaPagoDetalles )
         {
             try
@@ -550,7 +550,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error setCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }

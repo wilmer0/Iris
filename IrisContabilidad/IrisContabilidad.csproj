@@ -124,6 +124,7 @@
     <Compile Include="clases\nomina_tipo.cs" />
     <Compile Include="clases\producto.cs" />
     <Compile Include="clases\productoUnidadConversion.cs" />
+    <Compile Include="clases\producto_precio_venta.cs" />
     <Compile Include="clases\producto_productos_requisitos.cs" />
     <Compile Include="clases\producto_vs_codigobarra.cs" />
     <Compile Include="clases\singleton.cs" />
@@ -139,6 +140,8 @@
     <Compile Include="clases\venta.cs" />
     <Compile Include="clases\ventana.cs" />
     <Compile Include="clases\venta_detalle.cs" />
+    <Compile Include="clases\venta_vs_cobros.cs" />
+    <Compile Include="clases\venta_vs_cobros_detalles.cs" />
     <Compile Include="clases_reportes\reporte_compra_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_detalle.cs" />
@@ -359,6 +362,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_itebis.Designer.cs">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_seleccion_producto_unidad_precio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_seleccion_producto_unidad_precio.Designer.cs">
+      <DependentUpon>ventana_seleccion_producto_unidad_precio.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_tipo_comprobante_fiscal.cs">
       <SubType>Form</SubType>
@@ -650,6 +659,9 @@
     <EmbeddedResource Include="modulo_facturacion\ventana_itebis.resx">
       <DependentUpon>ventana_itebis.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_seleccion_producto_unidad_precio.resx">
+      <DependentUpon>ventana_seleccion_producto_unidad_precio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_tipo_comprobante_fiscal.resx">
       <DependentUpon>ventana_tipo_comprobante_fiscal.cs</DependentUpon>
     </EmbeddedResource>
@@ -758,6 +770,7 @@
     <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_pago_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_venta_hoja_completa.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
@@ -768,6 +781,8 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_encabezado.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

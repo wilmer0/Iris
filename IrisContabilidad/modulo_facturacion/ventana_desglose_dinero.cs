@@ -25,6 +25,8 @@ namespace IrisContabilidad.modulo_facturacion
         private venta venta;
         private compra_vs_pagos pago;
         compra_vs_pagos_detalles pagoDetalle;
+        private venta_vs_cobros_detalles cobroDetalle;
+        
 
         
         //modelos
@@ -33,17 +35,18 @@ namespace IrisContabilidad.modulo_facturacion
         ModeloReporte modeloReporte = new ModeloReporte();
 
 
-        //listas
+        //listas 
         private List<compra_detalle> listaCompraDetalles;
         private List<venta_detalle> listaVentaDetalles;
         List<compra_vs_pagos_detalles> listaPagoDetalle = new List<compra_vs_pagos_detalles>();
-
+        List<venta_vs_cobros_detalles> listaCobroDetalle=new List<venta_vs_cobros_detalles>(); 
 
         //variables
+        private decimal montoTotalPagar = 0;
+        private decimal montoTotalCobrar = 0;
         private decimal montoEsperado=0;
         private decimal montoItebis=0;
         private decimal montoDescuento=0;
-        private decimal montoTotalPagar = 0;
         private decimal montoDevuelta = 0;
         private decimal montoEfectivo = 0;
         private decimal montoDeposito = 0;
@@ -101,13 +104,13 @@ namespace IrisContabilidad.modulo_facturacion
                     montoEfectivoText.Focus();
                     montoEfectivoText.SelectAll();
                 }
-                else
+                else if(venta!=null)
                 {
                     //venta
                     //sacando monto esperado, monto itebis, monto descuento
-                    foreach (var x in listaCompraDetalles)
+                    foreach (var x in listaVentaDetalles)
                     {
-                        montoEsperado += x.cantidad * x.precio;
+                        montoEsperado += (x.cantidad * x.precio)-x.monto_descuento;
                         montoItebis += x.monto_itebis;
                         montoDescuento += x.monto_descuento;
                     }
@@ -144,86 +147,172 @@ namespace IrisContabilidad.modulo_facturacion
                 //2-deposito
                 //3-cheque
                 listaPagoDetalle=new List<compra_vs_pagos_detalles>();
+                listaCobroDetalle=new List<venta_vs_cobros_detalles>();
 
-
-                //validar si pagara con efectivo
-                if (Convert.ToDecimal(montoEfectivoText.Text) > 0)
+                if (compra != null)
                 {
-                    pagoDetalle = new compra_vs_pagos_detalles();
-                    pagoDetalle.codigo = 0;
-                    pagoDetalle.codigo_pago = 0;
-                    pagoDetalle.codigo_compra = 0;
-                    pagoDetalle.codigo_metodo_pago = 1;
-                    pagoDetalle.monto_descontado = 0;
-                    pagoDetalle.monto_pagado = Convert.ToDecimal(montoEfectivoText.Text);
-                    pagoDetalle.activo = true;
-                    listaPagoDetalle.Add(pagoDetalle);
-                }
+                    //compra
+                    #region compra
 
-                //validar si pagara con deposito
-                if (Convert.ToDecimal(montoDepositoText.Text) > 0)
-                {
-                    if (depositoBancoText.Text == "")
+                    //validar si pagara con efectivo
+                    if (Convert.ToDecimal(montoEfectivoText.Text) > 0)
                     {
-                        depositoBancoText.Focus();
-                        depositoBancoText.SelectAll();
-                        MessageBox.Show("Falta el banco", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        pagoDetalle = new compra_vs_pagos_detalles();
+                        pagoDetalle.codigo = 0;
+                        pagoDetalle.codigo_pago = 0;
+                        pagoDetalle.codigo_compra = 0;
+                        pagoDetalle.codigo_metodo_pago = 1;
+                        pagoDetalle.monto_descontado = 0;
+                        pagoDetalle.monto_pagado = Convert.ToDecimal(montoEfectivoText.Text);
+                        pagoDetalle.activo = true;
+                        listaPagoDetalle.Add(pagoDetalle);
+                    }
+                    //validar si pagara con deposito
+                    if (Convert.ToDecimal(montoDepositoText.Text) > 0)
+                    {
+                        if (depositoBancoText.Text == "")
+                        {
+                            depositoBancoText.Focus();
+                            depositoBancoText.SelectAll();
+                            MessageBox.Show("Falta el banco", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+                        pagoDetalle = new compra_vs_pagos_detalles();
+                        pagoDetalle.codigo = 0;
+                        pagoDetalle.codigo_pago = 0;
+                        pagoDetalle.codigo_compra = 0;
+                        pagoDetalle.codigo_metodo_pago = 2;
+                        pagoDetalle.monto_descontado = 0;
+                        pagoDetalle.monto_pagado = Convert.ToDecimal(montoDepositoText.Text);
+                        pagoDetalle.activo = true;
+                        listaPagoDetalle.Add(pagoDetalle);
+                    }
+                    //validar si pagara con cheque
+                    if (Convert.ToDecimal(montoChequeText.Text) > 0)
+                    {
+                        if (numeroChequeText.Text == "")
+                        {
+                            numeroChequeText.Focus();
+                            numeroChequeText.SelectAll();
+                            MessageBox.Show("Falta el número de cheque", "", MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                            return false;
+                        }
+                        if (chequeBancoText.Text == "")
+                        {
+                            chequeBancoText.Focus();
+                            chequeBancoText.SelectAll();
+                            MessageBox.Show("Falta el banco", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+                        pagoDetalle = new compra_vs_pagos_detalles();
+                        pagoDetalle.codigo = 0;
+                        pagoDetalle.codigo_pago = 0;
+                        pagoDetalle.codigo_compra = 0;
+                        pagoDetalle.codigo_metodo_pago = 3;
+                        pagoDetalle.monto_descontado = 0;
+                        pagoDetalle.monto_pagado = Convert.ToDecimal(montoChequeText.Text);
+                        pagoDetalle.activo = true;
+                        listaPagoDetalle.Add(pagoDetalle);
+                    }
+                    montoTotalPagar = 0;
+                    //validar montos si son iguales para poder pagar
+                    listaPagoDetalle.ForEach(x =>
+                    {
+                        montoTotalPagar += x.monto_pagado - x.monto_descontado;
+                    });
+                    if (Convert.ToDecimal(montoEsperado) > montoTotalPagar)
+                    {
+                        MessageBox.Show("Falta dinero", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        montoEfectivoText.Focus();
+                        montoEfectivoText.SelectAll();
                         return false;
                     }
-                    pagoDetalle = new compra_vs_pagos_detalles();
-                    pagoDetalle.codigo = 0;
-                    pagoDetalle.codigo_pago = 0;
-                    pagoDetalle.codigo_compra = 0;
-                    pagoDetalle.codigo_metodo_pago = 2;
-                    pagoDetalle.monto_descontado = 0;
-                    pagoDetalle.monto_pagado = Convert.ToDecimal(montoDepositoText.Text);
-                    pagoDetalle.activo = true;
-                    listaPagoDetalle.Add(pagoDetalle);
+                    #endregion
                 }
-
-
-                //validar si pagara con cheque
-                if (Convert.ToDecimal(montoChequeText.Text)>0)
+                else if (venta != null)
                 {
-                    if (numeroChequeText.Text == "")
+                    //venta
+                    #region venta
+
+                    //validar si cobrar con efectivo
+                    if (Convert.ToDecimal(montoEfectivoText.Text) > 0)
                     {
-                        numeroChequeText.Focus();
-                        numeroChequeText.SelectAll();
-                        MessageBox.Show("Falta el número de cheque", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        cobroDetalle = new venta_vs_cobros_detalles();
+                        cobroDetalle.codigo = 0;
+                        cobroDetalle.codigo_cobro = 0;
+                        cobroDetalle.codigo_venta = 0;
+                        cobroDetalle.codigo_metodo_cobro = 1;
+                        cobroDetalle.monto_descontado = 0;
+                        cobroDetalle.monto_cobrado = Convert.ToDecimal(montoEfectivoText.Text);
+                        cobroDetalle.activo = true;
+                        listaCobroDetalle.Add(cobroDetalle);
+                    }
+                    //validar si cobrar con deposito
+                    if (Convert.ToDecimal(montoDepositoText.Text) > 0)
+                    {
+                        if (depositoBancoText.Text == "")
+                        {
+                            depositoBancoText.Focus();
+                            depositoBancoText.SelectAll();
+                            MessageBox.Show("Falta el banco", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+                        cobroDetalle = new venta_vs_cobros_detalles();
+                        cobroDetalle.codigo = 0;
+                        cobroDetalle.codigo_cobro = 0;
+                        cobroDetalle.codigo_venta = 0;
+                        cobroDetalle.codigo_metodo_cobro = 2;
+                        cobroDetalle.monto_descontado = 0;
+                        cobroDetalle.monto_cobrado = Convert.ToDecimal(montoDepositoText.Text);
+                        cobroDetalle.activo = true;
+                        listaCobroDetalle.Add(cobroDetalle);
+                    }
+                    //validar si cobrar con cheque
+                    if (Convert.ToDecimal(montoChequeText.Text) > 0)
+                    {
+                        if (numeroChequeText.Text == "")
+                        {
+                            numeroChequeText.Focus();
+                            numeroChequeText.SelectAll();
+                            MessageBox.Show("Falta el número de cheque", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                            return false;
+                        }
+                        if (chequeBancoText.Text == "")
+                        {
+                            chequeBancoText.Focus();
+                            chequeBancoText.SelectAll();
+                            MessageBox.Show("Falta el banco", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return false;
+                        }
+                        cobroDetalle = new venta_vs_cobros_detalles();
+                        cobroDetalle.codigo = 0;
+                        cobroDetalle.codigo_cobro = 0;
+                        cobroDetalle.codigo_venta = 0;
+                        cobroDetalle.codigo_metodo_cobro = 3;
+                        cobroDetalle.monto_descontado = 0;
+                        cobroDetalle.monto_cobrado = Convert.ToDecimal(montoChequeText.Text);
+                        cobroDetalle.activo = true;
+                        listaCobroDetalle.Add(cobroDetalle);
+                    }
+                    montoTotalCobrar = 0;
+                    //validar montos si son iguales para poder cobrar
+                    listaCobroDetalle.ForEach(x =>
+                    {
+                        montoTotalCobrar += x.monto_cobrado - x.monto_descontado;
+                    });
+                    if (Convert.ToDecimal(montoEsperado) > montoTotalPagar)
+                    {
+                        MessageBox.Show("Falta dinero", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        montoEfectivoText.Focus();
+                        montoEfectivoText.SelectAll();
                         return false;
                     }
-                    if (chequeBancoText.Text=="")
-                    {
-                        chequeBancoText.Focus();
-                        chequeBancoText.SelectAll();
-                        MessageBox.Show("Falta el banco", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return false;
-                    }
-                    pagoDetalle = new compra_vs_pagos_detalles();
-                    pagoDetalle.codigo = 0;
-                    pagoDetalle.codigo_pago = 0;
-                    pagoDetalle.codigo_compra = 0;
-                    pagoDetalle.codigo_metodo_pago = 3;
-                    pagoDetalle.monto_descontado = 0;
-                    pagoDetalle.monto_pagado = Convert.ToDecimal(montoChequeText.Text);
-                    pagoDetalle.activo = true;
-                    listaPagoDetalle.Add(pagoDetalle);
+                    #endregion
                 }
 
 
-                montoTotalPagar = 0;
-                //validar montos si son iguales para poder pagar
-                listaPagoDetalle.ForEach(x =>
-                {
-                    montoTotalPagar += x.monto_pagado - x.monto_descontado;
-                });
-                if (Convert.ToDecimal(montoEsperado) > montoTotalPagar)
-                {
-                    MessageBox.Show("Falta dinero", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                    montoEfectivoText.Focus();
-                    montoEfectivoText.SelectAll();
-                    return false;
-                }
+                
                 
                 return true;
             }
@@ -244,10 +333,10 @@ namespace IrisContabilidad.modulo_facturacion
                     return;
                 }
 
-                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                {
-                    return;
-                }
+                //if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                //{
+                //    return;
+                //}
 
                 if (compra != null)
                 {
@@ -275,6 +364,7 @@ namespace IrisContabilidad.modulo_facturacion
                             if(MessageBox.Show("Se agregó, desea Imprimir la compra?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
                             {
                                 modeloReporte.imprimirCompra(compra.codigo);
+                                this.Close();
                             }
                         }
                         else
@@ -283,13 +373,41 @@ namespace IrisContabilidad.modulo_facturacion
                         }
                     }
                 }
-                else
+                else if(venta!=null)
                 {
                     //venta
-                    
+                    if (modeloVenta.agregarVenta(venta, listaVentaDetalles) == true)
+                    {
+                        venta_vs_cobros cobro = new venta_vs_cobros();
+                        venta_vs_cobros_detalles cobroDetalle = new venta_vs_cobros_detalles();
+
+                        //pago encabezado
+                        cobro.codigo = modeloCompra.getNextPago();
+                        cobro.fecha = DateTime.Today;
+                        cobro.detalle = "";
+                        cobro.cod_empleado = empleado.codigo;
+                        cobro.activo = true;
+                        cobro.cod_empleado_anular = 0;
+                        cobro.motivo_anulado = "";
+                        cobro.cuadrado = false;
+
+                        //asigando que todos los pagos afecten a esta compra
+                        listaCobroDetalle.ForEach(x=> x.codigo_venta=venta.codigo);
+
+                        if (modeloVenta.setVentaCobro(venta, cobro, listaCobroDetalle) == true)
+                        {
+                            if(MessageBox.Show("Se agregó, desea Imprimir la venta?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
+                            {
+                                modeloReporte.imprimirVenta(venta.codigo);
+                                this.Close();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
-                  
-                
                     this.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)

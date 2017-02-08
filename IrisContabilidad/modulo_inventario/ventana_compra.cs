@@ -140,13 +140,13 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //si tiene una compra existente abierta
-                if (compra != null)
-                {
-                    suplidorIdText.Focus();
-                    suplidorIdText.SelectAll();
-                    MessageBox.Show("Tiene una compra existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
+                //if (compra != null)
+                //{
+                //    suplidorIdText.Focus();
+                //    suplidorIdText.SelectAll();
+                //    MessageBox.Show("Tiene una compra existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return false;
+                //}
                 //suplidor
                 if (suplidor == null)
                 {
@@ -457,8 +457,8 @@ namespace IrisContabilidad.modulo_inventario
                 //validar que tenga importe
                 if (importeText.Text == "")
                 {
-                    cantidadText.Focus();
-                    cantidadText.SelectAll();
+                    importeText.Focus();
+                    importeText.SelectAll();
                     MessageBox.Show("Falta el importe", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
                
@@ -875,7 +875,7 @@ namespace IrisContabilidad.modulo_inventario
                     return;
                 }
                 productoUnidadConversion = modeloProducto.getPrecioProductoUnidad(producto.codigo, unidad.codigo);
-                precioText.Text = productoUnidadConversion.precio_costo.ToString("N");
+                precioText.Text = productoUnidadConversion.precio_venta1.ToString("N");
             }
             catch (Exception ex)
             {
@@ -993,6 +993,11 @@ namespace IrisContabilidad.modulo_inventario
             {
                 modeloReporte.imprimirCompra(compra.codigo);
             }
+        }
+
+        private void unidadComboText_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

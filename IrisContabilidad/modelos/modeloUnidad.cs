@@ -217,5 +217,34 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+
+        //get lista unidad by producto
+        public List<unidad> getListaCompletaByProductoId(int id)
+        {
+            try
+            {
+                List<unidad> lista = new List<unidad>();
+                string sql = "";
+                sql = "select cod_unidad from producto_unidad_conversion where cod_producto='"+id+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        unidad unidad = new unidad();
+                        unidad = getUnidadById(Convert.ToInt16(row[0].ToString()));
+                        lista.Add(unidad);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompletaByProductoId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

@@ -1135,24 +1135,7 @@ namespace IrisContabilidad.clases
             }
         }
 
-        public string rellenarIzquierda(string cadena, int maximoDigitos,char relleno)
-        {
-            try
-            {
-                int digitos = 0;//saber la cantidad de digitos que tiene la cadena
-                digitos = cadena.Length;
-                int digitosRellenos = 0;//saber la cantidad que va rellenar
-                digitosRellenos = maximoDigitos - digitos;
-                cadena = cadena.PadLeft(digitosRellenos,relleno);
-                MessageBox.Show(cadena);
-                return cadena;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error rellenarIzquierda.:" + ex.ToString());
-                return null;
-            }
-        }
+       
 
         public string getFechaHoraMinutosSegundos(DateTime fecha)
         {
