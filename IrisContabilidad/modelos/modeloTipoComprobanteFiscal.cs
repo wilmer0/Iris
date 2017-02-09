@@ -174,7 +174,7 @@ namespace IrisContabilidad.modelos
                         tipo.codigo = Convert.ToInt16(row[0].ToString());
                         tipo.secuencia = row[1].ToString();
                         tipo.nombre = row[2].ToString();
-                        tipo.activo = Convert.ToBoolean(row[3].ToString());
+                        tipo.activo = Convert.ToBoolean(row[3]);
                         lista.Add(tipo);
                     }
                 }
@@ -183,6 +183,42 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        internal tipo_comprobante_fiscal getTipoComprobanteByNCF(string ncf)
+        {
+            try
+            {
+                string secuenciaTemp = "";
+                tipo_comprobante_fiscal tipoComprobante;
+                string secuencia = ncf;
+                //MessageBox.Show(secuencia);
+                secuencia=secuencia.Substring(0, 11);
+                //MessageBox.Show(secuencia);
+                secuenciaTemp = secuencia[9].ToString();
+                secuenciaTemp += secuencia[10].ToString();
+                secuencia = secuenciaTemp;
+                //MessageBox.Show(secuencia);
+                
+                string sql = "select codigo,secuencia,nombre,activo from tipo_comprobante_fiscal where secuencia='"+secuencia+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows[0][0].ToString() != "")
+                {
+                    tipoComprobante = new tipo_comprobante_fiscal();
+                    tipoComprobante.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    tipoComprobante.secuencia = ds.Tables[0].Rows[0][1].ToString();
+                    tipoComprobante.nombre = ds.Tables[0].Rows[0][2].ToString();
+                    tipoComprobante.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
+                    return tipoComprobante;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getTipoComprobanteByNCF.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }

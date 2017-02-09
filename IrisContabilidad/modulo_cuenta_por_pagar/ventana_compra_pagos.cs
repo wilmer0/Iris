@@ -154,7 +154,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     loadSuplidor();
                     if (MessageBox.Show("Se agregó el pago, desea imprimir el pago?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        modeloReporte.imprirmiCompraPago(compraPago.codigo);
+                        modeloReporte.imprirmirCompraPago(compraPago.codigo);
                     }
                 }
                 else

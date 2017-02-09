@@ -382,7 +382,7 @@ namespace IrisContabilidad.modulo_facturacion
                         venta_vs_cobros_detalles cobroDetalle = new venta_vs_cobros_detalles();
 
                         //pago encabezado
-                        cobro.codigo = modeloCompra.getNextPago();
+                        cobro.codigo = modeloVenta.getNextCobro();
                         cobro.fecha = DateTime.Today;
                         cobro.detalle = "";
                         cobro.cod_empleado = empleado.codigo;
@@ -398,7 +398,7 @@ namespace IrisContabilidad.modulo_facturacion
                         {
                             if(MessageBox.Show("Se agregó, desea Imprimir la venta?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
                             {
-                                modeloReporte.imprimirVenta(compra.codigo);
+                                modeloReporte.imprimirVenta(venta.codigo);
                                 this.Close();
                             }
                         }

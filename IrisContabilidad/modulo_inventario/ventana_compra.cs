@@ -318,7 +318,12 @@ namespace IrisContabilidad.modulo_inventario
                         if(modeloCompra.agregarCompra(compra,listaCompraDetalle)==true)
                         {
                             compra = null;
-                            MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (MessageBox.Show("Se agregó, desea Imprimir la compra?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                modeloReporte.imprimirCompra(compra.codigo);
+                            }
+                            compra = null;
+                            loadVentana();
                         }
                         else
                         {

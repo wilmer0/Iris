@@ -158,11 +158,12 @@ namespace IrisContabilidad.modulo_empresa
                     sucursal = new sucursal();
                     sucursal.codigo = modeloSucursal.getNext();
                 }
-                    sucursal.codigo_empresa = 1;
-                    sucursal.secuencia = secuenciaText.Text;
-                    sucursal.activo = Convert.ToBoolean(activoCheck.Checked);
-                    sucursal.direccion = direccionText.Text;
-
+                sucursal.codigo_empresa = 1;
+                sucursal.secuencia = secuenciaText.Text;
+                sucursal.activo = Convert.ToBoolean(activoCheck.Checked);
+                sucursal.direccion = direccionText.Text;
+                sucursal.telefono1 = telefono1Text.Text;
+                sucursal.telefono2 = telefono2Text.Text;
                 if (crear == true)
                 {
                     if ((modeloSucursal.agregarSucursal(sucursal)) == true)
@@ -173,6 +174,7 @@ namespace IrisContabilidad.modulo_empresa
                     }
                     else
                     {
+                        sucursal = null;
                         MessageBox.Show("No se agregó la sucursal.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -220,6 +222,49 @@ namespace IrisContabilidad.modulo_empresa
             loadVentana();
             sucursalIdText.Focus();
             sucursalIdText.SelectAll();
+        }
+
+        private void secuenciaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                telefono1Text.Focus();
+                telefono1Text.SelectAll();
+            }
+        }
+
+        private void telefono1Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                telefono2Text.Focus();
+                telefono2Text.SelectAll();
+            }
+        }
+
+        private void telefono2Text_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                direccionText.Focus();
+                direccionText.SelectAll();
+            }
+        }
+
+        private void direccionText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                activoCheck.Focus();
+            }
+        }
+
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                button1.Focus();
+            }
         }
     }
 }
