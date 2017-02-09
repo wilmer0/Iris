@@ -5,3 +5,4 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\bin\Release\I
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\obj\Release\PruebasUnitarias.csprojResolveAssemblyReference.cache
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\obj\Release\PruebasUnitarias.dll
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\obj\Release\PruebasUnitarias.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\PruebasUnitarias\bin\Release\PruebasUnitarias.pdb

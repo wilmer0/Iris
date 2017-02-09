@@ -1,0 +1,9 @@
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadConsola\bin\Release\IrisContabilidadConsola.exe.config
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadConsola\bin\Release\IrisContabilidadConsola.exe
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadConsola\bin\Release\IrisContabilidadConsola.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadConsola\bin\Release\IrisContabilidad.exe
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadConsola\bin\Release\Ionic.Zip.dll
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadConsola\bin\Release\IrisContabilidad.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadConsola\obj\Release\IrisContabilidadConsola.csprojResolveAssemblyReference.cache
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadConsola\obj\Release\IrisContabilidadConsola.exe
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidadConsola\obj\Release\IrisContabilidadConsola.pdb

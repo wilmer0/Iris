@@ -195,13 +195,13 @@ namespace IrisContabilidad.modelos
                 string secuenciaTemp = "";
                 tipo_comprobante_fiscal tipoComprobante;
                 string secuencia = ncf;
-                MessageBox.Show(secuencia);
+                //MessageBox.Show(secuencia);
                 secuencia=secuencia.Substring(0, 11);
-                MessageBox.Show(secuencia);
+                //MessageBox.Show(secuencia);
                 secuenciaTemp = secuencia[9].ToString();
                 secuenciaTemp += secuencia[10].ToString();
                 secuencia = secuenciaTemp;
-                MessageBox.Show(secuencia);
+                //MessageBox.Show(secuencia);
                 
                 string sql = "select codigo,secuencia,nombre,activo from tipo_comprobante_fiscal where secuencia='"+secuencia+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);

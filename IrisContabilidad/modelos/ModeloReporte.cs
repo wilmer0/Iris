@@ -170,11 +170,11 @@ namespace IrisContabilidad.modelos
                 listaVentaCobroDetalles = new modeloVenta().getListaVentaCobroDetalleByIdVentaCobro(codigoCobro);
                 listaVentaCobroDetalles.ForEach(x =>
                 {
-                    compra compra = new modeloCompra().getCompraById(x.codigo_venta);
+                    venta venta = new modeloVenta().getVentaById(x.codigo_venta);
                     reporte_venta_cobro_detalle reporteVentaCobroDetalle = new reporte_venta_cobro_detalle();
                     reporteVentaCobroDetalle.numero_venta = utilidades.getRellenar(x.codigo_venta.ToString(), '0', 9);
                     reporteVentaCobroDetalle.codigo_venta = x.codigo_venta;
-                    reporteVentaCobroDetalle.fecha_venta = utilidades.getFechaddMMyyyy(compra.fecha);
+                    reporteVentaCobroDetalle.fecha_venta = utilidades.getFechaddMMyyyy(venta.fecha);
                     reporteVentaCobroDetalle.monto_descuento = x.monto_descontado;
                     reporteVentaCobroDetalle.monto_cobrado = x.monto_cobrado;
                     reporteVentaCobroDetalle.codigo_metodo_cobro = x.codigo_metodo_cobro;

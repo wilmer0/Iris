@@ -947,7 +947,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!rnc.Value, "reporte_encabezado")</Value>
+                  <Value>="RNC.:"&amp;First(Fields!rnc.Value, "reporte_encabezado")</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
