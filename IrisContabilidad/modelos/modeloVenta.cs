@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.clases_reportes;
 
 namespace IrisContabilidad.modelos
 {
@@ -192,32 +193,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //obtener el codigo siguiente inventario
-        public int getNextInventario()
-        {
-            try
-            {
-                string sql = "select max(codigo)from inventario";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                int id = 0;
-                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
-                {
-                    id = 0;
-                }
-                else
-                {
-                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                }
-                id += 1;
-                return id;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error getNextCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 0;
-            }
-        }
         //obtener el codigo siguiente cobro detalle
         public int getNextCobroDetalle()
         {
@@ -240,7 +215,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getNextPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getNextCobroDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 0;
             }
         }
@@ -323,32 +298,35 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-        //get lista completa de compras
+        //get lista completa de venta
         public List<venta> getListaVenta(int id)
         {
             try
             {
                 List<venta> lista = new List<venta>();
                 venta venta = new venta();
-                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra where codigo='" + id + "'";
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    venta.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    venta.numero_factura = ds.Tables[0].Rows[0][1].ToString();
-                    venta.codigo_cliente = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    venta.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
-                    venta.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
-                    venta.ncf = ds.Tables[0].Rows[0][5].ToString();
-                    venta.tipo_venta = ds.Tables[0].Rows[0][6].ToString();
-                    venta.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7].ToString());
-                    venta.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8].ToString());
-                    venta.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
-                    venta.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
-                    venta.codigo_empelado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
-                    venta.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
-                    venta.detalle = ds.Tables[0].Rows[0][13].ToString();
-                    lista.Add(venta);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        venta.codigo = Convert.ToInt16(row[0].ToString());
+                        venta.numero_factura = row[1].ToString();
+                        venta.codigo_cliente = Convert.ToInt16(row[2].ToString());
+                        venta.fecha = Convert.ToDateTime(row[3].ToString());
+                        venta.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        venta.ncf = row[5].ToString();
+                        venta.tipo_venta = row[6].ToString();
+                        venta.activo = Convert.ToBoolean(row[7]);
+                        venta.pagada = Convert.ToBoolean(row[8]);
+                        venta.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        venta.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        venta.codigo_empelado_anular = Convert.ToInt16(row[11].ToString());
+                        venta.motivo_anulada = row[12].ToString();
+                        venta.detalle = row[13].ToString();
+                        lista.Add(venta);
+                    }
                 }
                 return lista;
             }
@@ -358,47 +336,48 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-        //get lista compra by suplidor
-        public List<compra> getListaCompraBySuplidor(int id)
+        //get lista venta by cliente id
+        public List<venta> getListaVentasByClienteId(int id)
         {
             try
             {
-                List<compra> lista = new List<compra>();
-                compra compra = new compra();
-                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra where cod_suplidor='" + id + "'";
+                List<venta> lista=new List<venta>();
+                venta venta = new venta();
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta where codigo_cliente='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    compra = new compra();
-                    compra.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    compra.numero_factura = ds.Tables[0].Rows[0][1].ToString();
-                    compra.cod_suplidor = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    compra.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
-                    compra.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
-                    compra.ncf = ds.Tables[0].Rows[0][5].ToString();
-                    compra.tipo_compra = ds.Tables[0].Rows[0][6].ToString();
-                    compra.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
-                    compra.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
-                    compra.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
-                    compra.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
-                    compra.codigo_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
-                    compra.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
-                    compra.detalle = ds.Tables[0].Rows[0][13].ToString();
-                    compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14]);
-                    lista.Add(compra);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        venta.codigo = Convert.ToInt16(row[0].ToString());
+                        venta.numero_factura = row[1].ToString();
+                        venta.codigo_cliente = Convert.ToInt16(row[2].ToString());
+                        venta.fecha = Convert.ToDateTime(row[3].ToString());
+                        venta.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        venta.ncf = row[5].ToString();
+                        venta.tipo_venta = row[6].ToString();
+                        venta.activo = Convert.ToBoolean(row[7]);
+                        venta.pagada = Convert.ToBoolean(row[8]);
+                        venta.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        venta.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        venta.codigo_empelado_anular = Convert.ToInt16(row[11].ToString());
+                        venta.motivo_anulada = row[12].ToString();
+                        venta.detalle = row[13].ToString();
+                        lista.Add(venta);
+                    }
                 }
                 return lista;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCompraBySuplidor.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getListaVentasByClienteId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
-        //get compra pago by id
-        public venta_vs_cobros getVentaPagoById(int codigoVentaPago)
+       
+        //get venta pago by id
+        public venta_vs_cobros getVentaCobroById(int codigoVentaPago)
         {
-        
             try
             {
                 venta_vs_cobros CobroDetalle = new venta_vs_cobros();
@@ -415,17 +394,16 @@ namespace IrisContabilidad.modelos
                     CobroDetalle.cod_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][5].ToString());
                     CobroDetalle.motivo_anulado = ds.Tables[0].Rows[0][6].ToString();
                     CobroDetalle.cuadrado = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
-
                 }
                 return CobroDetalle;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getVentaPagoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getVentaCobroById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
-        //get lista compra pago detalle by codigo compra pago
+        //get lista venta cobro detalle by codigo compra pago
         public List<venta_vs_cobros_detalles> getListaVentaCobroDetalleByIdVentaCobro(int codigoCobro, bool SoloActivo = true)
         {
             try
@@ -443,15 +421,15 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        venta_vs_cobros_detalles compraCobroDetalle = new venta_vs_cobros_detalles();
-                        compraCobroDetalle.codigo = Convert.ToInt16(row[0].ToString());
-                        compraCobroDetalle.codigo_cobro = Convert.ToInt16(row[1].ToString());
-                        compraCobroDetalle.codigo_venta = Convert.ToInt16(row[2].ToString());
-                        compraCobroDetalle.codigo_metodo_cobro = Convert.ToInt16(row[3].ToString());
-                        compraCobroDetalle.monto_cobrado = Convert.ToDecimal(row[4].ToString());
-                        compraCobroDetalle.monto_descontado = Convert.ToDecimal(row[5].ToString());
-                        compraCobroDetalle.activo = Convert.ToBoolean(row[6]);
-                        lista.Add(compraCobroDetalle);
+                        venta_vs_cobros_detalles ventaCobroDetalle = new venta_vs_cobros_detalles();
+                        ventaCobroDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        ventaCobroDetalle.codigo_cobro = Convert.ToInt16(row[1].ToString());
+                        ventaCobroDetalle.codigo_venta = Convert.ToInt16(row[2].ToString());
+                        ventaCobroDetalle.codigo_metodo_cobro = Convert.ToInt16(row[3].ToString());
+                        ventaCobroDetalle.monto_cobrado = Convert.ToDecimal(row[4].ToString());
+                        ventaCobroDetalle.monto_descontado = Convert.ToDecimal(row[5].ToString());
+                        ventaCobroDetalle.activo = Convert.ToBoolean(row[6]);
+                        lista.Add(ventaCobroDetalle);
                     }
                 }
                 return lista;
@@ -578,5 +556,175 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        public int getNextCobro()
+        {
+            try
+            {
+                string sql = "select max(codigo)from venta_vs_cobros";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                int id = 0;
+                if (ds.Tables[0].Rows[0][0].ToString() == null || ds.Tables[0].Rows[0][0].ToString() == "")
+                {
+                    id = 0;
+                }
+                else
+                {
+                    id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                }
+                id += 1;
+                return id;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getNextPago.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
+        //get lista venta detalle by venta
+        public List<venta_detalle> getListaVentaDetalleByVenta(int id)
+        {
+            try
+            {
+                List<venta_detalle> lista = new List<venta_detalle>();
+                venta_detalle ventaDetalle = new venta_detalle();
+                string sql = "select codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itbis,descuento,activo from venta_detalle where cod_venta='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        ventaDetalle = new venta_detalle();
+                        ventaDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        ventaDetalle.cod_venta = Convert.ToInt16(row[1].ToString());
+                        ventaDetalle.codigo_producto = Convert.ToInt16(row[2].ToString());
+                        ventaDetalle.codigo_unidad = Convert.ToInt16(row[3].ToString());
+                        ventaDetalle.cantidad = Convert.ToDecimal(row[4].ToString());
+                        ventaDetalle.precio = Convert.ToDecimal(row[5].ToString());
+                        ventaDetalle.monto = Convert.ToDecimal(row[6].ToString());
+                        ventaDetalle.monto_itebis = Convert.ToDecimal(row[7].ToString());
+                        ventaDetalle.monto_descuento = Convert.ToDecimal(row[8].ToString());
+                        ventaDetalle.activo = Convert.ToBoolean(row[9]);
+                        lista.Add(ventaDetalle);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentaDetalleByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get lista cobros by venta
+        public List<venta_vs_cobros> getListaCobrosByVenta(int id)
+        {
+            try
+            {
+                List<venta_vs_cobros> lista = new List<venta_vs_cobros>();
+                venta_vs_cobros cobro = new venta_vs_cobros();
+                string sql = "select codigo,fecha,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado,detalle from venta_vs_cobros where codigo='"+id+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        cobro = new venta_vs_cobros();
+                        cobro.codigo = Convert.ToInt16(row[0].ToString());
+                        cobro.fecha = Convert.ToDateTime(row[1].ToString());
+                        cobro.cod_empleado = Convert.ToInt16(row[2].ToString());
+                        cobro.activo = Convert.ToBoolean(row[3]);
+                        cobro.cod_empleado_anular = Convert.ToInt16(row[4].ToString());
+                        cobro.motivo_anulado = row[5].ToString();
+                        cobro.cuadrado = Convert.ToBoolean(row[6]);
+                        cobro.detalle = row[7].ToString();
+                        lista.Add(cobro);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCobrosByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get lista cobros detalle by venta
+        public List<venta_vs_cobros_detalles> getListaCobrosDetallesByVenta(int id)
+        {
+            try
+            {
+                List<venta_vs_cobros_detalles> lista = new List<venta_vs_cobros_detalles>();
+                venta_vs_cobros_detalles cobroDetalle = new venta_vs_cobros_detalles();
+                string sql = "select codigo,cod_cobro,cod_metodo_cobro,monto_cobrado,monto_descontado,activo,cod_venta from venta_vs_cobros_detalles where cod_cobro='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        cobroDetalle = new venta_vs_cobros_detalles();
+                        cobroDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        cobroDetalle.codigo_cobro = Convert.ToInt16(row[1].ToString());
+                        cobroDetalle.codigo_metodo_cobro = Convert.ToInt16(row[2].ToString());
+                        cobroDetalle.monto_cobrado = Convert.ToDecimal(row[3]);
+                        cobroDetalle.monto_descontado = Convert.ToDecimal(row[4].ToString());
+                        cobroDetalle.activo = Convert.ToBoolean(row[5]);
+                        cobroDetalle.codigo_venta = Convert.ToInt16(row[6]);
+                        lista.Add(cobroDetalle);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCobrosDetallesByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get monto pendiente by venta
+        public decimal getMontoPendienteBycompra(int id)
+        {
+            try
+            {
+                decimal montoVenta = 0;
+                decimal montoPendiente = 0;
+                decimal montoCobrado = 0;
+
+
+                List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
+                List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
+
+                listaVentaDetalle = getListaVentaDetalleByVenta(id);
+                listaCobrosDetalle = getListaCobrosDetallesByVenta(id);
+
+                if (listaVentaDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaVentaDetalle.ForEach(x =>
+                    {
+                        montoVenta += x.monto + x.monto_descuento;
+                    });
+                }
+
+                if (listaCobrosDetalle.Count > 0)
+                {
+                    listaCobrosDetalle.ForEach(x =>
+                    {
+                        montoCobrado += x.monto_cobrado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoVenta - montoCobrado;
+
+                return montoPendiente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoPendienteBycompra.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return -1;
+            }
+        }
     }
 }

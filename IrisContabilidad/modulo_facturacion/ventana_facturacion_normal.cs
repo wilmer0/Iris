@@ -159,6 +159,7 @@ namespace IrisContabilidad.modulo_facturacion
             try
             {
 
+                
                 //validar que el usuario actual es cajero
                 cajero = modeloCajero.getCajeroByIdEmpleado(empleado.codigo);
                 if (cajero == null)
@@ -166,7 +167,6 @@ namespace IrisContabilidad.modulo_facturacion
                     MessageBox.Show("Su usuario no es cajero, no puede realizar ventas", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
                 //si tiene una compra existente abierta
                 if (venta != null)
                 {
@@ -175,6 +175,7 @@ namespace IrisContabilidad.modulo_facturacion
                     MessageBox.Show("Tiene una compra existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+               
                 //suplidor
                 if (cliente == null)
                 {
@@ -183,24 +184,13 @@ namespace IrisContabilidad.modulo_facturacion
                     MessageBox.Show("Falta el suplidor", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-                
-                //numero comprobante fiscal que no lo tenga ese mismo suplidor
-                //if (numerocComprobanteFiscalText.Text.Trim() == "")
-                //{
-                //    numerocComprobanteFiscalText.Focus();
-                //    numerocComprobanteFiscalText.SelectAll();
-                //    MessageBox.Show("Falta el número de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    return false;
-                //}
-                //else
-                //{
-                //    //valaidar que ese comprobante no se repita
-                //    if (listaVenta.FindAll(x => x.ncf.ToLower() == numerocComprobanteFiscalText.Text.ToLower()).Count > 0)
-                //    {
-                //        MessageBox.Show("Existe una compra con ese mismo número de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //        return false;
-                //    }
-                //}
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    productoIdText.Focus();
+                    productoIdText.SelectAll();
+                    MessageBox.Show("No hay productos para realizar la venta", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
 
                 //tipo de compra
                 if (tipoVentaComboBox.Text.Trim() == "")
@@ -319,8 +309,12 @@ namespace IrisContabilidad.modulo_facturacion
                         //la compra no es al contado entonces solo se guarda pero no hay desglose de pago
                         if (modeloVenta.agregarVenta(venta, listaVentaDetalle) == true)
                         {
+                            if (MessageBox.Show("Se agregó, desea Imprimir la venta?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                modeloReporte.imprimirVenta(venta.codigo);
+                            }
                             venta = null;
-                            MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            loadVentana();
                         }
                         else
                         {

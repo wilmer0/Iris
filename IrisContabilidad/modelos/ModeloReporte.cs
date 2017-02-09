@@ -57,7 +57,7 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
-        public bool imprirmiCompraPago(int codigoPago)
+        public bool imprirmirCompraPago(int codigoPago)
         {
             try
             {
@@ -150,6 +150,61 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+
+        public bool imprirmirVentaCobro(int codigoCobro)
+        {
+            try
+            {
+                String reporte = "IrisContabilidad.reportes.reporte_venta_cobro_hoja_completa.rdlc";
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                List<reporte_venta_cobro_encabezado> listaReporteVentaEncabezado = new List<reporte_venta_cobro_encabezado>();
+                reporte_venta_cobro_encabezado reporteVentaCobroEncabezado;
+                List<reporte_venta_cobro_detalle> listaReporteVentaCobroDetalle = new List<reporte_venta_cobro_detalle>();
+                List<venta_vs_cobros_detalles> listaVentaCobroDetalles = new List<venta_vs_cobros_detalles>();
+
+                //llenar encabezado
+                reporteVentaCobroEncabezado = new reporte_venta_cobro_encabezado(codigoCobro);
+                listaReporteVentaEncabezado.Add(reporteVentaCobroEncabezado);
+
+                //llenar detalle ya esta en el constructor
+                listaVentaCobroDetalles = new modeloVenta().getListaVentaCobroDetalleByIdVentaCobro(codigoCobro);
+                listaVentaCobroDetalles.ForEach(x =>
+                {
+                    compra compra = new modeloCompra().getCompraById(x.codigo_venta);
+                    reporte_venta_cobro_detalle reporteVentaCobroDetalle = new reporte_venta_cobro_detalle();
+                    reporteVentaCobroDetalle.numero_venta = utilidades.getRellenar(x.codigo_venta.ToString(), '0', 9);
+                    reporteVentaCobroDetalle.codigo_venta = x.codigo_venta;
+                    reporteVentaCobroDetalle.fecha_venta = utilidades.getFechaddMMyyyy(compra.fecha);
+                    reporteVentaCobroDetalle.monto_descuento = x.monto_descontado;
+                    reporteVentaCobroDetalle.monto_cobrado = x.monto_cobrado;
+                    reporteVentaCobroDetalle.codigo_metodo_cobro = x.codigo_metodo_cobro;
+
+                    reporteVentaCobroDetalle.metodo_cobro = new modeloMetodoPago().getMetodoPagoById(x.codigo_metodo_cobro).metodo;
+                    listaReporteVentaCobroDetalle.Add(reporteVentaCobroDetalle);
+                });
+
+                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteVentaEncabezado);
+                listaReportDataSource.Add(reporteGrafico);
+
+                ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", listaReporteVentaCobroDetalle);
+                listaReportDataSource.Add(reporteProblemas);
+
+
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                ventana.ShowDialog();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprirmirVentaCobro.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+
+
+
 
 
     }

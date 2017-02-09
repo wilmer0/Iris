@@ -148,6 +148,8 @@
     <Compile Include="clases_reportes\reporte_compra_pago_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_venta_cobro_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_venta_cobro_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
     <Compile Include="clases_reportes\reporte_venta_encabezado.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
@@ -386,6 +388,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_vendedor.Designer.cs">
       <DependentUpon>ventana_vendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_cobros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_cobros.Designer.cs">
+      <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_almacen.cs">
       <SubType>Form</SubType>
@@ -671,6 +679,9 @@
     <EmbeddedResource Include="modulo_facturacion\ventana_vendedor.resx">
       <DependentUpon>ventana_vendedor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_venta_cobros.resx">
+      <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_almacen.resx">
       <DependentUpon>ventana_almacen.cs</DependentUpon>
     </EmbeddedResource>
@@ -770,6 +781,7 @@
     <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_pago_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_venta_cobro_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_hoja_completa.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
@@ -781,6 +793,8 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_cobro_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_cobro_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_encabezado.datasource" />
     <None Include="Properties\Settings.settings">
