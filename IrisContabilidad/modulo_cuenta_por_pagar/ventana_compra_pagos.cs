@@ -14,7 +14,7 @@ using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {
-    public partial class ventana_venta_cobro : formBase
+    public partial class ventana_compra_pagos : formBase
     {
 
         //objetos
@@ -55,7 +55,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private decimal itebis_monto = 0;
 
 
-        public ventana_venta_cobro()
+        public ventana_compra_pagos()
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();
@@ -86,7 +86,6 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             try
             {
-
                 return true;
             }
             catch (Exception ex)
@@ -295,9 +294,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             {
                 getAction();
                 calcularTotal();
-
             }
-           
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -319,6 +316,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 listaCompra = modeloCompra.getListaCompraBySuplidor(suplidor.codigo);
                 //filtrando las compra que esten activa, que no esten pagada y que no sean a contado
                 listaCompra = listaCompra.FindAll(x => x.pagada == false && x.activo==true && x.tipo_compra!="CON").ToList();
+                listaCompra = listaCompra.OrderByDescending(x => x.codigo).ToList();
                 foreach(var x in listaCompra)
                 {
                     decimal montoPendiente = 0;
