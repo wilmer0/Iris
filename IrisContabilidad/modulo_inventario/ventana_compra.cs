@@ -317,7 +317,6 @@ namespace IrisContabilidad.modulo_inventario
                         //la compra no es al contado entonces solo se guarda pero no hay desglose de pago
                         if(modeloCompra.agregarCompra(compra,listaCompraDetalle)==true)
                         {
-                            compra = null;
                             if (MessageBox.Show("Se agregó, desea Imprimir la compra?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 modeloReporte.imprimirCompra(compra.codigo);

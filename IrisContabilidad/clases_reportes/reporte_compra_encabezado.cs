@@ -52,8 +52,19 @@ namespace IrisContabilidad.clases_reportes
 
             this.empleadoImpresion = singleton.getEmpleado().nombre;
             this.empresa = empresa.nombre;
-            
-            this.telefonos = sucursal.telefono1+" / "+sucursal.telefono2;
+
+            if (sucursal.telefono1 != "")
+            {
+                this.telefonos = sucursal.telefono1;
+            }
+            this.telefonos = sucursal.telefono1;
+            if (this.telefonos=="" && sucursal.telefono2 != "")
+            {
+                this.telefonos = sucursal.telefono2;
+            }else if (this.telefonos!="" && sucursal.telefono2 != "")
+            {
+                this.telefonos += " / " + sucursal.telefono2;
+            }
             this.rnc = empresa.rnc;
             this.direccion = sucursal.direccion;
             this.fecha_impresion = utilidades.getFechaddMMyyyyhhmmsstt(DateTime.Now);
@@ -66,8 +77,6 @@ namespace IrisContabilidad.clases_reportes
             this.suplidor_rnc = suplidor.rnc;
             this.empleado = empleado.nombre;
             this.tipo_compra = compra.tipo_compra;
-
-
             listaCompraDetalle = new modeloCompra().getListaCompraDetalleByCompra(compra.codigo);
             listaCompraDetalle.ForEach(x =>
             {

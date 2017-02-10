@@ -50,7 +50,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -84,7 +84,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -118,7 +118,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -152,7 +152,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -186,7 +186,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -220,7 +220,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -254,7 +254,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Left</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -288,7 +288,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Center</TextAlign>
+                            <TextAlign>Right</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -356,7 +356,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>nombre</rd:DefaultName>
@@ -386,7 +388,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>referencia</rd:DefaultName>
@@ -416,7 +420,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>almacen</rd:DefaultName>
@@ -446,7 +452,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>unidad_minima</rd:DefaultName>
@@ -476,7 +484,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>categoria</rd:DefaultName>
@@ -506,7 +516,9 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>subcategoria</rd:DefaultName>
@@ -584,10 +596,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>reporte_detalle</DataSetName>
-        <Top>0.125in</Top>
-        <Left>0.09719in</Left>
+        <Top>0.02778in</Top>
+        <Left>0.09718in</Left>
         <Height>0.5in</Height>
-        <Width>8.03125in</Width>
+        <Width>8.03127in</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -601,79 +613,10 @@
   <Width>8.37375in</Width>
   <Page>
     <PageHeader>
-      <Height>2.88541in</Height>
+      <Height>1.84375in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="Textbox1">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!empresa.Value, "reporte_encabezado")</Value>
-                  <Style>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.04167in</Top>
-          <Left>0.09719in</Left>
-          <Height>0.3125in</Height>
-          <Width>8.03125in</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Textbox Name="Textbox2">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>=First(Fields!direccion.Value, "reporte_encabezado")</Value>
-                  <Style>
-                    <FontSize>12pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.38195in</Top>
-          <Left>0.09719in</Left>
-          <Height>0.3125in</Height>
-          <Width>8.03125in</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
         <Textbox Name="Textbox3">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -694,11 +637,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.70834in</Top>
+          <Top>0.125in</Top>
           <Left>0.0972in</Left>
           <Height>0.3125in</Height>
           <Width>8.03125in</Width>
-          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -729,11 +671,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.63195in</Top>
-          <Left>0.09719in</Left>
-          <Height>0.25in</Height>
+          <Top>0.72917in</Top>
+          <Left>0.09718in</Left>
+          <Height>0.27083in</Height>
           <Width>1in</Width>
-          <ZIndex>3</ZIndex>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -763,11 +705,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.89584in</Top>
-          <Left>0.09719in</Left>
-          <Height>0.25in</Height>
+          <Top>0.99306in</Top>
+          <Left>0.09718in</Left>
+          <Height>0.27083in</Height>
           <Width>1in</Width>
-          <ZIndex>4</ZIndex>
+          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -797,11 +739,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>2.15973in</Top>
-          <Left>0.09719in</Left>
-          <Height>0.25in</Height>
+          <Top>1.25695in</Top>
+          <Left>0.09718in</Left>
+          <Height>0.27083in</Height>
           <Width>1in</Width>
-          <ZIndex>5</ZIndex>
+          <ZIndex>3</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -831,11 +773,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>2.42362in</Top>
-          <Left>0.09719in</Left>
-          <Height>0.25in</Height>
+          <Top>1.52084in</Top>
+          <Left>0.09718in</Left>
+          <Height>0.27083in</Height>
           <Width>1in</Width>
-          <ZIndex>6</ZIndex>
+          <ZIndex>4</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -865,11 +807,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.88195in</Top>
-          <Left>5.03122in</Left>
-          <Height>0.25in</Height>
+          <Top>0.99306in</Top>
+          <Left>5.03121in</Left>
+          <Height>0.27083in</Height>
           <Width>1.125in</Width>
-          <ZIndex>7</ZIndex>
+          <ZIndex>5</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -899,11 +841,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>2.14584in</Top>
-          <Left>5.03122in</Left>
-          <Height>0.25in</Height>
+          <Top>1.25695in</Top>
+          <Left>5.03121in</Left>
+          <Height>0.27083in</Height>
           <Width>1.125in</Width>
-          <ZIndex>8</ZIndex>
+          <ZIndex>6</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -933,11 +875,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>2.40973in</Top>
-          <Left>5.03122in</Left>
-          <Height>0.25in</Height>
+          <Top>1.52084in</Top>
+          <Left>5.03121in</Left>
+          <Height>0.27083in</Height>
           <Width>1.125in</Width>
-          <ZIndex>9</ZIndex>
+          <ZIndex>7</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -965,11 +907,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.63195in</Top>
-          <Left>1.11108in</Left>
-          <Height>0.25in</Height>
+          <Top>0.72917in</Top>
+          <Left>1.11107in</Left>
+          <Height>0.27083in</Height>
           <Width>2.62153in</Width>
-          <ZIndex>10</ZIndex>
+          <ZIndex>8</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -997,11 +939,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.89584in</Top>
-          <Left>1.11108in</Left>
-          <Height>0.25in</Height>
+          <Top>0.99306in</Top>
+          <Left>1.11107in</Left>
+          <Height>0.27083in</Height>
           <Width>2.62153in</Width>
-          <ZIndex>11</ZIndex>
+          <ZIndex>9</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1029,11 +971,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>2.15973in</Top>
-          <Left>1.11108in</Left>
-          <Height>0.25in</Height>
+          <Top>1.25695in</Top>
+          <Left>1.11107in</Left>
+          <Height>0.27083in</Height>
           <Width>2.62153in</Width>
-          <ZIndex>12</ZIndex>
+          <ZIndex>10</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1061,11 +1003,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>2.42362in</Top>
-          <Left>1.11108in</Left>
-          <Height>0.25in</Height>
+          <Top>1.52084in</Top>
+          <Left>1.11107in</Left>
+          <Height>0.27083in</Height>
           <Width>2.62153in</Width>
-          <ZIndex>13</ZIndex>
+          <ZIndex>11</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1093,11 +1035,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.88195in</Top>
-          <Left>6.17011in</Left>
-          <Height>0.25in</Height>
-          <Width>1.95833in</Width>
-          <ZIndex>14</ZIndex>
+          <Top>0.99306in</Top>
+          <Left>6.1701in</Left>
+          <Height>0.27083in</Height>
+          <Width>1.95834in</Width>
+          <ZIndex>12</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1125,11 +1067,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>2.14584in</Top>
-          <Left>6.17011in</Left>
-          <Height>0.25in</Height>
-          <Width>1.95833in</Width>
-          <ZIndex>15</ZIndex>
+          <Top>1.25695in</Top>
+          <Left>6.1701in</Left>
+          <Height>0.27083in</Height>
+          <Width>1.95834in</Width>
+          <ZIndex>13</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1159,11 +1101,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>2.40973in</Top>
-          <Left>6.17011in</Left>
-          <Height>0.25in</Height>
-          <Width>1.95833in</Width>
-          <ZIndex>16</ZIndex>
+          <Top>1.52084in</Top>
+          <Left>6.1701in</Left>
+          <Height>0.27083in</Height>
+          <Width>1.95834in</Width>
+          <ZIndex>14</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1193,11 +1135,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.36806in</Top>
-          <Left>0.0972in</Left>
-          <Height>0.25in</Height>
+          <Top>0.46528in</Top>
+          <Left>0.09719in</Left>
+          <Height>0.27083in</Height>
           <Width>1in</Width>
-          <ZIndex>17</ZIndex>
+          <ZIndex>15</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1225,11 +1167,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.36806in</Top>
-          <Left>1.11109in</Left>
-          <Height>0.25in</Height>
+          <Top>0.46528in</Top>
+          <Left>1.11108in</Left>
+          <Height>0.27083in</Height>
           <Width>2.62153in</Width>
-          <ZIndex>18</ZIndex>
+          <ZIndex>16</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1259,11 +1201,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox47</rd:DefaultName>
-          <Top>1.61806in</Top>
-          <Left>5.15622in</Left>
-          <Height>0.25in</Height>
-          <Width>1in</Width>
-          <ZIndex>19</ZIndex>
+          <Top>0.72917in</Top>
+          <Left>5.03121in</Left>
+          <Height>0.27083in</Height>
+          <Width>1.125in</Width>
+          <ZIndex>17</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1293,11 +1235,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox55</rd:DefaultName>
-          <Top>1.61806in</Top>
-          <Left>6.17011in</Left>
-          <Height>0.25in</Height>
-          <Width>1.95833in</Width>
-          <ZIndex>20</ZIndex>
+          <Top>0.72917in</Top>
+          <Left>6.1701in</Left>
+          <Height>0.27083in</Height>
+          <Width>1.95834in</Width>
+          <ZIndex>18</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1327,11 +1269,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox4</rd:DefaultName>
-          <Top>1.35417in</Top>
-          <Left>5.15622in</Left>
-          <Height>0.25in</Height>
-          <Width>1in</Width>
-          <ZIndex>21</ZIndex>
+          <Top>0.46528in</Top>
+          <Left>5.03121in</Left>
+          <Height>0.27083in</Height>
+          <Width>1.125in</Width>
+          <ZIndex>19</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1357,11 +1299,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox5</rd:DefaultName>
-          <Top>1.35417in</Top>
-          <Left>6.17011in</Left>
-          <Height>0.25in</Height>
-          <Width>1.95833in</Width>
-          <ZIndex>22</ZIndex>
+          <Top>0.46528in</Top>
+          <Left>6.1701in</Left>
+          <Height>0.27083in</Height>
+          <Width>1.95834in</Width>
+          <ZIndex>20</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>

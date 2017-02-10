@@ -542,7 +542,7 @@ namespace IrisContabilidad.modelos
                     {
                         activo = 1;
                     }
-                    sql = "insert into venta_vs_pagos_detalles(codigo,cod_cobro,cod_venta,cod_metodo_cobro,monto_cobrado,monto_descontado,activo) values('" + x.codigo + "','" + x.codigo_cobro + "','" + x.codigo_venta + "','" + x.codigo_metodo_cobro + "','" + x.monto_cobrado + "','" + x.monto_descontado + "','" + activo + "')";
+                    sql = "insert into venta_vs_cobros_detalles(codigo,cod_cobro,cod_venta,cod_metodo_cobro,monto_cobrado,monto_descontado,activo) values('" + x.codigo + "','" + x.codigo_cobro + "','" + x.codigo_venta + "','" + x.codigo_metodo_cobro + "','" + x.monto_cobrado + "','" + x.monto_descontado + "','" + activo + "')";
                     utilidades.ejecutarcomando_mysql(sql);
 
                 });
@@ -551,7 +551,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error setVentaPCobro.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error setVentaCobro.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -588,7 +588,7 @@ namespace IrisContabilidad.modelos
             {
                 List<venta_detalle> lista = new List<venta_detalle>();
                 venta_detalle ventaDetalle = new venta_detalle();
-                string sql = "select codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itbis,descuento,activo from venta_detalle where cod_venta='" + id + "'";
+                string sql = "select codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo from venta_detalle where cod_venta='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -683,7 +683,7 @@ namespace IrisContabilidad.modelos
         }
 
         //get monto pendiente by venta
-        public decimal getMontoPendienteBycompra(int id)
+        public decimal getMontoPendienteByVenta(int id)
         {
             try
             {
@@ -721,9 +721,49 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getMontoPendienteBycompra.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getMontoPendienteByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return -1;
+            }
+        }
+
+        //get lista venta by cliente
+        public List<venta> getListaVentaByClienteId(int id)
+        {
+            try
+            {
+                List<venta> lista = new List<venta>();
+                venta venta = new venta();
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta where codigo_cliente='"+id+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        venta = new venta();
+                        venta.codigo = Convert.ToInt16(row[0].ToString());
+                        venta.numero_factura = row[1].ToString();
+                        venta.codigo_cliente = Convert.ToInt16(row[2].ToString());
+                        venta.fecha = Convert.ToDateTime(row[3].ToString());
+                        venta.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        venta.ncf = row[5].ToString();
+                        venta.tipo_venta = row[6].ToString();
+                        venta.activo = Convert.ToBoolean(row[7]);
+                        venta.pagada = Convert.ToBoolean(row[8]);
+                        venta.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        venta.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        venta.codigo_empelado_anular = Convert.ToInt16(row[11].ToString());
+                        venta.motivo_anulada = row[12].ToString();
+                        venta.detalle = row[13].ToString();
+                        lista.Add(venta);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentaByClienteId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
     }
