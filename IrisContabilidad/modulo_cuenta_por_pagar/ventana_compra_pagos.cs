@@ -86,6 +86,20 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
+                if (suplidor == null)
+                {
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+                    MessageBox.Show("Debe seleccionar un suplidor", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                if (dataGridView1.Rows.Count==0)
+                {
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+                    MessageBox.Show("No hay facturas", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
                 return true;
             }
             catch (Exception ex)

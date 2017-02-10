@@ -33,9 +33,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.suplidorText = new System.Windows.Forms.TextBox();
+            this.clienteText = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
-            this.suplidorIdText = new System.Windows.Forms.TextBox();
+            this.clienteIdText = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,9 +93,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.suplidorText);
+            this.groupBox1.Controls.Add(this.clienteText);
             this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.suplidorIdText);
+            this.groupBox1.Controls.Add(this.clienteIdText);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1086, 97);
@@ -109,20 +109,20 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(15, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 78;
-            this.label2.Text = "Suplidor";
+            this.label2.Text = "Cliente";
             // 
-            // suplidorText
+            // clienteText
             // 
-            this.suplidorText.BackColor = System.Drawing.Color.White;
-            this.suplidorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suplidorText.Location = new System.Drawing.Point(96, 54);
-            this.suplidorText.MaxLength = 200;
-            this.suplidorText.Name = "suplidorText";
-            this.suplidorText.ReadOnly = true;
-            this.suplidorText.Size = new System.Drawing.Size(236, 26);
-            this.suplidorText.TabIndex = 77;
+            this.clienteText.BackColor = System.Drawing.Color.White;
+            this.clienteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clienteText.Location = new System.Drawing.Point(96, 54);
+            this.clienteText.MaxLength = 200;
+            this.clienteText.Name = "clienteText";
+            this.clienteText.ReadOnly = true;
+            this.clienteText.Size = new System.Drawing.Size(236, 26);
+            this.clienteText.TabIndex = 77;
             // 
             // button5
             // 
@@ -136,15 +136,15 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // suplidorIdText
+            // clienteIdText
             // 
-            this.suplidorIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.suplidorIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suplidorIdText.Location = new System.Drawing.Point(96, 17);
-            this.suplidorIdText.Name = "suplidorIdText";
-            this.suplidorIdText.Size = new System.Drawing.Size(183, 26);
-            this.suplidorIdText.TabIndex = 71;
-            this.suplidorIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suplidorIdText_KeyDown);
+            this.clienteIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.clienteIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clienteIdText.Location = new System.Drawing.Point(96, 17);
+            this.clienteIdText.Name = "clienteIdText";
+            this.clienteIdText.Size = new System.Drawing.Size(183, 26);
+            this.clienteIdText.TabIndex = 71;
+            this.clienteIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suplidorIdText_KeyDown);
             // 
             // dataGridView1
             // 
@@ -281,9 +281,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 166);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 20);
+            this.label1.Size = new System.Drawing.Size(119, 20);
             this.label1.TabIndex = 105;
-            this.label1.Text = "Metodo pago";
+            this.label1.Text = "Metodo cobro";
             // 
             // metodoPagoComboBox
             // 
@@ -306,9 +306,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(500, 166);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 20);
+            this.label3.Size = new System.Drawing.Size(109, 20);
             this.label3.TabIndex = 106;
-            this.label3.Text = "Monto pago";
+            this.label3.Text = "Monto cobro";
             // 
             // montoAbonoText
             // 
@@ -376,7 +376,7 @@
             this.label5.Text = "Cambiar (F2)";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // ventana_compra_pagos
+            // ventana_venta_cobro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -394,7 +394,7 @@
             this.Controls.Add(this.button20);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ventana_compra_pagos";
+            this.Name = "ventana_venta_cobro";
             this.Text = "ventana_compra_pagos";
             this.Load += new System.EventHandler(this.ventana_compra_pagos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventana_compra_pagos_KeyDown);
@@ -427,9 +427,9 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox suplidorText;
+        private System.Windows.Forms.TextBox clienteText;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox suplidorIdText;
+        private System.Windows.Forms.TextBox clienteIdText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button19;

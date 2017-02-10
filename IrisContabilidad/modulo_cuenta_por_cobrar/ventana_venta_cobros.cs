@@ -22,30 +22,30 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
         empleado empleado;
-        private compra compra;
-        private compra_detalle compraDetalle;
+        private venta venta;
+        private venta_detalle VentaDetalle;
         private ventana_desglose_dinero ventanaDesglose;
-        private compra_vs_pagos compraPago;
-        private compra_vs_pagos_detalles compraPagoDetalle;
-        private suplidor suplidor;
+        private venta_vs_cobros ventaCobro;
+        private venta_vs_cobros_detalles ventaCobroDetalle;
+        private cliente cliente;
 
         //modelos
-        modeloCompra modeloCompra = new modeloCompra();
-        modeloSuplidor modeloSuplidor=new modeloSuplidor();
+        modeloVenta modeloVenta = new modeloVenta();
+        modeloCliente modeloCliente = new modeloCliente();
         private modeloEmpleado modeloEmpleado=new modeloEmpleado();
         ModeloReporte modeloReporte=new ModeloReporte();
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
         private decimal totalPendienteMonto = 0;
-        private decimal totalAbonadoMonto = 0;
+        private decimal totalCobradoMonto = 0;
         private string metodoPago = "";
 
         //listas
-        private List<compra_vs_pagos> listaCompraPago;
-        private List<compra_vs_pagos_detalles> listaCompraPagoDetalle;
-        private List<compra> listaCompra;
-        private List<compra_detalle> listaCompraDetalle; 
+        private List<venta_vs_cobros> listaVentaCobro;
+        private List<venta_vs_cobros_detalles> listaVentacobroDetalle;
+        private List<venta> listaVenta;
+        private List<venta_detalle> listaVentaDetalle; 
 
         //variables
         private decimal cantidad_monto = 0;
@@ -60,7 +60,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana compra pagos");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana venta cobros");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
@@ -68,13 +68,13 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             try
             {
-                suplidorIdText.Focus();
-                suplidorIdText.SelectAll();
+                clienteIdText.Focus();
+                clienteIdText.SelectAll();
 
 
                 metodoPagoComboBox.SelectedIndex = 0;
-                suplidor = null;
-                loadSuplidor();
+                cliente = null;
+                loadCliente();
                 dataGridView1.Rows.Clear();
                 
             }
@@ -87,7 +87,20 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             try
             {
-
+                if (cliente == null)
+                {
+                    clienteIdText.Focus();
+                    clienteIdText.SelectAll();
+                    MessageBox.Show("Debe seleccionar un cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    clienteIdText.Focus();
+                    clienteIdText.SelectAll();
+                    MessageBox.Show("No hay facturas", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
                 return true;
             }
             catch (Exception ex)
@@ -108,65 +121,65 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 }
 
                 //pago enzabezado
-                compraPago = new compra_vs_pagos();
-                compraPago.codigo = modeloCompra.getNextPago();
-                compraPago.fecha = DateTime.Today;
-                compraPago.detalle = "";
-                compraPago.cod_empleado = empleado.codigo;
-                compraPago.activo = true;
-                compraPago.cod_empleado_anular = 0;
-                compraPago.motivo_anulado = "";
-                compraPago.cuadrado = false;
+                ventaCobro = new venta_vs_cobros();
+                ventaCobro.codigo = modeloVenta.getNextCobro();
+                ventaCobro.fecha = DateTime.Today;
+                ventaCobro.detalle = "";
+                ventaCobro.cod_empleado = empleado.codigo;
+                ventaCobro.activo = true;
+                ventaCobro.cod_empleado_anular = 0;
+                ventaCobro.motivo_anulado = "";
+                ventaCobro.cuadrado = false;
 
 
                 //pago detalle
-                listaCompraPagoDetalle=new List<compra_vs_pagos_detalles>();
+                listaVentacobroDetalle=new List<venta_vs_cobros_detalles>();
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     //validar que tenga monto > 0 y que tenga metodo de pago
                     if (Convert.ToDecimal(row.Cells[8].Value.ToString()) > 0 && (row.Cells[9].Value.ToString() != ""))
                     {
-                        compraPagoDetalle = new compra_vs_pagos_detalles();
-                        compraPagoDetalle.codigo = 0;
-                        compraPagoDetalle.codigo_pago = compraPago.codigo;
-                        compraPagoDetalle.codigo_compra = Convert.ToInt16(row.Cells[0].Value.ToString());
+                        ventaCobroDetalle = new venta_vs_cobros_detalles();
+                        ventaCobroDetalle.codigo = 0;
+                        ventaCobroDetalle.codigo_cobro = ventaCobro.codigo;
+                        ventaCobroDetalle.codigo_venta = Convert.ToInt16(row.Cells[0].Value.ToString());
                         if (row.Cells[9].Value.ToString().ToLower() == "efe")
                         {
-                            compraPagoDetalle.codigo_metodo_pago = 1;
+                            ventaCobroDetalle.codigo_metodo_cobro = 1;
                         }
                         if (row.Cells[9].Value.ToString().ToLower() == "dep")
                         {
-                            compraPagoDetalle.codigo_metodo_pago = 2;
+                            ventaCobroDetalle.codigo_metodo_cobro = 2;
                         }
                         if (row.Cells[9].Value.ToString().ToLower() == "che")
                         {
-                            compraPagoDetalle.codigo_metodo_pago = 3;
+                            ventaCobroDetalle.codigo_metodo_cobro = 3;
                         }
-                        compraPagoDetalle.monto_pagado = Convert.ToDecimal(row.Cells[8].Value.ToString());
-                        compraPagoDetalle.monto_descontado = 0;
-                        compraPagoDetalle.activo = true;
+                        ventaCobroDetalle.monto_cobrado = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                        ventaCobroDetalle.monto_descontado = 0;
+                        ventaCobroDetalle.activo = true;
 
 
-                        listaCompraPagoDetalle.Add(compraPagoDetalle);
+                        listaVentacobroDetalle.Add(ventaCobroDetalle);
                     }
                 }
-                if((modeloCompra.setCompraPago(compraPago, listaCompraPagoDetalle)==true))
+                if((modeloVenta.setVentaCobro(ventaCobro, listaVentacobroDetalle)==true))
                 {
-                    loadSuplidor();
-                    if (MessageBox.Show("Se agregó el pago, desea imprimir el pago?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    loadCliente();
+                    if (MessageBox.Show("Se agregó el cobro, desea imprimir el cobro?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        modeloReporte.imprirmirCompraPago(compraPago.codigo);
+                        modeloReporte.imprirmirCompraPago(ventaCobro.codigo);
                     }
                 }
                 else
                 {
-                    loadSuplidor();
-                    MessageBox.Show("No se agregó el pago", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    loadCliente();
+                    MessageBox.Show("No se agregó el cobro", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
-                compra = null;
+                venta = null;
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -191,7 +204,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error eliminarProducto.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error eliminar.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void agregar()
@@ -251,16 +264,16 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 }
 
                 totalPendienteMonto = 0;
-                totalAbonadoMonto = 0;
+                totalCobradoMonto = 0;
 
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value.ToString());
-                    totalAbonadoMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalCobradoMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
                 }
                 totalPendienteText.Text = totalPendienteMonto.ToString("N");
-                totalAbonadoText.Text = totalAbonadoMonto.ToString("N");
+                totalAbonadoText.Text = totalCobradoMonto.ToString("N");
             }
             catch (Exception ex)
             {
@@ -296,55 +309,54 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             {
                 getAction();
                 calcularTotal();
-
             }
            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            suplidor = null;
+            cliente = null;
             loadVentana();
         }
 
-        public void loadCompras()
+        public void loadVentas()
         {
             try
             {
                 dataGridView1.Rows.Clear();
 
-                if (suplidor == null)
+                if (cliente == null)
                 {
                     return;
                 }
-                listaCompra = modeloCompra.getListaCompraBySuplidor(suplidor.codigo);
+                listaVenta = modeloVenta.getListaVentaByClienteId(cliente.codigo);
                 //filtrando las compra que esten activa, que no esten pagada y que no sean a contado
-                listaCompra = listaCompra.FindAll(x => x.pagada == false && x.activo==true && x.tipo_compra!="CON").ToList();
-                foreach(var x in listaCompra)
+                listaVenta = listaVenta.FindAll(x => x.pagada == false && x.activo==true && x.tipo_venta!="CON").ToList();
+                foreach(var x in listaVenta)
                 {
                     decimal montoPendiente = 0;
-                    montoPendiente = modeloCompra.getMontoPendienteBycompra(x.codigo);
+                    montoPendiente = modeloVenta.getMontoPendienteByVenta(x.codigo);
                     empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
-                    dataGridView1.Rows.Add(x.codigo,x.fecha.ToString("dd/MM/yyyy"),utilidades.getDiasByRangoFecha(x.fecha_limite,DateTime.Today),empleado.nombre,x.tipo_compra,x.ncf,x.fecha_limite.ToString("dd/MM/yyyy"),montoPendiente.ToString("N"));
+                    dataGridView1.Rows.Add(x.codigo,x.fecha.ToString("dd/MM/yyyy"),utilidades.getDiasByRangoFecha(x.fecha_limite,DateTime.Today),empleado.nombre,x.tipo_venta,x.ncf,x.fecha_limite.ToString("dd/MM/yyyy"),montoPendiente.ToString("N"));
                 }
                 calcularTotal();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error loadCompras.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loadVentas.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void loadSuplidor()
+        public void loadCliente()
         {
             try
             {
-                suplidorIdText.Text = "";
-                suplidorText.Text = "";
-                if (suplidor != null)
+                clienteIdText.Text = "";
+                clienteText.Text = "";
+                if (cliente != null)
                 {
-                    suplidorIdText.Text = suplidor.codigo.ToString();
-                    suplidorText.Text = suplidor.nombre;
-                    loadCompras();
+                    clienteIdText.Text = cliente.codigo.ToString();
+                    clienteText.Text = cliente.nombre;
+                    loadVentas();
 
                 }
                 
@@ -356,13 +368,13 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         }
         private void button5_Click(object sender, EventArgs e)
         {
-            ventana_busqueda_suplidor ventana=new ventana_busqueda_suplidor();
+            ventana_busqueda_cliente ventana = new ventana_busqueda_cliente();
             ventana.Owner = this;
             ventana.ShowDialog();
             if (ventana.DialogResult == DialogResult.OK)
             {
-                suplidor = ventana.getObjeto();
-                loadSuplidor();
+                cliente = ventana.getObjeto();
+                loadCliente();
             }
             calcularTotal();
         }
@@ -380,8 +392,8 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     metodoPagoComboBox.Focus();
                     metodoPagoComboBox.SelectAll();
 
-                    suplidor = modeloSuplidor.getSuplidorById(Convert.ToInt16(suplidorIdText.Text));
-                    loadSuplidor();
+                    cliente = modeloCliente.getClienteById(Convert.ToInt16(clienteIdText.Text));
+                    loadCliente();
                 }
             }
             catch (Exception)
