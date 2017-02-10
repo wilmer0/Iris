@@ -542,7 +542,7 @@ namespace IrisContabilidad.modelos
                     {
                         activo = 1;
                     }
-                    sql = "insert into venta_vs_pagos_detalles(codigo,cod_cobro,cod_venta,cod_metodo_cobro,monto_cobrado,monto_descontado,activo) values('" + x.codigo + "','" + x.codigo_cobro + "','" + x.codigo_venta + "','" + x.codigo_metodo_cobro + "','" + x.monto_cobrado + "','" + x.monto_descontado + "','" + activo + "')";
+                    sql = "insert into venta_vs_cobros_detalles(codigo,cod_cobro,cod_venta,cod_metodo_cobro,monto_cobrado,monto_descontado,activo) values('" + x.codigo + "','" + x.codigo_cobro + "','" + x.codigo_venta + "','" + x.codigo_metodo_cobro + "','" + x.monto_cobrado + "','" + x.monto_descontado + "','" + activo + "')";
                     utilidades.ejecutarcomando_mysql(sql);
 
                 });

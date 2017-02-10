@@ -151,7 +151,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        public bool imprirmirVentaCobro(int codigoCobro)
+        public bool imprimirVentaCobro(int codigoCobro)
         {
             try
             {

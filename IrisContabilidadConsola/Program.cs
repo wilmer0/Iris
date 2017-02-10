@@ -16,7 +16,7 @@ namespace IrisContabilidadConsola
             modeloReporte.imprimirCompra(4);
             modeloReporte.imprirmirCompraPago(4);
             modeloReporte.imprimirVenta(5);
-            modeloReporte.imprirmirVentaCobro(5);
+            modeloReporte.imprimirVentaCobro(5);
         }
     }
 }

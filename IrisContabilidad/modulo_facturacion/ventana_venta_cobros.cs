@@ -153,7 +153,7 @@ namespace IrisContabilidad.modulo_facturacion
                     loadCliente();
                     if (MessageBox.Show("Se agregó el cobro, desea imprimir el cobro?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        modeloReporte.imprirmirVentaCobro(ventaCobro.codigo);
+                        modeloReporte.imprimirVentaCobro(ventaCobro.codigo);
                     }
                 }
                 else

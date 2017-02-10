@@ -137,12 +137,12 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     //validar que tenga monto > 0 y que tenga metodo de pago
-                    if (Convert.ToDecimal(row.Cells[8].Value.ToString()) > 0 && (row.Cells[9].Value.ToString() != ""))
+                    if (Convert.ToDecimal(row.Cells[8].Value) > 0 && (row.Cells[9].Value != ""))
                     {
                         ventaCobroDetalle = new venta_vs_cobros_detalles();
                         ventaCobroDetalle.codigo = 0;
                         ventaCobroDetalle.codigo_cobro = ventaCobro.codigo;
-                        ventaCobroDetalle.codigo_venta = Convert.ToInt16(row.Cells[0].Value.ToString());
+                        ventaCobroDetalle.codigo_venta = Convert.ToInt16(row.Cells[0].Value);
                         if (row.Cells[9].Value.ToString().ToLower() == "efe")
                         {
                             ventaCobroDetalle.codigo_metodo_cobro = 1;
@@ -155,7 +155,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                         {
                             ventaCobroDetalle.codigo_metodo_cobro = 3;
                         }
-                        ventaCobroDetalle.monto_cobrado = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                        ventaCobroDetalle.monto_cobrado = Convert.ToDecimal(row.Cells[8].Value);
                         ventaCobroDetalle.monto_descontado = 0;
                         ventaCobroDetalle.activo = true;
 
@@ -168,7 +168,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     loadCliente();
                     if (MessageBox.Show("Se agregó el cobro, desea imprimir el cobro?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        modeloReporte.imprirmirCompraPago(ventaCobro.codigo);
+                        modeloReporte.imprimirVentaCobro(ventaCobro.codigo);
                     }
                 }
                 else
@@ -255,22 +255,23 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             try
             {
-                totalPendienteText.Text = "0.00";
-                totalAbonadoText.Text = "0.00";
-
                 if (dataGridView1.Rows.Count == 0 || dataGridView1.Rows == null)
                 {
                     return;
                 }
 
+                totalPendienteText.Text = "0.00";
+                totalAbonadoText.Text = "0.00";
+
+                
                 totalPendienteMonto = 0;
                 totalCobradoMonto = 0;
 
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value.ToString());
-                    totalCobradoMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value);
+                    totalCobradoMonto += Convert.ToDecimal(row.Cells[8].Value);
                 }
                 totalPendienteText.Text = totalPendienteMonto.ToString("N");
                 totalAbonadoText.Text = totalCobradoMonto.ToString("N");
@@ -376,7 +377,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 cliente = ventana.getObjeto();
                 loadCliente();
             }
-            calcularTotal();
+            
         }
 
         private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)

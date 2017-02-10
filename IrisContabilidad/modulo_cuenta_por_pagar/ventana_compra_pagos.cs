@@ -268,8 +268,8 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value.ToString());
-                    totalAbonadoMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value);
+                    totalAbonadoMonto += Convert.ToDecimal(row.Cells[8].Value);
                 }
                 totalPendienteText.Text = totalPendienteMonto.ToString("N");
                 totalAbonadoText.Text = totalAbonadoMonto.ToString("N");
