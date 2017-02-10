@@ -524,6 +524,7 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 3;
                 ventana.imagen = "cliente1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
                 ventana = new ventana();
                 ventana.nombre_ventana = "Categoria cliente";
                 ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_categoria_cliente";
@@ -531,6 +532,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 3;
                 ventana.imagen = "categoria_cliente1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Venta cobros";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_venta_cobro";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 3;
+                ventana.imagen = "venta_cobro1.png";
                 listaVentana.Add(ventana);
                 #endregion
 

@@ -24,7 +24,7 @@ namespace IrisContabilidad.clases
 
         public venta_vs_cobros_detalles(int codigoVentaPago)
         {
-            venta_vs_cobros ventaCobro = new modeloVenta().getVentaPagoById(codigoVentaPago);
+            venta_vs_cobros ventaCobro = new modeloVenta().getVentaCobroById(codigoVentaPago);
             if (ventaCobro == null)
             {
                 return;

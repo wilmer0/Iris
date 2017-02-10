@@ -254,11 +254,11 @@ namespace IrisContabilidad.modelos
                         cliente.nombre = row[1].ToString();
                         cliente.limite_credito = Convert.ToDecimal(row[2].ToString());
                         cliente.codigo_categoria = Convert.ToInt16(row[3].ToString());
-                        cliente.activo = Convert.ToBoolean(row[4].ToString());
-                        cliente.fecha_creado = Convert.ToDateTime(row[5].ToString());
-                        cliente.abrir_credito = Convert.ToBoolean(row[6].ToString());
+                        cliente.activo = Convert.ToBoolean(row[4]);
+                        cliente.fecha_creado = Convert.ToDateTime(row[5]);
+                        cliente.abrir_credito = Convert.ToBoolean(row[6]);
                         cliente.codigo_sucursal_creado = Convert.ToInt16(row[7].ToString());
-                        cliente.cliente_contado = Convert.ToBoolean(row[8].ToString());
+                        cliente.cliente_contado = Convert.ToBoolean(row[8]);
                         cliente.telefono1 = row[9].ToString();
                         cliente.telefono2 = row[10].ToString();
                         cliente.cedula = row[11].ToString();
@@ -274,8 +274,43 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error getListaByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get cliente by venta cobro
+        public cliente getClienteByVentaCobro(int codigoCobro)
+        {
+            try
+            {
+                cliente cliente = new cliente();
+                string sql = "select distinct c.codigo,c.nombre,c.limite_credito,c.cod_categoria,c.activo,c.fecha_creado,c.abrir_credito,c.cod_sucursal_creado,c.cliente_contado,c.telefono1,c.telefono2,c.cedula,c.rnc,c.cod_tipo_comprobante,c.direccion1,c.direccion2 from cliente c join venta v on v.codigo_cliente=c.codigo join venta_vs_cobros_detalles vcd on vcd.cod_venta=v.codigo where vcd.cod_cobro='"+codigoCobro+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    cliente.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    cliente.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    cliente.limite_credito = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
+                    cliente.codigo_categoria = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    cliente.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
+                    cliente.fecha_creado = Convert.ToDateTime(ds.Tables[0].Rows[0][5].ToString());
+                    cliente.abrir_credito = Convert.ToBoolean(ds.Tables[0].Rows[0][6]);
+                    cliente.codigo_sucursal_creado = Convert.ToInt16(ds.Tables[0].Rows[0][7].ToString());
+                    cliente.cliente_contado = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cliente.telefono1 = ds.Tables[0].Rows[0][9].ToString();
+                    cliente.telefono2 = ds.Tables[0].Rows[0][10].ToString();
+                    cliente.cedula = ds.Tables[0].Rows[0][11].ToString();
+                    cliente.rnc = ds.Tables[0].Rows[0][12].ToString();
+                    cliente.codigo_tipo_comprobante_fiscal = Convert.ToInt16(ds.Tables[0].Rows[0][13].ToString());
+                    cliente.direccion1 = ds.Tables[0].Rows[0][13].ToString();
+                    cliente.direccion2 = ds.Tables[0].Rows[0][14].ToString();
+                    
+                }
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getClienteByVentaCobro.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }

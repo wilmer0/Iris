@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrisContabilidad", "IrisCon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitarias", "PruebasUnitarias\PruebasUnitarias.csproj", "{7B82AFC1-7499-454B-BB66-F86B0B7CEFE5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IrisContabilidadConsola", "IrisContabilidadConsola\IrisContabilidadConsola.csproj", "{2063F499-E245-494E-9F5C-2874597D4420}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7B82AFC1-7499-454B-BB66-F86B0B7CEFE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B82AFC1-7499-454B-BB66-F86B0B7CEFE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B82AFC1-7499-454B-BB66-F86B0B7CEFE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2063F499-E245-494E-9F5C-2874597D4420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2063F499-E245-494E-9F5C-2874597D4420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2063F499-E245-494E-9F5C-2874597D4420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2063F499-E245-494E-9F5C-2874597D4420}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

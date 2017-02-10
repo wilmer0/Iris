@@ -389,8 +389,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
             try
             {
                 empleado empleado = new empleado();
-                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado where codigo='" +
-                    id + "'";
+                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado where codigo='" +id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
