@@ -170,16 +170,19 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     {
                         modeloReporte.imprimirVentaCobro(ventaCobro.codigo);
                     }
+                    ventaCobro = null;
                 }
                 else
                 {
                     loadCliente();
                     MessageBox.Show("No se agregó el cobro", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ventaCobro = null;
                 }
             }
             catch (Exception ex)
             {
                 venta = null;
+                ventaCobro = null;
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
