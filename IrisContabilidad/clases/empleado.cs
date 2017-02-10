@@ -8,6 +8,7 @@ namespace IrisContabilidad.clases
 {
     public class empleado
     {
+        
         public int codigo { get; set; }
         public string nombre { get; set; }
         public string login { get; set; }
@@ -24,6 +25,7 @@ namespace IrisContabilidad.clases
         public int codigo_tipo_nomina { get; set; }
         public string identificacion { get; set; }
         public string pasaporte { get; set; }
+        public string foto { get; set; }
 
     }
 }

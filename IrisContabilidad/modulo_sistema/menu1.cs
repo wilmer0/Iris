@@ -8,12 +8,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 using empleado = IrisContabilidad.clases.empleado;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 
 namespace IrisContabilidad.modulo_sistema
@@ -73,15 +75,28 @@ namespace IrisContabilidad.modulo_sistema
         {
             this.WindowState = FormWindowState.Maximized;
         }
+        private void BotonModuloOnClick(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                Button boton = (Button) sender;
+                //MessageBox.Show(boton.Tag.ToString());
+                loadVentanas(Convert.ToInt16(boton.Tag));
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error haciendo click en el módulo", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void loadModulos()
         {
             try
             {
-               
-               
-                listaTemp=new List<string>();
-                listaModulo=new List<modulo>();
+                listaTemp = new List<string>();
+                listaModulo = new List<modulo>();
                 listaTemp = modeloEmpleado.GetListaModulosByEmpleado(empleado);
+                List<string> listaTempVentanas = new List<string>();
 
                 //limpiar el layout de modulos para empezar agregar
                 if (flowLayoutModulos.Controls.Count > 0)
@@ -89,121 +104,162 @@ namespace IrisContabilidad.modulo_sistema
                     flowLayoutModulos.Controls.Clear();
                 }
 
-
-                //agregar cada modulo
-                listaTemp.ForEach(x =>
+                listaTemp.ForEach(moduloActual =>
                 {
-                    //MessageBox.Show(x.ToString());
-                    modulo = modeloModulo.getModuloByid(Convert.ToInt16(x));
-                    listaModulo.Add(modulo);
-
-                    botonModulo=new Button();
-                    botonModulo.FlatStyle= FlatStyle.Flat;
-                    botonModulo.BackgroundImageLayout= ImageLayout.Stretch;
-                    botonModulo.Width = 97;
-                    botonModulo.Height=77;
-                    botonModulo.BackgroundImage =Image.FromFile(RutaImagenesModulos + modulo.imagen);
-                    botonModulo.Click += (sender, args) =>
-                    {
-                        loadVentanas(modulo.id);
-                    };
-
+                    //MessageBox.Show("Modulo actual-> " + modulo);
+                    //instanciando el modulo actual
+                    modulo = new modulo();
+                    modulo = modeloModulo.getModuloByid(Convert.ToInt16(moduloActual));
+                    botonModulo = new Button();
+                    botonModulo.FlatStyle = FlatStyle.Flat;
+                    botonModulo.BackgroundImageLayout = ImageLayout.Stretch;
+                    botonModulo.Width = 165;
+                    botonModulo.Height = 140;
+                    botonModulo.BackgroundImage = Image.FromFile(RutaImagenesModulos + modulo.imagen);
+                    botonModulo.Click += BotonModuloOnClick;
+                    botonModulo.Tag = moduloActual;
+                    //letras
+                    botonModulo.TextAlign = ContentAlignment.BottomCenter;
+                    botonModulo.Text = modulo.nombre;
+                    botonModulo.ForeColor = Color.White;
+                    botonModulo.Font = new Font(botonModulo.Font.FontFamily.Name, 19);
                     flowLayoutModulos.Controls.Add(botonModulo);
+
                 });
-
-
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loadModulos.: " + ex.ToString(), "", MessageBoxButtons.OK,
-                   MessageBoxIcon.Error);
+                    MessageBoxIcon.Error);
             }
         }
         public void loadVentanas(int idModulo)
         {
             try
             {
-
-                //obteniendo las ventanas que son del modulo presionado
-                listaTemp = modeloModulo.getVentanasByModuloId(modulo.id);
-
                 //limpiar el flowlayout con las ventanas viejas
                 if (flowLayoutVentanas.Controls.Count > 0)
                 {
                     flowLayoutVentanas.Controls.Clear();
                 }
 
+                //select de las ventanas con el modulo presionado
                 //agregando las ventanas nuevas al flow layout
-                foreach (var x in listaTemp)
+                string sql = "SELECT id_modulo,id_ventana from modulos_vs_ventanas where id_modulo='"+idModulo+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                List<Button> listaBotonesVentanas=new List<Button>();
+                foreach (DataRow rowVentana  in ds.Tables[0].Rows)
                 {
-                    string sql = "SELECT codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas s where codigo ='" + x + "'";
-                    DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        foreach (DataRow row in ds.Tables[0].Rows)
-                        {
-                            botonVentana = new Button();
-                            botonVentana.FlatStyle = FlatStyle.Flat;
-                            botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
-                            botonVentana.Width = 130;
-                            botonVentana.Height = 130;
-                            //estableciendo la imagen de fondo del boton
-                            botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + row[3].ToString());
-                            botonVentana.Click += (sender, args) =>
-                            {
-                                //instanciar el formulario dinamico
-                                //obteniendo el nombre del fromulario
-                                Assembly asm = Assembly.GetEntryAssembly();
-                                Type formtype = asm.GetType("IrisContabilidad." + row[2].ToString());
-                                Form f = (Form)Activator.CreateInstance(formtype);
-                                f.Owner = this;
-                                f.ShowDialog();
-                                //MessageBox.Show("ventana-->" + ventana.codigo + "-" + ventana.nombre_ventana + "-" +
-                                //                ventana.nombre_logico + "-" + ventana.imagen + "-" + ventana.activo + "-" +
-                                //                ventana.programador);
-                            };
-
-                            flowLayoutVentanas.Controls.Add(botonVentana);
-                        }
-                    }
+                    botonVentana = new Button();
+                    ventana=new ventana();
+                    ventana.codigo = Convert.ToInt16(rowVentana[1].ToString());
+                    ventana = modeloModulo.getVentanaById(ventana.codigo);
+                    
+                    
+                    //estableciendo el estilo del boton
+                    botonVentana.FlatStyle = FlatStyle.Flat;
+                    botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
+                    botonVentana.Width = 200;
+                    botonVentana.Height = 170;
+                    
+                    
+                    //dando estilo al texto del boton
+                    //izquierda-arriba-derecha-abajo
+                    Padding espacio=new Padding(25,25,25,25);
+                    botonVentana.Margin= espacio;
+                    botonVentana.TextAlign = ContentAlignment.BottomCenter;
+                    botonVentana.Text = ventana.nombre_ventana;
+                    botonVentana.ForeColor = Color.White;
+                    botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, 20);
+                    botonVentana.MouseHover+= BotonVentanaOnMouseHover;
+                    botonVentana.MouseLeave+= BotonVentanaOnMouseLeave;
+                    
+                    
+                    //estableciendo la imagen de fondo del boton
+                    botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + ventana.imagen);
+                    botonVentana.Tag = ventana.codigo;
+                    botonVentana.Click += BotonVentanaOnClick;
+                    
+                    listaBotonesVentanas.Add(botonVentana);
+                    //flowLayoutVentanas.Controls.Add(botonVentana);
                 }
-
-                //listaVentanas.ForEach(x =>
-                //{
-                //    botonVentana = new Button();
-                //    botonVentana.FlatStyle = FlatStyle.Flat;
-                //    botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
-                //    botonVentana.Width = 130;
-                //    botonVentana.Height = 130;
-                //    botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + ventana.imagen);
-                //    botonVentana.Click += (sender, args) =>
-                //    {
-                //        //instanciar el formulario dinamico
-                //        Assembly asm = Assembly.GetEntryAssembly();
-                //        Type formtype = asm.GetType("IrisContabilidad." + ventana.nombre_logico);
-                //        Form f = (Form)Activator.CreateInstance(formtype);
-                //        f.Owner = this;
-                //        f.ShowDialog();
-                //    };
-
-                //    flowLayoutVentanas.Controls.Add(botonVentana);
-                //});
-
+                //ordenar las ventanas en orden alfabetico
+                listaBotonesVentanas = listaBotonesVentanas.OrderBy(x => x.Text).ToList();
+                listaBotonesVentanas.ForEach(x =>
+                {
+                    flowLayoutVentanas.Controls.Add(x);
+                });
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loadVentanas.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void BotonVentanaOnMouseLeave(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                Button boton = new Button();
+                boton = (Button)sender;
+
+                boton.FlatAppearance.BorderSize = 0;
+                boton.FlatAppearance.BorderColor = Color.White;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error hover de la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void BotonVentanaOnMouseHover(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                Button boton = new Button();
+                boton = (Button)sender;
+                boton.FlatAppearance.BorderSize = 10;
+                boton.FlatAppearance.BorderColor = Color.Tomato;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error hover de la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void BotonVentanaOnClick(object sender, EventArgs eventArgs)
+        {
+            try
+            {
+                Button boton = new Button();
+                boton = (Button)sender;
+                ventana = new ventana();
+                ventana = modeloModulo.getVentanaById(Convert.ToInt16(boton.Tag));
+                if (ventana != null)
+                {
+                    Assembly asm = Assembly.GetEntryAssembly();
+                    Type formtype = asm.GetType(ventana.nombre_logico);
+                    Form f = (Form)Activator.CreateInstance(formtype);
+                    f.Owner = this;
+                    f.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error instanciando la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
         public void LoadVentana()
         {
             try
             {
+                actualizarNotificacionesSistema();
                 //cargar todos los modulos que tiene habilitados el empleado con todas las ventanas que tiene habilitadas
                 loadModulos();
-
-
             }
             catch (Exception ex)
             {
@@ -214,14 +270,13 @@ namespace IrisContabilidad.modulo_sistema
         private void button4_Click(object sender, EventArgs e)
         {
             Salir();
-           
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             
         }
-        public override void Salir()
+        public  void Salir()
         {
             Form1 ventana = new Form1();
             ventana.Show();
@@ -245,12 +300,40 @@ namespace IrisContabilidad.modulo_sistema
 
         private void button5_Click_1(object sender, EventArgs e)
         {
-            ventana_cargo ventana=new ventana_cargo(empleado);
+            ventana_cargo ventana=new ventana_cargo();
             ventana.Owner = this;
             ventana.ShowDialog();
         }
 
         private void menu1_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void notificacionesBoton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        public void actualizarNotificacionesSistema()
+        {
+            try
+            {
+                //notificacionesBoton.BackColor=Color.Red;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error actualizarNotificacionesSistema.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        private void menu1_Load_1(object sender, EventArgs e)
+        {
+            LoadVentana();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

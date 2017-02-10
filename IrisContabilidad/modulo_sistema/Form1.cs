@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_empresa;
+using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad
@@ -18,6 +20,7 @@ namespace IrisContabilidad
 
         //modelos
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
+        private modeloPrimerLogin modeloPrimerLogin = new modeloPrimerLogin();
 
         //objetos
         private empleado empleado;
@@ -32,13 +35,15 @@ namespace IrisContabilidad
             this.tituloLabel.Text = "Inicio sesión";
             this.Text = tituloLabel.Text;
             usuarioText.Select();
+            utilidades.notificacionWindows("titulo prueba", "hola mundo esto es un mensaje",5);
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-        public override bool ValidarGetAction()
+        public  bool ValidarGetAction()
         {
             try
             {
@@ -66,27 +71,105 @@ namespace IrisContabilidad
             }
         }
 
-        public override void GetAction()
-        {
-            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            if (!ValidarGetAction())
-                return;
 
-            if ((empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(),utilidades.encriptar(claveText.Text.Trim()))) != null)
+        public void ValidarCrearPrimeraEmpresa()
+        {
+            try
             {
-                singleton.empleado = empleado;
-                menu1 ventana = new menu1(empleado);
-                ventana.Show();
-                this.Hide();
-                //MessageBox.Show("Existe");
+                string sql = "select *from empresa";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    //debe crear la primera empresa
+                    ventana_empresa ventana=new ventana_empresa();
+                    ventana.Owner = this;
+                    ventana.ShowDialog();
+                }
+               
             }
-            else
+            catch (Exception)
             {
-                empleado = null;
-                MessageBox.Show("No existe el usuario", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error validarPrimeraEmpresa.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        public void ValidarCrearPrimeraSucursal()
+        {
+            try
+            {
+                string sql = "select *from sucursal";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    //debe crear la primera empresa
+                    ventana_sucursal ventana = new ventana_sucursal();
+                    ventana.Owner = this;
+                    ventana.ShowDialog();
+                }
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error validarPrimeraEmpresa.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+       
+        public  void GetAction()
+        {
+            try
+            {
+                //modeloEmpleado.adminPrimerLogin();
+                if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
+                if (!ValidarGetAction())
+                    return;
+
+                modeloPrimerLogin.validarPrimerLogin();
+
+                empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));
+
+                if (empleado == null)
+                {
+                    limpiar();
+                    return;
+                }
+                //empleado = modeloEmpleado.validarLogin(usuarioText.Text, claveText.Text);
+                if (empleado.login != null || empleado.login!="")
+                {
+                    singleton.empleado = empleado;
+                    menu1 ventana = new menu1(empleado);
+                    ventana.Show();
+                    this.Hide();
+                    //MessageBox.Show(empleado.fecha_ingreso.ToString());
+                }
+                else
+                {
+                    empleado = null;
+                    MessageBox.Show("Datos incorrectos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limpiar();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error GetAction.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
+        }
+
+        public void limpiar()
+        {
+            try
+            {
+                usuarioText.Clear();
+                claveText.Clear();
+                usuarioText.Focus();
+                usuarioText.SelectAll();
+            }
+            catch (Exception)
+            {
+                
             }
         }
 
@@ -95,9 +178,9 @@ namespace IrisContabilidad
 
 
 
-        public override void Salir()
+        public  void Salir()
         {
-            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Exit();
             }
@@ -116,18 +199,35 @@ namespace IrisContabilidad
         {
             if (e.KeyCode == Keys.Enter)
             {
-                button1.Focus();
+                button1_Click(null,null);
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //empleado = modeloEmpleado.getEmpleadoById(1);
+            //empleado.clave = utilidades.encriptar("123");
+            //modeloEmpleado.modificarEmpleado(empleado);
+            //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
+            //modeloPrimerLogin.primerosDatos();
+            //modeloPrimerLogin.agregarModulos();
+            modeloPrimerLogin.agregarVentanas();
+            //modeloPrimerLogin.agregarVentanasPrimerModulo();
+            //modeloPrimerLogin.agregarPrimerEmpleado();
+            //modeloPrimerLogin.agregarAccesosVentanas();
+            
+            GetAction();
+        }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            limpiar();
+        }
 
-
-
-
-
-
-
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+       
     }
 }

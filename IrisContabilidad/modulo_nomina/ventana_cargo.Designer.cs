@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_cargo));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.CargoText = new System.Windows.Forms.TextBox();
             this.activoCheck = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cargoIdText = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
@@ -46,14 +48,10 @@
             this.panel1.Location = new System.Drawing.Point(12, 306);
             this.panel1.Size = new System.Drawing.Size(539, 54);
             // 
-            // button3
-            // 
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(200, 5);
-            // 
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -64,6 +62,12 @@
             // panel2
             // 
             this.panel2.Size = new System.Drawing.Size(563, 21);
+            // 
+            // button3
+            // 
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.Location = new System.Drawing.Point(200, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // groupBox2
             // 
@@ -110,6 +114,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cargoIdText);
             this.groupBox1.Location = new System.Drawing.Point(12, 38);
@@ -117,6 +122,19 @@
             this.groupBox1.Size = new System.Drawing.Size(532, 80);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(329, 27);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(47, 37);
+            this.button4.TabIndex = 24;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
@@ -134,7 +152,7 @@
             this.cargoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cargoIdText.Location = new System.Drawing.Point(140, 31);
             this.cargoIdText.Name = "cargoIdText";
-            this.cargoIdText.Size = new System.Drawing.Size(323, 26);
+            this.cargoIdText.Size = new System.Drawing.Size(183, 26);
             this.cargoIdText.TabIndex = 0;
             // 
             // ventana_cargo
@@ -147,10 +165,10 @@
             this.Name = "ventana_cargo";
             this.Text = "ventana_cargo";
             this.Load += new System.EventHandler(this.ventana_cargo_Load);
-            this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.panel2, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -172,5 +190,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox cargoIdText;
+        private System.Windows.Forms.Button button4;
     }
 }

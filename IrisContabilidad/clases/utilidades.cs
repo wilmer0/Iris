@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.IO.Compression;
@@ -13,8 +12,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ionic.Zip;
+using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using MySql.Data.MySqlClient;
 using CompressionLevel = Ionic.Zlib.CompressionLevel;
+using DataSet = System.Data.DataSet;
 
 namespace IrisContabilidad.clases
 {
@@ -169,22 +170,11 @@ namespace IrisContabilidad.clases
             escribir.Close();
         }
 
-
-
-        public DataSet ejecutarcomando(string query)
+        public DataSet ejecutarcomando_sql(string query)
         {
             try
             {
-                //string cmd = "select ip_server,base_datos,base_datos_usuario,base_datos_clave from sistema where ip_server!='' ";
-                //DataSet dx = utilidades.ejecutarcomando(cmd);
-                //if(dx.Tables[0].Rows[0][0].ToString()!="")
-                //{
-                //    MessageBox.Show("Ip server tiene dato");
-                //}
-
-                //funaciona nitido para conecciones desde otra maquina porq se especifica el user y password de la bd
-                //SqlConnection conn = new SqlConnection("Data Source=dlr-laptop.ddns.net,31164;" + "Initial Catalog=punto_venta;" + "User id=dextroyex;" + "Password=wilmerlomas1;");
-                SqlConnection conn = new SqlConnection("Data Source=.;" + "Initial Catalog=punto_venta;" + "User id=dextroyex;" + "Password=123456;");
+                SqlConnection conn = new SqlConnection("Data Source=.;" + "Initial Catalog=iris_contabilidad;" + "User id=dextroyex;" + "Password=wilmerlomas1;");
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -197,14 +187,12 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
-
-
-
         public DataSet ejecutarcomando_mysql(string query)
         {
             try
             {
-                MySqlConnection conn =new MySqlConnection("server=localhost;uid=root;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
+                MySqlConnection conn = new MySqlConnection("server=localhost;uid=bc;" + "pwd=BlackCode123;database=iris_contabilidad;Allow Zero Datetime=false;");
+                //MySqlConnection conn = new MySqlConnection("server=153.92.11.223;uid=bc1;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -213,6 +201,22 @@ namespace IrisContabilidad.clases
             catch (Exception ex)
             {
                 MessageBox.Show("Fallo conectando al server.:"+ex.ToString());
+                return null;
+            }
+        }
+        public DataSet ejecutarcomando_mysql_remoto(string query)
+        {
+            try
+            {
+                MySqlConnection conn = new MySqlConnection("server=127.0.0.1;uid=dextroyex;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
+                MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                DataSet ds = new DataSet();
+                da.Fill(ds);
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fallo conectando al server.:" + ex.ToString());
                 return null;
             }
         }
@@ -335,16 +339,7 @@ namespace IrisContabilidad.clases
 
 
 
-        public string getNombreTercero(string codigo)
-        {
-            string cmd = "";
-            DataSet ds;
-            cmd = "select (t.nombre+' '+p.apellido) as nombre from tercero t join persona p on p.codigo=t.codigo where t.codigo='" + codigo.ToString() + "'";
-            utilidades utilidades = new utilidades();
-            ds = utilidades.ejecutarcomando(cmd);
-            return ds.Tables[0].Rows[0][0].ToString();
-        }
-
+      
 
         public Boolean comprimirArchivo(string rutaArchivo)
         {
@@ -447,15 +442,7 @@ namespace IrisContabilidad.clases
                 return false;
             }
         }
-        //imprimir venta rollor
-
-        //imprimir factura en hoja normales 8.50 x 11
-
-
-        //imprimir cobros papel rollo
-
-
-
+       
 
         //public  Boolean limpiarDatosTodasTablasMysql()
         //{
@@ -855,35 +842,7 @@ namespace IrisContabilidad.clases
             return decimal.TryParse(Cadena, out resul);
         }
 
-        public String getRellenarConCarracter(int longitud, Boolean derecha, string caracter, String cadena)
-        {
-            String caracteres = "";
-
-
-            for (int i = cadena.Length; i < longitud; i++)
-            {
-                caracteres = caracteres + caracter;
-
-
-            }
-            if (derecha)
-            {
-                cadena = cadena + caracteres;
-
-            }
-            else
-            {
-                cadena = caracteres + cadena;
-
-            }
-
-
-
-
-
-            return cadena;
-
-        }
+      
 
 
 
@@ -1042,15 +1001,7 @@ namespace IrisContabilidad.clases
             }
         }
 
-        public static void EliminarARchivo(string fullPath)
-        {
-            if (System.IO.File.Exists(fullPath))
-            {
-                System.IO.FileInfo info = new System.IO.FileInfo(fullPath);
-                info.Attributes = System.IO.FileAttributes.Normal;
-                System.IO.File.Delete(fullPath);
-            }
-        }
+        
         public bool copiarPegarArchivo(string origPath, string destPath, bool overwrite)
         {
             try
@@ -1068,7 +1019,7 @@ namespace IrisContabilidad.clases
                 {
                     if (overwrite == true)
                     {
-                        EliminarARchivo(destPath);
+                        EliminarArchivo(destPath);
                         System.IO.File.Copy(origPath, destPath, true);
                     }
                 }
@@ -1077,6 +1028,203 @@ namespace IrisContabilidad.clases
             catch (Exception)
             {
                 return false;
+            }
+        }
+
+
+        public void validarTextBoxNumeroDecimal(KeyPressEventArgs e,string numeroCompleto)
+        {
+            if (numeroCompleto.ToString().Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        public void validarTextBoxNumeroEntero(KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+            if (char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+        }
+       
+        public bool EliminarArchivo(string rutaArchivo)
+        {
+            try
+            {
+                //validar si el archivo no existe
+                if (!File.Exists(rutaArchivo))
+                {
+                    return true;
+                }
+                File.Delete(rutaArchivo);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public void notificacionWindows(string titulo, string mensaje, int duracionSegundos, ToolTipIcon icono = ToolTipIcon.Info)
+        {
+            try
+            {
+
+                NotifyIcon notifyIcon=new NotifyIcon();
+                notifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+                notifyIcon.BalloonTipTitle = titulo;
+                notifyIcon.Text = mensaje;
+                notifyIcon.BalloonTipText = mensaje;
+                duracionSegundos *= 1000;
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip(duracionSegundos);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error notificacionWindows.:" + ex.ToString());
+                
+            }
+        }
+
+        public void getPalabraArchivoTxt(string rutaArchivo, string palabra, string delimitador = ";")
+        {
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getPalabraArchivoTxt.:" + ex.ToString());
+            }
+        }
+
+       
+
+        public string getFechaHoraMinutosSegundos(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy hh:mm:ss");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaHoraMinutosSegundos.:" + ex.ToString());
+                return null;
+            }
+        }
+        public string getFechaddMMyyyy(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaddMMyyyy.:" + ex.ToString());
+                return null;
+            }
+        }
+        public string getFechaddMMyyyyhhmmsstt(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy hh:mm:ss tt");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaddMMyyyyhhmmsstt.:" + ex.ToString());
+                return null;
+            }
+        }
+        public string getFechayyyyMMdd(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("yyyyMMdd");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechayyyyMMdd.:" + ex.ToString());
+                return null;
+            }
+        }
+
+        public string getDiasByRangoFecha(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            try
+            {
+                TimeSpan ts = fechaFinal - fechaInicial;
+                return ts.Days.ToString();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getDiasByRangoFecha.:" + ex.ToString());
+                return null;
+            }
+        }
+
+        public string getRellenar(string dato,char caracterRelleno,int numeroPosiciones,bool rellenarIzquierda=true)
+        {
+            try
+            {
+                if (rellenarIzquierda == false)
+                {
+                    //derecha
+                    dato = dato.PadRight(numeroPosiciones, caracterRelleno);
+                }
+                else
+                {
+                    //izquierda
+                    dato = dato.PadLeft(numeroPosiciones, caracterRelleno);
+                }
+                return dato;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getRellenar.:" + ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
             }
         }
     }

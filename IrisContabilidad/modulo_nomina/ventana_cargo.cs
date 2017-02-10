@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_empresa;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_nomina
@@ -19,19 +20,18 @@ namespace IrisContabilidad.modulo_nomina
         //objetos
         private cargo cargo;
         utilidades utilidades=new utilidades();
-
+        private singleton singleton=new singleton();
+        private empleado empleado;
 
 
         //modelos
         modeloCargo modeloCargo=new modeloCargo();
 
+
         public ventana_cargo()
         {
-        }
-
-        public ventana_cargo(empleado empleado)
-        {
             InitializeComponent();
+            empleado = singleton.getEmpleado();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "cargo empleado");
             this.Text = tituloLabel.Text;
             loadVentana();
@@ -44,7 +44,7 @@ namespace IrisContabilidad.modulo_nomina
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            GetAction();
         }
 
         public void loadVentana()
@@ -70,7 +70,7 @@ namespace IrisContabilidad.modulo_nomina
             }
         }
 
-        public override bool ValidarGetAction()
+        public  bool ValidarGetAction()
         {
             try
             {
@@ -88,15 +88,28 @@ namespace IrisContabilidad.modulo_nomina
             }
             catch (Exception ex)
             {
+                cargo = null;
                 MessageBox.Show("Error ValidarGetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
 
-        public override void GetAction()
+        public  void GetAction()
         {
             try
             {
+
+                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
+
+                if (!ValidarGetAction())
+                {
+                    return;
+                }
+
+
                 bool crear = false;
                 if (cargo == null)
                 {
@@ -107,7 +120,7 @@ namespace IrisContabilidad.modulo_nomina
                 }
 
                 cargo.nombre = CargoText.Text;
-                cargo.activo = Convert.ToInt16(activoCheck.Checked);
+                cargo.activo = Convert.ToBoolean(activoCheck.Checked);
 
                 if (crear)
                 {
@@ -115,19 +128,21 @@ namespace IrisContabilidad.modulo_nomina
                     if (modeloCargo.agregarCargo(cargo) == true)
                     {
                         cargo = null;
+                        loadVentana();
                         MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
                         MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                  
                 }
                 else
                 {
                     //actualiza
                     if (modeloCargo.modificarCargo(cargo) == true)
                     {
+                        cargo = null;
+                        loadVentana();
                         MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -142,6 +157,42 @@ namespace IrisContabilidad.modulo_nomina
             {
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            salir();
+        }
+        public void salir()
+        {
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            cargo = null;
+            loadVentana();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_cargo ventana = new ventana_busqueda_cargo();
+            ventana.mantenimiento = true;
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                cargo = ventana.getObjeto();
+                loadVentana();
+            }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
