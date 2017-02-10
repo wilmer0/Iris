@@ -12,9 +12,9 @@ using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_cuenta_por_pagar
+namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {
-    public partial class ventana_compra_pagos : formBase
+    public partial class ventana_venta_cobro : formBase
     {
 
         //objetos
@@ -55,7 +55,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private decimal itebis_monto = 0;
 
 
-        public ventana_compra_pagos()
+        public ventana_venta_cobro()
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();

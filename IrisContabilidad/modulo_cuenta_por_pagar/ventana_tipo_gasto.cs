@@ -12,7 +12,7 @@ using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_empresa;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_cuenta_por_pagar
+namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {
     public partial class ventana_tipo_gasto : formBase
     {

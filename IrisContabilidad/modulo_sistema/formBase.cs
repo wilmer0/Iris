@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modulo_cuenta_por_cobrar;
-using IrisContabilidad.modulo_cuenta_por_pagar;
+using IrisContabilidad.modulo_cuenta_por_cobrar;
 using IrisContabilidad.modulo_empresa;
 using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_facturacion;

@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
+﻿namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {
     partial class ventana_busqueda_cliente
     {
