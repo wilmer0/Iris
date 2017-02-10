@@ -11,7 +11,7 @@ using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_cuenta_por_cobrar
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     public partial class ventana_busqueda_cliente : formBase
     {

@@ -12,7 +12,7 @@ using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_cuenta_por_cobrar
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     public partial class ventana_compra_pagos : formBase
     {

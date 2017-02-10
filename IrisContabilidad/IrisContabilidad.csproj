@@ -215,11 +215,11 @@
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.Designer.cs">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobro.cs">
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobro.Designer.cs">
-      <DependentUpon>ventana_venta_cobro.cs</DependentUpon>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.Designer.cs">
+      <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_cliente.cs">
       <SubType>Form</SubType>
@@ -598,8 +598,8 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_cliente.resx">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_cobro.resx">
-      <DependentUpon>ventana_venta_cobro.cs</DependentUpon>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.resx">
+      <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_cliente.resx">
       <DependentUpon>ventana_busqueda_cliente.cs</DependentUpon>

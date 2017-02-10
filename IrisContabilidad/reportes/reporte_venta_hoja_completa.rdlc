@@ -563,7 +563,7 @@
   <Width>8.45833in</Width>
   <Page>
     <PageHeader>
-      <Height>2.51958in</Height>
+      <Height>2.56125in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -676,7 +676,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=First(Fields!telefonos.Value, "reporte_encabezado")</Value>
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -926,7 +926,7 @@
           <Top>1.59597in</Top>
           <Left>5.92905in</Left>
           <Height>0.23611in</Height>
-          <Width>0.61112in</Width>
+          <Width>0.57616in</Width>
           <ZIndex>10</ZIndex>
           <Style>
             <Border>
@@ -958,9 +958,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
           <Top>1.59597in</Top>
-          <Left>4.75909in</Left>
+          <Left>4.16534in</Left>
           <Height>0.23611in</Height>
-          <Width>1.16996in</Width>
+          <Width>1.76371in</Width>
           <ZIndex>11</ZIndex>
           <Style>
             <Border>
@@ -990,9 +990,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
           <Top>1.59597in</Top>
-          <Left>6.54015in</Left>
+          <Left>6.50521in</Left>
           <Height>0.23611in</Height>
-          <Width>1.75673in</Width>
+          <Width>1.79167in</Width>
           <ZIndex>12</ZIndex>
           <Style>
             <Border>
@@ -1096,9 +1096,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
           <Top>1.83208in</Top>
-          <Left>4.75909in</Left>
+          <Left>4.16534in</Left>
           <Height>0.25in</Height>
-          <Width>1.16996in</Width>
+          <Width>1.76371in</Width>
           <ZIndex>15</ZIndex>
           <Style>
             <Border>

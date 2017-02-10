@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_cobrar
+﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     partial class ventana_suplidor
     {
