@@ -173,8 +173,6 @@ namespace IrisContabilidad.modelos
             try
             {
                 singleton singleton=new singleton();
-
-
                 empleado empleado = singleton.getEmpleado();
                 cajero cajero;
                 cajero = new modeloCajero().getCajeroByIdEmpleado(empleado.codigo);
@@ -189,7 +187,6 @@ namespace IrisContabilidad.modelos
                 string caja = "";
                 string tipo = "";
                 string secuencia = "";
-
                 int contador = 0;
                
                 string sql ="select contador from comprobante_fiscal where contador<>hasta_numero and cod_caja='"+codigoCaja+"' and codigo_tipo='"+codigoTipoComprobante+"' limit 1";
@@ -204,7 +201,8 @@ namespace IrisContabilidad.modelos
                     contador = 0;
                 }
                 contador+=1;
-
+                sql = "update comprobante_fiscal set contador='"+contador+"' where contador<>hasta_numero and cod_caja='"+codigoCaja+"' and codigo_tipo='"+codigoTipoComprobante+"'";
+                
                 secuencia = contador.ToString();
                 secuencia = utilidades.getRellenar(secuencia, '0', 8);
                 //ahora el ncf saldra asi-> 00000999
@@ -225,8 +223,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getNextComprobanteFiscalByTipoId.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error getNextComprobanteFiscalByTipoId.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
         }

@@ -86,7 +86,20 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
-
+                if (suplidor == null)
+                {
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+                    MessageBox.Show("Debe seleccionar un suplidor", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                if (dataGridView1.Rows.Count==0)
+                {
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+                    MessageBox.Show("No hay facturas", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
                 return true;
             }
             catch (Exception ex)
@@ -154,7 +167,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     loadSuplidor();
                     if (MessageBox.Show("Se agregó el pago, desea imprimir el pago?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        modeloReporte.imprirmiCompraPago(compraPago.codigo);
+                        modeloReporte.imprirmirCompraPago(compraPago.codigo);
                     }
                 }
                 else
@@ -255,8 +268,8 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value.ToString());
-                    totalAbonadoMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value);
+                    totalAbonadoMonto += Convert.ToDecimal(row.Cells[8].Value);
                 }
                 totalPendienteText.Text = totalPendienteMonto.ToString("N");
                 totalAbonadoText.Text = totalAbonadoMonto.ToString("N");
@@ -295,9 +308,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             {
                 getAction();
                 calcularTotal();
-
             }
-           
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -319,6 +330,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 listaCompra = modeloCompra.getListaCompraBySuplidor(suplidor.codigo);
                 //filtrando las compra que esten activa, que no esten pagada y que no sean a contado
                 listaCompra = listaCompra.FindAll(x => x.pagada == false && x.activo==true && x.tipo_compra!="CON").ToList();
+                listaCompra = listaCompra.OrderByDescending(x => x.codigo).ToList();
                 foreach(var x in listaCompra)
                 {
                     decimal montoPendiente = 0;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 
@@ -10,14 +11,18 @@ namespace IrisContabilidad.clases_reportes
 {
     public class reporte_compra_encabezado
     {
+        //encabezado comun
         public string empresa{ get; set; }
         public string telefonos { get; set; }
         public string rnc{ get; set; }
         public string direccion{ get; set; }
         public string fecha_impresion { get; set; }
+        public string empleadoImpresion { get; set; }
+
+
         public string fecha_compa { get; set; }
-        public string fecha_limite { get; set; }
         public int codigo_compra { get; set; }
+        public string fecha_limite { get; set; }
         public string numero_compra{ get; set; }
         public string tipo_compra { get; set; }
         public string empleado { get; set; }
@@ -26,7 +31,7 @@ namespace IrisContabilidad.clases_reportes
         public string suplidor_rnc { get; set; }
         public  List<reporte_compra_detalle> listaDetalles;
         utilidades utilidades=new utilidades();
-
+        private singleton singleton = new singleton();
 
         public reporte_compra_encabezado()
         {
@@ -45,9 +50,21 @@ namespace IrisContabilidad.clases_reportes
             listaDetalles = new List<reporte_compra_detalle>();
             List<compra_detalle> listaCompraDetalle = new List<compra_detalle>();
 
-
+            this.empleadoImpresion = singleton.getEmpleado().nombre;
             this.empresa = empresa.nombre;
-            this.telefonos = sucursal.telefono1+"-"+sucursal.telefono2;
+
+            if (sucursal.telefono1 != "")
+            {
+                this.telefonos = sucursal.telefono1;
+            }
+            this.telefonos = sucursal.telefono1;
+            if (this.telefonos=="" && sucursal.telefono2 != "")
+            {
+                this.telefonos = sucursal.telefono2;
+            }else if (this.telefonos!="" && sucursal.telefono2 != "")
+            {
+                this.telefonos += " / " + sucursal.telefono2;
+            }
             this.rnc = empresa.rnc;
             this.direccion = sucursal.direccion;
             this.fecha_impresion = utilidades.getFechaddMMyyyyhhmmsstt(DateTime.Now);
@@ -60,14 +77,11 @@ namespace IrisContabilidad.clases_reportes
             this.suplidor_rnc = suplidor.rnc;
             this.empleado = empleado.nombre;
             this.tipo_compra = compra.tipo_compra;
-
-
             listaCompraDetalle = new modeloCompra().getListaCompraDetalleByCompra(compra.codigo);
             listaCompraDetalle.ForEach(x =>
             {
                 reporte_compra_detalle reporteCompraDetalle = new reporte_compra_detalle(x);
                 listaDetalles.Add(reporteCompraDetalle);
-
             });
         }
     }
