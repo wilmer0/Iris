@@ -76,7 +76,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 cliente = null;
                 loadCliente();
                 dataGridView1.Rows.Clear();
-                calcularTotal();
+                
             }
             catch (Exception ex)
             {
@@ -268,12 +268,11 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
                 totalPendienteMonto = 0;
                 totalCobradoMonto = 0;
-
-
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value.ToString());
-                    totalCobradoMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    //MessageBox.Show(row.Cells[7].Value.ToString()+"----"+row.Cells[8].Value.ToString());
+                    totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value);
+                    totalCobradoMonto += Convert.ToDecimal(row.Cells[8].Value);
                 }
                 totalPendienteText.Text = totalPendienteMonto.ToString("N");
                 totalAbonadoText.Text = totalCobradoMonto.ToString("N");
@@ -307,7 +306,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 foreach (var x in listaVenta)
                 {
                     decimal montoPendiente = 0;
-                    montoPendiente = modeloVenta.getMontoPendienteBycompra(x.codigo);
+                    montoPendiente = modeloVenta.getMontoPendienteByVenta(x.codigo);
                     empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
                     dataGridView1.Rows.Add(x.codigo, x.fecha.ToString("dd/MM/yyyy"), utilidades.getDiasByRangoFecha(x.fecha_limite, DateTime.Today), empleado.nombre, x.tipo_venta, x.ncf, x.fecha_limite.ToString("dd/MM/yyyy"), montoPendiente.ToString("N"));
                 }
@@ -330,7 +329,6 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     clienteText.Text = cliente.nombre;
                     loadVentas();
                 }
-                calcularTotal();
             }
             catch (Exception ex)
             {

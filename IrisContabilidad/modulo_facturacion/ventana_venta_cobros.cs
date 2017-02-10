@@ -288,7 +288,7 @@ namespace IrisContabilidad.modulo_facturacion
                 foreach (var x in listaVenta)
                 {
                     decimal montoPendiente = 0;
-                    montoPendiente = modeloVenta.getMontoPendienteBycompra(x.codigo);
+                    montoPendiente = modeloVenta.getMontoPendienteByVenta(x.codigo);
                     empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
                     dataGridView1.Rows.Add(x.codigo, x.fecha.ToString("dd/MM/yyyy"), utilidades.getDiasByRangoFecha(x.fecha_limite, DateTime.Today), empleado.nombre, x.tipo_venta, x.ncf, x.fecha_limite.ToString("dd/MM/yyyy"), montoPendiente.ToString("N"));
                 }

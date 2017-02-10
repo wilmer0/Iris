@@ -683,7 +683,7 @@ namespace IrisContabilidad.modelos
         }
 
         //get monto pendiente by venta
-        public decimal getMontoPendienteBycompra(int id)
+        public decimal getMontoPendienteByVenta(int id)
         {
             try
             {
@@ -721,7 +721,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getMontoPendienteBycompra.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getMontoPendienteByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return -1;
             }
