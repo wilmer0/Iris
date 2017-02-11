@@ -1001,7 +1001,7 @@ namespace IrisContabilidad.modulo_inventario
 
         private void unidadComboText_TextChanged_1(object sender, EventArgs e)
         {
-
+            unidad = modeloUnidad.getUnidadById(Convert.ToInt16(unidadComboText.SelectedValue.ToString()));
         }
     }
 }

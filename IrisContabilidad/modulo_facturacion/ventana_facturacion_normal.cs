@@ -574,6 +574,7 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     return;
                 }
+                unidad = modeloUnidad.getUnidadById(Convert.ToInt16(unidadComboText.SelectedValue.ToString()));
                 //MessageBox.Show(unidadComboText.SelectedValue + "-" + unidadComboText.Text);
                 cantidadExistencia = modeloProducto.getExistenciaByProductoAndUnidad(producto.codigo, Convert.ToInt16(unidadComboText.SelectedValue.ToString()));
                 existenciaText.Text = cantidadExistencia.ToString("N");
@@ -640,7 +641,10 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getAction();
+            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                getAction();
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -995,6 +999,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 MessageBox.Show("Error cambiarTipoComprobante.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void importeText_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

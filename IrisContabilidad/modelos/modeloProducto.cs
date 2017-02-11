@@ -242,7 +242,7 @@ namespace IrisContabilidad.modelos
             {
                 producto producto = new producto();
                 string sql =
-                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima from producto where codigo='" +
+                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario from producto where codigo='" +
                     id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -259,6 +259,7 @@ namespace IrisContabilidad.modelos
                     producto.codigo_almacen = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
                     producto.imagen = ds.Tables[0].Rows[0][10].ToString();
                     producto.codigo_unidad_minima = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
+                    producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
                 }
                 return producto;
             }
@@ -276,7 +277,7 @@ namespace IrisContabilidad.modelos
             {
                 List<producto>lista=new List<producto>();
                 producto producto = new producto();
-                string sql ="select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima from producto";
+                string sql ="select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario from producto";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -293,6 +294,7 @@ namespace IrisContabilidad.modelos
                     producto.codigo_almacen = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
                     producto.imagen = ds.Tables[0].Rows[0][10].ToString();
                     producto.codigo_unidad_minima = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
+                    producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
                     lista.Add(producto);
                 }
                 producto = null;
@@ -320,7 +322,7 @@ namespace IrisContabilidad.modelos
                 producto producto = new producto();
                 List<producto> lista = new List<producto>();
                 string sql =
-                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima from producto ";
+                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario from producto ";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -343,6 +345,7 @@ namespace IrisContabilidad.modelos
                         producto.codigo_almacen = Convert.ToInt16(row[9].ToString());
                         producto.imagen = row[10].ToString();
                         producto.codigo_unidad_minima = Convert.ToInt16(row[11].ToString());
+                        producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
                         lista.Add(producto);
                     }
                 }

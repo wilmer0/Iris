@@ -14,6 +14,7 @@ namespace IrisContabilidad.modelos
     {
         //objetos
         utilidades utilidades = new utilidades();
+        private producto producto;
 
 
 
@@ -66,13 +67,45 @@ namespace IrisContabilidad.modelos
                 });
 
                 //sacar de inventario
-                //listaDetalle.ForEach(x =>
-                //{
-                //    x.codigo = getNextInventario();
-                //    DateTime fechaHoy = DateTime.Today;
-                //    sql = "insert into inventario(codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento) values('" + x.codigo + "','" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.cantidad + "'," + utilidades.getFechayyyyMMdd(fechaHoy) + "," + utilidades.getFechayyyyMMdd(fechaHoy.AddDays(120)) + ")";
-                //    utilidades.ejecutarcomando_mysql(sql);
-                //});
+                listaDetalle.ForEach(x =>
+                {
+                    decimal cantidad = x.cantidad;
+                    decimal existencia = 0;
+                    int codigoInventario = 1;
+                    while (cantidad > 0)
+                    {
+                        producto = new modeloProducto().getProductoById(x.codigo_producto);
+                        sql = "";
+                        if (producto.controla_inventario == true)
+                        {
+                            //controla inventario
+                            sql ="select codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento from inventario where codigo_producto='" +x.codigo_producto + "' and codigo_unidad='" + x.codigo_unidad +"' and cantidad>'0' limit 1";
+                        }
+                        else
+                        {
+                            //no controla inventario
+                            sql = "select codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento from inventario where codigo_producto='" + x.codigo_producto + "' and codigo_unidad='" + x.codigo_unidad + "' limit 1";
+                        }
+                        ds=utilidades.ejecutarcomando_mysql(sql);
+                        if (ds.Tables[0].Rows[0][0] != "")
+                        {
+                            codigoInventario = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                            existencia = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
+                            //si la cantidad que quiero vender < existencia
+                            if (cantidad < existencia)
+                            {
+                                existencia = existencia - cantidad;
+                            }
+                            else
+                            {
+                                cantidad = cantidad - existencia;
+                                existencia = 0;
+                            }
+                            sql = "update inventario set cantidad='"+existencia+"' where codigo='"+codigoInventario+"'";
+                            utilidades.ejecutarcomando_mysql(sql);
+                        }
+                     } 
+                });
 
                 return true;
             }
