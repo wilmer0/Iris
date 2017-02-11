@@ -25,6 +25,7 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 int cajaCuadrada = 0;
+                int cajaAbierta = 0;
                 //validar que tenga una apertura de caja activa
                 string sql = "select *from cuadre_caja where cod_cajero='" + cuadreCaja.codigo_cajero + "' and activo='1' and cod_caja='" + cuadreCaja.codigo_caja + "' and caja_cuadrada='0'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
@@ -42,8 +43,12 @@ namespace IrisContabilidad.modelos
                 {
                     cajaCuadrada = 1;
                 }
+                if (cuadreCaja.caja_abierta == true)
+                {
+                    cajaAbierta = 1;
+                }
 
-                sql = "insert into cuadre_caja(codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada)values('" + cuadreCaja.codigo + "','" + cuadreCaja.codigo_cajero + "'," + utilidades.getFechayyyyMMdd(cuadreCaja.fecha) + ",'" + cuadreCaja.turno + "','" + activo + "','" + cuadreCaja.codigo_sucursal + "','" + cuadreCaja.codigo_caja + "','" + cuadreCaja.efectivo_inicial + "','"+cajaCuadrada+"')";
+                sql = "insert into cuadre_caja(codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta)values('" + cuadreCaja.codigo + "','" + cuadreCaja.codigo_cajero + "'," + utilidades.getFechayyyyMMdd(cuadreCaja.fecha) + ",'" + cuadreCaja.turno + "','" + activo + "','" + cuadreCaja.codigo_sucursal + "','" + cuadreCaja.codigo_caja + "','" + cuadreCaja.efectivo_inicial + "','"+cajaCuadrada+"','"+cajaAbierta+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -156,7 +161,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 cuadre_caja cuadreCaja = new cuadre_caja();
-                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada from cuadre_caja where codigo='" + id + "'";
+                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta from cuadre_caja where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -169,6 +174,7 @@ namespace IrisContabilidad.modelos
                     cuadreCaja.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][6].ToString());
                     cuadreCaja.efectivo_inicial = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
                     cuadreCaja.caja_cuadrada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
                 }
                 return cuadreCaja;
             }

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_facturacion_normal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.totalCompraText = new System.Windows.Forms.TextBox();
             this.totalItebisText = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -349,6 +349,7 @@
             this.importeText.TabIndex = 97;
             this.importeText.Text = "0.00";
             this.importeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.importeText.TextChanged += new System.EventHandler(this.importeText_TextChanged);
             this.importeText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.importeText_KeyDown);
             // 
             // productoIdText
@@ -761,32 +762,32 @@
             // 
             // precioColumn
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.precioColumn.HeaderText = "Precio";
             this.precioColumn.Name = "precioColumn";
             this.precioColumn.ReadOnly = true;
             // 
             // itebisColumn
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.itebisColumn.HeaderText = "Itbis";
             this.itebisColumn.Name = "itebisColumn";
             this.itebisColumn.ReadOnly = true;
             // 
             // descuentoColumn
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.descuentoColumn.HeaderText = "Descuento";
             this.descuentoColumn.Name = "descuentoColumn";
             this.descuentoColumn.ReadOnly = true;
             // 
             // importeColumn
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.importeColumn.HeaderText = "Importe";
             this.importeColumn.Name = "importeColumn";
             this.importeColumn.ReadOnly = true;

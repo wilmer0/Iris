@@ -437,6 +437,12 @@
     <Compile Include="modulo_inventario\ventana_busqueda_unidad.Designer.cs">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_caja_apertura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_caja_apertura.Designer.cs">
+      <DependentUpon>ventana_caja_apertura.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_categoria_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -708,6 +714,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_caja_apertura.resx">
+      <DependentUpon>ventana_caja_apertura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_categoria_producto.resx">
       <DependentUpon>ventana_categoria_producto.cs</DependentUpon>
