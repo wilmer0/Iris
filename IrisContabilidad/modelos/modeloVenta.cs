@@ -75,26 +75,25 @@ namespace IrisContabilidad.modelos
                     while (cantidad > 0)
                     {
                         producto = new modeloProducto().getProductoById(x.codigo_producto);
-                        sql = "";
+                        sql ="select codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento from inventario where codigo_producto='" +x.codigo_producto + "' and codigo_unidad='" + x.codigo_unidad +"' ";
                         if (producto.controla_inventario == true)
                         {
                             //controla inventario
-                            sql ="select codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento from inventario where codigo_producto='" +x.codigo_producto + "' and codigo_unidad='" + x.codigo_unidad +"' and cantidad>'0' limit 1";
+                            sql += " and cantidad > '0' ";
                         }
-                        else
-                        {
-                            //no controla inventario
-                            sql = "select codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento from inventario where codigo_producto='" + x.codigo_producto + "' and codigo_unidad='" + x.codigo_unidad + "' limit 1";
-                        }
+                        sql += " limit 1";
                         ds=utilidades.ejecutarcomando_mysql(sql);
+                        
                         if (ds.Tables[0].Rows[0][0] != "")
                         {
                             codigoInventario = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                             existencia = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
+                            //MessageBox.Show("inventario->" + codigoInventario + "-- existencia->" + existencia + "--cantidad->" + cantidad);
                             //si la cantidad que quiero vender < existencia
-                            if (cantidad < existencia)
+                            if (cantidad <= existencia)
                             {
                                 existencia = existencia - cantidad;
+                                cantidad = 0;
                             }
                             else
                             {

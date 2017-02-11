@@ -172,7 +172,7 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     clienteIdText.Focus();
                     clienteIdText.SelectAll();
-                    MessageBox.Show("Tiene una compra existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tiene una venta existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                
@@ -297,10 +297,10 @@ namespace IrisContabilidad.modulo_facturacion
                     if (venta.tipo_venta == "CON")
                     {
                         ventanaDesglose = new ventana_desglose_dinero(venta, listaVentaDetalle);
+                        venta = null;
                         ventanaDesglose.ShowDialog();
                         if (ventanaDesglose.DialogResult == DialogResult.OK)
                         {
-                            venta = null;
                             loadVentana();
                         }
                     }

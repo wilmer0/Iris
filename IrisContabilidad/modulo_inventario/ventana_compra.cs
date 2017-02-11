@@ -305,10 +305,10 @@ namespace IrisContabilidad.modulo_inventario
                     if (compra.tipo_compra == "CON")
                     {
                         ventanaDesglose = new ventana_desglose_dinero(compra, listaCompraDetalle);
+                        compra = null;
                         ventanaDesglose.ShowDialog();
                         if (ventanaDesglose.DialogResult == DialogResult.OK)
                         {
-                            compra = null;
                             loadVentana();
                         }
                     }
