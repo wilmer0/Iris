@@ -39,9 +39,7 @@
             this.montoDepositoText = new System.Windows.Forms.TextBox();
             this.montoDevueltoText = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioDescuentoPorciento = new System.Windows.Forms.RadioButton();
-            this.radioDescuentoMonto = new System.Windows.Forms.RadioButton();
-            this.descuentoText = new System.Windows.Forms.TextBox();
+            this.montoDescuentoText = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.MontoTotalText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -94,7 +92,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(35, 54);
+            this.label2.Location = new System.Drawing.Point(53, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
             this.label2.TabIndex = 74;
@@ -104,7 +102,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(549, 54);
+            this.label1.Location = new System.Drawing.Point(564, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 20);
             this.label1.TabIndex = 75;
@@ -134,7 +132,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(21, 76);
+            this.label5.Location = new System.Drawing.Point(5, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(132, 20);
             this.label5.TabIndex = 78;
@@ -145,7 +143,7 @@
             // 
             this.montoEfectivoText.BackColor = System.Drawing.Color.SkyBlue;
             this.montoEfectivoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoEfectivoText.Location = new System.Drawing.Point(121, 49);
+            this.montoEfectivoText.Location = new System.Drawing.Point(133, 49);
             this.montoEfectivoText.Name = "montoEfectivoText";
             this.montoEfectivoText.Size = new System.Drawing.Size(312, 38);
             this.montoEfectivoText.TabIndex = 79;
@@ -159,7 +157,7 @@
             // 
             this.montoTarjetaText.BackColor = System.Drawing.Color.SkyBlue;
             this.montoTarjetaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoTarjetaText.Location = new System.Drawing.Point(620, 49);
+            this.montoTarjetaText.Location = new System.Drawing.Point(635, 49);
             this.montoTarjetaText.Name = "montoTarjetaText";
             this.montoTarjetaText.Size = new System.Drawing.Size(312, 38);
             this.montoTarjetaText.TabIndex = 80;
@@ -201,7 +199,7 @@
             // 
             this.montoDevueltoText.BackColor = System.Drawing.Color.Red;
             this.montoDevueltoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoDevueltoText.Location = new System.Drawing.Point(159, 69);
+            this.montoDevueltoText.Location = new System.Drawing.Point(143, 19);
             this.montoDevueltoText.Name = "montoDevueltoText";
             this.montoDevueltoText.ReadOnly = true;
             this.montoDevueltoText.Size = new System.Drawing.Size(307, 38);
@@ -212,69 +210,44 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioDescuentoPorciento);
-            this.groupBox1.Controls.Add(this.radioDescuentoMonto);
-            this.groupBox1.Controls.Add(this.descuentoText);
+            this.groupBox1.Controls.Add(this.montoDescuentoText);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(15, 266);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(473, 116);
+            this.groupBox1.Size = new System.Drawing.Size(473, 71);
             this.groupBox1.TabIndex = 84;
             this.groupBox1.TabStop = false;
             // 
-            // radioDescuentoPorciento
+            // montoDescuentoText
             // 
-            this.radioDescuentoPorciento.AutoSize = true;
-            this.radioDescuentoPorciento.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioDescuentoPorciento.Location = new System.Drawing.Point(314, 19);
-            this.radioDescuentoPorciento.Name = "radioDescuentoPorciento";
-            this.radioDescuentoPorciento.Size = new System.Drawing.Size(119, 21);
-            this.radioDescuentoPorciento.TabIndex = 88;
-            this.radioDescuentoPorciento.Text = "% descuento";
-            this.radioDescuentoPorciento.UseVisualStyleBackColor = true;
-            // 
-            // radioDescuentoMonto
-            // 
-            this.radioDescuentoMonto.AutoSize = true;
-            this.radioDescuentoMonto.Checked = true;
-            this.radioDescuentoMonto.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioDescuentoMonto.Location = new System.Drawing.Point(121, 19);
-            this.radioDescuentoMonto.Name = "radioDescuentoMonto";
-            this.radioDescuentoMonto.Size = new System.Drawing.Size(150, 21);
-            this.radioDescuentoMonto.TabIndex = 87;
-            this.radioDescuentoMonto.TabStop = true;
-            this.radioDescuentoMonto.Text = "Monto descuento";
-            this.radioDescuentoMonto.UseVisualStyleBackColor = true;
-            // 
-            // descuentoText
-            // 
-            this.descuentoText.BackColor = System.Drawing.Color.Tomato;
-            this.descuentoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descuentoText.Location = new System.Drawing.Point(160, 51);
-            this.descuentoText.Name = "descuentoText";
-            this.descuentoText.Size = new System.Drawing.Size(307, 38);
-            this.descuentoText.TabIndex = 86;
-            this.descuentoText.Text = "0.00";
-            this.descuentoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.descuentoText.TextChanged += new System.EventHandler(this.descuentoText_TextChanged);
-            this.descuentoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descuentoText_KeyDown);
-            this.descuentoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.montoDescuentoText.BackColor = System.Drawing.Color.Tomato;
+            this.montoDescuentoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.montoDescuentoText.Location = new System.Drawing.Point(118, 19);
+            this.montoDescuentoText.Name = "montoDescuentoText";
+            this.montoDescuentoText.Size = new System.Drawing.Size(312, 38);
+            this.montoDescuentoText.TabIndex = 86;
+            this.montoDescuentoText.Text = "0.00";
+            this.montoDescuentoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.montoDescuentoText.TextChanged += new System.EventHandler(this.descuentoText_TextChanged);
+            this.montoDescuentoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.descuentoText_KeyDown);
+            this.montoDescuentoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(57, 59);
+            this.label6.Location = new System.Drawing.Point(11, 25);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(96, 20);
             this.label6.TabIndex = 85;
             this.label6.Text = "Descuento";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // MontoTotalText
             // 
             this.MontoTotalText.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.MontoTotalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MontoTotalText.Location = new System.Drawing.Point(159, 25);
+            this.MontoTotalText.Location = new System.Drawing.Point(638, 127);
             this.MontoTotalText.Name = "MontoTotalText";
             this.MontoTotalText.ReadOnly = true;
             this.MontoTotalText.Size = new System.Drawing.Size(307, 38);
@@ -286,7 +259,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(53, 34);
+            this.label7.Location = new System.Drawing.Point(532, 134);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(100, 20);
             this.label7.TabIndex = 85;
@@ -394,7 +367,7 @@
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Location = new System.Drawing.Point(16, 388);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(472, 171);
+            this.groupBox4.Size = new System.Drawing.Size(951, 171);
             this.groupBox4.TabIndex = 93;
             this.groupBox4.TabStop = false;
             // 
@@ -402,7 +375,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(56, 118);
+            this.label11.Location = new System.Drawing.Point(40, 69);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(97, 20);
             this.label11.TabIndex = 88;
@@ -412,7 +385,7 @@
             // 
             this.MontoItebisText.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.MontoItebisText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MontoItebisText.Location = new System.Drawing.Point(159, 113);
+            this.MontoItebisText.Location = new System.Drawing.Point(143, 63);
             this.MontoItebisText.Name = "MontoItebisText";
             this.MontoItebisText.ReadOnly = true;
             this.MontoItebisText.Size = new System.Drawing.Size(307, 38);
@@ -475,9 +448,7 @@
         private System.Windows.Forms.TextBox montoDepositoText;
         private System.Windows.Forms.TextBox montoDevueltoText;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioDescuentoPorciento;
-        private System.Windows.Forms.RadioButton radioDescuentoMonto;
-        private System.Windows.Forms.TextBox descuentoText;
+        private System.Windows.Forms.TextBox montoDescuentoText;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox MontoTotalText;
         private System.Windows.Forms.Label label7;

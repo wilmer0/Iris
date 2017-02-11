@@ -17,5 +17,6 @@ namespace IrisContabilidad.clases
         public int codigo_caja { get; set; }
         public decimal efectivo_inicial { get; set; }
         public bool caja_cuadrada { get; set; }
+        public Boolean caja_abierta { get; set; }
     }
 }

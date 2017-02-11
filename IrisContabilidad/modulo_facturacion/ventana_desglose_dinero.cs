@@ -46,7 +46,8 @@ namespace IrisContabilidad.modulo_facturacion
         private decimal montoTotalCobrar = 0;
         private decimal montoEsperado=0;
         private decimal montoItebis=0;
-        private decimal montoDescuento=0;
+        private decimal montoDescuento=0; //el descuento que me trae producto por producto
+        public decimal  montoDescuentoFactura = 0;//para aplicar descuento a toda la fctura
         private decimal montoDevuelta = 0;
         private decimal montoEfectivo = 0;
         private decimal montoDeposito = 0;
@@ -153,7 +154,12 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     //compra
                     #region compra
-
+                    //validar que el descuento sea menor que el monto
+                    if (montoDescuentoFactura > montoEsperado)
+                    {
+                        MessageBox.Show("El monto descontado no puede ser mayor al monto total de la factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
                     //validar si pagara con efectivo
                     if (Convert.ToDecimal(montoEfectivoText.Text) > 0)
                     {
@@ -234,6 +240,13 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     //venta
                     #region venta
+                    //validar que el descuento sea menor que el monto
+                    if (montoDescuentoFactura > montoEsperado)
+                    {
+                        MessageBox.Show("El monto descontado no puede ser mayor al monto total de la factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return false;
+                    }
+
 
                     //validar si cobrar con efectivo
                     if (Convert.ToDecimal(montoEfectivoText.Text) > 0)
@@ -310,10 +323,6 @@ namespace IrisContabilidad.modulo_facturacion
                     }
                     #endregion
                 }
-
-
-                
-                
                 return true;
             }
             catch (Exception ex)
@@ -462,7 +471,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            utilidades.validarTextBoxNumeroDecimal(e, descuentoText.Text);
+            utilidades.validarTextBoxNumeroDecimal(e, montoDescuentoText.Text);
         }
 
         private void label7_Click(object sender, EventArgs e)
@@ -489,17 +498,27 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+                montoDescuento = 0;
+                montoDescuentoFactura = Convert.ToDecimal(montoDescuentoText.Text);
                 montoEfectivo = Convert.ToDecimal(montoEfectivoText.Text);
                 montoDeposito = Convert.ToDecimal(montoDepositoText.Text);
                 montoCheque = Convert.ToDecimal(montoChequeText.Text);
                 montoTarjeta = Convert.ToDecimal(montoTarjetaText.Text);
                 montoDevuelta = 0;
-                montoTotalPagar = montoEfectivo + montoDeposito + montoCheque+montoTarjeta;
+
+                montoTotalPagar = (montoEfectivo + montoDeposito + montoCheque + montoTarjeta);
                 montoDevuelta = montoTotalPagar - montoEsperado;
+                montoDevuelta -= montoDescuentoFactura;
                 montoDevueltoText.Text = montoDevuelta.ToString("N");
             }
             catch (Exception ex)
             {
+                montoEfectivoText.Text = montoEsperado.ToString("N");
+                montoChequeText.Text = "0.00";
+                montoDepositoText.Text = "0.00";
+                montoTarjetaText.Text = "0.00";
+                montoDescuentoText.Text = "0.00";
+                montoDevueltoText.Text = "0.00";
                 MessageBox.Show("Error calcular.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -578,8 +597,8 @@ namespace IrisContabilidad.modulo_facturacion
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                descuentoText.Focus();
-                descuentoText.SelectAll();
+                montoDescuentoText.Focus();
+                montoDescuentoText.SelectAll();
             }
         }
 
@@ -621,6 +640,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 MessageBox.Show("Error imprimircompra.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
