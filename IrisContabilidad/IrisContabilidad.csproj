@@ -54,6 +54,10 @@
       <HintPath>..\packages\GMap.NET.Windows.1.7.5\lib\net40\GMap.NET.WindowsPresentation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GoogleApi, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleApi.2.4.1\lib\net45\GoogleApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\DLR-POS-2.0\proyecto\puntoVentaWin\librerias\Ionic.Zip.dll</HintPath>
     </Reference>
@@ -74,6 +78,10 @@
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -89,6 +97,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Translator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\Translator.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +164,7 @@
     <Compile Include="clases_reportes\reporte_venta_cobro_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
     <Compile Include="clases_reportes\reporte_venta_encabezado.cs" />
+    <Compile Include="modelos\modeloActualizacion.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCaja.cs" />
     <Compile Include="modelos\modeloCajaIngresosEgresosConceptos.cs" />
@@ -161,6 +174,7 @@
     <Compile Include="modelos\modeloCategoriaProducto.cs" />
     <Compile Include="modelos\modeloCiudad.cs" />
     <Compile Include="modelos\modeloCliente.cs" />
+    <Compile Include="modelos\modeloCobro.cs" />
     <Compile Include="modelos\modeloCompra.cs" />
     <Compile Include="modelos\modeloComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloCuadreCaja.cs" />
@@ -182,6 +196,7 @@
     <Compile Include="modelos\modeloSuplidor.cs" />
     <Compile Include="modelos\modeloTipoComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
+    <Compile Include="modelos\modeloTraduccion.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modelos\modeloVendedor.cs" />
     <Compile Include="modelos\modeloVenta.cs" />
@@ -196,6 +211,12 @@
     </Compile>
     <Compile Include="modulo_contabilidad\ventana_tipo_gastos.Designer.cs">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_anular_cobros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_anular_cobros.Designer.cs">
+      <DependentUpon>ventana_anular_cobros.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_categoria_cliente.cs">
       <SubType>Form</SubType>
@@ -594,6 +615,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_anular_cobros.resx">
+      <DependentUpon>ventana_anular_cobros.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_busqueda_categoria_cliente.resx">
       <DependentUpon>ventana_busqueda_categoria_cliente.cs</DependentUpon>
