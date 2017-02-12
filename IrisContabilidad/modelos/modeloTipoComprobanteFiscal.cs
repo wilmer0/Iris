@@ -188,6 +188,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //get tipo por ncf completo
         internal tipo_comprobante_fiscal getTipoComprobanteByNCF(string ncf)
         {
             try
