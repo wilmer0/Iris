@@ -497,6 +497,7 @@
             this.tipoComprobanteCombo.Size = new System.Drawing.Size(236, 21);
             this.tipoComprobanteCombo.TabIndex = 107;
             this.tipoComprobanteCombo.Tag = "";
+            this.tipoComprobanteCombo.TextChanged += new System.EventHandler(this.tipoComprobanteCombo_TextChanged);
             this.tipoComprobanteCombo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoComprobanteCombo_KeyDown);
             // 
             // label18

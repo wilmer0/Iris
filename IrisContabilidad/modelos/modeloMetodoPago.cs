@@ -41,5 +41,36 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        public List<metodo_pago> getListaMetodoPago()
+        {
+            try
+            {
+                //select codigo,metodo,descripcion,activo from metodo_pago where codigo='';
+                metodo_pago metodoPago = new metodo_pago();
+                List<metodo_pago> lista=new List<metodo_pago>();
+                string sql = "select codigo,metodo,descripcion,activo from metodo_pago where activo='1'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        metodoPago=new metodo_pago();
+                        metodoPago.codigo = Convert.ToInt16(row[0].ToString());
+                        metodoPago.metodo = row[1].ToString();
+                        metodoPago.detalle = row[2].ToString();
+                        metodoPago.activo = Convert.ToBoolean(row[3]);
+                        lista.Add(metodoPago);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaMetodoPago.:" + ex.ToString(), "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+        }
+
     }
 }

@@ -144,7 +144,7 @@
             this.clienteIdText.Name = "clienteIdText";
             this.clienteIdText.Size = new System.Drawing.Size(183, 26);
             this.clienteIdText.TabIndex = 71;
-            this.clienteIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suplidorIdText_KeyDown);
+            this.clienteIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clienteIdText_KeyDown);
             // 
             // dataGridView1
             // 

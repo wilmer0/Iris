@@ -383,7 +383,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             
         }
 
-        private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)
+        private void clienteIdText_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {
