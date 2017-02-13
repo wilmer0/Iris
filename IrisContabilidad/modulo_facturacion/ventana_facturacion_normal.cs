@@ -496,7 +496,7 @@ namespace IrisContabilidad.modulo_facturacion
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     totalItebisMonto += Convert.ToDecimal(row.Cells[6].Value.ToString());
-                    totalCompraMonto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalCompraMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
                 }
                 totalItebisText.Text = totalItebisMonto.ToString("N");
                 totalCompraText.Text = totalCompraMonto.ToString("N");

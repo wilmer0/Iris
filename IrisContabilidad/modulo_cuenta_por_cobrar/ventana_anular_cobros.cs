@@ -66,9 +66,14 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             try
             {
+                clienteIdText.Focus();
+                clienteIdText.SelectAll();
+
+
                 cliente = null;
                 clienteIdText.Text = "";
                 clienteText.Text = "";
+                motivoAnularText.Text = "";
                 dataGridView1.Rows.Clear();
             }
             catch (Exception ex)
@@ -80,6 +85,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             try
             {
+                //validar que el cliente no sea nulo
                 if (cliente == null)
                 {
                     clienteIdText.Focus();
@@ -87,6 +93,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     MessageBox.Show("Debe seleccionar un cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+                //validar que hayan datos en el grid
                 if (dataGridView1.Rows.Count == 0)
                 {
                     clienteIdText.Focus();
@@ -94,12 +101,33 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     MessageBox.Show("No hay facturas", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+                //validar que tenga motivo porque anular
+                if (motivoAnularText.Text == "")
+                {
+                    motivoAnularText.Focus();
+                    motivoAnularText.SelectAll();
+                    MessageBox.Show("Debe especificar el motivo porque desea anular los cobros", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar que tenga cobros seleccionado
+                existe = false;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[5].Value) == true)
+                    {
+                        existe = true;
+                    }
+                }
+                if (existe == false)
+                {
+                    MessageBox.Show("No hay cobros seleccionado para anular", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error validarGetAcion.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error validarGetAcion.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -112,6 +140,18 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 {
                     return;
                 }
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[5].Value) == true)
+                    {
+                        string sql = "update venta_vs_cobros_detalles set activo='0' where codigo='" + row.Cells[0].Value.ToString() + "'";
+                        utilidades.ejecutarcomando_mysql(sql);
+                        sql = "update venta set pagada=0 where codigo ='" + row.Cells[4] + "'";
+                        utilidades.ejecutarcomando_mysql(sql);
+                    }
+                }
+                MessageBox.Show("Se eliminaron los cobros", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadCobros();
             }
             catch (Exception ex)
             {
@@ -121,55 +161,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             }
         }
 
-        public bool validarEliminar()
-        {
-            try
-            {
-
-                if (motivoAnularText.Text == "")
-                {
-                    MessageBox.Show("Debe especificar un motivo por el cual desea anular el cobro", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                    return false;
-                }
-                return true;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error validarEliminar.:"+ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                return false;
-            }
-        }
-        public void eliminar()
-        {
-            try
-            {
-                if (validarEliminar() == false)
-                {
-                    return;
-                }
-
-                //validar que tenga filas el datagrid
-                if (dataGridView1 == null || dataGridView1.Rows.Count < 0)
-                {
-                    return;
-                }
-                int fila = 0;
-                fila = dataGridView1.CurrentRow.Index;
-                if (fila >= 0)
-                {
-                    //dataGridView1.Rows.Remove(dataGridView1.Rows[fila]);
-                    string sql = "update venta_vs_cobros_detalles set activo='0' where codigo='" + dataGridView1.Rows[fila].Cells[0].Value.ToString() + "'";
-                    utilidades.ejecutarcomando_mysql(sql);
-                    loadCobros();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error eliminar.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-       
+        
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -248,10 +240,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
         private void button19_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Desea eliminar el cobro?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
-            {
-                eliminar();
-            }
+           
         }
 
         private void clienteIdText_KeyDown(object sender, KeyEventArgs e)
@@ -266,6 +255,9 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 {
                     motivoAnularText.Focus();
                     motivoAnularText.SelectAll();
+
+                    cliente = modeloCliente.getClienteById(Convert.ToInt16(clienteIdText.Text));
+                    loadCliente();
                 }
             }
             catch (Exception)
@@ -275,18 +267,12 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            if (MessageBox.Show("Desea anular los cobros?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==DialogResult.Yes)
             {
-                if (Convert.ToBoolean(row.Cells[5].Value) == true)
-                {
-                    MessageBox.Show("seleccionado-->" + row.Cells[0].ToString());
-                }
-                else
-                {
-                    MessageBox.Show("no seleccionado-->" + row.Cells[0].ToString());
-                }
+                getAction();
             }
         }
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

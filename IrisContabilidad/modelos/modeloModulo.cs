@@ -53,7 +53,7 @@ namespace IrisContabilidad.modelos
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //agregando el permiso al empleado
-                sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','"+ventana.codigo+"')";
+                sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','" + ventana.codigo + "')";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //agregando la ventana al modulo
                 if (ventana.codigo_modulo != null || ventana.codigo_modulo > 0)
@@ -68,7 +68,8 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error agregarVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-        } //agregar ventana
+        } 
+        //agregar ventana
         public bool agregarPoolVentana(ventana ventana)
         {
             try
@@ -120,6 +121,22 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error agregarVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        //agregar permiso ventana a empleado
+        public bool agregarPermisoVentanaEmpleado(int codigoEmpleado,int codigoVentana)
+        {
+            try
+            {
+
+                string sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('"+codigoEmpleado+"','"+codigoVentana+"')";
+                utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarPermisoVentanaEmpleado.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -262,7 +279,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-        public List<string> getVentanasByModuloId(int id)
+        public List<string> getListaVentanaByModuloId(int id)
         {
             try
             {
@@ -283,7 +300,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getVentanasByModuloId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getListaVentanaByModuloId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -293,7 +310,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 ventana ventana = new ventana();
-                string sql = "SELECT codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas s where codigo ='" + id.ToString() + "'";
+                string sql = "SELECT codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas where codigo ='" + id.ToString() + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -364,7 +381,54 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+        //get lista ventanas completa no programador
+        public List<ventana> getListaVentanasProgramadorNo()
+        {
+            try
+            {
+                List<ventana> listaVentanas = new List<ventana>();
+                ventana ventana = new ventana();
+                string sql = "select codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas s where programador='0' and activo='1'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        ventana=new ventana();
+                        ventana = getVentanaById(Convert.ToInt16(row[0].ToString()));
+                        listaVentanas.Add(ventana);
+                    }
+                }
 
+                return listaVentanas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentanasProgramadorNo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get true si el empleado puede acceder a esa ventana
+        public Boolean getAccederVentanaByEmpleadoId(int codigoEmpleado, int codigoVentana)
+        {
+            try
+            {
+                string sql = "SELECT id_empleado,id_ventana_sistema FROM empleado_accesos_ventanas where id_empleado='"+codigoEmpleado+"' and id_ventana_sistema='"+codigoVentana+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getAccederVentanaByEmpleadoId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
        
     }
 }

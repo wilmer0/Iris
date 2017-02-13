@@ -187,6 +187,7 @@
     <Compile Include="modelos\modeloMetodoPago.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />
+    <Compile Include="modelos\modeloPago.cs" />
     <Compile Include="modelos\modeloPrimerLogin.cs" />
     <Compile Include="modelos\modeloProducto.cs" />
     <Compile Include="modelos\ModeloReporte.cs" />
@@ -242,10 +243,16 @@
     <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.Designer.cs">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_cliente.cs">
+    <Compile Include="modulo_cuenta_por_pagar\ventana_anular_pagos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_cliente.Designer.cs">
+    <Compile Include="modulo_cuenta_por_pagar\ventana_anular_pagos.Designer.cs">
+      <DependentUpon>ventana_anular_pagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_cliente.Designer.cs">
       <DependentUpon>ventana_busqueda_cliente.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_suplidor.cs">
@@ -265,6 +272,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_compra_pagos.Designer.cs">
       <DependentUpon>ventana_compra_pagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_consulta_compra_pagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_consulta_compra_pagos.Designer.cs">
+      <DependentUpon>ventana_consulta_compra_pagos.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_suplidor.cs">
       <SubType>Form</SubType>
@@ -440,6 +453,12 @@
     <Compile Include="modulo_inventario\ventana_busqueda_categoria_producto.Designer.cs">
       <DependentUpon>ventana_busqueda_categoria_producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_compra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_busqueda_compra.Designer.cs">
+      <DependentUpon>ventana_busqueda_compra.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_busqueda_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -584,6 +603,12 @@
     <Compile Include="modulo_opciones\ventana_carga_documentos.Designer.cs">
       <DependentUpon>ventana_carga_documentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_opciones\ventana_permisos_empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_opciones\ventana_permisos_empleado.Designer.cs">
+      <DependentUpon>ventana_permisos_empleado.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_sistema\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -631,7 +656,10 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_cliente.resx">
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_anular_pagos.resx">
+      <DependentUpon>ventana_anular_pagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_busqueda_cliente.resx">
       <DependentUpon>ventana_busqueda_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_suplidor.resx">
@@ -642,6 +670,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_compra_pagos.resx">
       <DependentUpon>ventana_compra_pagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_consulta_compra_pagos.resx">
+      <DependentUpon>ventana_consulta_compra_pagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_suplidor.resx">
       <DependentUpon>ventana_suplidor.cs</DependentUpon>
@@ -730,6 +761,9 @@
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_categoria_producto.resx">
       <DependentUpon>ventana_busqueda_categoria_producto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_busqueda_compra.resx">
+      <DependentUpon>ventana_busqueda_compra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_producto.resx">
       <DependentUpon>ventana_busqueda_producto.cs</DependentUpon>
     </EmbeddedResource>
@@ -801,6 +835,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_opciones\ventana_carga_documentos.resx">
       <DependentUpon>ventana_carga_documentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_opciones\ventana_permisos_empleado.resx">
+      <DependentUpon>ventana_permisos_empleado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_sistema\formBase.resx">
       <DependentUpon>formBase.cs</DependentUpon>

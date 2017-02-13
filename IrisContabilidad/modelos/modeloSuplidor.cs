@@ -158,7 +158,43 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
+        //get suplidor by nombre
+        public suplidor getSuplidorByNombre(string nombre)
+        {
+            try
+            {
+                suplidor suplidor = new suplidor();
+                string sql = "select codigo,nombre,rnc,fecha_creacion,cod_sucursal_creado,limite_credito,activo,direccion,telefono1,telefono2,tipo_gasto,fecha_modificacion,fax,cod_ciudad from suplidors";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                
+                List<suplidor> listaSuplidor=new List<suplidor>();
+                listaSuplidor = getListaCompleta();
+                suplidor =listaSuplidor.FindAll(x => x.nombre.ToLower().Contains(nombre.ToLower())).ToList().FirstOrDefault();
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    suplidor.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    suplidor.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    suplidor.rnc = ds.Tables[0].Rows[0][2].ToString();
+                    suplidor.fecha_creacion = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
+                    suplidor.codigo_sucursal_creado = Convert.ToInt16(ds.Tables[0].Rows[0][4].ToString());
+                    suplidor.limite_credito = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
+                    suplidor.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][6].ToString());
+                    suplidor.direccion = ds.Tables[0].Rows[0][7].ToString();
+                    suplidor.telefono1 = ds.Tables[0].Rows[0][8].ToString();
+                    suplidor.telefono2 = ds.Tables[0].Rows[0][9].ToString();
+                    suplidor.cod_tipo_gasto = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
+                    suplidor.fecha_modificacion = Convert.ToDateTime(ds.Tables[0].Rows[0][11].ToString());
+                    suplidor.fax = ds.Tables[0].Rows[0][12].ToString();
+                    suplidor.codigo_ciudad = Convert.ToInt16(ds.Tables[0].Rows[0][13].ToString());
+                }
+                return suplidor;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getSuplidorByNombre.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
 
         //get lista completa
         public List<suplidor> getListaCompleta(bool mantenimiento = false)

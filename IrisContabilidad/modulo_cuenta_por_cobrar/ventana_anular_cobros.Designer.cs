@@ -31,19 +31,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_anular_cobros));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button19 = new System.Windows.Forms.Button();
             this.clienteText = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.clienteIdText = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.motivoAnularText = new System.Windows.Forms.TextBox();
             this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmpleadoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.meotodocobrodetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoventacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anularCobroColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.motivoAnularText = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -79,7 +78,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.button19);
             this.groupBox1.Controls.Add(this.clienteText);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.clienteIdText);
@@ -98,18 +96,6 @@
             this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 78;
             this.label2.Text = "Cliente";
-            // 
-            // button19
-            // 
-            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
-            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Location = new System.Drawing.Point(844, 13);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(64, 58);
-            this.button19.TabIndex = 104;
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // clienteText
             // 
@@ -170,29 +156,10 @@
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 20);
-            this.label1.TabIndex = 105;
-            this.label1.Text = "Motivo anular";
-            // 
-            // motivoAnularText
-            // 
-            this.motivoAnularText.Location = new System.Drawing.Point(12, 141);
-            this.motivoAnularText.MaxLength = 500;
-            this.motivoAnularText.Multiline = true;
-            this.motivoAnularText.Name = "motivoAnularText";
-            this.motivoAnularText.Size = new System.Drawing.Size(432, 59);
-            this.motivoAnularText.TabIndex = 106;
-            // 
             // idPrductoColumn
             // 
             this.idPrductoColumn.FillWeight = 30F;
-            this.idPrductoColumn.HeaderText = "ID";
+            this.idPrductoColumn.HeaderText = "ID Cobro";
             this.idPrductoColumn.Name = "idPrductoColumn";
             this.idPrductoColumn.ReadOnly = true;
             // 
@@ -235,6 +202,25 @@
             this.anularCobroColumn.ToolTipText = "seleccionar si desea anular este cobro";
             this.anularCobroColumn.TrueValue = "";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 118);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 20);
+            this.label1.TabIndex = 105;
+            this.label1.Text = "Motivo anular";
+            // 
+            // motivoAnularText
+            // 
+            this.motivoAnularText.Location = new System.Drawing.Point(12, 141);
+            this.motivoAnularText.MaxLength = 500;
+            this.motivoAnularText.Multiline = true;
+            this.motivoAnularText.Name = "motivoAnularText";
+            this.motivoAnularText.Size = new System.Drawing.Size(432, 59);
+            this.motivoAnularText.TabIndex = 106;
+            // 
             // ventana_anular_cobros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,7 +257,6 @@
         private System.Windows.Forms.TextBox clienteText;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox clienteIdText;
-        private System.Windows.Forms.Button button19;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox motivoAnularText;
