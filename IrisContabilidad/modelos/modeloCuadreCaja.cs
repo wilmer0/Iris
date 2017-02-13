@@ -27,14 +27,16 @@ namespace IrisContabilidad.modelos
                 int cajaCuadrada = 0;
                 int cajaAbierta = 0;
                 //validar que tenga una apertura de caja activa
-                string sql = "select *from cuadre_caja where cod_cajero='" + cuadreCaja.codigo_cajero + "' and activo='1' and cod_caja='" + cuadreCaja.codigo_caja + "' and caja_cuadrada='0'";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count < 1)
+                modeloCajero modeloCajero=new modeloCajero();
+                if ((modeloCajero.getValidarCajaAbiertaByCajero(cuadreCaja.codigo_cajero)) == true)
                 {
-                    MessageBox.Show("No tiene apertura de caja activa", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(
+                        "El cajero tiene una caja abierta, primero debe cuadrar antes de realizar una apertura de caja",
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
+                string sql = "";
+                DataSet ds=new DataSet();
                 if (cuadreCaja.activo == true)
                 {
                     activo = 1;
@@ -64,7 +66,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                string sql = "select max(codigo)from cuadra_caja";
+                string sql = "select max(codigo)from cuadre_caja";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 //int id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                 int id = 0;

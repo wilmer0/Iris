@@ -196,5 +196,32 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get validar si cajero tiene caja abierta
+        public bool getValidarCajaAbiertaByCajero(int codigoCajero)
+        {
+            try
+            {
+                empleado empleado=new empleado();
+                empleado = new modeloEmpleado().getEmpleadoByCajeroId(codigoCajero);
+                if (empleado == null)
+                {
+                    return false;
+                }
+
+                string sql = "select *from cuadre_caja where activo='1' and cod_sucursal='"+empleado.codigo_sucursal+"' and caja_cuadrada='0' and caja_abierta='1' and cod_cajero='"+codigoCajero+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getValidarCajaAbiertaByCajero.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

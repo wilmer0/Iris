@@ -369,6 +369,12 @@
     <Compile Include="modulo_facturacion\ventana_caja.Designer.cs">
       <DependentUpon>ventana_caja.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_caja_apertura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_caja_apertura.Designer.cs">
+      <DependentUpon>ventana_caja_apertura.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_caja_ingresos_egresos_conceptos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -476,12 +482,6 @@
     </Compile>
     <Compile Include="modulo_inventario\ventana_busqueda_unidad.Designer.cs">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="modulo_inventario\ventana_caja_apertura.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="modulo_inventario\ventana_caja_apertura.Designer.cs">
-      <DependentUpon>ventana_caja_apertura.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_inventario\ventana_categoria_producto.cs">
       <SubType>Form</SubType>
@@ -719,6 +719,9 @@
     <EmbeddedResource Include="modulo_facturacion\ventana_caja.resx">
       <DependentUpon>ventana_caja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_caja_apertura.resx">
+      <DependentUpon>ventana_caja_apertura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_caja_ingresos_egresos_conceptos.resx">
       <DependentUpon>ventana_caja_ingresos_egresos_conceptos.cs</DependentUpon>
     </EmbeddedResource>
@@ -772,9 +775,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_busqueda_unidad.resx">
       <DependentUpon>ventana_busqueda_unidad.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="modulo_inventario\ventana_caja_apertura.resx">
-      <DependentUpon>ventana_caja_apertura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_categoria_producto.resx">
       <DependentUpon>ventana_categoria_producto.cs</DependentUpon>
