@@ -99,7 +99,6 @@
             this.radioButtonTelefono.Name = "radioButtonTelefono";
             this.radioButtonTelefono.Size = new System.Drawing.Size(90, 21);
             this.radioButtonTelefono.TabIndex = 25;
-            this.radioButtonTelefono.TabStop = true;
             this.radioButtonTelefono.Text = "Telefono";
             this.radioButtonTelefono.UseVisualStyleBackColor = true;
             // 
@@ -111,7 +110,6 @@
             this.radioButtonCatgoria.Name = "radioButtonCatgoria";
             this.radioButtonCatgoria.Size = new System.Drawing.Size(96, 21);
             this.radioButtonCatgoria.TabIndex = 24;
-            this.radioButtonCatgoria.TabStop = true;
             this.radioButtonCatgoria.Text = "Categoria";
             this.radioButtonCatgoria.UseVisualStyleBackColor = true;
             // 
@@ -123,7 +121,6 @@
             this.radioButtonRnc.Name = "radioButtonRnc";
             this.radioButtonRnc.Size = new System.Drawing.Size(58, 21);
             this.radioButtonRnc.TabIndex = 23;
-            this.radioButtonRnc.TabStop = true;
             this.radioButtonRnc.Text = "RNC";
             this.radioButtonRnc.UseVisualStyleBackColor = true;
             // 
@@ -135,13 +132,13 @@
             this.radioButtonCedula.Name = "radioButtonCedula";
             this.radioButtonCedula.Size = new System.Drawing.Size(76, 21);
             this.radioButtonCedula.TabIndex = 22;
-            this.radioButtonCedula.TabStop = true;
             this.radioButtonCedula.Text = "Cedula";
             this.radioButtonCedula.UseVisualStyleBackColor = true;
             // 
             // radioButtonNombre
             // 
             this.radioButtonNombre.AutoSize = true;
+            this.radioButtonNombre.Checked = true;
             this.radioButtonNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonNombre.Location = new System.Drawing.Point(81, 51);
             this.radioButtonNombre.Name = "radioButtonNombre";

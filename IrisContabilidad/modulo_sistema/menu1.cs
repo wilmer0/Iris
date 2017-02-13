@@ -145,7 +145,7 @@ namespace IrisContabilidad.modulo_sistema
 
                 //select de las ventanas con el modulo presionado
                 //agregando las ventanas nuevas al flow layout
-                string sql = "SELECT id_modulo,id_ventana from modulos_vs_ventanas where id_modulo='"+idModulo+"'";
+                string sql = "select distinct mv.id_modulo,v.id_ventana_sistema from empleado_accesos_ventanas v join modulos_vs_ventanas mv on v.id_ventana_sistema=mv.id_ventana where mv.id_modulo='"+idModulo+"' and v.id_empleado='" + empleado.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 List<Button> listaBotonesVentanas=new List<Button>();
                 foreach (DataRow rowVentana  in ds.Tables[0].Rows)
@@ -323,8 +323,7 @@ namespace IrisContabilidad.modulo_sistema
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error actualizarNotificacionesSistema.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error actualizarNotificacionesSistema.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

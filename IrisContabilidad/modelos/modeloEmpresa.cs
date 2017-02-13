@@ -19,13 +19,13 @@ namespace IrisContabilidad.modelos
       
 
         //agregar empresa
-        public bool agregarEmpresa(empresa empresaApp)
+        public bool agregarEmpresa(empresa empresa)
         {
             try
             {
 
                 int activo = 0;
-                if (empresaApp.activo == true)
+                if (empresa.activo == true)
                 {
                     //MessageBox.Show(Convert.ToInt16(empresaApp.activo).ToString());
                     activo = 1;
@@ -36,15 +36,13 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //se agrega
-                    sql = "insert into empresa(codigo,secuencia,division,activo,rnc,nombre,serie) values('"+empresaApp.codigo+"','"+empresaApp.secuencia+"','"+empresaApp.division+"','"+activo.ToString()+"','"+empresaApp.rnc+"','"+empresaApp.nombre+"','"+empresaApp.serie_comprobante+"')";
+                    sql = "insert into empresa(codigo,secuencia,division,activo,rnc,nombre,serie_comprobante) values('"+empresa.codigo+"','"+empresa.secuencia+"','"+empresa.division+"','"+activo.ToString()+"','"+empresa.rnc+"','"+empresa.nombre+"','"+empresa.serie_comprobante+"')";
                     ds = utilidades.ejecutarcomando_mysql(sql);
                     return true;
                 }
                 else
                 {
-                    sql = "update empresa set secuencia='" + empresaApp.secuencia + "',division='" + empresaApp.division +
-                    "',activo='" + activo.ToString()+ "',rnc='" + empresaApp.rnc + "',nombre='" +
-                    empresaApp.nombre + "',serie='"+empresaApp.serie_comprobante+"' where codigo='1'";
+                    sql = "update empresa set secuencia='" + empresa.secuencia + "',division='" + empresa.division +"',activo='" + activo.ToString()+ "',rnc='" + empresa.rnc + "',nombre='" +empresa.nombre + "',serie_comprobante='"+empresa.serie_comprobante+"' where codigo='1'";
                     ds = utilidades.ejecutarcomando_mysql(sql);
                     return true;
                 }
