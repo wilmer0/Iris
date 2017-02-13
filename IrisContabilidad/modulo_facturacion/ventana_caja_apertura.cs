@@ -43,16 +43,14 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+                cuadreCaja = null;
+                cajero = null;
                 cajeroIdText.Focus();
                 cajeroIdText.SelectAll();
 
-                cajero = null;
                 cajeroIdText.Text = "";
                 cajeroText.Text = "";
-
                 montoAperturaText.Text = "0.00";
-
-                cuadreCaja = null;
             }
             catch (Exception ex)
             {
@@ -105,7 +103,7 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     montoAperturaText.Focus();
                     montoAperturaText.SelectAll();
-                    MessageBox.Show("Falta el monto de apertura", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Falta el monto efectivo", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                 //validar monto sea cero o mayor

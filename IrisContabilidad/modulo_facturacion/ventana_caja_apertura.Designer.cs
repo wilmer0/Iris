@@ -84,9 +84,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(53, 194);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 20);
+            this.label3.Size = new System.Drawing.Size(129, 20);
             this.label3.TabIndex = 111;
-            this.label3.Text = "Monto apertura";
+            this.label3.Text = "Monto Efectivo";
             // 
             // groupBox1
             // 
