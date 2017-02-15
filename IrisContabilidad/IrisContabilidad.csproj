@@ -207,6 +207,12 @@
     <Compile Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.Designer.cs">
       <DependentUpon>ventana_busqueda_tipo_gastos.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_contabilidad\ventana_gastos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_contabilidad\ventana_gastos.Designer.cs">
+      <DependentUpon>ventana_gastos.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_contabilidad\ventana_tipo_gastos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -637,6 +643,9 @@
     </Compile>
     <EmbeddedResource Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.resx">
       <DependentUpon>ventana_busqueda_tipo_gastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_contabilidad\ventana_gastos.resx">
+      <DependentUpon>ventana_gastos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
