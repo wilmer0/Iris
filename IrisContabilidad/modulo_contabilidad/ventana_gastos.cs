@@ -46,6 +46,10 @@ namespace IrisContabilidad.modulo_contabilidad
                 if (gasto != null)
                 {
                     //llena
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+
+
                     suplidor = modeloSuplidor.getSuplidorById(gasto.codigo_suplidor);
                     loadSuplidor();
                     tipoGasto = modeloTipoGasto.getTipoGastoById(gasto.codigo_tipo_gasto);
@@ -61,12 +65,15 @@ namespace IrisContabilidad.modulo_contabilidad
                 else
                 {
                     //limpia
+                    gastoIdText.Focus();
+                    gastoIdText.SelectAll();
+
                     suplidor = null;
                     suplidorIdText.Text = "";
                     suplidorText.Text = "";
 
                     tipoGasto = null;
-                    tipoGadtoIdText.Text = "";
+                    tipoGastoIdText.Text = "";
                     tipoGastoText.Text = "";
 
                     FechaText.Text = DateTime.Today.ToString("dd/MM/yyyy");
@@ -96,6 +103,7 @@ namespace IrisContabilidad.modulo_contabilidad
                 {
                     suplidorIdText.Text = suplidor.codigo.ToString();
                     suplidorText.Text = suplidor.nombre;
+                    loadTipoGastoDefectoBySuplidor();
                 }
             }
             catch (Exception ex)
@@ -103,15 +111,33 @@ namespace IrisContabilidad.modulo_contabilidad
                 MessageBox.Show("Error loadSuplidor.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void loadTipoGastoDefectoBySuplidor()
+        {
+            try
+            {
+                tipoGastoIdText.Text = "";
+                tipoGastoText.Text = "";
+                tipoGasto = modeloTipoGasto.getTipoGastoDefectoBySuplidorId(suplidor.codigo);
+                if (tipoGasto != null)
+                {
+                    tipoGastoIdText.Text = tipoGasto.id.ToString();
+                    tipoGastoText.Text = tipoGasto.nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTipoGastoDefectoBySuplidor.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public void loadTipoGasto()
         {
             try
             {
-                tipoGadtoIdText.Text = "";
+                tipoGastoIdText.Text = "";
                 tipoGastoText.Text = "";
                 if (tipoGasto != null)
                 {
-                    tipoGadtoIdText.Text = tipoGasto.id.ToString();
+                    tipoGastoIdText.Text = tipoGasto.id.ToString();
                     tipoGastoText.Text = tipoGasto.nombre;
                 }
             }
@@ -153,8 +179,8 @@ namespace IrisContabilidad.modulo_contabilidad
                 //validar tipo gasto
                 if (tipoGasto == null)
                 {
-                    tipoGadtoIdText.Focus();
-                    tipoGadtoIdText.SelectAll();
+                    tipoGastoIdText.Focus();
+                    tipoGastoIdText.SelectAll();
                     MessageBox.Show("Falta el tipo de gasto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
@@ -243,7 +269,9 @@ namespace IrisContabilidad.modulo_contabilidad
                     gasto.codigo = modeloGasto.getNext();
                     gasto.activo = true;
                     gasto.contabilizado = false;
+                    
                 }
+                gasto.codigo_empleado = empleado.codigo;
                 gasto.codigo_suplidor = suplidor.codigo;
                 gasto.codigo_tipo_gasto = tipoGasto.id;
                 gasto.fecha = Convert.ToDateTime(FechaText.Text);
@@ -361,8 +389,8 @@ namespace IrisContabilidad.modulo_contabilidad
                 }
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
                 {
-                    tipoGadtoIdText.Focus();
-                    tipoGadtoIdText.Focus();
+                    tipoGastoIdText.Focus();
+                    tipoGastoIdText.Focus();
 
                     suplidor = modeloSuplidor.getSuplidorById(Convert.ToInt16(suplidorIdText.Text));
                     loadSuplidor();
@@ -386,7 +414,7 @@ namespace IrisContabilidad.modulo_contabilidad
                     FechaText.Focus();
                     FechaText.Focus();
 
-                    tipoGasto = modeloTipoGasto.getTipoGastoById(Convert.ToInt16(tipoGadtoIdText));
+                    tipoGasto = modeloTipoGasto.getTipoGastoById(Convert.ToInt16(tipoGastoIdText));
                     loadTipoGasto();
                 }
             }
@@ -469,6 +497,26 @@ namespace IrisContabilidad.modulo_contabilidad
             catch (Exception)
             {
             }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

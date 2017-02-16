@@ -25,6 +25,15 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 int contabilizado = 0;
+                //validar que el ncf no se repita de ese mismo suplidor
+                string sql = "select *from gastos where ncf='" + gasto.ncf+"' and cod_suplidor='"+gasto.codigo_suplidor+"' and codigo!='" + gasto.codigo + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un gasto de este suplidor con el mismo NCF", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
                 if (gasto.activo == true)
                 {
                     activo = 1;
@@ -33,9 +42,9 @@ namespace IrisContabilidad.modelos
                 {
                     contabilizado = 1;
                 }
-                string sql = "insert into gastos(codigo,cod_empleado,cod_tipo_gasto,cod_suplidor,numero_factura,ncf,fecha,monto_subtotal,monto_itebis,monto_isr,monto_total,cod_tipo_isr,cod_tipo_itebis,detalles,detalle_anulado,contabilizado,activo) values ('" + gasto.codigo + "','" + gasto.codigo_empleado + "','" + gasto.codigo_tipo_gasto + "','" + gasto.codigo_suplidor + "','" + gasto.numero_factura + "','" + gasto.ncf + "','" + utilidades.getFechayyyyMMdd(gasto.fecha) + "','" + gasto.monto_subtotal + "','" + gasto.monto_itebis + "','" + gasto.monto_isr + "','" + gasto.monto_total + "','" + gasto.codigo_tipo_isr + "','" + gasto.codigo_tipo_itebis + "','" + gasto.detalles + "','" + gasto.detalle_anulado + "','" + contabilizado + "','" + activo + "') ";
+                sql = "insert into gastos(codigo,cod_empleado,cod_tipo_gasto,cod_suplidor,numero_factura,ncf,fecha,monto_subtotal,monto_itebis,monto_isr,monto_total,cod_tipo_isr,cod_tipo_itebis,detalles,detalle_anulado,contabilizado,activo) values ('" + gasto.codigo + "','" + gasto.codigo_empleado + "','" + gasto.codigo_tipo_gasto + "','" + gasto.codigo_suplidor + "','" + gasto.numero_factura + "','" + gasto.ncf + "','" + utilidades.getFechayyyyMMdd(gasto.fecha) + "','" + gasto.monto_subtotal + "','" + gasto.monto_itebis + "','" + gasto.monto_isr + "','" + gasto.monto_total + "','" + gasto.codigo_tipo_isr + "','" + gasto.codigo_tipo_itebis + "','" + gasto.detalles + "','" + gasto.detalle_anulado + "','" + contabilizado + "','" + activo + "') ";
                 //MessageBox.Show(sql);
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
@@ -52,6 +61,13 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 int contabilizado = 0;
+                string sql = "select *from gastos where ncf='" + gasto.ncf + "' and cod_suplidor='" + gasto.codigo_suplidor + "' and codigo!='" + gasto.codigo + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un gasto de este suplidor con el mismo NCF", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
                 if (gasto.activo == true)
                 {
                     activo = 1;
@@ -60,8 +76,8 @@ namespace IrisContabilidad.modelos
                 {
                     contabilizado = 1;
                 }
-                string sql = "update gastos set cod_empleado='" + gasto.codigo_empleado + "',cod_tipo_gasto='" + gasto.codigo_tipo_gasto + "',cod_suplidor='" + gasto.codigo_suplidor + "',numero_factura='" + gasto.numero_factura + "',ncf='" + gasto.ncf + "',fecha='" + utilidades.getFechayyyyMMdd(gasto.fecha) + "',monto_subtotal='" + gasto.monto_subtotal + "',monto_itebis='" + gasto.monto_itebis + "',monto_isr='" + gasto.monto_isr + "',monto_total='" + gasto.monto_total + "',cod_tipo_isr='" + gasto.codigo_tipo_isr + "',cod_tipo_itebis='" + gasto.codigo_tipo_itebis + "',detalles='" + gasto.detalles + "',detalle_anulado='" + gasto.detalle_anulado + "',contabilizado='" + contabilizado + "',activo='" + activo + "' where codigo='" + gasto.codigo + "'";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                sql = "update gastos set cod_empleado='" + gasto.codigo_empleado + "',cod_tipo_gasto='" + gasto.codigo_tipo_gasto + "',cod_suplidor='" + gasto.codigo_suplidor + "',numero_factura='" + gasto.numero_factura + "',ncf='" + gasto.ncf + "',fecha='" + utilidades.getFechayyyyMMdd(gasto.fecha) + "',monto_subtotal='" + gasto.monto_subtotal + "',monto_itebis='" + gasto.monto_itebis + "',monto_isr='" + gasto.monto_isr + "',monto_total='" + gasto.monto_total + "',cod_tipo_isr='" + gasto.codigo_tipo_isr + "',cod_tipo_itebis='" + gasto.codigo_tipo_itebis + "',detalles='" + gasto.detalles + "',detalle_anulado='" + gasto.detalle_anulado + "',contabilizado='" + contabilizado + "',activo='" + activo + "' where codigo='" + gasto.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
             }
