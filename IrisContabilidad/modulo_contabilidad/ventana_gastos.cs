@@ -103,7 +103,7 @@ namespace IrisContabilidad.modulo_contabilidad
                 {
                     suplidorIdText.Text = suplidor.codigo.ToString();
                     suplidorText.Text = suplidor.nombre;
-                    loadTipoGastoDefectoBySuplidor();
+                    //loadTipoGastoDefectoBySuplidor();
                 }
             }
             catch (Exception ex)
@@ -117,6 +117,7 @@ namespace IrisContabilidad.modulo_contabilidad
             {
                 tipoGastoIdText.Text = "";
                 tipoGastoText.Text = "";
+                tipoGasto=new tipo_gasto();
                 tipoGasto = modeloTipoGasto.getTipoGastoDefectoBySuplidorId(suplidor.codigo);
                 if (tipoGasto != null)
                 {
@@ -232,6 +233,14 @@ namespace IrisContabilidad.modulo_contabilidad
                     montoRetencionIsrText.Focus();
                     montoRetencionIsrText.SelectAll();
                     MessageBox.Show("Falta el monto de retencion isr", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                //validar ncf
+                if (NcfText.Text == "")
+                {
+                    NcfText.Focus();
+                    NcfText.SelectAll();
+                    MessageBox.Show("Falta el NCF", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                
