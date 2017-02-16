@@ -65,6 +65,7 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -80,6 +81,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(388, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 
@@ -112,6 +114,7 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 80;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // suplidorIdText
             // 
@@ -121,6 +124,8 @@
             this.suplidorIdText.Name = "suplidorIdText";
             this.suplidorIdText.Size = new System.Drawing.Size(183, 26);
             this.suplidorIdText.TabIndex = 79;
+            this.suplidorIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suplidorIdText_KeyDown);
+            this.suplidorIdText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.suplidorIdText_KeyPress);
             // 
             // NcfText
             // 
@@ -130,6 +135,7 @@
             this.NcfText.Name = "NcfText";
             this.NcfText.Size = new System.Drawing.Size(253, 26);
             this.NcfText.TabIndex = 88;
+            this.NcfText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NcfText_KeyDown);
             // 
             // groupBox1
             // 
@@ -169,6 +175,8 @@
             this.tipoGadtoIdText.Name = "tipoGadtoIdText";
             this.tipoGadtoIdText.Size = new System.Drawing.Size(183, 26);
             this.tipoGadtoIdText.TabIndex = 89;
+            this.tipoGadtoIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoGadtoIdText_KeyDown);
+            this.tipoGadtoIdText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tipoGadtoIdText_KeyPress);
             // 
             // button4
             // 
@@ -180,6 +188,7 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 90;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label1
             // 
@@ -210,6 +219,7 @@
             this.FechaText.Size = new System.Drawing.Size(100, 20);
             this.FechaText.TabIndex = 93;
             this.FechaText.ValidatingType = typeof(System.DateTime);
+            this.FechaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FechaText_KeyDown);
             // 
             // label3
             // 
@@ -249,6 +259,8 @@
             this.montoSubTotalText.Name = "montoSubTotalText";
             this.montoSubTotalText.Size = new System.Drawing.Size(253, 26);
             this.montoSubTotalText.TabIndex = 96;
+            this.montoSubTotalText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.montoSubTotalText_KeyDown);
+            this.montoSubTotalText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.montoSubTotalText_KeyPress);
             // 
             // label6
             // 
@@ -268,6 +280,8 @@
             this.montoItebisText.Name = "montoItebisText";
             this.montoItebisText.Size = new System.Drawing.Size(253, 26);
             this.montoItebisText.TabIndex = 99;
+            this.montoItebisText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.montoItebisText_KeyDown);
+            this.montoItebisText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.montoItebisText_KeyPress);
             // 
             // tipoRetencionIsrIdText
             // 
@@ -288,6 +302,7 @@
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 101;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label7
             // 
@@ -318,6 +333,8 @@
             this.montoRetencionIsrText.Name = "montoRetencionIsrText";
             this.montoRetencionIsrText.Size = new System.Drawing.Size(253, 26);
             this.montoRetencionIsrText.TabIndex = 105;
+            this.montoRetencionIsrText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.montoRetencionIsrText_KeyDown);
+            this.montoRetencionIsrText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.montoRetencionIsrText_KeyPress);
             // 
             // label8
             // 

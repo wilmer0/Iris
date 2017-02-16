@@ -128,6 +128,7 @@
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
     <Compile Include="clases\FileFolderDialog.cs" />
+    <Compile Include="clases\gasto.cs" />
     <Compile Include="clases\grupo_usuarios.cs" />
     <Compile Include="clases\itebis.cs" />
     <Compile Include="clases\mes.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
+    <Compile Include="modelos\modeloGasto.cs" />
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
     <Compile Include="modelos\modeloItebis.cs" />
     <Compile Include="modelos\modeloMetodoPago.cs" />

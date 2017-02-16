@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_cuenta_por_pagar;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_contabilidad
@@ -22,11 +23,13 @@ namespace IrisContabilidad.modulo_contabilidad
         empleado empleado;
         private suplidor suplidor;
         private tipo_gasto tipoGasto;
-
+        private gasto gasto;
 
         //modelos
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
         private modeloTipoGasto modeloTipoGasto;
+        modeloSuplidor modeloSuplidor=new modeloSuplidor();
+        modeloGasto modeloGasto=new modeloGasto();
 
         public ventana_gastos()
         {
@@ -40,7 +43,43 @@ namespace IrisContabilidad.modulo_contabilidad
         {
             try
             {
-                
+                if (gasto != null)
+                {
+                    //llena
+                    suplidor = modeloSuplidor.getSuplidorById(gasto.codigo_suplidor);
+                    loadSuplidor();
+                    tipoGasto = modeloTipoGasto.getTipoGastoById(gasto.codigo_tipo_gasto);
+                    loadTipoGasto();
+                    FechaText.Text = gasto.fecha.ToString("dd/MM/yyyy");
+                    NcfText.Text = gasto.ncf;
+                    montoSubTotalText.Text = gasto.monto_subtotal.ToString("N");
+                    montoItebisText.Text = gasto.monto_itebis.ToString("N");
+                    //retencion isr
+                    montoRetencionIsrText.Text = gasto.monto_isr.ToString("N");
+
+                }
+                else
+                {
+                    //limpia
+                    suplidor = null;
+                    suplidorIdText.Text = "";
+                    suplidorText.Text = "";
+
+                    tipoGasto = null;
+                    tipoGadtoIdText.Text = "";
+                    tipoGastoText.Text = "";
+
+                    FechaText.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    NcfText.Text = "";
+                    montoSubTotalText.Text = "0.00";
+                    montoItebisText.Text = "0.00";
+                    
+                    //retencion isr
+                    tipoRetencionIsrIdText.Text = "";
+                    montoRetencionIsrText.Text = "0.00";
+                    
+                    montoRetencionIsrText.Text = "0.00";
+                }
             }
             catch (Exception ex)
             {
@@ -51,7 +90,13 @@ namespace IrisContabilidad.modulo_contabilidad
         {
             try
             {
-               
+                suplidorIdText.Text = "";
+                suplidorText.Text = "";
+                if (suplidor != null)
+                {
+                    suplidorIdText.Text = suplidor.codigo.ToString();
+                    suplidorText.Text = suplidor.nombre;
+                }
             }
             catch (Exception ex)
             {
@@ -62,7 +107,13 @@ namespace IrisContabilidad.modulo_contabilidad
         {
             try
             {
-
+                tipoGadtoIdText.Text = "";
+                tipoGastoText.Text = "";
+                if (tipoGasto != null)
+                {
+                    tipoGadtoIdText.Text = tipoGasto.id.ToString();
+                    tipoGastoText.Text = tipoGasto.nombre;
+                }
             }
             catch (Exception ex)
             {
@@ -91,36 +142,73 @@ namespace IrisContabilidad.modulo_contabilidad
         {
             try
             {
-                //validar que el usuario es cajero
-                if (cajero == null)
+                //validar suplidor
+                if (suplidor == null)
                 {
-                    cajeroIdText.Focus();
-                    cajeroIdText.SelectAll();
-                    MessageBox.Show("Falta el cajero", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
+                    MessageBox.Show("Falta el suplidor", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                //validar que tenga monto de apertura
-                if (montoAperturaText.Text == "")
+                //validar tipo gasto
+                if (tipoGasto == null)
                 {
-                    montoAperturaText.Focus();
-                    montoAperturaText.SelectAll();
-                    MessageBox.Show("Falta el monto efectivo", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tipoGadtoIdText.Focus();
+                    tipoGadtoIdText.SelectAll();
+                    MessageBox.Show("Falta el tipo de gasto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                //validar monto sea cero o mayor
-                if (Convert.ToDecimal(montoAperturaText.Text) < 0)
+                //validar fehcha
+                if (FechaText.Text == "")
                 {
-                    montoAperturaText.Focus();
-                    montoAperturaText.SelectAll();
-                    MessageBox.Show("El monto debe ser un número mayor o igual a cero", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    FechaText.Focus();
+                    FechaText.SelectAll();
+                    MessageBox.Show("Falta la fecha", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                //validar si este cajero tiene caja abierta
-                if ((modeloCajero.getValidarCajaAbiertaByCajero(cajero.codigo)) == true)
+                //validar fehcha formato
+                DateTime fecha1;
+                if (DateTime.TryParse(FechaText.Text,out fecha1)==false)
                 {
-                    MessageBox.Show("Este cajero ya tiene una caja abierta, no puede realizar apertura sobre una ya existente", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    FechaText.Focus();
+                    FechaText.SelectAll();
+                    MessageBox.Show("Formato de fecha no es valido", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
+
+                //validar sub total
+                if (Convert.ToDecimal(montoSubTotalText.Text)<0)
+                {
+                    montoSubTotalText.Focus();
+                    montoSubTotalText.SelectAll();
+                    MessageBox.Show("Falta el sub total", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                //validar itebis
+                if (Convert.ToDecimal(montoItebisText.Text) < 0)
+                {
+                    montoItebisText.Focus();
+                    montoItebisText.SelectAll();
+                    MessageBox.Show("Falta el monto itbis", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                //validar retencion isr
+                //if (Convert.ToDecimal(montoSubTotalText.Text) < 0)
+                //{
+                //    montoSubTotalText.Focus();
+                //    montoSubTotalText.SelectAll();
+                //    MessageBox.Show("Falta el sub total", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return false;
+                //}
+                //validar monto isr
+                if (Convert.ToDecimal(montoRetencionIsrText.Text) < 0)
+                {
+                    montoRetencionIsrText.Focus();
+                    montoRetencionIsrText.SelectAll();
+                    MessageBox.Show("Falta el monto de retencion isr", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+               
 
                 return true;
             }
@@ -148,41 +236,44 @@ namespace IrisContabilidad.modulo_contabilidad
 
                 bool crear = false;
                 //se instancia el empleado si esta nulo
-                if (cuadreCaja == null)
+                if (gasto == null)
                 {
-                    cuadreCaja = new cuadre_caja();
+                    gasto = new gasto();
                     crear = true;
-                    cuadreCaja.codigo = modeloCuadreCaja.getNext();
-                    cuadreCaja.turno = modeloCuadreCaja.getNextTurno();
-                    cuadreCaja.activo = true;
+                    gasto.codigo = modeloGasto.getNext();
+                    gasto.activo = true;
+                    gasto.contabilizado = false;
                 }
+                gasto.codigo_suplidor = suplidor.codigo;
+                gasto.codigo_tipo_gasto = tipoGasto.id;
+                gasto.fecha = Convert.ToDateTime(FechaText.Text);
+                gasto.ncf = NcfText.Text;
+                gasto.monto_subtotal = Convert.ToDecimal(montoSubTotalText.Text);
+                gasto.monto_itebis = Convert.ToDecimal(montoItebisText.Text);
+                //retencion
 
-                cuadreCaja.codigo_cajero = cajero.codigo;
-                cuadreCaja.fecha = DateTime.Today;
-                cuadreCaja.codigo_sucursal = empleado.codigo_sucursal;
-                cuadreCaja.codigo_caja = cajero.codigo_caja;
-                cuadreCaja.efectivo_inicial = Convert.ToDecimal(montoAperturaText.Text);
-                cuadreCaja.caja_cuadrada = false;
-                cuadreCaja.caja_abierta = true;
+                gasto.monto_isr = Convert.ToDecimal(montoRetencionIsrText.Text);
+
+               
 
                 if (crear == true)
                 {
                     //se agrega
-                    if ((modeloCuadreCaja.agregarCuadreCaja(cuadreCaja)) == true)
+                    if ((modeloGasto.agregarGasto(gasto) == true))
                     {
                         loadVentana();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        cuadreCaja = null;
+                        gasto = null;
                         MessageBox.Show("No se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                cuadreCaja = null;
+                gasto = null;
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -193,7 +284,191 @@ namespace IrisContabilidad.modulo_contabilidad
 
         private void button1_Click(object sender, EventArgs e)
         {
+            getAction();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            salir();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            loadVentana();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_suplidor ventana=new ventana_busqueda_suplidor();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                suplidor = ventana.getObjeto();
+                loadSuplidor();
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_tipo_gastos ventana=new ventana_busqueda_tipo_gastos();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                tipoGasto = ventana.getObjeto();
+                loadTipoGasto();
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void suplidorIdText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void tipoGadtoIdText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void montoSubTotalText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e,montoSubTotalText.Text);
+        }
+
+        private void montoItebisText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, montoItebisText.Text);
+        }
+
+        private void montoRetencionIsrText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, montoRetencionIsrText.Text);
+        }
+
+        private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button5_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    tipoGadtoIdText.Focus();
+                    tipoGadtoIdText.Focus();
+
+                    suplidor = modeloSuplidor.getSuplidorById(Convert.ToInt16(suplidorIdText.Text));
+                    loadSuplidor();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void tipoGadtoIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    FechaText.Focus();
+                    FechaText.Focus();
+
+                    tipoGasto = modeloTipoGasto.getTipoGastoById(Convert.ToInt16(tipoGadtoIdText));
+                    loadTipoGasto();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void FechaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    NcfText.Focus();
+                    NcfText.SelectAll();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void NcfText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    montoSubTotalText.Focus();
+                    montoSubTotalText.Focus();
+
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void montoSubTotalText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    montoItebisText.Focus();
+                    montoItebisText.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void montoItebisText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    tipoRetencionIsrIdText.Focus();
+                    tipoRetencionIsrIdText.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void montoRetencionIsrText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    button1.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }
