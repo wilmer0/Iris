@@ -119,7 +119,7 @@ namespace IrisContabilidad.modelos
                 {
                     tipoGasto.id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     tipoGasto.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    tipoGasto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2].ToString());
+                    tipoGasto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2]);
                 }
                 return tipoGasto;
             }
@@ -161,6 +161,29 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get gasto by suplidor
+        public tipo_gasto getTipoGastoDefectoBySuplidorId(int id)
+        {
+            try
+            {
+                tipo_gasto tipoGasto = new tipo_gasto();
+                string sql = "select t.id,t.nombre,t.activo from tipo_gasto t join suplidor s on t.id=s.tipo_gasto where s.codigo='"+id+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    tipoGasto.id = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    tipoGasto.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    tipoGasto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2]);
+                }
+                return tipoGasto;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getTipoGastoDefectoBySuplidorId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }

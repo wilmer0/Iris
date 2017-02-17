@@ -72,7 +72,6 @@ namespace IrisContabilidad.modulo_facturacion
                 empleadoCajero = modeloEmpleado.getEmpleadoByCajeroId(cajero.codigo);
                 cajeroIdText.Text = cajero.codigo.ToString();
                 cajeroText.Text = empleadoCajero.nombre;
-
             }
             catch (Exception ex)
             {
@@ -169,7 +168,6 @@ namespace IrisContabilidad.modulo_facturacion
                     //se agrega
                     if ((modeloCuadreCaja.agregarCuadreCaja(cuadreCaja)) == true)
                     {
-                        
                         loadVentana();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
