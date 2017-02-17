@@ -121,6 +121,7 @@
     <Compile Include="clases\comprobante_fiscal.cs" />
     <Compile Include="clases\cuadre_caja.cs" />
     <Compile Include="clases\cuadre_caja_detalle.cs" />
+    <Compile Include="clases\cuenta_contable.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\desglose_dinero.cs" />
     <Compile Include="clases\dias.cs" />
@@ -128,6 +129,7 @@
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
     <Compile Include="clases\FileFolderDialog.cs" />
+    <Compile Include="clases\gasto.cs" />
     <Compile Include="clases\grupo_usuarios.cs" />
     <Compile Include="clases\itebis.cs" />
     <Compile Include="clases\mes.cs" />
@@ -178,10 +180,12 @@
     <Compile Include="modelos\modeloCompra.cs" />
     <Compile Include="modelos\modeloComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloCuadreCaja.cs" />
+    <Compile Include="modelos\modeloCuentaContable.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
+    <Compile Include="modelos\modeloGasto.cs" />
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
     <Compile Include="modelos\modeloItebis.cs" />
     <Compile Include="modelos\modeloMetodoPago.cs" />
@@ -206,6 +210,18 @@
     </Compile>
     <Compile Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.Designer.cs">
       <DependentUpon>ventana_busqueda_tipo_gastos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_contabilidad\ventana_cuentas_contables.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_contabilidad\ventana_cuentas_contables.Designer.cs">
+      <DependentUpon>ventana_cuentas_contables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_contabilidad\ventana_gastos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_contabilidad\ventana_gastos.Designer.cs">
+      <DependentUpon>ventana_gastos.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_contabilidad\ventana_tipo_gastos.cs">
       <SubType>Form</SubType>
@@ -362,6 +378,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_tipo_comprobante_fiscal.Designer.cs">
       <DependentUpon>ventana_busqueda_tipo_comprobante_fiscal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_vendedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_vendedor.Designer.cs">
+      <DependentUpon>ventana_busqueda_vendedor.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_caja.cs">
       <SubType>Form</SubType>
@@ -638,6 +660,12 @@
     <EmbeddedResource Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.resx">
       <DependentUpon>ventana_busqueda_tipo_gastos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_contabilidad\ventana_cuentas_contables.resx">
+      <DependentUpon>ventana_cuentas_contables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_contabilidad\ventana_gastos.resx">
+      <DependentUpon>ventana_gastos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
     </EmbeddedResource>
@@ -715,6 +743,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_tipo_comprobante_fiscal.resx">
       <DependentUpon>ventana_busqueda_tipo_comprobante_fiscal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_vendedor.resx">
+      <DependentUpon>ventana_busqueda_vendedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_caja.resx">
       <DependentUpon>ventana_caja.cs</DependentUpon>

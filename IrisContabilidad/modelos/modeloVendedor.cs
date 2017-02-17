@@ -25,24 +25,20 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validar empleado no se repita
-                string sql = "select *from vendedor where cod_empelado='" + vendedor.codigo_empelado + "' and codigo!='" + vendedor.codigo + "'";
+                string sql = "select *from vendedor where cod_empleado='" + vendedor.codigo_empelado + "' and codigo!='" + vendedor.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un vendedor con ese empleado", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
-
-
-
 
                 if (vendedor.activo == true)
                 {
                     activo = 1;
                 }
 
-                sql = "insert into almacen(codigo,cod_empleado,porciento,activo) values('" + vendedor.codigo + "','" + vendedor.codigo_empelado + "','" + vendedor.porciento_ganancia + "','" + activo.ToString() + "')";
+                sql = "insert into vendedor(codigo,cod_empleado,porciento,activo) values('" + vendedor.codigo + "','" + vendedor.codigo_empelado + "','" + vendedor.porciento_ganancia + "','" + activo.ToString() + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -61,14 +57,13 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validar empleado no se repita
-                string sql = "select *from vendedor where cod_empelado='" + vendedor.codigo_empelado + "' and codigo!='" + vendedor.codigo + "'";
+                string sql = "select *from vendedor where cod_empleado='" + vendedor.codigo_empelado + "' and codigo!='" + vendedor.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un vendedor con ese empleado", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
 
 
 
@@ -127,16 +122,16 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    vendedor.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    vendedor.codigo_empelado = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
-                    vendedor.porciento_ganancia = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
-                    vendedor.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    vendedor.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                    vendedor.codigo_empelado = Convert.ToInt16(ds.Tables[0].Rows[0][1]);
+                    vendedor.porciento_ganancia = Convert.ToDecimal(ds.Tables[0].Rows[0][2]);
+                    vendedor.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
                 }
                 return vendedor;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getAlmacenById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getVendedorById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -149,11 +144,10 @@ namespace IrisContabilidad.modelos
             {
 
                 List<vendedor> lista = new List<vendedor>();
-                string sql = "";
-                sql = "select codigo,cod_empleado,porciento,activo from vendedor";
+                string sql = "select codigo,cod_empleado,porciento,activo from vendedor ";
                 if (mantenimiento == false)
                 {
-                    sql += " where activo=1";
+                    sql += " where activo='1'";
                 }
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -161,10 +155,10 @@ namespace IrisContabilidad.modelos
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         vendedor vendedor = new vendedor();
-                        vendedor.codigo = Convert.ToInt16(row[0].ToString());
-                        vendedor.codigo_empelado = Convert.ToInt16(row[1].ToString());
-                        vendedor.porciento_ganancia = Convert.ToDecimal(row[2].ToString());
-                        vendedor.activo = Convert.ToBoolean(row[3].ToString());
+                        vendedor.codigo = Convert.ToInt16(row[0]);
+                        vendedor.codigo_empelado = Convert.ToInt16(row[1]);
+                        vendedor.porciento_ganancia = Convert.ToDecimal(row[2]);
+                        vendedor.activo = Convert.ToBoolean(row[3]);
                         lista.Add(vendedor);
                     }
                 }
@@ -172,8 +166,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -196,7 +189,7 @@ namespace IrisContabilidad.modelos
                         vendedor.codigo = Convert.ToInt16(row[0].ToString());
                         vendedor.codigo_empelado = Convert.ToInt16(row[1].ToString());
                         vendedor.porciento_ganancia = Convert.ToDecimal(row[2].ToString());
-                        vendedor.activo = Convert.ToBoolean(row[3].ToString());
+                        vendedor.activo = Convert.ToBoolean(row[3]);
                         lista.Add(vendedor);
                     }
                 }

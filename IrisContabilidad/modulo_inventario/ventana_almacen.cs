@@ -62,9 +62,9 @@ namespace IrisContabilidad.modulo_inventario
             {
                 if (nombreText.Text == "")
                 {
-                    MessageBox.Show("Falta el nombre ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     nombreText.Focus();
                     nombreText.SelectAll();
+                    MessageBox.Show("Falta el nombre ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
 
@@ -119,6 +119,7 @@ namespace IrisContabilidad.modulo_inventario
                     }
                     else
                     {
+                        almacen = null;
                         MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
