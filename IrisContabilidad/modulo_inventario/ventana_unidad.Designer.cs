@@ -115,9 +115,9 @@
             this.groupBox1.Controls.Add(this.suplidorIdText);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Location = new System.Drawing.Point(16, 40);
+            this.groupBox1.Location = new System.Drawing.Point(16, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(529, 66);
+            this.groupBox1.Size = new System.Drawing.Size(529, 79);
             this.groupBox1.TabIndex = 73;
             this.groupBox1.TabStop = false;
             // 

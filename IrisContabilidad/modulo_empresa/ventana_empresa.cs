@@ -48,6 +48,7 @@ namespace IrisContabilidad.modulo_empresa
                     empresaText.Text = empresa.nombre;
                     RncText.Text = empresa.rnc;
                     divisionText.Text = empresa.division;
+                    serieComprobanteText.Text = empresa.serie_comprobante;
                     activoCheck.Checked = Convert.ToBoolean(empresa.activo);
                 }
                 else
@@ -59,6 +60,7 @@ namespace IrisContabilidad.modulo_empresa
                     empresaText.Text = "";
                     RncText.Text = "";
                     divisionText.Text = "";
+                    serieComprobanteText.Text = "";
                     activoCheck.Checked = true;
                 }
                 empresaText.Focus();
@@ -164,7 +166,9 @@ namespace IrisContabilidad.modulo_empresa
             empresa.nombre = empresaText.Text;
             empresa.rnc = RncText.Text;
             empresa.division = divisionText.Text;
+            empresa.secuencia = "001";
             empresa.activo = true;
+            empresa.serie_comprobante = serieComprobanteText.Text;
 
             if ((modeloEmpresa.agregarEmpresa(empresa)) == true)
             {

@@ -202,7 +202,8 @@ namespace IrisContabilidad.modelos
                 }
                 contador+=1;
                 sql = "update comprobante_fiscal set contador='"+contador+"' where contador<>hasta_numero and cod_caja='"+codigoCaja+"' and codigo_tipo='"+codigoTipoComprobante+"'";
-                
+                utilidades.ejecutarcomando_mysql(sql);
+
                 secuencia = contador.ToString();
                 secuencia = utilidades.getRellenar(secuencia, '0', 8);
                 //ahora el ncf saldra asi-> 00000999

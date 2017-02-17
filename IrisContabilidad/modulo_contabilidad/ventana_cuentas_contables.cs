@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.modulo_sistema;
 
-namespace IrisContabilidad.modulo_inventario
+namespace IrisContabilidad.modulo_contabilidad
 {
-    public partial class ventana_caja_apertura : formBase
+    public partial class ventana_cuentas_contables : formBase
     {
-        public ventana_caja_apertura()
+        public ventana_cuentas_contables()
         {
             InitializeComponent();
         }
 
-        private void ventana_caja_apertura_Load(object sender, EventArgs e)
+        private void ventana_cuentas_contables_Load(object sender, EventArgs e)
         {
 
         }

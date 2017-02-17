@@ -81,6 +81,7 @@ namespace IrisContabilidad.modelos
                     empresa.division = "01";
                     empresa.rnc = "000000000";
                     empresa.activo = true;
+                    empresa.serie_comprobante = "A";
                     modeloEmpresa.agregarEmpresa(empresa);
                 }
 
@@ -509,6 +510,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "cuadre_caja1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "apertura caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_caja_apertura";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "caja_apertura1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
@@ -542,6 +552,18 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 3;
                 ventana.imagen = "venta_cobro1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Anular cobros";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_anular_cobros";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 3;
+                ventana.imagen = "venta_cobro_anular1.png";
+                listaVentana.Add(ventana);
+               
+
+
                 #endregion
 
 
@@ -566,6 +588,25 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 4;
                 ventana.imagen = "compra_pagos1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Anular pagos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_anular_pagos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "compra_pagos_anular1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "consultar pagos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_consulta_compra_pagos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "consulta_compra_pagos1.png";
+                listaVentana.Add(ventana);
+
                 #endregion
 
                 
@@ -650,6 +691,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 6;
                 ventana.imagen = "cambio_clave1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Permisos empleado";
+                ventana.nombre_logico = "IrisContabilidad.modulo_opciones.ventana_permisos_empleado";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 6;
+                ventana.imagen = "permisos_empleado1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
@@ -710,6 +760,7 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 7;
                 ventana.imagen = "grupo_usuario1.png";
                 listaVentana.Add(ventana);
+
                 #endregion
 
 
@@ -736,6 +787,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 9;
                 ventana.imagen = "tipo_gastos1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Gastos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_contabilidad.ventana_gastos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 9;
+                ventana.imagen = "gastos1.png";
                 listaVentana.Add(ventana);
                 #endregion
 
