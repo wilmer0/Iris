@@ -52,6 +52,7 @@ namespace IrisContabilidad.modulo_contabilidad
 
                     suplidor = modeloSuplidor.getSuplidorById(gasto.codigo_suplidor);
                     loadSuplidor();
+                    tipoGasto=new tipo_gasto();
                     tipoGasto = modeloTipoGasto.getTipoGastoById(gasto.codigo_tipo_gasto);
                     loadTipoGasto();
                     FechaText.Text = gasto.fecha.ToString("dd/MM/yyyy");
@@ -243,6 +244,14 @@ namespace IrisContabilidad.modulo_contabilidad
                     MessageBox.Show("Falta el NCF", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
+                //validar numero factura
+                if (numeroFacturaText.Text == "")
+                {
+                    numeroFacturaText.Focus();
+                    numeroFacturaText.SelectAll();
+                    MessageBox.Show("Falta el número de factura", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
                
 
                 return true;
@@ -420,10 +429,10 @@ namespace IrisContabilidad.modulo_contabilidad
                 }
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
                 {
-                    FechaText.Focus();
-                    FechaText.Focus();
+                    numeroFacturaText.Focus();
+                    numeroFacturaText.Focus();
 
-                    tipoGasto = modeloTipoGasto.getTipoGastoById(Convert.ToInt16(tipoGastoIdText));
+                    tipoGasto = modeloTipoGasto.getTipoGastoById(Convert.ToInt16(tipoGastoIdText.Text));
                     loadTipoGasto();
                 }
             }
@@ -526,6 +535,22 @@ namespace IrisContabilidad.modulo_contabilidad
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void numeroFacturaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    FechaText.Focus();
+                    FechaText.Focus();
+
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

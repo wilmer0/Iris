@@ -33,6 +33,14 @@ namespace IrisContabilidad.modelos
                     MessageBox.Show("Existe un gasto de este suplidor con el mismo NCF", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+                //validar que el numero de factura no se repita de ese mismo suplidor
+                sql = "select *from gastos where numero_factura='" + gasto.numero_factura + "' and cod_suplidor='" + gasto.codigo_suplidor + "' and codigo!='" + gasto.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un gasto de este suplidor con el mismo NCF", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
 
                 if (gasto.activo == true)
                 {
@@ -61,6 +69,7 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 int contabilizado = 0;
+                //validar que el ncf no se repita de ese mismo suplidor
                 string sql = "select *from gastos where ncf='" + gasto.ncf + "' and cod_suplidor='" + gasto.codigo_suplidor + "' and codigo!='" + gasto.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -68,6 +77,15 @@ namespace IrisContabilidad.modelos
                     MessageBox.Show("Existe un gasto de este suplidor con el mismo NCF", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+                //validar que el numero de factura no se repita de ese mismo suplidor
+                sql = "select *from gastos where numero_factura='" + gasto.numero_factura + "' and cod_suplidor='" + gasto.codigo_suplidor + "' and codigo!='" + gasto.codigo + "'";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    MessageBox.Show("Existe un gasto de este suplidor con el mismo NCF", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
                 if (gasto.activo == true)
                 {
                     activo = 1;
