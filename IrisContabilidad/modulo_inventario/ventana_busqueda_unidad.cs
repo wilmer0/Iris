@@ -30,6 +30,7 @@ namespace IrisContabilidad.modulo_inventario
         //variables 
         public bool mantenimiento = false;
         private int fila = 0;
+        private int codigoProducto = 0;
 
 
         public ventana_busqueda_unidad(bool mantenimiento=false)
@@ -39,15 +40,38 @@ namespace IrisContabilidad.modulo_inventario
             this.mantenimiento = mantenimiento;
             loadLista();
         }
+        public ventana_busqueda_unidad(int? codigoProducto)
+        {
+            InitializeComponent();
+            this.tituloLabel.Text = this.Text;
+            this.mantenimiento = false;
+            if (codigoProducto != null)
+            {
+                this.codigoProducto = (int) codigoProducto;
+            }
+            loadLista();
+        }
         public void loadLista()
         {
             try
             {
                 //si la lista esta null se inicializa
-                if (listaUnidad == null)
+                if (codigoProducto == 0)
                 {
-                    listaUnidad = new List<unidad>();
-                    listaUnidad = modeloUnidad.getListaCompleta(mantenimiento);
+                    if (listaUnidad == null)
+                    {
+                        listaUnidad = new List<unidad>();
+                        listaUnidad = modeloUnidad.getListaCompleta(mantenimiento);
+                    }
+                }
+                else
+                {
+                    //buscara las unidades en base a un producto
+                    if (listaUnidad == null)
+                    {
+                        listaUnidad = new List<unidad>();
+                        listaUnidad = modeloUnidad.getListaCompletaByProductoId(codigoProducto);
+                    }
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)

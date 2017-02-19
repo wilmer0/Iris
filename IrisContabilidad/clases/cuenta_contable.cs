@@ -11,7 +11,7 @@ namespace IrisContabilidad.clases
         public int codigo { get; set; }
         public string nombre { get; set; }
         public string numero_cuenta { get; set; }
-        public int cuenta_superior { get; set; }
+        public int codigo_cuenta_superior { get; set; }
         public bool cuenta_acumulativa { get; set; }
         public bool cuenta_movimiento { get; set; }
         public bool origen_credito { get; set; }

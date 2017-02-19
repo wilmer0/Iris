@@ -511,12 +511,15 @@ namespace IrisContabilidad.modelos
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    productoRequisitos = new producto_productos_requisitos();
-                    productoRequisitos.codigo_producto_titular = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    productoRequisitos.codigo_producto_requisito = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
-                    productoRequisitos.codigo_unidad = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    productoRequisitos.cantidad = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
-                    lista.Add(productoRequisitos);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        productoRequisitos = new producto_productos_requisitos();
+                        productoRequisitos.codigo_producto_titular = Convert.ToInt16(row[0].ToString());
+                        productoRequisitos.codigo_producto_requisito = Convert.ToInt16(row[1].ToString());
+                        productoRequisitos.codigo_unidad = Convert.ToInt16(row[2].ToString());
+                        productoRequisitos.cantidad = Convert.ToDecimal(row[3].ToString());
+                        lista.Add(productoRequisitos);
+                    }
                 }
                 return lista;
             }
