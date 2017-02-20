@@ -556,6 +556,7 @@
             this.detalleText.Name = "detalleText";
             this.detalleText.Size = new System.Drawing.Size(455, 133);
             this.detalleText.TabIndex = 86;
+            this.detalleText.TextChanged += new System.EventHandler(this.detalleText_TextChanged);
             this.detalleText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.detalleText_KeyDown);
             // 
             // label6
