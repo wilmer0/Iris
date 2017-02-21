@@ -184,7 +184,7 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     clienteIdText.Focus();
                     clienteIdText.SelectAll();
-                    MessageBox.Show("Falta el suplidor", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Falta el cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 //si tiene productos en el grid
@@ -399,7 +399,15 @@ namespace IrisContabilidad.modulo_facturacion
                     cantidadText.SelectAll();
                     return;
                 }
-                //validar que tenga costo 
+                if (Convert.ToDecimal(cantidadText.Text) <=0)
+                {
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cantidadText.Focus();
+                    cantidadText.SelectAll();
+                    return;
+                }
+
+                //validar que tenga precio 
                 if (precioText.Text == "")
                 {
                     MessageBox.Show("Falta el precio del producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1018,6 +1026,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 //MessageBox.Show("Error cambiando de tipo de comprobante fiscal", "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+        }
+
+        private void detalleText_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

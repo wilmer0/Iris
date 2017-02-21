@@ -797,6 +797,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 9;
                 ventana.imagen = "gastos1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Cuentas contables";
+                ventana.nombre_logico = "IrisContabilidad.modulo_contabilidad.ventana_cuentas_contables";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 9;
+                ventana.imagen = "catalogo_cuenta1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
