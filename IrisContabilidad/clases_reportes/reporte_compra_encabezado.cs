@@ -20,6 +20,7 @@ namespace IrisContabilidad.clases_reportes
         public string empleadoImpresion { get; set; }
 
 
+        public string numero_comprobante_fiscal { get; set; }
         public string fecha_compa { get; set; }
         public int codigo_compra { get; set; }
         public string fecha_limite { get; set; }
@@ -77,6 +78,7 @@ namespace IrisContabilidad.clases_reportes
             this.suplidor_rnc = suplidor.rnc;
             this.empleado = empleado.nombre;
             this.tipo_compra = compra.tipo_compra;
+            this.numero_comprobante_fiscal = compra.ncf;
             listaCompraDetalle = new modeloCompra().getListaCompraDetalleByCompra(compra.codigo);
             listaCompraDetalle.ForEach(x =>
             {
