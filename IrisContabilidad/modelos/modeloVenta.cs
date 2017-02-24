@@ -647,13 +647,13 @@ namespace IrisContabilidad.modelos
             }
         }
         //get lista venta detalle by venta
-        public List<venta_detalle> getListaVentaDetalleByVenta(int id)
+        public List<venta_detalle> getListaVentaDetalleByVenta(int ventaId)
         {
             try
             {
                 List<venta_detalle> lista = new List<venta_detalle>();
                 venta_detalle ventaDetalle = new venta_detalle();
-                string sql = "select codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo from venta_detalle where cod_venta='" + id + "'";
+                string sql = "select codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo from venta_detalle where cod_venta='" + ventaId + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -682,13 +682,13 @@ namespace IrisContabilidad.modelos
             }
         }
         //get lista cobros by venta
-        public List<venta_vs_cobros> getListaCobrosByVenta(int id)
+        public List<venta_vs_cobros> getListaCobrosByVenta(int ventaId)
         {
             try
             {
                 List<venta_vs_cobros> lista = new List<venta_vs_cobros>();
                 venta_vs_cobros cobro = new venta_vs_cobros();
-                string sql = "select codigo,fecha,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado,detalle from venta_vs_cobros where codigo='"+id+"'";
+                string sql = "select codigo,fecha,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado,detalle from venta_vs_cobros where codigo='"+ventaId+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -715,13 +715,13 @@ namespace IrisContabilidad.modelos
             }
         }
         //get lista cobros detalle by venta
-        public List<venta_vs_cobros_detalles> getListaCobrosDetallesByVenta(int id)
+        public List<venta_vs_cobros_detalles> getListaCobrosDetallesByVenta(int ventaId)
         {
             try
             {
                 List<venta_vs_cobros_detalles> lista = new List<venta_vs_cobros_detalles>();
                 venta_vs_cobros_detalles cobroDetalle = new venta_vs_cobros_detalles();
-                string sql = "select codigo,cod_cobro,cod_metodo_cobro,monto_cobrado,monto_descontado,activo,cod_venta from venta_vs_cobros_detalles where cod_cobro='" + id + "'";
+                string sql = "select codigo,cod_cobro,cod_metodo_cobro,monto_cobrado,monto_descontado,activo,cod_venta from venta_vs_cobros_detalles where activo='1' and cod_venta='" + ventaId + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -748,7 +748,7 @@ namespace IrisContabilidad.modelos
         }
 
         //get monto pendiente by venta
-        public decimal getMontoPendienteByVenta(int id)
+        public decimal getMontoPendienteByVenta(int ventaID)
         {
             try
             {
@@ -760,8 +760,8 @@ namespace IrisContabilidad.modelos
                 List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
                 List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
 
-                listaVentaDetalle = getListaVentaDetalleByVenta(id);
-                listaCobrosDetalle = getListaCobrosDetallesByVenta(id);
+                listaVentaDetalle = getListaVentaDetalleByVenta(ventaID);
+                listaCobrosDetalle = getListaCobrosDetallesByVenta(ventaID);
 
                 if (listaVentaDetalle.Count > 0)
                 {
@@ -880,6 +880,23 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error setSalidaInventarioByProductoUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //hacer que esta venta se pague automaticamente 
+        public bool setVentapagada(int idVenta)
+        {
+            //hacer pagos a compra
+            try
+            {
+                string sql = "update venta set pagada='1' where codigo='"+idVenta+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error setVentapagada.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
