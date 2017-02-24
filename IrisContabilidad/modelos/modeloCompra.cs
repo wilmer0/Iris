@@ -707,5 +707,20 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        //set compra pagada
+        public bool setCompraPagada(int idCompra)
+        {
+            try
+            {
+                string sql = "update compra set pagada='0' where codigo='"+idCompra+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error setCompraPagada.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

@@ -331,12 +331,21 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 //filtrando las compra que esten activa, que no esten pagada y que no sean a contado
                 listaCompra = listaCompra.FindAll(x => x.pagada == false && x.activo==true && x.tipo_compra!="CON").ToList();
                 listaCompra = listaCompra.OrderByDescending(x => x.codigo).ToList();
+                listaCompra = listaCompra.OrderByDescending(x => x.codigo).ToList();
                 foreach(var x in listaCompra)
                 {
                     decimal montoPendiente = 0;
                     montoPendiente = modeloCompra.getMontoPendienteBycompra(x.codigo);
                     empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
-                    dataGridView1.Rows.Add(x.codigo,x.fecha.ToString("dd/MM/yyyy"),utilidades.getDiasByRangoFecha(x.fecha_limite,DateTime.Today),empleado.nombre,x.tipo_compra,x.ncf,x.fecha_limite.ToString("dd/MM/yyyy"),montoPendiente.ToString("N"));
+                    if (montoPendiente > 0)
+                    {
+                        dataGridView1.Rows.Add(x.codigo, x.fecha.ToString("dd/MM/yyyy"), utilidades.getDiasByRangoFecha(x.fecha_limite, DateTime.Today), empleado.nombre, x.tipo_compra, x.ncf, x.fecha_limite.ToString("dd/MM/yyyy"), montoPendiente.ToString("N"));
+                    }
+                    else
+                    {
+                        modeloCompra.setCompraPagada(x.codigo);
+                    }
+                    
                 }
                 calcularTotal();
             }
