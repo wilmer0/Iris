@@ -174,40 +174,25 @@ namespace IrisContabilidad.modulo_facturacion
                     {
                         listaVenta = listaVenta.FindAll(x => x.codigo.ToString().Contains(nombreText.Text.ToLower()));
                     }
-                    //por cedula
-                    if (radioButtonCedula.Checked == true)
+                    //por ncf
+                    if (radioButtonNCF.Checked == true)
                     {
-                        listaVenta = listaVenta.FindAll(x => x.cedula.Contains(nombreText.Text));
+                        listaVenta = listaVenta.FindAll(x => x.ncf.ToLower().Contains(nombreText.Text.ToLower()));
                     }
-                    //por rnc
-                    if (radioButtonRnc.Checked == true)
+                    //por cliente
+                    if (radioButtonCliente.Checked == true)
                     {
-                        listaVenta = listaVenta.FindAll(x => x.rnc.Contains(nombreText.Text));
+                        listaVenta =listaVenta.FindAll(x =>(cliente = modeloCliente.getClienteById(x.codigo_cliente)).nombre.ToLower().Contains(nombreText.Text.ToLower())).ToList();
+                    }
+                    //por tipo venta
+                    if (radioButtonTipoVenta.Checked == true)
+                    {
+                        listaVenta = listaVenta.FindAll(x => x.tipo_venta.ToLower().Contains(nombreText.Text.ToLower()));
                     }
                     //categoria
-                    if (radioButtonCatgoria.Checked == true)
+                    if (radioButtonEmpleado.Checked == true)
                     {
-                        index = 0;
-                        List<cliente> listaTemporal = new List<cliente>();
-                        listaTemporal = listaVenta;
-                        listaTemporal.ForEach(x =>
-                        {
-                            categoria = modeloCategoria.getCategoriaClienteById(x.codigo_categoria);
-                            if (categoria != null)
-                            {
-                                if (!categoria.nombre.ToLower().Contains(nombreText.Text.ToLower()))
-                                {
-                                    //si no contiene el nombre de la categoria escrita se borrara de la lista principal
-                                    listaVenta.RemoveAt(index);
-                                }
-                            }
-                            index++;
-                        });
-                    }
-                    //telefono
-                    if (radioButtonTelefono.Checked == true)
-                    {
-                        listaVenta = listaVenta.FindAll(x => x.telefono1.Contains(nombreText.Text) || x.telefono2.Contains(nombreText.Text));
+                        listaVenta =listaVenta.FindAll(x =>(empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado)).nombre.ToLower().Contains(nombreText.Text.ToLower())).ToList();
                     }
                     loadLista();
                 }
