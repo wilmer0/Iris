@@ -364,7 +364,7 @@ namespace IrisContabilidad.modelos
             }
         }
         //get lista completa de venta
-        public List<venta> getListaVenta(int id)
+        public List<venta> getListaCompleta()
         {
             try
             {
@@ -397,7 +397,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCompra.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }

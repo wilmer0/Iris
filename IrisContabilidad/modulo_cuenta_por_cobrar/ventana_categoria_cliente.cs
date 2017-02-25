@@ -127,6 +127,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     }
                     else
                     {
+                        categoriaCliente = null;
                         MessageBox.Show("No se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
