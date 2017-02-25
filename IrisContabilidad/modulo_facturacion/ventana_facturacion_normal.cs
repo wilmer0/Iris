@@ -961,6 +961,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 cambiarTipoComprobante();
             }
+            if (e.KeyCode == Keys.F5)
+            {
+                cambiarUnidadCombo();
+            }
+            
         }
 
         public void cambiarTipoVentacombo()
@@ -981,6 +986,26 @@ namespace IrisContabilidad.modulo_facturacion
             catch (Exception ex)
             {
                 MessageBox.Show("Error cambiarTipoVentacombo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public void cambiarUnidadCombo()
+        {
+            try
+            {
+                int cantItems = 0;
+                cantItems = unidadComboText.Items.Count;
+                if (unidadComboText.SelectedIndex == (cantItems - 1))
+                {
+                    unidadComboText.SelectedIndex = 0;
+                }
+                else
+                {
+                    unidadComboText.SelectedIndex += 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cambiarUnidadCombo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
