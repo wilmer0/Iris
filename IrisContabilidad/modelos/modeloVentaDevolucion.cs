@@ -17,7 +17,7 @@ namespace IrisContabilidad.modelos
 
 
         //agregar 
-        public bool agregarDevolucion(ventaDevolucion devolucion, List<ventaDevolucionDetalle> listaDetalle)
+        public bool agregarDevolucion(ventaDevolucion devolucion, List<ventaDevolucionDetalle> listaDevolucionDetalle)
         {
             try
             {
@@ -34,23 +34,44 @@ namespace IrisContabilidad.modelos
 
 
                 //insertar venta devolucion detalle
-                listaDetalle.ForEach(x =>
+                listaDevolucionDetalle.ForEach(x =>
                 {
                     x.codigo = getNextDevolucionDetalle();
                     x.monto_total = x.cantidad*x.precio;
                     sql = "insert into venta_devolucion_detalles(codigo,codigo_devolucion,codigo_producto,codigo_unidad,cantidad,precio,monto_total) values('"+x.codigo+"','"+x.codigo_devolucion+"','"+x.codigo_producto+"','"+x.codigo_unidad+"','"+x.cantidad+"','"+x.precio+"','"+x.monto_total+"')";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
-
-                //sacar cantidad devuelta de la venta detalle
-                listaDetalle.ForEach(x =>
+                
+                //si ya paso 30 dias desde que se efectuo la venta no se devuelve el itbis
+                //para devolver el itbis debe estar menos de 30 dias porque en 30 dias maximo se reporta a la dgii
+                venta venta = new modeloVenta().getVentaById(devolucion.codigo_venta);
+                DateTime fechaHoy = DateTime.Today;
+                int dias=Convert.ToInt16(utilidades.getFechaDiferenciaDias(venta.fecha, fechaHoy));
+                decimal cantidad = 0;
+                decimal descuentoPorUnidad = 0;
+                decimal itebisPorUnidad = 0;
+                if (dias < 30)
                 {
-                    sql = "update venta_detalle set  where cod_venta='"+devolucion.codigo_venta+"'";
-                    utilidades.ejecutarcomando_mysql(sql);
+                    listaDevolucionDetalle.ForEach(x =>
+                    {
+                        //tomando la cantidad de devolucion actual
+                        //if (x.cantidad != cantidad) cantidad = x.cantidad;
 
-                });
+                        //tomando el descuento y itebis de ese producto unidad
+                        sql = "select cantidad,descuento,itebis from venta_detalle where cod_producto='"+x.codigo_producto+"' and cod_unidad='"+x.codigo_unidad+"' and cod_venta='"+devolucion.codigo_venta+"'";
+                        ds = utilidades.ejecutarcomando_mysql(sql);
+                        if (ds.Tables[0].Rows[0][0].ToString() != "" && ds.Tables[0].Rows[0][1].ToString() != "" && ds.Tables[0].Rows[0][2].ToString()!="")
+                        {
+                            cantidad = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
+                            descuentoPorUnidad = Convert.ToDecimal(Convert.ToDecimal(ds.Tables[0].Rows[0][1].ToString()) / cantidad);
+                            itebisPorUnidad = Convert.ToDecimal(Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString()) / cantidad);
 
-
+                            //restando cantidad / descuento / itebis
+                            sql = "update venta_detalle set cantidad=cantidad-" + x.cantidad + ",descuento='" + descuentoPorUnidad + "',itebis='" + itebisPorUnidad + "' where cod_venta='" + devolucion.codigo_venta + "'";
+                            utilidades.ejecutarcomando_mysql(sql);
+                        }
+                    });
+                }
 
                 return true;
             }
@@ -113,109 +134,86 @@ namespace IrisContabilidad.modelos
             }
         }
         //get objeto
-        public venta getVentaById(int id)
+        public ventaDevolucion getDevolucionById(int id)
         {
             try
             {
-                venta venta = new venta();
-                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta where codigo='" + id + "'";
+                ventaDevolucion devolucion = new ventaDevolucion();
+                string sql = "select codigo,codigo_venta,fecha,activo,codigo_empleado,descripcion,ncf from venta_devolucion where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    venta.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    venta.numero_factura = ds.Tables[0].Rows[0][1].ToString();
-                    venta.codigo_cliente = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    venta.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][3].ToString());
-                    venta.fecha_limite = Convert.ToDateTime(ds.Tables[0].Rows[0][4].ToString());
-                    venta.ncf = ds.Tables[0].Rows[0][5].ToString();
-                    venta.tipo_venta = ds.Tables[0].Rows[0][6].ToString();
-                    venta.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
-                    venta.pagada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
-                    venta.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
-                    venta.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][10].ToString());
-                    venta.codigo_empelado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
-                    venta.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
-                    venta.detalle = ds.Tables[0].Rows[0][13].ToString();
-
+                    devolucion.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    devolucion.codigo_venta = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                    devolucion.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][2].ToString());
+                    devolucion.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
+                    devolucion.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][4].ToString());
+                    devolucion.descripcion = ds.Tables[0].Rows[0][5].ToString();
+                    devolucion.ncf = ds.Tables[0].Rows[0][6].ToString();
                 }
-                return venta;
+                return devolucion;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getVentaById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getDevolucionById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
-        //get lista compra detalle
-        public List<venta_detalle> getListaVentaDetalle(int id, bool incluirTodos = false)
+        //get lista venta devolucion detalle
+        public List<ventaDevolucionDetalle> getListaVentaDevolucionDetalle(int id)
         {
             try
             {
-
-                List<venta_detalle> lista = new List<venta_detalle>();
+                List<ventaDevolucionDetalle> lista = new List<ventaDevolucionDetalle>();
                 string sql = "";
-                sql = "select codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo from venta_detalle where cod_venta='" + id + "'";
-                if (incluirTodos == false)
-                {
-                    //se traen solo los activo
-                    sql += " and activo='1'";
-                }
+                sql = "select codigo,codigo_devolucion,codigo_producto,codigo_unidad,cantidad,precio,monto_total from venta_devolucion_detalles where codigo_devolucion='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        venta_detalle ventaDetalle = new venta_detalle();
-                        ventaDetalle.codigo = Convert.ToInt16(row[0].ToString());
-                        ventaDetalle.cod_venta = Convert.ToInt16(row[1].ToString());
-                        ventaDetalle.codigo_producto = Convert.ToInt16(row[2].ToString());
-                        ventaDetalle.codigo_unidad = Convert.ToInt16(row[3].ToString());
-                        ventaDetalle.cantidad = Convert.ToDecimal(row[4].ToString());
-                        ventaDetalle.precio = Convert.ToDecimal(row[5].ToString());
-                        ventaDetalle.monto = Convert.ToDecimal(row[6].ToString());
-                        ventaDetalle.monto_itebis = Convert.ToDecimal(row[7].ToString());
-                        ventaDetalle.monto_descuento = Convert.ToDecimal(row[8].ToString());
-                        ventaDetalle.activo = Convert.ToBoolean(row[9].ToString());
-                        lista.Add(ventaDetalle);
+                        ventaDevolucionDetalle detalle = new ventaDevolucionDetalle();
+                        detalle.codigo = Convert.ToInt16(row[0].ToString());
+                        detalle.codigo_devolucion = Convert.ToInt16(row[1].ToString());
+                        detalle.codigo_producto = Convert.ToInt16(row[2].ToString());
+                        detalle.codigo_unidad = Convert.ToInt16(row[3].ToString());
+                        detalle.cantidad = Convert.ToDecimal(row[4].ToString());
+                        detalle.precio = Convert.ToDecimal(row[5].ToString());
+                        detalle.monto_total = Convert.ToDecimal(row[6].ToString());
+                        lista.Add(detalle);
                     }
                 }
                 return lista;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaVentaDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getListaVentaDevolucionDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }
         }
-        //get lista completa de venta
-        public List<venta> getListaCompleta()
+        //get lista completa de venta devolucion
+        public List<ventaDevolucion> getListaCompleta()
         {
             try
             {
-                List<venta> lista = new List<venta>();
-                venta venta = new venta();
-                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta";
+                List<ventaDevolucion> lista = new List<ventaDevolucion>();
+                ventaDevolucion ventaDevolucion = new ventaDevolucion();
+                string sql = "select codigo,codigo_venta,fecha,activo,codigo_empleado,descripcion,ncf from venta_devolucion";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        venta.codigo = Convert.ToInt16(row[0].ToString());
-                        venta.numero_factura = row[1].ToString();
-                        venta.codigo_cliente = Convert.ToInt16(row[2].ToString());
-                        venta.fecha = Convert.ToDateTime(row[3].ToString());
-                        venta.fecha_limite = Convert.ToDateTime(row[4].ToString());
-                        venta.ncf = row[5].ToString();
-                        venta.tipo_venta = row[6].ToString();
-                        venta.activo = Convert.ToBoolean(row[7]);
-                        venta.pagada = Convert.ToBoolean(row[8]);
-                        venta.codigo_sucursal = Convert.ToInt16(row[9].ToString());
-                        venta.codigo_empleado = Convert.ToInt16(row[10].ToString());
-                        venta.codigo_empelado_anular = Convert.ToInt16(row[11].ToString());
-                        venta.motivo_anulada = row[12].ToString();
-                        venta.detalle = row[13].ToString();
-                        lista.Add(venta);
+                        ventaDevolucion=new ventaDevolucion();
+                        ventaDevolucion.codigo = Convert.ToInt16(row[0].ToString());
+                        ventaDevolucion.codigo_venta = Convert.ToInt16(row[1].ToString());
+                        ventaDevolucion.fecha = Convert.ToDateTime(row[2].ToString());
+                        ventaDevolucion.activo = Convert.ToBoolean(row[3]);
+                        ventaDevolucion.codigo_empleado = Convert.ToInt16(row[4].ToString());
+                        ventaDevolucion.descripcion = row[5].ToString();
+                        ventaDevolucion.ncf = row[6].ToString();
+                        lista.Add(ventaDevolucion);
                     }
                 }
                 return lista;

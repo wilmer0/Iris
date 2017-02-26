@@ -35,7 +35,7 @@ namespace IrisContabilidad.clases_reportes
             this.precio = ventaDetalle.precio;
             this.itbis = ventaDetalle.monto_itebis;
             this.descuento = ventaDetalle.monto_descuento;
-            this.importe = ventaDetalle.monto;
+            this.importe = ventaDetalle.monto_total;
         }
     }
 }

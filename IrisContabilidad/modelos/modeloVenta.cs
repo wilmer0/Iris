@@ -62,7 +62,7 @@ namespace IrisContabilidad.modelos
                 listaDetalle.ForEach(x =>
                 {
                     x.codigo = getNextVentaDetalle();
-                    sql = "insert into venta_detalle(codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo) values('" + x.codigo + "','" + venta.codigo + "','" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.cantidad + "','" + x.precio + "','" + x.monto + "','" + x.monto_itebis + "','"+x.monto_descuento+"','1')";
+                    sql = "insert into venta_detalle(codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo) values('" + x.codigo + "','" + venta.codigo + "','" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.cantidad + "','" + x.precio + "','" + x.monto_total + "','" + x.monto_itebis + "','"+x.monto_descuento+"','1')";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
 
@@ -347,7 +347,7 @@ namespace IrisContabilidad.modelos
                         ventaDetalle.codigo_unidad = Convert.ToInt16(row[3].ToString());
                         ventaDetalle.cantidad = Convert.ToDecimal(row[4].ToString());
                         ventaDetalle.precio = Convert.ToDecimal(row[5].ToString());
-                        ventaDetalle.monto = Convert.ToDecimal(row[6].ToString());
+                        ventaDetalle.monto_total = Convert.ToDecimal(row[6].ToString());
                         ventaDetalle.monto_itebis = Convert.ToDecimal(row[7].ToString());
                         ventaDetalle.monto_descuento = Convert.ToDecimal(row[8].ToString());
                         ventaDetalle.activo = Convert.ToBoolean(row[9].ToString());
@@ -376,6 +376,7 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
+                        venta=new venta();
                         venta.codigo = Convert.ToInt16(row[0].ToString());
                         venta.numero_factura = row[1].ToString();
                         venta.codigo_cliente = Convert.ToInt16(row[2].ToString());
@@ -666,7 +667,7 @@ namespace IrisContabilidad.modelos
                         ventaDetalle.codigo_unidad = Convert.ToInt16(row[3].ToString());
                         ventaDetalle.cantidad = Convert.ToDecimal(row[4].ToString());
                         ventaDetalle.precio = Convert.ToDecimal(row[5].ToString());
-                        ventaDetalle.monto = Convert.ToDecimal(row[6].ToString());
+                        ventaDetalle.monto_total = Convert.ToDecimal(row[6].ToString());
                         ventaDetalle.monto_itebis = Convert.ToDecimal(row[7].ToString());
                         ventaDetalle.monto_descuento = Convert.ToDecimal(row[8].ToString());
                         ventaDetalle.activo = Convert.ToBoolean(row[9]);
@@ -768,7 +769,7 @@ namespace IrisContabilidad.modelos
                     //sumar los montos + descuento
                     listaVentaDetalle.ForEach(x =>
                     {
-                        montoVenta += x.monto + x.monto_descuento;
+                        montoVenta += x.monto_total + x.monto_descuento;
                     });
                 }
 

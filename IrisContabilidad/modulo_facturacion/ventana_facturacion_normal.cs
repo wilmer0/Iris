@@ -278,7 +278,7 @@ namespace IrisContabilidad.modulo_facturacion
                     ventaDetalle.codigo_unidad = Convert.ToInt16(row.Cells[2].Value);
                     ventaDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
                     ventaDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                    ventaDetalle.monto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    ventaDetalle.monto_total = Convert.ToDecimal(row.Cells[8].Value.ToString());
                     ventaDetalle.monto_itebis = Convert.ToDecimal(row.Cells[6].Value.ToString());
                     ventaDetalle.monto_descuento = Convert.ToDecimal(row.Cells[7].Value.ToString());
                     ventaDetalle.activo = true;
@@ -340,7 +340,7 @@ namespace IrisContabilidad.modulo_facturacion
                     producto = modeloProducto.getProductoById(x.codigo_producto);
                     unidad = modeloUnidad.getUnidadById(x.codigo_unidad);
                     itebis = modeloItebis.getItebisById(producto.codigo_itebis);
-                    dataGridView1.Rows.Add(x.codigo_producto, producto.nombre, x.codigo_unidad, unidad.unidad_abreviada, x.cantidad, x.precio, (itebis.porciento * x.monto), x.monto_descuento, x.monto);
+                    dataGridView1.Rows.Add(x.codigo_producto, producto.nombre, x.codigo_unidad, unidad.unidad_abreviada, x.cantidad, x.precio, (itebis.porciento * x.monto_total), x.monto_descuento, x.monto_total);
                 });
             }
             catch (Exception ex)

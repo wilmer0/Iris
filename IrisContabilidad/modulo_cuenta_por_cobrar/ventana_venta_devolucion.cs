@@ -23,12 +23,20 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         singleton singleton = new singleton();
         private cliente cliente;
         private venta venta;
+        private producto producto;
+        private unidad unidad;
 
 
         //modelos
         modeloCliente modeloCliente = new modeloCliente();
         modeloVenta modeloVenta=new modeloVenta();
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
+        modeloProducto modeloProducto=new modeloProducto();
+        modeloUnidad modeloUnidad=new modeloUnidad();
+
+        //listas
+        private List<venta_detalle> listaVentaDetalle; 
+
 
         public ventana_venta_devolucion()
         {
@@ -40,57 +48,55 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         }
         public void loadVentana()
         {
-            //try
-            //{
-            //    if (cliente != null)
-            //    {
-            //        nombreText.Focus();
-            //        nombreText.SelectAll();
+            try
+            {
+                dataGridView1.Rows.Clear();
+                if (venta != null)
+                {
+                    cliente = modeloCliente.getClienteById(venta.codigo_cliente);
+                    clienteLabel.Text = cliente.nombre;
+                    tipoVentaLabel.Text = venta.tipo_venta;
+                    ncfLabel.Text = venta.ncf;
+                    loadDetalleVenta();
+                }
+                else
+                {
+                    cliente = null;
+                    clienteLabel.Text = ".";
+                    tipoVentaLabel.Text = ".";
+                    ncfLabel.Text = ".";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
+        public void loadDetalleVenta()
+        {
+            try
+            {
+                if (venta == null)
+                {
+                    return;
+                }
 
-            //        nombreText.Text = cliente.nombre;
-            //        cedulaText.Text = cliente.cedula;
-            //        rncText.Text = cliente.rnc;
-            //        telefono1Text.Text = cliente.telefono1;
-            //        telefono2Text.Text = cliente.telefono2;
-            //        categoriaCliente = modeloCategoriaCliente.getCategoriaClienteById(cliente.codigo_categoria);
-            //        loadCategoriaCliente();
-            //        creditoText.Text = cliente.limite_credito.ToString("N");
-            //        tipoComprobante = modeloTipoComprobante.getTipoComprobanteById(cliente.codigo_tipo_comprobante_fiscal);
-            //        loadTipocomprobante();
-            //        direccion1Text.Text = cliente.direccion1;
-            //        direccion2Text.Text = cliente.direccion2;
-            //        clienteContadoCheck.Checked = Convert.ToBoolean(cliente.cliente_contado);
-            //        activoCheck.Checked = Convert.ToBoolean(cliente.activo);
-            //    }
-            //    else
-            //    {
-            //        clienteIdText.Focus();
-            //        clienteIdText.SelectAll();
+                listaVentaDetalle=new List<venta_detalle>();
+                listaVentaDetalle = modeloVenta.getListaVentaDetalleByVenta(venta.codigo);
 
-            //        clienteIdText.Text = "";
-            //        nombreText.Text = "";
-            //        cedulaText.Text = "";
-            //        rncText.Text = "";
-            //        telefono1Text.Text = "";
-            //        telefono2Text.Text = "";
-            //        categoriaCliente = null;
-            //        categoriaIdText.Text = "";
-            //        categoriaText.Text = "";
-            //        tipoComprobante = null;
-            //        tipoNcfIdText.Text = "";
-            //        tipoNcfText.Text = "";
-            //        creditoText.Text = "";
-            //        direccion1Text.Text = "";
-            //        direccion2Text.Text = "";
-            //        clienteContadoCheck.Checked = false;
-            //        activoCheck.Checked = true;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+                listaVentaDetalle.ForEach(x =>
+                {
+                    producto = modeloProducto.getProductoById(x.codigo_producto);
+                    unidad = modeloUnidad.getUnidadById(x.codigo_unidad);
+                    dataGridView1.Rows.Add(x.codigo_producto,producto.nombre,x.codigo_unidad,unidad.nombre,x.cantidad,x.precio,x.monto_total);
+                });
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadDetalleVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void salir()
         {
@@ -231,7 +237,101 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             ventana_busqueda_venta ventana=new ventana_busqueda_venta();
             ventana.Owner = this;
             ventana.ShowDialog();
+            if ((venta = ventana.getObjeto()) != null)
+            {
+                loadVentana();
+            }
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            salir();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            venta = null;
+            loadVentana();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            eliminar();
+        }
+        public void eliminar()
+        {
+            try
+            {
+                //validar que tenga filas el datagrid
+                if (dataGridView1 == null || dataGridView1.Rows.Count < 0)
+                {
+                    return;
+                }
+                int fila = 0;
+                fila = dataGridView1.CurrentRow.Index;
+                if (fila >= 0)
+                {
+                    dataGridView1.Rows[fila].Cells[7].Value = "0";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error eliminar.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void agregar()
+        {
+            try
+            {
+                //validaciones
+                if (cantidadDevolverText.Text == "")
+                {
+                    cantidadDevolverText.Focus();
+                    cantidadDevolverText.SelectAll();
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
+                decimal canti;
+                if (decimal.TryParse(cantidadDevolverText.Text, out canti) == false)
+                {
+                    cantidadDevolverText.Focus();
+                    cantidadDevolverText.SelectAll();
+                    MessageBox.Show("Cantidad a devolder no tiene formato de número", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    return;
+                }
+                canti = Convert.ToDecimal(cantidadDevolverText.Text);
+                if (dataGridView1 == null || dataGridView1.Rows.Count < 0)
+                {
+                    return;
+                }
+                int fila = 0;
+                fila = dataGridView1.CurrentRow.Index;
+                if (canti > Convert.ToDecimal(dataGridView1.Rows[fila].Cells[4].Value.ToString()))
+                {
+                    cantidadDevolverText.Focus();
+                    cantidadDevolverText.SelectAll();
+                    MessageBox.Show("La cantidad que esta insertando es mas alta que la facturada", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (fila >= 0)
+                {
+                    dataGridView1.Rows[fila].Cells[7].Value = cantidadDevolverText.Text;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregar.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void button20_Click(object sender, EventArgs e)
+        {
+            agregar();
+        }
+
+        private void cantidadDevolverText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, cantidadDevolverText.Text);
         }
     }
 }

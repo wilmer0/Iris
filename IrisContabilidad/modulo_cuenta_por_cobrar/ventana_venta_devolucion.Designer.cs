@@ -34,19 +34,24 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.secuenciacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cedulaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rncColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoriaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.telefonoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.activoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labl1 = new System.Windows.Forms.Label();
             this.lbl3 = new System.Windows.Forms.Label();
             this.lbl4 = new System.Windows.Forms.Label();
             this.clienteLabel = new System.Windows.Forms.Label();
             this.tipoVentaLabel = new System.Windows.Forms.Label();
             this.ncfLabel = new System.Windows.Forms.Label();
+            this.cantidadDevolverText = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button20 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -61,6 +66,7 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -75,6 +81,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(385, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
             // 
@@ -127,13 +134,14 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoColumn,
             this.secuenciacolumn,
             this.cedulaColumn,
             this.rncColumn,
             this.categoriaColumn,
             this.telefonoColumn,
-            this.activoColumn});
+            this.activoColumn,
+            this.Column1,
+            this.Column2});
             this.dataGridView1.Location = new System.Drawing.Point(16, 166);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -143,52 +151,59 @@
             this.dataGridView1.Size = new System.Drawing.Size(904, 421);
             this.dataGridView1.TabIndex = 87;
             // 
-            // codigoColumn
-            // 
-            this.codigoColumn.FillWeight = 30F;
-            this.codigoColumn.HeaderText = "Id";
-            this.codigoColumn.Name = "codigoColumn";
-            this.codigoColumn.ReadOnly = true;
-            // 
             // secuenciacolumn
             // 
-            this.secuenciacolumn.HeaderText = "Nombre";
+            this.secuenciacolumn.FillWeight = 30F;
+            this.secuenciacolumn.HeaderText = "ID";
             this.secuenciacolumn.Name = "secuenciacolumn";
             this.secuenciacolumn.ReadOnly = true;
             // 
             // cedulaColumn
             // 
-            this.cedulaColumn.FillWeight = 80F;
-            this.cedulaColumn.HeaderText = "Cedula";
+            this.cedulaColumn.HeaderText = "Producto";
             this.cedulaColumn.Name = "cedulaColumn";
             this.cedulaColumn.ReadOnly = true;
             // 
             // rncColumn
             // 
-            this.rncColumn.FillWeight = 80F;
-            this.rncColumn.HeaderText = "Rnc";
+            this.rncColumn.FillWeight = 30F;
+            this.rncColumn.HeaderText = "ID";
             this.rncColumn.Name = "rncColumn";
             this.rncColumn.ReadOnly = true;
             // 
             // categoriaColumn
             // 
-            this.categoriaColumn.FillWeight = 110F;
-            this.categoriaColumn.HeaderText = "Categoria";
+            this.categoriaColumn.HeaderText = "Unidad";
             this.categoriaColumn.Name = "categoriaColumn";
             this.categoriaColumn.ReadOnly = true;
             // 
             // telefonoColumn
             // 
-            this.telefonoColumn.HeaderText = "Telefono";
+            this.telefonoColumn.FillWeight = 50F;
+            this.telefonoColumn.HeaderText = "Cantidad";
             this.telefonoColumn.Name = "telefonoColumn";
             this.telefonoColumn.ReadOnly = true;
             // 
             // activoColumn
             // 
-            this.activoColumn.FillWeight = 30F;
-            this.activoColumn.HeaderText = "Activo";
+            this.activoColumn.FillWeight = 50F;
+            this.activoColumn.HeaderText = "Precio";
             this.activoColumn.Name = "activoColumn";
             this.activoColumn.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 50F;
+            this.Column1.HeaderText = "Total";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.FillWeight = 40F;
+            this.Column2.HeaderText = "Devolver";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // labl1
             // 
@@ -250,11 +265,59 @@
             this.ncfLabel.TabIndex = 95;
             this.ncfLabel.Text = ".";
             // 
+            // cantidadDevolverText
+            // 
+            this.cantidadDevolverText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cantidadDevolverText.Location = new System.Drawing.Point(589, 134);
+            this.cantidadDevolverText.Name = "cantidadDevolverText";
+            this.cantidadDevolverText.Size = new System.Drawing.Size(176, 26);
+            this.cantidadDevolverText.TabIndex = 109;
+            this.cantidadDevolverText.Text = "0.00";
+            this.cantidadDevolverText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cantidadDevolverText_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(431, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(152, 20);
+            this.label3.TabIndex = 108;
+            this.label3.Text = "Cantidad devolver";
+            // 
+            // button19
+            // 
+            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Location = new System.Drawing.Point(856, 102);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(64, 58);
+            this.button19.TabIndex = 111;
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button20
+            // 
+            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Location = new System.Drawing.Point(785, 102);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(65, 58);
+            this.button20.TabIndex = 110;
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            // 
             // ventana_venta_devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 659);
+            this.Controls.Add(this.button19);
+            this.Controls.Add(this.button20);
+            this.Controls.Add(this.cantidadDevolverText);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.ncfLabel);
             this.Controls.Add(this.tipoVentaLabel);
             this.Controls.Add(this.clienteLabel);
@@ -276,6 +339,10 @@
             this.Controls.SetChildIndex(this.clienteLabel, 0);
             this.Controls.SetChildIndex(this.tipoVentaLabel, 0);
             this.Controls.SetChildIndex(this.ncfLabel, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.cantidadDevolverText, 0);
+            this.Controls.SetChildIndex(this.button20, 0);
+            this.Controls.SetChildIndex(this.button19, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -294,18 +361,23 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rncColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activoColumn;
         private System.Windows.Forms.Label labl1;
         private System.Windows.Forms.Label lbl3;
         private System.Windows.Forms.Label lbl4;
         private System.Windows.Forms.Label clienteLabel;
         private System.Windows.Forms.Label tipoVentaLabel;
         private System.Windows.Forms.Label ncfLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rncColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn activoColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.TextBox cantidadDevolverText;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button20;
     }
 }
