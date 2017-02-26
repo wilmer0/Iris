@@ -142,6 +142,7 @@
     <Compile Include="clases\producto_productos_requisitos.cs" />
     <Compile Include="clases\producto_vs_codigobarra.cs" />
     <Compile Include="clases\singleton.cs" />
+    <Compile Include="clases\sistemaConfiguracion.cs" />
     <Compile Include="clases\situacion_empleado.cs" />
     <Compile Include="clases\subCategoriaProducto.cs" />
     <Compile Include="clases\sucursal.cs" />
@@ -152,6 +153,8 @@
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\vendedor.cs" />
     <Compile Include="clases\venta.cs" />
+    <Compile Include="clases\ventaDevolucion.cs" />
+    <Compile Include="clases\ventaDevolucionDetalle.cs" />
     <Compile Include="clases\ventana.cs" />
     <Compile Include="clases\venta_detalle.cs" />
     <Compile Include="clases\venta_vs_cobros.cs" />
@@ -205,6 +208,7 @@
     <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modelos\modeloVendedor.cs" />
     <Compile Include="modelos\modeloVenta.cs" />
+    <Compile Include="modelos\modeloVentaDevolucion.cs" />
     <Compile Include="modulo_contabilidad\ventana_busqueda_tipo_gastos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +262,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.Designer.cs">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_devolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_devolucion.Designer.cs">
+      <DependentUpon>ventana_venta_devolucion.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_anular_pagos.cs">
       <SubType>Form</SubType>
@@ -384,6 +394,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_vendedor.Designer.cs">
       <DependentUpon>ventana_busqueda_vendedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_venta.Designer.cs">
+      <DependentUpon>ventana_busqueda_venta.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_caja.cs">
       <SubType>Form</SubType>
@@ -684,6 +700,9 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_devolucion.resx">
+      <DependentUpon>ventana_venta_devolucion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_anular_pagos.resx">
       <DependentUpon>ventana_anular_pagos.cs</DependentUpon>
     </EmbeddedResource>
@@ -746,6 +765,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_vendedor.resx">
       <DependentUpon>ventana_busqueda_vendedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_venta.resx">
+      <DependentUpon>ventana_busqueda_venta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_caja.resx">
       <DependentUpon>ventana_caja.cs</DependentUpon>
