@@ -1227,5 +1227,25 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+
+        //saber la diferencia de 2 fechas en dias
+        public string getFechaDiferenciaDias(DateTime fechaVieja,DateTime fechaNueva)
+        {
+            try
+            {
+                // Difference in days, hours, and minutes.
+                TimeSpan ts = fechaNueva - fechaVieja;
+
+                // Difference in days.
+                int differenceInDays = ts.Days;
+
+                return differenceInDays.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaDiferenciaDias.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
+            }
+        }
     }
 }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -119,16 +119,22 @@
             this.precioVentaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.unidadProduccionText = new System.Windows.Forms.TextBox();
+            this.button24 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.unidadProduccionIdText = new System.Windows.Forms.TextBox();
             this.cantidadProduccionText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.unidadTextProduccion = new System.Windows.Forms.TextBox();
+            this.productoProduccionText = new System.Windows.Forms.TextBox();
             this.button21 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.unidadIdProduccionText = new System.Windows.Forms.TextBox();
+            this.productoProduccionIdText = new System.Windows.Forms.TextBox();
             this.button22 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.idProductoREquisitoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idUnidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
@@ -1141,8 +1147,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn5.FillWeight = 70F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Precio costo";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -1150,8 +1156,8 @@
             // 
             // precioVentaColumn
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.precioVentaColumn.FillWeight = 70F;
             this.precioVentaColumn.HeaderText = "Precio venta";
             this.precioVentaColumn.Name = "precioVentaColumn";
@@ -1171,12 +1177,16 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.unidadProduccionText);
+            this.groupBox5.Controls.Add(this.button24);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.unidadProduccionIdText);
             this.groupBox5.Controls.Add(this.cantidadProduccionText);
             this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.unidadTextProduccion);
+            this.groupBox5.Controls.Add(this.productoProduccionText);
             this.groupBox5.Controls.Add(this.button21);
             this.groupBox5.Controls.Add(this.label11);
-            this.groupBox5.Controls.Add(this.unidadIdProduccionText);
+            this.groupBox5.Controls.Add(this.productoProduccionIdText);
             this.groupBox5.Controls.Add(this.button22);
             this.groupBox5.Controls.Add(this.button23);
             this.groupBox5.Location = new System.Drawing.Point(12, 20);
@@ -1185,11 +1195,53 @@
             this.groupBox5.TabIndex = 71;
             this.groupBox5.TabStop = false;
             // 
+            // unidadProduccionText
+            // 
+            this.unidadProduccionText.BackColor = System.Drawing.Color.White;
+            this.unidadProduccionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadProduccionText.Location = new System.Drawing.Point(402, 51);
+            this.unidadProduccionText.MaxLength = 200;
+            this.unidadProduccionText.Name = "unidadProduccionText";
+            this.unidadProduccionText.ReadOnly = true;
+            this.unidadProduccionText.Size = new System.Drawing.Size(236, 26);
+            this.unidadProduccionText.TabIndex = 66;
+            // 
+            // button24
+            // 
+            this.button24.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button24.BackgroundImage")));
+            this.button24.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button24.Location = new System.Drawing.Point(591, 11);
+            this.button24.Name = "button24";
+            this.button24.Size = new System.Drawing.Size(47, 37);
+            this.button24.TabIndex = 65;
+            this.button24.UseVisualStyleBackColor = true;
+            this.button24.Click += new System.EventHandler(this.button24_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(333, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(66, 20);
+            this.label5.TabIndex = 64;
+            this.label5.Text = "Unidad";
+            // 
+            // unidadProduccionIdText
+            // 
+            this.unidadProduccionIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.unidadProduccionIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unidadProduccionIdText.Location = new System.Drawing.Point(402, 15);
+            this.unidadProduccionIdText.Name = "unidadProduccionIdText";
+            this.unidadProduccionIdText.Size = new System.Drawing.Size(183, 26);
+            this.unidadProduccionIdText.TabIndex = 63;
+            // 
             // cantidadProduccionText
             // 
             this.cantidadProduccionText.BackColor = System.Drawing.Color.White;
             this.cantidadProduccionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cantidadProduccionText.Location = new System.Drawing.Point(338, 55);
+            this.cantidadProduccionText.Location = new System.Drawing.Point(645, 53);
             this.cantidadProduccionText.MaxLength = 30;
             this.cantidadProduccionText.Name = "cantidadProduccionText";
             this.cantidadProduccionText.Size = new System.Drawing.Size(104, 26);
@@ -1200,33 +1252,34 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(336, 27);
+            this.label4.Location = new System.Drawing.Point(668, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 20);
             this.label4.TabIndex = 61;
             this.label4.Text = "Cantidad";
             // 
-            // unidadTextProduccion
+            // productoProduccionText
             // 
-            this.unidadTextProduccion.BackColor = System.Drawing.Color.White;
-            this.unidadTextProduccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidadTextProduccion.Location = new System.Drawing.Point(76, 55);
-            this.unidadTextProduccion.MaxLength = 200;
-            this.unidadTextProduccion.Name = "unidadTextProduccion";
-            this.unidadTextProduccion.ReadOnly = true;
-            this.unidadTextProduccion.Size = new System.Drawing.Size(236, 26);
-            this.unidadTextProduccion.TabIndex = 56;
+            this.productoProduccionText.BackColor = System.Drawing.Color.White;
+            this.productoProduccionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productoProduccionText.Location = new System.Drawing.Point(91, 55);
+            this.productoProduccionText.MaxLength = 200;
+            this.productoProduccionText.Name = "productoProduccionText";
+            this.productoProduccionText.ReadOnly = true;
+            this.productoProduccionText.Size = new System.Drawing.Size(236, 26);
+            this.productoProduccionText.TabIndex = 56;
             // 
             // button21
             // 
             this.button21.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button21.BackgroundImage")));
             this.button21.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Location = new System.Drawing.Point(265, 15);
+            this.button21.Location = new System.Drawing.Point(280, 15);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(47, 37);
             this.button21.TabIndex = 55;
             this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // label11
             // 
@@ -1234,18 +1287,18 @@
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(4, 21);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 20);
+            this.label11.Size = new System.Drawing.Size(81, 20);
             this.label11.TabIndex = 54;
-            this.label11.Text = "Unidad";
+            this.label11.Text = "Producto";
             // 
-            // unidadIdProduccionText
+            // productoProduccionIdText
             // 
-            this.unidadIdProduccionText.BackColor = System.Drawing.Color.SkyBlue;
-            this.unidadIdProduccionText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unidadIdProduccionText.Location = new System.Drawing.Point(76, 19);
-            this.unidadIdProduccionText.Name = "unidadIdProduccionText";
-            this.unidadIdProduccionText.Size = new System.Drawing.Size(183, 26);
-            this.unidadIdProduccionText.TabIndex = 53;
+            this.productoProduccionIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.productoProduccionIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productoProduccionIdText.Location = new System.Drawing.Point(91, 19);
+            this.productoProduccionIdText.Name = "productoProduccionIdText";
+            this.productoProduccionIdText.Size = new System.Drawing.Size(183, 26);
+            this.productoProduccionIdText.TabIndex = 53;
             // 
             // button22
             // 
@@ -1257,6 +1310,7 @@
             this.button22.Size = new System.Drawing.Size(64, 58);
             this.button22.TabIndex = 26;
             this.button22.UseVisualStyleBackColor = true;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // button23
             // 
@@ -1268,6 +1322,7 @@
             this.button23.Size = new System.Drawing.Size(65, 58);
             this.button23.TabIndex = 25;
             this.button23.UseVisualStyleBackColor = true;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // dataGridView4
             // 
@@ -1278,7 +1333,9 @@
             this.dataGridView4.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idProductoREquisitoColumn,
             this.dataGridViewTextBoxColumn6,
+            this.idUnidadColumn,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
             this.dataGridView4.Location = new System.Drawing.Point(12, 117);
@@ -1290,25 +1347,38 @@
             this.dataGridView4.Size = new System.Drawing.Size(904, 403);
             this.dataGridView4.TabIndex = 70;
             // 
+            // idProductoREquisitoColumn
+            // 
+            this.idProductoREquisitoColumn.FillWeight = 30F;
+            this.idProductoREquisitoColumn.HeaderText = "id";
+            this.idProductoREquisitoColumn.Name = "idProductoREquisitoColumn";
+            this.idProductoREquisitoColumn.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn6
             // 
-            this.dataGridViewTextBoxColumn6.FillWeight = 50F;
-            this.dataGridViewTextBoxColumn6.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Producto requisito";
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
+            // idUnidadColumn
+            // 
+            this.idUnidadColumn.FillWeight = 30F;
+            this.idUnidadColumn.HeaderText = "id";
+            this.idUnidadColumn.Name = "idUnidadColumn";
+            this.idUnidadColumn.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn7
             // 
-            this.dataGridViewTextBoxColumn7.FillWeight = 150F;
+            this.dataGridViewTextBoxColumn7.FillWeight = 70F;
             this.dataGridViewTextBoxColumn7.HeaderText = "Unidad";
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn8
             // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewTextBoxColumn8.FillWeight = 80F;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumn8.FillWeight = 30F;
             this.dataGridViewTextBoxColumn8.HeaderText = "Cantidad";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
@@ -1445,15 +1515,21 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox cantidadProduccionText;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox unidadTextProduccion;
+        private System.Windows.Forms.TextBox productoProduccionText;
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox unidadIdProduccionText;
+        private System.Windows.Forms.TextBox productoProduccionIdText;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.DataGridView dataGridView4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProductoREquisitoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idUnidadColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.TextBox unidadProduccionText;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox unidadProduccionIdText;
     }
 }

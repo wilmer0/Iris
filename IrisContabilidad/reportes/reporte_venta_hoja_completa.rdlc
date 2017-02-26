@@ -563,7 +563,7 @@
   <Width>8.45833in</Width>
   <Page>
     <PageHeader>
-      <Height>2.56125in</Height>
+      <Height>2.81472in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1129,7 +1129,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox60</rd:DefaultName>
-          <Top>5.69418cm</Top>
+          <Top>6.4703cm</Top>
           <Left>0.41018cm</Left>
           <Height>0.25in</Height>
           <Width>1.69468in</Width>
@@ -1168,7 +1168,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox62</rd:DefaultName>
-          <Top>5.69418cm</Top>
+          <Top>6.4703cm</Top>
           <Left>4.71457cm</Left>
           <Height>0.25in</Height>
           <Width>0.98562in</Width>
@@ -1207,7 +1207,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox64</rd:DefaultName>
-          <Top>5.69418cm</Top>
+          <Top>6.4703cm</Top>
           <Left>7.2181cm</Left>
           <Height>0.25in</Height>
           <Width>0.98562in</Width>
@@ -1246,7 +1246,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox66</rd:DefaultName>
-          <Top>5.69418cm</Top>
+          <Top>6.4703cm</Top>
           <Left>9.72157cm</Left>
           <Height>0.25in</Height>
           <Width>1.03101in</Width>
@@ -1285,7 +1285,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox68</rd:DefaultName>
-          <Top>5.69418cm</Top>
+          <Top>6.4703cm</Top>
           <Left>12.34034cm</Left>
           <Height>0.25in</Height>
           <Width>1.11062in</Width>
@@ -1324,7 +1324,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox70</rd:DefaultName>
-          <Top>5.69419cm</Top>
+          <Top>6.47031cm</Top>
           <Left>15.16131cm</Left>
           <Height>0.25in</Height>
           <Width>1.14064in</Width>
@@ -1363,7 +1363,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox72</rd:DefaultName>
-          <Top>5.69418cm</Top>
+          <Top>6.4703cm</Top>
           <Left>18.05849cm</Left>
           <Height>0.25in</Height>
           <Width>1.18726in</Width>
@@ -1377,6 +1377,72 @@
               <Style>Solid</Style>
               <Width>1pt</Width>
             </BottomBorder>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox25">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>NCF.: </Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox8</rd:DefaultName>
+          <Top>2.08903in</Top>
+          <Left>4.16534in</Left>
+          <Height>0.25in</Height>
+          <Width>1.76371in</Width>
+          <ZIndex>23</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox14">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!numero_comprobante_fiscal.Value, "reporte_encabezado")</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox8</rd:DefaultName>
+          <Top>2.08903in</Top>
+          <Left>5.92905in</Left>
+          <Height>0.25in</Height>
+          <Width>2.36783in</Width>
+          <ZIndex>24</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>

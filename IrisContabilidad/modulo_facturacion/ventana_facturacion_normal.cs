@@ -184,7 +184,7 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     clienteIdText.Focus();
                     clienteIdText.SelectAll();
-                    MessageBox.Show("Falta el suplidor", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Falta el cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 //si tiene productos en el grid
@@ -278,7 +278,7 @@ namespace IrisContabilidad.modulo_facturacion
                     ventaDetalle.codigo_unidad = Convert.ToInt16(row.Cells[2].Value);
                     ventaDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
                     ventaDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                    ventaDetalle.monto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    ventaDetalle.monto_total = Convert.ToDecimal(row.Cells[8].Value.ToString());
                     ventaDetalle.monto_itebis = Convert.ToDecimal(row.Cells[6].Value.ToString());
                     ventaDetalle.monto_descuento = Convert.ToDecimal(row.Cells[7].Value.ToString());
                     ventaDetalle.activo = true;
@@ -340,7 +340,7 @@ namespace IrisContabilidad.modulo_facturacion
                     producto = modeloProducto.getProductoById(x.codigo_producto);
                     unidad = modeloUnidad.getUnidadById(x.codigo_unidad);
                     itebis = modeloItebis.getItebisById(producto.codigo_itebis);
-                    dataGridView1.Rows.Add(x.codigo_producto, producto.nombre, x.codigo_unidad, unidad.unidad_abreviada, x.cantidad, x.precio, (itebis.porciento * x.monto), x.monto_descuento, x.monto);
+                    dataGridView1.Rows.Add(x.codigo_producto, producto.nombre, x.codigo_unidad, unidad.unidad_abreviada, x.cantidad, x.precio, (itebis.porciento * x.monto_total), x.monto_descuento, x.monto_total);
                 });
             }
             catch (Exception ex)
@@ -399,7 +399,15 @@ namespace IrisContabilidad.modulo_facturacion
                     cantidadText.SelectAll();
                     return;
                 }
-                //validar que tenga costo 
+                if (Convert.ToDecimal(cantidadText.Text) <=0)
+                {
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cantidadText.Focus();
+                    cantidadText.SelectAll();
+                    return;
+                }
+
+                //validar que tenga precio 
                 if (precioText.Text == "")
                 {
                     MessageBox.Show("Falta el precio del producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -953,6 +961,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 cambiarTipoComprobante();
             }
+            if (e.KeyCode == Keys.F5)
+            {
+                cambiarUnidadCombo();
+            }
+            
         }
 
         public void cambiarTipoVentacombo()
@@ -973,6 +986,26 @@ namespace IrisContabilidad.modulo_facturacion
             catch (Exception ex)
             {
                 MessageBox.Show("Error cambiarTipoVentacombo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        public void cambiarUnidadCombo()
+        {
+            try
+            {
+                int cantItems = 0;
+                cantItems = unidadComboText.Items.Count;
+                if (unidadComboText.SelectedIndex == (cantItems - 1))
+                {
+                    unidadComboText.SelectedIndex = 0;
+                }
+                else
+                {
+                    unidadComboText.SelectedIndex += 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cambiarUnidadCombo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -1018,6 +1051,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 //MessageBox.Show("Error cambiando de tipo de comprobante fiscal", "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
+        }
+
+        private void detalleText_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

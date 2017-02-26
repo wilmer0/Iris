@@ -561,9 +561,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 3;
                 ventana.imagen = "venta_cobro_anular1.png";
                 listaVentana.Add(ventana);
-               
-
-
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Devolución venta";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_venta_devolucion";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 3;
+                ventana.imagen = "venta_devolucion1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
@@ -796,6 +802,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 9;
                 ventana.imagen = "gastos1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Cuentas contables";
+                ventana.nombre_logico = "IrisContabilidad.modulo_contabilidad.ventana_cuentas_contables";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 9;
+                ventana.imagen = "catalogo_cuenta1.png";
                 listaVentana.Add(ventana);
                 #endregion
 

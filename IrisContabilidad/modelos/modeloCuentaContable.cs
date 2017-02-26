@@ -66,7 +66,7 @@ namespace IrisContabilidad.modelos
                     movimiento = 1;
                 }
 
-                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('" + cuenta.codigo + "','" + cuenta.nombre + "','" + cuenta.numero_cuenta + "','" + cuenta.cuenta_superior + "','" + acumulativa + "','" + movimiento + "','" + origenCredito + "','" + origenDebito + "','" + activo + "')";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('" + cuenta.codigo + "','" + cuenta.nombre + "','" + cuenta.numero_cuenta + "','" + cuenta.codigo_cuenta_superior + "','" + acumulativa + "','" + movimiento + "','" + origenCredito + "','" + origenDebito + "','" + activo + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -167,39 +167,42 @@ namespace IrisContabilidad.modelos
 
 
         //get objeto
-        public almacen getAlmacenById(int id)
+        public cuenta_contable getCuentaContableById(int id)
         {
             try
             {
-                almacen almacen = new almacen();
-                string sql = "select codigo,nombre,cod_sucursal,activo from almacen where codigo='" + id + "'";
+                cuenta_contable cuentaContable = new cuenta_contable();
+                string sql = "select codigo,nombre,numero_cuenta,cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    almacen.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    almacen.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    almacen.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    almacen.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
+                    cuentaContable.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    cuentaContable.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    cuentaContable.numero_cuenta = ds.Tables[0].Rows[0][2].ToString();
+                    cuentaContable.codigo_cuenta_superior = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    cuentaContable.cuenta_acumulativa = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
+                    cuentaContable.cuenta_movimiento = Convert.ToBoolean(ds.Tables[0].Rows[0][5]);
+                    cuentaContable.origen_credito = Convert.ToBoolean(ds.Tables[0].Rows[0][6]);
+                    cuentaContable.origen_debito = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
+                    cuentaContable.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
                 }
-                return almacen;
+                return cuentaContable;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getAlmacenById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getCuentaContableById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
 
 
         //get lista completa
-        public List<almacen> getListaCompleta(bool mantenimiento = false)
+        public List<cuenta_contable> getListaCompleta(bool mantenimiento = false)
         {
             try
             {
-
-                List<almacen> lista = new List<almacen>();
-                string sql = "";
-                sql = "select codigo,nombre,cod_sucursal,activo from almacen";
+                List<cuenta_contable> lista = new List<cuenta_contable>();
+                string sql = "select codigo,nombre,numero_cuenta,cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas ";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -209,12 +212,17 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        almacen almacen = new almacen();
-                        almacen.codigo = Convert.ToInt16(row[0].ToString());
-                        almacen.nombre = row[1].ToString();
-                        almacen.codigo_sucursal = Convert.ToInt16(row[2].ToString());
-                        almacen.activo = Convert.ToBoolean(row[3]);
-                        lista.Add(almacen);
+                        cuenta_contable cuentaContable=new cuenta_contable();
+                        cuentaContable.codigo = Convert.ToInt16(row[0].ToString());
+                        cuentaContable.nombre = row[1].ToString();
+                        cuentaContable.numero_cuenta = row[2].ToString();
+                        cuentaContable.codigo_cuenta_superior = Convert.ToInt16(row[3].ToString());
+                        cuentaContable.cuenta_acumulativa = Convert.ToBoolean(row[4]);
+                        cuentaContable.cuenta_movimiento = Convert.ToBoolean(row[5]);
+                        cuentaContable.origen_credito = Convert.ToBoolean(row[6]);
+                        cuentaContable.origen_debito = Convert.ToBoolean(row[7]);
+                        cuentaContable.activo = Convert.ToBoolean(row[8]);
+                        lista.Add(cuentaContable);
                     }
                 }
                 return lista;
