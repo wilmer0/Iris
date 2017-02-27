@@ -62,7 +62,17 @@ namespace IrisContabilidad.modelos
                 listaDetalle.ForEach(x =>
                 {
                     x.codigo = getNextVentaDetalle();
-                    sql = "insert into venta_detalle(codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo) values('" + x.codigo + "','" + venta.codigo + "','" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.cantidad + "','" + x.precio + "','" + x.monto_total + "','" + x.monto_itebis + "','"+x.monto_descuento+"','1')";
+                    decimal itebisUnitario = 0;
+                    decimal descuentoUnitario = 0;
+                    if (x.monto_itebis > 0)
+                    {
+                        itebisUnitario = x.monto_itebis/x.cantidad;
+                    }
+                    if (x.monto_descuento > 0)
+                    {
+                        descuentoUnitario = x.monto_descuento/x.cantidad;
+                    }
+                    sql = "insert into venta_detalle(codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo,itebis_unitario,descuento_unitario) values('" + x.codigo + "','" + venta.codigo + "','" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.cantidad + "','" + x.precio + "','" + x.monto_total + "','" + x.monto_itebis + "','"+x.monto_descuento+"','1','"+itebisUnitario+"','"+descuentoUnitario+"')";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
 
@@ -394,6 +404,7 @@ namespace IrisContabilidad.modelos
                         lista.Add(venta);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
                 return lista;
             }
             catch (Exception ex)
@@ -839,6 +850,8 @@ namespace IrisContabilidad.modelos
             {
                 
                 //sacar de inventario
+                producto producto = new modeloProducto().getProductoById(codigoProducto);
+                unidad unidad = new modeloUnidad().getUnidadById(codigoUnidad);
                 string sql = "";
                 DataSet ds=new DataSet();
                 decimal existencia = 0;
@@ -871,8 +884,12 @@ namespace IrisContabilidad.modelos
                             cantidad = cantidad - existencia;
                             existencia = 0;
                         }
-                        sql = "update inventario set cantidad='" + existencia + "' where codigo='" + codigoInventario + "'";
+                        sql = "update inventario set cantidad='" + existencia + "' where codigo='" + codigoInventario +"'";
                         utilidades.ejecutarcomando_mysql(sql);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Debe insertar al inventario el producto.: "+producto.nombre+" y la unidad.: "+unidad.nombre+" no se encuentra inventario disponible","", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 return true;
