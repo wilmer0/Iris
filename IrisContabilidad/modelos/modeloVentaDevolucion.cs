@@ -17,7 +17,7 @@ namespace IrisContabilidad.modelos
 
 
         //agregar 
-        public bool agregarDevolucion(ventaDevolucion devolucion, List<ventaDevolucionDetalle> listaDevolucionDetalle)
+        public bool agregarDevolucion(ventaDevolucion devolucion, List<ventaDevolucionDetalle> listaDevolucionDetalle,egreso_caja egresoCaja=null)
         {
             try
             {
@@ -28,7 +28,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
 
-                string sql = "insert into venta_devolucion(codigo,codigo_venta,fecha,activo,codigo_empleado,descripcion,ncf) values('" + devolucion.codigo + "','" + devolucion.codigo_venta + "','" + utilidades.getFechayyyyMMdd(devolucion.fecha) + "','" + activo + "','" + devolucion.codigo_empleado + "','" + devolucion.descripcion + "','" + devolucion.ncf + "')";
+                string sql = "insert into venta_devolucion(codigo,codigo_venta,fecha,activo,codigo_empleado,descripcion,ncf) values('" + devolucion.codigo + "','" + devolucion.codigo_venta + "'," + utilidades.getFechayyyyMMdd(devolucion.fecha) + ",'" + activo + "','" + devolucion.codigo_empleado + "','" + devolucion.descripcion + "','" + devolucion.ncf + "')";
                 //MessageBox.Show(sql);
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
 
@@ -38,6 +38,7 @@ namespace IrisContabilidad.modelos
                 {
                     x.codigo = getNextDevolucionDetalle();
                     x.monto_total = x.cantidad*x.precio;
+                    x.codigo_devolucion = devolucion.codigo;
                     sql = "insert into venta_devolucion_detalles(codigo,codigo_devolucion,codigo_producto,codigo_unidad,cantidad,precio,monto_total) values('"+x.codigo+"','"+x.codigo_devolucion+"','"+x.codigo_producto+"','"+x.codigo_unidad+"','"+x.cantidad+"','"+x.precio+"','"+x.monto_total+"')";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
@@ -47,30 +48,30 @@ namespace IrisContabilidad.modelos
                 venta venta = new modeloVenta().getVentaById(devolucion.codigo_venta);
                 DateTime fechaHoy = DateTime.Today;
                 int dias=Convert.ToInt16(utilidades.getFechaDiferenciaDias(venta.fecha, fechaHoy));
-                decimal cantidad = 0;
                 decimal descuentoPorUnidad = 0;
                 decimal itebisPorUnidad = 0;
                 if (dias < 30)
                 {
                     listaDevolucionDetalle.ForEach(x =>
                     {
-                        //tomando la cantidad de devolucion actual
-                        //if (x.cantidad != cantidad) cantidad = x.cantidad;
+                        //restando cantidad
+                        sql = "update venta_detalle set cantidad=cantidad-" + x.cantidad + " where cod_producto='"+x.codigo_producto+"' and cod_unidad='"+x.codigo_unidad+"' and cod_venta='" + devolucion.codigo_venta + "'";
+                        utilidades.ejecutarcomando_mysql(sql);
 
-                        //tomando el descuento y itebis de ese producto unidad
-                        sql = "select cantidad,descuento,itebis from venta_detalle where cod_producto='"+x.codigo_producto+"' and cod_unidad='"+x.codigo_unidad+"' and cod_venta='"+devolucion.codigo_venta+"'";
-                        ds = utilidades.ejecutarcomando_mysql(sql);
-                        if (ds.Tables[0].Rows[0][0].ToString() != "" && ds.Tables[0].Rows[0][1].ToString() != "" && ds.Tables[0].Rows[0][2].ToString()!="")
-                        {
-                            cantidad = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
-                            descuentoPorUnidad = Convert.ToDecimal(Convert.ToDecimal(ds.Tables[0].Rows[0][1].ToString()) / cantidad);
-                            itebisPorUnidad = Convert.ToDecimal(Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString()) / cantidad);
-
-                            //restando cantidad / descuento / itebis
-                            sql = "update venta_detalle set cantidad=cantidad-" + x.cantidad + ",descuento='" + descuentoPorUnidad + "',itebis='" + itebisPorUnidad + "' where cod_venta='" + devolucion.codigo_venta + "'";
-                            utilidades.ejecutarcomando_mysql(sql);
-                        }
+                        //modificando el monto, itebis y descuento
+                        sql = "update venta_detalle set monto=cantidad*precio,itebis=cantidad*itebis_unitario,descuento=cantidad*descuento_unitario where cod_producto='" + x.codigo_producto + "' and cod_unidad='" + x.codigo_unidad + "' and cod_venta='" + devolucion.codigo_venta + "'";
+                        utilidades.ejecutarcomando_mysql(sql);
                     });
+                }
+
+                if (egresoCaja != null)
+                {
+                    modeloEgresoCaja modeloEgreso = new modeloEgresoCaja();
+                    if (modeloEgreso.agregarEgreso(egresoCaja)==false)
+                    {
+                        MessageBox.Show("Error no se pudo agregar el egreso de caja automaticamente", "",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
 
                 return true;

@@ -25,7 +25,9 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private venta venta;
         private producto producto;
         private unidad unidad;
-
+        private ventaDevolucion ventaDevolucion;
+        private ventaDevolucionDetalle ventaDevolucionDetalle;
+        private egreso_caja egresoCaja;
 
         //modelos
         modeloCliente modeloCliente = new modeloCliente();
@@ -33,9 +35,12 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
         modeloProducto modeloProducto=new modeloProducto();
         modeloUnidad modeloUnidad=new modeloUnidad();
+        modeloVentaDevolucion modeloVentaDevolucion=new modeloVentaDevolucion();
+        private modeloEgresoCaja modeloEgresoCaja=new modeloEgresoCaja();
 
         //listas
-        private List<venta_detalle> listaVentaDetalle; 
+        private List<venta_detalle> listaVentaDetalle;
+        private List<ventaDevolucionDetalle> listaVentaDevolucionDetalle; 
 
 
         public ventana_venta_devolucion()
@@ -53,6 +58,10 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 dataGridView1.Rows.Clear();
                 if (venta != null)
                 {
+                    ventaIdText.Focus();
+                    ventaIdText.SelectAll();
+
+                    listaVentaDevolucionDetalle=new List<ventaDevolucionDetalle>();
                     cliente = modeloCliente.getClienteById(venta.codigo_cliente);
                     clienteLabel.Text = cliente.nombre;
                     tipoVentaLabel.Text = venta.tipo_venta;
@@ -61,6 +70,10 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 }
                 else
                 {
+                    ventaIdText.Focus();
+                    ventaIdText.SelectAll();
+
+                    listaVentaDevolucionDetalle = new List<ventaDevolucionDetalle>();
                     cliente = null;
                     clienteLabel.Text = ".";
                     tipoVentaLabel.Text = ".";
@@ -89,7 +102,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 {
                     producto = modeloProducto.getProductoById(x.codigo_producto);
                     unidad = modeloUnidad.getUnidadById(x.codigo_unidad);
-                    dataGridView1.Rows.Add(x.codigo_producto,producto.nombre,x.codigo_unidad,unidad.nombre,x.cantidad,x.precio,x.monto_total);
+                    dataGridView1.Rows.Add(x.codigo_producto,producto.nombre,x.codigo_unidad,unidad.nombre,x.cantidad,x.precio,x.monto_total,"0.00");
                 });
 
             }
@@ -105,126 +118,147 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 this.Close();
             }
         }
-        //public bool validarGetAction()
-        //{
-        //    try
-        //    {
-        //        //validar nombre
-        //        if (nombreText.Text == "")
-        //        {
-        //            MessageBox.Show("Falta el nombre del cliente ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            nombreText.Focus();
-        //            nombreText.SelectAll();
-        //            return false;
-        //        }
-        //        //validar cedula
-        //        if (cedulaText.Text == "")
-        //        {
-        //            MessageBox.Show("Falta la cedula del cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            cedulaText.Focus();
-        //            cedulaText.SelectAll();
-        //            return false;
-        //        }
-        //        //validar categoria
-        //        if (categoriaCliente == null)
-        //        {
-        //            MessageBox.Show("Falta la categoria", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            categoriaIdText.Focus();
-        //            categoriaIdText.SelectAll();
-        //            return false;
-        //        }
-        //        //validar tipo comprobante fiscal
-        //        if (tipoComprobante == null)
-        //        {
-        //            MessageBox.Show("Falta el tipo de comprobante fiscal", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //            tipoNcfIdText.Focus();
-        //            tipoNcfIdText.SelectAll();
-        //            return false;
-        //        }
-
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show("Error validarGetAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return false;
-        //    }
-        //}
+        public bool validarGetAction()
+        {
+            try
+            {
+                //validar venta
+                if (venta==null)
+                {
+                    MessageBox.Show("Falta la venta", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ventaIdText.Focus();
+                    ventaIdText.SelectAll();
+                    return false;
+                }
+                //validar que datagrid tenga datos
+                if (dataGridView1.Rows.Count<0)
+                {
+                    MessageBox.Show("Esta venta no tiene articulos disponibles para realizar devolución", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ventaIdText.Focus();
+                    ventaIdText.SelectAll();
+                    return false;
+                }
+                //validar que exista un concepto de devolucion
+                if (detalleText.Text == "")
+                {
+                    MessageBox.Show("Debe especificar una descripción o razón de la devolución", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    detalleText.Focus();
+                    detalleText.SelectAll();
+                    return false;
+                }
+                //validar que exista un producto devuelto
+                if (dataGridView1.Rows.Count < 0)
+                {
+                    bool existe = false;
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        if (Convert.ToDecimal(row.Cells[7].Value.ToString()) > 0)
+                        {
+                            existe = true;
+                        }
+                    }
+                    if (existe == false)
+                    {
+                        MessageBox.Show("No ha puesto algun producto a devolver", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validarGetAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
 
         public void getAction()
         {
-            //try
-            //{
-            //    //validando campos necesarios
-            //    if (validarGetAction() == false)
-            //    {
-            //        return;
-            //    }
+            try
+            {
+                //validando campos necesarios
+                if (validarGetAction() == false)
+                {
+                    return;
+                }
 
-            //    if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            //    {
-            //        return;
-            //    }
+                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
 
-            //    bool crear = false;
-            //    //se instancia el empleado si esta nulo
-            //    if (cliente == null)
-            //    {
-            //        cliente = new cliente();
-            //        crear = true;
-            //        cliente.codigo = modeloCliente.getNext();
-            //        cliente.fecha_creado = DateTime.Today;
-            //        cliente.codigo_sucursal_creado = empleado.codigo_sucursal;
-            //    }
-            //    cliente.nombre = nombreText.Text;
-            //    cliente.cedula = cedulaText.Text;
-            //    cliente.rnc = rncText.Text;
-            //    cliente.telefono1 = telefono1Text.Text;
-            //    cliente.telefono2 = telefono2Text.Text;
-            //    cliente.codigo_categoria = categoriaCliente.codigo;
-            //    cliente.abrir_credito = Convert.ToBoolean(abrirCreditoCheck.Checked);
-            //    cliente.limite_credito = Convert.ToDecimal(creditoText.Text);
-            //    cliente.codigo_tipo_comprobante_fiscal = tipoComprobante.codigo;
-            //    cliente.cliente_contado = Convert.ToBoolean(clienteContadoCheck.Checked);
-            //    cliente.activo = Convert.ToBoolean(activoCheck.Checked);
+                bool crear = false;
+                //se instancia el empleado si esta nulo
+                if ( ventaDevolucion== null)
+                {
+                    ventaDevolucion = new ventaDevolucion();
+                    crear = true;
+                    ventaDevolucion.codigo = modeloVentaDevolucion.getNext();
+                    ventaDevolucion.codigo_venta = venta.codigo;
+                    ventaDevolucion.fecha = DateTime.Today;
+                    ventaDevolucion.codigo_empleado = empleado.codigo;
+                    ventaDevolucion.activo = true;
+                }
+                //llenando la lista devolucion detalle
+                listaVentaDevolucionDetalle=new List<ventaDevolucionDetalle>();
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    ventaDevolucionDetalle=new ventaDevolucionDetalle();
+                    ventaDevolucionDetalle.codigo = 0;
+                    ventaDevolucionDetalle.codigo_devolucion = 0;
+                    ventaDevolucionDetalle.codigo_producto = Convert.ToInt16(row.Cells[0].Value.ToString());
+                    ventaDevolucionDetalle.codigo_unidad = Convert.ToInt16(row.Cells[2].Value.ToString());
+                    ventaDevolucionDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
+                    ventaDevolucionDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
+                    ventaDevolucionDetalle.monto_total = Convert.ToDecimal(row.Cells[6].Value.ToString());
+                    ventaDevolucionDetalle.cantidad = Convert.ToDecimal(row.Cells[7].Value.ToString());
+                    listaVentaDevolucionDetalle.Add(ventaDevolucionDetalle);
+                 }
 
-            //    if (crear == true)
-            //    {
-            //        //se agrega
-            //        if ((modeloCliente.agregarCliente(cliente)) == true)
-            //        {
-            //            cliente = null;
-            //            loadVentana();
-            //            MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                decimal montoTotalDevolucion = 0;
+                //tomando el monto total de la devolucion
+                listaVentaDevolucionDetalle.ForEach(x =>
+                {
+                    montoTotalDevolucion += x.monto_total;
+                });
+                //si se efectuara un egreso de caja automatico
+                if (egresoCajaAutomaticoCheck.Checked == true)
+                {
+                    egresoCaja=new egreso_caja();
+                    egresoCaja.codigo = modeloEgresoCaja.getNext();
+                    egresoCaja.afecta_cuadre = true;
+                    egresoCaja.cuadrado = false;
+                    egresoCaja.fecha=DateTime.Today;
+                    egresoCaja.activo = true;
+                    egresoCaja.detalle = "Por concepto de devolución";
+                    egresoCaja.codigo_cajero = empleado.codigo;
+                    egresoCaja.codigo_concepto = 1;
+                    egresoCaja.monto = montoTotalDevolucion;
+                    egresoCaja.modificable = false;
+                    egresoCaja.activo = true;
+                }
+                if (crear == true)
+                {
+                    //se agrega
+                    if ((modeloVentaDevolucion.agregarDevolucion(ventaDevolucion, listaVentaDevolucionDetalle,egresoCaja)) == true)
+                    {
+                        ventaDevolucion = null;
+                        loadVentana();
+                        MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("No se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
-            //    else
-            //    {
-            //        //se modifica
-            //        if ((modeloCliente.modificarCliente(cliente)) == true)
-            //        {
-            //            cliente = null;
-            //            loadVentana();
-            //            MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    cliente = null;
-            //    MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
+                    }
+                    else
+                    {
+                        ventaDevolucion = null;
+                        MessageBox.Show("No se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                cliente = null;
+                MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ventana_venta_devolucion_Load(object sender, EventArgs e)
@@ -332,6 +366,19 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private void cantidadDevolverText_KeyPress(object sender, KeyPressEventArgs e)
         {
             utilidades.validarTextBoxNumeroDecimal(e, cantidadDevolverText.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getAction();
+        }
+
+        private void ventana_venta_devolucion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                egresoCajaAutomaticoCheck.Checked = !(bool) egresoCajaAutomaticoCheck.Checked;
+            }
         }
     }
 }

@@ -27,19 +27,11 @@ namespace IrisContabilidad.modelos
                 int activo = 0;
                 int afectaCuadre = 0;
                 int cuadrado = 0;
+                int modificable = 0;
                 //validar nombre
                 string sql = "";
                 DataSet ds;
-                //if (ds.Tables[0].Rows.Count > 0)
-                //{
-                //    MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    return false;
-                //}
-
-
-
-
-
+                
                 if (egreso.activo == true)
                 {
                     activo = 1;
@@ -52,8 +44,12 @@ namespace IrisContabilidad.modelos
                 {
                     cuadrado = 1;
                 }
+                if (egreso.modificable == true)
+                {
+                    modificable = 1;
+                }
 
-                sql = "insert into egresos_caja(codigo,cod_concepto,fecha,cod_cajero,monto,detalles,afecta_cuadre,activo,cuadrado) values('"+egreso.codigo+"','"+egreso.codigo_concepto+"',"+ utilidades.getFechaddMMyyyy(egreso.fecha)+",'"+egreso.codigo_cajero+"','"+egreso.monto+"','"+egreso.detalle+"','1','"+activo+"','"+cuadrado+"')";
+                sql = "insert into egresos_caja(codigo,cod_concepto,fecha,cod_cajero,monto,detalles,afecta_cuadre,activo,cuadrado,modificable) values('"+egreso.codigo+"','"+egreso.codigo_concepto+"',"+ utilidades.getFechaddMMyyyy(egreso.fecha)+",'"+egreso.codigo_cajero+"','"+egreso.monto+"','"+egreso.detalle+"','1','"+activo+"','"+cuadrado+"','"+modificable+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -73,17 +69,11 @@ namespace IrisContabilidad.modelos
                 int activo = 0;
                 int afectaCuadre = 0;
                 int cuadrado = 0;
+                int modificable = 0;
                 //validar nombre
                 string sql = "";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                //if (ds.Tables[0].Rows.Count > 0)
-                //{
-                //    MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK,
-                //        MessageBoxIcon.Warning);
-                //    return false;
-                //}
-
-
+               
 
                 if (egreso.activo == true)
                 {
@@ -96,6 +86,13 @@ namespace IrisContabilidad.modelos
                 if (egreso.cuadrado == true)
                 {
                     cuadrado = 1;
+                }
+                if (egreso.modificable == false)
+                {
+                    modificable = 0;
+                    MessageBox.Show("Error no se puede modificar este egreso de caja ya que fue hecho por el sistema",
+                        "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
 
                 sql = "update egresos_caja set cod_concepto='" + egreso.codigo_concepto + "',fecha=" + utilidades.getFechaddMMyyyy(egreso.fecha) + ",cod_cajero='" + egreso.codigo_cajero + "',monto='" + egreso.monto + "',detalles='" + egreso.detalle + "',afecta_cuadre='1',activo='" + activo + "',cuadrado='" + cuadrado + "' where codigo='" + egreso.codigo + "'";

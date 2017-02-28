@@ -198,6 +198,7 @@
     <Compile Include="modelos\modeloPrimerLogin.cs" />
     <Compile Include="modelos\modeloProducto.cs" />
     <Compile Include="modelos\ModeloReporte.cs" />
+    <Compile Include="modelos\modeloSistemaConfiguracion.cs" />
     <Compile Include="modelos\modeloSituacionEmpleado.cs" />
     <Compile Include="modelos\modeloSubCategoriaProducto.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />
@@ -245,6 +246,12 @@
     <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_categoria_cliente.Designer.cs">
       <DependentUpon>ventana_busqueda_categoria_cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_cobros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_cobros.Designer.cs">
+      <DependentUpon>ventana_busqueda_cobros.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_categoria_cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,6 +287,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_busqueda_cliente.Designer.cs">
       <DependentUpon>ventana_busqueda_cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_pagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_pagos.Designer.cs">
+      <DependentUpon>ventana_busqueda_pagos.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_suplidor.cs">
       <SubType>Form</SubType>
@@ -539,6 +552,18 @@
     <Compile Include="modulo_inventario\ventana_producto.Designer.cs">
       <DependentUpon>ventana_producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_producto_lista_precio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_producto_lista_precio.Designer.cs">
+      <DependentUpon>ventana_producto_lista_precio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_producto_oferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_producto_oferta.Designer.cs">
+      <DependentUpon>ventana_producto_oferta.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_reporte_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -691,6 +716,9 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_busqueda_categoria_cliente.resx">
       <DependentUpon>ventana_busqueda_categoria_cliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_busqueda_cobros.resx">
+      <DependentUpon>ventana_busqueda_cobros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_categoria_cliente.resx">
       <DependentUpon>ventana_categoria_cliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -708,6 +736,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_busqueda_cliente.resx">
       <DependentUpon>ventana_busqueda_cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_pagos.resx">
+      <DependentUpon>ventana_busqueda_pagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_suplidor.resx">
       <DependentUpon>ventana_busqueda_suplidor.cs</DependentUpon>
@@ -837,6 +868,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_producto.resx">
       <DependentUpon>ventana_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_producto_lista_precio.resx">
+      <DependentUpon>ventana_producto_lista_precio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_producto_oferta.resx">
+      <DependentUpon>ventana_producto_oferta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_reporte_producto.resx">
       <DependentUpon>ventana_reporte_producto.cs</DependentUpon>
