@@ -228,9 +228,6 @@ namespace IrisContabilidad.modelos
 
                     modeloCiudad.agregarCiudad(listaCiudades);
                 #endregion
-
-
-                
                 
                 //permisos productos
                 #region
@@ -249,6 +246,14 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('3','cheque','cuando se recive el dinero en base a un cheque bancario','1')";
                 utilidades.ejecutarcomando_mysql(sql);
+
+                #endregion
+
+                //caja conceptos egresos ingresos
+                #region
+
+                sql = "insert into caja_ingresos_egresos_conceptos(codigo,nombre,activo) values('1','Egreso caja por devolución de venta','1');";
+                ds = utilidades.ejecutarcomando_mysql(sql);
 
                 #endregion
 

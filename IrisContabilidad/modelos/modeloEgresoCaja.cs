@@ -30,16 +30,7 @@ namespace IrisContabilidad.modelos
                 //validar nombre
                 string sql = "";
                 DataSet ds;
-                //if (ds.Tables[0].Rows.Count > 0)
-                //{
-                //    MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    return false;
-                //}
-
-
-
-
-
+                
                 if (egreso.activo == true)
                 {
                     activo = 1;
@@ -76,14 +67,7 @@ namespace IrisContabilidad.modelos
                 //validar nombre
                 string sql = "";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                //if (ds.Tables[0].Rows.Count > 0)
-                //{
-                //    MessageBox.Show("Existe un almacen con ese nombre", "", MessageBoxButtons.OK,
-                //        MessageBoxIcon.Warning);
-                //    return false;
-                //}
-
-
+               
 
                 if (egreso.activo == true)
                 {

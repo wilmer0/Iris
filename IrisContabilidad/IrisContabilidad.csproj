@@ -198,6 +198,7 @@
     <Compile Include="modelos\modeloPrimerLogin.cs" />
     <Compile Include="modelos\modeloProducto.cs" />
     <Compile Include="modelos\ModeloReporte.cs" />
+    <Compile Include="modelos\modeloSistemaConfiguracion.cs" />
     <Compile Include="modelos\modeloSituacionEmpleado.cs" />
     <Compile Include="modelos\modeloSubCategoriaProducto.cs" />
     <Compile Include="modelos\modeloSucursal.cs" />

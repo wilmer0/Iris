@@ -17,7 +17,7 @@ namespace IrisContabilidad.modelos
 
 
         //agregar 
-        public bool agregarDevolucion(ventaDevolucion devolucion, List<ventaDevolucionDetalle> listaDevolucionDetalle)
+        public bool agregarDevolucion(ventaDevolucion devolucion, List<ventaDevolucionDetalle> listaDevolucionDetalle,egreso_caja egresoCaja=null)
         {
             try
             {
@@ -62,6 +62,16 @@ namespace IrisContabilidad.modelos
                         sql = "update venta_detalle set monto=cantidad*precio,itebis=cantidad*itebis_unitario,descuento=cantidad*descuento_unitario where cod_producto='" + x.codigo_producto + "' and cod_unidad='" + x.codigo_unidad + "' and cod_venta='" + devolucion.codigo_venta + "'";
                         utilidades.ejecutarcomando_mysql(sql);
                     });
+                }
+
+                if (egresoCaja != null)
+                {
+                    modeloEgresoCaja modeloEgreso = new modeloEgresoCaja();
+                    if (modeloEgreso.agregarEgreso(egresoCaja)==false)
+                    {
+                        MessageBox.Show("Error no se pudo agregar el egreso de caja automaticamente", "",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
                 }
 
                 return true;

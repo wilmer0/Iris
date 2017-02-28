@@ -27,6 +27,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private unidad unidad;
         private ventaDevolucion ventaDevolucion;
         private ventaDevolucionDetalle ventaDevolucionDetalle;
+        private egreso_caja egresoCaja;
 
         //modelos
         modeloCliente modeloCliente = new modeloCliente();
@@ -35,6 +36,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         modeloProducto modeloProducto=new modeloProducto();
         modeloUnidad modeloUnidad=new modeloUnidad();
         modeloVentaDevolucion modeloVentaDevolucion=new modeloVentaDevolucion();
+        private modeloEgresoCaja modeloEgresoCaja=new modeloEgresoCaja();
 
         //listas
         private List<venta_detalle> listaVentaDetalle;
@@ -58,7 +60,6 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 {
                     ventaIdText.Focus();
                     ventaIdText.SelectAll();
-
 
                     listaVentaDevolucionDetalle=new List<ventaDevolucionDetalle>();
                     cliente = modeloCliente.getClienteById(venta.codigo_cliente);
@@ -212,11 +213,33 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     ventaDevolucionDetalle.monto_total = Convert.ToDecimal(row.Cells[6].Value.ToString());
                     ventaDevolucionDetalle.cantidad = Convert.ToDecimal(row.Cells[7].Value.ToString());
                     listaVentaDevolucionDetalle.Add(ventaDevolucionDetalle);
+                 }
+
+                decimal montoTotalDevolucion = 0;
+                //tomando el monto total de la devolucion
+                listaVentaDevolucionDetalle.ForEach(x =>
+                {
+                    montoTotalDevolucion += x.monto_total;
+                });
+                //si se efectuara un egreso de caja automatico
+                if (egresoCajaAutomaticoCheck.Checked == true)
+                {
+                    egresoCaja=new egreso_caja();
+                    egresoCaja.codigo = modeloEgresoCaja.getNext();
+                    egresoCaja.afecta_cuadre = true;
+                    egresoCaja.cuadrado = false;
+                    egresoCaja.fecha=DateTime.Today;
+                    egresoCaja.activo = true;
+                    egresoCaja.detalle = "Por concepto de devolución";
+                    egresoCaja.codigo_cajero = 0;
+                    egresoCaja.codigo_concepto = 0;
+                    egresoCaja.monto = montoTotalDevolucion;
+                    egresoCaja.activo = true;
                 }
                 if (crear == true)
                 {
                     //se agrega
-                    if ((modeloVentaDevolucion.agregarDevolucion(ventaDevolucion, listaVentaDevolucionDetalle)) == true)
+                    if ((modeloVentaDevolucion.agregarDevolucion(ventaDevolucion, listaVentaDevolucionDetalle,egresoCaja)) == true)
                     {
                         ventaDevolucion = null;
                         loadVentana();
@@ -347,6 +370,14 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
+        }
+
+        private void ventana_venta_devolucion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                egresoCajaAutomaticoCheck.Checked = !(bool) egresoCajaAutomaticoCheck.Checked;
+            }
         }
     }
 }
