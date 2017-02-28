@@ -231,8 +231,8 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     egresoCaja.fecha=DateTime.Today;
                     egresoCaja.activo = true;
                     egresoCaja.detalle = "Por concepto de devolución";
-                    egresoCaja.codigo_cajero = 0;
-                    egresoCaja.codigo_concepto = 0;
+                    egresoCaja.codigo_cajero = empleado.codigo;
+                    egresoCaja.codigo_concepto = 1;
                     egresoCaja.monto = montoTotalDevolucion;
                     egresoCaja.activo = true;
                 }

@@ -251,9 +251,8 @@ namespace IrisContabilidad.modelos
 
                 //caja conceptos egresos ingresos
                 #region
-
                 sql = "insert into caja_ingresos_egresos_conceptos(codigo,nombre,activo) values('1','Egreso caja por devolución de venta','1');";
-                ds = utilidades.ejecutarcomando_mysql(sql);
+                utilidades.ejecutarcomando_mysql(sql);
 
                 #endregion
 

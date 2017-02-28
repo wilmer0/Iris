@@ -14,14 +14,17 @@ namespace IrisContabilidad.modelos
         private utilidades utilidades = new utilidades();
 
         //get lista cobros todos
-        public List<venta_vs_cobros> getListaCompletaCobros()
+        public List<venta_vs_cobros> getListaCompleta(bool mantenimiento=false)
         {
             try
             {
                 List<venta_vs_cobros> lista = new List<venta_vs_cobros>();
                 venta_vs_cobros cobro = new venta_vs_cobros();
-                string sql =
-                    "select codigo,fecha,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado,detalle from venta_vs_cobros where activo='1'";
+                string sql ="select codigo,fecha,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado,detalle from venta_vs_cobros";
+                if (mantenimiento == false)
+                {
+                    sql += " where activo='1'";
+                }
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -39,6 +42,7 @@ namespace IrisContabilidad.modelos
                         lista.Add(cobro);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
                 return lista;
             }
             catch (Exception ex)
@@ -75,6 +79,7 @@ namespace IrisContabilidad.modelos
                         lista.Add(cobro);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
                 return lista;
             }
             catch (Exception ex)
@@ -111,6 +116,7 @@ namespace IrisContabilidad.modelos
                         lista.Add(cobro);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
                 return lista;
             }
             catch (Exception ex)
@@ -152,5 +158,35 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get venta pago by id
+        public venta_vs_cobros getVentaCobroById(int codigoVentaPago)
+        {
+            try
+            {
+                venta_vs_cobros CobroDetalle = new venta_vs_cobros();
+                string sql = "select codigo,fecha,detalle,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado from venta_vs_cobros where codigo='" + codigoVentaPago + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    CobroDetalle = new venta_vs_cobros();
+                    CobroDetalle.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    CobroDetalle.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][1].ToString());
+                    CobroDetalle.detalle = ds.Tables[0].Rows[0][2].ToString();
+                    CobroDetalle.cod_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    CobroDetalle.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
+                    CobroDetalle.cod_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][5].ToString());
+                    CobroDetalle.motivo_anulado = ds.Tables[0].Rows[0][6].ToString();
+                    CobroDetalle.cuadrado = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
+                }
+                return CobroDetalle;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getVentaCobroById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
     }
 }
