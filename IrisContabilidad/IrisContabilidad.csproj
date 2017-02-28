@@ -552,6 +552,18 @@
     <Compile Include="modulo_inventario\ventana_producto.Designer.cs">
       <DependentUpon>ventana_producto.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_producto_lista_precio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_producto_lista_precio.Designer.cs">
+      <DependentUpon>ventana_producto_lista_precio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_producto_oferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_producto_oferta.Designer.cs">
+      <DependentUpon>ventana_producto_oferta.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_reporte_producto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -856,6 +868,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_producto.resx">
       <DependentUpon>ventana_producto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_producto_lista_precio.resx">
+      <DependentUpon>ventana_producto_lista_precio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_producto_oferta.resx">
+      <DependentUpon>ventana_producto_oferta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_reporte_producto.resx">
       <DependentUpon>ventana_reporte_producto.cs</DependentUpon>
