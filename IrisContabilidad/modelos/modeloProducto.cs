@@ -646,5 +646,81 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get lista precio productos unidades
+        public List<producto_precio_venta> getListaProductoPrecioVenta()
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds = new DataSet();
+                List<producto_precio_venta> lista = new List<producto_precio_venta>();
+                producto_precio_venta precioVenta;
+
+                //borrar todos los codigo barra que son de este producto
+                sql = "select precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5 from producto_unidad_conversion;";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        precioVenta = new producto_precio_venta();
+                        precioVenta.precio_venta1 = Convert.ToInt16(row[0].ToString());
+                        precioVenta.precio_venta2 = Convert.ToInt16(row[1].ToString());
+                        precioVenta.precio_venta3 = Convert.ToInt16(row[2].ToString());
+                        precioVenta.precio_venta4 = Convert.ToDecimal(row[3].ToString());
+                        precioVenta.precio_venta5 = Convert.ToDecimal(row[4].ToString());
+                        lista.Add(precioVenta);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaProductoPrecioVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public bool agregarListaPrecioProducto(List<producto_precio_venta> lista)
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds=new DataSet();
+                if (lista == null)
+                {
+                    MessageBox.Show("Lista llega nula agregarListaPrecioProducto.","", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+
+                lista.ForEach(x =>
+                {
+                    sql = "select *from producto_unidad_conversion where cod_producto='"+x.codigo_producto+"' and cod_unidad='"+x.codigo_unidad+"'";
+                    ds=utilidades.ejecutarcomando_mysql(sql);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        //update
+                        sql = "update producto_unidad_conversion set precio_venta1='"+x.precio_venta1+"',precio_venta2='"+x.precio_venta2+"',precio_venta3='"+x.precio_venta3+"',precio_venta4='"+x.precio_venta4+"',precio_venta5='"+x.precio_venta5+"' where cod_producto='"+x.codigo_producto+"' and cod_unidad='"+x.codigo_unidad+"'";
+                    }
+                    else
+                    {
+                        producto producto = new modeloProducto().getProductoById(x.codigo_producto);
+                        MessageBox.Show("El producto.: "+producto.nombre+", no tiene unidades de conversión, por favor revisarlo","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        //insert
+                        //sql = "insert into producto_unidad_conversion(cod_producto,cod_unidad,cantidad,costo,precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5) values('" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.precio_venta1 + "','" + x.precio_venta2 + "','" + x.precio_venta3 + "','" + x.precio_venta4 + "','" + x.precio_venta5 + "')";
+                    }
+                    utilidades.ejecutarcomando_mysql(sql);
+                });
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarListaPrecioProducto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
     }
 }

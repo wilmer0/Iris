@@ -228,9 +228,6 @@ namespace IrisContabilidad.modelos
 
                     modeloCiudad.agregarCiudad(listaCiudades);
                 #endregion
-
-
-                
                 
                 //permisos productos
                 #region
@@ -248,6 +245,13 @@ namespace IrisContabilidad.modelos
                 sql ="insert into metodo_pago(codigo,metodo,descripcion,activo) values('2','Deposito','cuando se recive el dinero por transferencia bancaria','1')";
                 utilidades.ejecutarcomando_mysql(sql);
                 sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('3','cheque','cuando se recive el dinero en base a un cheque bancario','1')";
+                utilidades.ejecutarcomando_mysql(sql);
+
+                #endregion
+
+                //caja conceptos egresos ingresos
+                #region
+                sql = "insert into caja_ingresos_egresos_conceptos(codigo,nombre,activo) values('1','Egreso caja por devolución de venta','1');";
                 utilidades.ejecutarcomando_mysql(sql);
 
                 #endregion
@@ -681,6 +685,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 5;
                 ventana.imagen = "reporte_producto1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "producto lista precio";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_producto_lista_precio";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 5;
+                ventana.imagen = "producto_lista_precio1.png";
                 listaVentana.Add(ventana);
                 #endregion
 

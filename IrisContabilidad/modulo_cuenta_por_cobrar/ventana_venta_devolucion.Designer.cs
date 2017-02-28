@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_venta_devolucion));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.categoriaIdText = new System.Windows.Forms.TextBox();
+            this.ventaIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -52,6 +52,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
+            this.detalleText = new System.Windows.Forms.TextBox();
+            this.egresoCajaAutomaticoCheck = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -72,6 +74,7 @@
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(770, 5);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -85,7 +88,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.categoriaIdText);
+            this.groupBox1.Controls.Add(this.ventaIdText);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
@@ -94,14 +97,14 @@
             this.groupBox1.TabIndex = 86;
             this.groupBox1.TabStop = false;
             // 
-            // categoriaIdText
+            // ventaIdText
             // 
-            this.categoriaIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.categoriaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoriaIdText.Location = new System.Drawing.Point(121, 19);
-            this.categoriaIdText.Name = "categoriaIdText";
-            this.categoriaIdText.Size = new System.Drawing.Size(155, 26);
-            this.categoriaIdText.TabIndex = 18;
+            this.ventaIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.ventaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ventaIdText.Location = new System.Drawing.Point(121, 19);
+            this.ventaIdText.Name = "ventaIdText";
+            this.ventaIdText.Size = new System.Drawing.Size(155, 26);
+            this.ventaIdText.TabIndex = 18;
             // 
             // label2
             // 
@@ -148,7 +151,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(904, 421);
+            this.dataGridView1.Size = new System.Drawing.Size(904, 337);
             this.dataGridView1.TabIndex = 87;
             // 
             // secuenciacolumn
@@ -309,11 +312,36 @@
             this.button20.UseVisualStyleBackColor = true;
             this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
+            // detalleText
+            // 
+            this.detalleText.Location = new System.Drawing.Point(16, 509);
+            this.detalleText.Multiline = true;
+            this.detalleText.Name = "detalleText";
+            this.detalleText.Size = new System.Drawing.Size(904, 78);
+            this.detalleText.TabIndex = 112;
+            this.detalleText.Text = "Concepto de devolución";
+            // 
+            // egresoCajaAutomaticoCheck
+            // 
+            this.egresoCajaAutomaticoCheck.AutoSize = true;
+            this.egresoCajaAutomaticoCheck.Checked = true;
+            this.egresoCajaAutomaticoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.egresoCajaAutomaticoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.egresoCajaAutomaticoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.egresoCajaAutomaticoCheck.Location = new System.Drawing.Point(559, 102);
+            this.egresoCajaAutomaticoCheck.Name = "egresoCajaAutomaticoCheck";
+            this.egresoCajaAutomaticoCheck.Size = new System.Drawing.Size(206, 21);
+            this.egresoCajaAutomaticoCheck.TabIndex = 113;
+            this.egresoCajaAutomaticoCheck.Text = "Efectuar egrego caja(F2)";
+            this.egresoCajaAutomaticoCheck.UseVisualStyleBackColor = true;
+            // 
             // ventana_venta_devolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(935, 659);
+            this.Controls.Add(this.egresoCajaAutomaticoCheck);
+            this.Controls.Add(this.detalleText);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.cantidadDevolverText);
@@ -329,6 +357,7 @@
             this.Name = "ventana_venta_devolucion";
             this.Text = "ventana_venta_devolucion";
             this.Load += new System.EventHandler(this.ventana_venta_devolucion_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventana_venta_devolucion_KeyDown);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
@@ -343,6 +372,8 @@
             this.Controls.SetChildIndex(this.cantidadDevolverText, 0);
             this.Controls.SetChildIndex(this.button20, 0);
             this.Controls.SetChildIndex(this.button19, 0);
+            this.Controls.SetChildIndex(this.detalleText, 0);
+            this.Controls.SetChildIndex(this.egresoCajaAutomaticoCheck, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -357,7 +388,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox categoriaIdText;
+        private System.Windows.Forms.TextBox ventaIdText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -379,5 +410,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.TextBox detalleText;
+        private System.Windows.Forms.CheckBox egresoCajaAutomaticoCheck;
     }
 }
