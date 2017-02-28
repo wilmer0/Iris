@@ -234,6 +234,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     egresoCaja.codigo_cajero = empleado.codigo;
                     egresoCaja.codigo_concepto = 1;
                     egresoCaja.monto = montoTotalDevolucion;
+                    egresoCaja.modificable = false;
                     egresoCaja.activo = true;
                 }
                 if (crear == true)
