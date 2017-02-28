@@ -22,11 +22,13 @@ namespace IrisContabilidad.modulo_inventario
         empleado empleado;
         private producto producto;
         private unidad unidadMinima;
+        unidad unidad;
         
         //modelos
         private modeloUnidad modeloUnidad = new modeloUnidad();
         private modeloProducto modeloProducto = new modeloProducto();
         
+
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
 
@@ -47,9 +49,11 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                loadListaPrecioProducto();
                 if (producto != null)
                 {
                     //llenar campos
+                   
                 }
                 else
                 {
@@ -65,7 +69,31 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
-               
+                if (listaPrecioVenta == null)
+                {
+                    listaPrecioVenta = new List<producto_precio_venta>();
+                    listaPrecioVenta = modeloProducto.getListaProductoPrecioVenta();
+                }
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    dataGridView1.Rows.Clear();
+                }
+                
+                if (producto != null)
+                {
+                    listaPrecioVenta = listaPrecioVenta.FindAll(x => x.codigo_producto == producto.codigo);
+                }
+                listaPrecioVenta.ForEach(x =>
+                {
+                    producto=new producto();
+                    unidad=new unidad();
+
+                    producto = modeloProducto.getProductoById(x.codigo_producto);
+                    unidad = modeloUnidad.getUnidadById(x.codigo_unidad);
+
+                    dataGridView1.Rows.Add(x.codigo_producto, producto.nombre, x.codigo_unidad, unidad.nombre, x.precio_venta1.ToString("N"), x.precio_venta2.ToString("N"), x.precio_venta3.ToString("N"), x.precio_venta4.ToString("N"), x.precio_venta5.ToString("N"));
+                });
+
             }
             catch (Exception ex)
             {
@@ -184,6 +212,53 @@ namespace IrisContabilidad.modulo_inventario
             catch (Exception ex)
             {
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void salir()
+        {
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            salir();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listaPrecioVenta = null;
+            loadListaPrecioProducto();
+        }
+
+        public void loadProducto()
+        {
+            try
+            {
+                productoIdText.Text = "";
+                productoLabel.Text = "";
+                if (producto != null)
+                {
+                    productoIdText.Text = producto.codigo.ToString();
+                    productoLabel.Text = producto.nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadProducto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_producto ventana=new ventana_busqueda_producto();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                producto = ventana.getObjeto();
+                loadProducto();
+                loadListaPrecioProducto();
             }
         }
     }

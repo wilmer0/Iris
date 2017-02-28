@@ -35,11 +35,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.ventaIdText = new System.Windows.Forms.TextBox();
+            this.productoIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
             this.secuenciacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cedulaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rncColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +48,8 @@
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button5 = new System.Windows.Forms.Button();
+            this.productoLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -63,6 +64,7 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -77,10 +79,11 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(380, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.ventaIdText);
+            this.groupBox2.Controls.Add(this.productoIdText);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Location = new System.Drawing.Point(12, 27);
@@ -89,14 +92,14 @@
             this.groupBox2.TabIndex = 97;
             this.groupBox2.TabStop = false;
             // 
-            // ventaIdText
+            // productoIdText
             // 
-            this.ventaIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.ventaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ventaIdText.Location = new System.Drawing.Point(121, 19);
-            this.ventaIdText.Name = "ventaIdText";
-            this.ventaIdText.Size = new System.Drawing.Size(155, 26);
-            this.ventaIdText.TabIndex = 25;
+            this.productoIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.productoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productoIdText.Location = new System.Drawing.Point(121, 19);
+            this.productoIdText.Name = "productoIdText";
+            this.productoIdText.Size = new System.Drawing.Size(155, 26);
+            this.productoIdText.TabIndex = 25;
             // 
             // label2
             // 
@@ -118,6 +121,7 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 26;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // dataGridView1
             // 
@@ -140,22 +144,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 153);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(897, 399);
             this.dataGridView1.TabIndex = 98;
-            // 
-            // button5
-            // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(846, 92);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(66, 55);
-            this.button5.TabIndex = 27;
-            this.button5.UseVisualStyleBackColor = true;
             // 
             // secuenciacolumn
             // 
@@ -197,7 +189,6 @@
             this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column2.HeaderText = "Precio 2";
             this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
@@ -205,7 +196,6 @@
             this.Column3.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column3.HeaderText = "Precio 3";
             this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
@@ -213,7 +203,6 @@
             this.Column4.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column4.HeaderText = "Precio 4";
             this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
             // 
             // Column5
             // 
@@ -221,13 +210,34 @@
             this.Column5.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column5.HeaderText = "Precio 5";
             this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(846, 92);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(66, 55);
+            this.button5.TabIndex = 27;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // productoLabel
+            // 
+            this.productoLabel.AutoSize = true;
+            this.productoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.productoLabel.Location = new System.Drawing.Point(129, 92);
+            this.productoLabel.Name = "productoLabel";
+            this.productoLabel.Size = new System.Drawing.Size(80, 20);
+            this.productoLabel.TabIndex = 27;
+            this.productoLabel.Text = "producto";
             // 
             // ventana_producto_lista_precio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 624);
+            this.Controls.Add(this.productoLabel);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox2);
@@ -239,6 +249,7 @@
             this.Controls.SetChildIndex(this.groupBox2, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.Controls.SetChildIndex(this.button5, 0);
+            this.Controls.SetChildIndex(this.productoLabel, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -253,7 +264,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox ventaIdText;
+        private System.Windows.Forms.TextBox productoIdText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
@@ -267,5 +278,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.Label productoLabel;
     }
 }
