@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_inventario;
+using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_cuenta_por_pagar
@@ -252,7 +253,8 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 //metodo pago
                 if (metodoPagoComboBox.Text != "")
                 {
-                    listaCompraPagosDetalles = listaCompraPagosDetalles.FindAll(x => x.codigo_metodo_pago == Convert.ToInt16(metodoPagoComboBox.SelectedValue.ToString())).ToList();
+                    //MessageBox.Show(Convert.ToInt16(metodoPagoComboBox.SelectedValue).ToString());
+                    listaCompraPagosDetalles = listaCompraPagosDetalles.FindAll(x => (metodoPago=modeloMetodoPago.getMetodoPagoById(x.codigo_metodo_pago)).metodo.ToLower().Contains(metodoPagoComboBox.Text.ToLower())).ToList();
                 }
                 //empleado
                 if (empleado != null)
@@ -369,6 +371,17 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             catch (Exception)
             {
                 
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_empleado ventana=new ventana_busqueda_empleado();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if ((empleado = ventana.getObjeto()) != null)
+            {
+                loadEmpleado();
             }
         }
     }

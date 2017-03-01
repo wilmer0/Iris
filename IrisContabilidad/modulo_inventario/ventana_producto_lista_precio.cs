@@ -23,6 +23,7 @@ namespace IrisContabilidad.modulo_inventario
         private producto producto;
         private unidad unidadMinima;
         unidad unidad;
+        private producto_precio_venta precioVenta;
         
         //modelos
         private modeloUnidad modeloUnidad = new modeloUnidad();
@@ -49,7 +50,6 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
-                loadListaPrecioProducto();
                 if (producto != null)
                 {
                     //llenar campos
@@ -65,6 +65,7 @@ namespace IrisContabilidad.modulo_inventario
                     productoIdText.Text = "";
                     productoLabel.Text = "";
                 }
+                loadListaPrecioProducto();
             }
             catch (Exception ex)
             {
@@ -80,6 +81,7 @@ namespace IrisContabilidad.modulo_inventario
                     listaPrecioVenta = new List<producto_precio_venta>();
                     listaPrecioVenta = modeloProducto.getListaProductoPrecioVenta();
                 }
+                //limpiar dataGridView
                 if (dataGridView1.Rows.Count > 0)
                 {
                     dataGridView1.Rows.Clear();
@@ -158,85 +160,48 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
 
-                //if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                //{
-                //    return;
-                //}
+                if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                {
+                    return;
+                }
 
-                //if (!validarGetAction())
-                //{
-                //    return;
-                //}
+                if (!validarGetAction())
+                {
+                    return;
+                }
 
+                listaPrecioVenta=new List<producto_precio_venta>();
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    precioVenta=new producto_precio_venta();
+                    precioVenta.codigo_producto = Convert.ToInt16(row.Cells[0].Value);
+                    precioVenta.codigo_unidad = Convert.ToInt16(row.Cells[2].Value);
+                    precioVenta.precio_venta1 = Convert.ToDecimal(row.Cells[4].Value);
+                    precioVenta.precio_venta2 = Convert.ToDecimal(row.Cells[5].Value);
+                    precioVenta.precio_venta3 = Convert.ToDecimal(row.Cells[6].Value);
+                    precioVenta.precio_venta4 = Convert.ToDecimal(row.Cells[7].Value);
+                    precioVenta.precio_venta5 = Convert.ToDecimal(row.Cells[8].Value);
 
-                //bool crear = false;
-                //if (producto == null)
-                //{
-                //    //agrega
-                //    crear = true;
-                //    producto = new producto();
-                //    producto.codigo = modeloProducto.getNext();
-                //}
-                //producto.nombre = productoText.Text;
-                //producto.referencia = referenciaText.Text;
-                //producto.activo = Convert.ToBoolean(activoCheck.Checked);
-                //producto.codigo_categoria = categoria.codigo;
-                //producto.codigo_subcategoria = subCategoria.codigo;
-                //producto.punto_maximo = Convert.ToDecimal(puntoMaximoText.Text);
-                //producto.reorden = Convert.ToDecimal(puntoReordenText.Text);
-                //producto.codigo_itebis = itebis.codigo;
-                //producto.codigo_almacen = almacen.codigo;
-                //producto.codigo_unidad_minima = unidadMinima.codigo;
-                //if (rutaImagenText.Text != "")
-                //{
-                //    producto.imagen = rutaImagenText.Text;
-                //}
-                //else
-                //{
-                //    producto.imagen = "";
-                //}
-                //if (crear)
-                //{
-                //    //agrega
-                //    if (modeloProducto.agregarProducto(producto) == true)
-                //    {
-                //        actualizarCodigoBarra();
-                //        actualizarUnidadConversion();
-                //        actualizarProductoProduccion();
-                //        producto = null;
-                //        listaCodigoBarra = null;
-                //        loadVentana();
-                //        MessageBox.Show("Se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                //    else
-                //    {
-                //        producto = null;
-                //        MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    }
-                //}
-                //else
-                //{
-                //    //actualiza
-                //    if (modeloProducto.modificarProducto(producto) == true)
-                //    {
-                //        actualizarCodigoBarra();
-                //        actualizarUnidadConversion();
-                //        actualizarProductoProduccion();
-                //        producto = null;
-                //        listaCodigoBarra = null;
-                //        loadVentana();
-                //        MessageBox.Show("Se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("No se modificó", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //    }
+                    listaPrecioVenta.Add(precioVenta);
+                }
 
-                //}
-                //producto = null;
+                if ((modeloProducto.agregarListaPrecioProducto(listaPrecioVenta)) == true)
+                {
+                    producto = null;
+                    listaPrecioVenta = null;
+                    MessageBox.Show("se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    producto = null;
+                    listaPrecioVenta = null;
+                    MessageBox.Show("No se agregó", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {
+                producto = null;
+                listaPrecioVenta = null;
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -289,7 +254,16 @@ namespace IrisContabilidad.modulo_inventario
 
         private void button5_Click(object sender, EventArgs e)
         {
-            loadListaPrecioProducto();
+            try
+            {
+                listaPrecioVenta = null;
+                producto = null;
+                producto = modeloProducto.getProductoById(Convert.ToInt16(productoIdText.Text));
+                loadListaPrecioProducto();
+            }
+            catch (Exception)
+            {   
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
