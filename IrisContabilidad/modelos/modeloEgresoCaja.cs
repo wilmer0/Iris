@@ -49,7 +49,7 @@ namespace IrisContabilidad.modelos
                     modificable = 1;
                 }
 
-                sql = "insert into egresos_caja(codigo,cod_concepto,fecha,cod_cajero,monto,detalles,afecta_cuadre,activo,cuadrado,modificable) values('"+egreso.codigo+"','"+egreso.codigo_concepto+"',"+ utilidades.getFechaddMMyyyy(egreso.fecha)+",'"+egreso.codigo_cajero+"','"+egreso.monto+"','"+egreso.detalle+"','1','"+activo+"','"+cuadrado+"','"+modificable+"')";
+                sql = "insert into egresos_caja(codigo,cod_concepto,fecha,cod_cajero,monto,detalles,afecta_cuadre,activo,cuadrado,modificable) values('"+egreso.codigo+"','"+egreso.codigo_concepto+"',"+ utilidades.getFechayyyyMMdd(egreso.fecha)+",'"+egreso.codigo_cajero+"','"+egreso.monto+"','"+egreso.detalle+"','1','"+activo+"','"+cuadrado+"','"+modificable+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -95,7 +95,7 @@ namespace IrisContabilidad.modelos
                     return false;
                 }
 
-                sql = "update egresos_caja set cod_concepto='" + egreso.codigo_concepto + "',fecha=" + utilidades.getFechaddMMyyyy(egreso.fecha) + ",cod_cajero='" + egreso.codigo_cajero + "',monto='" + egreso.monto + "',detalles='" + egreso.detalle + "',afecta_cuadre='1',activo='" + activo + "',cuadrado='" + cuadrado + "' where codigo='" + egreso.codigo + "'";
+                sql = "update egresos_caja set cod_concepto='" + egreso.codigo_concepto + "',fecha=" + utilidades.getFechayyyyMMdd(egreso.fecha) + ",cod_cajero='" + egreso.codigo_cajero + "',monto='" + egreso.monto + "',detalles='" + egreso.detalle + "',afecta_cuadre='1',activo='" + activo + "',cuadrado='" + cuadrado + "' where codigo='" + egreso.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
@@ -146,10 +146,10 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    egreso.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    egreso.codigo_concepto = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                    egreso.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                    egreso.codigo_concepto = Convert.ToInt16(ds.Tables[0].Rows[0][1]);
                     egreso.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][2].ToString());
-                    egreso.codigo_cajero = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    egreso.codigo_cajero = Convert.ToInt16(ds.Tables[0].Rows[0][3]);
                     egreso.monto = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
                     egreso.detalle =ds.Tables[0].Rows[0][5].ToString();
                     egreso.afecta_cuadre = Convert.ToBoolean(ds.Tables[0].Rows[0][6]);
@@ -173,8 +173,7 @@ namespace IrisContabilidad.modelos
             {
 
                 List<egreso_caja> lista = new List<egreso_caja>();
-                string sql = "";
-                sql = "select codigo,nombre,cod_sucursal,activo from almacen";
+                string sql = "select codigo,cod_concepto,fecha,cod_Cajero,monto,detalles,afecta_cuadre,activo,cuadrado from egresos_caja ";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -185,15 +184,15 @@ namespace IrisContabilidad.modelos
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         egreso_caja egreso = new egreso_caja();
-                        egreso.codigo = Convert.ToInt16(row[0].ToString());
-                        egreso.codigo_concepto = Convert.ToInt16(row[1].ToString());
-                        egreso.fecha = Convert.ToDateTime(row[2].ToString());
-                        egreso.codigo_cajero = Convert.ToInt16(row[3].ToString());
+                        egreso.codigo = Convert.ToInt16(row[0]);
+                        egreso.codigo_concepto = Convert.ToInt16(row[1]);
+                        egreso.fecha = Convert.ToDateTime(row[2]);
+                        egreso.codigo_cajero = Convert.ToInt16(row[3]);
                         egreso.monto = Convert.ToDecimal(row[4].ToString());
                         egreso.detalle = row[5].ToString();
-                        egreso.afecta_cuadre = Convert.ToBoolean(row[6].ToString());
-                        egreso.activo = Convert.ToBoolean(row[7].ToString());
-                        egreso.cuadrado = Convert.ToBoolean(row[8].ToString());
+                        egreso.afecta_cuadre = Convert.ToBoolean(row[6]);
+                        egreso.activo = Convert.ToBoolean(row[7]);
+                        egreso.cuadrado = Convert.ToBoolean(row[8]);
                         lista.Add(egreso);
                     }
                 }

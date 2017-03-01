@@ -69,12 +69,13 @@ namespace IrisContabilidad.modelos
             try
             {
                 //empresa
+                #region empresa
                 string sql = "SELECT * FROM empresa";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //debe agregar la empresa
-                    empresa=new empresa();
+                    empresa = new empresa();
                     empresa.codigo = 1;
                     empresa.nombre = "Empresa";
                     empresa.secuencia = "001";
@@ -84,12 +85,13 @@ namespace IrisContabilidad.modelos
                     empresa.serie_comprobante = "A";
                     modeloEmpresa.agregarEmpresa(empresa);
                 }
-
-
+                #endregion
+               
                 //sucursal
+                #region sucursal
                 sql = "SELECT * FROM sucursal";
                 ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count ==0)
+                if (ds.Tables[0].Rows.Count == 0)
                 {
                     //debe agregar la empresa
                     sucursal = new sucursal();
@@ -100,7 +102,7 @@ namespace IrisContabilidad.modelos
                     sucursal.activo = true;
                     modeloSucursal.agregarSucursal(sucursal);
                 }
-
+                #endregion
 
                 //cargos
                 #region
@@ -120,7 +122,6 @@ namespace IrisContabilidad.modelos
 
                 #endregion
 
-
                 //departamentos sucursales
                 #region
                 List<departamento> listaDepartamento = new List<departamento>();
@@ -139,7 +140,6 @@ namespace IrisContabilidad.modelos
                 });
 
                 #endregion
-
                 
                 //situacion empleado
                 #region
@@ -253,14 +253,27 @@ namespace IrisContabilidad.modelos
                 #region
                 sql = "insert into caja_ingresos_egresos_conceptos(codigo,nombre,activo) values('1','Egreso caja por devolución de venta','1');";
                 utilidades.ejecutarcomando_mysql(sql);
-
                 #endregion
 
-
+                //tipos de retencion itbis
+                #region
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('1','0% retención itbis','se retiene el 0% en las ventas','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('2','30% retención itbis personas juridicas','30% y 100% del ITBIS facturado a personas jurídicas.(Norma General 02-05)','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('3','100% retención itbis personas fisicas','100% del ITBIS facturado a personas físicas (Art. 25, Reglamento 293-11) ','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('4','75% retención itbis','75% ITIBIS facturado proveedores informales de bienes.(Norma General 08-10)','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('5','100% retención itbis no lucrativas','100% del ITBIS facturado a entidades no lucrativas.(Norma General 01-2011)','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('6','30% retención itbis tarjetas debito o credito','30% ITIBIS facturado ventas con tarjetas de débito o crédito.(Norma General 08-04)','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error primerosDatos.: " + ex.ToString());
+                MessageBox.Show("Error primerosDatos.: " + ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -868,7 +881,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarAccesosVentanas.: " + ex.ToString());
+                MessageBox.Show("Error agregarAccesosVentanas.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -889,7 +902,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarVentanasPrimerModulo.: " + ex.ToString());
+                MessageBox.Show("Error agregarVentanasPrimerModulo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -907,9 +920,9 @@ namespace IrisContabilidad.modelos
                     ventana.ShowDialog();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error ValidarCrearPrimerEmpleado.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error agregarPrimerEmpleado.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
