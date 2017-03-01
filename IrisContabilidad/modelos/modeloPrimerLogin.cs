@@ -285,7 +285,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 1;
-                modulo.nombre = "modulo empresa";
+                modulo.nombre = "Empresa";
                 modulo.imagen = "empresa1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_empresa";
@@ -293,7 +293,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 2;
-                modulo.nombre = "modulo facturacion";
+                modulo.nombre = "aFcturación";
                 modulo.imagen = "facturacion1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_facturacion";
@@ -301,7 +301,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 3;
-                modulo.nombre = "modulo cuentas por cobrar";
+                modulo.nombre = "Cuentas Por Cobrar";
                 modulo.imagen = "cxc.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar";
@@ -309,7 +309,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 4;
-                modulo.nombre = "modulo cuentas por pagar";
+                modulo.nombre = "Cuentas Por Pagar";
                 modulo.imagen = "cxp.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar";
@@ -317,7 +317,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 5;
-                modulo.nombre = "modulo inventario";
+                modulo.nombre = "Inventario";
                 modulo.imagen = "inventario1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_inventario";
@@ -325,7 +325,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 6;
-                modulo.nombre = "modulo opciones";
+                modulo.nombre = "Opciones";
                 modulo.imagen = "opciones1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_opciones";
@@ -333,7 +333,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 7;
-                modulo.nombre = "modulo nomina";
+                modulo.nombre = "Nómina";
                 modulo.imagen = "nomina1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_nomina";
@@ -341,7 +341,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 8;
-                modulo.nombre = "modulo inicio rapido";
+                modulo.nombre = "Inicio Rapido";
                 modulo.imagen = "inicio_rapido1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_inicio_rapido";
@@ -349,7 +349,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 9;
-                modulo.nombre = "modulo contabilidad";
+                modulo.nombre = "Contabilidad";
                 modulo.imagen = "contabilidad1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_contabilidad";
@@ -423,7 +423,7 @@ namespace IrisContabilidad.modelos
                 ventana.nombre_logico = "IrisContabilidad.modulo_empresa.ventana_configuracion_comprobante_fiscal";
                 ventana.activo = true;
                 ventana.programador = false;
-                ventana.codigo_modulo = 7;
+                ventana.codigo_modulo = 1;
                 ventana.imagen = "configuracion_comprobante1.png";
                 listaVentana.Add(ventana);
                

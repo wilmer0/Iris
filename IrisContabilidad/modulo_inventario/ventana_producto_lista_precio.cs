@@ -53,11 +53,17 @@ namespace IrisContabilidad.modulo_inventario
                 if (producto != null)
                 {
                     //llenar campos
-                   
+                    productoIdText.Text = producto.codigo.ToString();
+                    productoLabel.Text = producto.nombre;
                 }
                 else
                 {
+                    productoIdText.Focus();
+                    productoIdText.SelectAll();
+
                     //blanquear campos
+                    productoIdText.Text = "";
+                    productoLabel.Text = "";
                 }
             }
             catch (Exception ex)
@@ -110,6 +116,8 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+
+                bool vacio = false;
                 //validar itebis
                 //if (itebis == null)
                 //{
@@ -118,6 +126,24 @@ namespace IrisContabilidad.modulo_inventario
                 //    itebisIdText.SelectAll();
                 //    return false;
                 //}
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    decimal precio = 0;
+                    for (int i=4;i<8;i++)
+                    {
+                        if (decimal.TryParse(row.Cells[4].Value.ToString(), out precio) == false)
+                        {
+                            vacio = true;
+                            MessageBox.Show("Error precio no tiene formato numerico en la linea.:"+row.Index, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    
+                }
+                if (vacio == true)
+                {
+                    MessageBox.Show("Se detecto un precio no tiene formato numerico", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
 
                 return true;
             }
@@ -258,7 +284,35 @@ namespace IrisContabilidad.modulo_inventario
             {
                 producto = ventana.getObjeto();
                 loadProducto();
-                loadListaPrecioProducto();
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            loadListaPrecioProducto();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GetAction();
+        }
+
+        private void productoIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+                {
+                    producto = modeloProducto.getProductoById(Convert.ToInt16(productoIdText.Text));
+                    loadProducto();
+                }
+            }
+            catch (Exception)
+            {
             }
         }
     }
