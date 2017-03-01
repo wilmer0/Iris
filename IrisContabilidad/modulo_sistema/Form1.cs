@@ -209,10 +209,11 @@ namespace IrisContabilidad
             //empleado.clave = utilidades.encriptar("123");
             //modeloEmpleado.modificarEmpleado(empleado);
             //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
+            
             //modeloPrimerLogin.primerosDatos();
             //modeloPrimerLogin.agregarModulos();
             modeloPrimerLogin.agregarVentanas();
-            //modeloPrimerLogin.agregarVentanasPrimerModulo();
+            //modeloPrimerLogin.agregarVentanasPrimerModulo(); //para agregar todas las ventanas al primer modulo 
             //modeloPrimerLogin.agregarPrimerEmpleado();
             //modeloPrimerLogin.agregarAccesosVentanas();
             

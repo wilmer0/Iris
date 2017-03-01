@@ -260,6 +260,7 @@
             this.button7.Size = new System.Drawing.Size(47, 37);
             this.button7.TabIndex = 128;
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // empleadoIdText
             // 

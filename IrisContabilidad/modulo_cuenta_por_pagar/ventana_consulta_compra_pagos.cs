@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_inventario;
+using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_cuenta_por_pagar
@@ -22,7 +23,9 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         singleton singleton = new singleton();
         empleado empleadoSingleton;
         private empleado empleado;
+        private empleado empleadoFiltro;
         private suplidor suplidor;
+        private suplidor suplidorFiltro ;
         private compra compra;
         private metodo_pago metodoPago;
         private compra_vs_pagos compraPago;
@@ -233,27 +236,14 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
                 if (listaCompraPagosDetalles == null)
                 {
+                    listaCompraPagosDetalles=new List<compra_vs_pagos_detalles>();
                     return;
                 }
-                listaCompraPagosDetallesTemporal = listaCompraPagosDetalles;
                 //filtrar la lista
                 //suplidor
                 if (suplidor != null)
                 {
-                    listaCompraPagosDetallesTemporal = listaCompraPagosDetalles;
-                    compraPago = new compra_vs_pagos();
-                    indice = 0;
-                    listaCompraPagosDetallesTemporal.ForEach(x =>
-                    {
-                        compraPago = modeloCompra.getCompraPagoById(x.codigo_pago);
-                        compra=new compra();
-                        compra = modeloCompra.getCompraById(x.codigo_compra);
-                        if (suplidor.codigo != compra.cod_suplidor)
-                        {
-                            listaCompraPagosDetalles.RemoveAt(indice);
-                        }
-                        indice++;
-                    });
+                    listaCompraPagosDetalles =listaCompraPagosDetalles.FindAll(x =>(suplidorFiltro = modeloSuplidor.getSuplidorByCompraPago(x.codigo)).codigo.ToString().Contains(suplidor.codigo.ToString())).ToList();
                 }
                 //compra
                 if (compra != null)
@@ -263,24 +253,13 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 //metodo pago
                 if (metodoPagoComboBox.Text != "")
                 {
-                    listaCompraPagosDetalles = listaCompraPagosDetalles.FindAll(x => x.codigo_metodo_pago == Convert.ToInt16(metodoPagoComboBox.SelectedValue.ToString())).ToList();
+                    //MessageBox.Show(Convert.ToInt16(metodoPagoComboBox.SelectedValue).ToString());
+                    listaCompraPagosDetalles = listaCompraPagosDetalles.FindAll(x => (metodoPago=modeloMetodoPago.getMetodoPagoById(x.codigo_metodo_pago)).metodo.ToLower().Contains(metodoPagoComboBox.Text.ToLower())).ToList();
                 }
                 //empleado
                 if (empleado != null)
                 {
-                    listaCompraPagosDetallesTemporal = listaCompraPagosDetalles;
-                    compraPago=new compra_vs_pagos();
-                    indice = 0;
-                    listaCompraPagosDetallesTemporal.ForEach(x =>
-                    {
-                        compraPago = modeloCompra.getCompraPagoById(x.codigo_pago);
-                        if (empleado.codigo != compraPago.cod_empleado)
-                        {
-                            listaCompraPagosDetalles.RemoveAt(indice);
-                        }
-
-                        indice++;
-                    });
+                    listaCompraPagosDetalles = listaCompraPagosDetalles.FindAll(x => (empleadoFiltro = modeloEmpleado.getEmpleadoByCompraPago(x.codigo)).codigo.ToString().Contains(empleado.codigo.ToString())).ToList();
                 }
             }
             catch (Exception ex)
@@ -306,7 +285,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     compraPago = modeloCompra.getCompraPagoById(x.codigo_pago);
                     
                     empleado = new empleado();
-                    empleado = modeloEmpleado.getEmpleadoById(compraPago.cod_empleado);
+                    empleado = modeloEmpleado.getEmpleadoByCompraPago(x.codigo);
                     
                     metodoPago=new metodo_pago();
                     metodoPago = modeloMetodoPago.getMetodoPagoById(x.codigo_metodo_pago);
@@ -392,6 +371,17 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             catch (Exception)
             {
                 
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_empleado ventana=new ventana_busqueda_empleado();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if ((empleado = ventana.getObjeto()) != null)
+            {
+                loadEmpleado();
             }
         }
     }

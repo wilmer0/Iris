@@ -35,6 +35,7 @@ namespace IrisContabilidad.modulo_inventario
         private productoUnidadConversion productoUnidadConversion;
         private producto_productos_requisitos productosRequisitos;
         private unidad unidadProduccion;
+        private producto productoProduccion;
 
         //modelos
         private modeloItebis modeloItebis = new modeloItebis();
@@ -54,7 +55,7 @@ namespace IrisContabilidad.modulo_inventario
         //listas
         private List<producto_vs_codigobarra> listaCodigoBarra;
         private List<productoUnidadConversion> listaProductoUnidadConversion;
-        private List<producto_productos_requisitos> listaProductosRequisitos; 
+        private List<producto_productos_requisitos> listaProductosRequisitos;
 
         public ventana_producto()
         {
@@ -105,6 +106,8 @@ namespace IrisContabilidad.modulo_inventario
                     listaProductoUnidadConversion = modeloProducto.getListaUnidadConversionById(producto.codigo);
                     loadProductoCodigoBarra();
                     loadUnidadProductoConversion();
+                    listaProductosRequisitos = modeloProducto.getListaProductoRequisitos(producto.codigo);
+                    loadProductosRequisitos();
                 }
                 else
                 {
@@ -181,10 +184,10 @@ namespace IrisContabilidad.modulo_inventario
                 foreach (var x in listaProductosRequisitos)
                 {
                     unidadProduccion = modeloUnidad.getUnidadById(x.codigo_unidad);
-                    dataGridView4.Rows.Add(x.codigo_producto_requisito, x.codigo_unidad, unidadProduccion.nombre,
-                        x.cantidad);
+                    productoProduccion = modeloProducto.getProductoById(x.codigo_producto_requisito);
+                    dataGridView4.Rows.Add(x.codigo_producto_requisito,productoProduccion.nombre, x.codigo_unidad, unidadProduccion.nombre,x.cantidad);
                 }
-
+                productoProduccion = null;
             }
             catch (Exception ex)
             {
@@ -304,6 +307,7 @@ namespace IrisContabilidad.modulo_inventario
                     {
                         actualizarCodigoBarra();
                         actualizarUnidadConversion();
+                        actualizarProductoProduccion();
                         producto = null;
                         listaCodigoBarra = null;
                         loadVentana();
@@ -322,6 +326,7 @@ namespace IrisContabilidad.modulo_inventario
                     {
                         actualizarCodigoBarra();
                         actualizarUnidadConversion();
+                        actualizarProductoProduccion();
                         producto = null;
                         listaCodigoBarra = null;
                         loadVentana();
@@ -756,7 +761,7 @@ namespace IrisContabilidad.modulo_inventario
                 loadUnidadConversion();
             }
         }
-        public void actualizarUnidadConversion()
+        private void actualizarUnidadConversion()
         {
             try
             {
@@ -773,6 +778,26 @@ namespace IrisContabilidad.modulo_inventario
             catch (Exception ex)
             {
                 MessageBox.Show("Error actualizarUnidadConversion.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void actualizarProductoProduccion()
+        {
+            try
+            {
+                //borrar todos los codigo barra que son de este producto
+                string sql = "delete from producto_productos_requisitos where codpro_titular='" + producto.codigo + "'";
+                utilidades.ejecutarcomando_mysql(sql);
+                //recorriendo la lista para agregarlo uno a uno
+                foreach (DataGridViewRow row in dataGridView4.Rows)
+                {
+                    sql = "insert into producto_productos_requisitos(codpro_titular,codpro_requisito,cod_unidad,cantidad) values('" + producto.codigo + "','" + row.Cells[0].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "')";
+                    utilidades.ejecutarcomando_mysql(sql);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error actualizarProductoProduccion.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void loadUnidadConversion()
@@ -822,6 +847,7 @@ namespace IrisContabilidad.modulo_inventario
                     MessageBoxIcon.Error);
             }
         }
+
 
         private void button20_Click(object sender, EventArgs e)
         {
@@ -1183,6 +1209,152 @@ namespace IrisContabilidad.modulo_inventario
         private void cantidadProduccionText_KeyPress(object sender, KeyPressEventArgs e)
         {
             utilidades.validarTextBoxNumeroDecimal(e,cantidadProduccionText.Text);
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            agregarProductoProduccion();
+        }
+        public void agregarProductoProduccion()
+        {
+            try
+            {
+                //validaciones
+                //validar que tenga producto seleccionado
+                if (productoProduccion == null)
+                {
+                    productoProduccionIdText.Focus();
+                    productoProduccionIdText.SelectAll();
+                    MessageBox.Show("Falta seleccionar el producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                //validar que tenga unidadConversion seleccionada
+                if (unidadProduccion == null)
+                {
+                    unidadProduccionIdText.Focus();
+                    unidadProduccionIdText.SelectAll();
+                    MessageBox.Show("Falta seleccionar la unidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                //validar que tenga cantidad 
+                if (cantidadProduccionText.Text == "")
+                {
+                    cantidadProduccionText.Focus();
+                    cantidadProduccionText.SelectAll();
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+               
+                existe = false;
+                //validar que no se repita la unidad
+                foreach (DataGridViewRow row in dataGridView4.Rows)
+                {
+                    if (row.Cells[0].Value.ToString() == productoProduccion.codigo.ToString() && row.Cells[2].Value.ToString()==unidadProduccion.codigo.ToString())
+                    {
+                        existe = true;
+                        break;
+                    }
+                }
+
+                if (existe == false)
+                {
+                    dataGridView4.Rows.Add(productoProduccion.codigo.ToString(),productoProduccion.nombre, unidadProduccion.codigo,unidadProduccion.nombre, cantidadProduccionText.Text.Trim());
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarUnidadConversion.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void button22_Click(object sender, EventArgs e)
+        {
+            eliminarProductoProduccion();
+        }
+        public void eliminarProductoProduccion()
+        {
+            try
+            {
+                //validar que tenga filas el datagrid
+                if (dataGridView4.Rows.Count < 0)
+                {
+                    return;
+                }
+                int fila = 0;
+                fila = dataGridView4.CurrentRow.Index;
+                if (fila >= 0)
+                {
+                    dataGridView4.Rows.Remove(dataGridView4.Rows[fila]);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error eliminarProductoProduccion.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void loadProductoProduccion()
+        {
+            try
+            {
+                productoProduccionIdText.Text = "";
+                productoProduccionText.Text = "";
+                if (productoProduccion != null)
+                {
+                    productoProduccionIdText.Text = productoProduccion.codigo.ToString();
+                    productoProduccionText.Text = productoProduccion.nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadProductoProduccion.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void loadUnidadProduccion()
+        {
+            try
+            {
+                unidadProduccionIdText.Text = "";
+                unidadProduccionText.Text = "";
+                if (unidadProduccion != null)
+                {
+                    unidadProduccionIdText.Text = unidadProduccion.codigo.ToString();
+                    unidadProduccionText.Text = unidadProduccion.nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadUnidadProduccion.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void button21_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_producto ventana=new ventana_busqueda_producto();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                productoProduccion = ventana.getObjeto();
+                loadProductoProduccion();
+            }
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            if (productoProduccion == null)
+            {
+                productoProduccionIdText.Focus();
+                productoProduccionIdText.SelectAll();
+                MessageBox.Show("Fala seleccionar el producto");
+                return;
+            }
+            ventana_busqueda_unidad ventana=new ventana_busqueda_unidad(productoProduccion.codigo);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                unidadProduccion = ventana.getObjeto();
+                loadUnidadProduccion();
+            }
         }
     }
 }

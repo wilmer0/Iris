@@ -68,6 +68,7 @@ namespace IrisContabilidad.clases_reportes
             this.empleado = empleado.nombre;
             this.tipo_venta = venta.tipo_venta;
             this.tipo_comprobante_fiscal = tipoComprobante.nombre;
+            this.numero_comprobante_fiscal = venta.ncf;
 
 
             listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo);

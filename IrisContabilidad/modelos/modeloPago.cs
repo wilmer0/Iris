@@ -14,13 +14,17 @@ namespace IrisContabilidad.modelos
         private utilidades utilidades = new utilidades();
 
         //get lista pagos todos
-        public List<compra_vs_pagos> getListaCompletaPagos()
+        public List<compra_vs_pagos> getListaCompletaPagos(bool mantenimiento=false)
         {
             try
             {
                 List<compra_vs_pagos> lista = new List<compra_vs_pagos>();
                 compra_vs_pagos pago = new compra_vs_pagos();
-                string sql = "select codigo,fecha,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado,detalle from compra_vs_pagos where activo='1'";
+                string sql = "select codigo,fecha,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado,detalle from compra_vs_pagos";
+                if (mantenimiento == false)
+                {
+                    sql += " where activo='1'";
+                }
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -38,6 +42,7 @@ namespace IrisContabilidad.modelos
                         lista.Add(pago);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
                 return lista;
             }
             catch (Exception ex)
@@ -172,11 +177,41 @@ namespace IrisContabilidad.modelos
                         lista.Add(cobroDetalle);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
                 return lista;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error getListaCompraPagosDetallesActivos.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get compra pago by id
+        public compra_vs_pagos getCompraPagoById(int id)
+        {
+            try
+            {
+                compra_vs_pagos pagoDetalle = new compra_vs_pagos();
+                string sql = "select codigo,fecha,detalle,cod_empleado,activo,cod_empleado_anular,motivo_anulado,cuadrado from compra_vs_pagos where codigo='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    pagoDetalle = new compra_vs_pagos();
+                    pagoDetalle.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    pagoDetalle.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][1].ToString());
+                    pagoDetalle.detalle = ds.Tables[0].Rows[0][2].ToString();
+                    pagoDetalle.cod_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    pagoDetalle.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
+                    pagoDetalle.cod_empleado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][5].ToString());
+                    pagoDetalle.motivo_anulado = ds.Tables[0].Rows[0][6].ToString();
+                    pagoDetalle.cuadrado = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
+
+                }
+                return pagoDetalle;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCompraPagoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }

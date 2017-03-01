@@ -17,6 +17,7 @@ namespace IrisContabilidad.clases
         public bool afecta_cuadre { get; set; }
         public bool activo { get; set; }
         public bool cuadrado { get; set; }
+        public bool modificable { get; set; }
 
     }
 }

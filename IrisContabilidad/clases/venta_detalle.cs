@@ -15,7 +15,7 @@ namespace IrisContabilidad.clases
         public decimal precio { get; set; }
         public decimal monto_itebis { get; set; }
         public decimal cantidad { get; set; }
-        public decimal monto { get; set; }
+        public decimal monto_total { get; set; }
         public decimal monto_descuento { get; set; }
         public bool activo { get; set; }
     }
