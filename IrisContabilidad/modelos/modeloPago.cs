@@ -177,6 +177,7 @@ namespace IrisContabilidad.modelos
                         lista.Add(cobroDetalle);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
                 return lista;
             }
             catch (Exception ex)

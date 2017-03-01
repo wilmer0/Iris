@@ -42,5 +42,61 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        public void version1_1_0()
+        {
+            try
+            {
+                string sql = "";
+                List<string> listaQuerys = new List<string>();
+
+                #region querys version1
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                #endregion
+
+
+                listaQuerys.ForEach(x =>
+                {
+                    utilidades.ejecutarcomando_mysql(x);
+                });
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error version1.:" + ex.ToString(), "", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public void version1_2_0()
+        {
+            try
+            {
+                string sql = "";
+                List<string> listaQuerys = new List<string>();
+
+                #region querys version1
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                #endregion
+
+
+                listaQuerys.ForEach(x =>
+                {
+                    utilidades.ejecutarcomando_mysql(x);
+                });
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error version1.:" + ex.ToString(), "", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
     }
 }
