@@ -632,11 +632,13 @@ namespace IrisContabilidad.modelos
                 //obtiene la cantidad unidades que maneja la unidad minima
                 sql = "select precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5 from producto_unidad_conversion where cod_producto='"+codigoProducto+"' and cod_unidad='"+codigoUnidad+"'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
-                precioVenta.precio_venta1 = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
-                precioVenta.precio_venta2 = Convert.ToDecimal(ds.Tables[0].Rows[0][1].ToString());
-                precioVenta.precio_venta3 = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
-                precioVenta.precio_venta4 = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
-                precioVenta.precio_venta5 = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                precioVenta.codigo_producto = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                precioVenta.codigo_unidad = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                precioVenta.precio_venta1 = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
+                precioVenta.precio_venta2 = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
+                precioVenta.precio_venta3 = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                precioVenta.precio_venta4 = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
+                precioVenta.precio_venta5 = Convert.ToDecimal(ds.Tables[0].Rows[0][6].ToString());
 
                 return precioVenta;
             }
@@ -658,21 +660,24 @@ namespace IrisContabilidad.modelos
                 producto_precio_venta precioVenta;
 
                 //borrar todos los codigo barra que son de este producto
-                sql = "select precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5 from producto_unidad_conversion;";
+                sql = "select cod_producto,cod_unidad,precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5 from producto_unidad_conversion";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         precioVenta = new producto_precio_venta();
-                        precioVenta.precio_venta1 = Convert.ToInt16(row[0].ToString());
-                        precioVenta.precio_venta2 = Convert.ToInt16(row[1].ToString());
-                        precioVenta.precio_venta3 = Convert.ToInt16(row[2].ToString());
-                        precioVenta.precio_venta4 = Convert.ToDecimal(row[3].ToString());
-                        precioVenta.precio_venta5 = Convert.ToDecimal(row[4].ToString());
+                        precioVenta.codigo_producto = Convert.ToInt16(row[0]);
+                        precioVenta.codigo_unidad = Convert.ToInt16(row[1]);
+                        precioVenta.precio_venta1 = Convert.ToInt16(row[2]);
+                        precioVenta.precio_venta2 = Convert.ToInt16(row[3]);
+                        precioVenta.precio_venta3 = Convert.ToInt16(row[4]);
+                        precioVenta.precio_venta4 = Convert.ToDecimal(row[5]);
+                        precioVenta.precio_venta5 = Convert.ToDecimal(row[6]);
                         lista.Add(precioVenta);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo_producto).ToList();
                 return lista;
             }
             catch (Exception ex)

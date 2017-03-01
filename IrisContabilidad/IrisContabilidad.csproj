@@ -147,6 +147,7 @@
     <Compile Include="clases\subCategoriaProducto.cs" />
     <Compile Include="clases\sucursal.cs" />
     <Compile Include="clases\suplidor.cs" />
+    <Compile Include="clases\tipoRetencionItbis.cs" />
     <Compile Include="clases\tipo_comprobante_fiscal.cs" />
     <Compile Include="clases\tipo_gasto.cs" />
     <Compile Include="clases\unidad.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="modelos\modeloSuplidor.cs" />
     <Compile Include="modelos\modeloTipoComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
+    <Compile Include="modelos\modeloTipoRetencionItbis.cs" />
     <Compile Include="modelos\modeloTraduccion.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modelos\modeloVendedor.cs" />
