@@ -336,5 +336,12 @@ namespace IrisContabilidad.modulo_sistema
         {
 
         }
+
+        private void button5_Click_2(object sender, EventArgs e)
+        {
+            ventana_informacion ventana=new ventana_informacion();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
     }
 }

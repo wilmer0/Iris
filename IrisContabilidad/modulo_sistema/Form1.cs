@@ -229,6 +229,13 @@ namespace IrisContabilidad
         {
             Salir();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_informacion ventana=new ventana_informacion();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
        
     }
 }

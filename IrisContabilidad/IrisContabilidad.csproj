@@ -692,6 +692,12 @@
     <Compile Include="modulo_sistema\menu1.Designer.cs">
       <DependentUpon>menu1.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_sistema\ventana_informacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_sistema\ventana_informacion.Designer.cs">
+      <DependentUpon>ventana_informacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ventanas_comunes\VisorReporteComun.cs">
@@ -939,6 +945,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_sistema\menu1.resx">
       <DependentUpon>menu1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_sistema\ventana_informacion.resx">
+      <DependentUpon>ventana_informacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
