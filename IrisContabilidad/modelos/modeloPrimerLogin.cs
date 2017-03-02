@@ -536,6 +536,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "caja_apertura1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Reimprimir ventas";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_reimprimir";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 5;
+                ventana.imagen = "venta_reimprimir1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
@@ -708,6 +717,7 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 5;
                 ventana.imagen = "producto_lista_precio1.png";
                 listaVentana.Add(ventana);
+               
                 #endregion
 
 

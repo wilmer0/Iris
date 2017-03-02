@@ -494,6 +494,12 @@
     <Compile Include="modulo_facturacion\ventana_venta_cobros.Designer.cs">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_reimprimir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_reimprimir.Designer.cs">
+      <DependentUpon>ventana_venta_reimprimir.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_almacen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -846,6 +852,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_venta_reimprimir.resx">
+      <DependentUpon>ventana_venta_reimprimir.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_almacen.resx">
       <DependentUpon>ventana_almacen.cs</DependentUpon>
