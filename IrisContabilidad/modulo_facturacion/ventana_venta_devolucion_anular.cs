@@ -244,5 +244,10 @@ namespace IrisContabilidad.modulo_facturacion
                 filtrar();
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
