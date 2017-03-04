@@ -166,9 +166,9 @@
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(763, 34);
+            this.button4.Location = new System.Drawing.Point(763, 35);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(132, 46);
+            this.button4.Size = new System.Drawing.Size(132, 45);
             this.button4.TabIndex = 28;
             this.button4.Text = "Reimprimir";
             this.button4.UseVisualStyleBackColor = false;
