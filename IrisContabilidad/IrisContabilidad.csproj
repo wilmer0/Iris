@@ -266,16 +266,22 @@
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.Designer.cs">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_anular_devolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_anular_devolucion.Designer.cs">
+      <DependentUpon>ventana_venta_anular_devolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.Designer.cs">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_devolucion.cs">
+    <Compile Include="modulo_facturacion\ventana_venta_devolucion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_devolucion.Designer.cs">
+    <Compile Include="modulo_facturacion\ventana_venta_devolucion.Designer.cs">
       <DependentUpon>ventana_venta_devolucion.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_anular_pagos.cs">
@@ -739,10 +745,13 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_cliente.resx">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_anular_devolucion.resx">
+      <DependentUpon>ventana_venta_anular_devolucion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_devolucion.resx">
+    <EmbeddedResource Include="modulo_facturacion\ventana_venta_devolucion.resx">
       <DependentUpon>ventana_venta_devolucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_anular_pagos.resx">

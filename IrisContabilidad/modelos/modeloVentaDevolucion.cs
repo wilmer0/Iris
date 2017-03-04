@@ -194,13 +194,17 @@ namespace IrisContabilidad.modelos
             }
         }
         //get lista completa de venta devolucion
-        public List<ventaDevolucion> getListaCompleta()
+        public List<ventaDevolucion> getListaCompleta(bool mantenimiento=false)
         {
             try
             {
                 List<ventaDevolucion> lista = new List<ventaDevolucion>();
                 ventaDevolucion ventaDevolucion = new ventaDevolucion();
                 string sql = "select codigo,codigo_venta,fecha,activo,codigo_empleado,descripcion,ncf from venta_devolucion";
+                if (mantenimiento == false)
+                {
+                    sql += " where activo='1'";
+                }
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -223,6 +227,21 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
+            }
+        }
+        //obtener el codigo siguiente devolucion detalle
+        public bool anularDevolucion(int id)
+        {
+            try
+            {
+                string sql = "update venta_devolucion set activo='0' where codigo='"+id+"'";
+                utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error anularDevolucion.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }

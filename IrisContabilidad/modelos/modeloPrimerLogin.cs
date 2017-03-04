@@ -545,6 +545,24 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 5;
                 ventana.imagen = "venta_reimprimir1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Devolución venta";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_devolucion";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 5;
+                ventana.imagen = "venta_devolucion1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Anular devolución";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_devolucion";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 5;
+                ventana.imagen = "venta_anular_devolucion1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
@@ -587,15 +605,7 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 3;
                 ventana.imagen = "venta_cobro_anular1.png";
                 listaVentana.Add(ventana);
-                //nueva ventana
-                ventana = new ventana();
-                ventana.nombre_ventana = "Devolución venta";
-                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_venta_devolucion";
-                ventana.activo = true;
-                ventana.programador = false;
-                ventana.codigo_modulo = 3;
-                ventana.imagen = "venta_devolucion1.png";
-                listaVentana.Add(ventana);
+               
                 #endregion
 
 
@@ -716,8 +726,6 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 5;
                 ventana.imagen = "producto_lista_precio1.png";
-                listaVentana.Add(ventana);
-               
                 #endregion
 
 
