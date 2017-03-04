@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_nomina;
 
 namespace IrisContabilidad.modelos
@@ -542,7 +543,7 @@ namespace IrisContabilidad.modelos
                 ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_reimprimir";
                 ventana.activo = true;
                 ventana.programador = false;
-                ventana.codigo_modulo = 5;
+                ventana.codigo_modulo = 2;
                 ventana.imagen = "venta_reimprimir1.png";
                 listaVentana.Add(ventana);
                 //nueva ventana
@@ -557,7 +558,7 @@ namespace IrisContabilidad.modelos
                 //nueva ventana
                 ventana = new ventana();
                 ventana.nombre_ventana = "Anular devolución";
-                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_anular_devolucion";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_devolucion_anular";
                 ventana.activo = true;
                 ventana.programador = false;
                 ventana.codigo_modulo = 2;
@@ -565,6 +566,8 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 #endregion
 
+                ventana_venta_anular_devolucion ventana1=new ventana_venta_anular_devolucion();
+                ventana1.ShowDialog();
 
 
                 //modulo cuentas por cobrar

@@ -248,7 +248,7 @@ namespace IrisContabilidad.modulo_sistema
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error instanciando la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error instanciando la ventana "+ventana.nombre_logico+" .:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }

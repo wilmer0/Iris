@@ -266,12 +266,6 @@
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.Designer.cs">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_facturacion\ventana_venta_anular_devolucion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="modulo_facturacion\ventana_venta_anular_devolucion.Designer.cs">
-      <DependentUpon>ventana_venta_anular_devolucion.cs</DependentUpon>
-    </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -499,6 +493,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_venta_cobros.Designer.cs">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_devolucion_anular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_devolucion_anular.Designer.cs">
+      <DependentUpon>ventana_venta_devolucion_anular.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_venta_reimprimir.cs">
       <SubType>Form</SubType>
@@ -745,9 +745,6 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_cliente.resx">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modulo_facturacion\ventana_venta_anular_devolucion.resx">
-      <DependentUpon>ventana_venta_anular_devolucion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </EmbeddedResource>
@@ -861,6 +858,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_venta_devolucion_anular.resx">
+      <DependentUpon>ventana_venta_devolucion_anular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_venta_reimprimir.resx">
       <DependentUpon>ventana_venta_reimprimir.cs</DependentUpon>
