@@ -1,4 +1,4 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_cobrar
+﻿namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_venta_anular_devolucion
     {
