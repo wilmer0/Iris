@@ -551,16 +551,16 @@ namespace IrisContabilidad.modelos
                 ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_devolucion";
                 ventana.activo = true;
                 ventana.programador = false;
-                ventana.codigo_modulo = 5;
+                ventana.codigo_modulo = 2;
                 ventana.imagen = "venta_devolucion1.png";
                 listaVentana.Add(ventana);
                 //nueva ventana
                 ventana = new ventana();
                 ventana.nombre_ventana = "Anular devolución";
-                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_devolucion";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_anular_devolucion";
                 ventana.activo = true;
                 ventana.programador = false;
-                ventana.codigo_modulo = 5;
+                ventana.codigo_modulo = 2;
                 ventana.imagen = "venta_anular_devolucion1.png";
                 listaVentana.Add(ventana);
                 #endregion
