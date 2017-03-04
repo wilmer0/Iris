@@ -566,8 +566,7 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 #endregion
 
-                ventana_venta_anular_devolucion ventana1=new ventana_venta_anular_devolucion();
-                ventana1.ShowDialog();
+               
 
 
                 //modulo cuentas por cobrar

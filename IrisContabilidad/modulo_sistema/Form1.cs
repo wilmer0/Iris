@@ -119,13 +119,13 @@ namespace IrisContabilidad
             try
             {
                 //modeloEmpleado.adminPrimerLogin();
+                
+                if (!ValidarGetAction())
+                    return;
                 if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
                 }
-                if (!ValidarGetAction())
-                    return;
-
                 modeloPrimerLogin.validarPrimerLogin();
 
                 empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));

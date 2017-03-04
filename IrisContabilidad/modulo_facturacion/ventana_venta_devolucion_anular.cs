@@ -51,9 +51,11 @@ namespace IrisContabilidad.modulo_facturacion
             try
             {
                 //si la lista esta null se inicializa
-                listaVentaDevolucion = new List<ventaDevolucion>();
-                listaVentaDevolucion = modeloVentaDevolucion.getListaCompleta(mantenimiento);
-
+                if (listaVentaDevolucion == null)
+                {
+                    listaVentaDevolucion=new List<ventaDevolucion>();
+                    listaVentaDevolucion = modeloVentaDevolucion.getListaCompleta(mantenimiento);
+                }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
                 {
@@ -110,6 +112,16 @@ namespace IrisContabilidad.modulo_facturacion
 
         public void getAction()
         {
+            if (validarGetAction() == false)
+            {
+                return;
+            }
+
+            if (MessageBox.Show("Desea anular la devolución?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+
             fila = dataGridView1.CurrentRow.Index;
             int id = Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString());
             if ((modeloVentaDevolucion.anularDevolucion(id)) == true)
@@ -141,7 +153,16 @@ namespace IrisContabilidad.modulo_facturacion
                 //por id
                 if (radioButtonID.Checked == true)
                 {
-                    listaVentaDevolucion = listaVentaDevolucion.FindAll(x => x.codigo == Convert.ToInt16(nombreText.Text));
+                    int id;
+                    if (int.TryParse(nombreText.Text, out id) == false)
+                    {
+                        MessageBox.Show("Formato de número no es correcto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        nombreText.Focus();
+                        nombreText.SelectAll();
+                        return;
+                    }
+                    id = Convert.ToInt16(nombreText.Text);
+                    listaVentaDevolucion = listaVentaDevolucion.FindAll(x => x.codigo == id);
                 }
                 //por fecha
                 if (radioButtonFecha.Checked == true)
@@ -160,7 +181,16 @@ namespace IrisContabilidad.modulo_facturacion
                 //ID Venta
                 if (radioButtonIdVenta.Checked == true)
                 {
-                    listaVentaDevolucion = listaVentaDevolucion.FindAll(x => x.codigo_venta == Convert.ToInt16(nombreText.Text));
+                    int id;
+                    if (int.TryParse(nombreText.Text, out id) == false)
+                    {
+                        MessageBox.Show("Formato de número no es correcto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        nombreText.Focus();
+                        nombreText.SelectAll();
+                        return;
+                    }
+                    id = Convert.ToInt16(nombreText.Text);
+                    listaVentaDevolucion = listaVentaDevolucion.FindAll(x => x.codigo_venta == id);
                 }
                 //Cliente
                 if (radioButtonCliente.Checked == true)
@@ -175,7 +205,7 @@ namespace IrisContabilidad.modulo_facturacion
                 //tipo venta
                 if (radioButtonTipoVenta.Checked == true)
                 {
-                    listaVentaDevolucion = listaVentaDevolucion.FindAll(x => nombreText.Text.ToLower().Contains(nombreText.Text.ToLower()));
+                    listaVentaDevolucion = listaVentaDevolucion.FindAll(x => nombreText.Text.ToLower().Contains((venta=modeloVenta.getVentaById(x.codigo_venta)).tipo_venta.ToLower()));
                 }
 
                 loadLista();
@@ -198,13 +228,21 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button3_Click(object sender, EventArgs e)
         {
-            listaVentaDevolucion=new List<ventaDevolucion>();
+            listaVentaDevolucion = null;
             loadLista();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
+        }
+
+        private void nombreText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                filtrar();
+            }
         }
     }
 }
