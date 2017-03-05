@@ -49,8 +49,137 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         public ventana_reporte_cobros()
         {
             InitializeComponent();
+            empleado = singleton.getEmpleado();
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana reporte cobros");
+            this.Text = tituloLabel.Text;
+            loadVentana();
+            loadListaVentaCobros();
         }
 
+        public void loadListaVentaCobros()
+        {
+            try
+            {
+                listaVenta=new List<venta>();
+                listaVentaDetalle=new List<venta_detalle>();
+                listaVentacobroDetalle = new List<venta_vs_cobros_detalles>();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadListaVentaCobros.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+        public void loadVentana()
+        {
+            try
+            {
+                cliente = null;
+                venta = null;
+                tipoVentaComboBox.Text = "";
+                checkBoxIncluirRangoFechaVenta.Checked = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void loadCobros()
+        {
+            try
+            {
+                dataGridView1.Rows.Clear();
+                listaVentacobroDetalle = modeloCobro.getListaCobrosDetallesActivosByClienteId(cliente.codigo);
+                listaVentacobroDetalle.ForEach(x =>
+                {
+                    venta = new venta();
+                    venta = modeloVenta.getVentaById(x.codigo_venta);
+                    ventaCobro = new venta_vs_cobros();
+                    ventaCobro = modeloVenta.getVentaCobroById(x.codigo_cobro);
+                    empleado = new empleado();
+                    empleado = modeloEmpleado.getEmpleadoById(ventaCobro.cod_empleado);
+                    metodoPago = modeloMetodoPago.getMetodoPagoById(x.codigo_metodo_cobro);
+                    dataGridView1.Rows.Add(x.codigo, utilidades.getFechaddMMyyyy(ventaCobro.fecha), empleado.nombre, metodoPago.metodo, venta.numero_factura);
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadCobros.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public bool validarGetAcion()
+        {
+            try
+            {
+                //validar que el cliente no sea nulo
+                if (cliente == null)
+                {
+                    clienteIdText.Focus();
+                    clienteIdText.SelectAll();
+                    MessageBox.Show("Debe seleccionar un cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar que hayan datos en el grid
+                if (dataGridView1.Rows.Count == 0)
+                {
+                    clienteIdText.Focus();
+                    clienteIdText.SelectAll();
+                    MessageBox.Show("No hay facturas", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                
+                //validar que tenga cobros seleccionado
+                existe = false;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[5].Value) == true)
+                    {
+                        existe = true;
+                    }
+                }
+                if (existe == false)
+                {
+                    MessageBox.Show("No hay cobros seleccionado para anular", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validarGetAcion.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public void getAction()
+        {
+            try
+            {
+                if (!validarGetAcion())
+                {
+                    return;
+                }
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[5].Value) == true)
+                    {
+                        string sql = "update venta_vs_cobros_detalles set activo='0' where codigo='" + row.Cells[0].Value.ToString() + "'";
+                        utilidades.ejecutarcomando_mysql(sql);
+                        sql = "update venta set pagada=0 where codigo ='" + row.Cells[4] + "'";
+                        utilidades.ejecutarcomando_mysql(sql);
+                    }
+                }
+                MessageBox.Show("Se eliminaron los cobros", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                loadCobros();
+            }
+            catch (Exception ex)
+            {
+                venta = null;
+                ventaCobro = null;
+                MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void ventana_reporte_cobros_Load(object sender, EventArgs e)
         {
 
@@ -82,6 +211,11 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 cliente = ventana.getObjeto();
                 loadCliente();
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
