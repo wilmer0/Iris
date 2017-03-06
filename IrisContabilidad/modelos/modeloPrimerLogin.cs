@@ -607,7 +607,24 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 3;
                 ventana.imagen = "venta_cobro_anular1.png";
                 listaVentana.Add(ventana);
-               
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Reporte Cobros";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_reporte_cobros";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 3;
+                ventana.imagen = "reporte_cobros1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Estado Cuenta";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_estado_cuenta_cliente";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 3;
+                ventana.imagen = "estado_cuenta_cliente1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 

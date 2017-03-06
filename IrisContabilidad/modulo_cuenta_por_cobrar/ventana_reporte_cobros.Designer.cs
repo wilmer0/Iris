@@ -30,44 +30,40 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_reporte_cobros));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.clienteIdText = new System.Windows.Forms.TextBox();
-            this.clienteLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.checkBoxSoloVentasPagadas = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.fechaFinalVentaText = new System.Windows.Forms.MaskedTextBox();
+            this.fechaInicialVentaText = new System.Windows.Forms.MaskedTextBox();
+            this.checkBoxIncluirRangoFechaVenta = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tipoVentaComboBox = new System.Windows.Forms.ComboBox();
+            this.ventaLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.ventaIdText = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tipoVentaComboBox = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.FechaInicialVenta = new System.Windows.Forms.DateTimePicker();
-            this.fechaFinalVenta = new System.Windows.Forms.DateTimePicker();
-            this.checkBoxIncluirRangoFechaVenta = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.fechaInicialCobro = new System.Windows.Forms.DateTimePicker();
-            this.checkBoxIncluirRangoFechaCobros = new System.Windows.Forms.CheckBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.fechaFinalCobro = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.checkBoxSoloVentasPagadas = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboMetodoCobro = new System.Windows.Forms.ComboBox();
+            this.clienteLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.clienteIdText = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +75,7 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -94,17 +91,19 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(488, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.comboMetodoCobro);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.checkBoxSoloVentasPagadas);
-            this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.tipoVentaComboBox);
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.ventaLabel);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.ventaIdText);
@@ -117,87 +116,119 @@
             this.groupBox1.Size = new System.Drawing.Size(1116, 202);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label2
+            // label7
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(36, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 20);
-            this.label2.TabIndex = 78;
-            this.label2.Text = "Cliente";
-            // 
-            // button5
-            // 
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(291, 15);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(47, 37);
-            this.button5.TabIndex = 74;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // clienteIdText
-            // 
-            this.clienteIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.clienteIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteIdText.Location = new System.Drawing.Point(102, 19);
-            this.clienteIdText.Name = "clienteIdText";
-            this.clienteIdText.Size = new System.Drawing.Size(183, 26);
-            this.clienteIdText.TabIndex = 71;
-            // 
-            // clienteLabel
-            // 
-            this.clienteLabel.AutoSize = true;
-            this.clienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteLabel.Location = new System.Drawing.Point(99, 59);
-            this.clienteLabel.Name = "clienteLabel";
-            this.clienteLabel.Size = new System.Drawing.Size(127, 20);
-            this.clienteLabel.TabIndex = 79;
-            this.clienteLabel.Text = "nombre cliente";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(345, 94);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(21, 20);
+            this.label7.TabIndex = 98;
+            this.label7.Text = "X";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(99, 131);
+            this.label1.Location = new System.Drawing.Point(345, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 20);
-            this.label1.TabIndex = 83;
-            this.label1.Text = "NCF";
+            this.label1.Size = new System.Drawing.Size(21, 20);
+            this.label1.TabIndex = 97;
+            this.label1.Text = "X";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label3
+            // button6
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(44, 93);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 20);
-            this.label3.TabIndex = 82;
-            this.label3.Text = "Venta";
+            this.button6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(972, 155);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(138, 41);
+            this.button6.TabIndex = 96;
+            this.button6.Text = "Imprimir";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button4
+            // checkBoxSoloVentasPagadas
             // 
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(291, 87);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(47, 37);
-            this.button4.TabIndex = 81;
-            this.button4.UseVisualStyleBackColor = true;
+            this.checkBoxSoloVentasPagadas.AutoSize = true;
+            this.checkBoxSoloVentasPagadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxSoloVentasPagadas.Location = new System.Drawing.Point(928, 19);
+            this.checkBoxSoloVentasPagadas.Name = "checkBoxSoloVentasPagadas";
+            this.checkBoxSoloVentasPagadas.Size = new System.Drawing.Size(182, 21);
+            this.checkBoxSoloVentasPagadas.TabIndex = 91;
+            this.checkBoxSoloVentasPagadas.Text = "Solo Ventas Pagadas";
+            this.checkBoxSoloVentasPagadas.UseVisualStyleBackColor = true;
             // 
-            // ventaIdText
+            // groupBox2
             // 
-            this.ventaIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.ventaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ventaIdText.Location = new System.Drawing.Point(102, 91);
-            this.ventaIdText.Name = "ventaIdText";
-            this.ventaIdText.Size = new System.Drawing.Size(183, 26);
-            this.ventaIdText.TabIndex = 80;
+            this.groupBox2.Controls.Add(this.fechaFinalVentaText);
+            this.groupBox2.Controls.Add(this.fechaInicialVentaText);
+            this.groupBox2.Controls.Add(this.checkBoxIncluirRangoFechaVenta);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Location = new System.Drawing.Point(520, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(357, 135);
+            this.groupBox2.TabIndex = 91;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Fecha Ventas";
+            // 
+            // fechaFinalVentaText
+            // 
+            this.fechaFinalVentaText.Location = new System.Drawing.Point(152, 98);
+            this.fechaFinalVentaText.Mask = "00/00/0000";
+            this.fechaFinalVentaText.Name = "fechaFinalVentaText";
+            this.fechaFinalVentaText.Size = new System.Drawing.Size(100, 20);
+            this.fechaFinalVentaText.TabIndex = 92;
+            this.fechaFinalVentaText.ValidatingType = typeof(System.DateTime);
+            // 
+            // fechaInicialVentaText
+            // 
+            this.fechaInicialVentaText.Location = new System.Drawing.Point(152, 63);
+            this.fechaInicialVentaText.Mask = "00/00/0000";
+            this.fechaInicialVentaText.Name = "fechaInicialVentaText";
+            this.fechaInicialVentaText.Size = new System.Drawing.Size(100, 20);
+            this.fechaInicialVentaText.TabIndex = 91;
+            this.fechaInicialVentaText.ValidatingType = typeof(System.DateTime);
+            // 
+            // checkBoxIncluirRangoFechaVenta
+            // 
+            this.checkBoxIncluirRangoFechaVenta.AutoSize = true;
+            this.checkBoxIncluirRangoFechaVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxIncluirRangoFechaVenta.Location = new System.Drawing.Point(18, 27);
+            this.checkBoxIncluirRangoFechaVenta.Name = "checkBoxIncluirRangoFechaVenta";
+            this.checkBoxIncluirRangoFechaVenta.Size = new System.Drawing.Size(163, 21);
+            this.checkBoxIncluirRangoFechaVenta.TabIndex = 90;
+            this.checkBoxIncluirRangoFechaVenta.Text = "Incluir rango fecha";
+            this.checkBoxIncluirRangoFechaVenta.UseVisualStyleBackColor = true;
+            this.checkBoxIncluirRangoFechaVenta.CheckedChanged += new System.EventHandler(this.checkBoxIncluirRangoFechaVenta_CheckedChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(37, 61);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(109, 20);
+            this.label5.TabIndex = 86;
+            this.label5.Text = "Fecha inicial";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(48, 98);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(98, 20);
+            this.label6.TabIndex = 87;
+            this.label6.Text = "Fecha final";
             // 
             // label4
             // 
@@ -214,169 +245,100 @@
             this.tipoVentaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoVentaComboBox.FormattingEnabled = true;
             this.tipoVentaComboBox.Items.AddRange(new object[] {
-            "CON",
-            "COT",
-            "CRE",
-            "PED"});
+            "",
+            "CONTADO",
+            "COTIZACION",
+            "CREDITO",
+            "PEDIDO"});
             this.tipoVentaComboBox.Location = new System.Drawing.Point(103, 166);
             this.tipoVentaComboBox.Name = "tipoVentaComboBox";
             this.tipoVentaComboBox.Size = new System.Drawing.Size(236, 21);
             this.tipoVentaComboBox.TabIndex = 84;
             this.tipoVentaComboBox.Tag = "";
             // 
-            // label5
+            // ventaLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(18, 61);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(109, 20);
-            this.label5.TabIndex = 86;
-            this.label5.Text = "Fecha inicial";
+            this.ventaLabel.AutoSize = true;
+            this.ventaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ventaLabel.Location = new System.Drawing.Point(100, 131);
+            this.ventaLabel.Name = "ventaLabel";
+            this.ventaLabel.Size = new System.Drawing.Size(44, 20);
+            this.ventaLabel.TabIndex = 83;
+            this.ventaLabel.Text = "NCF";
             // 
-            // label6
+            // label3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(18, 98);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 20);
-            this.label6.TabIndex = 87;
-            this.label6.Text = "Fecha final";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(45, 93);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 20);
+            this.label3.TabIndex = 82;
+            this.label3.Text = "Venta";
             // 
-            // FechaInicialVenta
+            // button4
             // 
-            this.FechaInicialVenta.Location = new System.Drawing.Point(133, 61);
-            this.FechaInicialVenta.Name = "FechaInicialVenta";
-            this.FechaInicialVenta.Size = new System.Drawing.Size(200, 20);
-            this.FechaInicialVenta.TabIndex = 88;
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Location = new System.Drawing.Point(292, 87);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(47, 37);
+            this.button4.TabIndex = 81;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // fechaFinalVenta
+            // ventaIdText
             // 
-            this.fechaFinalVenta.Location = new System.Drawing.Point(133, 98);
-            this.fechaFinalVenta.Name = "fechaFinalVenta";
-            this.fechaFinalVenta.Size = new System.Drawing.Size(200, 20);
-            this.fechaFinalVenta.TabIndex = 89;
+            this.ventaIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.ventaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ventaIdText.Location = new System.Drawing.Point(103, 91);
+            this.ventaIdText.Name = "ventaIdText";
+            this.ventaIdText.Size = new System.Drawing.Size(183, 26);
+            this.ventaIdText.TabIndex = 80;
+            this.ventaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventaIdText_KeyDown);
             // 
-            // checkBoxIncluirRangoFechaVenta
+            // clienteLabel
             // 
-            this.checkBoxIncluirRangoFechaVenta.AutoSize = true;
-            this.checkBoxIncluirRangoFechaVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxIncluirRangoFechaVenta.Location = new System.Drawing.Point(18, 27);
-            this.checkBoxIncluirRangoFechaVenta.Name = "checkBoxIncluirRangoFechaVenta";
-            this.checkBoxIncluirRangoFechaVenta.Size = new System.Drawing.Size(163, 21);
-            this.checkBoxIncluirRangoFechaVenta.TabIndex = 90;
-            this.checkBoxIncluirRangoFechaVenta.Text = "Incluir rango fecha";
-            this.checkBoxIncluirRangoFechaVenta.UseVisualStyleBackColor = true;
+            this.clienteLabel.AutoSize = true;
+            this.clienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clienteLabel.Location = new System.Drawing.Point(100, 59);
+            this.clienteLabel.Name = "clienteLabel";
+            this.clienteLabel.Size = new System.Drawing.Size(127, 20);
+            this.clienteLabel.TabIndex = 79;
+            this.clienteLabel.Text = "nombre cliente";
             // 
-            // groupBox2
+            // label2
             // 
-            this.groupBox2.Controls.Add(this.FechaInicialVenta);
-            this.groupBox2.Controls.Add(this.checkBoxIncluirRangoFechaVenta);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.fechaFinalVenta);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(362, 15);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(357, 135);
-            this.groupBox2.TabIndex = 91;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Fecha Ventas";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(37, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 20);
+            this.label2.TabIndex = 78;
+            this.label2.Text = "Cliente";
             // 
-            // groupBox3
+            // button5
             // 
-            this.groupBox3.Controls.Add(this.fechaInicialCobro);
-            this.groupBox3.Controls.Add(this.checkBoxIncluirRangoFechaCobros);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.fechaFinalCobro);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Location = new System.Drawing.Point(725, 15);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(356, 135);
-            this.groupBox3.TabIndex = 92;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Fecha Cobros";
+            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Location = new System.Drawing.Point(292, 15);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(47, 37);
+            this.button5.TabIndex = 74;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // fechaInicialCobro
+            // clienteIdText
             // 
-            this.fechaInicialCobro.Location = new System.Drawing.Point(133, 62);
-            this.fechaInicialCobro.Name = "fechaInicialCobro";
-            this.fechaInicialCobro.Size = new System.Drawing.Size(200, 20);
-            this.fechaInicialCobro.TabIndex = 88;
-            // 
-            // checkBoxIncluirRangoFechaCobros
-            // 
-            this.checkBoxIncluirRangoFechaCobros.AutoSize = true;
-            this.checkBoxIncluirRangoFechaCobros.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxIncluirRangoFechaCobros.Location = new System.Drawing.Point(18, 29);
-            this.checkBoxIncluirRangoFechaCobros.Name = "checkBoxIncluirRangoFechaCobros";
-            this.checkBoxIncluirRangoFechaCobros.Size = new System.Drawing.Size(163, 21);
-            this.checkBoxIncluirRangoFechaCobros.TabIndex = 90;
-            this.checkBoxIncluirRangoFechaCobros.Text = "Incluir rango fecha";
-            this.checkBoxIncluirRangoFechaCobros.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(18, 62);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 20);
-            this.label7.TabIndex = 86;
-            this.label7.Text = "Fecha inicial";
-            // 
-            // fechaFinalCobro
-            // 
-            this.fechaFinalCobro.Location = new System.Drawing.Point(133, 98);
-            this.fechaFinalCobro.Name = "fechaFinalCobro";
-            this.fechaFinalCobro.Size = new System.Drawing.Size(200, 20);
-            this.fechaFinalCobro.TabIndex = 89;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(18, 98);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(98, 20);
-            this.label8.TabIndex = 87;
-            this.label8.Text = "Fecha final";
-            // 
-            // checkBoxSoloVentasPagadas
-            // 
-            this.checkBoxSoloVentasPagadas.AutoSize = true;
-            this.checkBoxSoloVentasPagadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxSoloVentasPagadas.Location = new System.Drawing.Point(743, 165);
-            this.checkBoxSoloVentasPagadas.Name = "checkBoxSoloVentasPagadas";
-            this.checkBoxSoloVentasPagadas.Size = new System.Drawing.Size(182, 21);
-            this.checkBoxSoloVentasPagadas.TabIndex = 91;
-            this.checkBoxSoloVentasPagadas.Text = "Solo Ventas Pagadas";
-            this.checkBoxSoloVentasPagadas.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(370, 166);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(97, 20);
-            this.label9.TabIndex = 94;
-            this.label9.Text = "Met. Cobro";
-            // 
-            // comboMetodoCobro
-            // 
-            this.comboMetodoCobro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboMetodoCobro.FormattingEnabled = true;
-            this.comboMetodoCobro.Items.AddRange(new object[] {
-            "CON",
-            "COT",
-            "CRE",
-            "PED"});
-            this.comboMetodoCobro.Location = new System.Drawing.Point(469, 166);
-            this.comboMetodoCobro.Name = "comboMetodoCobro";
-            this.comboMetodoCobro.Size = new System.Drawing.Size(236, 21);
-            this.comboMetodoCobro.TabIndex = 93;
-            this.comboMetodoCobro.Tag = "";
+            this.clienteIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.clienteIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clienteIdText.Location = new System.Drawing.Point(103, 19);
+            this.clienteIdText.Name = "clienteIdText";
+            this.clienteIdText.Size = new System.Drawing.Size(183, 26);
+            this.clienteIdText.TabIndex = 71;
+            this.clienteIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clienteIdText_KeyDown);
             // 
             // dataGridView1
             // 
@@ -390,6 +352,7 @@
             this.Column1,
             this.Column2,
             this.Column3,
+            this.Column8,
             this.Column4,
             this.Column5,
             this.Column6,
@@ -423,6 +386,12 @@
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             // 
+            // Column8
+            // 
+            this.Column8.HeaderText = "Tipo Venta";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
             // Column4
             // 
             this.Column4.FillWeight = 80F;
@@ -448,6 +417,17 @@
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(345, 167);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(21, 20);
+            this.label8.TabIndex = 99;
+            this.label8.Text = "X";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
             // ventana_reporte_cobros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -469,8 +449,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -484,7 +462,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox clienteIdText;
         private System.Windows.Forms.Label clienteLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ventaLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox ventaIdText;
@@ -493,25 +471,23 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker fechaFinalVenta;
-        private System.Windows.Forms.DateTimePicker FechaInicialVenta;
         private System.Windows.Forms.CheckBox checkBoxIncluirRangoFechaVenta;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DateTimePicker fechaInicialCobro;
-        private System.Windows.Forms.CheckBox checkBoxIncluirRangoFechaCobros;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker fechaFinalCobro;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.CheckBox checkBoxSoloVentasPagadas;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboMetodoCobro;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.MaskedTextBox fechaFinalVentaText;
+        private System.Windows.Forms.MaskedTextBox fechaInicialVentaText;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label8;
     }
 }

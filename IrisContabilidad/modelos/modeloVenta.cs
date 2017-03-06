@@ -918,5 +918,93 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+        //get monto factura by venta
+        public decimal getMontoFacturaByVenta(int ventaID)
+        {
+            try
+            {
+                decimal montoVenta = 0;
+                decimal montoPendiente = 0;
+                decimal montoCobrado = 0;
+
+
+                List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
+                List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
+
+                listaVentaDetalle = getListaVentaDetalleByVenta(ventaID);
+                listaCobrosDetalle = getListaCobrosDetallesByVenta(ventaID);
+
+                if (listaVentaDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaVentaDetalle.ForEach(x =>
+                    {
+                        montoVenta += x.monto_total + x.monto_descuento;
+                    });
+                }
+
+                if (listaCobrosDetalle.Count > 0)
+                {
+                    listaCobrosDetalle.ForEach(x =>
+                    {
+                        montoCobrado += x.monto_cobrado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoVenta - montoCobrado;
+
+                return montoVenta;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoFacturaByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+        //get monto cobrado by venta
+        public decimal getMontoCobradoByVenta(int ventaID)
+        {
+            try
+            {
+                decimal montoVenta = 0;
+                decimal montoPendiente = 0;
+                decimal montoCobrado = 0;
+
+
+                List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
+                List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
+
+                listaVentaDetalle = getListaVentaDetalleByVenta(ventaID);
+                listaCobrosDetalle = getListaCobrosDetallesByVenta(ventaID);
+
+                if (listaVentaDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaVentaDetalle.ForEach(x =>
+                    {
+                        montoVenta += x.monto_total + x.monto_descuento;
+                    });
+                }
+
+                if (listaCobrosDetalle.Count > 0)
+                {
+                    listaCobrosDetalle.ForEach(x =>
+                    {
+                        montoCobrado += x.monto_cobrado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoVenta - montoCobrado;
+
+                return  montoCobrado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoCobradoByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return -1;
+            }
+        }
     }
 }
