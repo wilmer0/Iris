@@ -426,6 +426,7 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
+                        venta = new venta();
                         venta.codigo = Convert.ToInt16(row[0].ToString());
                         venta.numero_factura = row[1].ToString();
                         venta.codigo_cliente = Convert.ToInt16(row[2].ToString());
@@ -693,6 +694,41 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        //get lista venta detalle by cliente
+        public List<venta_detalle> getListaVentaDetalleByClienteId(int id)
+        {
+            try
+            {
+                List<venta_detalle> lista = new List<venta_detalle>();
+                venta_detalle ventaDetalle = new venta_detalle();
+                string sql = "select vd.codigo,vd.cod_venta,vd.cod_producto,vd.cod_unidad,vd.cantidad,vd.precio,vd.monto,vd.itebis,vd.descuento,vd.activo from venta_detalle vd join venta v on vd.cod_venta=v.codigo join cliente c on c.codigo=v.codigo_cliente where c.codigo='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        ventaDetalle = new venta_detalle();
+                        ventaDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        ventaDetalle.cod_venta = Convert.ToInt16(row[1].ToString());
+                        ventaDetalle.codigo_producto = Convert.ToInt16(row[2].ToString());
+                        ventaDetalle.codigo_unidad = Convert.ToInt16(row[3].ToString());
+                        ventaDetalle.cantidad = Convert.ToDecimal(row[4].ToString());
+                        ventaDetalle.precio = Convert.ToDecimal(row[5].ToString());
+                        ventaDetalle.monto_total = Convert.ToDecimal(row[6].ToString());
+                        ventaDetalle.monto_itebis = Convert.ToDecimal(row[7].ToString());
+                        ventaDetalle.monto_descuento = Convert.ToDecimal(row[8].ToString());
+                        ventaDetalle.activo = Convert.ToBoolean(row[9]);
+                        lista.Add(ventaDetalle);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentaDetalleByCliente.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
         //get lista cobros by venta
         public List<venta_vs_cobros> getListaCobrosByVenta(int ventaId)
         {
@@ -757,6 +793,43 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error getListaCobrosDetallesByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
+
+
+        }
+        //get lista cobros detalle by cliente
+        public List<venta_vs_cobros_detalles> getListaCobrosDetallesByClienteId(int id)
+        {
+            try
+            {
+                List<venta_vs_cobros_detalles> lista = new List<venta_vs_cobros_detalles>();
+                venta_vs_cobros_detalles cobroDetalle = new venta_vs_cobros_detalles();
+                string sql =
+                    "select vcd.codigo,vcd.cod_cobro,vcd.cod_metodo_cobro,vcd.monto_cobrado,vcd.monto_descontado,vcd.activo,vcd.cod_venta from venta_vs_cobros_detalles vcd join venta v on v.codigo=vcd.cod_venta join cliente c on v.codigo_cliente=c.codigo where vcd.activo='1' and v.activo='1' and c.codigo='" +
+                    id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        cobroDetalle = new venta_vs_cobros_detalles();
+                        cobroDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        cobroDetalle.codigo_cobro = Convert.ToInt16(row[1].ToString());
+                        cobroDetalle.codigo_metodo_cobro = Convert.ToInt16(row[2].ToString());
+                        cobroDetalle.monto_cobrado = Convert.ToDecimal(row[3]);
+                        cobroDetalle.monto_descontado = Convert.ToDecimal(row[4].ToString());
+                        cobroDetalle.activo = Convert.ToBoolean(row[5]);
+                        cobroDetalle.codigo_venta = Convert.ToInt16(row[6]);
+                        lista.Add(cobroDetalle);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCobrosDetallesByClienteId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         //get monto pendiente by venta
@@ -804,47 +877,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //get lista venta by cliente
-        public List<venta> getListaVentaByClienteId(int id)
-        {
-            try
-            {
-                List<venta> lista = new List<venta>();
-                venta venta = new venta();
-                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta where codigo_cliente='"+id+"'";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    foreach (DataRow row in ds.Tables[0].Rows)
-                    {
-                        venta = new venta();
-                        venta.codigo = Convert.ToInt16(row[0].ToString());
-                        venta.numero_factura = row[1].ToString();
-                        venta.codigo_cliente = Convert.ToInt16(row[2].ToString());
-                        venta.fecha = Convert.ToDateTime(row[3].ToString());
-                        venta.fecha_limite = Convert.ToDateTime(row[4].ToString());
-                        venta.ncf = row[5].ToString();
-                        venta.tipo_venta = row[6].ToString();
-                        venta.activo = Convert.ToBoolean(row[7]);
-                        venta.pagada = Convert.ToBoolean(row[8]);
-                        venta.codigo_sucursal = Convert.ToInt16(row[9].ToString());
-                        venta.codigo_empleado = Convert.ToInt16(row[10].ToString());
-                        venta.codigo_empelado_anular = Convert.ToInt16(row[11].ToString());
-                        venta.motivo_anulada = row[12].ToString();
-                        venta.detalle = row[13].ToString();
-                        lista.Add(venta);
-                    }
-                }
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error getListaVentaByClienteId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        public bool setSalidaInventarioByProductoUnidad(int codigoProducto, int codigoUnidad,decimal cantidad)
+       public bool setSalidaInventarioByProductoUnidad(int codigoProducto, int codigoUnidad,decimal cantidad)
         {
             try
             {
@@ -916,6 +949,221 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error setVentapagada.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+        //get monto factura by venta
+        public decimal getMontoFacturaByVenta(int ventaID)
+        {
+            try
+            {
+                decimal montoVenta = 0;
+                decimal montoPendiente = 0;
+                decimal montoCobrado = 0;
+
+
+                List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
+                List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
+
+                listaVentaDetalle = getListaVentaDetalleByVenta(ventaID);
+                listaCobrosDetalle = getListaCobrosDetallesByVenta(ventaID);
+
+                if (listaVentaDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaVentaDetalle.ForEach(x =>
+                    {
+                        montoVenta += x.monto_total + x.monto_descuento;
+                    });
+                }
+
+                if (listaCobrosDetalle.Count > 0)
+                {
+                    listaCobrosDetalle.ForEach(x =>
+                    {
+                        montoCobrado += x.monto_cobrado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoVenta - montoCobrado;
+
+                return montoVenta;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoFacturaByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+        //get monto cobrado by venta
+        public decimal getMontoCobradoByVenta(int ventaID)
+        {
+            try
+            {
+                decimal montoVenta = 0;
+                decimal montoPendiente = 0;
+                decimal montoCobrado = 0;
+
+
+                List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
+                List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
+
+                listaVentaDetalle = getListaVentaDetalleByVenta(ventaID);
+                listaCobrosDetalle = getListaCobrosDetallesByVenta(ventaID);
+
+                if (listaVentaDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaVentaDetalle.ForEach(x =>
+                    {
+                        montoVenta += x.monto_total + x.monto_descuento;
+                    });
+                }
+
+                if (listaCobrosDetalle.Count > 0)
+                {
+                    listaCobrosDetalle.ForEach(x =>
+                    {
+                        montoCobrado += x.monto_cobrado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoVenta - montoCobrado;
+
+                return  montoCobrado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoCobradoByVenta.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+
+        //get monto facturado by cliente id
+        public decimal getMontoFacturadoByClienteId(int id)
+        {
+            try
+            {
+                decimal montoVenta = 0;
+                decimal montoPendiente = 0;
+                decimal montoCobrado = 0;
+
+                List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
+                List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
+
+                listaVentaDetalle = getListaVentaDetalleByClienteId(id);
+                listaCobrosDetalle = getListaCobrosDetallesByClienteId(id);
+
+                if (listaVentaDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaVentaDetalle.ForEach(x =>
+                    {
+                        montoVenta += x.monto_total + x.monto_descuento;
+                    });
+                }
+
+                if (listaCobrosDetalle.Count > 0)
+                {
+                    listaCobrosDetalle.ForEach(x =>
+                    {
+                        montoCobrado += x.monto_cobrado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoVenta - montoCobrado;
+
+                return montoVenta;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoFacturadoByClienteId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+        //get monto cobrado by cliente id
+        public decimal getMontoCobradoByClienteId(int id)
+        {
+            try
+            {
+                decimal montoVenta = 0;
+                decimal montoPendiente = 0;
+                decimal montoCobrado = 0;
+
+                List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
+                List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
+
+                listaVentaDetalle = getListaVentaDetalleByClienteId(id);
+                listaCobrosDetalle = getListaCobrosDetallesByClienteId(id);
+
+                if (listaVentaDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaVentaDetalle.ForEach(x =>
+                    {
+                        montoVenta += x.monto_total + x.monto_descuento;
+                    });
+                }
+
+                if (listaCobrosDetalle.Count > 0)
+                {
+                    listaCobrosDetalle.ForEach(x =>
+                    {
+                        montoCobrado += x.monto_cobrado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoVenta - montoCobrado;
+
+                return montoCobrado;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoCobradoByClienteId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+        //get monto pendiente by cliente id
+        public decimal getMontoPendienteByClienteId(int id)
+        {
+            try
+            {
+                decimal montoVenta = 0;
+                decimal montoPendiente = 0;
+                decimal montoCobrado = 0;
+
+                List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
+                List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
+
+                listaVentaDetalle = getListaVentaDetalleByClienteId(id);
+                listaCobrosDetalle = getListaCobrosDetallesByClienteId(id);
+
+                if (listaVentaDetalle.Count > 0)
+                {
+                    //sumar los montos + descuento
+                    listaVentaDetalle.ForEach(x =>
+                    {
+                        montoVenta += x.monto_total + x.monto_descuento;
+                    });
+                }
+
+                if (listaCobrosDetalle.Count > 0)
+                {
+                    listaCobrosDetalle.ForEach(x =>
+                    {
+                        montoCobrado += x.monto_cobrado + x.monto_descontado;
+                    });
+                }
+
+                montoPendiente = montoVenta - montoCobrado;
+
+                return montoPendiente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoPendienteByClienteId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
             }
         }
     }

@@ -118,12 +118,14 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void nombreText_KeyDown(object sender, KeyEventArgs e)
         {
+            filtrar();
+        }
+
+        public void filtrar()
+        {
             try
             {
-                if (e.KeyCode == Keys.Enter)
-                {
                     empleado = new empleado();
-
                     listaVendedor = modeloVendedor.getListaCompleta();
                     listaVendedorTemp = new List<vendedor>();
 
@@ -142,7 +144,7 @@ namespace IrisContabilidad.modulo_facturacion
                     });
                     listaVendedor = listaVendedorTemp;
                     loadLista();
-                }
+                
             }
             catch (Exception ex)
             {

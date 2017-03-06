@@ -36,6 +36,7 @@
             this.usuarioText = new System.Windows.Forms.TextBox();
             this.claveText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -70,10 +71,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 359);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 355);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 13);
+            this.label1.Size = new System.Drawing.Size(216, 17);
             this.label1.TabIndex = 18;
             this.label1.Text = "Desarrollado por Black Code";
             // 
@@ -81,7 +82,7 @@
             // 
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(227, 42);
+            this.panel3.Location = new System.Drawing.Point(227, 33);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(171, 156);
             this.panel3.TabIndex = 17;
@@ -92,9 +93,9 @@
             this.groupBox1.Controls.Add(this.usuarioText);
             this.groupBox1.Controls.Add(this.claveText);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(16, 204);
+            this.groupBox1.Location = new System.Drawing.Point(16, 195);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(580, 141);
+            this.groupBox1.Size = new System.Drawing.Size(580, 139);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
@@ -102,7 +103,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(129, 41);
+            this.label2.Location = new System.Drawing.Point(129, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 9;
@@ -111,7 +112,7 @@
             // usuarioText
             // 
             this.usuarioText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usuarioText.Location = new System.Drawing.Point(211, 41);
+            this.usuarioText.Location = new System.Drawing.Point(211, 33);
             this.usuarioText.MaxLength = 30;
             this.usuarioText.Name = "usuarioText";
             this.usuarioText.Size = new System.Drawing.Size(224, 26);
@@ -121,7 +122,7 @@
             // claveText
             // 
             this.claveText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.claveText.Location = new System.Drawing.Point(211, 90);
+            this.claveText.Location = new System.Drawing.Point(211, 84);
             this.claveText.MaxLength = 30;
             this.claveText.Name = "claveText";
             this.claveText.PasswordChar = '*';
@@ -133,17 +134,34 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(136, 90);
+            this.label3.Location = new System.Drawing.Point(136, 84);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 10;
             this.label3.Text = "Clave:";
+            // 
+            // button4
+            // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button4.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(454, 340);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(142, 29);
+            this.button4.TabIndex = 19;
+            this.button4.Text = "Ver Información";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(611, 441);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.groupBox1);
@@ -155,6 +173,7 @@
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.panel3, 0);
             this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.button4, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -174,6 +193,7 @@
         public System.Windows.Forms.TextBox usuarioText;
         public System.Windows.Forms.TextBox claveText;
         private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.Button button4;
     }
 }
 

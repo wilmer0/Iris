@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_nomina;
 
 namespace IrisContabilidad.modelos
@@ -536,8 +537,36 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "caja_apertura1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Reimprimir ventas";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_reimprimir";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "venta_reimprimir1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Devolución venta";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_devolucion";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "venta_devolucion1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Anular devolución";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_devolucion_anular";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "venta_anular_devolucion1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
+               
 
 
                 //modulo cuentas por cobrar
@@ -580,12 +609,21 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 //nueva ventana
                 ventana = new ventana();
-                ventana.nombre_ventana = "Devolución venta";
-                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_venta_devolucion";
+                ventana.nombre_ventana = "Reporte Cobros";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_reporte_cobros";
                 ventana.activo = true;
                 ventana.programador = false;
                 ventana.codigo_modulo = 3;
-                ventana.imagen = "venta_devolucion1.png";
+                ventana.imagen = "reporte_cobros1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Estado Cuenta";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_estado_cuenta_cliente";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 3;
+                ventana.imagen = "estado_cuenta_cliente1.png";
                 listaVentana.Add(ventana);
                 #endregion
 
@@ -707,7 +745,6 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 5;
                 ventana.imagen = "producto_lista_precio1.png";
-                listaVentana.Add(ventana);
                 #endregion
 
 
