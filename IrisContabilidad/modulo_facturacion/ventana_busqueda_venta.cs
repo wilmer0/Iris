@@ -202,5 +202,10 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error buscando.: " + ex.ToString());
             }
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

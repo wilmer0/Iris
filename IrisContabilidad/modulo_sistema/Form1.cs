@@ -119,13 +119,13 @@ namespace IrisContabilidad
             try
             {
                 //modeloEmpleado.adminPrimerLogin();
+                
+                if (!ValidarGetAction())
+                    return;
                 if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
                 }
-                if (!ValidarGetAction())
-                    return;
-
                 modeloPrimerLogin.validarPrimerLogin();
 
                 empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));
@@ -228,6 +228,13 @@ namespace IrisContabilidad
         private void button2_Click(object sender, EventArgs e)
         {
             Salir();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_informacion ventana=new ventana_informacion();
+            ventana.Owner = this;
+            ventana.ShowDialog();
         }
        
     }

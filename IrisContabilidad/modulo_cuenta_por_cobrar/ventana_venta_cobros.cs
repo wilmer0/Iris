@@ -348,7 +348,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 {
                     return;
                 }
-                listaVenta = modeloVenta.getListaVentaByClienteId(cliente.codigo);
+                listaVenta = modeloVenta.getListaVentasByClienteId(cliente.codigo);
 
                 //filtrando las compra que esten activa, que no esten pagada y que no sean a contado
                 listaVenta = listaVenta.FindAll(x => x.pagada == false && x.activo==true && x.tipo_venta!="CON").ToList();

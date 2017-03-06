@@ -160,16 +160,22 @@
     <Compile Include="clases\venta_detalle.cs" />
     <Compile Include="clases\venta_vs_cobros.cs" />
     <Compile Include="clases\venta_vs_cobros_detalles.cs" />
+    <Compile Include="clases_reportes\reporte_cobros_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_cobros_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_compra_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_cobro_detalle.cs" />
     <Compile Include="clases_reportes\reporte_venta_cobro_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
     <Compile Include="clases_reportes\reporte_venta_encabezado.cs" />
+    <Compile Include="clases_reportes_modelos\modelo_reporte_cobros.cs" />
+    <Compile Include="clases_reportes_modelos\modelo_reporte_estado_cuenta_cliente.cs" />
     <Compile Include="modelos\modeloActualizacion.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCaja.cs" />
@@ -266,16 +272,28 @@
     <Compile Include="modulo_cuenta_por_cobrar\ventana_cliente.Designer.cs">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_estado_cuenta_cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_estado_cuenta_cliente.Designer.cs">
+      <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_reporte_cobros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_reporte_cobros.Designer.cs">
+      <DependentUpon>ventana_reporte_cobros.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.Designer.cs">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_devolucion.cs">
+    <Compile Include="modulo_facturacion\ventana_venta_devolucion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_devolucion.Designer.cs">
+    <Compile Include="modulo_facturacion\ventana_venta_devolucion.Designer.cs">
       <DependentUpon>ventana_venta_devolucion.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_anular_pagos.cs">
@@ -494,6 +512,18 @@
     <Compile Include="modulo_facturacion\ventana_venta_cobros.Designer.cs">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_devolucion_anular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_devolucion_anular.Designer.cs">
+      <DependentUpon>ventana_venta_devolucion_anular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_reimprimir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_venta_reimprimir.Designer.cs">
+      <DependentUpon>ventana_venta_reimprimir.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_almacen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -692,6 +722,18 @@
     <Compile Include="modulo_sistema\menu1.Designer.cs">
       <DependentUpon>menu1.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_sistema\ventana_informacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_sistema\ventana_informacion.Designer.cs">
+      <DependentUpon>ventana_informacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_sistema\ventana_procesando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_sistema\ventana_procesando.Designer.cs">
+      <DependentUpon>ventana_procesando.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ventanas_comunes\VisorReporteComun.cs">
@@ -727,10 +769,16 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_cliente.resx">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_estado_cuenta_cliente.resx">
+      <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_reporte_cobros.resx">
+      <DependentUpon>ventana_reporte_cobros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_devolucion.resx">
+    <EmbeddedResource Include="modulo_facturacion\ventana_venta_devolucion.resx">
       <DependentUpon>ventana_venta_devolucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_anular_pagos.resx">
@@ -841,6 +889,12 @@
     <EmbeddedResource Include="modulo_facturacion\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_venta_devolucion_anular.resx">
+      <DependentUpon>ventana_venta_devolucion_anular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_venta_reimprimir.resx">
+      <DependentUpon>ventana_venta_reimprimir.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_almacen.resx">
       <DependentUpon>ventana_almacen.cs</DependentUpon>
     </EmbeddedResource>
@@ -940,6 +994,12 @@
     <EmbeddedResource Include="modulo_sistema\menu1.resx">
       <DependentUpon>menu1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_sistema\ventana_informacion.resx">
+      <DependentUpon>ventana_informacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_sistema\ventana_procesando.resx">
+      <DependentUpon>ventana_procesando.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -949,8 +1009,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="reportes\reporte_cobros.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_pago_hoja_completa.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_estado_cuenta_cliente.rdlc" />
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_cobro_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_hoja_completa.rdlc" />
@@ -958,10 +1020,15 @@
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_cobro_detalle.datasource" />
