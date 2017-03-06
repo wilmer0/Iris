@@ -166,6 +166,8 @@
     <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_cobro_detalle.cs" />
@@ -173,6 +175,7 @@
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
     <Compile Include="clases_reportes\reporte_venta_encabezado.cs" />
     <Compile Include="clases_reportes_modelos\modelo_reporte_cobros.cs" />
+    <Compile Include="clases_reportes_modelos\modelo_reporte_estado_cuenta_cliente.cs" />
     <Compile Include="modelos\modeloActualizacion.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCaja.cs" />
@@ -766,6 +769,9 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_cliente.resx">
       <DependentUpon>ventana_cliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_estado_cuenta_cliente.resx">
+      <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_reporte_cobros.resx">
       <DependentUpon>ventana_reporte_cobros.cs</DependentUpon>
     </EmbeddedResource>
@@ -1006,6 +1012,7 @@
     <EmbeddedResource Include="reportes\reporte_cobros.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_pago_hoja_completa.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_estado_cuenta_cliente.rdlc" />
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_cobro_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_hoja_completa.rdlc" />
@@ -1019,6 +1026,9 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_cobro_detalle.datasource" />

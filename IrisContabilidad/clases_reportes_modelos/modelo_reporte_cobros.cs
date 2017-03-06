@@ -14,13 +14,12 @@ namespace IrisContabilidad.clases_reportes_modelos
 {
     public class modelo_reporte_cobros
     {
-        public reporte_cobros_encabezado getReporteCobrosEncabezado(empleado empleado,cliente cliente,venta venta,string tipoVenta,
-            Boolean incluirRangoFechaVenta,DateTime fechaInicialVenta,DateTime fechaFinalVenta,bool soloVentasPagadas)
+        public reporte_cobros_encabezado getReporteCobrosEncabezado(empleado empleado,cliente cliente,venta venta,string tipoVenta,Boolean incluirRangoFechaVenta,DateTime fechaInicialVenta,DateTime fechaFinalVenta,bool soloVentasPagadas)
         {
             try
             {
                 reporte_cobros_encabezado reporteEncabezado = new reporte_cobros_encabezado();
-                reporte_cobros_detalle reporteCobroDetalle;
+                reporte_cobros_detalle reporteDetalle;
                 
                 reporteEncabezado.listaDetalle = new List<reporte_cobros_detalle>();
 
@@ -78,8 +77,8 @@ namespace IrisContabilidad.clases_reportes_modelos
                     {
                         if (clienteActual.codigo == ventaActual.codigo_cliente)
                         {
-                            reporteCobroDetalle = new reporte_cobros_detalle(ventaActual.codigo);
-                            reporteEncabezado.listaDetalle.Add(reporteCobroDetalle);
+                            reporteDetalle = new reporte_cobros_detalle(ventaActual.codigo);
+                            reporteEncabezado.listaDetalle.Add(reporteDetalle);
                         }
                     }
                 }
