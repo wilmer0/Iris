@@ -135,6 +135,36 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get empresa by empleado id
+        public empresa getEmpresaByEmpleadoId(int id)
+        {
+            try
+            {
+                empresa empresa = new empresa();
+                string sql = "select e.codigo,e.secuencia,e.division,e.activo,e.rnc,e.nombre,e.serie_comprobante from empresa e join sucursal s on e.codigo=s.codigo_empresa join empleado em on em.cod_sucursal=s.codigo where em.codigo='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    empresa.codigo = (int)ds.Tables[0].Rows[0][0];
+                    empresa.secuencia = ds.Tables[0].Rows[0][1].ToString();
+                    empresa.division = ds.Tables[0].Rows[0][2].ToString();
+                    empresa.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    empresa.rnc = ds.Tables[0].Rows[0][4].ToString();
+                    empresa.nombre = ds.Tables[0].Rows[0][5].ToString();
+                    empresa.serie_comprobante = ds.Tables[0].Rows[0][6].ToString();
+                }
+                return empresa;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getEmpresaByEmpleadoId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+
+
     }
 
 }
