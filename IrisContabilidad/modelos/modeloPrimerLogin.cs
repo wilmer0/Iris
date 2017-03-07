@@ -288,131 +288,51 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //almacen
                 #region
+                sql = "insert into almacen(codigo,nombre,cod_sucursal,activo) values('1','ALMACEN GENERAL','1','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+
                 #endregion
 
                 //
                 #region
+
                 #endregion
 
                 //
+
                 #region
+
                 #endregion
 
                 //
+
                 #region
+
                 #endregion
 
                 //
+
                 #region
+
                 #endregion
 
                 //
+
                 #region
+
                 #endregion
 
                 //
-                #region
-                #endregion
 
-                //
                 #region
-                #endregion
 
-                //
-                #region
                 #endregion
+                //
 
-                //
                 #region
-                #endregion
 
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
-                #endregion
-
-                //
-                #region
                 #endregion
 
 
