@@ -271,6 +271,153 @@ namespace IrisContabilidad.modelos
                 sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('6','30% retención itbis tarjetas debito o credito','30% ITIBIS facturado ventas con tarjetas de débito o crédito.(Norma General 08-04)','0.00','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
+
+                //tipos de comprobantes
+                #region
+                sql = "insert into tipo_comprobante_fiscal(codigo,secuencia,nombre,activo) values('1','00','SIN COMPROBANTE','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_comprobante_fiscal(codigo,secuencia,nombre,activo) values('2','01','VALOR FISCAL','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_comprobante_fiscal(codigo,secuencia,nombre,activo) values('3','00','consumidor final','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //caja
+                #region
+                sql = "insert into caja(codigo,nombre,secuencia,cod_sucursal,activo) values('1','CAJA PRINCIPAL','001','1','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+                //
+                #region
+                #endregion
+
+
+
+
             }
             catch (Exception ex)
             {
