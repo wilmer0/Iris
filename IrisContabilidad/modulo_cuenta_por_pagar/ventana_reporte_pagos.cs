@@ -22,5 +22,10 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
