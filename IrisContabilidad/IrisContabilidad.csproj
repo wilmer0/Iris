@@ -166,6 +166,7 @@
     <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_encabezado_general.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_detalle.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
@@ -289,6 +290,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.Designer.cs">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_reporte_pagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_reporte_pagos.Designer.cs">
+      <DependentUpon>ventana_reporte_pagos.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_venta_devolucion.cs">
       <SubType>Form</SubType>
@@ -778,6 +785,9 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_reporte_pagos.resx">
+      <DependentUpon>ventana_reporte_pagos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_venta_devolucion.resx">
       <DependentUpon>ventana_venta_devolucion.cs</DependentUpon>
     </EmbeddedResource>
@@ -1026,6 +1036,7 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_encabezado_general.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_encabezado.datasource" />
