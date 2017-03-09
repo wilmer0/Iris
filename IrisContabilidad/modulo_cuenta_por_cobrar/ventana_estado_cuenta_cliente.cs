@@ -26,6 +26,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         empleado empleado;
         private cliente cliente;
         private reporte_estado_cuenta_cliente_encabezado reporteEncabezado;
+        private reporte_encabezado_general reporteEncabezadoGeneral;
         
         //modelos
         modeloCliente modeloCliente = new modeloCliente();
@@ -37,7 +38,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private DateTime fechaFinalDateTime;
         
         //listas
-        private List<reporte_estado_cuenta_cliente_encabezado> listaReporteEncabezado;
+        private List<reporte_encabezado_general> listaReporteEncabezado;
         private List<venta_vs_cobros_detalles> listaVentacobroDetalle;
         private List<venta> listaVenta;
         private List<venta_detalle> listaVentaDetalle;
@@ -187,9 +188,10 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
 
-                //encabezado
-                listaReporteEncabezado = new List<reporte_estado_cuenta_cliente_encabezado>();
-                listaReporteEncabezado.Add(reporteEncabezado);
+                //encabezado general
+                listaReporteEncabezado = new List<reporte_encabezado_general>();
+                reporteEncabezadoGeneral=new reporte_encabezado_general(empleado);
+                listaReporteEncabezado.Add(reporteEncabezadoGeneral);
                 ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
                 listaReportDataSource.Add(reporteGrafico);
 
