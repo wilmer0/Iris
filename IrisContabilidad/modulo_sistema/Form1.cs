@@ -119,13 +119,13 @@ namespace IrisContabilidad
             try
             {
                 //modeloEmpleado.adminPrimerLogin();
+                
+                if (!ValidarGetAction())
+                    return;
                 if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
                 }
-                if (!ValidarGetAction())
-                    return;
-
                 modeloPrimerLogin.validarPrimerLogin();
 
                 empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));
@@ -209,10 +209,11 @@ namespace IrisContabilidad
             //empleado.clave = utilidades.encriptar("123");
             //modeloEmpleado.modificarEmpleado(empleado);
             //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
+            
             //modeloPrimerLogin.primerosDatos();
             //modeloPrimerLogin.agregarModulos();
             modeloPrimerLogin.agregarVentanas();
-            //modeloPrimerLogin.agregarVentanasPrimerModulo();
+            //modeloPrimerLogin.agregarVentanasPrimerModulo(); //para agregar todas las ventanas al primer modulo 
             //modeloPrimerLogin.agregarPrimerEmpleado();
             //modeloPrimerLogin.agregarAccesosVentanas();
             
@@ -227,6 +228,13 @@ namespace IrisContabilidad
         private void button2_Click(object sender, EventArgs e)
         {
             Salir();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_informacion ventana=new ventana_informacion();
+            ventana.Owner = this;
+            ventana.ShowDialog();
         }
        
     }

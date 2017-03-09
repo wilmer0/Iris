@@ -150,6 +150,7 @@ namespace IrisContabilidad.modulo_facturacion
                     egresoCaja.fecha = DateTime.Today;
                     egresoCaja.cuadrado = false;
                     egresoCaja.codigo_cajero = cajero.codigo;
+                    egresoCaja.modificable = true;
                 }
                 egresoCaja.codigo_concepto = concepto.codigo;
                 egresoCaja.monto = Convert.ToDecimal(montoText.Text.Trim());

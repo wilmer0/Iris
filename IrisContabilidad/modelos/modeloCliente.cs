@@ -288,6 +288,7 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
+                    
                     cliente.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     cliente.nombre = ds.Tables[0].Rows[0][1].ToString();
                     cliente.limite_credito = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());

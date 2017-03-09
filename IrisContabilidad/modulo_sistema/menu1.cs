@@ -145,7 +145,7 @@ namespace IrisContabilidad.modulo_sistema
 
                 //select de las ventanas con el modulo presionado
                 //agregando las ventanas nuevas al flow layout
-                string sql = "SELECT id_modulo,id_ventana from modulos_vs_ventanas where id_modulo='"+idModulo+"'";
+                string sql = "select distinct mv.id_modulo,v.id_ventana_sistema from empleado_accesos_ventanas v join modulos_vs_ventanas mv on v.id_ventana_sistema=mv.id_ventana where mv.id_modulo='"+idModulo+"' and v.id_empleado='" + empleado.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 List<Button> listaBotonesVentanas=new List<Button>();
                 foreach (DataRow rowVentana  in ds.Tables[0].Rows)
@@ -248,7 +248,7 @@ namespace IrisContabilidad.modulo_sistema
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error instanciando la ventana.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error instanciando la ventana "+ventana.nombre_logico+" .:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
@@ -323,8 +323,7 @@ namespace IrisContabilidad.modulo_sistema
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error actualizarNotificacionesSistema.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error actualizarNotificacionesSistema.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -336,6 +335,13 @@ namespace IrisContabilidad.modulo_sistema
         private void button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button5_Click_2(object sender, EventArgs e)
+        {
+            ventana_informacion ventana=new ventana_informacion();
+            ventana.Owner = this;
+            ventana.ShowDialog();
         }
     }
 }

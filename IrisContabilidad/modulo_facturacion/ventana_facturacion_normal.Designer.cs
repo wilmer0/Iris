@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_facturacion_normal));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.totalCompraText = new System.Windows.Forms.TextBox();
             this.totalItebisText = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -93,6 +93,7 @@
             this.itebisColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descuentoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.importeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label22 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -173,6 +174,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label22);
             this.groupBox2.Controls.Add(this.existenciaText);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.ItebisText);
@@ -349,6 +351,7 @@
             this.importeText.TabIndex = 97;
             this.importeText.Text = "0.00";
             this.importeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.importeText.TextChanged += new System.EventHandler(this.importeText_TextChanged);
             this.importeText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.importeText_KeyDown);
             // 
             // productoIdText
@@ -496,6 +499,7 @@
             this.tipoComprobanteCombo.Size = new System.Drawing.Size(236, 21);
             this.tipoComprobanteCombo.TabIndex = 107;
             this.tipoComprobanteCombo.Tag = "";
+            this.tipoComprobanteCombo.TextChanged += new System.EventHandler(this.tipoComprobanteCombo_TextChanged);
             this.tipoComprobanteCombo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tipoComprobanteCombo_KeyDown);
             // 
             // label18
@@ -554,6 +558,7 @@
             this.detalleText.Name = "detalleText";
             this.detalleText.Size = new System.Drawing.Size(455, 133);
             this.detalleText.TabIndex = 86;
+            this.detalleText.TextChanged += new System.EventHandler(this.detalleText_TextChanged);
             this.detalleText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.detalleText_KeyDown);
             // 
             // label6
@@ -761,35 +766,45 @@
             // 
             // precioColumn
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle5;
             this.precioColumn.HeaderText = "Precio";
             this.precioColumn.Name = "precioColumn";
             this.precioColumn.ReadOnly = true;
             // 
             // itebisColumn
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle6;
             this.itebisColumn.HeaderText = "Itbis";
             this.itebisColumn.Name = "itebisColumn";
             this.itebisColumn.ReadOnly = true;
             // 
             // descuentoColumn
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle7;
             this.descuentoColumn.HeaderText = "Descuento";
             this.descuentoColumn.Name = "descuentoColumn";
             this.descuentoColumn.ReadOnly = true;
             // 
             // importeColumn
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle8;
             this.importeColumn.HeaderText = "Importe";
             this.importeColumn.Name = "importeColumn";
             this.importeColumn.ReadOnly = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(261, 64);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(97, 17);
+            this.label22.TabIndex = 110;
+            this.label22.Text = "Cambiar(F5)";
             // 
             // ventana_facturacion_normal
             // 
@@ -892,5 +907,6 @@
         private System.Windows.Forms.ComboBox tipoComprobanteCombo;
         private System.Windows.Forms.TextBox existenciaText;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
     }
 }

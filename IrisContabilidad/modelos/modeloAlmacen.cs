@@ -130,7 +130,7 @@ namespace IrisContabilidad.modelos
                     almacen.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     almacen.nombre = ds.Tables[0].Rows[0][1].ToString();
                     almacen.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    almacen.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    almacen.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
                 }
                 return almacen;
             }
@@ -164,7 +164,7 @@ namespace IrisContabilidad.modelos
                         almacen.codigo = Convert.ToInt16(row[0].ToString());
                         almacen.nombre = row[1].ToString();
                         almacen.codigo_sucursal = Convert.ToInt16(row[2].ToString());
-                        almacen.activo = Convert.ToBoolean(row[3].ToString());
+                        almacen.activo = Convert.ToBoolean(row[3]);
                         lista.Add(almacen);
                     }
                 }
@@ -196,7 +196,7 @@ namespace IrisContabilidad.modelos
                         almacen.codigo = Convert.ToInt16(row[0].ToString());
                         almacen.nombre = row[1].ToString();
                         almacen.codigo_sucursal = Convert.ToInt16(row[2].ToString());
-                        almacen.activo = Convert.ToBoolean(row[3].ToString());
+                        almacen.activo = Convert.ToBoolean(row[3]);
                         lista.Add(almacen);
                     }
                 }

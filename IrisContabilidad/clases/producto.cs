@@ -21,6 +21,7 @@ namespace IrisContabilidad.clases
         public int codigo_almacen { get; set; }
         public string imagen { get; set; }
         public int codigo_unidad_minima { get; set; }
-      
+        public Boolean controla_inventario { get; set; }
+
     }
 }

@@ -101,6 +101,21 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     MessageBox.Show("No hay facturas", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+                //validar que se digito algun monto a pagar
+                bool existe = false;
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (Convert.ToDecimal(row.Cells[8].Value)>0)
+                    {
+                        existe = true;
+                    }
+                }
+                if (existe == false)
+                {
+                    MessageBox.Show("Debe efectuar un abono", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+
                 return true;
             }
             catch (Exception ex)
@@ -170,16 +185,19 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     {
                         modeloReporte.imprimirVentaCobro(ventaCobro.codigo);
                     }
+                    ventaCobro = null;
                 }
                 else
                 {
                     loadCliente();
                     MessageBox.Show("No se agregó el cobro", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    ventaCobro = null;
                 }
             }
             catch (Exception ex)
             {
                 venta = null;
+                ventaCobro = null;
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -330,15 +348,24 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 {
                     return;
                 }
-                listaVenta = modeloVenta.getListaVentaByClienteId(cliente.codigo);
+                listaVenta = modeloVenta.getListaVentasByClienteId(cliente.codigo);
+
                 //filtrando las compra que esten activa, que no esten pagada y que no sean a contado
                 listaVenta = listaVenta.FindAll(x => x.pagada == false && x.activo==true && x.tipo_venta!="CON").ToList();
-                foreach(var x in listaVenta)
+                listaVenta = listaVenta.OrderByDescending(x => x.codigo).ToList();
+                foreach (var x in listaVenta)
                 {
                     decimal montoPendiente = 0;
                     montoPendiente = modeloVenta.getMontoPendienteByVenta(x.codigo);
                     empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
-                    dataGridView1.Rows.Add(x.codigo,x.fecha.ToString("dd/MM/yyyy"),utilidades.getDiasByRangoFecha(x.fecha_limite,DateTime.Today),empleado.nombre,x.tipo_venta,x.ncf,x.fecha_limite.ToString("dd/MM/yyyy"),montoPendiente.ToString("N"));
+                    if (montoPendiente > 0)
+                    {
+                        dataGridView1.Rows.Add(x.codigo, x.fecha.ToString("dd/MM/yyyy"),utilidades.getDiasByRangoFecha(x.fecha_limite, DateTime.Today),empleado.nombre,x.tipo_venta, x.ncf, x.fecha_limite.ToString("dd/MM/yyyy"), montoPendiente.ToString("N"));
+                    }
+                    else
+                    {
+                        modeloVenta.setVentapagada(x.codigo);
+                    }
                 }
                 calcularTotal();
             }
@@ -380,7 +407,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             
         }
 
-        private void suplidorIdText_KeyDown(object sender, KeyEventArgs e)
+        private void clienteIdText_KeyDown(object sender, KeyEventArgs e)
         {
             try
             {

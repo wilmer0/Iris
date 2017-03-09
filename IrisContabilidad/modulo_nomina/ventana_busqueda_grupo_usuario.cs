@@ -121,5 +121,21 @@ namespace IrisContabilidad.modulo_nomina
                 MessageBox.Show("Error buscando.: " + ex.ToString());
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listaGrupoUsuarios = null;
+            loadLista();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getAction();
+        }
     }
 }

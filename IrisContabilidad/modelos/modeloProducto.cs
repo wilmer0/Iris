@@ -242,7 +242,7 @@ namespace IrisContabilidad.modelos
             {
                 producto producto = new producto();
                 string sql =
-                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima from producto where codigo='" +
+                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario from producto where codigo='" +
                     id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -259,6 +259,7 @@ namespace IrisContabilidad.modelos
                     producto.codigo_almacen = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
                     producto.imagen = ds.Tables[0].Rows[0][10].ToString();
                     producto.codigo_unidad_minima = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
+                    producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
                 }
                 return producto;
             }
@@ -276,7 +277,7 @@ namespace IrisContabilidad.modelos
             {
                 List<producto>lista=new List<producto>();
                 producto producto = new producto();
-                string sql ="select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima from producto";
+                string sql ="select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario from producto";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -293,6 +294,7 @@ namespace IrisContabilidad.modelos
                     producto.codigo_almacen = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
                     producto.imagen = ds.Tables[0].Rows[0][10].ToString();
                     producto.codigo_unidad_minima = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
+                    producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
                     lista.Add(producto);
                 }
                 producto = null;
@@ -320,7 +322,7 @@ namespace IrisContabilidad.modelos
                 producto producto = new producto();
                 List<producto> lista = new List<producto>();
                 string sql =
-                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima from producto ";
+                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario from producto ";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -343,6 +345,7 @@ namespace IrisContabilidad.modelos
                         producto.codigo_almacen = Convert.ToInt16(row[9].ToString());
                         producto.imagen = row[10].ToString();
                         producto.codigo_unidad_minima = Convert.ToInt16(row[11].ToString());
+                        producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
                         lista.Add(producto);
                     }
                 }
@@ -508,12 +511,15 @@ namespace IrisContabilidad.modelos
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    productoRequisitos = new producto_productos_requisitos();
-                    productoRequisitos.codigo_producto_titular = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    productoRequisitos.codigo_producto_requisito = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
-                    productoRequisitos.codigo_unidad = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    productoRequisitos.cantidad = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
-                    lista.Add(productoRequisitos);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        productoRequisitos = new producto_productos_requisitos();
+                        productoRequisitos.codigo_producto_titular = Convert.ToInt16(row[0].ToString());
+                        productoRequisitos.codigo_producto_requisito = Convert.ToInt16(row[1].ToString());
+                        productoRequisitos.codigo_unidad = Convert.ToInt16(row[2].ToString());
+                        productoRequisitos.cantidad = Convert.ToDecimal(row[3].ToString());
+                        lista.Add(productoRequisitos);
+                    }
                 }
                 return lista;
             }
@@ -626,11 +632,13 @@ namespace IrisContabilidad.modelos
                 //obtiene la cantidad unidades que maneja la unidad minima
                 sql = "select precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5 from producto_unidad_conversion where cod_producto='"+codigoProducto+"' and cod_unidad='"+codigoUnidad+"'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
-                precioVenta.precio_venta1 = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
-                precioVenta.precio_venta2 = Convert.ToDecimal(ds.Tables[0].Rows[0][1].ToString());
-                precioVenta.precio_venta3 = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
-                precioVenta.precio_venta4 = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
-                precioVenta.precio_venta5 = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                precioVenta.codigo_producto = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                precioVenta.codigo_unidad = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                precioVenta.precio_venta1 = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
+                precioVenta.precio_venta2 = Convert.ToDecimal(ds.Tables[0].Rows[0][3].ToString());
+                precioVenta.precio_venta3 = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                precioVenta.precio_venta4 = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
+                precioVenta.precio_venta5 = Convert.ToDecimal(ds.Tables[0].Rows[0][6].ToString());
 
                 return precioVenta;
             }
@@ -640,5 +648,84 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get lista precio productos unidades
+        public List<producto_precio_venta> getListaProductoPrecioVenta()
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds = new DataSet();
+                List<producto_precio_venta> lista = new List<producto_precio_venta>();
+                producto_precio_venta precioVenta;
+
+                //borrar todos los codigo barra que son de este producto
+                sql = "select cod_producto,cod_unidad,precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5 from producto_unidad_conversion";
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        precioVenta = new producto_precio_venta();
+                        precioVenta.codigo_producto = Convert.ToInt16(row[0]);
+                        precioVenta.codigo_unidad = Convert.ToInt16(row[1]);
+                        precioVenta.precio_venta1 = Convert.ToInt16(row[2]);
+                        precioVenta.precio_venta2 = Convert.ToInt16(row[3]);
+                        precioVenta.precio_venta3 = Convert.ToInt16(row[4]);
+                        precioVenta.precio_venta4 = Convert.ToDecimal(row[5]);
+                        precioVenta.precio_venta5 = Convert.ToDecimal(row[6]);
+                        lista.Add(precioVenta);
+                    }
+                }
+                lista = lista.OrderByDescending(x => x.codigo_producto).ToList();
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaProductoPrecioVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        public bool agregarListaPrecioProducto(List<producto_precio_venta> lista)
+        {
+            try
+            {
+                string sql = "";
+                DataSet ds=new DataSet();
+                if (lista == null)
+                {
+                    MessageBox.Show("Lista llega nula agregarListaPrecioProducto.","", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+
+
+                lista.ForEach(x =>
+                {
+                    sql = "select *from producto_unidad_conversion where cod_producto='"+x.codigo_producto+"' and cod_unidad='"+x.codigo_unidad+"'";
+                    ds=utilidades.ejecutarcomando_mysql(sql);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        //update
+                        sql = "update producto_unidad_conversion set precio_venta1='"+x.precio_venta1+"',precio_venta2='"+x.precio_venta2+"',precio_venta3='"+x.precio_venta3+"',precio_venta4='"+x.precio_venta4+"',precio_venta5='"+x.precio_venta5+"' where cod_producto='"+x.codigo_producto+"' and cod_unidad='"+x.codigo_unidad+"'";
+                    }
+                    else
+                    {
+                        producto producto = new modeloProducto().getProductoById(x.codigo_producto);
+                        MessageBox.Show("El producto.: "+producto.nombre+", no tiene unidades de conversión, por favor revisarlo","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        //insert
+                        //sql = "insert into producto_unidad_conversion(cod_producto,cod_unidad,cantidad,costo,precio_venta1,precio_venta2,precio_venta3,precio_venta4,precio_venta5) values('" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.precio_venta1 + "','" + x.precio_venta2 + "','" + x.precio_venta3 + "','" + x.precio_venta4 + "','" + x.precio_venta5 + "')";
+                    }
+                    utilidades.ejecutarcomando_mysql(sql);
+                });
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error agregarListaPrecioProducto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
     }
 }

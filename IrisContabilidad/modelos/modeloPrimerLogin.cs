@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_nomina;
 
 namespace IrisContabilidad.modelos
@@ -69,26 +70,29 @@ namespace IrisContabilidad.modelos
             try
             {
                 //empresa
+                #region empresa
                 string sql = "SELECT * FROM empresa";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //debe agregar la empresa
-                    empresa=new empresa();
+                    empresa = new empresa();
                     empresa.codigo = 1;
                     empresa.nombre = "Empresa";
                     empresa.secuencia = "001";
                     empresa.division = "01";
                     empresa.rnc = "000000000";
                     empresa.activo = true;
+                    empresa.serie_comprobante = "A";
                     modeloEmpresa.agregarEmpresa(empresa);
                 }
-
-
+                #endregion
+               
                 //sucursal
+                #region sucursal
                 sql = "SELECT * FROM sucursal";
                 ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count ==0)
+                if (ds.Tables[0].Rows.Count == 0)
                 {
                     //debe agregar la empresa
                     sucursal = new sucursal();
@@ -99,7 +103,7 @@ namespace IrisContabilidad.modelos
                     sucursal.activo = true;
                     modeloSucursal.agregarSucursal(sucursal);
                 }
-
+                #endregion
 
                 //cargos
                 #region
@@ -119,7 +123,6 @@ namespace IrisContabilidad.modelos
 
                 #endregion
 
-
                 //departamentos sucursales
                 #region
                 List<departamento> listaDepartamento = new List<departamento>();
@@ -138,7 +141,6 @@ namespace IrisContabilidad.modelos
                 });
 
                 #endregion
-
                 
                 //situacion empleado
                 #region
@@ -227,9 +229,6 @@ namespace IrisContabilidad.modelos
 
                     modeloCiudad.agregarCiudad(listaCiudades);
                 #endregion
-
-
-                
                 
                 //permisos productos
                 #region
@@ -251,11 +250,98 @@ namespace IrisContabilidad.modelos
 
                 #endregion
 
+                //caja conceptos egresos ingresos
+                #region
+                sql = "insert into caja_ingresos_egresos_conceptos(codigo,nombre,activo) values('1','Egreso caja por devolución de venta','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //tipos de retencion itbis
+                #region
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('1','0% retención itbis','se retiene el 0% en las ventas','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('2','30% retención itbis personas juridicas','30% y 100% del ITBIS facturado a personas jurídicas.(Norma General 02-05)','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('3','100% retención itbis personas fisicas','100% del ITBIS facturado a personas físicas (Art. 25, Reglamento 293-11) ','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('4','75% retención itbis','75% ITIBIS facturado proveedores informales de bienes.(Norma General 08-10)','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('5','100% retención itbis no lucrativas','100% del ITBIS facturado a entidades no lucrativas.(Norma General 01-2011)','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_retencion_itbis(codigo,retencion,descripcion,porciento_retencion,activo) values('6','30% retención itbis tarjetas debito o credito','30% ITIBIS facturado ventas con tarjetas de débito o crédito.(Norma General 08-04)','0.00','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //tipos de comprobantes
+                #region
+                sql = "insert into tipo_comprobante_fiscal(codigo,secuencia,nombre,activo) values('1','00','SIN COMPROBANTE','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_comprobante_fiscal(codigo,secuencia,nombre,activo) values('2','01','VALOR FISCAL','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_comprobante_fiscal(codigo,secuencia,nombre,activo) values('3','00','consumidor final','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //caja
+                #region
+                sql = "insert into caja(codigo,nombre,secuencia,cod_sucursal,activo) values('1','CAJA PRINCIPAL','001','1','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //almacen
+                #region
+                sql = "insert into almacen(codigo,nombre,cod_sucursal,activo) values('1','ALMACEN GENERAL','1','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+
+                #endregion
+
+                //
+                #region
+
+                #endregion
+
+                //
+
+                #region
+
+                #endregion
+
+                //
+
+                #region
+
+                #endregion
+
+                //
+
+                #region
+
+                #endregion
+
+                //
+
+                #region
+
+                #endregion
+
+                //
+
+                #region
+
+                #endregion
+                //
+
+                #region
+
+                #endregion
+
+
+
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error primerosDatos.: " + ex.ToString());
+                MessageBox.Show("Error primerosDatos.: " + ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -280,7 +366,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 1;
-                modulo.nombre = "modulo empresa";
+                modulo.nombre = "Empresa";
                 modulo.imagen = "empresa1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_empresa";
@@ -288,7 +374,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 2;
-                modulo.nombre = "modulo facturacion";
+                modulo.nombre = "aFcturación";
                 modulo.imagen = "facturacion1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_facturacion";
@@ -296,7 +382,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 3;
-                modulo.nombre = "modulo cuentas por cobrar";
+                modulo.nombre = "Cuentas Por Cobrar";
                 modulo.imagen = "cxc.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar";
@@ -304,7 +390,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 4;
-                modulo.nombre = "modulo cuentas por pagar";
+                modulo.nombre = "Cuentas Por Pagar";
                 modulo.imagen = "cxp.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar";
@@ -312,7 +398,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 5;
-                modulo.nombre = "modulo inventario";
+                modulo.nombre = "Inventario";
                 modulo.imagen = "inventario1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_inventario";
@@ -320,7 +406,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 6;
-                modulo.nombre = "modulo opciones";
+                modulo.nombre = "Opciones";
                 modulo.imagen = "opciones1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_opciones";
@@ -328,7 +414,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 7;
-                modulo.nombre = "modulo nomina";
+                modulo.nombre = "Nómina";
                 modulo.imagen = "nomina1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_nomina";
@@ -336,7 +422,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 8;
-                modulo.nombre = "modulo inicio rapido";
+                modulo.nombre = "Inicio Rapido";
                 modulo.imagen = "inicio_rapido1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_inicio_rapido";
@@ -344,7 +430,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 9;
-                modulo.nombre = "modulo contabilidad";
+                modulo.nombre = "Contabilidad";
                 modulo.imagen = "contabilidad1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_contabilidad";
@@ -418,7 +504,7 @@ namespace IrisContabilidad.modelos
                 ventana.nombre_logico = "IrisContabilidad.modulo_empresa.ventana_configuracion_comprobante_fiscal";
                 ventana.activo = true;
                 ventana.programador = false;
-                ventana.codigo_modulo = 7;
+                ventana.codigo_modulo = 1;
                 ventana.imagen = "configuracion_comprobante1.png";
                 listaVentana.Add(ventana);
                
@@ -509,8 +595,45 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "cuadre_caja1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "apertura caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_caja_apertura";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "caja_apertura1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Reimprimir ventas";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_reimprimir";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "venta_reimprimir1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Devolución venta";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_devolucion";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "venta_devolucion1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Anular devolución";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_venta_devolucion_anular";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "venta_anular_devolucion1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
+               
 
 
                 //modulo cuentas por cobrar
@@ -542,6 +665,33 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 3;
                 ventana.imagen = "venta_cobro1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Anular cobros";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_anular_cobros";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 3;
+                ventana.imagen = "venta_cobro_anular1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Reporte Cobros";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_reporte_cobros";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 3;
+                ventana.imagen = "reporte_cobros1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Estado Cuenta";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar.ventana_estado_cuenta_cliente";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 3;
+                ventana.imagen = "estado_cuenta_cliente1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 
@@ -566,6 +716,25 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 4;
                 ventana.imagen = "compra_pagos1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Anular pagos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_anular_pagos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "compra_pagos_anular1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "consultar pagos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_consulta_compra_pagos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "consulta_compra_pagos1.png";
+                listaVentana.Add(ventana);
+
                 #endregion
 
                 
@@ -635,6 +804,14 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 5;
                 ventana.imagen = "reporte_producto1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "producto lista precio";
+                ventana.nombre_logico = "IrisContabilidad.modulo_inventario.ventana_producto_lista_precio";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 5;
+                ventana.imagen = "producto_lista_precio1.png";
                 #endregion
 
 
@@ -649,6 +826,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 6;
                 ventana.imagen = "cambio_clave1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Permisos empleado";
+                ventana.nombre_logico = "IrisContabilidad.modulo_opciones.ventana_permisos_empleado";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 6;
+                ventana.imagen = "permisos_empleado1.png";
                 listaVentana.Add(ventana);
                 #endregion
 
@@ -710,6 +896,7 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 7;
                 ventana.imagen = "grupo_usuario1.png";
                 listaVentana.Add(ventana);
+
                 #endregion
 
 
@@ -736,6 +923,24 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 9;
                 ventana.imagen = "tipo_gastos1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Gastos";
+                ventana.nombre_logico = "IrisContabilidad.modulo_contabilidad.ventana_gastos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 9;
+                ventana.imagen = "gastos1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Cuentas contables";
+                ventana.nombre_logico = "IrisContabilidad.modulo_contabilidad.ventana_cuentas_contables";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 9;
+                ventana.imagen = "catalogo_cuenta1.png";
                 listaVentana.Add(ventana);
                 #endregion
 
@@ -780,7 +985,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarAccesosVentanas.: " + ex.ToString());
+                MessageBox.Show("Error agregarAccesosVentanas.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -801,7 +1006,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarVentanasPrimerModulo.: " + ex.ToString());
+                MessageBox.Show("Error agregarVentanasPrimerModulo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -819,9 +1024,9 @@ namespace IrisContabilidad.modelos
                     ventana.ShowDialog();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error ValidarCrearPrimerEmpleado.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error agregarPrimerEmpleado.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

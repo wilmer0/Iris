@@ -127,6 +127,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     }
                     else
                     {
+                        categoriaCliente = null;
                         MessageBox.Show("No se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -159,7 +160,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ventana_busqueda_categoria_cliente ventana = new ventana_busqueda_categoria_cliente();
+            ventana_busqueda_categoria_cliente ventana = new ventana_busqueda_categoria_cliente(true);
             ventana.Owner = this;
             ventana.ShowDialog();
             if (ventana.DialogResult == DialogResult.OK)

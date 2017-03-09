@@ -305,10 +305,10 @@ namespace IrisContabilidad.modulo_inventario
                     if (compra.tipo_compra == "CON")
                     {
                         ventanaDesglose = new ventana_desglose_dinero(compra, listaCompraDetalle);
+                        compra = null;
                         ventanaDesglose.ShowDialog();
                         if (ventanaDesglose.DialogResult == DialogResult.OK)
                         {
-                            compra = null;
                             loadVentana();
                         }
                     }
@@ -542,7 +542,7 @@ namespace IrisContabilidad.modulo_inventario
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     totalItebisMonto += Convert.ToDecimal(row.Cells[6].Value.ToString());
-                    totalCompraMonto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalCompraMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
                 }
                 totalItebisText.Text = totalItebisMonto.ToString("N");
                 totalCompraText.Text = totalCompraMonto.ToString("N");
@@ -1001,7 +1001,13 @@ namespace IrisContabilidad.modulo_inventario
 
         private void unidadComboText_TextChanged_1(object sender, EventArgs e)
         {
-
+            try
+            {
+                unidad = modeloUnidad.getUnidadById(Convert.ToInt16(unidadComboText.SelectedValue.ToString()));
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

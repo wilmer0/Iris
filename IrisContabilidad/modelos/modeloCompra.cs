@@ -361,13 +361,13 @@ namespace IrisContabilidad.modelos
             }
         }
         //get lista completa de compras
-        public List<compra> getListaCompra(int id)
+        public List<compra> getListaCompra()
         {
             try
             {
                 List<compra>lista=new List<compra>();
                 compra compra = new compra();
-                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra where codigo='" + id + "'";
+                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -705,6 +705,21 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error getListaCompraPagoDetalleByIdCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
+            }
+        }
+        //set compra pagada
+        public bool setCompraPagada(int idCompra)
+        {
+            try
+            {
+                string sql = "update compra set pagada='0' where codigo='"+idCompra+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error setCompraPagada.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }

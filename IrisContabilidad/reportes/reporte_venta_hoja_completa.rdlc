@@ -345,7 +345,9 @@
                           <TextRuns>
                             <TextRun>
                               <Value />
-                              <Style />
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -380,8 +382,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
-                              <Style />
+                              <Value>Total.:</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -416,8 +420,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
-                              <Style />
+                              <Value>=Sum(Fields!itbis.Value, "reporte_detalle")</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Format>#,0.00</Format>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -452,9 +459,10 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total.:</Value>
+                              <Value>=Sum(Fields!descuento.Value, "reporte_detalle")</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Format>#,0.00</Format>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -563,7 +571,7 @@
   <Width>8.45833in</Width>
   <Page>
     <PageHeader>
-      <Height>2.56125in</Height>
+      <Height>2.33556in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -713,7 +721,6 @@
                 <TextRun>
                   <Value>Reporte Venta</Value>
                   <Style>
-                    <FontSize>14pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -724,9 +731,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>1.18056in</Top>
+          <Top>1.04167in</Top>
           <Left>0.16147in</Left>
-          <Height>0.34375in</Height>
+          <Height>0.22917in</Height>
           <Width>8.13541in</Width>
           <ZIndex>4</ZIndex>
           <Style>
@@ -759,8 +766,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.58208in</Top>
-          <Left>0.16146in</Left>
+          <Top>1.25695in</Top>
+          <Left>0.20141in</Left>
           <Height>0.25in</Height>
           <Width>1.06965in</Width>
           <ZIndex>5</ZIndex>
@@ -791,8 +798,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.58208in</Top>
-          <Left>1.245in</Left>
+          <Top>1.25695in</Top>
+          <Left>1.28495in</Left>
           <Height>0.25in</Height>
           <Width>2.36785in</Width>
           <ZIndex>6</ZIndex>
@@ -859,8 +866,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.83208in</Top>
-          <Left>0.16147in</Left>
+          <Top>1.50695in</Top>
+          <Left>0.20142in</Left>
           <Height>0.25in</Height>
           <Width>1.06965in</Width>
           <ZIndex>8</ZIndex>
@@ -891,8 +898,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.83208in</Top>
-          <Left>1.24501in</Left>
+          <Top>1.50695in</Top>
+          <Left>1.28496in</Left>
           <Height>0.25in</Height>
           <Width>2.36785in</Width>
           <ZIndex>9</ZIndex>
@@ -923,8 +930,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.59597in</Top>
-          <Left>5.92905in</Left>
+          <Top>1.27084in</Top>
+          <Left>5.969in</Left>
           <Height>0.23611in</Height>
           <Width>0.57616in</Width>
           <ZIndex>10</ZIndex>
@@ -957,8 +964,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.59597in</Top>
-          <Left>4.16534in</Left>
+          <Top>1.27084in</Top>
+          <Left>4.20529in</Left>
           <Height>0.23611in</Height>
           <Width>1.76371in</Width>
           <ZIndex>11</ZIndex>
@@ -989,8 +996,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.59597in</Top>
-          <Left>6.50521in</Left>
+          <Top>1.27084in</Top>
+          <Left>6.54516in</Left>
           <Height>0.23611in</Height>
           <Width>1.79167in</Width>
           <ZIndex>12</ZIndex>
@@ -1061,8 +1068,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.83208in</Top>
-          <Left>5.92905in</Left>
+          <Top>1.50695in</Top>
+          <Left>5.969in</Left>
           <Height>0.25in</Height>
           <Width>2.36783in</Width>
           <ZIndex>14</ZIndex>
@@ -1095,8 +1102,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox8</rd:DefaultName>
-          <Top>1.83208in</Top>
-          <Left>4.16534in</Left>
+          <Top>1.50695in</Top>
+          <Left>4.20529in</Left>
           <Height>0.25in</Height>
           <Width>1.76371in</Width>
           <ZIndex>15</ZIndex>
@@ -1129,8 +1136,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox60</rd:DefaultName>
-          <Top>5.69418cm</Top>
-          <Left>0.41018cm</Left>
+          <Top>5.22113cm</Top>
+          <Left>0.51165cm</Left>
           <Height>0.25in</Height>
           <Width>1.69468in</Width>
           <ZIndex>16</ZIndex>
@@ -1168,8 +1175,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox62</rd:DefaultName>
-          <Top>5.69418cm</Top>
-          <Left>4.71457cm</Left>
+          <Top>5.22113cm</Top>
+          <Left>4.81604cm</Left>
           <Height>0.25in</Height>
           <Width>0.98562in</Width>
           <ZIndex>17</ZIndex>
@@ -1207,8 +1214,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox64</rd:DefaultName>
-          <Top>5.69418cm</Top>
-          <Left>7.2181cm</Left>
+          <Top>5.22113cm</Top>
+          <Left>7.31957cm</Left>
           <Height>0.25in</Height>
           <Width>0.98562in</Width>
           <ZIndex>18</ZIndex>
@@ -1246,8 +1253,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox66</rd:DefaultName>
-          <Top>5.69418cm</Top>
-          <Left>9.72157cm</Left>
+          <Top>5.22113cm</Top>
+          <Left>9.82304cm</Left>
           <Height>0.25in</Height>
           <Width>1.03101in</Width>
           <ZIndex>19</ZIndex>
@@ -1285,8 +1292,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox68</rd:DefaultName>
-          <Top>5.69418cm</Top>
-          <Left>12.34034cm</Left>
+          <Top>5.22113cm</Top>
+          <Left>12.44181cm</Left>
           <Height>0.25in</Height>
           <Width>1.11062in</Width>
           <ZIndex>20</ZIndex>
@@ -1324,8 +1331,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox70</rd:DefaultName>
-          <Top>5.69419cm</Top>
-          <Left>15.16131cm</Left>
+          <Top>5.22114cm</Top>
+          <Left>15.26278cm</Left>
           <Height>0.25in</Height>
           <Width>1.14064in</Width>
           <ZIndex>21</ZIndex>
@@ -1363,8 +1370,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox72</rd:DefaultName>
-          <Top>5.69418cm</Top>
-          <Left>18.05849cm</Left>
+          <Top>5.22113cm</Top>
+          <Left>18.15996cm</Left>
           <Height>0.25in</Height>
           <Width>1.18726in</Width>
           <ZIndex>22</ZIndex>
@@ -1377,6 +1384,72 @@
               <Style>Solid</Style>
               <Width>1pt</Width>
             </BottomBorder>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox25">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>NCF.: </Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox8</rd:DefaultName>
+          <Top>1.7639in</Top>
+          <Left>4.20529in</Left>
+          <Height>0.25in</Height>
+          <Width>1.76371in</Width>
+          <ZIndex>23</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox14">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=First(Fields!numero_comprobante_fiscal.Value, "reporte_encabezado")</Value>
+                  <Style />
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Left</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox8</rd:DefaultName>
+          <Top>1.7639in</Top>
+          <Left>5.969in</Left>
+          <Height>0.25in</Height>
+          <Width>2.36783in</Width>
+          <ZIndex>24</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>

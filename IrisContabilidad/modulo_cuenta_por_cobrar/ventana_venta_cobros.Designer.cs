@@ -37,16 +37,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.clienteIdText = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diasVencimientoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empleadoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoCompraColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroComprobanteFiscalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaLimiteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoPendienteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoAbonoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metoopagoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,6 +48,16 @@
             this.totalAbonadoText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diasVencimientoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empleadoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoCompraColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroComprobanteFiscalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaLimiteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoPendienteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoAbonoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metoopagoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -144,7 +144,7 @@
             this.clienteIdText.Name = "clienteIdText";
             this.clienteIdText.Size = new System.Drawing.Size(183, 26);
             this.clienteIdText.TabIndex = 71;
-            this.clienteIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.suplidorIdText_KeyDown);
+            this.clienteIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clienteIdText_KeyDown);
             // 
             // dataGridView1
             // 
@@ -174,81 +174,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1087, 438);
             this.dataGridView1.TabIndex = 88;
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
-            // 
-            // idPrductoColumn
-            // 
-            this.idPrductoColumn.FillWeight = 50F;
-            this.idPrductoColumn.HeaderText = "ID";
-            this.idPrductoColumn.Name = "idPrductoColumn";
-            this.idPrductoColumn.ReadOnly = true;
-            // 
-            // fechaColumn
-            // 
-            this.fechaColumn.FillWeight = 70F;
-            this.fechaColumn.HeaderText = "Fecha";
-            this.fechaColumn.Name = "fechaColumn";
-            this.fechaColumn.ReadOnly = true;
-            // 
-            // diasVencimientoColumn
-            // 
-            this.diasVencimientoColumn.HeaderText = "Dias vencimiento";
-            this.diasVencimientoColumn.Name = "diasVencimientoColumn";
-            this.diasVencimientoColumn.ReadOnly = true;
-            // 
-            // empleadoColumn
-            // 
-            this.empleadoColumn.FillWeight = 120F;
-            this.empleadoColumn.HeaderText = "Empleado";
-            this.empleadoColumn.Name = "empleadoColumn";
-            this.empleadoColumn.ReadOnly = true;
-            // 
-            // TipoCompraColumn
-            // 
-            this.TipoCompraColumn.HeaderText = "Tipo compra";
-            this.TipoCompraColumn.Name = "TipoCompraColumn";
-            this.TipoCompraColumn.ReadOnly = true;
-            // 
-            // numeroComprobanteFiscalColumn
-            // 
-            this.numeroComprobanteFiscalColumn.FillWeight = 120F;
-            this.numeroComprobanteFiscalColumn.HeaderText = "NCF";
-            this.numeroComprobanteFiscalColumn.Name = "numeroComprobanteFiscalColumn";
-            this.numeroComprobanteFiscalColumn.ReadOnly = true;
-            // 
-            // FechaLimiteColumn
-            // 
-            this.FechaLimiteColumn.FillWeight = 70F;
-            this.FechaLimiteColumn.HeaderText = "Fecha limite";
-            this.FechaLimiteColumn.Name = "FechaLimiteColumn";
-            this.FechaLimiteColumn.ReadOnly = true;
-            // 
-            // MontoPendienteColumn
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = "0";
-            this.MontoPendienteColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.MontoPendienteColumn.HeaderText = "Pendiente";
-            this.MontoPendienteColumn.Name = "MontoPendienteColumn";
-            this.MontoPendienteColumn.ReadOnly = true;
-            // 
-            // MontoAbonoColumn
-            // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.MontoAbonoColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.MontoAbonoColumn.HeaderText = "Abonar";
-            this.MontoAbonoColumn.Name = "MontoAbonoColumn";
-            this.MontoAbonoColumn.ReadOnly = true;
-            // 
-            // metoopagoColumn
-            // 
-            this.metoopagoColumn.FillWeight = 80F;
-            this.metoopagoColumn.HeaderText = "Metodo pago";
-            this.metoopagoColumn.Name = "metoopagoColumn";
-            this.metoopagoColumn.ReadOnly = true;
             // 
             // button19
             // 
@@ -376,6 +301,81 @@
             this.label5.Text = "Cambiar (F2)";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
+            // idPrductoColumn
+            // 
+            this.idPrductoColumn.FillWeight = 50F;
+            this.idPrductoColumn.HeaderText = "ID";
+            this.idPrductoColumn.Name = "idPrductoColumn";
+            this.idPrductoColumn.ReadOnly = true;
+            // 
+            // fechaColumn
+            // 
+            this.fechaColumn.FillWeight = 70F;
+            this.fechaColumn.HeaderText = "Fecha";
+            this.fechaColumn.Name = "fechaColumn";
+            this.fechaColumn.ReadOnly = true;
+            // 
+            // diasVencimientoColumn
+            // 
+            this.diasVencimientoColumn.HeaderText = "Dias vencido";
+            this.diasVencimientoColumn.Name = "diasVencimientoColumn";
+            this.diasVencimientoColumn.ReadOnly = true;
+            // 
+            // empleadoColumn
+            // 
+            this.empleadoColumn.FillWeight = 120F;
+            this.empleadoColumn.HeaderText = "Empleado";
+            this.empleadoColumn.Name = "empleadoColumn";
+            this.empleadoColumn.ReadOnly = true;
+            // 
+            // TipoCompraColumn
+            // 
+            this.TipoCompraColumn.HeaderText = "Tipo compra";
+            this.TipoCompraColumn.Name = "TipoCompraColumn";
+            this.TipoCompraColumn.ReadOnly = true;
+            // 
+            // numeroComprobanteFiscalColumn
+            // 
+            this.numeroComprobanteFiscalColumn.FillWeight = 120F;
+            this.numeroComprobanteFiscalColumn.HeaderText = "NCF";
+            this.numeroComprobanteFiscalColumn.Name = "numeroComprobanteFiscalColumn";
+            this.numeroComprobanteFiscalColumn.ReadOnly = true;
+            // 
+            // FechaLimiteColumn
+            // 
+            this.FechaLimiteColumn.FillWeight = 80F;
+            this.FechaLimiteColumn.HeaderText = "Fecha limite";
+            this.FechaLimiteColumn.Name = "FechaLimiteColumn";
+            this.FechaLimiteColumn.ReadOnly = true;
+            // 
+            // MontoPendienteColumn
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = "0";
+            this.MontoPendienteColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.MontoPendienteColumn.HeaderText = "Pendiente";
+            this.MontoPendienteColumn.Name = "MontoPendienteColumn";
+            this.MontoPendienteColumn.ReadOnly = true;
+            // 
+            // MontoAbonoColumn
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.MontoAbonoColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.MontoAbonoColumn.HeaderText = "Abonar";
+            this.MontoAbonoColumn.Name = "MontoAbonoColumn";
+            this.MontoAbonoColumn.ReadOnly = true;
+            // 
+            // metoopagoColumn
+            // 
+            this.metoopagoColumn.FillWeight = 90F;
+            this.metoopagoColumn.HeaderText = "Metodo cobro";
+            this.metoopagoColumn.Name = "metoopagoColumn";
+            this.metoopagoColumn.ReadOnly = true;
+            // 
             // ventana_venta_cobro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,6 +442,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox totalAbonadoText;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPrductoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn diasVencimientoColumn;
@@ -452,6 +453,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoPendienteColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoAbonoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn metoopagoColumn;
-        private System.Windows.Forms.Label label5;
     }
 }

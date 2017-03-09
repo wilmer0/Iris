@@ -34,8 +34,9 @@ namespace IrisContabilidad.modulo_facturacion
         private productoUnidadConversion productoUnidadConversion;
         private cliente cliente;
         private ventana_desglose_dinero ventanaDesglose;
-        producto_precio_venta productoPrecioVenta;
+        private producto_precio_venta productoPrecioVenta;
         private cajero cajero;
+        private tipo_comprobante_fiscal tipoComprobanteFiscal;
 
 
         //modelos
@@ -49,6 +50,7 @@ namespace IrisContabilidad.modulo_facturacion
         modeloVenta modeloVenta=new modeloVenta();
         modeloComprobanteFiscal modeloComprobantefiscal=new modeloComprobanteFiscal();
         modeloCajero modeloCajero=new modeloCajero();
+
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
@@ -127,8 +129,9 @@ namespace IrisContabilidad.modulo_facturacion
                     clienteIdText.Focus();
                     clienteIdText.SelectAll();
 
-
+                    
                     //blanquear campos
+                    cliente = null;
                     clienteIdText.Text = "";
                     clienteText.Text = "";
                     numeroFacturaText.Text = "";
@@ -148,6 +151,8 @@ namespace IrisContabilidad.modulo_facturacion
                     fechaFinalText.Text = DateTime.Today.ToString("dd-MM-yyyy");
                     botonImprimir.Visible = false;
                 }
+                //para tomar el comprobante que tiene en el combo seleccionado en el momento
+                getTipocomprobante();
             }
             catch (Exception ex)
             {
@@ -158,8 +163,6 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-
-                
                 //validar que el usuario actual es cajero
                 cajero = modeloCajero.getCajeroByIdEmpleado(empleado.codigo);
                 if (cajero == null)
@@ -172,18 +175,19 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     clienteIdText.Focus();
                     clienteIdText.SelectAll();
-                    MessageBox.Show("Tiene una compra existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tiene una venta existente abierta debe limpiar antes de continuar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                
-                //suplidor
+                //si tiene cliente seleccionado
                 if (cliente == null)
                 {
                     clienteIdText.Focus();
                     clienteIdText.SelectAll();
-                    MessageBox.Show("Falta el suplidor", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Falta el cliente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
+                //si tiene productos en el grid
                 if (dataGridView1.Rows.Count == 0)
                 {
                     productoIdText.Focus();
@@ -192,7 +196,7 @@ namespace IrisContabilidad.modulo_facturacion
                     return false;
                 }
 
-                //tipo de compra
+                //tipo de venta
                 if (tipoVentaComboBox.Text.Trim() == "")
                 {
                     tipoVentaComboBox.Focus();
@@ -221,14 +225,6 @@ namespace IrisContabilidad.modulo_facturacion
                     return false;
                 }
 
-                //que hayan productos
-                if (dataGridView1.Rows.Count < 0)
-                {
-                    productoIdText.Focus();
-                    productoIdText.SelectAll();
-                    MessageBox.Show("Debe de seleccionar productos para la compra", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return false;
-                }
 
                 return true;
             }
@@ -282,7 +278,7 @@ namespace IrisContabilidad.modulo_facturacion
                     ventaDetalle.codigo_unidad = Convert.ToInt16(row.Cells[2].Value);
                     ventaDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
                     ventaDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                    ventaDetalle.monto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    ventaDetalle.monto_total = Convert.ToDecimal(row.Cells[8].Value.ToString());
                     ventaDetalle.monto_itebis = Convert.ToDecimal(row.Cells[6].Value.ToString());
                     ventaDetalle.monto_descuento = Convert.ToDecimal(row.Cells[7].Value.ToString());
                     ventaDetalle.activo = true;
@@ -297,10 +293,10 @@ namespace IrisContabilidad.modulo_facturacion
                     if (venta.tipo_venta == "CON")
                     {
                         ventanaDesglose = new ventana_desglose_dinero(venta, listaVentaDetalle);
+                        venta = null;
                         ventanaDesglose.ShowDialog();
                         if (ventanaDesglose.DialogResult == DialogResult.OK)
                         {
-                            venta = null;
                             loadVentana();
                         }
                     }
@@ -344,7 +340,7 @@ namespace IrisContabilidad.modulo_facturacion
                     producto = modeloProducto.getProductoById(x.codigo_producto);
                     unidad = modeloUnidad.getUnidadById(x.codigo_unidad);
                     itebis = modeloItebis.getItebisById(producto.codigo_itebis);
-                    dataGridView1.Rows.Add(x.codigo_producto, producto.nombre, x.codigo_unidad, unidad.unidad_abreviada, x.cantidad, x.precio, (itebis.porciento * x.monto), x.monto_descuento, x.monto);
+                    dataGridView1.Rows.Add(x.codigo_producto, producto.nombre, x.codigo_unidad, unidad.unidad_abreviada, x.cantidad, x.precio, (itebis.porciento * x.monto_total), x.monto_descuento, x.monto_total);
                 });
             }
             catch (Exception ex)
@@ -403,7 +399,15 @@ namespace IrisContabilidad.modulo_facturacion
                     cantidadText.SelectAll();
                     return;
                 }
-                //validar que tenga costo 
+                if (Convert.ToDecimal(cantidadText.Text) <=0)
+                {
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cantidadText.Focus();
+                    cantidadText.SelectAll();
+                    return;
+                }
+
+                //validar que tenga precio 
                 if (precioText.Text == "")
                 {
                     MessageBox.Show("Falta el precio del producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -500,7 +504,7 @@ namespace IrisContabilidad.modulo_facturacion
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     totalItebisMonto += Convert.ToDecimal(row.Cells[6].Value.ToString());
-                    totalCompraMonto = Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalCompraMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
                 }
                 totalItebisText.Text = totalItebisMonto.ToString("N");
                 totalCompraText.Text = totalCompraMonto.ToString("N");
@@ -574,6 +578,7 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     return;
                 }
+                unidad = modeloUnidad.getUnidadById(Convert.ToInt16(unidadComboText.SelectedValue.ToString()));
                 //MessageBox.Show(unidadComboText.SelectedValue + "-" + unidadComboText.Text);
                 cantidadExistencia = modeloProducto.getExistenciaByProductoAndUnidad(producto.codigo, Convert.ToInt16(unidadComboText.SelectedValue.ToString()));
                 existenciaText.Text = cantidadExistencia.ToString("N");
@@ -640,7 +645,10 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getAction();
+            if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                getAction();
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -953,6 +961,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 cambiarTipoComprobante();
             }
+            if (e.KeyCode == Keys.F5)
+            {
+                cambiarUnidadCombo();
+            }
+            
         }
 
         public void cambiarTipoVentacombo()
@@ -975,6 +988,26 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error cambiarTipoVentacombo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        public void cambiarUnidadCombo()
+        {
+            try
+            {
+                int cantItems = 0;
+                cantItems = unidadComboText.Items.Count;
+                if (unidadComboText.SelectedIndex == (cantItems - 1))
+                {
+                    unidadComboText.SelectedIndex = 0;
+                }
+                else
+                {
+                    unidadComboText.SelectedIndex += 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cambiarUnidadCombo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
         public void cambiarTipoComprobante()
         {
@@ -995,6 +1028,34 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 MessageBox.Show("Error cambiarTipoComprobante.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void importeText_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tipoComprobanteCombo_TextChanged(object sender, EventArgs e)
+        {
+            getTipocomprobante();
+        }
+
+        public void getTipocomprobante()
+        {
+            try
+            {
+                tipoComprobanteFiscal = modeloTipoComprobanteFiscal.getTipoComprobanteById(Convert.ToInt16(tipoComprobanteCombo.SelectedValue.ToString()));
+                //MessageBox.Show("Tipo NCF->>" + tipoComprobanteFiscal.nombre + "-->secuencia-->" +tipoComprobanteFiscal.secuencia);
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Error cambiando de tipo de comprobante fiscal", "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void detalleText_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }
