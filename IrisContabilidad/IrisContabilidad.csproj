@@ -147,7 +147,9 @@
     <Compile Include="clases\subCategoriaProducto.cs" />
     <Compile Include="clases\sucursal.cs" />
     <Compile Include="clases\suplidor.cs" />
+    <Compile Include="clases\tamano_pantalla.cs" />
     <Compile Include="clases\tipoRetencionItbis.cs" />
+    <Compile Include="clases\tipoVentana.cs" />
     <Compile Include="clases\tipo_comprobante_fiscal.cs" />
     <Compile Include="clases\tipo_gasto.cs" />
     <Compile Include="clases\unidad.cs" />

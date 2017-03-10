@@ -40,6 +40,7 @@ namespace IrisContabilidad.modulo_sistema
         private utilidades utilidades = new utilidades();
         private Button botonModulo;
         private Button botonVentana;
+        private tamano_pantalla tamanoPantalla;//obtiene las dimensiones de la pantalla
 
         //modelos
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
@@ -124,7 +125,7 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo.ForeColor = Color.White;
                     botonModulo.Font = new Font(botonModulo.Font.FontFamily.Name, 19);
                     flowLayoutModulos.Controls.Add(botonModulo);
-
+                    
                 });
             }
             catch (Exception ex)
