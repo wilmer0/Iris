@@ -54,7 +54,6 @@ namespace IrisContabilidad.modelos
                     agregarVentanas();
                     agregarPrimerEmpleado();
                     agregarAccesosVentanas();
-                    agregarVentanasPrimerModulo();
                 }
             }
             catch (Exception ex)
@@ -295,48 +294,71 @@ namespace IrisContabilidad.modelos
 
                 #endregion
 
-                //
+                //itbis
                 #region
+                sql = "insert into itbis(codigo,nombre,porciento,activo) values('1','itbis 0%','0','1')";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into itbis(codigo,nombre,porciento,activo) values('2','itbis 18%','0.18','1');";
+                utilidades.ejecutarcomando_mysql(sql);
 
                 #endregion
 
                 //
-
                 #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
 
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
                 //
-
                 #region
-
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
                 //
-
                 #region
-
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
                 //
-
                 #region
-
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
                 //
-
                 #region
-
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
                 #endregion
+
                 //
-
                 #region
-
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
                 #endregion
-
-
-
 
             }
             catch (Exception ex)
@@ -952,11 +974,6 @@ namespace IrisContabilidad.modelos
                     modeloModulo.agregarPoolVentana(ventanaActual);
                 });
                 
-
-                //para agregarla manualmente
-                //insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('15','ventana almacen','IrisContabilidad.modulo_inventario.ventana_almacen','almacen1.png','1','0');
-                //insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','15');
-                //insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','15');
             }
             catch (Exception ex)
             {
@@ -992,22 +1009,22 @@ namespace IrisContabilidad.modelos
 
         public void agregarVentanasPrimerModulo()
         {
-            try
-            {
-                //seleccionando todas las ventanas
-                string sql = "select codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                foreach (DataRow row in ds.Tables[0].Rows)
-                {
-                    //agregar esta ventana al primer modulo
-                    utilidades.ejecutarcomando_mysql("insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','" + row[0].ToString() + "')");
-                }
+            //try
+            //{
+            //    //seleccionando todas las ventanas
+            //    string sql = "select codigo,nombre_ventana,nombre_logico,imagen,activo,programador FROM sistema_ventanas";
+            //    DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+            //    foreach (DataRow row in ds.Tables[0].Rows)
+            //    {
+            //        //agregar esta ventana al primer modulo
+            //        utilidades.ejecutarcomando_mysql("insert into modulos_vs_ventanas(id_modulo,id_ventana) values('1','" + row[0].ToString() + "')");
+            //    }
                 
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error agregarVentanasPrimerModulo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Error agregarVentanasPrimerModulo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         //agregar primer empleado
