@@ -203,20 +203,41 @@ namespace IrisContabilidad
             }
         }
 
+        private bool primerLogin()
+        {
+            try
+            {
+                string sql = "";
+                sql = "select *from empresa;";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count == 0)
+                {
+                    //debe ingresar todos los datos de primer login
+                    modeloPrimerLogin.primerosDatos();
+                    modeloPrimerLogin.agregarModulos();
+                    modeloPrimerLogin.agregarVentanas();
+                    modeloPrimerLogin.agregarPrimerEmpleado();
+                    modeloPrimerLogin.agregarAccesosVentanas();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error primerLogin.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+          
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            //empleado = modeloEmpleado.getEmpleadoById(1);
-            //empleado.clave = utilidades.encriptar("123");
-            //modeloEmpleado.modificarEmpleado(empleado);
-            //para el primer login que se agreguen todas las ventanas al primer modulo que sera modulo empresa
-            
-            //modeloPrimerLogin.primerosDatos();
-            //modeloPrimerLogin.agregarModulos();
-            modeloPrimerLogin.agregarVentanas();
-            //modeloPrimerLogin.agregarVentanasPrimerModulo(); //para agregar todas las ventanas al primer modulo 
-            //modeloPrimerLogin.agregarPrimerEmpleado();
-            //modeloPrimerLogin.agregarAccesosVentanas();
-            
+            if (primerLogin() == false)
+            {
+                modeloPrimerLogin.agregarVentanas();
+            }
             GetAction();
         }
 

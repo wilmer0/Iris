@@ -113,8 +113,8 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo = new Button();
                     botonModulo.FlatStyle = FlatStyle.Flat;
                     botonModulo.BackgroundImageLayout = ImageLayout.Stretch;
-                    botonModulo.Width = 165;
-                    botonModulo.Height = 140;
+                    botonModulo.Width = 130;
+                    botonModulo.Height = 100;
                     botonModulo.BackgroundImage = Image.FromFile(RutaImagenesModulos + modulo.imagen);
                     botonModulo.Click += BotonModuloOnClick;
                     botonModulo.Tag = moduloActual;
@@ -159,8 +159,8 @@ namespace IrisContabilidad.modulo_sistema
                     //estableciendo el estilo del boton
                     botonVentana.FlatStyle = FlatStyle.Flat;
                     botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
-                    botonVentana.Width = 200;
-                    botonVentana.Height = 170;
+                    botonVentana.Width = 130;
+                    botonVentana.Height =90 ;
                     
                     
                     //dando estilo al texto del boton
