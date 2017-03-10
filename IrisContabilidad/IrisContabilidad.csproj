@@ -216,6 +216,7 @@
     <Compile Include="modelos\modeloTipoComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloTipoRetencionItbis.cs" />
+    <Compile Include="modelos\modeloTipoVentana.cs" />
     <Compile Include="modelos\modeloTraduccion.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modelos\modeloVendedor.cs" />
