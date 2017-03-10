@@ -343,5 +343,10 @@ namespace IrisContabilidad.modulo_sistema
             ventana.Owner = this;
             ventana.ShowDialog();
         }
+
+        private void flowLayoutModulos_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

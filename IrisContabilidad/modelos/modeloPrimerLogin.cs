@@ -13,8 +13,6 @@ namespace IrisContabilidad.modelos
 {
     public class modeloPrimerLogin
     {
-
-
         //objetos
         private utilidades utilidades=new utilidades();
         private ventana ventana;
@@ -303,11 +301,13 @@ namespace IrisContabilidad.modelos
 
                 #endregion
 
-                //
+                //tipos de ventana tamano de pantalla
                 #region
-                sql = "";
+                sql = "insert into tipo_ventana(codigo,nombre,tamano_ancho,tamano_alto,tamano_separacion,tamano_letra) values('1','Pequeña','100','100','20','8');";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
+                sql = "insert into tipo_ventana(codigo,nombre,tamano_ancho,tamano_alto,tamano_separacion,tamano_letra) values('2','Normal','130','100','25','9');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_ventana(codigo,nombre,tamano_ancho,tamano_alto,tamano_separacion,tamano_letra) values('3','Grande','200','150','40','10');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
@@ -383,7 +383,9 @@ namespace IrisContabilidad.modelos
                    8-modulo inicio rapido
                    9-modulo contabilidad
                 */
-                #region
+
+
+                #region modulos
                 List<modulo> listaModulo = new List<modulo>();
                 //nuevo modulo
                 modulo = new modulo();
@@ -396,7 +398,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 2;
-                modulo.nombre = "aFcturación";
+                modulo.nombre = "Facturación";
                 modulo.imagen = "facturacion1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_facturacion";
@@ -404,7 +406,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 3;
-                modulo.nombre = "Cuentas Por Cobrar";
+                modulo.nombre = "CXC";
                 modulo.imagen = "cxc.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_cobrar";
@@ -412,7 +414,7 @@ namespace IrisContabilidad.modelos
                 //nuevo modulo
                 modulo = new modulo();
                 modulo.id = 4;
-                modulo.nombre = "Cuentas Por Pagar";
+                modulo.nombre = "CXP";
                 modulo.imagen = "cxp.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar";

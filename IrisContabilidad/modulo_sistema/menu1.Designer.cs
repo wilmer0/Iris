@@ -105,6 +105,7 @@
             this.flowLayoutModulos.Name = "flowLayoutModulos";
             this.flowLayoutModulos.Size = new System.Drawing.Size(940, 148);
             this.flowLayoutModulos.TabIndex = 12;
+            this.flowLayoutModulos.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutModulos_Paint);
             // 
             // panel3
             // 
