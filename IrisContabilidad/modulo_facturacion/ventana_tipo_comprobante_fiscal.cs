@@ -45,6 +45,8 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     nombreText.Focus();
                     nombreText.SelectAll();
+
+                    tipoComprobanteIdText.Text = tipoComprobante.codigo.ToString();
                     nombreText.Text = tipoComprobante.nombre;
                     secuenciaText.Text = tipoComprobante.secuencia;
                     activoCheck.Checked = Convert.ToBoolean(tipoComprobante.activo);

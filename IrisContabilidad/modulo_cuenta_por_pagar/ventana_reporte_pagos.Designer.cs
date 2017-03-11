@@ -69,7 +69,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 571);
+            this.panel1.Location = new System.Drawing.Point(12, 536);
             this.panel1.Size = new System.Drawing.Size(1122, 54);
             // 
             // button2
@@ -114,7 +114,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1113, 329);
+            this.dataGridView1.Size = new System.Drawing.Size(1113, 286);
             this.dataGridView1.TabIndex = 108;
             // 
             // Column1
@@ -420,7 +420,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 637);
+            this.ClientSize = new System.Drawing.Size(1146, 602);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Name = "ventana_reporte_pagos";

@@ -311,22 +311,23 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-
-                //
+                //monedas
                 #region
-                sql = "";
+                sql = "insert into moneda(codigo,nombre,tasa_actual,activo) values('1','PESO DOMINICANO','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
+                sql = "insert into moneda(codigo,nombre,tasa_actual,activo) values('2','Dollar Americano','45.50','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into moneda(codigo,nombre,tasa_actual,activo) values('3','Euro','52.23','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //sistema configuracion
                 #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
+                sql = "insert into sistema(codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta) values('1','empresa.png','1','0','0','0','20301231','1','1','0','0','0','1')";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
+
+                
 
                 //
                 #region

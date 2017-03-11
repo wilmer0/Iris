@@ -11,12 +11,7 @@ namespace IrisContabilidad.clases
         //objetos
         public static singleton singletonInstance = null;
         public static empleado empleado;
-
-        
-        
-        
-        
-        
+        public static sistemaConfiguracion sistema;
         
         public static singleton obtenerDatos()
         {
@@ -34,15 +29,13 @@ namespace IrisContabilidad.clases
             return empleado;
         }
 
+        public static sistemaConfiguracion getSistemaconfiguracion()
+        {
+            if (sistema == null)
+                sistema=new sistemaConfiguracion();
 
 
-
-
-
-
-
-
-
-
+                return sistema;
+        }
     }
 }

@@ -47,7 +47,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 373);
+            this.panel1.Location = new System.Drawing.Point(12, 325);
             this.panel1.Size = new System.Drawing.Size(527, 54);
             // 
             // button2
@@ -186,7 +186,7 @@
             this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(140, 299);
+            this.activoCheck.Location = new System.Drawing.Point(140, 285);
             this.activoCheck.Name = "activoCheck";
             this.activoCheck.Size = new System.Drawing.Size(68, 21);
             this.activoCheck.TabIndex = 80;
@@ -199,7 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 439);
+            this.ClientSize = new System.Drawing.Size(551, 391);
             this.Controls.Add(this.activoCheck);
             this.Controls.Add(this.empleadoIdText);
             this.Controls.Add(this.button5);
