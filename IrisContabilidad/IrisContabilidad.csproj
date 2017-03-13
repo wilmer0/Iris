@@ -714,6 +714,12 @@
     <Compile Include="modulo_opciones\ventana_permisos_empleado.Designer.cs">
       <DependentUpon>ventana_permisos_empleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_opciones\ventana_tipo_ventana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_opciones\ventana_tipo_ventana.Designer.cs">
+      <DependentUpon>ventana_tipo_ventana.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_sistema\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -997,6 +1003,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_opciones\ventana_permisos_empleado.resx">
       <DependentUpon>ventana_permisos_empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_opciones\ventana_tipo_ventana.resx">
+      <DependentUpon>ventana_tipo_ventana.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_sistema\formBase.resx">
       <DependentUpon>formBase.cs</DependentUpon>

@@ -45,16 +45,19 @@
             // 
             this.panel1.Location = new System.Drawing.Point(12, 594);
             this.panel1.Size = new System.Drawing.Size(940, 54);
+            this.panel1.Visible = false;
             // 
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(799, 5);
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
@@ -65,6 +68,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(401, 5);
+            this.button3.Visible = false;
             // 
             // flowLayoutVentanas
             // 
@@ -100,10 +104,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutModulos.AutoScroll = true;
             this.flowLayoutModulos.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.flowLayoutModulos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.flowLayoutModulos.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutModulos.Location = new System.Drawing.Point(12, 440);
             this.flowLayoutModulos.Name = "flowLayoutModulos";
-            this.flowLayoutModulos.Size = new System.Drawing.Size(940, 148);
+            this.flowLayoutModulos.Size = new System.Drawing.Size(940, 208);
             this.flowLayoutModulos.TabIndex = 12;
             this.flowLayoutModulos.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutModulos_Paint);
             // 
@@ -173,6 +178,7 @@
             this.Name = "menu1";
             this.Text = "menu1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.menu1_FormClosing);
             this.Load += new System.EventHandler(this.menu1_Load_1);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.menu1_KeyDown);
             this.Controls.SetChildIndex(this.panel1, 0);

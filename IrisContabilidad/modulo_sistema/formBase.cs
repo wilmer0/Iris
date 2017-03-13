@@ -77,15 +77,18 @@ namespace IrisContabilidad.modulo_sistema
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                //salir
+                button2_Click(null,null);
             }
-            if (e.KeyCode == Keys.F8)
+            if (e.KeyCode == Keys.F1)
             {
                 //proceso
+                button1_Click(null,null);
             }
             if (e.KeyCode == Keys.F5)
             {
                 //limpiar
+                button3_Click(null, null);
             }
         }
 
@@ -97,6 +100,16 @@ namespace IrisContabilidad.modulo_sistema
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
         {
 
         }

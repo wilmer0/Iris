@@ -303,11 +303,11 @@ namespace IrisContabilidad.modelos
 
                 //tipos de ventana tamano de pantalla
                 #region
-                sql = "insert into tipo_ventana(codigo,nombre,tamano_ancho,tamano_alto,tamano_separacion,tamano_letra) values('1','Pequeña','100','100','20','8');";
+                sql = "insert into tipo_ventana(codigo,nombre,tamano_ancho,tamano_alto,tamano_separacion,tamano_letra) values('1','Pequeña','100','100','15','12');";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "insert into tipo_ventana(codigo,nombre,tamano_ancho,tamano_alto,tamano_separacion,tamano_letra) values('2','Normal','130','100','25','9');";
+                sql = "insert into tipo_ventana(codigo,nombre,tamano_ancho,tamano_alto,tamano_separacion,tamano_letra) values('2','Normal','130','100','25','17');";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "insert into tipo_ventana(codigo,nombre,tamano_ancho,tamano_alto,tamano_separacion,tamano_letra) values('3','Grande','200','150','40','10');";
+                sql = "insert into tipo_ventana(codigo,nombre,tamano_ancho,tamano_alto,tamano_separacion,tamano_letra) values('3','Grande','200','150','40','22');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
@@ -860,6 +860,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 6;
                 ventana.imagen = "permisos_empleado1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Tipo icono menú";
+                ventana.nombre_logico = "IrisContabilidad.modulo_opciones.ventana_tipo_ventana";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 6;
+                ventana.imagen = "tipo_ventana1.png";
                 listaVentana.Add(ventana);
                 #endregion
 
