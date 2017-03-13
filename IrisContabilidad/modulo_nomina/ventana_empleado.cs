@@ -121,7 +121,7 @@ namespace IrisContabilidad.modulo_nomina
                     situacionText.Text = "";
                     rutaImagenText.Text = "";
                     imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + "default1.png");
-                    activoCheck.Checked =false;
+                    activoCheck.Checked =true;
                 }
             }
             catch (Exception ex)

@@ -127,9 +127,9 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    almacen.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    almacen.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
                     almacen.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    almacen.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
+                    almacen.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2]);
                     almacen.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
                 }
                 return almacen;

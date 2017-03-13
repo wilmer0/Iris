@@ -92,7 +92,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     nombreText.Focus();
                     nombreText.SelectAll();
 
-
+                    suplidorIdText.Text = suplidor.codigo.ToString();
                     nombreText.Text = suplidor.nombre;
                     rncText.Text = suplidor.rnc;
                     telefono1Text.Text = suplidor.telefono1;

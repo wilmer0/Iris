@@ -42,6 +42,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             {
                 if (categoriaCliente != null)
                 {
+                    categoriaIdText.Text = categoriaCliente.codigo.ToString();
                     nombreText.Focus();
                     nombreText.SelectAll();
                     nombreText.Text = categoriaCliente.nombre;

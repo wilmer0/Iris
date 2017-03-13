@@ -39,15 +39,22 @@ namespace IrisContabilidad.modulo_inventario
             {
                 if (almacen != null)
                 {
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+
+                    almacenIdText.Text = almacen.codigo.ToString();
                     almacenIdText.Text = almacen.codigo.ToString();
                     nombreText.Text = almacen.nombre;
                     activoCheck.Checked = Convert.ToBoolean(almacen.activo);
                 }
                 else
                 {
+                    almacenIdText.Focus();
+                    almacenIdText.SelectAll();
+
                     almacenIdText.Text = "";
                     nombreText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

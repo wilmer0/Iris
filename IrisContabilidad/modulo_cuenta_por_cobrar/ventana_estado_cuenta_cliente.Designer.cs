@@ -52,7 +52,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 562);
+            this.panel1.Location = new System.Drawing.Point(12, 451);
             this.panel1.Size = new System.Drawing.Size(849, 54);
             // 
             // button2
@@ -148,7 +148,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(845, 425);
+            this.dataGridView1.Size = new System.Drawing.Size(845, 314);
             this.dataGridView1.TabIndex = 107;
             // 
             // Column1
@@ -239,7 +239,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 628);
+            this.ClientSize = new System.Drawing.Size(873, 517);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ventana_estado_cuenta_cliente";

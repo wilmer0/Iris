@@ -147,7 +147,9 @@
     <Compile Include="clases\subCategoriaProducto.cs" />
     <Compile Include="clases\sucursal.cs" />
     <Compile Include="clases\suplidor.cs" />
+    <Compile Include="clases\tamano_pantalla.cs" />
     <Compile Include="clases\tipoRetencionItbis.cs" />
+    <Compile Include="clases\tipoVentana.cs" />
     <Compile Include="clases\tipo_comprobante_fiscal.cs" />
     <Compile Include="clases\tipo_gasto.cs" />
     <Compile Include="clases\unidad.cs" />
@@ -166,6 +168,7 @@
     <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_encabezado_general.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_detalle.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
@@ -213,6 +216,7 @@
     <Compile Include="modelos\modeloTipoComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloTipoRetencionItbis.cs" />
+    <Compile Include="modelos\modeloTipoVentana.cs" />
     <Compile Include="modelos\modeloTraduccion.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modelos\modeloVendedor.cs" />
@@ -289,6 +293,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.Designer.cs">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_reporte_pagos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_reporte_pagos.Designer.cs">
+      <DependentUpon>ventana_reporte_pagos.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_venta_devolucion.cs">
       <SubType>Form</SubType>
@@ -704,6 +714,12 @@
     <Compile Include="modulo_opciones\ventana_permisos_empleado.Designer.cs">
       <DependentUpon>ventana_permisos_empleado.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_opciones\ventana_tipo_ventana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_opciones\ventana_tipo_ventana.Designer.cs">
+      <DependentUpon>ventana_tipo_ventana.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_sistema\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -777,6 +793,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_venta_cobros.resx">
       <DependentUpon>ventana_venta_cobros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_reporte_pagos.resx">
+      <DependentUpon>ventana_reporte_pagos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_venta_devolucion.resx">
       <DependentUpon>ventana_venta_devolucion.cs</DependentUpon>
@@ -985,6 +1004,9 @@
     <EmbeddedResource Include="modulo_opciones\ventana_permisos_empleado.resx">
       <DependentUpon>ventana_permisos_empleado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_opciones\ventana_tipo_ventana.resx">
+      <DependentUpon>ventana_tipo_ventana.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_sistema\formBase.resx">
       <DependentUpon>formBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -1026,6 +1048,7 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_encabezado_general.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_encabezado.datasource" />

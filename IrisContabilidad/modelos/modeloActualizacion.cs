@@ -28,6 +28,27 @@ namespace IrisContabilidad.modelos
                 //nuevo query
                 sql = "";
                 listaQuerys.Add(sql);
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
+                //nuevo query
+                sql = "";
+                listaQuerys.Add(sql);
                 #endregion
 
 

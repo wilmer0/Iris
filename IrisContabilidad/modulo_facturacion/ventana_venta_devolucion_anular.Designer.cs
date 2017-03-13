@@ -53,7 +53,7 @@
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(12, 552);
-            this.panel1.Size = new System.Drawing.Size(1092, 54);
+            this.panel1.Size = new System.Drawing.Size(982, 54);
             // 
             // button2
             // 
@@ -63,17 +63,17 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(951, 5);
+            this.button1.Location = new System.Drawing.Point(841, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(1116, 21);
+            this.panel2.Size = new System.Drawing.Size(1006, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(476, 5);
+            this.button3.Location = new System.Drawing.Point(421, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView1
@@ -97,7 +97,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1089, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(979, 429);
             this.dataGridView1.TabIndex = 31;
             // 
             // codigoColumn
@@ -152,7 +152,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1092, 84);
+            this.groupBox1.Size = new System.Drawing.Size(979, 84);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -248,7 +248,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 618);
+            this.ClientSize = new System.Drawing.Size(1006, 618);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Name = "ventana_venta_devolucion_anular";

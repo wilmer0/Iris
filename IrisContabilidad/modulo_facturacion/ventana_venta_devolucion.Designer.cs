@@ -62,7 +62,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 593);
+            this.panel1.Location = new System.Drawing.Point(12, 555);
             this.panel1.Size = new System.Drawing.Size(911, 54);
             // 
             // button2
@@ -151,7 +151,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(904, 337);
+            this.dataGridView1.Size = new System.Drawing.Size(904, 298);
             this.dataGridView1.TabIndex = 87;
             // 
             // secuenciacolumn
@@ -314,7 +314,7 @@
             // 
             // detalleText
             // 
-            this.detalleText.Location = new System.Drawing.Point(16, 509);
+            this.detalleText.Location = new System.Drawing.Point(19, 470);
             this.detalleText.Multiline = true;
             this.detalleText.Name = "detalleText";
             this.detalleText.Size = new System.Drawing.Size(904, 78);
@@ -339,7 +339,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(935, 659);
+            this.ClientSize = new System.Drawing.Size(935, 621);
             this.Controls.Add(this.egresoCajaAutomaticoCheck);
             this.Controls.Add(this.detalleText);
             this.Controls.Add(this.button19);
