@@ -37,6 +37,16 @@
             this.button5 = new System.Windows.Forms.Button();
             this.suplidorIdText = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diasVencimientoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.empleadoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoCompraColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroComprobanteFiscalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaLimiteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoPendienteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoAbonoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metoopagoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,16 +58,6 @@
             this.totalAbonadoText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.idPrductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diasVencimientoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.empleadoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoCompraColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroComprobanteFiscalColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaLimiteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoPendienteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MontoAbonoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.metoopagoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -66,7 +66,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 690);
+            this.panel1.Location = new System.Drawing.Point(12, 594);
             this.panel1.Size = new System.Drawing.Size(1089, 54);
             // 
             // button2
@@ -171,135 +171,9 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1087, 438);
+            this.dataGridView1.Size = new System.Drawing.Size(1087, 338);
             this.dataGridView1.TabIndex = 88;
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
-            // 
-            // button19
-            // 
-            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
-            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Location = new System.Drawing.Point(1034, 130);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(64, 58);
-            this.button19.TabIndex = 103;
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // button20
-            // 
-            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
-            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Location = new System.Drawing.Point(963, 130);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(65, 58);
-            this.button20.TabIndex = 102;
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
-            this.button20.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button20_KeyDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 166);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 20);
-            this.label1.TabIndex = 105;
-            this.label1.Text = "Metodo pago";
-            // 
-            // metodoPagoComboBox
-            // 
-            this.metodoPagoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.metodoPagoComboBox.FormattingEnabled = true;
-            this.metodoPagoComboBox.Items.AddRange(new object[] {
-            "Efectivo",
-            "Deposito",
-            "Cheque"});
-            this.metodoPagoComboBox.Location = new System.Drawing.Point(132, 167);
-            this.metodoPagoComboBox.Name = "metodoPagoComboBox";
-            this.metodoPagoComboBox.Size = new System.Drawing.Size(189, 21);
-            this.metodoPagoComboBox.TabIndex = 104;
-            this.metodoPagoComboBox.Tag = "";
-            this.metodoPagoComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.metodoPagoComboBox_KeyDown);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(500, 166);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 20);
-            this.label3.TabIndex = 106;
-            this.label3.Text = "Monto pago";
-            // 
-            // montoAbonoText
-            // 
-            this.montoAbonoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoAbonoText.Location = new System.Drawing.Point(620, 163);
-            this.montoAbonoText.Name = "montoAbonoText";
-            this.montoAbonoText.Size = new System.Drawing.Size(176, 26);
-            this.montoAbonoText.TabIndex = 107;
-            this.montoAbonoText.Text = "0.00";
-            this.montoAbonoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.montoAbonoText_KeyDown);
-            this.montoAbonoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            // 
-            // totalPendienteText
-            // 
-            this.totalPendienteText.BackColor = System.Drawing.Color.SkyBlue;
-            this.totalPendienteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalPendienteText.Location = new System.Drawing.Point(576, 646);
-            this.totalPendienteText.MaxLength = 200;
-            this.totalPendienteText.Name = "totalPendienteText";
-            this.totalPendienteText.ReadOnly = true;
-            this.totalPendienteText.Size = new System.Drawing.Size(193, 38);
-            this.totalPendienteText.TabIndex = 109;
-            this.totalPendienteText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(436, 653);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(134, 20);
-            this.label14.TabIndex = 108;
-            this.label14.Text = "Total pendiente";
-            // 
-            // totalAbonadoText
-            // 
-            this.totalAbonadoText.BackColor = System.Drawing.Color.SkyBlue;
-            this.totalAbonadoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalAbonadoText.Location = new System.Drawing.Point(905, 646);
-            this.totalAbonadoText.MaxLength = 200;
-            this.totalAbonadoText.Name = "totalAbonadoText";
-            this.totalAbonadoText.ReadOnly = true;
-            this.totalAbonadoText.Size = new System.Drawing.Size(193, 38);
-            this.totalAbonadoText.TabIndex = 111;
-            this.totalAbonadoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(775, 653);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(124, 20);
-            this.label4.TabIndex = 110;
-            this.label4.Text = "Total abonado";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(327, 167);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 20);
-            this.label5.TabIndex = 112;
-            this.label5.Text = "Cambiar (F2)";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // idPrductoColumn
             // 
@@ -377,11 +251,137 @@
             this.metoopagoColumn.Name = "metoopagoColumn";
             this.metoopagoColumn.ReadOnly = true;
             // 
+            // button19
+            // 
+            this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
+            this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button19.Location = new System.Drawing.Point(1034, 130);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(64, 58);
+            this.button19.TabIndex = 103;
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button20
+            // 
+            this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
+            this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button20.Location = new System.Drawing.Point(963, 130);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(65, 58);
+            this.button20.TabIndex = 102;
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
+            this.button20.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button20_KeyDown);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 166);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 20);
+            this.label1.TabIndex = 105;
+            this.label1.Text = "Metodo pago";
+            // 
+            // metodoPagoComboBox
+            // 
+            this.metodoPagoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.metodoPagoComboBox.FormattingEnabled = true;
+            this.metodoPagoComboBox.Items.AddRange(new object[] {
+            "Efectivo",
+            "Deposito",
+            "Cheque"});
+            this.metodoPagoComboBox.Location = new System.Drawing.Point(132, 167);
+            this.metodoPagoComboBox.Name = "metodoPagoComboBox";
+            this.metodoPagoComboBox.Size = new System.Drawing.Size(189, 21);
+            this.metodoPagoComboBox.TabIndex = 104;
+            this.metodoPagoComboBox.Tag = "";
+            this.metodoPagoComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.metodoPagoComboBox_KeyDown);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(500, 166);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 20);
+            this.label3.TabIndex = 106;
+            this.label3.Text = "Monto pago";
+            // 
+            // montoAbonoText
+            // 
+            this.montoAbonoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.montoAbonoText.Location = new System.Drawing.Point(620, 163);
+            this.montoAbonoText.Name = "montoAbonoText";
+            this.montoAbonoText.Size = new System.Drawing.Size(176, 26);
+            this.montoAbonoText.TabIndex = 107;
+            this.montoAbonoText.Text = "0.00";
+            this.montoAbonoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.montoAbonoText_KeyDown);
+            this.montoAbonoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // totalPendienteText
+            // 
+            this.totalPendienteText.BackColor = System.Drawing.Color.SkyBlue;
+            this.totalPendienteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalPendienteText.Location = new System.Drawing.Point(576, 538);
+            this.totalPendienteText.MaxLength = 200;
+            this.totalPendienteText.Name = "totalPendienteText";
+            this.totalPendienteText.ReadOnly = true;
+            this.totalPendienteText.Size = new System.Drawing.Size(193, 38);
+            this.totalPendienteText.TabIndex = 109;
+            this.totalPendienteText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(436, 545);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(134, 20);
+            this.label14.TabIndex = 108;
+            this.label14.Text = "Total pendiente";
+            // 
+            // totalAbonadoText
+            // 
+            this.totalAbonadoText.BackColor = System.Drawing.Color.SkyBlue;
+            this.totalAbonadoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAbonadoText.Location = new System.Drawing.Point(905, 538);
+            this.totalAbonadoText.MaxLength = 200;
+            this.totalAbonadoText.Name = "totalAbonadoText";
+            this.totalAbonadoText.ReadOnly = true;
+            this.totalAbonadoText.Size = new System.Drawing.Size(193, 38);
+            this.totalAbonadoText.TabIndex = 111;
+            this.totalAbonadoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(775, 545);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(124, 20);
+            this.label4.TabIndex = 110;
+            this.label4.Text = "Total abonado";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(327, 167);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 20);
+            this.label5.TabIndex = 112;
+            this.label5.Text = "Cambiar (F2)";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // ventana_compra_pagos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 756);
+            this.ClientSize = new System.Drawing.Size(1113, 660);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.totalAbonadoText);
             this.Controls.Add(this.label4);

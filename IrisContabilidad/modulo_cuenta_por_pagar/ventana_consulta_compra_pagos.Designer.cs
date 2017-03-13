@@ -59,7 +59,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 593);
+            this.panel1.Location = new System.Drawing.Point(12, 528);
             this.panel1.Size = new System.Drawing.Size(918, 54);
             // 
             // button2
@@ -98,13 +98,13 @@
             this.meotodopagodetalle,
             this.codigoCompraColumn,
             this.montoPagagoColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(16, 279);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 232);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(914, 308);
+            this.dataGridView1.Size = new System.Drawing.Size(914, 284);
             this.dataGridView1.TabIndex = 110;
             // 
             // idPagoCOlumn
@@ -210,7 +210,7 @@
             this.groupBox1.Controls.Add(this.suplidorIdText);
             this.groupBox1.Location = new System.Drawing.Point(16, 28);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(914, 246);
+            this.groupBox1.Size = new System.Drawing.Size(914, 198);
             this.groupBox1.TabIndex = 119;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -327,7 +327,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(942, 659);
+            this.ClientSize = new System.Drawing.Size(942, 594);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ventana_consulta_compra_pagos";

@@ -14,6 +14,7 @@ using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
+using Application = System.Windows.Forms.Application;
 using empleado = IrisContabilidad.clases.empleado;
 using MessageBox = System.Windows.Forms.MessageBox;
 
@@ -28,9 +29,11 @@ namespace IrisContabilidad.modulo_sistema
         private string RutaImagenesVentanas = "";
         private string RutaImagenesModulos = "";
         Dictionary<string, Form> Ins = new Dictionary<string, Form>(); // Se Gurdan aqui los formularios que hayan sido abiertos para no volver a llamarlos
-
-
-
+        private int anchoVentana = 0;
+        private int altoVentana = 0;
+        private int anchoModulo = 0;
+        private int altoModulo = 0;
+        private bool inicioSesion = false;
 
         //objetos
         private singleton singleton;
@@ -40,10 +43,15 @@ namespace IrisContabilidad.modulo_sistema
         private utilidades utilidades = new utilidades();
         private Button botonModulo;
         private Button botonVentana;
+        private tamano_pantalla tamanoPantalla;//obtiene las dimensiones de la pantalla
+        private sistemaConfiguracion sistemaConfiguracion;
+        private tipoVentana tipoVentana;
+
 
         //modelos
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
         modeloModulo modeloModulo=new modeloModulo();
+        modeloTipoVentana modeloTipoVentana=new modeloTipoVentana();
 
 
         //listas
@@ -58,6 +66,7 @@ namespace IrisContabilidad.modulo_sistema
         {
             InitializeComponent();
             this.empleado = singleton.getEmpleado();
+            this.sistemaConfiguracion = singleton.getSistemaconfiguracion();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "menú");
             this.Text = tituloLabel.Text;
             RutaImagenesVentanas = rutaProyectoActual + @"Resources\ventanas\";
@@ -65,7 +74,22 @@ namespace IrisContabilidad.modulo_sistema
             LoadVentana();
 
         }
+        public void LoadVentana()
+        {
+            try
+            {
+                tipoVentana=new tipoVentana();
+                tipoVentana = modeloTipoVentana.getTipoVentanaById(empleado.tipoVentana);
 
+                actualizarNotificacionesSistema();
+                //cargar todos los modulos que tiene habilitados el empleado con todas las ventanas que tiene habilitadas
+                loadModulos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error LoadVentana.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
         private void menu1_Load(object sender, EventArgs e)
         {
 
@@ -98,6 +122,10 @@ namespace IrisContabilidad.modulo_sistema
                 listaTemp = modeloEmpleado.GetListaModulosByEmpleado(empleado);
                 List<string> listaTempVentanas = new List<string>();
 
+                //estableciendo tamano altura del flow layaout para modulos
+                flowLayoutModulos.Height = tipoVentana.tamanoModuloAlto + 20;
+                flowLayoutModulos.Top += 20;
+
                 //limpiar el layout de modulos para empezar agregar
                 if (flowLayoutModulos.Controls.Count > 0)
                 {
@@ -113,8 +141,8 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo = new Button();
                     botonModulo.FlatStyle = FlatStyle.Flat;
                     botonModulo.BackgroundImageLayout = ImageLayout.Stretch;
-                    botonModulo.Width = 165;
-                    botonModulo.Height = 140;
+                    botonModulo.Width = tipoVentana.tamanoModuloAncho;
+                    botonModulo.Height = tipoVentana.tamanoModuloAlto;
                     botonModulo.BackgroundImage = Image.FromFile(RutaImagenesModulos + modulo.imagen);
                     botonModulo.Click += BotonModuloOnClick;
                     botonModulo.Tag = moduloActual;
@@ -122,9 +150,9 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo.TextAlign = ContentAlignment.BottomCenter;
                     botonModulo.Text = modulo.nombre;
                     botonModulo.ForeColor = Color.White;
-                    botonModulo.Font = new Font(botonModulo.Font.FontFamily.Name, 19);
+                    botonModulo.Font = new Font(botonModulo.Font.FontFamily.Name, tipoVentana.tamanoModuloLetra);
                     flowLayoutModulos.Controls.Add(botonModulo);
-
+                    
                 });
             }
             catch (Exception ex)
@@ -159,8 +187,8 @@ namespace IrisContabilidad.modulo_sistema
                     //estableciendo el estilo del boton
                     botonVentana.FlatStyle = FlatStyle.Flat;
                     botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
-                    botonVentana.Width = 200;
-                    botonVentana.Height = 170;
+                    botonVentana.Width = tipoVentana.tamanoVentanaAncho;
+                    botonVentana.Height = tipoVentana.tamanoVentanaAlto;
                     
                     
                     //dando estilo al texto del boton
@@ -170,7 +198,7 @@ namespace IrisContabilidad.modulo_sistema
                     botonVentana.TextAlign = ContentAlignment.BottomCenter;
                     botonVentana.Text = ventana.nombre_ventana;
                     botonVentana.ForeColor = Color.White;
-                    botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, 20);
+                    botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, tipoVentana.tamanoModuloLetra);
                     botonVentana.MouseHover+= BotonVentanaOnMouseHover;
                     botonVentana.MouseLeave+= BotonVentanaOnMouseLeave;
                     
@@ -253,20 +281,7 @@ namespace IrisContabilidad.modulo_sistema
             }
         }
 
-        public void LoadVentana()
-        {
-            try
-            {
-                actualizarNotificacionesSistema();
-                //cargar todos los modulos que tiene habilitados el empleado con todas las ventanas que tiene habilitadas
-                loadModulos();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error LoadVentana.: " + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-        }
+       
         private void button4_Click(object sender, EventArgs e)
         {
             Salir();
@@ -278,6 +293,7 @@ namespace IrisContabilidad.modulo_sistema
         }
         public  void Salir()
         {
+            inicioSesion = true;
             Form1 ventana = new Form1();
             ventana.Show();
             this.Close();
@@ -342,6 +358,18 @@ namespace IrisContabilidad.modulo_sistema
             ventana_informacion ventana=new ventana_informacion();
             ventana.Owner = this;
             ventana.ShowDialog();
+        }
+
+        private void flowLayoutModulos_Paint(object sender, PaintEventArgs e)
+        {
+        }
+
+        private void menu1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (inicioSesion == false)
+            {
+                e.Cancel = true;    
+            }
         }
     }
 }

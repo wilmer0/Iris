@@ -48,10 +48,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (vendedor != null)
                 {
-                    vendedorIdText.Text=vendedor.codigo.ToString();
 
                     empleadoIdText.Focus();
                     empleadoIdText.SelectAll();
+
+                    vendedorIdText.Text=vendedor.codigo.ToString();
                     empleado = modeloEmpleado.getEmpleadoById(vendedor.codigo_empelado);
                     loadEmpleado();
                     porcientoText.Text = vendedor.porciento_ganancia.ToString("N");

@@ -44,13 +44,14 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             {
                 if (tipoGasto != null)
                 {
+                    tipoGastoIdText.Text = tipoGasto.id.ToString();
                     nombreText.Text = tipoGasto.nombre;
                     activoCheck.Checked = Convert.ToBoolean(tipoGasto.activo);
                 }
                 else
                 {
                     nombreText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

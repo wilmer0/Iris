@@ -54,7 +54,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     nombreText.Focus();
                     nombreText.SelectAll();
 
-
+                    clienteIdText.Text = cliente.codigo.ToString();
                     nombreText.Text = cliente.nombre;
                     cedulaText.Text = cliente.cedula;
                     rncText.Text = cliente.rnc;

@@ -50,6 +50,7 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (cajero != null)
                 {
+                    cajeroIdText.Text = cajero.codigo.ToString();
                     caja = modeloCaja.getCajaById(cajero.codigo_caja);
                     loadCaja();
                     empleado = modeloEmpelado.getEmpleadoById(cajero.codigo_empleado);
@@ -63,7 +64,7 @@ namespace IrisContabilidad.modulo_facturacion
                     loadCaja();
                     empleado = null;
                     loadEmpleado();
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

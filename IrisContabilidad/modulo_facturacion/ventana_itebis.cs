@@ -47,7 +47,6 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     nombreText.Focus();
                     nombreText.SelectAll();
-                    
 
                     itbisIdText.Text = itebis.codigo.ToString();
                     nombreText.Text = itebis.nombre;

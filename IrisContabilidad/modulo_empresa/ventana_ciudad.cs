@@ -44,13 +44,14 @@ namespace IrisContabilidad.modulo_empresa
             {
                 if (ciudad != null)
                 {
+                    ciudadIdText.Text = ciudad.codigo.ToString();
                     nombreText.Text = ciudad.nombre;
                     activoCheck.Checked = Convert.ToBoolean(ciudad.activo);
                 }
                 else
                 {
                     nombreText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)
