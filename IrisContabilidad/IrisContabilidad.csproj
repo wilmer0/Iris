@@ -1038,6 +1038,7 @@
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_cobro_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_hoja_completa.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_venta_hoja_rollo.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>

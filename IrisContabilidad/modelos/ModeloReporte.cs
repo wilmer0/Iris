@@ -116,7 +116,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 //datos generales
-                String reporte = "IrisContabilidad.reportes.reporte_venta_hoja_completa.rdlc";
+                String reporte = "IrisContabilidad.reportes.reporte_venta_hoja_rollo.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
                 venta venta = new modeloVenta().getVentaById(idVenta);
 
@@ -124,7 +124,6 @@ namespace IrisContabilidad.modelos
                 {
                     return false;
                 }
-
 
                 //llenar encabezado
                 reporte_venta_encabezado reporteVentaEncabezado = new reporte_venta_encabezado(venta);

@@ -17,7 +17,6 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\G
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GMap.NET.WindowsPresentation.xml
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GoogleApi.xml
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\Newtonsoft.Json.xml
-C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_busqueda_tipo_gastos.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_cuentas_contables.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_gastos.resources
@@ -113,3 +112,4 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\R
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\RdlCompile.compiled
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.exe
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
