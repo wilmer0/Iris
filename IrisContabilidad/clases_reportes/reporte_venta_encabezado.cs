@@ -31,6 +31,7 @@ namespace IrisContabilidad.clases_reportes
         public int codigo_cliente { get; set; }
         public string empleado { get; set; }
         public string tipo_venta { get; set; }
+        public string detalles { get; set; }
         public List<reporte_venta_detalle> listaDetalles { get; set; }
         utilidades utilidades=new utilidades();
         public reporte_venta_encabezado()
@@ -69,7 +70,7 @@ namespace IrisContabilidad.clases_reportes
             this.tipo_venta = venta.tipo_venta;
             this.tipo_comprobante_fiscal = tipoComprobante.nombre;
             this.numero_comprobante_fiscal = venta.ncf;
-
+            this.detalles = venta.detalle;
 
             listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo);
             listaVentaDetalle.ForEach(x =>
