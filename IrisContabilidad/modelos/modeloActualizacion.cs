@@ -23,7 +23,7 @@ namespace IrisContabilidad.modelos
 
                 #region querys version1
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cajero` ADD COLUMN `tipo_impresion_venta` INTEGER UNSIGNED NOT NULL DEFAULT 1 AFTER `activo`;";
                 listaQuerys.Add(sql);
                 //nuevo query
                 sql = "";

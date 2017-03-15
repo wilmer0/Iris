@@ -80,7 +80,7 @@ namespace IrisContabilidad.modulo_sistema
                 //salir
                 button2_Click(null,null);
             }
-            if (e.KeyCode == Keys.F1)
+            if (e.KeyCode == Keys.F2)
             {
                 //proceso
                 button1_Click(null,null);

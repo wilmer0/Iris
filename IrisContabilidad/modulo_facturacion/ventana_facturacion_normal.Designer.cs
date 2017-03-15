@@ -156,11 +156,11 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(807, 600);
+            this.label14.Location = new System.Drawing.Point(792, 600);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(49, 20);
+            this.label14.Size = new System.Drawing.Size(64, 20);
             this.label14.TabIndex = 108;
-            this.label14.Text = "Total";
+            this.label14.Text = "TOTAL";
             // 
             // label13
             // 
@@ -168,9 +168,9 @@
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(568, 600);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(54, 20);
+            this.label13.Size = new System.Drawing.Size(55, 20);
             this.label13.TabIndex = 106;
-            this.label13.Text = "Itebis";
+            this.label13.Text = "ITBIS";
             // 
             // groupBox2
             // 
@@ -741,6 +741,7 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1001, 195);
             this.dataGridView1.TabIndex = 104;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // idPrductoColumn
             // 

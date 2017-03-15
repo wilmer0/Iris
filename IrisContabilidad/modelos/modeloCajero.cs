@@ -40,7 +40,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
 
-                sql = "insert into cajero(codigo,cod_empleado,cod_caja,activo) values('" + cajero.codigo + "','" + cajero.codigo_empleado + "','" + cajero.codigo_caja + "','" + activo.ToString() + "')";
+                sql = "insert into cajero(codigo,cod_empleado,cod_caja,activo,tipo_impresion_venta) values('" + cajero.codigo + "','" + cajero.codigo_empleado + "','" + cajero.codigo_caja + "','" + activo.ToString() + "','"+cajero.tipoImpresionVenta+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -74,7 +74,7 @@ namespace IrisContabilidad.modelos
                 {
                     activo = 1;
                 }
-                sql = "update cajero set cod_empleado='" + cajero.codigo_empleado + "',cod_caja='" + cajero.codigo_caja + "',activo='" + activo.ToString() + "' where codigo='" + cajero.codigo + "'";
+                sql = "update cajero set cod_empleado='" + cajero.codigo_empleado + "',cod_caja='" + cajero.codigo_caja + "',activo='" + activo.ToString() + "',tipo_impresion_venta='"+cajero.tipoImpresionVenta+"' where codigo='" + cajero.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
@@ -121,14 +121,15 @@ namespace IrisContabilidad.modelos
             try
             {
                 cajero cajero = new cajero();
-                string sql = "select codigo,cod_empleado,cod_caja,activo from cajero where codigo='" + id + "'";
+                string sql = "select codigo,cod_empleado,cod_caja,activo,tipo_impresion_venta from cajero where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     cajero.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
                     cajero.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
-                    cajero.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
-                    cajero.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    cajero.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][2]);
+                    cajero.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
+                    cajero.tipoImpresionVenta = Convert.ToInt16(ds.Tables[0].Rows[0][4]);
                 }
                 return cajero;
             }
@@ -144,7 +145,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 cajero cajero = new cajero();
-                string sql = "select codigo,cod_empleado,cod_caja,activo from cajero where cod_empleado='" + id + "'";
+                string sql = "select codigo,cod_empleado,cod_caja,activo,tipo_impresion_venta from cajero where cod_empleado='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -152,6 +153,7 @@ namespace IrisContabilidad.modelos
                     cajero.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
                     cajero.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
                     cajero.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    cajero.tipoImpresionVenta = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
                 }
                 return cajero;
             }
@@ -169,7 +171,7 @@ namespace IrisContabilidad.modelos
             {
 
                 List<cajero> lista = new List<cajero>();
-                string sql = "select codigo,cod_empleado,cod_caja,activo from cajero";
+                string sql = "select codigo,cod_empleado,cod_caja,activo,tipo_impresion_venta from cajero";
                 if (mantenimiento == false)
                 {
                     sql += " where activo='1'";
@@ -183,7 +185,8 @@ namespace IrisContabilidad.modelos
                         cajero.codigo = Convert.ToInt16(row[0].ToString());
                         cajero.codigo_empleado = Convert.ToInt16(row[1].ToString());
                         cajero.codigo_caja = Convert.ToInt16(row[2].ToString());
-                        cajero.activo = Convert.ToBoolean(row[3].ToString());
+                        cajero.activo = Convert.ToBoolean(row[3]);
+                        cajero.tipoImpresionVenta = Convert.ToInt16(row[4]);
                         lista.Add(cajero);
                     }
                 }
