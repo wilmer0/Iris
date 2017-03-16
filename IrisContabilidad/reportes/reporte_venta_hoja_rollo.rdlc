@@ -845,7 +845,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=First(Fields!numero_venta.Value, "reporte_encabezado")</Value>
+                  <Value>=First(Fields!tipo_venta.Value, "reporte_encabezado") &amp; "-" &amp; First(Fields!numero_venta.Value, "reporte_encabezado")</Value>
                   <Style>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -1146,7 +1146,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value EvaluationMode="Constant" />
+                  <Value>=First(Fields!detalles.Value, "reporte_encabezado")</Value>
                   <Style>
                     <FontSize>8pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -1280,6 +1280,10 @@
         <Field Name="codigo_venta">
           <DataField>codigo_venta</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="detalles">
+          <DataField>detalles</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="direccion">
           <DataField>direccion</DataField>
