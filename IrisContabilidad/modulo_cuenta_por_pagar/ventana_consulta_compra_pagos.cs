@@ -28,7 +28,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private suplidor suplidorFiltro ;
         private compra compra;
         private metodo_pago metodoPago;
-        private compra_vs_pagos compraPago;
+        private compra_vs_pagos pago;
         
 
         //modelos
@@ -281,8 +281,8 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     compra = new compra();
                     compra = modeloCompra.getCompraById(x.codigo_compra);
                     
-                    compraPago = new compra_vs_pagos();
-                    compraPago = modeloCompra.getCompraPagoById(x.codigo_pago);
+                    pago = new compra_vs_pagos();
+                    pago = modeloCompra.getCompraPagoById(x.codigo_pago);
                     
                     empleado = new empleado();
                     empleado = modeloEmpleado.getEmpleadoByCompraPago(x.codigo);
@@ -292,7 +292,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
                     decimal montoPago = x.monto_pagado + x.monto_descontado;
 
-                    dataGridView1.Rows.Add(x.codigo, utilidades.getFechaddMMyyyy(compraPago.fecha), empleado.nombre, metodoPago.metodo, compra.numero_factura, montoPago.ToString("N"));
+                    dataGridView1.Rows.Add(x.codigo, utilidades.getFechaddMMyyyy(pago.fecha), empleado.nombre, metodoPago.metodo, compra.numero_factura, montoPago.ToString("N"));
                 });
             }
             catch (Exception ex)

@@ -42,14 +42,18 @@
             this.empleadoIdText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonHojaGrande = new System.Windows.Forms.RadioButton();
+            this.radioButtonHojaRollo = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 387);
+            this.panel1.Location = new System.Drawing.Point(12, 401);
             this.panel1.Size = new System.Drawing.Size(530, 54);
             // 
             // button2
@@ -80,7 +84,7 @@
             this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(167, 340);
+            this.activoCheck.Location = new System.Drawing.Point(114, 352);
             this.activoCheck.Name = "activoCheck";
             this.activoCheck.Size = new System.Drawing.Size(68, 21);
             this.activoCheck.TabIndex = 76;
@@ -133,7 +137,7 @@
             // 
             this.cajaIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.cajaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cajaIdText.Location = new System.Drawing.Point(167, 121);
+            this.cajaIdText.Location = new System.Drawing.Point(114, 119);
             this.cajaIdText.Name = "cajaIdText";
             this.cajaIdText.Size = new System.Drawing.Size(155, 26);
             this.cajaIdText.TabIndex = 78;
@@ -142,7 +146,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(116, 122);
+            this.label1.Location = new System.Drawing.Point(63, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 20);
             this.label1.TabIndex = 77;
@@ -153,7 +157,7 @@
             this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(328, 116);
+            this.button5.Location = new System.Drawing.Point(275, 114);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 79;
@@ -164,29 +168,29 @@
             // 
             this.cajaText.BackColor = System.Drawing.Color.White;
             this.cajaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cajaText.Location = new System.Drawing.Point(167, 159);
+            this.cajaText.Location = new System.Drawing.Point(114, 157);
             this.cajaText.MaxLength = 100;
             this.cajaText.Name = "cajaText";
             this.cajaText.ReadOnly = true;
-            this.cajaText.Size = new System.Drawing.Size(236, 26);
+            this.cajaText.Size = new System.Drawing.Size(286, 26);
             this.cajaText.TabIndex = 80;
             // 
             // empleadoText
             // 
             this.empleadoText.BackColor = System.Drawing.Color.White;
             this.empleadoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empleadoText.Location = new System.Drawing.Point(167, 246);
+            this.empleadoText.Location = new System.Drawing.Point(114, 244);
             this.empleadoText.MaxLength = 100;
             this.empleadoText.Name = "empleadoText";
             this.empleadoText.ReadOnly = true;
-            this.empleadoText.Size = new System.Drawing.Size(236, 26);
+            this.empleadoText.Size = new System.Drawing.Size(286, 26);
             this.empleadoText.TabIndex = 84;
             // 
             // empleadoIdText
             // 
             this.empleadoIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.empleadoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.empleadoIdText.Location = new System.Drawing.Point(167, 208);
+            this.empleadoIdText.Location = new System.Drawing.Point(114, 206);
             this.empleadoIdText.Name = "empleadoIdText";
             this.empleadoIdText.Size = new System.Drawing.Size(155, 26);
             this.empleadoIdText.TabIndex = 82;
@@ -195,7 +199,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(72, 210);
+            this.label3.Location = new System.Drawing.Point(19, 208);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 81;
@@ -206,18 +210,54 @@
             this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(328, 203);
+            this.button6.Location = new System.Drawing.Point(275, 201);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 83;
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButtonHojaRollo);
+            this.groupBox2.Controls.Add(this.radioButtonHojaGrande);
+            this.groupBox2.Location = new System.Drawing.Point(114, 276);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(358, 70);
+            this.groupBox2.TabIndex = 85;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Tipo de impresion venta";
+            // 
+            // radioButtonHojaGrande
+            // 
+            this.radioButtonHojaGrande.AutoSize = true;
+            this.radioButtonHojaGrande.Checked = true;
+            this.radioButtonHojaGrande.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonHojaGrande.Location = new System.Drawing.Point(15, 31);
+            this.radioButtonHojaGrande.Name = "radioButtonHojaGrande";
+            this.radioButtonHojaGrande.Size = new System.Drawing.Size(146, 19);
+            this.radioButtonHojaGrande.TabIndex = 0;
+            this.radioButtonHojaGrande.TabStop = true;
+            this.radioButtonHojaGrande.Text = "Hoja Carta(8.5x11)";
+            this.radioButtonHojaGrande.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonHojaRollo
+            // 
+            this.radioButtonHojaRollo.AutoSize = true;
+            this.radioButtonHojaRollo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonHojaRollo.Location = new System.Drawing.Point(194, 31);
+            this.radioButtonHojaRollo.Name = "radioButtonHojaRollo";
+            this.radioButtonHojaRollo.Size = new System.Drawing.Size(116, 19);
+            this.radioButtonHojaRollo.TabIndex = 1;
+            this.radioButtonHojaRollo.Text = "Hoja Rollo(3\")";
+            this.radioButtonHojaRollo.UseVisualStyleBackColor = true;
+            // 
             // ventana_cajero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 453);
+            this.ClientSize = new System.Drawing.Size(554, 467);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.empleadoText);
             this.Controls.Add(this.empleadoIdText);
             this.Controls.Add(this.label3);
@@ -243,11 +283,14 @@
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.empleadoIdText, 0);
             this.Controls.SetChildIndex(this.empleadoText, 0);
+            this.Controls.SetChildIndex(this.groupBox2, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,5 +311,8 @@
         private System.Windows.Forms.TextBox empleadoIdText;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.RadioButton radioButtonHojaGrande;
+        private System.Windows.Forms.RadioButton radioButtonHojaRollo;
     }
 }

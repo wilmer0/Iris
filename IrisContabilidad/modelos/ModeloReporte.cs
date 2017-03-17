@@ -14,9 +14,10 @@ namespace IrisContabilidad.modelos
     public class ModeloReporte
     {
 
-
+        private empleado empleado;
         utilidades utilidades=new utilidades();
-        
+        singleton singleton=new singleton();
+
         //compra
         public bool imprimirCompra(int idcompra)
         {
@@ -116,9 +117,24 @@ namespace IrisContabilidad.modelos
             try
             {
                 //datos generales
-                String reporte = "IrisContabilidad.reportes.reporte_venta_hoja_rollo.rdlc";
+                String reporte = "";
+
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
                 venta venta = new modeloVenta().getVentaById(idVenta);
+
+                cajero cajero=new cajero();
+                empleado = singleton.getEmpleado();
+                cajero = new modeloCajero().getCajeroByIdEmpleado(empleado.codigo);
+                if (cajero.tipoImpresionVenta == 1)
+                {
+                    //hoja normal
+                    reporte = "IrisContabilidad.reportes.reporte_venta_hoja_completa.rdlc";
+                }
+                else if (cajero.tipoImpresionVenta == 2)
+                {
+                    //hoja rollo de 3 "
+                    reporte = "IrisContabilidad.reportes.reporte_venta_hoja_rollo.rdlc";
+                }
 
                 if (venta == null)
                 {

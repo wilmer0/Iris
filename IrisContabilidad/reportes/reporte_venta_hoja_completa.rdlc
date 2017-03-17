@@ -1480,7 +1480,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value />
+                  <Value>=First(Fields!detalles.Value, "reporte_encabezado")</Value>
                   <Style>
                     <FontSize>9pt</FontSize>
                   </Style>
@@ -1646,6 +1646,10 @@
         <Field Name="codigo_venta">
           <DataField>codigo_venta</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="detalles">
+          <DataField>detalles</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="direccion">
           <DataField>direccion</DataField>
