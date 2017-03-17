@@ -12,10 +12,10 @@ namespace IrisContabilidad.clases
         public string serie { get; set; }
         public int codigo_caja { get; set; }
         public int codigo_tipo { get; set; }
-        public int numero_desde { get; set; }
-        public int numero_hasta { get; set; }
-        public int contador { get; set; }
+        public double numero_desde { get; set; }
+        public double numero_hasta { get; set; }
+        public double contador { get; set; }
         public DateTime fecha { get; set; }
-        public int avisar { get; set; }
+        public double avisar { get; set; }
     }
 }
