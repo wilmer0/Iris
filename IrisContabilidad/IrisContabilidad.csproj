@@ -282,6 +282,12 @@
     <Compile Include="modulo_cuenta_por_cobrar\ventana_estado_cuenta_cliente.Designer.cs">
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_nota_credito_cxc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_cobrar\ventana_nota_credito_cxc.Designer.cs">
+      <DependentUpon>ventana_nota_credito_cxc.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_reporte_cobros.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -788,6 +794,9 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_estado_cuenta_cliente.resx">
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_nota_credito_cxc.resx">
+      <DependentUpon>ventana_nota_credito_cxc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_reporte_cobros.resx">
       <DependentUpon>ventana_reporte_cobros.cs</DependentUpon>
     </EmbeddedResource>
@@ -1038,6 +1047,7 @@
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_cobro_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_hoja_completa.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_venta_hoja_rollo.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>

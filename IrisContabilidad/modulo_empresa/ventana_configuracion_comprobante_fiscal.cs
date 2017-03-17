@@ -176,9 +176,9 @@ namespace IrisContabilidad.modulo_empresa
                 comprobanteFiscal.codigo_caja = caja.codigo;
                 comprobanteFiscal.codigo_tipo = tipoComprobanteFiscal.codigo;
                 comprobanteFiscal.serie = empresa.serie_comprobante;
-                comprobanteFiscal.numero_desde = Convert.ToInt16(numeroInicialText.Text);
-                comprobanteFiscal.numero_hasta = Convert.ToInt16(numeroFinalText.Text);
-                comprobanteFiscal.avisar = Convert.ToInt16(ultimoUsadoText.Text);
+                comprobanteFiscal.numero_desde = Convert.ToDouble(numeroInicialText.Text);
+                comprobanteFiscal.numero_hasta = Convert.ToDouble(numeroFinalText.Text);
+                comprobanteFiscal.avisar = Convert.ToDouble(ultimoUsadoText.Text);
 
                 if (crear == true)
                 {

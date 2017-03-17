@@ -12,5 +12,6 @@ namespace IrisContabilidad.clases
         public int codigo_empleado { get; set; }
         public int codigo_caja { get; set; }
         public bool activo { get; set; }
+        public int tipoImpresionVenta { get; set; }
     }
 }

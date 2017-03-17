@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_venta_cobro));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.clienteText = new System.Windows.Forms.TextBox();
@@ -66,8 +66,8 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 563);
-            this.panel1.Size = new System.Drawing.Size(1089, 54);
+            this.panel1.Location = new System.Drawing.Point(12, 526);
+            this.panel1.Size = new System.Drawing.Size(957, 54);
             // 
             // button2
             // 
@@ -77,17 +77,17 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(948, 5);
+            this.button1.Location = new System.Drawing.Point(816, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(1113, 21);
+            this.panel2.Size = new System.Drawing.Size(981, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(474, 5);
+            this.button3.Location = new System.Drawing.Point(408, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
@@ -98,7 +98,7 @@
             this.groupBox1.Controls.Add(this.clienteIdText);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1086, 97);
+            this.groupBox1.Size = new System.Drawing.Size(956, 97);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -171,7 +171,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1087, 316);
+            this.dataGridView1.Size = new System.Drawing.Size(956, 274);
             this.dataGridView1.TabIndex = 88;
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
@@ -224,21 +224,21 @@
             // 
             // MontoPendienteColumn
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = "0";
-            this.MontoPendienteColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.MontoPendienteColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.MontoPendienteColumn.HeaderText = "Pendiente";
             this.MontoPendienteColumn.Name = "MontoPendienteColumn";
             this.MontoPendienteColumn.ReadOnly = true;
             // 
             // MontoAbonoColumn
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = "0";
-            this.MontoAbonoColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = "0";
+            this.MontoAbonoColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.MontoAbonoColumn.HeaderText = "Abonar";
             this.MontoAbonoColumn.Name = "MontoAbonoColumn";
             this.MontoAbonoColumn.ReadOnly = true;
@@ -255,7 +255,7 @@
             this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
             this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Location = new System.Drawing.Point(1034, 130);
+            this.button19.Location = new System.Drawing.Point(905, 130);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(64, 58);
             this.button19.TabIndex = 103;
@@ -267,7 +267,7 @@
             this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
             this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Location = new System.Drawing.Point(963, 130);
+            this.button20.Location = new System.Drawing.Point(834, 130);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(65, 58);
             this.button20.TabIndex = 102;
@@ -325,7 +325,7 @@
             // 
             this.totalPendienteText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalPendienteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalPendienteText.Location = new System.Drawing.Point(576, 516);
+            this.totalPendienteText.Location = new System.Drawing.Point(444, 474);
             this.totalPendienteText.MaxLength = 200;
             this.totalPendienteText.Name = "totalPendienteText";
             this.totalPendienteText.ReadOnly = true;
@@ -337,7 +337,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(436, 523);
+            this.label14.Location = new System.Drawing.Point(304, 481);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(134, 20);
             this.label14.TabIndex = 108;
@@ -347,7 +347,7 @@
             // 
             this.totalAbonadoText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalAbonadoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalAbonadoText.Location = new System.Drawing.Point(905, 516);
+            this.totalAbonadoText.Location = new System.Drawing.Point(773, 474);
             this.totalAbonadoText.MaxLength = 200;
             this.totalAbonadoText.Name = "totalAbonadoText";
             this.totalAbonadoText.ReadOnly = true;
@@ -359,7 +359,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(775, 523);
+            this.label4.Location = new System.Drawing.Point(643, 481);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 20);
             this.label4.TabIndex = 110;
@@ -380,7 +380,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1113, 629);
+            this.ClientSize = new System.Drawing.Size(981, 592);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.totalAbonadoText);
             this.Controls.Add(this.label4);
