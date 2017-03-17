@@ -328,6 +328,49 @@ namespace IrisContabilidad.modelos
                 #endregion
 
                 
+                //nota credito y debito conceptos
+                #region
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('1','devolución ventas','PARA HACER DEVOLUCIONES DE LAS VENTAS REALIZADAS CON NUESTROS CLIENTES','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('2','mercancia dañada','la mercancia esta dañada','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('3','mercancia llego en mal estado','cuando salio en buen estado pero luego el cliente la recibe en mal estado','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('4','mercancia no deseada','cuando el cliente la escojio pero despues se da cuenta que no era la que quiera','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //tipo de impresiones de venta
+                #region
+                sql = "insert into tipo_impresion_venta(codigo,descripcion,activo) values('1','impresion hoja carta 8.5x11','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into tipo_impresion_venta(codigo,descripcion,activo) values('2','impresion hoja rollo de 3 pulgadas','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
 
                 //
                 #region
@@ -360,6 +403,264 @@ namespace IrisContabilidad.modelos
                 sql = "";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //
+                #region
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+
 
             }
             catch (Exception ex)

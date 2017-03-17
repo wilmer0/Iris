@@ -495,7 +495,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                 empleado empleado = new empleado();
                 string sql = "select e.codigo,e.nombre,e.login,e.clave,e.sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento," +
                              "e.cod_cargo,e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion," +
-                             "e.pasaporte,e.foto,e.tipo_venta from empleado e join cajero c on e.codigo=c.cod_empleado where c.codigo='"+id+"'";
+                             "e.pasaporte,e.foto,e.tipo_ventana from empleado e join cajero c on e.codigo=c.cod_empleado where c.codigo='"+id+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -541,7 +541,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                 empleado empleado = new empleado();
                 string sql = "select e.codigo,e.nombre,e.login,e.clave,sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento,e.cod_cargo," +
                              "e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion," +
-                             "e.pasaporte,e.foto,e.tipo_venta from empleado e join compra_vs_pagos cp on e.codigo=cp.cod_empleado where cp.codigo='"+id+"'";
+                             "e.pasaporte,e.foto,e.tipo_ventana from empleado e join compra_vs_pagos cp on e.codigo=cp.cod_empleado where cp.codigo='"+id+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

@@ -55,7 +55,16 @@ namespace IrisContabilidad.modulo_facturacion
                     loadCaja();
                     empleado = modeloEmpelado.getEmpleadoById(cajero.codigo_empleado);
                     loadEmpleado();
+                    if (cajero.tipoImpresionVenta == 1)
+                    {
+                        radioButtonHojaGrande.Checked = true;
+                    }
+                    else if (cajero.tipoImpresionVenta == 2)
+                    {
+                        radioButtonHojaRollo.Checked = true;
+                    }
                     activoCheck.Checked = Convert.ToBoolean(cajero.activo);
+
                 }
                 else
                 {
@@ -64,6 +73,7 @@ namespace IrisContabilidad.modulo_facturacion
                     loadCaja();
                     empleado = null;
                     loadEmpleado();
+                    radioButtonHojaGrande.Checked = true;
                     activoCheck.Checked = true;
                 }
             }
@@ -134,6 +144,15 @@ namespace IrisContabilidad.modulo_facturacion
                 cajero.codigo_caja = caja.codigo;
                 cajero.codigo_empleado = empleado.codigo;
                 cajero.activo = Convert.ToBoolean(activoCheck.Checked);
+                cajero.tipoImpresionVenta = 1;
+                if (radioButtonHojaGrande.Checked == true)
+                {
+                    cajero.tipoImpresionVenta = 1;
+                }
+                else if (radioButtonHojaRollo.Checked == true)
+                {
+                    cajero.tipoImpresionVenta = 2;
+                }
 
                 if (crear == true)
                 {

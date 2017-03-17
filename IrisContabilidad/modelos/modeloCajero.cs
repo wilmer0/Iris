@@ -153,7 +153,7 @@ namespace IrisContabilidad.modelos
                     cajero.codigo_empleado = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
                     cajero.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
                     cajero.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
-                    cajero.tipoImpresionVenta = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                    cajero.tipoImpresionVenta = Convert.ToInt16(ds.Tables[0].Rows[0][4]);
                 }
                 return cajero;
             }
