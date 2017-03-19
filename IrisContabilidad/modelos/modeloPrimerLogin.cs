@@ -1277,6 +1277,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 9;
                 ventana.imagen = "catalogo_cuenta1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "conceptos notas cre-deb";
+                ventana.nombre_logico = "IrisContabilidad.modulo_contabilidad.ventana_nota_credito_debito_concepto";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 9;
+                ventana.imagen = "nota_credito_debito_concepto1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
 

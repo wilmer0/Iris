@@ -12,7 +12,7 @@ namespace IrisContabilidad.modelos
     public class modeloNotaCreditoDebitoConcepto
     {
         //objetos
-        utilidades utilidades = new utilidades();
+        private utilidades utilidades = new utilidades();
 
 
 
@@ -25,11 +25,13 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validar nombre
-                string sql = "select *from nota_credito_debito_concepto where concepto='" + concepto.concepto + "' and codigo!='" + concepto.codigo + "'";
+                string sql = "select *from nota_credito_debito_concepto where concepto='" + concepto.concepto +
+                             "' and codigo!='" + concepto.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un concepto con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un concepto con ese nombre", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
                     return false;
                 }
 
@@ -42,7 +44,9 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
 
-                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('" + concepto.codigo + "','" + concepto.concepto + "','" + concepto.detalle + "','" + activo.ToString() + "')";
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('" +
+                      concepto.codigo + "','" + concepto.concepto + "','" + concepto.detalle + "','" + activo.ToString() +
+                      "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -61,11 +65,13 @@ namespace IrisContabilidad.modelos
             {
                 int activo = 0;
                 //validar nombre
-                string sql = "select *from nota_credito_debito_concepto where concepto='" + concepto.concepto + "' and codigo!='" + concepto.codigo + "'";
+                string sql = "select *from nota_credito_debito_concepto where concepto='" + concepto.concepto +
+                             "' and codigo!='" + concepto.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un concepto con ese nombre", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un concepto con ese nombre", "", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
                     return false;
                 }
 
@@ -75,7 +81,8 @@ namespace IrisContabilidad.modelos
                 {
                     activo = 1;
                 }
-                sql = "update nota_credito_debito_concepto set concepto='" + concepto.concepto + "',detalle='" + concepto.detalle + "',activo='" + activo.ToString() + "' where codigo='" + concepto.codigo + "'";
+                sql = "update nota_credito_debito_concepto set concepto='" + concepto.concepto + "',detalle='" +
+                      concepto.detalle + "',activo='" + activo.ToString() + "' where codigo='" + concepto.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
@@ -122,7 +129,8 @@ namespace IrisContabilidad.modelos
             try
             {
                 nota_credito_debito_concepto concepto = new nota_credito_debito_concepto();
-                string sql = "select codigo,concepto,detalle,activo from nota_credito_debito_concepto where codigo='" + id + "'";
+                string sql = "select codigo,concepto,detalle,activo from nota_credito_debito_concepto where codigo='" +
+                             id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -135,7 +143,8 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getConceptoById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getConceptoById.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -171,7 +180,8 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 return null;
             }
         }

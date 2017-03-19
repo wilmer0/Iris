@@ -238,7 +238,7 @@ namespace IrisContabilidad
             if (primerLogin() == false)
             {
                 modeloPrimerLogin.agregarVentanas();
-                modeloActualizacion.version1();
+                //modeloActualizacion.version1();
             }
             GetAction();
         }

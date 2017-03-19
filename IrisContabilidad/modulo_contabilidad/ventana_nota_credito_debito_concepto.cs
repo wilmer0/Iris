@@ -49,8 +49,8 @@ namespace IrisContabilidad.modulo_contabilidad
                 }
                 else
                 {
-                    conceptoText.Focus();
-                    conceptoText.SelectAll();
+                    conceptoIdText.Focus();
+                    conceptoIdText.SelectAll();
 
                     conceptoIdText.Text = "";
                     conceptoText.Text = "";
@@ -75,8 +75,6 @@ namespace IrisContabilidad.modulo_contabilidad
                     MessageBox.Show("Falta el nombre ", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
-
-
 
                 return true;
             }
@@ -150,6 +148,7 @@ namespace IrisContabilidad.modulo_contabilidad
             }
             catch (Exception ex)
             {
+                concepto = null;
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -179,6 +178,87 @@ namespace IrisContabilidad.modulo_contabilidad
         {
             concepto = null;
             loadVentana();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_nota_credito_debito_concepto ventana=new ventana_busqueda_nota_credito_debito_concepto(true);
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if((concepto==ventana.getObjeto())!=null)
+            {
+                concepto = ventana.getObjeto();
+                loadVentana();
+            }
+        }
+
+        private void conceptoIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+
+                if (e.KeyCode == Keys.F1)
+                {
+                    button5_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    conceptoText.Focus();
+                    conceptoText.SelectAll();
+
+                    concepto = modeloConcepto.getConceptoById(Convert.ToInt16(conceptoIdText.Text));
+                    if (concepto != null)
+                    {
+                        loadVentana();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void conceptoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    detalleText.Focus();
+                    detalleText.SelectAll();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void detalleText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    activoCheck.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    button1.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

@@ -89,6 +89,7 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 116;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // conceptoIdText
             // 
@@ -98,6 +99,7 @@
             this.conceptoIdText.Name = "conceptoIdText";
             this.conceptoIdText.Size = new System.Drawing.Size(183, 26);
             this.conceptoIdText.TabIndex = 115;
+            this.conceptoIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.conceptoIdText_KeyDown);
             // 
             // groupBox1
             // 
@@ -117,21 +119,21 @@
             this.conceptoText.Location = new System.Drawing.Point(171, 126);
             this.conceptoText.MaxLength = 200;
             this.conceptoText.Name = "conceptoText";
-            this.conceptoText.ReadOnly = true;
             this.conceptoText.Size = new System.Drawing.Size(236, 26);
             this.conceptoText.TabIndex = 119;
+            this.conceptoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.conceptoText_KeyDown);
             // 
             // detalleText
             // 
             this.detalleText.BackColor = System.Drawing.Color.White;
             this.detalleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detalleText.Location = new System.Drawing.Point(171, 187);
+            this.detalleText.Location = new System.Drawing.Point(171, 173);
             this.detalleText.MaxLength = 200;
             this.detalleText.Multiline = true;
             this.detalleText.Name = "detalleText";
-            this.detalleText.ReadOnly = true;
-            this.detalleText.Size = new System.Drawing.Size(344, 91);
+            this.detalleText.Size = new System.Drawing.Size(344, 107);
             this.detalleText.TabIndex = 120;
+            this.detalleText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.detalleText_KeyDown);
             // 
             // label1
             // 
@@ -147,7 +149,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(99, 187);
+            this.label3.Location = new System.Drawing.Point(99, 173);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 20);
             this.label3.TabIndex = 121;
@@ -166,6 +168,7 @@
             this.activoCheck.TabIndex = 122;
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
             // 
             // ventana_nota_credito_debito_concepto
             // 
