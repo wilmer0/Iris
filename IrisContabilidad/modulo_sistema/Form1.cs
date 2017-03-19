@@ -21,6 +21,7 @@ namespace IrisContabilidad
         //modelos
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
         private modeloPrimerLogin modeloPrimerLogin = new modeloPrimerLogin();
+        modeloActualizacion modeloActualizacion=new modeloActualizacion();
 
         //objetos
         private empleado empleado;
@@ -237,6 +238,7 @@ namespace IrisContabilidad
             if (primerLogin() == false)
             {
                 modeloPrimerLogin.agregarVentanas();
+                modeloActualizacion.version1();
             }
             GetAction();
         }

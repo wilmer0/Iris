@@ -122,6 +122,7 @@
     <Compile Include="clases\cuadre_caja.cs" />
     <Compile Include="clases\cuadre_caja_detalle.cs" />
     <Compile Include="clases\cuenta_contable.cs" />
+    <Compile Include="clases\cxc_nota_credito.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\desglose_dinero.cs" />
     <Compile Include="clases\dias.cs" />
@@ -136,6 +137,7 @@
     <Compile Include="clases\metodo_pago.cs" />
     <Compile Include="clases\modulo.cs" />
     <Compile Include="clases\nomina_tipo.cs" />
+    <Compile Include="clases\nota_credito_debito_concepto.cs" />
     <Compile Include="clases\producto.cs" />
     <Compile Include="clases\productoUnidadConversion.cs" />
     <Compile Include="clases\producto_precio_venta.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="modelos\modeloMetodoPago.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />
+    <Compile Include="modelos\modeloNotaCreditoDebitoConcepto.cs" />
     <Compile Include="modelos\modeloPago.cs" />
     <Compile Include="modelos\modeloPrimerLogin.cs" />
     <Compile Include="modelos\modeloProducto.cs" />
@@ -239,6 +242,12 @@
     </Compile>
     <Compile Include="modulo_contabilidad\ventana_gastos.Designer.cs">
       <DependentUpon>ventana_gastos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_contabilidad\ventana_nota_credito_debito_concepto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_contabilidad\ventana_nota_credito_debito_concepto.Designer.cs">
+      <DependentUpon>ventana_nota_credito_debito_concepto.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_contabilidad\ventana_tipo_gastos.cs">
       <SubType>Form</SubType>
@@ -773,6 +782,9 @@
     <EmbeddedResource Include="modulo_contabilidad\ventana_gastos.resx">
       <DependentUpon>ventana_gastos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_contabilidad\ventana_nota_credito_debito_concepto.resx">
+      <DependentUpon>ventana_nota_credito_debito_concepto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
     </EmbeddedResource>
@@ -1086,7 +1098,15 @@
     <Folder Include="bin\Release\Resources\archivos\compras\" />
     <Folder Include="bin\Release\Resources\archivos\ventas\" />
     <Folder Include="bin\Release\Resources\productos\" />
+    <Folder Include="modulo_contabilidad\Reporte\" />
+    <Folder Include="modulo_cuenta_por_cobrar\Reporte\" />
+    <Folder Include="modulo_cuenta_por_pagar\Reporte\" />
+    <Folder Include="modulo_empresa\Reporte\" />
+    <Folder Include="modulo_facturacion\Reporte\" />
     <Folder Include="modulo_inicio_rapido\" />
+    <Folder Include="modulo_inventario\Reporte\" />
+    <Folder Include="modulo_nomina\Reporte\" />
+    <Folder Include="modulo_opciones\Reporte\" />
     <Folder Include="pruebas\" />
     <Folder Include="reportes_clases\" />
   </ItemGroup>
