@@ -290,5 +290,17 @@ namespace IrisContabilidad.modulo_facturacion
         {
             utilidades.validarTextBoxNumeroDecimal(e,montoText.Text);
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_nota_credito_cxc ventana=new ventana_busqueda_nota_credito_cxc();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if ((notaCredito == ventana.getObjeto()) != null)
+            {
+                notaCredito = ventana.getObjeto();
+                loadVentana();
+            }
+        }
     }
 }
