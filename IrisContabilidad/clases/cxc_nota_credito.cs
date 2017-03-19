@@ -16,6 +16,6 @@ namespace IrisContabilidad.clases
         public decimal monto { get; set; }
         public string detalle { get; set; }
         public int codigoVenta { get; set; }
-        public int codigoconcepto { get; set; }
+        public int codigoConcepto { get; set; }
     }
 }
