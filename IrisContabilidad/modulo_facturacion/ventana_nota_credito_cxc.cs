@@ -297,7 +297,7 @@ namespace IrisContabilidad.modulo_facturacion
             ventana_busqueda_nota_credito_cxc ventana=new ventana_busqueda_nota_credito_cxc();
             ventana.Owner = this;
             ventana.ShowDialog();
-            if ((notaCredito==ventana.getObjeto()) != null)
+            if (ventana.ShowDialog()== DialogResult.OK)
             {
                 notaCredito = ventana.getObjeto();
                 loadVentana();

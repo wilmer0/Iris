@@ -185,7 +185,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     return;
                 }
                 //datos generales
-                String reporte = "IrisContabilidad.reportes.reporte_estado_cuenta_cliente.rdlc";
+                String reporte = "IrisContabilidad.modulo_cuenta_por_cobrar.Reporte.reporte_estado_cuenta_cliente.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
 

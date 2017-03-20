@@ -416,7 +416,7 @@ namespace IrisContabilidad.modulo_facturacion
             ventana_busqueda_venta ventana = new ventana_busqueda_venta();
             ventana.Owner = this;
             ventana.ShowDialog();
-            if ((venta == ventana.getObjeto()) != null)
+            if (ventana.ShowDialog()== DialogResult.OK)
             {
                 venta = ventana.getObjeto();
                 loadVenta();

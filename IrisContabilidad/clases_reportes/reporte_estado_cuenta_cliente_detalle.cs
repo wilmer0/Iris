@@ -23,6 +23,7 @@ namespace IrisContabilidad.clases_reportes
         public decimal montoPendiente { get; set; }
         public decimal montoNotasCredito { get; set; }
         public decimal montoNotasDebito { get; set; }
+        
 
         public reporte_estado_cuenta_cliente_detalle()
         {
