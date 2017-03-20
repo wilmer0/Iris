@@ -171,6 +171,7 @@
     <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_cxc_nota_credito_detalle.cs" />
     <Compile Include="clases_reportes\reporte_encabezado_general.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_detalle.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_encabezado.cs" />
