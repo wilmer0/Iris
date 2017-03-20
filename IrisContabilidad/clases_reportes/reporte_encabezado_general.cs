@@ -18,6 +18,14 @@ namespace IrisContabilidad.clases_reportes
         public string fecha_impresion { get; set; }
         public string empleadoImpresion { get; set; }
 
+        //otros
+        public string fecha { get; set; }
+        public string fechaInicial { get; set; }
+        public string fechaFinal { get; set; }
+
+
+
+
         public reporte_encabezado_general()
         {
             
