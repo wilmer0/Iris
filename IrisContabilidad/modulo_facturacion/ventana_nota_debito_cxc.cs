@@ -22,7 +22,7 @@ namespace IrisContabilidad.modulo_facturacion
         //cxcNotaCredito
         private venta venta;
         private cliente cliente;
-        private cxc_nota_credito notaCredito;
+        private cxc_nota_debito notaDebito;
         private nota_credito_debito_concepto concepto;
 
 
@@ -32,7 +32,7 @@ namespace IrisContabilidad.modulo_facturacion
         modeloNotaCreditoDebitoConcepto modeloConcepto = new modeloNotaCreditoDebitoConcepto();
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
         modeloVenta modeloVenta = new modeloVenta();
-        modeloCxcNotaCredito modeloNotaCredito = new modeloCxcNotaCredito();
+        modeloCxcNotaDebito modeloNotaDebito = new modeloCxcNotaDebito();
 
         //listas
         private List<nota_credito_debito_concepto> listaConcepto; 
@@ -50,25 +50,25 @@ namespace IrisContabilidad.modulo_facturacion
             try
             {
                 loadConceptos();
-                if (notaCredito != null)
+                if (notaDebito != null)
                 {
-                    notaCreditoIdText.Text = notaCredito.codigo.ToString();
+                    notaCreditoIdText.Text = notaDebito.codigo.ToString();
 
                     ventaIdText.Focus();
                     ventaIdText.SelectAll();
 
-                    venta = modeloVenta.getVentaById(notaCredito.codigoVenta);
+                    venta = modeloVenta.getVentaById(notaDebito.codigoVenta);
                     ventaIdText.Text = venta.codigo.ToString();
                     NcfText.Text = venta.ncf;
 
-                    concepto = modeloConcepto.getConceptoById(notaCredito.codigoConcepto);
+                    concepto = modeloConcepto.getConceptoById(notaDebito.codigoConcepto);
                     conceptoComboBox.SelectedValue = concepto.codigo;
 
-                    montoText.Text = notaCredito.monto.ToString("N");
-                    fechaText.Text = utilidades.getFechaddMMyyyy(notaCredito.fecha);
-                    detalleText.Text = notaCredito.detalle;
+                    montoText.Text = notaDebito.monto.ToString("N");
+                    fechaText.Text = utilidades.getFechaddMMyyyy(notaDebito.fecha);
+                    detalleText.Text = notaDebito.detalle;
 
-                    activoCheck.Checked = Convert.ToBoolean(notaCredito.activo);
+                    activoCheck.Checked = Convert.ToBoolean(notaDebito.activo);
                 }
                 else
                 {
@@ -178,28 +178,28 @@ namespace IrisContabilidad.modulo_facturacion
 
                 bool crear = false;
                 //se instancia el empleado si esta nulo
-                if (notaCredito == null)
+                if (notaDebito == null)
                 {
-                    notaCredito = new cxc_nota_credito();
+                    notaDebito = new cxc_nota_debito();
                     crear = true;
-                    notaCredito.codigo = modeloNotaCredito.getNext();
+                    notaDebito.codigo = modeloNotaDebito.getNext();
                 }
-                notaCredito.fecha = Convert.ToDateTime(fechaText.Text);
-                notaCredito.codigoCliente = venta.codigo_cliente;
-                notaCredito.codigoConcepto = Convert.ToInt16(conceptoComboBox.SelectedValue);
-                notaCredito.activo = Convert.ToBoolean(activoCheck.Checked);
-                notaCredito.codigoVenta = venta.codigo;
-                notaCredito.detalle = detalleText.Text;
-                notaCredito.monto = Convert.ToDecimal(montoText.Text);
-                notaCredito.codigoEmpleado = empleado.codigo;
+                notaDebito.fecha = Convert.ToDateTime(fechaText.Text);
+                notaDebito.codigoCliente = venta.codigo_cliente;
+                notaDebito.codigoConcepto = Convert.ToInt16(conceptoComboBox.SelectedValue);
+                notaDebito.activo = Convert.ToBoolean(activoCheck.Checked);
+                notaDebito.codigoVenta = venta.codigo;
+                notaDebito.detalle = detalleText.Text;
+                notaDebito.monto = Convert.ToDecimal(montoText.Text);
+                notaDebito.codigoEmpleado = empleado.codigo;
 
 
                 if (crear == true)
                 {
                     //se agrega
-                    if ((modeloNotaCredito.agregarNotaCredito(notaCredito)) == true)
+                    if ((modeloNotaDebito.agregarNotaDebito(notaDebito)) == true)
                     {
-                        notaCredito = null;
+                        notaDebito = null;
                         loadVentana();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -212,16 +212,16 @@ namespace IrisContabilidad.modulo_facturacion
                 else
                 {
                     //se modifica
-                    if ((modeloNotaCredito.modificarNotaCredito(notaCredito)) == true)
+                    if ((modeloNotaDebito.modificarNotaDebito(notaDebito)) == true)
                     {
-                        notaCredito = null;
+                        notaDebito = null;
                         loadVentana();
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }
                     else
                     {
-                        notaCredito = null;
+                        notaDebito = null;
                         MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
@@ -274,8 +274,8 @@ namespace IrisContabilidad.modulo_facturacion
                     ventaIdText.Focus();
                     ventaIdText.SelectAll();
 
-                    notaCredito = modeloNotaCredito.getNotaCreditoById(Convert.ToInt16(notaCreditoIdText.Text));
-                    if (notaCredito != null)
+                    notaDebito = modeloNotaDebito.getNotaDebitoById(Convert.ToInt16(notaCreditoIdText.Text));
+                    if (notaDebito != null)
                     {
                         loadVentana();
                     }
@@ -401,12 +401,26 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            ventana_busqueda_nota_debito_cxc ventana = new ventana_busqueda_nota_debito_cxc();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if ((notaDebito = ventana.getObjeto()) != null)
+            {
+                notaDebito = ventana.getObjeto();
+                loadVentana();
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-
+            ventana_busqueda_venta ventana = new ventana_busqueda_venta();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if ((venta == ventana.getObjeto()) != null)
+            {
+                venta = ventana.getObjeto();
+                loadVenta();
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -416,7 +430,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button3_Click(object sender, EventArgs e)
         {
-            notaCredito = null;
+            notaDebito = null;
             loadVentana();
         }
     }

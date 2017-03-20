@@ -966,6 +966,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "venta_nota_credito1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Notas Debito";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_nota_debito_cxc";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "venta_nota_debito1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
                

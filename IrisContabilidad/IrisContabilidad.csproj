@@ -306,6 +306,12 @@
     <Compile Include="modulo_facturacion\ventana_busqueda_nota_credito_cxc.Designer.cs">
       <DependentUpon>ventana_busqueda_nota_credito_cxc.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_nota_debito_cxc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_nota_debito_cxc.Designer.cs">
+      <DependentUpon>ventana_busqueda_nota_debito_cxc.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_nota_credito_cxc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -832,6 +838,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_nota_credito_cxc.resx">
       <DependentUpon>ventana_busqueda_nota_credito_cxc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_nota_debito_cxc.resx">
+      <DependentUpon>ventana_busqueda_nota_debito_cxc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_nota_credito_cxc.resx">
       <DependentUpon>ventana_nota_credito_cxc.cs</DependentUpon>

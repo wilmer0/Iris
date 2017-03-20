@@ -26,7 +26,6 @@ namespace IrisContabilidad.modulo_facturacion
 
         //listas
         private List<cxc_nota_credito> listaNotasCreditos;
-        List<cxc_nota_credito> listaNotasCreditosTemporal;
 
 
         //modelos
@@ -113,30 +112,11 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
-        private void ventana_busqueda_nota_credito_cxc_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nombreText_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                filtrar();
-            }
-        }
-
         public void filtrar()
         {
             try
             {
                 listaNotasCreditos = modeloNotaCredito.getListaCompleta();
-                listaNotasCreditosTemporal = new List<cxc_nota_credito>();
 
                 //filtrar por id
                 if (radioId.Checked == true)
@@ -152,7 +132,7 @@ namespace IrisContabilidad.modulo_facturacion
                 //filtrar por concepto
                 if (radioConcepto.Checked == true)
                 {
-                    listaNotasCreditos = listaNotasCreditos.FindAll(x =>(concepto = modeloConcepto.getConceptoById(x.codigoConcepto)).concepto.ToLower().Contains(nombreText.Text.ToLower()));
+                    listaNotasCreditos = listaNotasCreditos.FindAll(x => (concepto = modeloConcepto.getConceptoById(x.codigoConcepto)).concepto.ToLower().Contains(nombreText.Text.ToLower()));
                 }
                 //filtrar por monto
                 if (radioMonto.Checked == true)
@@ -163,7 +143,7 @@ namespace IrisContabilidad.modulo_facturacion
                         listaNotasCreditos = listaNotasCreditos.FindAll(x => x.monto <= Convert.ToDecimal(nombreText.Text));
                     }
                 }
-                
+
                 //por ncf venta
                 if (radioNCFVenta.Checked == true)
                 {
@@ -176,6 +156,60 @@ namespace IrisContabilidad.modulo_facturacion
             catch (Exception ex)
             {
                 MessageBox.Show("Error buscando.: " + ex.ToString());
+            }
+        }
+        private void ventana_busqueda_nota_credito_cxc_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getAction();
+        }
+
+        private void nombreText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                filtrar();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listaNotasCreditos = null;
+            loadLista();
+        }
+        public void cambiarFiltro()
+        {
+            if (radioId.Checked == true)
+            {
+                radioCliente.Checked = true;
+            }
+            else if (radioCliente.Checked == true)
+            {
+                radioConcepto.Checked = true;
+            }
+            else if (radioConcepto.Checked == true)
+            {
+                radioMonto.Checked = true;
+            }
+            else if (radioNCFVenta.Checked == true)
+            {
+                radioId.Checked = true;
+            }
+        }
+        private void ventana_busqueda_nota_credito_cxc_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                cambiarFiltro();
             }
         }
     }

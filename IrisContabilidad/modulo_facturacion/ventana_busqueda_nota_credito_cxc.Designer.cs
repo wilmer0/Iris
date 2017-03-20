@@ -60,6 +60,7 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -75,6 +76,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(372, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
             // 
@@ -260,6 +262,7 @@
             this.Name = "ventana_busqueda_nota_credito_cxc";
             this.Text = "ventana_busqueda_nota_credito_cxc";
             this.Load += new System.EventHandler(this.ventana_busqueda_nota_credito_cxc_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventana_busqueda_nota_credito_cxc_KeyDown);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.dataGridView1, 0);
