@@ -96,6 +96,7 @@
             this.notaCreditoIdText.Name = "notaCreditoIdText";
             this.notaCreditoIdText.Size = new System.Drawing.Size(155, 26);
             this.notaCreditoIdText.TabIndex = 18;
+            this.notaCreditoIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.notaCreditoIdText_KeyDown);
             // 
             // label2
             // 
@@ -137,6 +138,7 @@
             this.fechaText.Size = new System.Drawing.Size(155, 20);
             this.fechaText.TabIndex = 77;
             this.fechaText.ValidatingType = typeof(System.DateTime);
+            this.fechaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaText_KeyDown);
             // 
             // NcfText
             // 
@@ -155,6 +157,7 @@
             this.ventaIdText.Name = "ventaIdText";
             this.ventaIdText.Size = new System.Drawing.Size(155, 26);
             this.ventaIdText.TabIndex = 79;
+            this.ventaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventaIdText_KeyDown);
             // 
             // label4
             // 
@@ -197,6 +200,7 @@
             this.conceptoComboBox.Size = new System.Drawing.Size(236, 21);
             this.conceptoComboBox.TabIndex = 82;
             this.conceptoComboBox.Tag = "";
+            this.conceptoComboBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.conceptoComboBox_KeyDown);
             // 
             // montoText
             // 
@@ -205,7 +209,8 @@
             this.montoText.Name = "montoText";
             this.montoText.Size = new System.Drawing.Size(275, 26);
             this.montoText.TabIndex = 85;
-            this.montoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
+            this.montoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.montoText_KeyDown);
+            this.montoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.montoText_KeyPress);
             // 
             // label6
             // 
@@ -236,6 +241,7 @@
             this.detalleText.Name = "detalleText";
             this.detalleText.Size = new System.Drawing.Size(370, 148);
             this.detalleText.TabIndex = 87;
+            this.detalleText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.detalleText_KeyDown);
             // 
             // activoCheck
             // 
@@ -249,6 +255,7 @@
             this.activoCheck.TabIndex = 88;
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
             // 
             // ventana_nota_credito_cxc
             // 

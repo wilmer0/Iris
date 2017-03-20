@@ -77,6 +77,7 @@ namespace IrisContabilidad.modulo_facturacion
                     notaCreditoIdText.Focus();
                     notaCreditoIdText.SelectAll();
 
+                    notaCreditoIdText.Text = "";
                     venta = null;
                     ventaIdText.Text = "";
                     NcfText.Text = "";
@@ -277,7 +278,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //objeto main nulo
+            notaCredito = null;
             loadVentana();
         }
 
@@ -288,7 +289,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            utilidades.validarTextBoxNumeroDecimal(e,montoText.Text);
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -301,6 +302,144 @@ namespace IrisContabilidad.modulo_facturacion
                 notaCredito = ventana.getObjeto();
                 loadVentana();
             }
+        }
+
+        private void notaCreditoIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    ventaIdText.Focus();
+                    ventaIdText.SelectAll();
+
+                    notaCredito = modeloNotaCredito.getNotaCreditoById(Convert.ToInt16(notaCreditoIdText.Text));
+                    if (notaCredito != null)
+                    {
+                        loadVentana();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void ventaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button4_Click(null, null);
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    conceptoComboBox.Focus();
+                    conceptoComboBox.DroppedDown = true;
+
+                    venta = modeloVenta.getVentaById(Convert.ToInt16(ventaIdText.Text));
+                    if (venta != null)
+                    {
+                        loadVenta();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void conceptoComboBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+               
+                if (e.KeyCode == Keys.Enter)
+                {
+                    montoText.Focus();
+                    montoText.SelectAll();
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void montoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    fechaText.Focus();
+                    fechaText.SelectAll();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void fechaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                
+                if (e.KeyCode == Keys.Enter)
+                {
+                    detalleText.Focus();
+                    detalleText.SelectAll();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void detalleText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    activoCheck.Focus();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    button1.Focus();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void montoText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, montoText.Text);
         }
     }
 }

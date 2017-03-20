@@ -123,6 +123,7 @@
     <Compile Include="clases\cuadre_caja_detalle.cs" />
     <Compile Include="clases\cuenta_contable.cs" />
     <Compile Include="clases\cxc_nota_credito.cs" />
+    <Compile Include="clases\cxc_nota_debito.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\desglose_dinero.cs" />
     <Compile Include="clases\dias.cs" />
@@ -197,6 +198,7 @@
     <Compile Include="modelos\modeloCuadreCaja.cs" />
     <Compile Include="modelos\modeloCuentaContable.cs" />
     <Compile Include="modelos\modeloCxcNotaCredito.cs" />
+    <Compile Include="modelos\modeloCxcNotaDebito.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
@@ -327,6 +329,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_reporte_pagos.Designer.cs">
       <DependentUpon>ventana_reporte_pagos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_nota_debito_cxc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_nota_debito_cxc.Designer.cs">
+      <DependentUpon>ventana_nota_debito_cxc.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_venta_devolucion.cs">
       <SubType>Form</SubType>
@@ -836,6 +844,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_reporte_pagos.resx">
       <DependentUpon>ventana_reporte_pagos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_nota_debito_cxc.resx">
+      <DependentUpon>ventana_nota_debito_cxc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_venta_devolucion.resx">
       <DependentUpon>ventana_venta_devolucion.cs</DependentUpon>
