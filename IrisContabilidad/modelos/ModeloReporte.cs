@@ -217,10 +217,56 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //nota credito
+        public bool imprimirNotaCreditoCxc(int codigoNotaCredito)
+        {
+            try
+            {
+                //datos generales
+                String reporte = "";
+
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                cxc_nota_credito nota = new modeloCxcNotaCredito().getNotaCreditoById(codigoNotaCredito);
+
+                empleado empleado=new empleado();
+                empleado = singleton.getEmpleado();
+                
+                //hoja normal
+                reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_nota_credito.rdlc";
+                if (nota == null)
+                {
+                    return false;
+                }
+
+                //llenar encabezado
+                reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleado);
+                List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                listaReporteEncabezado.Add(reporteEncabezado);
+
+                ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                listaReportDataSource.Add(reporteE);
+
+                //llenar detalle
+                reporte_nota_credito_cxc_detalle detalle=new reporte_nota_credito_cxc_detalle(nota);
+                List<reporte_nota_credito_cxc_detalle> listaDetalle=new List<reporte_nota_credito_cxc_detalle>();
+                listaDetalle.Add(detalle);
+                
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                listaReportDataSource.Add(reporteD);
 
 
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                ventana.ShowDialog();
 
-
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirNotaCreditoCxc.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

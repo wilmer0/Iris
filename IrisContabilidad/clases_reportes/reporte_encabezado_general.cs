@@ -18,12 +18,15 @@ namespace IrisContabilidad.clases_reportes
         public string fecha_impresion { get; set; }
         public string empleadoImpresion { get; set; }
 
-        public reporte_encabezado_general()
-        {
-            
-        }
+        //otros
+        public string fecha { get; set; }
+        public string fechaInicial { get; set; }
+        public string fechaFinal { get; set; }
 
-        public reporte_encabezado_general(empleado empleado)
+
+
+
+       public reporte_encabezado_general(empleado empleado)
         {
             empresa empresa = new empresa();
             empresa = new modeloEmpresa().getEmpresaByEmpleadoId(empleado.codigo);

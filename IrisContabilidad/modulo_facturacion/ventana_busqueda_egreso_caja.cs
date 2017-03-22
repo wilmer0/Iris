@@ -116,16 +116,23 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void nombreText_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode == Keys.Enter)
+            {
+                filtrar();
+            }
+        }
+
+        public void filtrar()
+        {
             try
             {
-                if (e.KeyCode == Keys.Enter)
-                {
+               
                     listaEgresoCaja = modeloEgresoCaja.getListaCompleta();
                     listaEgresoCajaTemporal = new List<egreso_caja>();
 
                     //filtrar por todos
                     if (radioTodos.Checked == true)
-                    { 
+                    {
                         listaEgresoCaja = listaEgresoCaja.FindAll(x => x.detalle.ToLower().Contains(nombreText.Text.ToLower()));
                         decimal dinero;
                         if (decimal.TryParse(nombreText.Text, out dinero) != false)
@@ -160,13 +167,13 @@ namespace IrisContabilidad.modulo_facturacion
                                 {
                                     listaEgresoCaja.RemoveAt(cont);
                                 }
-                                cont ++;
+                                cont++;
                             });
                         }
                     }
-                    
+
                     listaEgresoCajaTemporal = listaEgresoCaja;
-                    
+
                     if (radioConcepto.Checked == true)
                     {
                         //por concepto
@@ -182,16 +189,15 @@ namespace IrisContabilidad.modulo_facturacion
                             cont++;
                         });
                     }
-                    
+
                     loadLista();
-                }
+                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error buscando.: " + ex.ToString());
             }
         }
-
         private void ventana_busqueda_egreso_caja_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F2)
