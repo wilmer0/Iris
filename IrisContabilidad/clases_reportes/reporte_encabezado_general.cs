@@ -26,12 +26,7 @@ namespace IrisContabilidad.clases_reportes
 
 
 
-        public reporte_encabezado_general()
-        {
-            
-        }
-
-        public reporte_encabezado_general(empleado empleado)
+       public reporte_encabezado_general(empleado empleado)
         {
             empresa empresa = new empresa();
             empresa = new modeloEmpresa().getEmpresaByEmpleadoId(empleado.codigo);

@@ -8,8 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.clases_reportes;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
+using Microsoft.Reporting.WinForms;
+using _7ADMFIC_1._0.VentanasComunes;
 
 namespace IrisContabilidad.modulo_facturacion
 {
@@ -33,6 +36,8 @@ namespace IrisContabilidad.modulo_facturacion
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
         modeloVenta modeloVenta = new modeloVenta();
         modeloCxcNotaDebito modeloNotaDebito = new modeloCxcNotaDebito();
+        ModeloReporte modeloReporte=new ModeloReporte();
+
 
         //listas
         private List<nota_credito_debito_concepto> listaConcepto; 
@@ -404,7 +409,7 @@ namespace IrisContabilidad.modulo_facturacion
             ventana_busqueda_nota_debito_cxc ventana = new ventana_busqueda_nota_debito_cxc();
             ventana.Owner = this;
             ventana.ShowDialog();
-            if ((notaDebito = ventana.getObjeto()) != null)
+            if (ventana.DialogResult== DialogResult.OK)
             {
                 notaDebito = ventana.getObjeto();
                 loadVentana();
@@ -432,6 +437,11 @@ namespace IrisContabilidad.modulo_facturacion
         {
             notaDebito = null;
             loadVentana();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

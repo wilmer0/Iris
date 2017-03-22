@@ -34,6 +34,7 @@ namespace IrisContabilidad.modulo_facturacion
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
         modeloVenta modeloVenta=new modeloVenta();
         modeloCxcNotaCredito modeloNotaCredito=new modeloCxcNotaCredito();
+        ModeloReporte modeloReporte=new ModeloReporte();
 
         //listas
         private List<nota_credito_debito_concepto> listaConcepto; 
@@ -297,7 +298,7 @@ namespace IrisContabilidad.modulo_facturacion
             ventana_busqueda_nota_credito_cxc ventana=new ventana_busqueda_nota_credito_cxc();
             ventana.Owner = this;
             ventana.ShowDialog();
-            if (ventana.ShowDialog()== DialogResult.OK)
+            if (ventana.DialogResult== DialogResult.OK)
             {
                 notaCredito = ventana.getObjeto();
                 loadVentana();
@@ -440,6 +441,14 @@ namespace IrisContabilidad.modulo_facturacion
         private void montoText_KeyPress(object sender, KeyPressEventArgs e)
         {
             utilidades.validarTextBoxNumeroDecimal(e, montoText.Text);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (notaCredito != null)
+            {
+                modeloReporte.imprimirNotaCreditoCxc(notaCredito.codigo);
+            }
         }
     }
 }

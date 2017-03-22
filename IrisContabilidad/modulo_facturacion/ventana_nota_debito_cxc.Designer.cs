@@ -46,6 +46,7 @@
             this.notaCreditoIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,7 +84,7 @@
             this.activoCheck.Checked = true;
             this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(525, 306);
+            this.activoCheck.Location = new System.Drawing.Point(525, 273);
             this.activoCheck.Name = "activoCheck";
             this.activoCheck.Size = new System.Drawing.Size(71, 21);
             this.activoCheck.TabIndex = 102;
@@ -94,7 +95,7 @@
             // detalleText
             // 
             this.detalleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detalleText.Location = new System.Drawing.Point(525, 122);
+            this.detalleText.Location = new System.Drawing.Point(525, 110);
             this.detalleText.MaxLength = 300;
             this.detalleText.Multiline = true;
             this.detalleText.Name = "detalleText";
@@ -106,7 +107,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(521, 99);
+            this.label7.Location = new System.Drawing.Point(521, 87);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(75, 20);
             this.label7.TabIndex = 100;
@@ -115,7 +116,7 @@
             // montoText
             // 
             this.montoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoText.Location = new System.Drawing.Point(134, 253);
+            this.montoText.Location = new System.Drawing.Point(134, 241);
             this.montoText.Name = "montoText";
             this.montoText.Size = new System.Drawing.Size(275, 26);
             this.montoText.TabIndex = 99;
@@ -126,7 +127,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(65, 253);
+            this.label6.Location = new System.Drawing.Point(65, 241);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 98;
@@ -136,7 +137,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 195);
+            this.label5.Location = new System.Drawing.Point(37, 183);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 20);
             this.label5.TabIndex = 97;
@@ -146,7 +147,7 @@
             // 
             this.conceptoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.conceptoComboBox.FormattingEnabled = true;
-            this.conceptoComboBox.Location = new System.Drawing.Point(135, 196);
+            this.conceptoComboBox.Location = new System.Drawing.Point(135, 184);
             this.conceptoComboBox.Name = "conceptoComboBox";
             this.conceptoComboBox.Size = new System.Drawing.Size(236, 21);
             this.conceptoComboBox.TabIndex = 96;
@@ -156,7 +157,7 @@
             // NcfText
             // 
             this.NcfText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NcfText.Location = new System.Drawing.Point(134, 142);
+            this.NcfText.Location = new System.Drawing.Point(134, 130);
             this.NcfText.Name = "NcfText";
             this.NcfText.ReadOnly = true;
             this.NcfText.Size = new System.Drawing.Size(275, 26);
@@ -166,7 +167,7 @@
             // 
             this.ventaIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.ventaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ventaIdText.Location = new System.Drawing.Point(134, 104);
+            this.ventaIdText.Location = new System.Drawing.Point(134, 92);
             this.ventaIdText.Name = "ventaIdText";
             this.ventaIdText.Size = new System.Drawing.Size(155, 26);
             this.ventaIdText.TabIndex = 93;
@@ -176,7 +177,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(65, 106);
+            this.label4.Location = new System.Drawing.Point(65, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 20);
             this.label4.TabIndex = 92;
@@ -187,7 +188,7 @@
             this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(295, 99);
+            this.button6.Location = new System.Drawing.Point(295, 87);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 94;
@@ -196,7 +197,7 @@
             // 
             // fechaText
             // 
-            this.fechaText.Location = new System.Drawing.Point(134, 308);
+            this.fechaText.Location = new System.Drawing.Point(134, 296);
             this.fechaText.Mask = "00/00/0000";
             this.fechaText.Name = "fechaText";
             this.fechaText.Size = new System.Drawing.Size(155, 20);
@@ -208,7 +209,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(63, 306);
+            this.label3.Location = new System.Drawing.Point(63, 294);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 20);
             this.label3.TabIndex = 90;
@@ -221,7 +222,7 @@
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(888, 66);
+            this.groupBox1.Size = new System.Drawing.Size(888, 56);
             this.groupBox1.TabIndex = 89;
             this.groupBox1.TabStop = false;
             // 
@@ -229,7 +230,7 @@
             // 
             this.notaCreditoIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.notaCreditoIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notaCreditoIdText.Location = new System.Drawing.Point(204, 22);
+            this.notaCreditoIdText.Location = new System.Drawing.Point(204, 17);
             this.notaCreditoIdText.Name = "notaCreditoIdText";
             this.notaCreditoIdText.Size = new System.Drawing.Size(155, 26);
             this.notaCreditoIdText.TabIndex = 18;
@@ -239,7 +240,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(88, 24);
+            this.label2.Location = new System.Drawing.Point(88, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 20);
             this.label2.TabIndex = 9;
@@ -250,18 +251,35 @@
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(365, 17);
+            this.button4.Location = new System.Drawing.Point(365, 12);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 23;
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // button5
+            // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button5.BackColor = System.Drawing.Color.Orange;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(759, 338);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(138, 45);
+            this.button5.TabIndex = 103;
+            this.button5.Text = "Imprimir";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // ventana_nota_debito_cxc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 455);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.activoCheck);
             this.Controls.Add(this.detalleText);
             this.Controls.Add(this.label7);
@@ -295,6 +313,7 @@
             this.Controls.SetChildIndex(this.label7, 0);
             this.Controls.SetChildIndex(this.detalleText, 0);
             this.Controls.SetChildIndex(this.activoCheck, 0);
+            this.Controls.SetChildIndex(this.button5, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -324,5 +343,6 @@
         private System.Windows.Forms.TextBox notaCreditoIdText;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
+        public System.Windows.Forms.Button button5;
     }
 }

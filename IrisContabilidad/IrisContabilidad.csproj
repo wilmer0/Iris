@@ -165,13 +165,13 @@
     <Compile Include="clases\venta_detalle.cs" />
     <Compile Include="clases\venta_vs_cobros.cs" />
     <Compile Include="clases\venta_vs_cobros_detalles.cs" />
+    <Compile Include="clases_reportes\reporte_nota_credito_cxc_detalle.cs" />
     <Compile Include="clases_reportes\reporte_cobros_detalle.cs" />
     <Compile Include="clases_reportes\reporte_cobros_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_compra_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_encabezado.cs" />
-    <Compile Include="clases_reportes\reporte_cxc_nota_credito_detalle.cs" />
     <Compile Include="clases_reportes\reporte_encabezado_general.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_detalle.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_encabezado.cs" />
@@ -819,7 +819,7 @@
     <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modulo_cuenta_por_cobrar\Reporte\reporte_nota_credito.rdlc" />
+    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_credito.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_anular_cobros.resx">
       <DependentUpon>ventana_anular_cobros.cs</DependentUpon>
     </EmbeddedResource>
@@ -1115,6 +1115,7 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_credito_cxc_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_cobro_detalle.datasource" />
@@ -1142,7 +1143,6 @@
     <Folder Include="modulo_contabilidad\Reporte\" />
     <Folder Include="modulo_cuenta_por_pagar\Reporte\" />
     <Folder Include="modulo_empresa\Reporte\" />
-    <Folder Include="modulo_facturacion\Reporte\" />
     <Folder Include="modulo_inicio_rapido\" />
     <Folder Include="modulo_inventario\Reporte\" />
     <Folder Include="modulo_nomina\Reporte\" />
