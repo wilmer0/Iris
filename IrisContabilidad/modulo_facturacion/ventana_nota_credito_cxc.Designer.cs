@@ -250,7 +250,7 @@
             this.activoCheck.Checked = true;
             this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(525, 290);
+            this.activoCheck.Location = new System.Drawing.Point(525, 269);
             this.activoCheck.Name = "activoCheck";
             this.activoCheck.Size = new System.Drawing.Size(71, 21);
             this.activoCheck.TabIndex = 88;
@@ -266,7 +266,7 @@
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(757, 338);
+            this.button5.Location = new System.Drawing.Point(757, 312);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(138, 45);
             this.button5.TabIndex = 104;
