@@ -174,7 +174,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            getAction();
         }
 
         public void cambiarFiltro()
@@ -200,6 +200,22 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 cambiarFiltro();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            listaNotasDebitos = null;
+            loadLista();
         }
     }
 }
