@@ -21,7 +21,7 @@ namespace IrisContabilidad.clases_reportes
         public int codigoConcepto { get; set; }
         public string concepto { get; set; }
         public string detalle { get; set; }
-
+        public List<ventaDevolucionDetalle> listaDevolucionDetalle { get; set; }
 
 
         //objetos
@@ -50,6 +50,7 @@ namespace IrisContabilidad.clases_reportes
             this.codigoConcepto = concepto.codigo;
             this.concepto = concepto.concepto;
             this.detalle = nota.detalle;
+            this.listaDevolucionDetalle =new modeloVentaDevolucion().getListaVentaDevolucionDetalleByDevolucionId(nota.codigoDevolucion);
         }
     }
 }

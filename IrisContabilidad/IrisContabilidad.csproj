@@ -181,6 +181,7 @@
     <Compile Include="clases_reportes\reporte_venta_cobro_detalle.cs" />
     <Compile Include="clases_reportes\reporte_venta_cobro_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_venta_devolucion_detalle.cs" />
     <Compile Include="clases_reportes\reporte_venta_encabezado.cs" />
     <Compile Include="clases_reportes_modelos\modelo_reporte_cobros.cs" />
     <Compile Include="clases_reportes_modelos\modelo_reporte_estado_cuenta_cliente.cs" />
@@ -313,6 +314,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_nota_debito_cxc.Designer.cs">
       <DependentUpon>ventana_busqueda_nota_debito_cxc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_venta_devolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_busqueda_venta_devolucion.Designer.cs">
+      <DependentUpon>ventana_busqueda_venta_devolucion.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_nota_credito_cxc.cs">
       <SubType>Form</SubType>
@@ -839,11 +846,15 @@
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_estado_cuenta_cliente.resx">
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_debito.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_nota_credito_cxc.resx">
       <DependentUpon>ventana_busqueda_nota_credito_cxc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_nota_debito_cxc.resx">
       <DependentUpon>ventana_busqueda_nota_debito_cxc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_venta_devolucion.resx">
+      <DependentUpon>ventana_busqueda_venta_devolucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_nota_credito_cxc.resx">
       <DependentUpon>ventana_nota_credito_cxc.cs</DependentUpon>
@@ -1117,11 +1128,13 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_credito_cxc_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_debito_cxc_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_cobro_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_cobro_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_devolucion_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_encabezado.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

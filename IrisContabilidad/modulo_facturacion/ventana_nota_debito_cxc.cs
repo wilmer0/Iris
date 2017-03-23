@@ -14,6 +14,7 @@ using IrisContabilidad.modulo_sistema;
 using Microsoft.Reporting.WinForms;
 using _7ADMFIC_1._0.VentanasComunes;
 
+
 namespace IrisContabilidad.modulo_facturacion
 {
     public partial class ventana_nota_debito_cxc : formBase
@@ -28,9 +29,6 @@ namespace IrisContabilidad.modulo_facturacion
         private cxc_nota_debito notaDebito;
         private nota_credito_debito_concepto concepto;
 
-
-
-
         //modelos
         modeloNotaCreditoDebitoConcepto modeloConcepto = new modeloNotaCreditoDebitoConcepto();
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
@@ -41,6 +39,8 @@ namespace IrisContabilidad.modulo_facturacion
 
         //listas
         private List<nota_credito_debito_concepto> listaConcepto; 
+
+
 
         public ventana_nota_debito_cxc()
         {
@@ -441,7 +441,10 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            if (notaDebito != null)
+            {
+                modeloReporte.imprimirNotaDebitoCxc(notaDebito.codigo);
+            }
         }
     }
 }

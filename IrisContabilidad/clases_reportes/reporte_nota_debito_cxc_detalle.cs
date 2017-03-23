@@ -22,8 +22,6 @@ namespace IrisContabilidad.clases_reportes
         public string concepto { get; set; }
         public string detalle { get; set; }
 
-
-
         //objetos
         utilidades utilidades=new utilidades();
 
@@ -50,6 +48,7 @@ namespace IrisContabilidad.clases_reportes
             this.codigoConcepto = concepto.codigo;
             this.concepto = concepto.concepto;
             this.detalle = nota.detalle;
+
         }
     }
 }

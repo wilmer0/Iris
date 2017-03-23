@@ -109,8 +109,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
-
         //venta
         public bool imprimirVenta(int idVenta)
         {
@@ -166,6 +164,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //venta cobro
         public bool imprimirVentaCobro(int codigoCobro)
         {
             try
@@ -240,6 +239,7 @@ namespace IrisContabilidad.modelos
 
                 //llenar encabezado
                 reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleado);
+                reporteEncabezado.listaReporteVentaDevolucionDetalle =new modeloVentaDevolucion().getListaReporteVentaDevolucionDetalleByDevolucionId(nota.codigoDevolucion);
                 List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
                 listaReporteEncabezado.Add(reporteEncabezado);
 
@@ -254,6 +254,8 @@ namespace IrisContabilidad.modelos
                 ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
                 listaReportDataSource.Add(reporteD);
 
+                ReportDataSource reporteD2 = new ReportDataSource("reporte_detalle_devolucion_detalle", reporteEncabezado.listaReporteVentaDevolucionDetalle);
+                listaReportDataSource.Add(reporteD2);
 
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 
@@ -265,6 +267,57 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error imprimirNotaCreditoCxc.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        //nota debito
+        public bool imprimirNotaDebitoCxc(int codigoNotaDebito)
+        {
+            try
+            {
+                //datos generales
+                String reporte = "";
+
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                cxc_nota_debito nota = new modeloCxcNotaDebito().getNotaDebitoById(codigoNotaDebito);
+
+                empleado empleado = new empleado();
+                empleado = singleton.getEmpleado();
+
+                //hoja normal
+                reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_nota_debito.rdlc";
+                if (nota == null)
+                {
+                    return false;
+                }
+
+                //llenar encabezado
+                reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleado);
+                List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                listaReporteEncabezado.Add(reporteEncabezado);
+
+                ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                listaReportDataSource.Add(reporteE);
+
+                //llenar detalle
+                reporte_nota_debito_cxc_detalle detalle = new reporte_nota_debito_cxc_detalle(nota);
+                List<reporte_nota_debito_cxc_detalle> listaDetalle = new List<reporte_nota_debito_cxc_detalle>();
+                listaDetalle.Add(detalle);
+
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                listaReportDataSource.Add(reporteD);
+
+
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                ventana.ShowDialog();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirNotaDebitoCxc.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
