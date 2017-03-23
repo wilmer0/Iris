@@ -104,6 +104,82 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
+        public void filtrar()
+        {
+            try
+            {
+
+                listaEgresoCaja = modeloEgresoCaja.getListaCompleta();
+                listaEgresoCajaTemporal = new List<egreso_caja>();
+
+                //filtrar por todos
+                if (radioTodos.Checked == true)
+                {
+                    listaEgresoCaja = listaEgresoCaja.FindAll(x => x.detalle.ToLower().Contains(nombreText.Text.ToLower()));
+                    decimal dinero;
+                    if (decimal.TryParse(nombreText.Text, out dinero) != false)
+                    {
+                        listaEgresoCaja = listaEgresoCaja.FindAll(x => x.monto <= Convert.ToDecimal(nombreText.Text));
+                    }
+                }
+
+                //filtrar por monto
+                if (radioMonto.Checked == true)
+                {
+                    decimal dinero;
+                    if (decimal.TryParse(nombreText.Text, out dinero) != false)
+                    {
+                        listaEgresoCaja = listaEgresoCaja.FindAll(x => x.monto <= Convert.ToDecimal(nombreText.Text));
+                    }
+                }
+
+                listaEgresoCajaTemporal = listaEgresoCaja;
+
+                if (radioCajero.Checked == true)
+                {
+                    //nombre de cajero
+                    if (radioCajero.Checked == true)
+                    {
+                        cont = 0;
+                        listaEgresoCajaTemporal.ForEach(x =>
+                        {
+                            cajero = new empleado();
+                            cajero = modeloEmpleado.getEmpleadoByCajeroId(x.codigo_cajero);
+                            if (!cajero.nombre.ToLower().Contains(nombreText.Text.ToLower()))
+                            {
+                                listaEgresoCaja.RemoveAt(cont);
+                            }
+                            cont++;
+                        });
+                    }
+                }
+
+                listaEgresoCajaTemporal = listaEgresoCaja;
+
+                if (radioConcepto.Checked == true)
+                {
+                    //por concepto
+                    cont = 0;
+                    listaEgresoCajaTemporal.ForEach(x =>
+                    {
+                        concepto = new caja_ingresos_egresos_conceptos();
+                        concepto = modeloConcepto.getConceptoById(x.codigo_concepto);
+                        if (!concepto.nombre.ToLower().Contains(nombreText.Text.ToLower()))
+                        {
+                            listaEgresoCaja.RemoveAt(cont);
+                        }
+                        cont++;
+                    });
+                }
+
+                loadLista();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error buscando.: " + ex.ToString());
+            }
+        }
         private void ventana_busqueda_egreso_caja_Load(object sender, EventArgs e)
         {
 
@@ -116,82 +192,13 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void nombreText_KeyDown(object sender, KeyEventArgs e)
         {
-            try
+            if (e.KeyCode == Keys.Enter)
             {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    listaEgresoCaja = modeloEgresoCaja.getListaCompleta();
-                    listaEgresoCajaTemporal = new List<egreso_caja>();
-
-                    //filtrar por todos
-                    if (radioTodos.Checked == true)
-                    { 
-                        listaEgresoCaja = listaEgresoCaja.FindAll(x => x.detalle.ToLower().Contains(nombreText.Text.ToLower()));
-                        decimal dinero;
-                        if (decimal.TryParse(nombreText.Text, out dinero) != false)
-                        {
-                            listaEgresoCaja = listaEgresoCaja.FindAll(x => x.monto <= Convert.ToDecimal(nombreText.Text));
-                        }
-                    }
-
-                    //filtrar por monto
-                    if (radioMonto.Checked == true)
-                    {
-                        decimal dinero;
-                        if (decimal.TryParse(nombreText.Text, out dinero) != false)
-                        {
-                            listaEgresoCaja = listaEgresoCaja.FindAll(x => x.monto <= Convert.ToDecimal(nombreText.Text));
-                        }
-                    }
-
-                    listaEgresoCajaTemporal = listaEgresoCaja;
-
-                    if (radioCajero.Checked == true)
-                    {
-                        //nombre de cajero
-                        if (radioCajero.Checked == true)
-                        {
-                            cont = 0;
-                            listaEgresoCajaTemporal.ForEach(x =>
-                            {
-                                cajero = new empleado();
-                                cajero = modeloEmpleado.getEmpleadoByCajeroId(x.codigo_cajero);
-                                if (!cajero.nombre.ToLower().Contains(nombreText.Text.ToLower()))
-                                {
-                                    listaEgresoCaja.RemoveAt(cont);
-                                }
-                                cont ++;
-                            });
-                        }
-                    }
-                    
-                    listaEgresoCajaTemporal = listaEgresoCaja;
-                    
-                    if (radioConcepto.Checked == true)
-                    {
-                        //por concepto
-                        cont = 0;
-                        listaEgresoCajaTemporal.ForEach(x =>
-                        {
-                            concepto = new caja_ingresos_egresos_conceptos();
-                            concepto = modeloConcepto.getConceptoById(x.codigo_concepto);
-                            if (!concepto.nombre.ToLower().Contains(nombreText.Text.ToLower()))
-                            {
-                                listaEgresoCaja.RemoveAt(cont);
-                            }
-                            cont++;
-                        });
-                    }
-                    
-                    loadLista();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error buscando.: " + ex.ToString());
+                filtrar();
             }
         }
 
+       
         private void ventana_busqueda_egreso_caja_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F2)

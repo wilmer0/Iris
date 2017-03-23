@@ -23,8 +23,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 tipoVentana tipoVentana = new tipoVentana();
-                string sql = "select codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion,tamano_modulo_letra,nombre," +
-                             "tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra from tipo_ventana where codigo='" + id + "'";
+                string sql = "select codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion,tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra from tipo_ventana where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

@@ -53,16 +53,16 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris_contabilidad`.`comprobante_fiscal` MODIFY COLUMN `desde_numero` BIGINT NOT NULL DEFAULT 0,MODIFY COLUMN `hasta_numero` BIGINT UNSIGNED NOT NULL DEFAULT 0;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxc_nota_debito` ADD COLUMN `codigo_concepto` INTEGER NOT NULL DEFAULT 0 AFTER `detalle`, ADD CONSTRAINT `FK_cxc_nota_debito_4` FOREIGN KEY `FK_cxc_nota_debito_4` (`codigo_concepto`) REFERENCES `nota_credito_debito_concepto` (`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxc_nota_credito` ADD COLUMN `codigo_devolucion` INTEGER NOT NULL DEFAULT 0 AFTER `codigo_concepto`;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxc_nota_debito` ADD COLUMN `codigo_devolucion` INTEGER NOT NULL DEFAULT 0 AFTER `codigo_concepto`;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxc_nota_debito` DROP COLUMN `codigo_devolucion`;";
                 listaQuerys.Add(sql);
                 //nuevo query
                 sql = "";

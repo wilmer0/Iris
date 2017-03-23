@@ -4,8 +4,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.clases_reportes;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace IrisContabilidad.modelos
 {
@@ -161,7 +164,7 @@ namespace IrisContabilidad.modelos
             }
         }
         //get lista venta devolucion detalle
-        public List<ventaDevolucionDetalle> getListaVentaDevolucionDetalle(int id)
+        public List<ventaDevolucionDetalle> getListaVentaDevolucionDetalleByDevolucionId(int id)
         {
             try
             {
@@ -242,6 +245,38 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error anularDevolucion.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        //get lista reporte venta devolucion detalle by devolucion id
+        public List<reporte_venta_devolucion_detalle> getListaReporteVentaDevolucionDetalleByDevolucionId(int id)
+        {
+            try
+            {
+                ventaDevolucionDetalle ventaDevolucionDetalle=new ventaDevolucionDetalle();
+                List<ventaDevolucionDetalle> listaVentaDevolucionDetalle=new List<ventaDevolucionDetalle>();
+
+                reporte_venta_devolucion_detalle reporteVentaDevolucionDetalle=new reporte_venta_devolucion_detalle();
+                List<reporte_venta_devolucion_detalle> lista=new List<reporte_venta_devolucion_detalle>();
+
+                listaVentaDevolucionDetalle = getListaVentaDevolucionDetalleByDevolucionId(id);
+                if (listaVentaDevolucionDetalle == null)
+                {
+                    return null;
+                }
+
+                listaVentaDevolucionDetalle.ForEach(x =>
+                {
+                    reporteVentaDevolucionDetalle=new reporte_venta_devolucion_detalle(x);
+                    lista.Add(reporteVentaDevolucionDetalle);
+                });
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("Error getListaReporteVentaDevolucionDetalleByDevolucionId.:" + ex.ToString(), "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
             }
         }
     }
