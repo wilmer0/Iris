@@ -47,6 +47,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -96,7 +97,7 @@
             // 
             this.detalleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detalleText.Location = new System.Drawing.Point(525, 110);
-            this.detalleText.MaxLength = 300;
+            this.detalleText.MaxLength = 160;
             this.detalleText.Multiline = true;
             this.detalleText.Name = "detalleText";
             this.detalleText.Size = new System.Drawing.Size(370, 148);
@@ -116,7 +117,7 @@
             // montoText
             // 
             this.montoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoText.Location = new System.Drawing.Point(134, 241);
+            this.montoText.Location = new System.Drawing.Point(134, 239);
             this.montoText.Name = "montoText";
             this.montoText.Size = new System.Drawing.Size(275, 26);
             this.montoText.TabIndex = 99;
@@ -127,7 +128,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(65, 241);
+            this.label6.Location = new System.Drawing.Point(65, 239);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 98;
@@ -137,7 +138,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 183);
+            this.label5.Location = new System.Drawing.Point(37, 189);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 20);
             this.label5.TabIndex = 97;
@@ -147,7 +148,7 @@
             // 
             this.conceptoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.conceptoComboBox.FormattingEnabled = true;
-            this.conceptoComboBox.Location = new System.Drawing.Point(135, 184);
+            this.conceptoComboBox.Location = new System.Drawing.Point(135, 190);
             this.conceptoComboBox.Name = "conceptoComboBox";
             this.conceptoComboBox.Size = new System.Drawing.Size(236, 21);
             this.conceptoComboBox.TabIndex = 96;
@@ -157,7 +158,7 @@
             // NcfText
             // 
             this.NcfText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NcfText.Location = new System.Drawing.Point(134, 130);
+            this.NcfText.Location = new System.Drawing.Point(134, 135);
             this.NcfText.Name = "NcfText";
             this.NcfText.ReadOnly = true;
             this.NcfText.Size = new System.Drawing.Size(275, 26);
@@ -167,7 +168,7 @@
             // 
             this.ventaIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.ventaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ventaIdText.Location = new System.Drawing.Point(134, 92);
+            this.ventaIdText.Location = new System.Drawing.Point(134, 97);
             this.ventaIdText.Name = "ventaIdText";
             this.ventaIdText.Size = new System.Drawing.Size(155, 26);
             this.ventaIdText.TabIndex = 93;
@@ -177,7 +178,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(65, 94);
+            this.label4.Location = new System.Drawing.Point(65, 99);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 20);
             this.label4.TabIndex = 92;
@@ -188,7 +189,7 @@
             this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(295, 87);
+            this.button6.Location = new System.Drawing.Point(295, 92);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 94;
@@ -274,11 +275,22 @@
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(78, 138);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 20);
+            this.label1.TabIndex = 104;
+            this.label1.Text = "NCF";
+            // 
             // ventana_nota_debito_cxc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 455);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.activoCheck);
             this.Controls.Add(this.detalleText);
@@ -314,6 +326,7 @@
             this.Controls.SetChildIndex(this.detalleText, 0);
             this.Controls.SetChildIndex(this.activoCheck, 0);
             this.Controls.SetChildIndex(this.button5, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -344,5 +357,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
         public System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Label label1;
     }
 }

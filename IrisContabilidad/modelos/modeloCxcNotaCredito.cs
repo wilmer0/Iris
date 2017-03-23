@@ -32,7 +32,7 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
 
-                sql = "insert into cxc_nota_credito(codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto) values('" + notaCredito.codigo + "','" + notaCredito.codigoCliente + "'," + utilidades.getFechayyyyMMdd(notaCredito.fecha) + ",'" + activo.ToString() + "','" + notaCredito.codigoEmpleado + "','" + notaCredito.monto + "','" + notaCredito.detalle + "','" + notaCredito.codigoVenta + "','" + notaCredito.codigoConcepto+ "')";
+                sql = "insert into cxc_nota_credito(codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,codigo_devolucion) values('" + notaCredito.codigo + "','" + notaCredito.codigoCliente + "'," + utilidades.getFechayyyyMMdd(notaCredito.fecha) + ",'" + activo.ToString() + "','" + notaCredito.codigoEmpleado + "','" + notaCredito.monto + "','" + notaCredito.detalle + "','" + notaCredito.codigoVenta + "','" + notaCredito.codigoConcepto+ "','"+notaCredito.codigoDevolucion+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -60,7 +60,7 @@ namespace IrisContabilidad.modelos
                 {
                     activo = 1;
                 }
-                sql = "update cxc_nota_credito set codigo_cliente='" + notaCredito.codigoCliente + "',fecha='" + utilidades.getFechayyyyMMdd(notaCredito.fecha) + "',activo='" + activo.ToString() + "',codigo_empleado='" + notaCredito.codigoEmpleado + "',monto='" + notaCredito.monto + "',detalle='" + notaCredito.detalle + "',codigo_venta='" + notaCredito.codigoVenta + "',codigo_concepto='" + notaCredito .codigoConcepto+ "' where codigo='" + notaCredito.codigo + "'";
+                sql = "update cxc_nota_credito set codigo_cliente='" + notaCredito.codigoCliente + "',fecha='" + utilidades.getFechayyyyMMdd(notaCredito.fecha) + "',activo='" + activo.ToString() + "',codigo_empleado='" + notaCredito.codigoEmpleado + "',monto='" + notaCredito.monto + "',detalle='" + notaCredito.detalle + "',codigo_venta='" + notaCredito.codigoVenta + "',codigo_concepto='" + notaCredito .codigoConcepto+ "',codigo_devolucion='"+notaCredito.codigoDevolucion+"' where codigo='" + notaCredito.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
@@ -107,7 +107,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 cxc_nota_credito notaCredito = new cxc_nota_credito();
-                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto from cxc_nota_credito where codigo='" + id + "'";
+                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,codigo_devolucion from cxc_nota_credito where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -120,6 +120,7 @@ namespace IrisContabilidad.modelos
                     notaCredito.detalle = ds.Tables[0].Rows[0][6].ToString();
                     notaCredito.codigoVenta = Convert.ToInt16(ds.Tables[0].Rows[0][7]);
                     notaCredito.codigoConcepto = Convert.ToInt16(ds.Tables[0].Rows[0][8]);
+                    notaCredito.codigoDevolucion = Convert.ToInt16(ds.Tables[0].Rows[0][9]);
                 }
                 return notaCredito;
             }
@@ -138,7 +139,7 @@ namespace IrisContabilidad.modelos
             {
 
                 List<cxc_nota_credito> lista = new List<cxc_nota_credito>();
-                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto from cxc_nota_credito ";
+                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,codigo_devolucion from cxc_nota_credito ";
                 
                 if (mantenimiento == false)
                 {
@@ -159,6 +160,7 @@ namespace IrisContabilidad.modelos
                         notaCredito.detalle = row[6].ToString();
                         notaCredito.codigoVenta = Convert.ToInt16(row[7]);
                         notaCredito.codigoConcepto = Convert.ToInt16(row[8]);
+                        notaCredito.codigoDevolucion = Convert.ToInt16(row[9]);
                         lista.Add(notaCredito);
                     }
                 }
@@ -178,7 +180,7 @@ namespace IrisContabilidad.modelos
             {
 
                 List<cxc_nota_credito> lista = new List<cxc_nota_credito>();
-                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto from cxc_nota_credito where codigo_venta='" + id + "' and activo='1'";
+                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,codigo_devolucion from cxc_nota_credito where codigo_venta='" + id + "' and activo='1'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -194,6 +196,7 @@ namespace IrisContabilidad.modelos
                         notaCredito.detalle = row[6].ToString();
                         notaCredito.codigoVenta = Convert.ToInt16(row[7]);
                         notaCredito.codigoConcepto = Convert.ToInt16(row[8]);
+                        notaCredito.codigoDevolucion = Convert.ToInt16(row[9]);
                         lista.Add(notaCredito);
                     }
                 }
@@ -211,7 +214,7 @@ namespace IrisContabilidad.modelos
             {
 
                 List<cxc_nota_credito> lista = new List<cxc_nota_credito>();
-                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto from cxc_nota_credito where fecha<='"+utilidades.getFechayyyyMMdd(fechaFinal)+"' and codigo_venta='" + id + "' and activo='1'";
+                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,codigo_devolucion from cxc_nota_credito where fecha<='"+utilidades.getFechayyyyMMdd(fechaFinal)+"' and codigo_venta='" + id + "' and activo='1'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -227,6 +230,7 @@ namespace IrisContabilidad.modelos
                         notaCredito.detalle = row[6].ToString();
                         notaCredito.codigoVenta = Convert.ToInt16(row[7]);
                         notaCredito.codigoConcepto = Convert.ToInt16(row[8]);
+                        notaCredito.codigoDevolucion = Convert.ToInt16(row[9]);
                         lista.Add(notaCredito);
                     }
                 }
@@ -245,7 +249,7 @@ namespace IrisContabilidad.modelos
             {
 
                 List<cxc_nota_credito> lista = new List<cxc_nota_credito>();
-                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto from cxc_nota_credito where codigo_cliente='" + id + "' and activo='1'";
+                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,codigo_devolucion from cxc_nota_credito where codigo_cliente='" + id + "' and activo='1'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -261,6 +265,7 @@ namespace IrisContabilidad.modelos
                         notaCredito.detalle = row[6].ToString();
                         notaCredito.codigoVenta = Convert.ToInt16(row[7]);
                         notaCredito.codigoConcepto = Convert.ToInt16(row[8]);
+                        notaCredito.codigoDevolucion = Convert.ToInt16(row[9]);
                         lista.Add(notaCredito);
                     }
                 }
@@ -277,9 +282,8 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-
                 List<cxc_nota_credito> lista = new List<cxc_nota_credito>();
-                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto from cxc_nota_credito where fecha>='" + utilidades.getFechayyyyMMdd(fechaInicial.Date) + "' and fecha<='" + utilidades.getFechayyyyMMdd(fechaFinal.Date) + "' and activo='1'";
+                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,codigo_devolucion from cxc_nota_credito where fecha>='" + utilidades.getFechayyyyMMdd(fechaInicial.Date) + "' and fecha<='" + utilidades.getFechayyyyMMdd(fechaFinal.Date) + "' and activo='1'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -295,6 +299,7 @@ namespace IrisContabilidad.modelos
                         notaCredito.detalle = row[6].ToString();
                         notaCredito.codigoVenta = Convert.ToInt16(row[7]);
                         notaCredito.codigoConcepto = Convert.ToInt16(row[8]);
+                        notaCredito.codigoDevolucion = Convert.ToInt16(row[9]);
                         lista.Add(notaCredito);
                     }
                 }

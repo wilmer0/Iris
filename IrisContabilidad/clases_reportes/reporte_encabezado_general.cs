@@ -25,12 +25,14 @@ namespace IrisContabilidad.clases_reportes
 
 
 
+        //listas
+        public List<reporte_venta_devolucion_detalle> listaReporteVentaDevolucionDetalle { get; set; }
 
-       public reporte_encabezado_general(empleado empleado)
+        public reporte_encabezado_general(empleado empleado)
         {
             empresa empresa = new empresa();
             empresa = new modeloEmpresa().getEmpresaByEmpleadoId(empleado.codigo);
-
+            
             sucursal sucursal = new sucursal();
             sucursal = new modeloSucursal().getSucursalById(empleado.codigo_sucursal);
 

@@ -17,5 +17,6 @@ namespace IrisContabilidad.clases
         public string detalle { get; set; }
         public int codigoVenta { get; set; }
         public int codigoConcepto { get; set; }
+        public int codigoDevolucion { get; set; }
     }
 }
