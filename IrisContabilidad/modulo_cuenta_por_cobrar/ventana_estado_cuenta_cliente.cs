@@ -71,6 +71,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             try
             {
+                fechaFinalDateTime=DateTime.Today;
                 if (reporteEncabezado != null)
                 {
                     //cargar
@@ -96,7 +97,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     clienteIdText.Text = "";
                     clienteLabel.Text = "";
 
-                    fechaFinalVentaText.Text = utilidades.getFechaddMMyyyy(DateTime.Today);
+                    //fechaFinalVentaText.Text = utilidades.getFechaddMMyyyy(DateTime.Today);
                     
                 }
                 dataGridView1.Rows.Clear();
@@ -118,7 +119,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
                 reporteEncabezado.listaDetalle.ForEach(x =>
                 {
-                    dataGridView1.Rows.Add(x.idCliente,x.cliente, x.montoFacturado.ToString("N"), x.montoCobrado.ToString("N"), x.montoPendiente.ToString("N"));
+                    dataGridView1.Rows.Add(x.idCliente,x.cliente, x.montoFacturado.ToString("N"),x.montoNotasDebito.ToString("N"), x.montoCobrado.ToString("N"),x.montoNotasCredito.ToString("N"), x.montoPendiente.ToString("N"));
                 });
             }
             catch (Exception ex)
@@ -131,16 +132,16 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             try
             {
                 //incluir fecha venta
-                DateTime fecha;
-                if (DateTime.TryParse(fechaFinalVentaText.Text, out fecha) == false)
-                {
-                    fechaFinalVentaText.Focus();
-                    fechaFinalVentaText.SelectAll();
-                    MessageBox.Show("Error formato de fecha incorrecto");
-                    return false;
-                }
+                //DateTime fecha;
+                //if (DateTime.TryParse(fechaFinalVentaText.Text, out fecha) == false)
+                //{
+                //    fechaFinalVentaText.Focus();
+                //    fechaFinalVentaText.SelectAll();
+                //    MessageBox.Show("Error formato de fecha incorrecto");
+                //    return false;
+                //}
 
-                fechaFinalDateTime = Convert.ToDateTime(fechaFinalVentaText.Text);
+                //fechaFinalDateTime = Convert.ToDateTime(fechaFinalVentaText.Text);
 
                 return true;
             }
@@ -184,7 +185,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     return;
                 }
                 //datos generales
-                String reporte = "IrisContabilidad.reportes.reporte_estado_cuenta_cliente.rdlc";
+                String reporte = "IrisContabilidad.modulo_cuenta_por_cobrar.Reporte.reporte_estado_cuenta_cliente.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
 

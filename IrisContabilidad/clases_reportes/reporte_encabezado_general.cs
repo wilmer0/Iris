@@ -18,16 +18,21 @@ namespace IrisContabilidad.clases_reportes
         public string fecha_impresion { get; set; }
         public string empleadoImpresion { get; set; }
 
-        public reporte_encabezado_general()
-        {
-            
-        }
+        //otros
+        public string fecha { get; set; }
+        public string fechaInicial { get; set; }
+        public string fechaFinal { get; set; }
+
+
+
+        //listas
+        public List<reporte_venta_devolucion_detalle> listaReporteVentaDevolucionDetalle { get; set; }
 
         public reporte_encabezado_general(empleado empleado)
         {
             empresa empresa = new empresa();
             empresa = new modeloEmpresa().getEmpresaByEmpleadoId(empleado.codigo);
-
+            
             sucursal sucursal = new sucursal();
             sucursal = new modeloSucursal().getSucursalById(empleado.codigo_sucursal);
 

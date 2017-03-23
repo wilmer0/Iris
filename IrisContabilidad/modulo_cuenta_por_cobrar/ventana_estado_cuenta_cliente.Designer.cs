@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_estado_cuenta_cliente));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.clienteLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,11 +43,11 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.fechaFinalVentaText = new System.Windows.Forms.MaskedTextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -53,7 +58,7 @@
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(12, 451);
-            this.panel1.Size = new System.Drawing.Size(849, 54);
+            this.panel1.Size = new System.Drawing.Size(908, 54);
             // 
             // button2
             // 
@@ -62,17 +67,17 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(708, 5);
+            this.button1.Location = new System.Drawing.Point(767, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(873, 21);
+            this.panel2.Size = new System.Drawing.Size(932, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(354, 5);
+            this.button3.Location = new System.Drawing.Point(384, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
@@ -140,7 +145,9 @@
             this.Column1,
             this.Column2,
             this.Column5,
+            this.Column3,
             this.Column6,
+            this.Column4,
             this.Column7});
             this.dataGridView1.Location = new System.Drawing.Point(12, 131);
             this.dataGridView1.MultiSelect = false;
@@ -148,7 +155,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(845, 314);
+            this.dataGridView1.Size = new System.Drawing.Size(908, 314);
             this.dataGridView1.TabIndex = 107;
             // 
             // Column1
@@ -166,20 +173,42 @@
             // 
             // Column5
             // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.Column5.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column5.FillWeight = 70F;
             this.Column5.HeaderText = "Monto Facturado";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             // 
+            // Column3
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.Column3.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column3.HeaderText = "Monto Notas Debito";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
             // Column6
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column6.FillWeight = 70F;
             this.Column6.HeaderText = "Monto Cobrado";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             // 
+            // Column4
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.Column4.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column4.HeaderText = "Monto Notas Credito";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
             // Column7
             // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle5;
             this.Column7.FillWeight = 70F;
             this.Column7.HeaderText = "Monto Pendiente";
             this.Column7.Name = "Column7";
@@ -187,8 +216,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.fechaFinalVentaText);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.clienteIdText);
             this.groupBox1.Controls.Add(this.button5);
@@ -197,28 +224,9 @@
             this.groupBox1.Controls.Add(this.clienteLabel);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(845, 100);
+            this.groupBox1.Size = new System.Drawing.Size(905, 100);
             this.groupBox1.TabIndex = 108;
             this.groupBox1.TabStop = false;
-            // 
-            // fechaFinalVentaText
-            // 
-            this.fechaFinalVentaText.Location = new System.Drawing.Point(499, 25);
-            this.fechaFinalVentaText.Mask = "00/00/0000";
-            this.fechaFinalVentaText.Name = "fechaFinalVentaText";
-            this.fechaFinalVentaText.Size = new System.Drawing.Size(100, 20);
-            this.fechaFinalVentaText.TabIndex = 105;
-            this.fechaFinalVentaText.ValidatingType = typeof(System.DateTime);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(395, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(98, 20);
-            this.label6.TabIndex = 104;
-            this.label6.Text = "Fecha final";
             // 
             // button6
             // 
@@ -227,7 +235,7 @@
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(701, 48);
+            this.button6.Location = new System.Drawing.Point(761, 48);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(138, 41);
             this.button6.TabIndex = 103;
@@ -239,7 +247,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 517);
+            this.ClientSize = new System.Drawing.Size(932, 517);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ventana_estado_cuenta_cliente";
@@ -273,9 +281,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.MaskedTextBox fechaFinalVentaText;
-        private System.Windows.Forms.Label label6;
     }
 }
