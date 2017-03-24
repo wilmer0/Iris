@@ -669,7 +669,6 @@
                   <Value>=First(Fields!empleadoImpresion.Value, "reporte_encabezado")</Value>
                   <Style>
                     <FontSize>9pt</FontSize>
-                    <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
               </TextRuns>

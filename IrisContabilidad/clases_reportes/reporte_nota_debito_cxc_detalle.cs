@@ -21,6 +21,8 @@ namespace IrisContabilidad.clases_reportes
         public int codigoConcepto { get; set; }
         public string concepto { get; set; }
         public string detalle { get; set; }
+        public int codigoEmpleado { get; set; }
+        public string nombreEmpleado { get; set; }
 
         //objetos
         utilidades utilidades=new utilidades();
@@ -36,6 +38,7 @@ namespace IrisContabilidad.clases_reportes
             cliente cliente = new modeloCliente().getClienteById(nota.codigoCliente);
             venta venta = new modeloVenta().getVentaById(nota.codigoVenta);
             nota_credito_debito_concepto concepto = new modeloNotaCreditoDebitoConcepto().getConceptoById(nota.codigoConcepto);
+            empleado empleado = new modeloEmpleado().getEmpleadoById(nota.codigoEmpleado);
 
             this.codigo = nota.codigo;
             this.codigoCliente = nota.codigoCliente;
@@ -48,6 +51,8 @@ namespace IrisContabilidad.clases_reportes
             this.codigoConcepto = concepto.codigo;
             this.concepto = concepto.concepto;
             this.detalle = nota.detalle;
+            this.codigoEmpleado = empleado.codigo;
+            this.nombreEmpleado = empleado.nombre;
 
         }
     }
