@@ -1078,6 +1078,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 4;
                 ventana.imagen = "consulta_compra_pagos1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "pagos por compra";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_reporte_pagos";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "reporte_compras_pagos1.png";
+                listaVentana.Add(ventana);
 
                 #endregion
 
