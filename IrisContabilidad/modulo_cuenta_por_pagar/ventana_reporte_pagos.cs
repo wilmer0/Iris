@@ -50,23 +50,19 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
-                if (suplidor != null)
-                {
-                   
-                }
-                else
-                {
-                    //blanquear campos
-                    suplidor = null;
-                    compra = null;
+                //blanquear campos
+                suplidor = null;
+                loadSuplidor();
+                compra = null;
+                loadCompra();
 
-                    checkBoxSoloComprasPagadas.Checked = false;
-                    checkBoxIncluirRangoFechaVenta.Checked = false;
-                    fechaInicialText.Enabled = !(bool) checkBoxIncluirRangoFechaVenta.Checked;
-                    fechaFinalText.Enabled = !(bool)checkBoxIncluirRangoFechaVenta.Checked;
-                    fechaInicialText.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                    fechaFinalText.Text = DateTime.Today.ToString("dd/MM/yyyy");
-                }
+                checkBoxSoloComprasPagadas.Checked = false;
+                checkBoxIncluirRangoFechaVenta.Checked = false;
+                fechaInicialText.Enabled = !(bool)checkBoxIncluirRangoFechaVenta.Checked;
+                fechaFinalText.Enabled = !(bool)checkBoxIncluirRangoFechaVenta.Checked;
+                fechaInicialText.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                fechaFinalText.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                
             }
             catch (Exception ex)
             {
@@ -104,7 +100,12 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             try
             {
-
+                if (validarImpresion() == false)
+                {
+                    return;
+                }
+                modeloReporte.imprimirCompraPagosAgrupadoByCompra(compra, suplidor, tipoCompra,fechaInicial, fechaFinal,incluirRangoFechas, incluirSoloCompraPagadas);
+                
             }
             catch (Exception ex)
             {
@@ -179,7 +180,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
         private void label8_Click(object sender, EventArgs e)
         {
-
+            tipoCompraComboBox.SelectedIndex = 0;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -252,6 +253,24 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 compra = ventana.getObjeto();
                 loadCompra();
             }
+        }
+
+        private void checkBoxIncluirRangoFechaVenta_Click(object sender, EventArgs e)
+        {
+            fechaInicialText.Enabled = !(bool) checkBoxIncluirRangoFechaVenta.Checked;
+            fechaFinalText.Enabled = !(bool)checkBoxIncluirRangoFechaVenta.Checked;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            suplidor = null;
+            loadSuplidor();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            compra = null;
+            loadCompra();
         }
     }
 }

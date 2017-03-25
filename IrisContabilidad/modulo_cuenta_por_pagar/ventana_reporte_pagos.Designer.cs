@@ -165,6 +165,7 @@
             this.label7.Size = new System.Drawing.Size(21, 20);
             this.label7.TabIndex = 98;
             this.label7.Text = "X";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label1
             // 
@@ -175,6 +176,7 @@
             this.label1.Size = new System.Drawing.Size(21, 20);
             this.label1.TabIndex = 97;
             this.label1.Text = "X";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button6
             // 
@@ -244,6 +246,7 @@
             this.checkBoxIncluirRangoFechaVenta.TabIndex = 90;
             this.checkBoxIncluirRangoFechaVenta.Text = "Incluir rango fecha";
             this.checkBoxIncluirRangoFechaVenta.UseVisualStyleBackColor = true;
+            this.checkBoxIncluirRangoFechaVenta.Click += new System.EventHandler(this.checkBoxIncluirRangoFechaVenta_Click);
             // 
             // label5
             // 

@@ -1123,6 +1123,7 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_agrupado_compra.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_encabezado_general.datasource" />

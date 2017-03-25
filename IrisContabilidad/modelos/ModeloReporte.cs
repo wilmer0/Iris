@@ -324,7 +324,7 @@ namespace IrisContabilidad.modelos
         }
 
         //pagos a compras agrupados por compra
-        public bool imprimirCompraPagosAgrupadoByCompra(compra compra,suplidor suplidor,string tipoCompra,DateTime fechaInicial,DateTime fechaFinal,bool incluirRangoFecha)
+        public bool imprimirCompraPagosAgrupadoByCompra(compra compra,suplidor suplidor,string tipoCompra,DateTime fechaInicial,DateTime fechaFinal,bool incluirRangoFecha,bool incluirSoloPagadas)
         {
             try
             {
@@ -332,14 +332,50 @@ namespace IrisContabilidad.modelos
                 String reporte = "";
 
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
-                List<compra_vs_pagos_detalles> listaCompraPagos=new List<compra_vs_pagos_detalles>();
+                List<reporte_compra_pago_agrupado_compra> listaReporteCompraPagoAgrupadoCompra=new List<reporte_compra_pago_agrupado_compra>();
+                List<compra> listaCompra=new List<compra>();
+
+                listaCompra = new modeloCompra().getListaCompra();
+
+                //filtros
+                //fecha
+                if (incluirRangoFecha == true)
+                {
+                    listaCompra = listaCompra.FindAll(x => x.fecha>= fechaInicial.Date && x.fecha<=fechaFinal.Date);
+                }
+                //pagadas
+                if (incluirSoloPagadas == true)
+                {
+                    listaCompra = listaCompra.FindAll(x => x.pagada == true);
+                }
+                //compra
+                if (compra != null)
+                {
+                    listaCompra = listaCompra.FindAll(x => x.codigo == compra.codigo);
+                }
+                //suplidor 
+                if (suplidor != null)
+                {
+                    listaCompra = listaCompra.FindAll(x => x.cod_suplidor == suplidor.codigo);
+                }
+                //tipo compra
+                if (tipoCompra != "")
+                {
+                    listaCompra = listaCompra.FindAll(x => tipoCompra.ToLower().Contains(x.tipo_compra.ToLower()));
+                }
+
+                foreach (var x in listaCompra)
+                {
+                    reporte_compra_pago_agrupado_compra reporteCompra=new reporte_compra_pago_agrupado_compra(x);
+                    listaReporteCompraPagoAgrupadoCompra.Add(reporteCompra);   
+                }
 
                 empleado empleado = new empleado();
                 empleado = singleton.getEmpleado();
 
                 //hoja normal
                 reporte = "IrisContabilidad.modulo_cuenta_por_pagar.Reporte.reporte_pagos_compras_agrupado_compra.rdlc";
-                if (nota == null)
+                if (listaReporteCompraPagoAgrupadoCompra == null)
                 {
                     return false;
                 }
@@ -348,16 +384,12 @@ namespace IrisContabilidad.modelos
                 reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleado);
                 List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
                 listaReporteEncabezado.Add(reporteEncabezado);
-
                 ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
                 listaReportDataSource.Add(reporteE);
 
                 //llenar detalle
-                reporte_nota_debito_cxc_detalle detalle = new reporte_nota_debito_cxc_detalle(nota);
-                List<reporte_nota_debito_cxc_detalle> listaDetalle = new List<reporte_nota_debito_cxc_detalle>();
-                listaDetalle.Add(detalle);
 
-                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaReporteCompraPagoAgrupadoCompra);
                 listaReportDataSource.Add(reporteD);
 
 
