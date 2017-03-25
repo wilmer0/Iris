@@ -21,6 +21,8 @@ namespace IrisContabilidad.clases_reportes
         public string fecha_compra { get; set; }
         public int codigo_metodo_pago { get; set; }
         public string metodo_pago { get; set; }
+        public int codigoPago { get; set; }
+        public string fechaPago { get; set; }
 
         public reporte_compra_pago_detalle()
         {
@@ -29,6 +31,7 @@ namespace IrisContabilidad.clases_reportes
 
         public reporte_compra_pago_detalle(compra_vs_pagos_detalles pago)
         {
+            compra_vs_pagos compraPago = new modeloCompra().getCompraPagoById(pago.codigo_pago);
             compra compra = new modeloCompra().getCompraById(pago.codigo_compra);
             clases.metodo_pago metodoPago = new modeloMetodoPago().getMetodoPagoById(pago.codigo_metodo_pago);
             this.numero_compra = compra.numero_factura;
@@ -38,6 +41,8 @@ namespace IrisContabilidad.clases_reportes
             this.fecha_compra = compra.fecha.ToString("dd/MM/yyyy");
             this.codigo_metodo_pago = metodoPago.codigo;
             this.metodo_pago = metodoPago.metodo;
+            this.codigoPago = pago.codigo;
+            this.fechaPago = compraPago.fecha.ToString("dd/MM/yyyy");
         }
 
         public List<reporte_compra_pago_detalle> getListaCompraVsPagosDetallesByCompraId(int id)
