@@ -388,7 +388,6 @@ namespace IrisContabilidad.modelos
                 listaReportDataSource.Add(reporteE);
 
                 //llenar detalle
-
                 ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaReporteCompraPagoAgrupadoCompra);
                 listaReportDataSource.Add(reporteD);
 
