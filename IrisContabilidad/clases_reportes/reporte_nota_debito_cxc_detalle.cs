@@ -53,7 +53,6 @@ namespace IrisContabilidad.clases_reportes
             this.detalle = nota.detalle;
             this.codigoEmpleado = empleado.codigo;
             this.nombreEmpleado = empleado.nombre;
-
         }
     }
 }

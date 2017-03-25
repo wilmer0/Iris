@@ -10,6 +10,7 @@ namespace IrisContabilidad.clases_reportes
 {
     public class reporte_compra_pago_detalle
     {
+        
         public string numero_compra { get; set; }
         public int codigoCompra { get; set; }
         public decimal monto_descuento { get; set; }
