@@ -24,7 +24,6 @@ namespace IrisContabilidad.clases_reportes
         public string fechaFinal { get; set; }
 
 
-
         //listas
         public List<reporte_venta_devolucion_detalle> listaReporteVentaDevolucionDetalle { get; set; }
 

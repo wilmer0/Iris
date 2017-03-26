@@ -134,6 +134,7 @@
     <Compile Include="clases\gasto.cs" />
     <Compile Include="clases\grupo_usuarios.cs" />
     <Compile Include="clases\itebis.cs" />
+    <Compile Include="clases\log_reportes_generados.cs" />
     <Compile Include="clases\mes.cs" />
     <Compile Include="clases\metodo_pago.cs" />
     <Compile Include="clases\modulo.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="modelos\modeloGasto.cs" />
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
     <Compile Include="modelos\modeloItebis.cs" />
+    <Compile Include="modelos\modeloLogReporteGenerado.cs" />
     <Compile Include="modelos\modeloMetodoPago.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />

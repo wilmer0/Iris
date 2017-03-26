@@ -23,6 +23,8 @@ namespace IrisContabilidad.clases_reportes
         public string metodo_pago { get; set; }
         public int codigoPago { get; set; }
         public string fechaPago { get; set; }
+        public int codigoSuplidor { get; set; }
+        private string suplidor { get;set; }
 
         public reporte_compra_pago_detalle()
         {
@@ -31,6 +33,7 @@ namespace IrisContabilidad.clases_reportes
 
         public reporte_compra_pago_detalle(compra_vs_pagos_detalles pago)
         {
+            suplidor suplidor = new modeloSuplidor().getSuplidorByCompraPago(pago.codigo_pago);
             compra_vs_pagos compraPago = new modeloCompra().getCompraPagoById(pago.codigo_pago);
             compra compra = new modeloCompra().getCompraById(pago.codigo_compra);
             clases.metodo_pago metodoPago = new modeloMetodoPago().getMetodoPagoById(pago.codigo_metodo_pago);
@@ -43,6 +46,8 @@ namespace IrisContabilidad.clases_reportes
             this.metodo_pago = metodoPago.metodo;
             this.codigoPago = pago.codigo;
             this.fechaPago = compraPago.fecha.ToString("dd/MM/yyyy");
+            this.codigoSuplidor = suplidor.codigo;
+            this.suplidor = suplidor.nombre;
         }
 
         public List<reporte_compra_pago_detalle> getListaCompraVsPagosDetallesByCompraId(int id)

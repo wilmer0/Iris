@@ -65,10 +65,10 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris_contabilidad`.`cxc_nota_debito` DROP COLUMN `codigo_devolucion`;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "CREATE TABLE `iris_contabilidad`.`log_reportes_generados` ( `codigo` INTEGER NOT NULL DEFAULT 0, `reporte_generado` VARCHAR(999) NOT NULL DEFAULT '', `codigo_empleado` INTEGER NOT NULL DEFAULT 0, `fecha` DATE NOT NULL DEFAULT 0, `fecha_hora` DATETIME NOT NULL DEFAULT 0, PRIMARY KEY(`codigo`) ) ENGINE = InnoDB;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`log_reportes_generados` MODIFY COLUMN `reporte_generado` VARCHAR(999) NOT NULL DEFAULT '', ADD CONSTRAINT `FK_log_reportes_generados_1` FOREIGN KEY `FK_log_reportes_generados_1` (`codigo_empleado`) REFERENCES `empleado` (`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT;";
                 listaQuerys.Add(sql);
                 //nuevo query
                 sql = "";

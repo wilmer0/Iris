@@ -37,9 +37,8 @@ namespace IrisContabilidad.clases_reportes
                 this.NCF = compra.ncf;
                 this.codigoSuplidor = suplidor.codigo;
                 this.suplidor = suplidor.nombre;
-
+                listaPagosDetalles=new List<reporte_compra_pago_detalle>();
                 this.listaPagosDetalles = new reporte_compra_pago_detalle().getListaCompraVsPagosDetallesByCompraId(compra.codigo);
-
             }
             catch (Exception ex)
             {
