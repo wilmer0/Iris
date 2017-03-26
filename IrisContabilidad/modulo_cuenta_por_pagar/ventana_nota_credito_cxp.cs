@@ -105,7 +105,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 conceptoComboBox.DisplayMember = "concepto";
                 conceptoComboBox.ValueMember = "codigo";
                 conceptoComboBox.DataSource = listaConcepto;
-                conceptoComboBox.SelectedValue = 0;
+                conceptoComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {

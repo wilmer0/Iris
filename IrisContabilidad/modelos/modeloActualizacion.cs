@@ -89,10 +89,10 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris_contabilidad`.`ingresos_caja` ADD COLUMN `modificable` BOOLEAN NOT NULL DEFAULT 1 AFTER `cuadrado`;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxp_nota_credito` ADD COLUMN `activo` BOOLEAN NOT NULL DEFAULT 1 AFTER `codigo_devolucion`;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxp_nota_credito` ADD COLUMN `codigo_concepto` INTEGER NOT NULL DEFAULT 0 AFTER `activo`;";
                 listaQuerys.Add(sql);
                 //nuevo query
                 sql = "";

@@ -54,6 +54,10 @@ namespace IrisContabilidad.modelos
                     agregarPrimerEmpleado();
                     agregarAccesosVentanas();
                 }
+                else
+                {
+                    agregarVentanas();
+                }
             }
             catch (Exception ex)
             {

@@ -1,6 +1,6 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
-    partial class ventana_nota_debito_cxc
+    partial class ventana_nota_debito_cxp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_nota_debito_cxc));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_nota_debito_cxp));
             this.activoCheck = new System.Windows.Forms.CheckBox();
             this.detalleText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -37,7 +37,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.conceptoComboBox = new System.Windows.Forms.ComboBox();
             this.NcfText = new System.Windows.Forms.TextBox();
-            this.ventaIdText = new System.Windows.Forms.TextBox();
+            this.compraIdText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.fechaText = new System.Windows.Forms.MaskedTextBox();
@@ -164,15 +164,15 @@
             this.NcfText.Size = new System.Drawing.Size(275, 26);
             this.NcfText.TabIndex = 95;
             // 
-            // ventaIdText
+            // compraIdText
             // 
-            this.ventaIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.ventaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ventaIdText.Location = new System.Drawing.Point(134, 97);
-            this.ventaIdText.Name = "ventaIdText";
-            this.ventaIdText.Size = new System.Drawing.Size(155, 26);
-            this.ventaIdText.TabIndex = 93;
-            this.ventaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventaIdText_KeyDown);
+            this.compraIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.compraIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compraIdText.Location = new System.Drawing.Point(134, 97);
+            this.compraIdText.Name = "compraIdText";
+            this.compraIdText.Size = new System.Drawing.Size(155, 26);
+            this.compraIdText.TabIndex = 93;
+            this.compraIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventaIdText_KeyDown);
             // 
             // label4
             // 
@@ -300,7 +300,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.conceptoComboBox);
             this.Controls.Add(this.NcfText);
-            this.Controls.Add(this.ventaIdText);
+            this.Controls.Add(this.compraIdText);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.fechaText);
@@ -316,7 +316,7 @@
             this.Controls.SetChildIndex(this.fechaText, 0);
             this.Controls.SetChildIndex(this.button6, 0);
             this.Controls.SetChildIndex(this.label4, 0);
-            this.Controls.SetChildIndex(this.ventaIdText, 0);
+            this.Controls.SetChildIndex(this.compraIdText, 0);
             this.Controls.SetChildIndex(this.NcfText, 0);
             this.Controls.SetChildIndex(this.conceptoComboBox, 0);
             this.Controls.SetChildIndex(this.label5, 0);
@@ -347,7 +347,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox conceptoComboBox;
         private System.Windows.Forms.TextBox NcfText;
-        private System.Windows.Forms.TextBox ventaIdText;
+        private System.Windows.Forms.TextBox compraIdText;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.MaskedTextBox fechaText;

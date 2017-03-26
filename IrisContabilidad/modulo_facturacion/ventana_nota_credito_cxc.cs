@@ -104,7 +104,7 @@ namespace IrisContabilidad.modulo_facturacion
                 conceptoComboBox.DisplayMember = "concepto";
                 conceptoComboBox.ValueMember = "codigo";
                 conceptoComboBox.DataSource = listaConcepto;
-                conceptoComboBox.SelectedValue = 0;
+                conceptoComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
