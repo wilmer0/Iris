@@ -10,7 +10,7 @@ namespace IrisContabilidad.clases_reportes
 {
     public class reporte_nota_debito_cxc_detalle
     {
-         public int codigo { get; set; }
+        public int codigo { get; set; }
         public int codigoCliente { get; set; }
         public string nombreCliente { get; set; }
         public decimal monto { get; set; }

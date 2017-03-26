@@ -185,6 +185,7 @@
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_nota_credito_cxp_detalle.cs" />
     <Compile Include="clases_reportes\reporte_nota_debito_cxc_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_nota_debito_cxp_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_cobro_detalle.cs" />
@@ -865,6 +866,8 @@
     <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_nota_credito.rdlc" />
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_nota_debito.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_pagos_compras_agrupado_compra.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_nota_credito_cxp.resx">
       <DependentUpon>ventana_busqueda_nota_credito_cxp.cs</DependentUpon>
@@ -1171,6 +1174,7 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_devolucion_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_agrupado_compra.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_detalle.datasource" />
@@ -1180,6 +1184,7 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_credito_cxc_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_credito_cxp_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_debito_cxc_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />

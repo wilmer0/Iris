@@ -427,7 +427,7 @@ namespace IrisContabilidad.modelos
                 empleado = singleton.getEmpleado();
 
                 //hoja normal
-                reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_nota_credito.rdlc";
+                reporte = "IrisContabilidad.modulo_cuenta_por_pagar.Reporte.reporte_nota_credito.rdlc";
                 if (nota == null)
                 {
                     return false;
@@ -450,8 +450,8 @@ namespace IrisContabilidad.modelos
                 ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
                 listaReportDataSource.Add(reporteD);
 
-                ReportDataSource reporteD2 = new ReportDataSource("reporte_detalle_devolucion_detalle", reporteEncabezado.listaReporteCompraDevolucionDetalle);
-                listaReportDataSource.Add(reporteD2);
+                //ReportDataSource reporteD2 = new ReportDataSource("reporte_detalle_devolucion_detalle", reporteEncabezado.listaReporteCompraDevolucionDetalle);
+                //listaReportDataSource.Add(reporteD2);
 
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 
@@ -482,7 +482,7 @@ namespace IrisContabilidad.modelos
                 //empleado = singleton.getEmpleado();
 
                 ////hoja normal
-                //reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_nota_debito.rdlc";
+                //reporte = "IrisContabilidad.modulo_cuenta_por_pagar.Reporte.reporte_nota_debito.rdlc";
                 //if (nota == null)
                 //{
                 //    return false;
