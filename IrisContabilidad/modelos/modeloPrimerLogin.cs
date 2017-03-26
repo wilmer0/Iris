@@ -1087,10 +1087,26 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 4;
                 ventana.imagen = "reporte_compras_pagos1.png";
                 listaVentana.Add(ventana);
-
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Notas Credito";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_nota_credito_cxp";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "compra_nota_credito1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Notas Debito";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_nota_debito_cxp";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "compra_nota_debito1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
-                
 
                 //modulo inventario
                 #region

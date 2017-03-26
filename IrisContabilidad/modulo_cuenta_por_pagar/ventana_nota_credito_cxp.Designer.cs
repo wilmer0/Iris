@@ -30,8 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_nota_credito_cxp));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.compraIdText = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.numeroVentaText = new System.Windows.Forms.TextBox();
+            this.numeroCompraText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.NcfText = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
@@ -48,9 +51,6 @@
             this.notaCreditoIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ventaIdText = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -87,9 +87,9 @@
             // 
             this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.ventaIdText);
+            this.groupBox2.Controls.Add(this.compraIdText);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.numeroVentaText);
+            this.groupBox2.Controls.Add(this.numeroCompraText);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.NcfText);
             this.groupBox2.Location = new System.Drawing.Point(16, 95);
@@ -97,6 +97,37 @@
             this.groupBox2.Size = new System.Drawing.Size(408, 152);
             this.groupBox2.TabIndex = 125;
             this.groupBox2.TabStop = false;
+            // 
+            // button7
+            // 
+            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
+            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.Location = new System.Drawing.Point(281, 15);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(47, 37);
+            this.button7.TabIndex = 115;
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(42, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 20);
+            this.label1.TabIndex = 113;
+            this.label1.Text = "Compra";
+            // 
+            // compraIdText
+            // 
+            this.compraIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.compraIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compraIdText.Location = new System.Drawing.Point(120, 20);
+            this.compraIdText.Name = "compraIdText";
+            this.compraIdText.Size = new System.Drawing.Size(155, 26);
+            this.compraIdText.TabIndex = 114;
             // 
             // label8
             // 
@@ -108,14 +139,14 @@
             this.label8.TabIndex = 112;
             this.label8.Text = "No. Compra";
             // 
-            // numeroVentaText
+            // numeroCompraText
             // 
-            this.numeroVentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroVentaText.Location = new System.Drawing.Point(119, 67);
-            this.numeroVentaText.Name = "numeroVentaText";
-            this.numeroVentaText.ReadOnly = true;
-            this.numeroVentaText.Size = new System.Drawing.Size(264, 26);
-            this.numeroVentaText.TabIndex = 111;
+            this.numeroCompraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numeroCompraText.Location = new System.Drawing.Point(119, 67);
+            this.numeroCompraText.Name = "numeroCompraText";
+            this.numeroCompraText.ReadOnly = true;
+            this.numeroCompraText.Size = new System.Drawing.Size(264, 26);
+            this.numeroCompraText.TabIndex = 111;
             // 
             // label4
             // 
@@ -284,36 +315,6 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button7
-            // 
-            this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(281, 15);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(47, 37);
-            this.button7.TabIndex = 115;
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(42, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 20);
-            this.label1.TabIndex = 113;
-            this.label1.Text = "Compra";
-            // 
-            // ventaIdText
-            // 
-            this.ventaIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.ventaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ventaIdText.Location = new System.Drawing.Point(120, 20);
-            this.ventaIdText.Name = "ventaIdText";
-            this.ventaIdText.Size = new System.Drawing.Size(155, 26);
-            this.ventaIdText.TabIndex = 114;
-            // 
             // ventana_nota_credito_cxp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,7 +365,7 @@
 
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox numeroVentaText;
+        private System.Windows.Forms.TextBox numeroCompraText;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox NcfText;
         public System.Windows.Forms.Button button5;
@@ -383,6 +384,6 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox ventaIdText;
+        private System.Windows.Forms.TextBox compraIdText;
     }
 }

@@ -16,7 +16,7 @@ using Microsoft.Reporting.WinForms;
 
 namespace IrisContabilidad.modulo_facturacion
 {
-    public partial class ventana_nota_debito_cxc : formBase
+    public partial class ventana_nota_debito_cxc: formBase
     {
         //objetos
         empleado empleado;
@@ -444,6 +444,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 modeloReporte.imprimirNotaDebitoCxc(notaDebito.codigo);
             }
+        }
+
+        private void ventaIdText_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
