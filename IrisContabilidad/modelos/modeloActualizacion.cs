@@ -71,22 +71,22 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris_contabilidad`.`log_reportes_generados` MODIFY COLUMN `reporte_generado` VARCHAR(999) NOT NULL DEFAULT '', ADD CONSTRAINT `FK_log_reportes_generados_1` FOREIGN KEY `FK_log_reportes_generados_1` (`codigo_empleado`) REFERENCES `empleado` (`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxc_nota_credito` MODIFY COLUMN `codigo_devolucion` INTEGER;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxp_nota_credito` DROP FOREIGN KEY `FK_cxp_nota_credito_3`;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxp_nota_credito` CHANGE COLUMN `codigo_venta` `codigo_compra` INTEGER NOT NULL DEFAULT 0, DROP INDEX `FK_cxp_nota_credito_3`, ADD INDEX `FK_cxp_nota_credito_3` USING BTREE(`codigo_compra`);";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxp_nota_credito` ADD CONSTRAINT `FK_cxp_nota_credito_3` FOREIGN KEY `FK_cxp_nota_credito_3` (`codigo_compra`) REFERENCES `compra` (`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxp_nota_credito` ADD COLUMN `codigo_devolucion` INTEGER AFTER `codigo_compra`;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`ingresos_caja` ADD COLUMN `modificable` BOOLEAN NOT NULL DEFAULT 1 AFTER `cuadrado`;";
                 listaQuerys.Add(sql);
                 //nuevo query
                 sql = "";

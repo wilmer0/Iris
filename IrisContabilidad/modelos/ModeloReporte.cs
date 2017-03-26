@@ -218,7 +218,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //imprimir nota credito
+        //imprimir nota credito cxc 
         public bool imprimirNotaCreditoCxc(int codigoNotaCredito)
         {
             try
@@ -273,7 +273,7 @@ namespace IrisContabilidad.modelos
             }
         }
         
-        //imprimir nota debito
+        //imprimir nota debito cxc
         public bool imprimirNotaDebitoCxc(int codigoNotaDebito)
         {
             try
@@ -408,6 +408,113 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error imprimirCompraPagosAgrupadoByCompra.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //imprimir nota credito cxp
+        public bool imprimirNotaCreditoCxp(int codigoNotaCredito)
+        {
+            try
+            {
+                //datos generales
+                String reporte = "";
+
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                cxp_nota_credito nota = new modeloCxpNotaCredito().getNotaCreditoById(codigoNotaCredito);
+
+                empleado empleado = new empleado();
+                empleado = singleton.getEmpleado();
+
+                //hoja normal
+                reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_nota_credito.rdlc";
+                if (nota == null)
+                {
+                    return false;
+                }
+
+                //llenar encabezado
+                reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleado);
+                reporteEncabezado.listaReporteCompraDevolucionDetalle = new modeloCompraDevolucion().getListaReporteCompraDevolucionDetalleByDevolucionId(nota.codigoDevolucion);
+                List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                listaReporteEncabezado.Add(reporteEncabezado);
+
+                ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                listaReportDataSource.Add(reporteE);
+
+                //llenar detalle
+                reporte_nota_credito_cxp_detalle detalle = new reporte_nota_credito_cxp_detalle(nota);
+                List<reporte_nota_credito_cxp_detalle> listaDetalle = new List<reporte_nota_credito_cxp_detalle>();
+                listaDetalle.Add(detalle);
+
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                listaReportDataSource.Add(reporteD);
+
+                ReportDataSource reporteD2 = new ReportDataSource("reporte_detalle_devolucion_detalle", reporteEncabezado.listaReporteCompraDevolucionDetalle);
+                listaReportDataSource.Add(reporteD2);
+
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                ventana.ShowDialog();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirNotaCreditoCxp.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //imprimir nota debito cxp
+        public bool imprimirNotaDebitoCxp(int codigoNotaDebito)
+        {
+            try
+            {
+                ////datos generales
+                //String reporte = "";
+
+                //List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                //cxc_nota_debito nota = new modeloCxcNotaDebito().getNotaDebitoById(codigoNotaDebito);
+
+                //empleado empleado = new empleado();
+                //empleado = singleton.getEmpleado();
+
+                ////hoja normal
+                //reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_nota_debito.rdlc";
+                //if (nota == null)
+                //{
+                //    return false;
+                //}
+
+                ////llenar encabezado
+                //reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleado);
+                //List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                //listaReporteEncabezado.Add(reporteEncabezado);
+
+                //ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                //listaReportDataSource.Add(reporteE);
+
+                ////llenar detalle
+                //reporte_nota_debito_cxc_detalle detalle = new reporte_nota_debito_cxc_detalle(nota);
+                //List<reporte_nota_debito_cxc_detalle> listaDetalle = new List<reporte_nota_debito_cxc_detalle>();
+                //listaDetalle.Add(detalle);
+
+                //ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                //listaReportDataSource.Add(reporteD);
+
+
+                //List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                //VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                //ventana.ShowDialog();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirNotaDebitoCxp.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
