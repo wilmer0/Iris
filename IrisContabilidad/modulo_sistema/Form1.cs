@@ -128,6 +128,9 @@ namespace IrisContabilidad
                     return;
                 }
                 modeloPrimerLogin.validarPrimerLogin();
+                modeloPrimerLogin.agregarModulos();
+                modeloPrimerLogin.agregarVentanas();
+                
 
                 empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));
 
@@ -235,11 +238,7 @@ namespace IrisContabilidad
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (primerLogin() == false)
-            {
-                modeloPrimerLogin.agregarVentanas();
-                //modeloActualizacion.version1();
-            }
+            //modeloActualizacion.version1();
             GetAction();
         }
 

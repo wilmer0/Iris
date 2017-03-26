@@ -51,6 +51,7 @@ namespace IrisContabilidad.modelos
                     agregarModulos();
                     agregarVentanas();
                     agregarPrimerEmpleado();
+                    agregarPrimerEmpleado();
                     agregarAccesosVentanas();
                 }
             }
@@ -59,7 +60,6 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error validarPrimerLogin.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         //agregando todos los datos que son necesarios al momento de iniciar el sistemas
         public void primerosDatos()
@@ -775,11 +775,11 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarVentanas.: " + ex.ToString());
+                //MessageBox.Show("Error agregarModulos.: " + ex.ToString());
             }
         }
 
-        //agregando las ventanas para que salgan al primer usuario
+        //agregando las ventanas y asiganarla al primer empleado
         public void agregarVentanas()
         {
             try
@@ -835,8 +835,6 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                
                 #endregion
-
-
 
                 //modulo facturacion
                 #region
@@ -959,7 +957,7 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 //nueva ventana
                 ventana = new ventana();
-                ventana.nombre_ventana = "Notas Credito";
+                ventana.nombre_ventana = "Notas Credito cxc";
                 ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_nota_credito_cxc";
                 ventana.activo = true;
                 ventana.programador = false;
@@ -968,7 +966,7 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 //nueva ventana
                 ventana = new ventana();
-                ventana.nombre_ventana = "Notas Debito";
+                ventana.nombre_ventana = "Notas Debito cxc";
                 ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_nota_debito_cxc";
                 ventana.activo = true;
                 ventana.programador = false;
@@ -976,9 +974,6 @@ namespace IrisContabilidad.modelos
                 ventana.imagen = "venta_nota_debito1.png";
                 listaVentana.Add(ventana);
                 #endregion
-
-               
-
 
                 //modulo cuentas por cobrar
                 #region
@@ -1038,8 +1033,6 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 #endregion
 
-
-
                 //modulo cuentas por pagar
                 #region
                 //nueva ventana
@@ -1089,7 +1082,7 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 //nueva ventana
                 ventana = new ventana();
-                ventana.nombre_ventana = "Notas Credito";
+                ventana.nombre_ventana = "Notas Credito cxp";
                 ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_nota_credito_cxp";
                 ventana.activo = true;
                 ventana.programador = false;
@@ -1098,7 +1091,7 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 //nueva ventana
                 ventana = new ventana();
-                ventana.nombre_ventana = "Notas Debito";
+                ventana.nombre_ventana = "Notas Debito cxp";
                 ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_nota_debito_cxp";
                 ventana.activo = true;
                 ventana.programador = false;
@@ -1106,7 +1099,6 @@ namespace IrisContabilidad.modelos
                 ventana.imagen = "compra_nota_debito1.png";
                 listaVentana.Add(ventana);
                 #endregion
-
 
                 //modulo inventario
                 #region
@@ -1183,8 +1175,6 @@ namespace IrisContabilidad.modelos
                 ventana.imagen = "producto_lista_precio1.png";
                 #endregion
 
-
-
                 //modulo opciones
                 #region
                 //nueva ventana
@@ -1215,8 +1205,6 @@ namespace IrisContabilidad.modelos
                 ventana.imagen = "tipo_ventana1.png";
                 listaVentana.Add(ventana);
                 #endregion
-
-
 
                 //modulo nomina
                 #region
@@ -1275,21 +1263,17 @@ namespace IrisContabilidad.modelos
                 ventana.imagen = "grupo_usuario1.png";
                 listaVentana.Add(ventana);
 
+
                 #endregion
-
-
 
                 //modulo inicio rapido
                 #region
                 #endregion
 
-
-
                 //modulo sistema
                 #region
                 
                 #endregion
-
 
                 //modulo contabilidad
                 #region
@@ -1331,9 +1315,6 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 #endregion
 
-
-
-
                 listaVentana.ForEach(ventanaActual =>
                 {
                     modeloModulo.agregarPoolVentana(ventanaActual);
@@ -1342,7 +1323,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarVentanas.: " + ex.ToString());
+                //MessageBox.Show("Error agregarVentanas.: " + ex.ToString());
             }
         }
 
@@ -1370,7 +1351,6 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error agregarAccesosVentanas.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         public void agregarVentanasPrimerModulo()
         {
@@ -1411,7 +1391,6 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error agregarPrimerEmpleado.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         
     }
 }

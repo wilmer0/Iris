@@ -117,6 +117,7 @@ namespace IrisContabilidad.modulo_sistema
         {
             try
             {
+                //agregando los modulos visibles y que tiene acceso
                 listaTemp = new List<string>();
                 listaModulo = new List<modulo>();
                 listaTemp = modeloEmpleado.GetListaModulosByEmpleado(empleado);
