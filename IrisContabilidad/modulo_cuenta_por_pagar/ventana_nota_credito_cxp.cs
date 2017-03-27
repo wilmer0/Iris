@@ -309,14 +309,22 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ventana_busqueda_compra ventana=new ventana_busqueda_compra();
-            ventana.Owner = this;
-            ventana.ShowDialog();
-            if (ventana.DialogResult == DialogResult.OK)
+            if (radioButtonCompra.Checked == true)
             {
-                compra = ventana.getObjeto();
-                loadCompra();
+                ventana_busqueda_compra ventana = new ventana_busqueda_compra();
+                ventana.Owner = this;
+                ventana.ShowDialog();
+                if (ventana.DialogResult == DialogResult.OK)
+                {
+                    compra = ventana.getObjeto();
+                    loadCompra();
+                }
             }
+            else
+            {
+                //compra devolucion
+            }
+            
         }
     }
 }

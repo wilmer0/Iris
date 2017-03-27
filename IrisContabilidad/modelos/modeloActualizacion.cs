@@ -95,10 +95,10 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris_contabilidad`.`cxp_nota_credito` ADD COLUMN `codigo_concepto` INTEGER NOT NULL DEFAULT 0 AFTER `activo`;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxp_nota_debito` ADD COLUMN `codigo_compra` INTEGER NOT NULL DEFAULT 0 AFTER `detalle`;";
                 listaQuerys.Add(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris_contabilidad`.`cxp_nota_debito` ADD COLUMN `codigo_concepto` INTEGER NOT NULL DEFAULT 0 AFTER `codigo_compra`;";
                 listaQuerys.Add(sql);
                 //nuevo query
                 sql = "";

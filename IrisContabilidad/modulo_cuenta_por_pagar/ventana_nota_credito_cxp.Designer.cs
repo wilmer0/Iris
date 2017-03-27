@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_nota_credito_cxp));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.compraIdText = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.numeroCompraText = new System.Windows.Forms.TextBox();
@@ -51,10 +50,15 @@
             this.notaCreditoIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
+            this.radioButtonCompra = new System.Windows.Forms.RadioButton();
+            this.radioButtonDevolucion = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,16 +89,16 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Controls.Add(this.compraIdText);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.numeroCompraText);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.NcfText);
-            this.groupBox2.Location = new System.Drawing.Point(16, 95);
+            this.groupBox2.Location = new System.Drawing.Point(16, 141);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(408, 152);
+            this.groupBox2.Size = new System.Drawing.Size(408, 148);
             this.groupBox2.TabIndex = 125;
             this.groupBox2.TabStop = false;
             // 
@@ -103,28 +107,18 @@
             this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(281, 15);
+            this.button7.Location = new System.Drawing.Point(280, 14);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(47, 37);
             this.button7.TabIndex = 115;
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(42, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 20);
-            this.label1.TabIndex = 113;
-            this.label1.Text = "Compra";
-            // 
             // compraIdText
             // 
             this.compraIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.compraIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.compraIdText.Location = new System.Drawing.Point(120, 20);
+            this.compraIdText.Location = new System.Drawing.Point(119, 19);
             this.compraIdText.Name = "compraIdText";
             this.compraIdText.Size = new System.Drawing.Size(155, 26);
             this.compraIdText.TabIndex = 114;
@@ -133,7 +127,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(10, 68);
+            this.label8.Location = new System.Drawing.Point(9, 67);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 20);
             this.label8.TabIndex = 112;
@@ -142,7 +136,7 @@
             // numeroCompraText
             // 
             this.numeroCompraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroCompraText.Location = new System.Drawing.Point(119, 67);
+            this.numeroCompraText.Location = new System.Drawing.Point(118, 66);
             this.numeroCompraText.Name = "numeroCompraText";
             this.numeroCompraText.ReadOnly = true;
             this.numeroCompraText.Size = new System.Drawing.Size(264, 26);
@@ -152,7 +146,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(69, 112);
+            this.label4.Location = new System.Drawing.Point(68, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 20);
             this.label4.TabIndex = 110;
@@ -161,7 +155,7 @@
             // NcfText
             // 
             this.NcfText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NcfText.Location = new System.Drawing.Point(120, 110);
+            this.NcfText.Location = new System.Drawing.Point(119, 109);
             this.NcfText.Name = "NcfText";
             this.NcfText.ReadOnly = true;
             this.NcfText.Size = new System.Drawing.Size(263, 26);
@@ -219,7 +213,7 @@
             // montoText
             // 
             this.montoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoText.Location = new System.Drawing.Point(135, 312);
+            this.montoText.Location = new System.Drawing.Point(135, 353);
             this.montoText.Name = "montoText";
             this.montoText.Size = new System.Drawing.Size(275, 26);
             this.montoText.TabIndex = 120;
@@ -228,7 +222,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(70, 311);
+            this.label6.Location = new System.Drawing.Point(70, 352);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 119;
@@ -238,7 +232,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 264);
+            this.label5.Location = new System.Drawing.Point(43, 305);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 20);
             this.label5.TabIndex = 118;
@@ -248,7 +242,7 @@
             // 
             this.conceptoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.conceptoComboBox.FormattingEnabled = true;
-            this.conceptoComboBox.Location = new System.Drawing.Point(135, 266);
+            this.conceptoComboBox.Location = new System.Drawing.Point(135, 307);
             this.conceptoComboBox.Name = "conceptoComboBox";
             this.conceptoComboBox.Size = new System.Drawing.Size(236, 21);
             this.conceptoComboBox.TabIndex = 117;
@@ -256,7 +250,7 @@
             // 
             // fechaText
             // 
-            this.fechaText.Location = new System.Drawing.Point(135, 360);
+            this.fechaText.Location = new System.Drawing.Point(135, 401);
             this.fechaText.Mask = "00/00/0000";
             this.fechaText.Name = "fechaText";
             this.fechaText.Size = new System.Drawing.Size(155, 20);
@@ -267,7 +261,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(70, 357);
+            this.label3.Location = new System.Drawing.Point(70, 398);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 20);
             this.label3.TabIndex = 115;
@@ -315,11 +309,56 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
+            // radioButtonCompra
+            // 
+            this.radioButtonCompra.AutoSize = true;
+            this.radioButtonCompra.Checked = true;
+            this.radioButtonCompra.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonCompra.Location = new System.Drawing.Point(97, 17);
+            this.radioButtonCompra.Name = "radioButtonCompra";
+            this.radioButtonCompra.Size = new System.Drawing.Size(81, 21);
+            this.radioButtonCompra.TabIndex = 116;
+            this.radioButtonCompra.Text = "Compra";
+            this.radioButtonCompra.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonDevolucion
+            // 
+            this.radioButtonDevolucion.AutoSize = true;
+            this.radioButtonDevolucion.Enabled = false;
+            this.radioButtonDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonDevolucion.Location = new System.Drawing.Point(212, 17);
+            this.radioButtonDevolucion.Name = "radioButtonDevolucion";
+            this.radioButtonDevolucion.Size = new System.Drawing.Size(106, 21);
+            this.radioButtonDevolucion.TabIndex = 117;
+            this.radioButtonDevolucion.Text = "Devolución";
+            this.radioButtonDevolucion.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButtonCompra);
+            this.groupBox3.Controls.Add(this.radioButtonDevolucion);
+            this.groupBox3.Location = new System.Drawing.Point(16, 91);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(408, 50);
+            this.groupBox3.TabIndex = 126;
+            this.groupBox3.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 20);
+            this.label1.TabIndex = 116;
+            this.label1.Text = "Documento";
+            // 
             // ventana_nota_credito_cxp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 525);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.activoCheck);
@@ -349,6 +388,7 @@
             this.Controls.SetChildIndex(this.activoCheck, 0);
             this.Controls.SetChildIndex(this.button5, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox3, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -356,6 +396,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -383,7 +425,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox compraIdText;
+        private System.Windows.Forms.RadioButton radioButtonDevolucion;
+        private System.Windows.Forms.RadioButton radioButtonCompra;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -51,10 +51,14 @@
             this.label8 = new System.Windows.Forms.Label();
             this.numeroVentaText = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.radioButtonVenta = new System.Windows.Forms.RadioButton();
+            this.radioButtonDevolucion = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -130,7 +134,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(70, 333);
+            this.label3.Location = new System.Drawing.Point(70, 383);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 20);
             this.label3.TabIndex = 76;
@@ -138,7 +142,7 @@
             // 
             // fechaText
             // 
-            this.fechaText.Location = new System.Drawing.Point(135, 336);
+            this.fechaText.Location = new System.Drawing.Point(135, 386);
             this.fechaText.Mask = "00/00/0000";
             this.fechaText.Name = "fechaText";
             this.fechaText.Size = new System.Drawing.Size(155, 20);
@@ -150,7 +154,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(43, 240);
+            this.label5.Location = new System.Drawing.Point(43, 297);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 20);
             this.label5.TabIndex = 83;
@@ -160,7 +164,7 @@
             // 
             this.conceptoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.conceptoComboBox.FormattingEnabled = true;
-            this.conceptoComboBox.Location = new System.Drawing.Point(135, 242);
+            this.conceptoComboBox.Location = new System.Drawing.Point(135, 299);
             this.conceptoComboBox.Name = "conceptoComboBox";
             this.conceptoComboBox.Size = new System.Drawing.Size(236, 21);
             this.conceptoComboBox.TabIndex = 82;
@@ -170,7 +174,7 @@
             // montoText
             // 
             this.montoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoText.Location = new System.Drawing.Point(135, 288);
+            this.montoText.Location = new System.Drawing.Point(135, 338);
             this.montoText.Name = "montoText";
             this.montoText.Size = new System.Drawing.Size(275, 26);
             this.montoText.TabIndex = 85;
@@ -181,7 +185,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(70, 287);
+            this.label6.Location = new System.Drawing.Point(70, 337);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 84;
@@ -252,11 +256,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(54, 25);
+            this.label1.Location = new System.Drawing.Point(12, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 20);
+            this.label1.Size = new System.Drawing.Size(101, 20);
             this.label1.TabIndex = 105;
-            this.label1.Text = "Venta";
+            this.label1.Text = "Documento";
             // 
             // button7
             // 
@@ -273,7 +277,7 @@
             // NcfText
             // 
             this.NcfText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NcfText.Location = new System.Drawing.Point(120, 110);
+            this.NcfText.Location = new System.Drawing.Point(120, 111);
             this.NcfText.Name = "NcfText";
             this.NcfText.ReadOnly = true;
             this.NcfText.Size = new System.Drawing.Size(263, 26);
@@ -283,7 +287,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(69, 112);
+            this.label4.Location = new System.Drawing.Point(69, 113);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 20);
             this.label4.TabIndex = 110;
@@ -293,7 +297,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(24, 68);
+            this.label8.Location = new System.Drawing.Point(24, 69);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 20);
             this.label8.TabIndex = 112;
@@ -302,7 +306,7 @@
             // numeroVentaText
             // 
             this.numeroVentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroVentaText.Location = new System.Drawing.Point(119, 67);
+            this.numeroVentaText.Location = new System.Drawing.Point(119, 68);
             this.numeroVentaText.Name = "numeroVentaText";
             this.numeroVentaText.ReadOnly = true;
             this.numeroVentaText.Size = new System.Drawing.Size(264, 26);
@@ -317,17 +321,54 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.ventaIdText);
             this.groupBox2.Controls.Add(this.NcfText);
-            this.groupBox2.Location = new System.Drawing.Point(16, 84);
+            this.groupBox2.Location = new System.Drawing.Point(16, 138);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(408, 152);
+            this.groupBox2.Size = new System.Drawing.Size(408, 146);
             this.groupBox2.TabIndex = 113;
             this.groupBox2.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.radioButtonVenta);
+            this.groupBox3.Controls.Add(this.radioButtonDevolucion);
+            this.groupBox3.Location = new System.Drawing.Point(16, 84);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(408, 50);
+            this.groupBox3.TabIndex = 127;
+            this.groupBox3.TabStop = false;
+            // 
+            // radioButtonVenta
+            // 
+            this.radioButtonVenta.AutoSize = true;
+            this.radioButtonVenta.Checked = true;
+            this.radioButtonVenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonVenta.Location = new System.Drawing.Point(97, 17);
+            this.radioButtonVenta.Name = "radioButtonVenta";
+            this.radioButtonVenta.Size = new System.Drawing.Size(68, 21);
+            this.radioButtonVenta.TabIndex = 116;
+            this.radioButtonVenta.TabStop = true;
+            this.radioButtonVenta.Text = "Venta";
+            this.radioButtonVenta.UseVisualStyleBackColor = true;
+            this.radioButtonVenta.Leave += new System.EventHandler(this.radioButtonVenta_Leave);
+            // 
+            // radioButtonDevolucion
+            // 
+            this.radioButtonDevolucion.AutoSize = true;
+            this.radioButtonDevolucion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonDevolucion.Location = new System.Drawing.Point(212, 17);
+            this.radioButtonDevolucion.Name = "radioButtonDevolucion";
+            this.radioButtonDevolucion.Size = new System.Drawing.Size(106, 21);
+            this.radioButtonDevolucion.TabIndex = 117;
+            this.radioButtonDevolucion.Text = "Devolución";
+            this.radioButtonDevolucion.UseVisualStyleBackColor = true;
+            this.radioButtonDevolucion.Leave += new System.EventHandler(this.radioButtonDevolucion_Leave);
             // 
             // ventana_nota_credito_cxc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(912, 525);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.activoCheck);
@@ -343,8 +384,6 @@
             this.Name = "ventana_nota_credito_cxc";
             this.Text = "ventana_nota_credito_cxc";
             this.Load += new System.EventHandler(this.ventana_nota_credito_cxc_Load);
-            this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.fechaText, 0);
@@ -357,6 +396,9 @@
             this.Controls.SetChildIndex(this.activoCheck, 0);
             this.Controls.SetChildIndex(this.button5, 0);
             this.Controls.SetChildIndex(this.groupBox2, 0);
+            this.Controls.SetChildIndex(this.groupBox3, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.panel2, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -364,6 +406,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -393,5 +437,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox numeroVentaText;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton radioButtonVenta;
+        private System.Windows.Forms.RadioButton radioButtonDevolucion;
     }
 }
