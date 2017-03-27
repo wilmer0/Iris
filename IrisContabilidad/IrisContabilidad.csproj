@@ -134,6 +134,7 @@
     <Compile Include="clases\egreso_caja.cs" />
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
+    <Compile Include="clases\entidades.cs" />
     <Compile Include="clases\FileFolderDialog.cs" />
     <Compile Include="clases\gasto.cs" />
     <Compile Include="clases\grupo_usuarios.cs" />

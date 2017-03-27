@@ -352,11 +352,9 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //primer cliente
                 #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
+                sql = "insert into cliente(codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito, cod_sucursal_creado,cliente_contado, telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2) values('1','cliente contado','0','1','1',20170327,'0','1','1','','','','','1','','');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
@@ -669,7 +667,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error primerosDatos.: " + ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error primerosDatos.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
