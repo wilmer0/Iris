@@ -220,6 +220,7 @@
     <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
+    <Compile Include="modelos\modeloEntidades.cs" />
     <Compile Include="modelos\modeloGasto.cs" />
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
     <Compile Include="modelos\modeloIngresoCaja.cs" />

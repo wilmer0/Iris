@@ -213,6 +213,7 @@ namespace IrisContabilidad.modulo_facturacion
                 if (ventaDevolucion != null)
                 {
                     notaCredito.codigoDevolucion = ventaDevolucion.codigo;
+                    venta = modeloVenta.getVentaById(ventaDevolucion.codigo_venta);
                 }
 
                 if (crear == true)
@@ -223,7 +224,6 @@ namespace IrisContabilidad.modulo_facturacion
                         notaCredito = null;
                         loadVentana();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     else
                     {
@@ -238,7 +238,6 @@ namespace IrisContabilidad.modulo_facturacion
                         notaCredito = null;
                         loadVentana();
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     else
                     {
@@ -246,7 +245,6 @@ namespace IrisContabilidad.modulo_facturacion
                         MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -370,8 +368,7 @@ namespace IrisContabilidad.modulo_facturacion
                 }
             }
             catch (Exception)
-            {
-                
+            {   
             }
         }
 
@@ -404,7 +401,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -421,7 +417,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -436,7 +431,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -451,7 +445,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -490,7 +483,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception)
             {
-
             }
         }
 
