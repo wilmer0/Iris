@@ -1,4 +1,4 @@
-﻿namespace _7ADMFIC_1._0.VentanasComunes
+﻿namespace IrisContabilidad.ventanas_comunes
 {
     partial class VisorReporteComun
     {

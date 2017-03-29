@@ -93,6 +93,7 @@ namespace IrisContabilidad.modulo_facturacion
                     tipoComprobanteCombo.DataSource = listaTipoComprobanteFiscal;
                     tipoComprobanteCombo.DisplayMember = "nombre";
                     tipoComprobanteCombo.ValueMember = "codigo";
+                    tipoComprobanteCombo.SelectedIndex = 0;
                 }
 
                 tipoVentaComboBox.SelectedIndex = 0;
@@ -131,9 +132,8 @@ namespace IrisContabilidad.modulo_facturacion
 
                     
                     //blanquear campos
-                    cliente = null;
-                    clienteIdText.Text = "";
-                    clienteText.Text = "";
+                    cliente = modeloCliente.getClienteById(1);
+                    loadCliente();
                     numeroFacturaText.Text = "";
                     numerocComprobanteFiscalText.Text = "";
                     tipoVentaComboBox.Enabled = true;

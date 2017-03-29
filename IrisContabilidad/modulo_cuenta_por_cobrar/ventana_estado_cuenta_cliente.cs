@@ -13,8 +13,8 @@ using IrisContabilidad.clases_reportes_modelos;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_cuenta_por_pagar;
 using IrisContabilidad.modulo_sistema;
+using IrisContabilidad.ventanas_comunes;
 using Microsoft.Reporting.WinForms;
-using _7ADMFIC_1._0.VentanasComunes;
 
 namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {

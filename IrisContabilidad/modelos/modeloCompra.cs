@@ -702,8 +702,44 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCompraPagoDetalleByIdCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error getListaCompraPagoDetalleByIdCompraPago.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get lista compra pago detalle completa
+        public List<compra_vs_pagos_detalles> getListaCompraPagoDetalleCompleta(bool SoloActivo = true)
+        {
+            try
+            {
+                List<compra_vs_pagos_detalles> lista = new List<compra_vs_pagos_detalles>();
+                string sql = "";
+                sql = "select codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,activo from compra_vs_pagos_detalles where codigo>0 ";
+                if (SoloActivo == true)
+                {
+                    //se traen solo los activo
+                    sql += " and activo='1'";
+                }
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        compra_vs_pagos_detalles compraPagoDetalle = new compra_vs_pagos_detalles();
+                        compraPagoDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        compraPagoDetalle.codigo_pago = Convert.ToInt16(row[1].ToString());
+                        compraPagoDetalle.codigo_compra = Convert.ToInt16(row[2].ToString());
+                        compraPagoDetalle.codigo_metodo_pago = Convert.ToInt16(row[3].ToString());
+                        compraPagoDetalle.monto_pagado = Convert.ToDecimal(row[4].ToString());
+                        compraPagoDetalle.monto_descontado = Convert.ToDecimal(row[5].ToString());
+                        compraPagoDetalle.activo = Convert.ToBoolean(row[6]);
+                        lista.Add(compraPagoDetalle);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompraPagoDetalleCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
         }

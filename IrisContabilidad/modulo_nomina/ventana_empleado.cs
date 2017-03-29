@@ -55,6 +55,12 @@ namespace IrisContabilidad.modulo_nomina
             this.Text = tituloLabel.Text;
             rutaResources = Directory.GetCurrentDirectory().ToString() + @"\Resources\";
             rutaImagenesEmpleados = rutaResources + @"imagenes_empleados\";
+            if (!File.Exists(rutaImagenesEmpleados + "default1.png"))
+            {
+                MessageBox.Show("Error, no existe la imagen de empleado por defecto 'default1'", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
             imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + "default1.png");
             loadVentana();
         }

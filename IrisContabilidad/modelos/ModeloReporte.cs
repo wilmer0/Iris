@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.clases_reportes;
+using IrisContabilidad.ventanas_comunes;
 using Microsoft.Reporting.WinForms;
-using _7ADMFIC_1._0.VentanasComunes;
 
 namespace IrisContabilidad.modelos
 {
@@ -18,7 +18,7 @@ namespace IrisContabilidad.modelos
         utilidades utilidades=new utilidades();
         singleton singleton=new singleton();
 
-        //compra
+        //imprimri compra
         public bool imprimirCompra(int idcompra)
         {
             try
@@ -58,6 +58,8 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+
+        //imprimir compra pagos
         public bool imprirmirCompraPago(int codigoPago)
         {
             try
@@ -98,7 +100,7 @@ namespace IrisContabilidad.modelos
 
 
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter,true);
                 ventana.ShowDialog();
                 return true;
             }
@@ -109,7 +111,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //venta
+        //imprimir venta
         public bool imprimirVenta(int idVenta)
         {
             try
@@ -164,7 +166,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //venta cobro
+        //imprimir venta cobro
         public bool imprimirVentaCobro(int codigoCobro)
         {
             try
@@ -216,7 +218,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //nota credito
+        //imprimir nota credito cxc 
         public bool imprimirNotaCreditoCxc(int codigoNotaCredito)
         {
             try
@@ -270,7 +272,8 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
-        //nota debito
+        
+        //imprimir nota debito cxc
         public bool imprimirNotaDebitoCxc(int codigoNotaDebito)
         {
             try
@@ -318,6 +321,200 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error imprimirNotaDebitoCxc.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //imprimir pagos a compras agrupados por compra
+        public bool imprimirCompraPagosAgrupadoByCompra(compra compra,suplidor suplidor,string tipoCompra,DateTime fechaInicial,DateTime fechaFinal,bool incluirRangoFecha,bool incluirSoloPagadas)
+        {
+            try
+            {
+                //datos generales
+                String reporte = "";
+                List<compra> listaCompra = new List<compra>();
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                List<reporte_compra_pago_detalle> listaReportePagosDetalles = new List<reporte_compra_pago_detalle>();
+                List<compra_vs_pagos_detalles> listaCompraPagos=new List<compra_vs_pagos_detalles>(); 
+                listaCompra = new modeloCompra().getListaCompra();
+                listaCompraPagos = new modeloCompra().getListaCompraPagoDetalleCompleta();
+
+                //filtros
+                //fecha
+                if (incluirRangoFecha == true)
+                {
+                    listaCompraPagos = listaCompraPagos.FindAll(x => (compra = new modeloCompra().getCompraById(x.codigo_compra)).fecha >= fechaInicial.Date && (compra = new modeloCompra().getCompraById(x.codigo_compra)).fecha <= fechaFinal.Date).ToList();
+                    //listaCompra = listaCompra.FindAll(x => x.fecha>= fechaInicial.Date && x.fecha<=fechaFinal.Date);
+                }
+                //pagadas
+                if (incluirSoloPagadas == true)
+                {
+                    listaCompraPagos = listaCompraPagos.FindAll(x => (compra = new modeloCompra().getCompraById(x.codigo_compra)).pagada == true).ToList();
+                    //listaCompra = listaCompra.FindAll(x => x.pagada == true);
+                }
+                //compra
+                if (compra != null)
+                {
+                    listaCompraPagos = listaCompraPagos.FindAll(x => (compra = new modeloCompra().getCompraById(x.codigo_compra)).codigo == compra.codigo).ToList();
+                    //listaCompra = listaCompra.FindAll(x => x.codigo == compra.codigo);
+                }
+                //suplidor 
+                if (suplidor != null)
+                {
+                    listaCompraPagos = listaCompraPagos.FindAll(x => (compra = new modeloCompra().getCompraById(x.codigo_compra)).cod_suplidor == suplidor.codigo).ToList();
+                    //listaCompra = listaCompra.FindAll(x => x.cod_suplidor == suplidor.codigo);
+                }
+                //tipo compra
+                if (tipoCompra != "")
+                {
+                    listaCompraPagos = listaCompraPagos.FindAll(x => (compra = new modeloCompra().getCompraById(x.codigo_compra)).tipo_compra.ToLower().Contains(tipoCompra.ToLower())).ToList();
+                    //listaCompra = listaCompra.FindAll(x => tipoCompra.ToLower().Contains(x.tipo_compra.ToLower()));
+                }
+
+                foreach (var x in listaCompraPagos)
+                {
+                    reporte_compra_pago_detalle reporteDetalle=new reporte_compra_pago_detalle(x);
+                    listaReportePagosDetalles.Add(reporteDetalle);   
+                }
+
+                empleado empleado = new empleado();
+                empleado = singleton.getEmpleado();
+
+                //hoja normal
+                reporte = "IrisContabilidad.modulo_cuenta_por_pagar.Reporte.reporte_pagos_compras_agrupado_compra.rdlc";
+                if (listaReportePagosDetalles == null)
+                {
+                    return false;
+                }
+
+                //llenar encabezado
+                reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleado);
+                List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                listaReporteEncabezado.Add(reporteEncabezado);
+                ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                listaReportDataSource.Add(reporteE);
+
+                //llenar detalle
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaReportePagosDetalles);
+                listaReportDataSource.Add(reporteD);
+
+
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter,true);
+                ventana.ShowDialog();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirCompraPagosAgrupadoByCompra.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //imprimir nota credito cxp
+        public bool imprimirNotaCreditoCxp(int codigoNotaCredito)
+        {
+            try
+            {
+                //datos generales
+                String reporte = "";
+
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                cxp_nota_credito nota = new modeloCxpNotaCredito().getNotaCreditoById(codigoNotaCredito);
+
+                empleado empleado = new empleado();
+                empleado = singleton.getEmpleado();
+
+                //hoja normal
+                reporte = "IrisContabilidad.modulo_cuenta_por_pagar.Reporte.reporte_nota_credito.rdlc";
+                if (nota == null)
+                {
+                    return false;
+                }
+
+                //llenar encabezado
+                reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleado);
+                reporteEncabezado.listaReporteCompraDevolucionDetalle = new modeloCompraDevolucion().getListaReporteCompraDevolucionDetalleByDevolucionId(nota.codigoDevolucion);
+                List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                listaReporteEncabezado.Add(reporteEncabezado);
+
+                ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                listaReportDataSource.Add(reporteE);
+
+                //llenar detalle
+                reporte_nota_credito_cxp_detalle detalle = new reporte_nota_credito_cxp_detalle(nota);
+                List<reporte_nota_credito_cxp_detalle> listaDetalle = new List<reporte_nota_credito_cxp_detalle>();
+                listaDetalle.Add(detalle);
+
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                listaReportDataSource.Add(reporteD);
+
+                ReportDataSource reporteD2 = new ReportDataSource("reporte_detalle_devolucion_detalle", reporteEncabezado.listaReporteCompraDevolucionDetalle);
+                listaReportDataSource.Add(reporteD2);
+
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                ventana.ShowDialog();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirNotaCreditoCxp.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //imprimir nota debito cxp
+        public bool imprimirNotaDebitoCxp(int codigoNotaDebito)
+        {
+            try
+            {
+                //datos generales
+                String reporte = "";
+
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                cxp_nota_debito nota = new modeloCxpNotaDebito().getNotaDebitoById(codigoNotaDebito);
+
+                empleado empleado = new empleado();
+                empleado = singleton.getEmpleado();
+
+                //hoja normal
+                reporte = "IrisContabilidad.modulo_cuenta_por_pagar.Reporte.reporte_nota_debito.rdlc";
+                if (nota == null)
+                {
+                    return false;
+                }
+
+                //llenar encabezado
+                reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleado);
+                List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                listaReporteEncabezado.Add(reporteEncabezado);
+
+                ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                listaReportDataSource.Add(reporteE);
+
+                //llenar detalle
+                reporte_nota_debito_cxp_detalle detalle = new reporte_nota_debito_cxp_detalle(nota);
+                List<reporte_nota_debito_cxp_detalle> listaDetalle = new List<reporte_nota_debito_cxp_detalle>();
+                listaDetalle.Add(detalle);
+
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                listaReportDataSource.Add(reporteD);
+
+
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                ventana.ShowDialog();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirNotaDebitoCxp.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
