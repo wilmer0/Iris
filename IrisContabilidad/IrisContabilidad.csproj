@@ -115,6 +115,8 @@
     <Compile Include="clases\ciudad.cs" />
     <Compile Include="clases\cliente.cs" />
     <Compile Include="clases\compra.cs" />
+    <Compile Include="clases\compraDevolucion.cs" />
+    <Compile Include="clases\compraDevolucionDetalle.cs" />
     <Compile Include="clases\compra_detalle.cs" />
     <Compile Include="clases\compra_vs_pagos.cs" />
     <Compile Include="clases\compra_vs_pagos_detalles.cs" />
@@ -124,16 +126,21 @@
     <Compile Include="clases\cuenta_contable.cs" />
     <Compile Include="clases\cxc_nota_credito.cs" />
     <Compile Include="clases\cxc_nota_debito.cs" />
+    <Compile Include="clases\cxp_nota_credito.cs" />
+    <Compile Include="clases\cxp_nota_debito.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\desglose_dinero.cs" />
     <Compile Include="clases\dias.cs" />
     <Compile Include="clases\egreso_caja.cs" />
     <Compile Include="clases\empleado.cs" />
     <Compile Include="clases\empresa.cs" />
+    <Compile Include="clases\entidades.cs" />
     <Compile Include="clases\FileFolderDialog.cs" />
     <Compile Include="clases\gasto.cs" />
     <Compile Include="clases\grupo_usuarios.cs" />
+    <Compile Include="clases\ingreso_caja.cs" />
     <Compile Include="clases\itebis.cs" />
+    <Compile Include="clases\log_reportes_generados.cs" />
     <Compile Include="clases\mes.cs" />
     <Compile Include="clases\metodo_pago.cs" />
     <Compile Include="clases\modulo.cs" />
@@ -165,6 +172,8 @@
     <Compile Include="clases\venta_detalle.cs" />
     <Compile Include="clases\venta_vs_cobros.cs" />
     <Compile Include="clases\venta_vs_cobros_detalles.cs" />
+    <Compile Include="clases_reportes\reporte_compra_devolucion_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_compra_pago_agrupado_compra.cs" />
     <Compile Include="clases_reportes\reporte_nota_credito_cxc_detalle.cs" />
     <Compile Include="clases_reportes\reporte_cobros_detalle.cs" />
     <Compile Include="clases_reportes\reporte_cobros_encabezado.cs" />
@@ -175,7 +184,9 @@
     <Compile Include="clases_reportes\reporte_encabezado_general.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_detalle.cs" />
     <Compile Include="clases_reportes\reporte_estado_cuenta_cliente_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_nota_credito_cxp_detalle.cs" />
     <Compile Include="clases_reportes\reporte_nota_debito_cxc_detalle.cs" />
+    <Compile Include="clases_reportes\reporte_nota_debito_cxp_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_cobro_detalle.cs" />
@@ -197,18 +208,24 @@
     <Compile Include="modelos\modeloCliente.cs" />
     <Compile Include="modelos\modeloCobro.cs" />
     <Compile Include="modelos\modeloCompra.cs" />
+    <Compile Include="modelos\modeloCompraDevolucion.cs" />
     <Compile Include="modelos\modeloComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloCuadreCaja.cs" />
     <Compile Include="modelos\modeloCuentaContable.cs" />
     <Compile Include="modelos\modeloCxcNotaCredito.cs" />
     <Compile Include="modelos\modeloCxcNotaDebito.cs" />
+    <Compile Include="modelos\modeloCxpNotaCredito.cs" />
+    <Compile Include="modelos\modeloCxpNotaDebito.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
     <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />
+    <Compile Include="modelos\modeloEntidades.cs" />
     <Compile Include="modelos\modeloGasto.cs" />
     <Compile Include="modelos\modeloGrupoUsuarios.cs" />
+    <Compile Include="modelos\modeloIngresoCaja.cs" />
     <Compile Include="modelos\modeloItebis.cs" />
+    <Compile Include="modelos\modeloLogReporteGenerado.cs" />
     <Compile Include="modelos\modeloMetodoPago.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />
@@ -302,6 +319,30 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_cobrar\ventana_estado_cuenta_cliente.Designer.cs">
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_nota_credito_cxp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_nota_credito_cxp.Designer.cs">
+      <DependentUpon>ventana_busqueda_nota_credito_cxp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_nota_debito_cxp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_nota_debito_cxp.Designer.cs">
+      <DependentUpon>ventana_busqueda_nota_debito_cxp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_nota_credito_cxp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_nota_credito_cxp.Designer.cs">
+      <DependentUpon>ventana_nota_credito_cxp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_nota_debito_cxp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_nota_debito_cxp.Designer.cs">
+      <DependentUpon>ventana_nota_debito_cxp.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_nota_credito_cxc.cs">
       <SubType>Form</SubType>
@@ -675,6 +716,18 @@
     <Compile Include="modulo_inventario\ventana_unidad.Designer.cs">
       <DependentUpon>ventana_unidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_compra_devolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_compra_devolucion.Designer.cs">
+      <DependentUpon>ventana_compra_devolucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_compra_devolucion_anular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_compra_devolucion_anular.Designer.cs">
+      <DependentUpon>ventana_compra_devolucion_anular.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_nomina\ventana_busqueda_cargo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -826,6 +879,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_nota_credito.rdlc" />
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_nota_debito.rdlc" />
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_pagos_compras_agrupado_compra.rdlc" />
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_nota_credito_cxp.resx">
+      <DependentUpon>ventana_busqueda_nota_credito_cxp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_nota_debito_cxp.resx">
+      <DependentUpon>ventana_busqueda_nota_debito_cxp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_nota_credito_cxp.resx">
+      <DependentUpon>ventana_nota_credito_cxp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_nota_debito_cxp.resx">
+      <DependentUpon>ventana_nota_debito_cxp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_credito.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_anular_cobros.resx">
@@ -1033,6 +1101,12 @@
     <EmbeddedResource Include="modulo_inventario\ventana_unidad.resx">
       <DependentUpon>ventana_unidad.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_compra_devolucion.resx">
+      <DependentUpon>ventana_compra_devolucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_compra_devolucion_anular.resx">
+      <DependentUpon>ventana_compra_devolucion_anular.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_cargo.resx">
       <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>
     </EmbeddedResource>
@@ -1120,7 +1194,9 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_devolucion_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_agrupado_compra.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_pago_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_encabezado_general.datasource" />
@@ -1128,6 +1204,7 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_credito_cxc_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_credito_cxp_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_debito_cxc_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
@@ -1155,7 +1232,6 @@
     <Folder Include="bin\Release\Resources\archivos\ventas\" />
     <Folder Include="bin\Release\Resources\productos\" />
     <Folder Include="modulo_contabilidad\Reporte\" />
-    <Folder Include="modulo_cuenta_por_pagar\Reporte\" />
     <Folder Include="modulo_empresa\Reporte\" />
     <Folder Include="modulo_inicio_rapido\" />
     <Folder Include="modulo_inventario\Reporte\" />

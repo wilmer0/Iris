@@ -114,13 +114,13 @@ namespace IrisContabilidad.modelos
                 if (ventana.codigo_modulo != null || ventana.codigo_modulo > 0)
                 {
                     sql = "insert into modulos_vs_ventanas(id_modulo,id_ventana) values('" + ventana.codigo_modulo + "','" + ventana.codigo + "')";
-                    ds = utilidades.ejecutarcomando_mysql(sql);
+                    utilidades.ejecutarcomando_mysql(sql);
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Error agregarVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -175,7 +175,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarModulo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Error agregarModulo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }

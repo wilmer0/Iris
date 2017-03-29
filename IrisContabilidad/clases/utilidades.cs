@@ -1189,6 +1189,19 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+        public string getFechayyyyMMddhhmmss(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("yyyyMMddhhmmss");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechayyyyMMddhhmmss.:" + ex.ToString());
+                return null;
+            }
+        }
 
         public string getDiasByRangoFecha(DateTime fechaInicial, DateTime fechaFinal)
         {
