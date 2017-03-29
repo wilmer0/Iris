@@ -716,6 +716,18 @@
     <Compile Include="modulo_inventario\ventana_unidad.Designer.cs">
       <DependentUpon>ventana_unidad.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_inventario\ventana_compra_devolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_compra_devolucion.Designer.cs">
+      <DependentUpon>ventana_compra_devolucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_compra_devolucion_anular.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_inventario\ventana_compra_devolucion_anular.Designer.cs">
+      <DependentUpon>ventana_compra_devolucion_anular.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_nomina\ventana_busqueda_cargo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1088,6 +1100,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_unidad.resx">
       <DependentUpon>ventana_unidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_compra_devolucion.resx">
+      <DependentUpon>ventana_compra_devolucion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\ventana_compra_devolucion_anular.resx">
+      <DependentUpon>ventana_compra_devolucion_anular.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_nomina\ventana_busqueda_cargo.resx">
       <DependentUpon>ventana_busqueda_cargo.cs</DependentUpon>

@@ -327,20 +327,34 @@ namespace IrisContabilidad.modelos
 
                 //sistema configuracion
                 #region
-                sql = "insert into sistema(codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta) values('1','empresa.png','1','0','0','0','20301231','1','1','0','0','0','1')";
+                sql = "insert into sistema(codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta) values('1','empresa.png','1','0','0','0',"+utilidades.getFechayyyyMMdd(DateTime.Today.AddMonths(4))+",'1','1','0','0','0','1')";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
                 
                 //nota credito y debito conceptos
                 #region
-                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('1','devolución ventas','PARA HACER DEVOLUCIONES DE LAS VENTAS REALIZADAS CON NUESTROS CLIENTES','1');";
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('1','devolución ventas','para hacer devolución sobre ventas','1');";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('2','mercancia dañada','la mercancia esta dañada','1');";
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('2','devolución compras','para hacer devolución sobre compras','1');";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('3','mercancia llego en mal estado','cuando salio en buen estado pero luego el cliente la recibe en mal estado','1');";
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('3','mercancia dañada','la mercancia esta dañada','1');";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('4','mercancia no deseada','cuando el cliente la escojio pero despues se da cuenta que no era la que quiera','1');";
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('4','mercancia llego en mal estado','cuando salio en buen estado pero luego el cliente la recibe en mal estado','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('5','mercancia no deseada','cuando el cliente la escojio pero despues se da cuenta que no era la que quiera','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('6','descuento sobre venta','Cuando se quiere aplicar un monto de descuento a una venta','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('7','descuento sobre compra','Cuando se quiere aplicar un monto de descuento a una compra','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('8','aumento por flete','Cuando se incrementa el monto total por flete (envios, transportes)','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('9','disminucion de flete','Cuando se reduce el monto total por flete (envios, transportes)','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('10','descuento por pago anticipado','cuando se reduce el monto por un pronto pago','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into nota_credito_debito_concepto(codigo,concepto,detalle,activo) values('11','descuento por cobro anticipado','cuando se reduce el mont por un pronto cobro (recibo de ingreso)','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
@@ -354,7 +368,7 @@ namespace IrisContabilidad.modelos
 
                 //primer cliente
                 #region
-                sql = "insert into cliente(codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito, cod_sucursal_creado,cliente_contado, telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2) values('1','cliente contado','0','1','1',20170327,'0','1','1','','','','','1','','');";
+                sql = "insert into cliente(codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito, cod_sucursal_creado,cliente_contado, telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2) values('1','cliente contado','0','1','1',"+utilidades.getFechayyyyMMdd(DateTime.Today)+",'0','1','1','','','','','1','.','.');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 

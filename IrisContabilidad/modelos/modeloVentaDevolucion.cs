@@ -279,5 +279,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
     }
 }

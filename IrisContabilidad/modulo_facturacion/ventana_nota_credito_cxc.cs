@@ -288,6 +288,17 @@ namespace IrisContabilidad.modulo_facturacion
                 NcfText.Text = "";
                 if (ventaDevolucion != null)
                 {
+                    //validar que esa devolucion no este en uso en una nota credito
+                    if (notaCredito == null)
+                    {
+                        //no hay nota credito, la devolucion no se puede encontrar registrada
+                        if (modeloNotaCredito.getNotaCreditoByDevolucionId(ventaDevolucion.codigo) != null)
+                        {
+                            MessageBox.Show("Esta Devolución ya se le asigno su respectiva nota de credito, y no puede volver a usarse");
+                            button3_Click(null,null);
+                            return;
+                        }
+                    }
                     venta = modeloVenta.getVentaById(ventaDevolucion.codigo_venta);
                     ventaIdText.Text = venta.codigo.ToString();
                     numeroVentaText.Text = venta.numero_factura.ToString();

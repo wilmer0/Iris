@@ -21,12 +21,11 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         empleado empleado;
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
-        //cxcNotaCredito
         private compra compra;
         private suplidor suplidor;
         private cxp_nota_credito notaCredito;
         private nota_credito_debito_concepto concepto;
-
+        private compraDevolucion compraDevolucion;
 
 
         //modelos
@@ -35,11 +34,11 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         modeloCompra modeloCompra = new modeloCompra();
         modeloCxpNotaCredito modeloNotaCredito = new modeloCxpNotaCredito();
         ModeloReporte modeloReporte = new ModeloReporte();
-
+        modeloCompraDevolucion modeloCompraDevolucion=new modeloCompraDevolucion();
 
         //listas
         private List<nota_credito_debito_concepto> listaConcepto;
-
+        private List<compraDevolucionDetalle> listaCompraDevoluciondetalle; 
 
         public ventana_nota_credito_cxp()
         {
@@ -259,6 +258,40 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     compraIdText.Text = compra.codigo.ToString();
                     numeroCompraText.Text = compra.numero_factura.ToString();
                     NcfText.Text = compra.ncf;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadVentaDevolucion.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void loadVentaDevolucion()
+        {
+            try
+            {
+                compraIdText.Text = "";
+                numeroCompraText.Text = "";
+                NcfText.Text = "";
+                if (compraDevolucion != null)
+                {
+                    //validar que esa devolucion no este en uso en una nota credito
+                    if (notaCredito == null)
+                    {
+                        //no hay nota credito, la devolucion no se puede encontrar registrada
+                        if (modeloNotaCredito.getNotaCreditoByDevolucionId(compraDevolucion.codigo) != null)
+                        {
+                            MessageBox.Show("Esta Devolución ya se le asigno su respectiva nota de credito, y no puede volver a usarse");
+                            button3_Click(null, null);
+                            return;
+                        }
+                    }
+                    compra = modeloCompra.getCompraById(compraDevolucion.codigo_compra);
+                    compraIdText.Text = compra.codigo.ToString();
+                    numeroCompraText.Text = compra.numero_factura.ToString();
+                    NcfText.Text =compra.ncf;
+
+                    listaCompraDevoluciondetalle = modeloCompraDevolucion.getListaCompraDevolucionDetalleByDevolucionId(compraDevolucion.codigo);
+                    montoText.Text = listaCompraDevoluciondetalle.Sum(s => s.monto_total).ToString("N");
                 }
             }
             catch (Exception ex)

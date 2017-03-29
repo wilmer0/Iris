@@ -311,5 +311,38 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get objeto
+        public cxc_nota_credito getNotaCreditoByDevolucionId(int id)
+        {
+            try
+            {
+                cxc_nota_credito notaCredito;
+                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,codigo_devolucion from cxc_nota_credito where codigo_devolucion='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    notaCredito=new cxc_nota_credito();
+                    notaCredito.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                    notaCredito.codigoCliente = Convert.ToInt16(ds.Tables[0].Rows[0][1]);
+                    notaCredito.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][2]);
+                    notaCredito.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
+                    notaCredito.codigoEmpleado = Convert.ToInt16(ds.Tables[0].Rows[0][4]);
+                    notaCredito.monto = Convert.ToDecimal(ds.Tables[0].Rows[0][5]);
+                    notaCredito.detalle = ds.Tables[0].Rows[0][6].ToString();
+                    notaCredito.codigoVenta = Convert.ToInt16(ds.Tables[0].Rows[0][7]);
+                    notaCredito.codigoConcepto = Convert.ToInt16(ds.Tables[0].Rows[0][8]);
+                    notaCredito.codigoDevolucion = Convert.ToInt16(ds.Tables[0].Rows[0][9]);
+                    
+                    return notaCredito;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getNotaCreditoByDevolucionId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }
