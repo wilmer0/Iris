@@ -96,7 +96,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
         }
 
-        public void getAction()
+        public void getActionImprimir()
         {
             try
             {
@@ -114,7 +114,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            getAction();
+            getActionImprimir();
         }
 
         public bool validarImpresion()
@@ -176,6 +176,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             {
                 return;
             }
+            getActionImprimir();
         }
 
         private void label8_Click(object sender, EventArgs e)

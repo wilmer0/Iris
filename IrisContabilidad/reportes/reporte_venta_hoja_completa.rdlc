@@ -109,7 +109,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Left</TextAlign>
+                            <TextAlign>Right</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -796,7 +796,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Empresa</Value>
+                <Value>Empresa()</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -995,8 +995,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.55556in</Top>
-          <Left>0.16144in</Left>
+          <Top>0.5in</Top>
+          <Left>0.16149in</Left>
           <Height>0.25in</Height>
           <Width>8.13542in</Width>
           <ZIndex>1</ZIndex>
@@ -1064,7 +1064,7 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox1</rd:DefaultName>
-          <Top>0.27778in</Top>
+          <Top>0.25in</Top>
           <Left>0.16149in</Left>
           <Height>0.25in</Height>
           <Width>4.19543in</Width>
@@ -1593,7 +1593,7 @@
                 </TextRun>
               </TextRuns>
               <Style>
-                <TextAlign>Left</TextAlign>
+                <TextAlign>Right</TextAlign>
               </Style>
             </Paragraph>
           </Paragraphs>
@@ -1855,7 +1855,7 @@
         </Border>
       </Style>
     </PageHeader>
-    <TopMargin>0.25in</TopMargin>
+    <TopMargin>0.2in</TopMargin>
     <BottomMargin>0.25in</BottomMargin>
     <ColumnSpacing>0.05118in</ColumnSpacing>
     <Style />
