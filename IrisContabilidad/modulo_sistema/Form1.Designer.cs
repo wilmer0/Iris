@@ -74,17 +74,17 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(13, 355);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 17);
+            this.label1.Size = new System.Drawing.Size(193, 17);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Desarrollado por Black Code";
+            this.label1.Text = "Developed by Black Code";
             // 
             // panel3
             // 
             this.panel3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel3.BackgroundImage")));
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel3.Location = new System.Drawing.Point(227, 33);
+            this.panel3.Location = new System.Drawing.Point(207, 27);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(171, 156);
+            this.panel3.Size = new System.Drawing.Size(224, 199);
             this.panel3.TabIndex = 17;
             // 
             // groupBox1
@@ -93,9 +93,9 @@
             this.groupBox1.Controls.Add(this.usuarioText);
             this.groupBox1.Controls.Add(this.claveText);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(16, 195);
+            this.groupBox1.Location = new System.Drawing.Point(16, 232);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(580, 139);
+            this.groupBox1.Size = new System.Drawing.Size(580, 102);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             // 
@@ -103,7 +103,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(129, 33);
+            this.label2.Location = new System.Drawing.Point(126, 19);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
             this.label2.TabIndex = 9;
@@ -112,7 +112,7 @@
             // usuarioText
             // 
             this.usuarioText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usuarioText.Location = new System.Drawing.Point(211, 33);
+            this.usuarioText.Location = new System.Drawing.Point(208, 19);
             this.usuarioText.MaxLength = 30;
             this.usuarioText.Name = "usuarioText";
             this.usuarioText.Size = new System.Drawing.Size(224, 26);
@@ -122,7 +122,7 @@
             // claveText
             // 
             this.claveText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.claveText.Location = new System.Drawing.Point(211, 84);
+            this.claveText.Location = new System.Drawing.Point(208, 62);
             this.claveText.MaxLength = 30;
             this.claveText.Name = "claveText";
             this.claveText.PasswordChar = '*';
@@ -134,7 +134,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(136, 84);
+            this.label3.Location = new System.Drawing.Point(133, 62);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 20);
             this.label3.TabIndex = 10;
