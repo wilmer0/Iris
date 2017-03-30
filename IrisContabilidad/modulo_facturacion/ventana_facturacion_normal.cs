@@ -1063,5 +1063,9 @@ namespace IrisContabilidad.modulo_facturacion
 
         }
 
+        public void modoCotizacion()
+        {
+        }
+
     }
 }

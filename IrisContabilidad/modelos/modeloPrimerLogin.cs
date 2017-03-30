@@ -36,17 +36,19 @@ namespace IrisContabilidad.modelos
         modeloSituacionEmpleado modeloSituacionEmpleado=new modeloSituacionEmpleado();
         modeloTipoGasto modeloTipoGasto=new modeloTipoGasto();
         modeloNominaTipo modeloNominaTipo=new modeloNominaTipo();
+        private modeloActualizacion modeloActualizacion = new modeloActualizacion();
 
         //validar primer login
         public void validarPrimerLogin()
         {
             try
             {
-                string sql = "select *from empleado";
+                string sql = "select *from empresa";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count == 0)
                 {
-                    //no existe empleado entonces se debe agregar todo
+                    //no existe empresa entonces se debe agregar todo
+                    modeloActualizacion.version1();
                     primerosDatos();
                     agregarModulos();
                     agregarVentanas();
@@ -64,7 +66,6 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error validarPrimerLogin.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         //agregando todos los datos que son necesarios al momento de iniciar el sistemas
         public void primerosDatos()
         {
