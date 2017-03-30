@@ -53,7 +53,7 @@
     <ApplicationIcon>view.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>CAB4BC42BC94107D0174346B922356F641F1271C</ManifestCertificateThumbprint>
