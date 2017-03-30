@@ -48,11 +48,11 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //no existe empresa entonces se debe agregar todo
-                    //modeloActualizacion.version1();
+                    modeloActualizacion.version1();
                     primerosDatos();
                     agregarModulos();
                     agregarVentanas();
-                    agregarPrimerEmpleado();
+                    //agregarPrimerEmpleado();
                     agregarAccesosVentanas();
                 }
                 else
@@ -383,11 +383,9 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //empleado
                 #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
+                sql = "select *from empleado; insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,cod_tipo_nomina,foto,tipo_ventana) values('1','Admin','wilmer','MQAyADMA','1','1','1','1','1','1','1',"+utilidades.getFechayyyyMMdd(DateTime.Today)+",'1','default1.png','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 

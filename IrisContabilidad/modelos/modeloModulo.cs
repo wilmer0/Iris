@@ -84,7 +84,7 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     //MessageBox.Show("Existe una ventana con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //return false;
+                    return false;
                 }
                 //validar nombre_logico
                 sql = "select *from sistema_ventanas where nombre_logico='" + ventana.nombre_logico + "' and codigo!='" + ventana.codigo + "'";
@@ -92,7 +92,7 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     //MessageBox.Show("Existe una ventana con ese nombre lógico", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //return false;
+                    return false;
                 }
                 if (ventana.activo == true)
                 {
