@@ -90,23 +90,22 @@ namespace IrisContabilidad.modelos
                         decimal cantidadSacar = 1;//para sacar cantidad producto requisito equivalentemente de la unidad
                         cantidadSacar = Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString());
                         //revisar si ese producto tiene productos requisitos
-                        sql = "SELECT codpro_titular,codpro_requisito,cod_unidad,cantidad FROM producto_productos_requisitos where codpro_titular='"+x.codigo_producto+"'";
-                        ds = utilidades.ejecutarcomando_mysql(sql);
-                       
-                            //si, tiene que sacar los requisitos de inventario
+                        
+                        //si, tiene que sacar los requisitos de inventario
                         producto = new modeloProducto().getProductoById(x.codigo_producto);
-                            if(producto.producto_titular==true)    
-                            //if (ds.Tables[0].Rows[0][0].ToString() != "")
-                            {
-                                foreach (DataRow row in ds.Tables[0].Rows)
-                                {
-                                    cantidadSacar = cantidadSacar * Convert.ToDecimal(row[3].ToString());
-                                    setSalidaInventarioByProductoUnidad(Convert.ToInt16(row[1].ToString()), Convert.ToInt16(row[2].ToString()), cantidadSacar);
-                                }
-                            }
+                        if (producto.producto_titular == true)
+                        {
+                            sql = "SELECT codpro_titular,codpro_requisito,cod_unidad,cantidad FROM producto_productos_requisitos where codpro_titular='" + x.codigo_producto + "'";
+                            ds = utilidades.ejecutarcomando_mysql(sql);
 
-                            producto = new modeloProducto().getProductoById(x.codigo_producto);
-                        sql ="select codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento from inventario where codigo_producto='" +x.codigo_producto + "' and codigo_unidad='" + x.codigo_unidad +"' ";
+                            foreach (DataRow row in ds.Tables[0].Rows)
+                            {
+                                cantidadSacar = cantidadSacar * Convert.ToDecimal(row[3].ToString());
+                                setSalidaInventarioByProductoUnidad(Convert.ToInt16(row[1].ToString()), Convert.ToInt16(row[2].ToString()), cantidadSacar);
+                            }
+                        }
+                        
+                        sql = "select codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento from inventario where codigo_producto='" + x.codigo_producto + "' and codigo_unidad='" + x.codigo_unidad + "' ";
                         if (producto.controla_inventario == true)
                         {
                             //controla inventario
@@ -144,8 +143,6 @@ namespace IrisContabilidad.modelos
                         }
                      } 
                 }
-
-
 
                 return true;
             }
@@ -317,7 +314,6 @@ namespace IrisContabilidad.modelos
                     venta.codigo_empelado_anular = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
                     venta.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
                     venta.detalle = ds.Tables[0].Rows[0][13].ToString();
-                    
                 }
                 return venta;
             }
