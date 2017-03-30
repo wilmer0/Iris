@@ -106,10 +106,10 @@ namespace IrisContabilidad.modelos
                 //agregando la ventana
                 sql = "insert into sistema_ventanas(codigo,nombre_ventana,nombre_logico,imagen,activo,programador) values('" + ventana.codigo + "','" + ventana.nombre_ventana + "','" + ventana.nombre_logico + "','" + ventana.imagen + "','" + activo.ToString() + "','" + programador + "')";
                 //MessageBox.Show(sql);
-                ds = utilidades.ejecutarcomando_mysql(sql);
+                utilidades.ejecutarcomando_mysql(sql);
                 //agregando el permiso al empleado
                 sql = "insert into empleado_accesos_ventanas(id_empleado,id_ventana_sistema) values('1','" + ventana.codigo + "')";
-                ds = utilidades.ejecutarcomando_mysql(sql);
+                utilidades.ejecutarcomando_mysql(sql);
                 //agregando la ventana al modulo
                 if (ventana.codigo_modulo != null || ventana.codigo_modulo > 0)
                 {

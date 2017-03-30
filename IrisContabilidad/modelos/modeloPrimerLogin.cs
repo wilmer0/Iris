@@ -36,27 +36,29 @@ namespace IrisContabilidad.modelos
         modeloSituacionEmpleado modeloSituacionEmpleado=new modeloSituacionEmpleado();
         modeloTipoGasto modeloTipoGasto=new modeloTipoGasto();
         modeloNominaTipo modeloNominaTipo=new modeloNominaTipo();
+        private modeloActualizacion modeloActualizacion = new modeloActualizacion();
 
         //validar primer login
         public void validarPrimerLogin()
         {
             try
             {
-                string sql = "select *from empleado";
+                string sql = "select *from empresa";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count == 0)
                 {
-                    //no existe empleado entonces se debe agregar todo
+                    //no existe empresa entonces se debe agregar todo
+                    modeloActualizacion.version1();
                     primerosDatos();
                     agregarModulos();
                     agregarVentanas();
-                    agregarPrimerEmpleado();
-                    agregarPrimerEmpleado();
+                    //agregarPrimerEmpleado();
                     agregarAccesosVentanas();
                 }
                 else
                 {
                     agregarVentanas();
+                    //modeloActualizacion.version1(false);
                 }
             }
             catch (Exception ex)
@@ -64,7 +66,6 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error validarPrimerLogin.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         //agregando todos los datos que son necesarios al momento de iniciar el sistemas
         public void primerosDatos()
         {
@@ -372,19 +373,19 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //tamnos ventanas modulo del menu
                 #region
-                sql = "";
+                sql = "INSERT INTO tipo_ventana(codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion, tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra) VALUES (1,150,100,8,15,'Pequeña',150,100,8);";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
+                sql = "INSERT INTO tipo_ventana(codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion, tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra) values(2,170,130,15,19,'Normal',170,120,15);";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "INSERT INTO tipo_ventana(codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion, tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra) values(3,200,160,20,22,'Grande',250,190,20);";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //empleado
                 #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
+                sql = "select *from empleado; insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,cod_tipo_nomina,foto,tipo_ventana) values('1','Admin','wilmer','MQAyADMA','1','1','1','1','1','1','1',"+utilidades.getFechayyyyMMdd(DateTime.Today)+",'1','default1.png','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 

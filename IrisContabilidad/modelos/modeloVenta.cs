@@ -92,11 +92,9 @@ namespace IrisContabilidad.modelos
                         //revisar si ese producto tiene productos requisitos
                         sql = "SELECT codpro_titular,codpro_requisito,cod_unidad,cantidad FROM producto_productos_requisitos where codpro_titular='"+x.codigo_producto+"'";
                         ds = utilidades.ejecutarcomando_mysql(sql);
-                        if (ds.Tables[0].Rows[0][0].ToString()!="")
-                        {
-                           //si, tiene que sacar los requisitos de inventario
-                            
-                           if (ds.Tables[0].Rows[0][0].ToString() != "")
+                       
+                            //si, tiene que sacar los requisitos de inventario
+                            if (ds.Tables[0].Rows[0][0].ToString() != "")
                             {
                                 foreach (DataRow row in ds.Tables[0].Rows)
                                 {
@@ -104,7 +102,7 @@ namespace IrisContabilidad.modelos
                                     setSalidaInventarioByProductoUnidad(Convert.ToInt16(row[1].ToString()), Convert.ToInt16(row[2].ToString()), cantidadSacar);
                                 }
                             }
-                        }
+                        
 
 
                         producto = new modeloProducto().getProductoById(x.codigo_producto);
