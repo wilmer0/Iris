@@ -518,5 +518,49 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+
+        //imprimir ventas mensuales graficos
+        public bool imprimirVentasMensualesGraficos(int anoInicial,int anoFinal, bool soloCobradas ,cliente cliente,empleado empleado)
+        {
+            try
+            {
+                //datos generales
+                String reporte = "";
+
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+
+                empleado empleadoSesion = new empleado();
+                empleadoSesion = singleton.getEmpleado();
+
+                //hoja normal
+                reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_ventas_mensuales_graficos.rdlc";
+
+                //llenar encabezado
+                reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
+                List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                listaReporteEncabezado.Add(reporteEncabezado);
+
+                ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                listaReportDataSource.Add(reporteE);
+
+                //llenar detalle
+                //reporte_nota_debito_cxp_detalle detalle = new reporte_nota_debito_cxp_detalle(nota);
+                //List<reporte_nota_debito_cxp_detalle> listaDetalle = new List<reporte_nota_debito_cxp_detalle>();
+                //listaDetalle.Add(detalle);
+
+                //ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                //listaReportDataSource.Add(reporteD);
+                
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                ventana.ShowDialog();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirVentasMensualesGraficos.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

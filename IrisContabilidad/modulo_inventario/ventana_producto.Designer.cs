@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
@@ -52,7 +52,6 @@
             this.almacenIdText = new System.Windows.Forms.TextBox();
             this.itebisText = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.itebisIdText = new System.Windows.Forms.TextBox();
             this.puntoReordenText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -98,6 +97,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barraColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cantidadText = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -137,7 +137,7 @@
             this.idUnidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label9 = new System.Windows.Forms.Label();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -198,6 +198,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.linkLabel5);
             this.tabPage1.Controls.Add(this.linkLabel4);
             this.tabPage1.Controls.Add(this.linkLabel3);
             this.tabPage1.Controls.Add(this.linkLabel2);
@@ -216,7 +217,6 @@
             this.tabPage1.Controls.Add(this.almacenIdText);
             this.tabPage1.Controls.Add(this.itebisText);
             this.tabPage1.Controls.Add(this.button7);
-            this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.itebisIdText);
             this.tabPage1.Controls.Add(this.puntoReordenText);
             this.tabPage1.Controls.Add(this.label7);
@@ -449,16 +449,6 @@
             this.button7.TabIndex = 40;
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(108, 389);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 20);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "Itbis";
             // 
             // itebisIdText
             // 
@@ -956,6 +946,17 @@
             this.tabPage4.Text = "Unidades";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(9, 4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(870, 15);
+            this.label9.TabIndex = 70;
+            this.label9.Text = "Aqui se debe establecer el precio de venta más alto, es decir el precio de venta " +
+    "con mayor beneficio de ganancia para el primer precio";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.cantidadText);
@@ -1149,8 +1150,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewTextBoxColumn5.FillWeight = 70F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Precio costo";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -1158,8 +1159,8 @@
             // 
             // precioVentaColumn
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle17;
             this.precioVentaColumn.FillWeight = 70F;
             this.precioVentaColumn.HeaderText = "Precio venta";
             this.precioVentaColumn.Name = "precioVentaColumn";
@@ -1378,23 +1379,25 @@
             // 
             // dataGridViewTextBoxColumn8
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle18;
             this.dataGridViewTextBoxColumn8.FillWeight = 30F;
             this.dataGridViewTextBoxColumn8.HeaderText = "Cantidad";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // label9
+            // linkLabel5
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(9, 4);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(735, 15);
-            this.label9.TabIndex = 70;
-            this.label9.Text = "Aqui se debe establecer el precio de venta más alto, es decir el precio de venta " +
-    "con mayor beneficio de ganancia.";
+            this.linkLabel5.AutoSize = true;
+            this.linkLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel5.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel5.Location = new System.Drawing.Point(108, 390);
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.Size = new System.Drawing.Size(44, 20);
+            this.linkLabel5.TabIndex = 74;
+            this.linkLabel5.TabStop = true;
+            this.linkLabel5.Text = "Itbis";
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
             // 
             // ventana_producto
             // 
@@ -1463,7 +1466,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox itebisText;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox itebisIdText;
         private System.Windows.Forms.TextBox almacenText;
         private System.Windows.Forms.Button button8;
@@ -1546,5 +1548,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox unidadProduccionIdText;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.LinkLabel linkLabel5;
     }
 }

@@ -77,7 +77,7 @@ namespace IrisContabilidad.modelos
                 });
 
                 //sacar de inventario
-                listaDetalle.ForEach(x =>
+                foreach(var x in listaDetalle)
                 {
                     decimal cantidad = x.cantidad;
                     decimal existencia = 0;
@@ -94,18 +94,18 @@ namespace IrisContabilidad.modelos
                         ds = utilidades.ejecutarcomando_mysql(sql);
                        
                             //si, tiene que sacar los requisitos de inventario
-                            if (ds.Tables[0].Rows[0][0].ToString() != "")
+                        producto = new modeloProducto().getProductoById(x.codigo_producto);
+                            if(producto.producto_titular==true)    
+                            //if (ds.Tables[0].Rows[0][0].ToString() != "")
                             {
                                 foreach (DataRow row in ds.Tables[0].Rows)
                                 {
-                                    cantidadSacar = cantidadSacar*Convert.ToDecimal(row[3].ToString());
+                                    cantidadSacar = cantidadSacar * Convert.ToDecimal(row[3].ToString());
                                     setSalidaInventarioByProductoUnidad(Convert.ToInt16(row[1].ToString()), Convert.ToInt16(row[2].ToString()), cantidadSacar);
                                 }
                             }
-                        
 
-
-                        producto = new modeloProducto().getProductoById(x.codigo_producto);
+                            producto = new modeloProducto().getProductoById(x.codigo_producto);
                         sql ="select codigo,codigo_producto,codigo_unidad,cantidad,fecha_entrada,fecha_vencimiento from inventario where codigo_producto='" +x.codigo_producto + "' and codigo_unidad='" + x.codigo_unidad +"' ";
                         if (producto.controla_inventario == true)
                         {
@@ -143,7 +143,7 @@ namespace IrisContabilidad.modelos
                             MessageBox.Show("El producto: " + producto.nombre +" y la unidad: "+unidad.nombre+" no tiene inventario disponible, favor revisar y dar entrada al inventario","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                         }
                      } 
-                });
+                }
 
 
 

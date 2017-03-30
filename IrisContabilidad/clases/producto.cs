@@ -22,6 +22,7 @@ namespace IrisContabilidad.clases
         public string imagen { get; set; }
         public int codigo_unidad_minima { get; set; }
         public Boolean controla_inventario { get; set; }
+        public bool producto_titular { get; set; }
 
     }
 }
