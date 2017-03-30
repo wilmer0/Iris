@@ -789,6 +789,10 @@ namespace IrisContabilidad.modulo_inventario
                 string sql = "delete from producto_productos_requisitos where codpro_titular='" + producto.codigo + "'";
                 utilidades.ejecutarcomando_mysql(sql);
                 //recorriendo la lista para agregarlo uno a uno
+                if (dataGridView4.Rows.Count > 0)
+                {
+                    producto.producto_titular = true;
+                }
                 foreach (DataGridViewRow row in dataGridView4.Rows)
                 {
                     sql = "insert into producto_productos_requisitos(codpro_titular,codpro_requisito,cod_unidad,cantidad) values('" + producto.codigo + "','" + row.Cells[0].Value.ToString() + "','" + row.Cells[2].Value.ToString() + "','" + row.Cells[4].Value.ToString() + "')";
