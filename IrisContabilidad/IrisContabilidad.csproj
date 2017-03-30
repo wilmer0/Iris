@@ -53,7 +53,7 @@
     <ApplicationIcon>view.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>CAB4BC42BC94107D0174346B922356F641F1271C</ManifestCertificateThumbprint>
@@ -227,6 +227,7 @@
     <Compile Include="clases_reportes\reporte_nota_debito_cxp_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_detalle.cs" />
     <Compile Include="clases_reportes\reporte_producto_encabezado.cs" />
+    <Compile Include="clases_reportes\reporte_ventas_mensuales_grafico_detalles.cs" />
     <Compile Include="clases_reportes\reporte_venta_cobro_detalle.cs" />
     <Compile Include="clases_reportes\reporte_venta_cobro_encabezado.cs" />
     <Compile Include="clases_reportes\reporte_venta_detalle.cs" />
@@ -953,6 +954,7 @@
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_debito.rdlc" />
+    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_ventas_mensuales_graficos.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_nota_credito_cxc.resx">
       <DependentUpon>ventana_busqueda_nota_credito_cxc.cs</DependentUpon>
     </EmbeddedResource>

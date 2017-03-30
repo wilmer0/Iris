@@ -95,6 +95,15 @@ namespace IrisContabilidad.modulo_facturacion
                     porcientoText.SelectAll();
                     return false;
                 }
+                //validar que sea porciento
+                int n;
+                decimal porciento;
+                if (int.TryParse(porcientoText.Text, out n) == true)
+                {
+                    porciento = Convert.ToDecimal(porcientoText.Text);
+                    porciento = porciento/100;
+                    porcientoText.Text = porciento.ToString("##.##");
+                }
                 return true;
             }
             catch (Exception ex)

@@ -1360,5 +1360,17 @@ namespace IrisContabilidad.modulo_inventario
                 loadUnidadProduccion();
             }
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ventana_itebis ventana = new ventana_itebis();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
     }
 }
