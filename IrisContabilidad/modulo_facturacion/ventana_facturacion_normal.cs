@@ -57,6 +57,7 @@ namespace IrisContabilidad.modulo_facturacion
         private decimal totalItebisMonto = 0;
         private decimal totalCompraMonto = 0;
         private decimal cantidadExistencia = 0;
+        public bool modoCotizacion = false;
 
         //listas
         private List<producto_vs_codigobarra> listaCodigoBarra;
@@ -1063,8 +1064,46 @@ namespace IrisContabilidad.modulo_facturacion
 
         }
 
-        public void modoCotizacion()
+        public void ventanaModoCotizacion()
         {
+            try
+            {
+                if (modoCotizacion == true)
+                {
+                    //se activa el modo cotizacion
+                    clienteText.ReadOnly = false;
+                    detalleText.Text = "Este documento es una  cotización";
+                    productoText.ReadOnly = false;
+                    precioText.ReadOnly = false;
+                }
+                else
+                {
+                    //se desactiva modo cotizacion
+                    clienteText.ReadOnly = true;
+                    detalleText.Text = "";
+                    productoText.ReadOnly = true;
+                    precioText.ReadOnly = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error modoCotizacion.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        private void tipoVentaComboBox_TextChanged(object sender, EventArgs e)
+        {
+            if (tipoVentaComboBox.Text.ToLower().Contains("cot"))
+            {
+                modoCotizacion = true;
+                ventanaModoCotizacion();
+            }
+            else
+            {
+                modoCotizacion = false;
+                ventanaModoCotizacion();
+            }
         }
 
     }

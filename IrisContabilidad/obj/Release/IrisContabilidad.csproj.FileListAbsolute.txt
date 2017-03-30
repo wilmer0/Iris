@@ -1,3 +1,13 @@
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe.config
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe.manifest
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.application
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\Gmap.net.pdb
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GMap.NET.WindowsPresentation.xml
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GoogleApi.xml
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\Newtonsoft.Json.xml
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_busqueda_nota_credito_debito_concepto.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_busqueda_tipo_gastos.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_cuentas_contables.resources
@@ -106,6 +116,6 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\R
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\RdlCompile.compiled
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.TrustInfo.xml
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.exe.manifest
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.application
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.exe
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.pdb
-C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe.config

@@ -48,17 +48,17 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //no existe empresa entonces se debe agregar todo
-                    modeloActualizacion.version1();
+                    //modeloActualizacion.version1();
                     primerosDatos();
                     agregarModulos();
                     agregarVentanas();
-                    agregarPrimerEmpleado();
                     agregarPrimerEmpleado();
                     agregarAccesosVentanas();
                 }
                 else
                 {
                     agregarVentanas();
+                    //modeloActualizacion.version1(false);
                 }
             }
             catch (Exception ex)
@@ -373,11 +373,13 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //tamnos ventanas modulo del menu
                 #region
-                sql = "";
+                sql = "INSERT INTO tipo_ventana(codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion, tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra) VALUES (1,150,100,8,15,'Pequeña',150,100,8);";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
+                sql = "INSERT INTO tipo_ventana(codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion, tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra) values(2,170,130,15,19,'Normal',170,120,15);";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "INSERT INTO tipo_ventana(codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion, tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra) values(3,200,160,20,22,'Grande',250,190,20);";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
