@@ -665,6 +665,12 @@
     <Compile Include="modulo_facturacion\ventana_venta_reimprimir.Designer.cs">
       <DependentUpon>ventana_venta_reimprimir.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_gerencia\ventana_reporte_ventas_mensuales_grafico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_gerencia\ventana_reporte_ventas_mensuales_grafico.Designer.cs">
+      <DependentUpon>ventana_reporte_ventas_mensuales_grafico.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_inventario\ventana_almacen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -954,7 +960,7 @@
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_debito.rdlc" />
-    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_ventas_mensuales_graficos.rdlc" />
+    <EmbeddedResource Include="modulo_gerencia\Reporte\reporte_ventas_mensuales_graficos.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_nota_credito_cxc.resx">
       <DependentUpon>ventana_busqueda_nota_credito_cxc.cs</DependentUpon>
     </EmbeddedResource>
@@ -1095,6 +1101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_venta_reimprimir.resx">
       <DependentUpon>ventana_venta_reimprimir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_gerencia\ventana_reporte_ventas_mensuales_grafico.resx">
+      <DependentUpon>ventana_reporte_ventas_mensuales_grafico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_inventario\ventana_almacen.resx">
       <DependentUpon>ventana_almacen.cs</DependentUpon>
@@ -1252,6 +1261,7 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_debito_cxc_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_producto_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_ventas_mensuales_grafico_detalles.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_cobro_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_cobro_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_venta_detalle.datasource" />
@@ -1279,7 +1289,6 @@
     <Folder Include="bin\Release\Resources\productos\" />
     <Folder Include="modulo_contabilidad\Reporte\" />
     <Folder Include="modulo_empresa\Reporte\" />
-    <Folder Include="modulo_gerencia\" />
     <Folder Include="modulo_inicio_rapido\" />
     <Folder Include="modulo_inventario\Reporte\" />
     <Folder Include="modulo_nomina\Reporte\" />

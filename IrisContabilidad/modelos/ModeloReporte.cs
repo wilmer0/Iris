@@ -524,6 +524,41 @@ namespace IrisContabilidad.modelos
         {
             try
             {
+
+                //buscando ventas en base al anio
+                List<venta> listaVentas=new List<venta>();
+                listaVentas = new modeloVenta().getListaCompletaByRangoAnos(anoInicial,anoFinal);
+
+                reporte_ventas_mensuales_grafico_detalles reporteDetalle=new reporte_ventas_mensuales_grafico_detalles();
+                List<reporte_ventas_mensuales_grafico_detalles> listaDetalle=new List<reporte_ventas_mensuales_grafico_detalles>();
+
+                //filtros
+                //solo cobradas
+                if (soloCobradas == true)
+                {
+                    listaVentas = listaVentas.FindAll(x => x.pagada == true);
+                }
+                //por cliente
+                if (cliente != null)
+                {
+                    listaVentas = listaVentas.FindAll(x => x.codigo_cliente == cliente.codigo);
+                }
+                //por empleado
+                if (empleado !=null)
+                {
+                    listaVentas = listaVentas.FindAll(x => x.codigo_empleado ==empleado.codigo);
+                }
+
+
+                //llenando la lista detalle
+                foreach (var x in listaVentas)
+                {
+                    reporteDetalle=new reporte_ventas_mensuales_grafico_detalles(x);
+                    listaDetalle.Add(reporteDetalle);
+                }
+
+
+
                 //datos generales
                 String reporte = "";
 
@@ -533,26 +568,33 @@ namespace IrisContabilidad.modelos
                 empleadoSesion = singleton.getEmpleado();
 
                 //hoja normal
-                reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_ventas_mensuales_graficos.rdlc";
+                reporte = "IrisContabilidad.modulo_gerencia.Reporte.reporte_ventas_mensuales_graficos.rdlc";
 
                 //llenar encabezado
                 reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
+                reporteEncabezado.anioInicial = anoInicial;
+                reporteEncabezado.anioFinal = anoFinal;
+                if (cliente != null)
+                {
+                    reporteEncabezado.codigoCliente = cliente.codigo;
+                    reporteEncabezado.cliente = cliente.nombre;
+                }
                 List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
                 listaReporteEncabezado.Add(reporteEncabezado);
-
                 ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
                 listaReportDataSource.Add(reporteE);
 
-                //llenar detalle
-                //reporte_nota_debito_cxp_detalle detalle = new reporte_nota_debito_cxp_detalle(nota);
-                //List<reporte_nota_debito_cxp_detalle> listaDetalle = new List<reporte_nota_debito_cxp_detalle>();
-                //listaDetalle.Add(detalle);
 
-                //ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
-                //listaReportDataSource.Add(reporteD);
                 
+                //reporte detalle
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                listaReportDataSource.Add(reporteD);
+                
+                //reporte parametros
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
                 VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                
+                
                 ventana.ShowDialog();
                 return true;
             }
@@ -562,5 +604,11 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+
+
+
+
+
+
     }
 }

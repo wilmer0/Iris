@@ -1564,5 +1564,87 @@ namespace IrisContabilidad.modelos
                 return -1;
             }
         }
+
+
+        //get lista completa de venta by rango de anos
+        public List<venta> getListaCompletaByRangoAnos(int anioInicial,int anioFinal)
+        {
+            try
+            {
+                List<venta> lista = new List<venta>();
+                venta venta = new venta();
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta where year(fecha)>="+anioInicial+" and year(fecha)<="+anioFinal+"";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        venta = new venta();
+                        venta.codigo = Convert.ToInt16(row[0].ToString());
+                        venta.numero_factura = row[1].ToString();
+                        venta.codigo_cliente = Convert.ToInt16(row[2].ToString());
+                        venta.fecha = Convert.ToDateTime(row[3].ToString());
+                        venta.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        venta.ncf = row[5].ToString();
+                        venta.tipo_venta = row[6].ToString();
+                        venta.activo = Convert.ToBoolean(row[7]);
+                        venta.pagada = Convert.ToBoolean(row[8]);
+                        venta.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        venta.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        venta.codigo_empelado_anular = Convert.ToInt16(row[11].ToString());
+                        venta.motivo_anulada = row[12].ToString();
+                        venta.detalle = row[13].ToString();
+                        lista.Add(venta);
+                    }
+                }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        //get lista completa de venta by rango de meses
+        public List<venta> getListaCompletaByRangoMes(int mesInicial, int MesFinal)
+        {
+            try
+            {
+                List<venta> lista = new List<venta>();
+                venta venta = new venta();
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles from venta where month(fecha)>='" + mesInicial + "' and month()fecha<='" + MesFinal + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        venta = new venta();
+                        venta.codigo = Convert.ToInt16(row[0].ToString());
+                        venta.numero_factura = row[1].ToString();
+                        venta.codigo_cliente = Convert.ToInt16(row[2].ToString());
+                        venta.fecha = Convert.ToDateTime(row[3].ToString());
+                        venta.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        venta.ncf = row[5].ToString();
+                        venta.tipo_venta = row[6].ToString();
+                        venta.activo = Convert.ToBoolean(row[7]);
+                        venta.pagada = Convert.ToBoolean(row[8]);
+                        venta.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        venta.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        venta.codigo_empelado_anular = Convert.ToInt16(row[11].ToString());
+                        venta.motivo_anulada = row[12].ToString();
+                        venta.detalle = row[13].ToString();
+                        lista.Add(venta);
+                    }
+                }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }
