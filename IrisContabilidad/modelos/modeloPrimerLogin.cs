@@ -468,6 +468,7 @@ namespace IrisContabilidad.modelos
                    7-modulo nomina
                    8-modulo inicio rapido
                    9-modulo contabilidad
+                   10-modulo gerencia
                 */
 
 
@@ -544,6 +545,14 @@ namespace IrisContabilidad.modelos
                 modulo.imagen = "contabilidad1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_contabilidad";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = 9;
+                modulo.nombre = "Gerencia";
+                modulo.imagen = "gerencia1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_gerencia";
                 listaModulo.Add(modulo);
 
                 #endregion

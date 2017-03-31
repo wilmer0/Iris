@@ -1279,6 +1279,7 @@
     <Folder Include="bin\Release\Resources\productos\" />
     <Folder Include="modulo_contabilidad\Reporte\" />
     <Folder Include="modulo_empresa\Reporte\" />
+    <Folder Include="modulo_gerencia\" />
     <Folder Include="modulo_inicio_rapido\" />
     <Folder Include="modulo_inventario\Reporte\" />
     <Folder Include="modulo_nomina\Reporte\" />
