@@ -28,12 +28,10 @@ namespace IrisContabilidad.modulo_gerencia
         private empleado empleadoSesion;
         private cliente cliente;
 
-
         //modelos
         ModeloReporte modeloReporte=new ModeloReporte();
         modeloCliente modelocliente=new modeloCliente();
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
-
 
         //variables
         private int anioInicial = 0;
@@ -49,6 +47,7 @@ namespace IrisContabilidad.modulo_gerencia
             this.Text = tituloLabel.Text;
             loadVentana();
         }
+
         public void loadVentana()
         {
             try
@@ -87,6 +86,7 @@ namespace IrisContabilidad.modulo_gerencia
                 
             }
         }
+
         public void loadEmpleado()
         {
             try
@@ -188,6 +188,7 @@ namespace IrisContabilidad.modulo_gerencia
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -195,6 +196,7 @@ namespace IrisContabilidad.modulo_gerencia
                 this.Close();
             }
         }
+
         private void ventana_reporte_ventas_mensuales_grafico_Load(object sender, EventArgs e)
         {
 

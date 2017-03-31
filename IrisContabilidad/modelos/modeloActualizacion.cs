@@ -81,10 +81,10 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`sucursal` ADD COLUMN `version_sistema` INTEGER NOT NULL DEFAULT 0 AFTER `fax`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "CREATE TABLE `iris`.`cuadre_caja_transacciones` ( `codigo_cuadre_caja` INTEGER NOT NULL DEFAULT 0, `codigo_venta` INTEGER NOT NULL DEFAULT 0, `codigo_cobro` INTEGER NOT NULL DEFAULT 0, `codigo_ingreso_caja` INTEGER NOT NULL DEFAULT 0, `codigo_egreso_caja` VARCHAR(45) NOT NULL DEFAULT '', `codigo_nota_credito` INTEGER NOT NULL DEFAULT 0, `codigo_nota_debito` INTEGER NOT NULL DEFAULT 0, `codigo_gasto` INTEGER NOT NULL DEFAULT 0, `codigo_pago` INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(`codigo_cuadre_caja`, `codigo_venta`, `codigo_cobro`, `codigo_ingreso_caja`, `codigo_egreso_caja`, `codigo_nota_credito`, `codigo_nota_debito`, `codigo_gasto`, `codigo_pago`)";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_notas_debito` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_faltante`, ADD COLUMN `monto_notas_credito` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_notas_debito`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

@@ -22,6 +22,7 @@ namespace IrisContabilidad.modulo_facturacion
         private empleado empleado;
         private cuadre_caja cuadreCaja;
         private cajero cajero;
+        private empleado empleadoSesion;
 
         //modelos
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
@@ -32,10 +33,10 @@ namespace IrisContabilidad.modulo_facturacion
         public ventana_cuadre_caja()
         {
             InitializeComponent();
-            empleado = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana cuadre caja");
+            empleadoSesion = singleton.getEmpleado();
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSesion, "ventana cuadre caja");
             this.Text = tituloLabel.Text;
-            //loadVentana();
+            loadVentana();
         }
         public void loadVentana()
         {
@@ -43,11 +44,37 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (cuadreCaja != null)
                 {
+                    fechaText.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    dosMilText.Text = "0.00";
+                    milText.Text = "0.00";
+                    quinientoText.Text = "0.00";
+                    doscientosText.Text = "0.00";
+                    cienText.Text = "0.00";
+                    cincuentaText.Text = "0.00";
+                    venticincoText.Text = "0.00";
+                    veinteText.Text = "0.00";
+                    diezText.Text = "0.00";
+                    cincoText.Text = "0.00";
+                    unoText.Text = "0.00";
+
 
                 }
                 else
                 {
-                    
+                    fechaText.Text = cuadreCaja.fecha.ToString("dd/MM/yyyy");
+                    dosMilText.Text = "0.00";
+                    milText.Text = "0.00";
+                    quinientoText.Text = "0.00";
+                    doscientosText.Text = "0.00";
+                    cienText.Text = "0.00";
+                    cincuentaText.Text = "0.00";
+                    venticincoText.Text = "0.00";
+                    veinteText.Text = "0.00";
+                    diezText.Text = "0.00";
+                    cincoText.Text = "0.00";
+                    unoText.Text = "0.00";
+
+
                 }
 
             }
@@ -140,6 +167,38 @@ namespace IrisContabilidad.modulo_facturacion
         private void button1_Click(object sender, EventArgs e)
         {
             GetAction();
+        }
+
+        public void loadCajero()
+        {
+            try
+            {
+                cajeroIdText.Text = "";
+                cajeroLabel.Text = "";
+                if (cajero != null)
+                {
+                    empleado = modeloEmpleado.getEmpleadoByCajeroId(cajero.codigo);
+
+                    cajeroIdText.Text = cajero.codigo.ToString();
+                    cajeroLabel.Text = empleado.nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadCajero.: "+ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            ventana_busqueda_cajero ventana=new ventana_busqueda_cajero();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                cajero = ventana.getObjeto();
+                loadCajero();
+            }
         }
     }
 }
