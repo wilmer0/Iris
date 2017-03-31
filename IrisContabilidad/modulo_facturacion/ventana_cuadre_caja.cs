@@ -123,8 +123,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button4_Click(object sender, EventArgs e)
         {
-            cajero = modeloCajero.getCajeroByIdEmpleado(empleado.codigo);
-            MessageBox.Show(modeloCuadreCaja.getNextTurno().ToString());
+
         }
 
         private void button2_Click(object sender, EventArgs e)
