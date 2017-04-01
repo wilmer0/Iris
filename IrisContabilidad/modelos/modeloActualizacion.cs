@@ -90,10 +90,10 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`compra` ADD COLUMN `cuadrado` BOOLEAN NOT NULL DEFAULT 0 AFTER `suplidor_informal`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja` ADD COLUMN `fecha_cierre_cuadre` DATE NOT NULL DEFAULT 0 AFTER `caja_abierta`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`gastos` ADD COLUMN `cuadrado` BOOLEAN NOT NULL DEFAULT 0 AFTER `activo`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

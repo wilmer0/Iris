@@ -11,6 +11,7 @@ namespace IrisContabilidad.clases
         public int codigo { get; set; }
         public int codigo_cajero { get; set; }
         public DateTime fecha { get; set; }
+        public DateTime fecha_cierre_cuadre { get; set; }
         public int turno { get; set; }
         public bool activo { get; set; }
         public int codigo_sucursal { get; set; }

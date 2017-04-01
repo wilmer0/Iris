@@ -201,14 +201,19 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //get lista completa no cuadrado by fecha final
-        public List<ingreso_caja> getListaCompletaNoCuadradoByFechaFinalAndCajeroId(DateTime fechaFinal,int cajeroId)
+        //get lista completa no cuadrada by cuadre caja
+        public List<ingreso_caja> getListaIngresosCajaNoCuadradaCompletaByCuadreCaja(cuadre_caja cuadre)
         {
             try
             {
-
+                empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadre.codigo_cajero);
+                if (empleado == null)
+                {
+                    MessageBox.Show("Error el empleado esta nulo en base al cajero  getListaNoCuadradaCompletaByCuadreCaja .:");
+                    return null;
+                }
                 List<ingreso_caja> lista = new List<ingreso_caja>();
-                string sql = "select codigo,cod_concepto,fecha,cod_cajero,monto,detalles,afecta_cuadre,activo,cuadrado from ingresos_caja where activo='1' and cod_cajero='"+cajeroId+"' and fecha<='"+utilidades.getFechayyyyMMdd(fechaFinal)+"'";
+                string sql = "select codigo,cod_concepto,fecha,cod_Cajero,monto,detalles,afecta_cuadre,activo,cuadrado from ingresos_caja where cuadrado='0' and activo='1' and fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' and cod_cajero='"+cuadre.codigo_cajero+"' and afecta_cuadre='1' ";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -231,13 +236,11 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCompletaNoCuadradoByFechaFinalAndCajeroId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getListaIngresosCajaNoCuadradaCompletaByCuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }
         }
-    
-    
         
     
     }

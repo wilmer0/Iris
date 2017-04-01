@@ -47,8 +47,6 @@ namespace IrisContabilidad.modulo_facturacion
         modeloIngresoCaja modeloIngresoCaja=new modeloIngresoCaja();
         modeloCompra modeloCompra=new modeloCompra();
 
-        
-
 
 
         //listas
@@ -63,8 +61,23 @@ namespace IrisContabilidad.modulo_facturacion
         private List<compra> listaCompra; 
 
 
+        //variables
+        private decimal montoEfectivoInicial = 0;
+        private decimal montoFacturaEfectivo = 0;
+        public decimal  montoCobrosEfectivo = 0;
+        private decimal montoIngresosCaja = 0;
+        private decimal montoNotascredito = 0;
+        private decimal montoNotasDebito = 0;
+        private decimal montoTarjeta = 0;
+        private decimal montoCheque = 0;
+        private decimal montoDeposito = 0;
+        private decimal montoSobradnte = 0;
+        private decimal montoFaltante = 0;
+        private decimal montoPagosCompraEfectivo = 0;
+        private decimal montoEgresosCajaEfectivo = 0;
+        private decimal montoGastosEfectivo = 0;
 
-
+        private decimal montoTotalEfectivoEsperado = 0;
 
         public ventana_cuadre_caja()
         {
@@ -117,28 +130,19 @@ namespace IrisContabilidad.modulo_facturacion
 
 
                     //lista ventas
-                    listaVentas = modeloCuadreCaja.getListaVentasByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
-                    
-                    //lista ventas detalle
-                    foreach (var x in listaVentas)
-                    {
-                        listaVentasDetalles.AddRange(modeloVenta.getListaVentaDetalleByVentaId(x.codigo));
-                    }
+                    listaVentasDetalles = modeloCuadreCaja.getListaVentasDetallesBycuadreCaja(cuadreCaja);
                     
                     //lista egresos caja
-                    listaEgresosCaja = modeloEgreCaja.getListaCompletaNoCuadradoByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
+                    //listaEgresosCaja = modeloEgreCaja.getListaCompletaNoCuadradoByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
 
                     //lista ingresos caja
-                    listaIngresoCaja = modeloIngresoCaja.getListaCompletaNoCuadradoByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
+                    listaIngresoCaja = modeloIngresoCaja.getListaIngresosCajaNoCuadradaCompletaByCuadreCaja(cuadreCaja);
 
-                    //lista compra
-                    listaCompra = modeloCompra.getListaCompraNoCuadradoByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
+                    //lista compra detalle
 
+                   
                     //lista compra pagos
-                    foreach (var x in listaCompra)
-                    {
-                        listaCompraPagoDetalle.AddRange(modeloCompra.getListaCompraPagoDetalleByCompraId(x.codigo));
-                    }
+                   
                     
                     //lista venta cobros
                     

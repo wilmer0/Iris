@@ -210,6 +210,7 @@
     <Compile Include="clases\venta_detalle.cs" />
     <Compile Include="clases\venta_vs_cobros.cs" />
     <Compile Include="clases\venta_vs_cobros_detalles.cs" />
+    <Compile Include="clases_calculos\cuadre_caja.cs" />
     <Compile Include="clases_reportes\reporte_compra_devolucion_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_agrupado_compra.cs" />
     <Compile Include="clases_reportes\reporte_nota_credito_cxc_detalle.cs" />

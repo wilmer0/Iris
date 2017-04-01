@@ -17,6 +17,16 @@ namespace IrisContabilidad.clases
         public decimal monto_ingreso { get; set; }
         public decimal monto_sobrante { get; set; }
         public decimal monto_faltante { get; set; }
+        public decimal monto_efectivo_inicial { get; set; }
 
+        public cuadre_caja_detalle()
+        {
+            
+        }
+
+        public cuadre_caja_detalle(cuadre_caja cuadreCaja)
+        {
+            
+        }
     }
 }
