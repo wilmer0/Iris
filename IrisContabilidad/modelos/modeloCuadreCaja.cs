@@ -15,9 +15,6 @@ namespace IrisContabilidad.modelos
         utilidades utilidades = new utilidades();
 
 
-
-
-
         //agregar 
         public bool agregarCuadreCaja(cuadre_caja cuadreCaja)
         {
@@ -61,6 +58,7 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -87,6 +85,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+
         //obtener el codigo siguiente turno
         public int getNextTurno()
         {
@@ -187,7 +186,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //get lista Lista Cuadre Caja Detalle By Cuadre Caja Id
         public List<cuadre_caja_detalle> getListaCuadreCajaDetalleByCuadreCajaId(int id)
         {
@@ -223,6 +221,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista completa por nombre
         public List<cuadre_caja_detalle> getListaCompleta()
         {
@@ -258,5 +257,27 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get lista ventas sin cuadrar hasta fecha
+        public List<venta> getListaVentasByFechaFinalAndCajeroId(DateTime fechaFinal,int cajeroId)
+        {
+            try
+            {
+                List<venta> lista = new List<venta>();
+                venta venta;
+                lista = new modeloVenta().getListaCompletaSinCuadradaByFechaFinal(fechaFinal,cajeroId);
+
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentasByFechaFinalAndCajeroId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+
     }
 }

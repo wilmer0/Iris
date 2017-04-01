@@ -265,6 +265,7 @@
     <Compile Include="modelos\modeloIngresoCaja.cs" />
     <Compile Include="modelos\modeloItebis.cs" />
     <Compile Include="modelos\modeloLogReporteGenerado.cs" />
+    <Compile Include="modelos\modeloMes.cs" />
     <Compile Include="modelos\modeloMetodoPago.cs" />
     <Compile Include="modelos\modeloModulo.cs" />
     <Compile Include="modelos\modeloNominaTipo.cs" />

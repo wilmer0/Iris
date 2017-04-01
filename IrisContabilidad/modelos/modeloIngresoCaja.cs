@@ -105,7 +105,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -132,7 +131,6 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
 
         //get objeto
         public ingreso_caja getIngresoCajaById(int id)
@@ -162,7 +160,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista completa
         public List<ingreso_caja> getListaCompleta(bool mantenimiento = false)
@@ -203,5 +200,45 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get lista completa no cuadrado by fecha final
+        public List<ingreso_caja> getListaCompletaNoCuadradoByFechaFinalAndCajeroId(DateTime fechaFinal,int cajeroId)
+        {
+            try
+            {
+
+                List<ingreso_caja> lista = new List<ingreso_caja>();
+                string sql = "select codigo,cod_concepto,fecha,cod_cajero,monto,detalles,afecta_cuadre,activo,cuadrado from ingresos_caja where activo='1' and cod_cajero='"+cajeroId+"' and fecha<='"+utilidades.getFechayyyyMMdd(fechaFinal)+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        ingreso_caja ingreso = new ingreso_caja();
+                        ingreso.codigo = Convert.ToInt16(row[0]);
+                        ingreso.codigo_concepto = Convert.ToInt16(row[1]);
+                        ingreso.fecha = Convert.ToDateTime(row[2]);
+                        ingreso.codigo_cajero = Convert.ToInt16(row[3]);
+                        ingreso.monto = Convert.ToDecimal(row[4].ToString());
+                        ingreso.detalle = row[5].ToString();
+                        ingreso.afecta_cuadre = Convert.ToBoolean(row[6]);
+                        ingreso.activo = Convert.ToBoolean(row[7]);
+                        ingreso.cuadrado = Convert.ToBoolean(row[8]);
+                        lista.Add(ingreso);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompletaNoCuadradoByFechaFinalAndCajeroId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+    
+    
+        
+    
     }
 }

@@ -42,8 +42,7 @@ namespace IrisContabilidad.modelos
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un producto con esa referencia", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un producto con esa referencia", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     return false;
                 }
 

@@ -195,6 +195,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+        
         //obtener el codigo siguiente pago
         public int getNextPago()
         {
@@ -221,6 +222,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+        
         //obtener el codigo siguiente pago detalle
         public int getNextPagoDetalle()
         {
@@ -283,6 +285,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get compra by id
         public compra getCompraBySuplidorNumeroCompra(suplidor suplidor,string numeroCompra)
         {
@@ -360,6 +363,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista completa de compras
         public List<compra> getListaCompra()
         {
@@ -400,6 +404,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista compra by suplidor
         public List<compra> getListaCompraBySuplidor(int id)
         {
@@ -440,6 +445,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //hacer pagos a compra a contado
         public bool setCompraPago(compra compra,compra_vs_pagos pago,List<compra_vs_pagos_detalles> listaPagoDetalle)
         {
@@ -706,6 +712,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista compra pago detalle completa
         public List<compra_vs_pagos_detalles> getListaCompraPagoDetalleCompleta(bool SoloActivo = true)
         {
@@ -743,6 +750,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
         //set compra pagada
         public bool setCompraPagada(int idCompra)
         {
@@ -758,5 +766,83 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+
+
+        //get lista completa de compras no cuadrada by fecha final
+        public List<compra> getListaCompraNoCuadradoByFechaFinalAndCajeroId(DateTime fechaFinal,int cajeroId)
+        {
+            try
+            {
+                List<compra> lista = new List<compra>();
+                compra compra = new compra();
+                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        compra = new compra();
+                        compra.codigo = Convert.ToInt16(row[0].ToString());
+                        compra.numero_factura = row[1].ToString();
+                        compra.cod_suplidor = Convert.ToInt16(row[2].ToString());
+                        compra.fecha = Convert.ToDateTime(row[3].ToString());
+                        compra.fecha_limite = Convert.ToDateTime(row[4].ToString());
+                        compra.ncf = row[5].ToString();
+                        compra.tipo_compra = row[6].ToString();
+                        compra.activo = Convert.ToBoolean(row[7]);
+                        compra.pagada = Convert.ToBoolean(row[8]);
+                        compra.codigo_sucursal = Convert.ToInt16(row[9].ToString());
+                        compra.codigo_empleado = Convert.ToInt16(row[10].ToString());
+                        compra.codigo_empleado_anular = Convert.ToInt16(row[11].ToString());
+                        compra.motivo_anulada = row[12].ToString();
+                        compra.detalle = row[13].ToString();
+                        compra.suplidor_informal = Convert.ToBoolean(row[14]);
+                        lista.Add(compra);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompraNoCuadradoByFechaFinalAndCajeroId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get lista compra pago detalle by compra
+        public List<compra_vs_pagos_detalles> getListaCompraPagoDetalleByCompraId(int compraId)
+        {
+            try
+            {
+                List<compra_vs_pagos_detalles> lista = new List<compra_vs_pagos_detalles>();
+                string sql = "";
+                sql = "select codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,activo from compra_vs_pagos_detalles where cod_metodo_pago='1' and cod_compra='" + compraId + "' and activo='1'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        compra_vs_pagos_detalles compraPagoDetalle = new compra_vs_pagos_detalles();
+                        compraPagoDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        compraPagoDetalle.codigo_pago = Convert.ToInt16(row[1].ToString());
+                        compraPagoDetalle.codigo_compra = Convert.ToInt16(row[2].ToString());
+                        compraPagoDetalle.codigo_metodo_pago = Convert.ToInt16(row[3].ToString());
+                        compraPagoDetalle.monto_pagado = Convert.ToDecimal(row[4].ToString());
+                        compraPagoDetalle.monto_descontado = Convert.ToDecimal(row[5].ToString());
+                        compraPagoDetalle.activo = Convert.ToBoolean(row[6]);
+                        lista.Add(compraPagoDetalle);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompraPagoDetalleByCompraId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+
+
     }
 }

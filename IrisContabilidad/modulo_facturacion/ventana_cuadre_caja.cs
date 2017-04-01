@@ -16,6 +16,9 @@ namespace IrisContabilidad.modulo_facturacion
     public partial class ventana_cuadre_caja : formBase
     {
 
+        //variables
+        private DateTime fechaFinal;
+
         //objetos
         utilidades utilidades = new utilidades();
         private singleton singleton = new singleton();
@@ -23,11 +26,44 @@ namespace IrisContabilidad.modulo_facturacion
         private cuadre_caja cuadreCaja;
         private cajero cajero;
         private empleado empleadoSesion;
+        private venta venta;
+        private venta_detalle ventaDetalle;
+        private egreso_caja egresoCaja;
+        private ingreso_caja ingresoCaja;
+        private compra_vs_pagos compraPago;
+        private compra_vs_pagos_detalles compraPagoDetalle;
+        private venta_vs_cobros ventaCobro;
+        private venta_vs_cobros_detalles ventaCobrosDetalle;
+        private compra compra;
+
+
 
         //modelos
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
         modeloCuadreCaja modeloCuadreCaja=new modeloCuadreCaja();
         modeloCajero modeloCajero=new modeloCajero();
+        modeloVenta modeloVenta=new modeloVenta();
+        modeloEgresoCaja modeloEgreCaja=new modeloEgresoCaja();
+        modeloIngresoCaja modeloIngresoCaja=new modeloIngresoCaja();
+        modeloCompra modeloCompra=new modeloCompra();
+
+        
+
+
+
+        //listas
+        private List<venta> listaVentas;
+        private List<venta_detalle> listaVentasDetalles;
+        private List<egreso_caja> listaEgresosCaja;
+        private List<ingreso_caja> listaIngresoCaja;
+        private List<compra_vs_pagos> listaCompraPagos;
+        private List<compra_vs_pagos_detalles> listaCompraPagoDetalle;
+        private List<venta_vs_cobros> listaVentaCobros;
+        private List<venta_vs_cobros_detalles> listaVentaCobrosDetalles;
+        private List<compra> listaCompra; 
+
+
+
 
 
         public ventana_cuadre_caja()
@@ -44,7 +80,15 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (cuadreCaja != null)
                 {
+                    cajero = modeloCajero.getCajeroByIdEmpleado(empleadoSesion.codigo);
+                    if (cajero == null)
+                    {
+                        MessageBox.Show("Este usuario no es un cajero para poder realizar cierre de caja", "",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        this.Close();
+                    }
+
                     fechaText.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    fechaFinal = DateTime.Today;
                     dosMilText.Text = "0.00";
                     milText.Text = "0.00";
                     quinientoText.Text = "0.00";
@@ -58,25 +102,51 @@ namespace IrisContabilidad.modulo_facturacion
                     unoText.Text = "0.00";
 
 
-                }
-                else
-                {
-                    fechaText.Text = cuadreCaja.fecha.ToString("dd/MM/yyyy");
-                    dosMilText.Text = "0.00";
-                    milText.Text = "0.00";
-                    quinientoText.Text = "0.00";
-                    doscientosText.Text = "0.00";
-                    cienText.Text = "0.00";
-                    cincuentaText.Text = "0.00";
-                    venticincoText.Text = "0.00";
-                    veinteText.Text = "0.00";
-                    diezText.Text = "0.00";
-                    cincoText.Text = "0.00";
-                    unoText.Text = "0.00";
+
+                    //llenando la listas
+                    listaVentas=new List<venta>();
+                    listaVentasDetalles=new List<venta_detalle>();
+                    listaEgresosCaja=new List<egreso_caja>();
+                    listaIngresoCaja=new List<ingreso_caja>();
+                    listaCompraPagos=new List<compra_vs_pagos>();
+                    listaCompraPagoDetalle=new List<compra_vs_pagos_detalles>();
+                    listaVentaCobros=new List<venta_vs_cobros>();
+                    listaVentaCobrosDetalles=new List<venta_vs_cobros_detalles>();
+                    listaCompra=new List<compra>();
+                    
+
+
+                    //lista ventas
+                    listaVentas = modeloCuadreCaja.getListaVentasByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
+                    
+                    //lista ventas detalle
+                    foreach (var x in listaVentas)
+                    {
+                        listaVentasDetalles.AddRange(modeloVenta.getListaVentaDetalleByVentaId(x.codigo));
+                    }
+                    
+                    //lista egresos caja
+                    listaEgresosCaja = modeloEgreCaja.getListaCompletaNoCuadradoByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
+
+                    //lista ingresos caja
+                    listaIngresoCaja = modeloIngresoCaja.getListaCompletaNoCuadradoByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
+
+                    //lista compra
+                    listaCompra = modeloCompra.getListaCompraNoCuadradoByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
+
+                    //lista compra pagos
+                    foreach (var x in listaCompra)
+                    {
+                        listaCompraPagoDetalle.AddRange(modeloCompra.getListaCompraPagoDetalleByCompraId(x.codigo));
+                    }
+                    
+                    //lista venta cobros
+                    
+
+
 
 
                 }
-
             }
             catch (Exception ex)
             {
@@ -88,14 +158,14 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-                ////
-                //if (claveConfirmarText.Text == "")
-                //{
-                //    MessageBox.Show("Falta la confirmación de la nueva clave", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    claveConfirmarText.Focus();
-                //    claveConfirmarText.SelectAll();
-                //    return false;
-                //}
+                //cajero
+                if (cajero==null)
+                {
+                    MessageBox.Show("Falta el cajero", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cajeroIdText.Focus();
+                    cajeroIdText.SelectAll();
+                    return false;
+                }
 
 
                 return true;

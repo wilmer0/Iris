@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_cuadre_caja));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.cajeroLabel = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.cajeroIdText = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.fechaText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dosMilText = new System.Windows.Forms.TextBox();
@@ -103,16 +103,6 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Cajero";
-            // 
             // cajeroLabel
             // 
             this.cajeroLabel.AutoSize = true;
@@ -143,6 +133,16 @@
             this.cajeroIdText.Name = "cajeroIdText";
             this.cajeroIdText.Size = new System.Drawing.Size(183, 26);
             this.cajeroIdText.TabIndex = 29;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(17, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 20);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Cajero";
             // 
             // fechaText
             // 
@@ -226,7 +226,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(29, 130);
+            this.label6.Location = new System.Drawing.Point(231, 20);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(49, 20);
             this.label6.TabIndex = 40;
@@ -236,7 +236,7 @@
             // 
             this.cienText.BackColor = System.Drawing.Color.White;
             this.cienText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cienText.Location = new System.Drawing.Point(85, 126);
+            this.cienText.Location = new System.Drawing.Point(287, 16);
             this.cienText.MaxLength = 4;
             this.cienText.Name = "cienText";
             this.cienText.Size = new System.Drawing.Size(111, 26);
@@ -246,7 +246,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(39, 168);
+            this.label7.Location = new System.Drawing.Point(241, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 20);
             this.label7.TabIndex = 42;
@@ -256,7 +256,7 @@
             // 
             this.cincuentaText.BackColor = System.Drawing.Color.White;
             this.cincuentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cincuentaText.Location = new System.Drawing.Point(85, 164);
+            this.cincuentaText.Location = new System.Drawing.Point(287, 51);
             this.cincuentaText.MaxLength = 4;
             this.cincuentaText.Name = "cincuentaText";
             this.cincuentaText.Size = new System.Drawing.Size(111, 26);
@@ -266,7 +266,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(478, 19);
+            this.label8.Location = new System.Drawing.Point(242, 91);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(39, 20);
             this.label8.TabIndex = 44;
@@ -276,7 +276,7 @@
             // 
             this.venticincoText.BackColor = System.Drawing.Color.White;
             this.venticincoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.venticincoText.Location = new System.Drawing.Point(523, 16);
+            this.venticincoText.Location = new System.Drawing.Point(287, 88);
             this.venticincoText.MaxLength = 4;
             this.venticincoText.Name = "venticincoText";
             this.venticincoText.Size = new System.Drawing.Size(111, 26);
@@ -286,7 +286,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(478, 56);
+            this.label9.Location = new System.Drawing.Point(242, 127);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(39, 20);
             this.label9.TabIndex = 46;
@@ -296,7 +296,7 @@
             // 
             this.veinteText.BackColor = System.Drawing.Color.White;
             this.veinteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.veinteText.Location = new System.Drawing.Point(523, 53);
+            this.veinteText.Location = new System.Drawing.Point(287, 124);
             this.veinteText.MaxLength = 4;
             this.veinteText.Name = "veinteText";
             this.veinteText.Size = new System.Drawing.Size(111, 26);
@@ -306,7 +306,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(478, 90);
+            this.label10.Location = new System.Drawing.Point(462, 19);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(39, 20);
             this.label10.TabIndex = 48;
@@ -316,7 +316,7 @@
             // 
             this.diezText.BackColor = System.Drawing.Color.White;
             this.diezText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diezText.Location = new System.Drawing.Point(523, 87);
+            this.diezText.Location = new System.Drawing.Point(507, 16);
             this.diezText.MaxLength = 4;
             this.diezText.Name = "diezText";
             this.diezText.Size = new System.Drawing.Size(111, 26);
@@ -326,7 +326,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(488, 128);
+            this.label11.Location = new System.Drawing.Point(472, 54);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(29, 20);
             this.label11.TabIndex = 50;
@@ -336,7 +336,7 @@
             // 
             this.cincoText.BackColor = System.Drawing.Color.White;
             this.cincoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cincoText.Location = new System.Drawing.Point(523, 126);
+            this.cincoText.Location = new System.Drawing.Point(507, 52);
             this.cincoText.MaxLength = 4;
             this.cincoText.Name = "cincoText";
             this.cincoText.Size = new System.Drawing.Size(111, 26);
@@ -346,7 +346,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(488, 167);
+            this.label12.Location = new System.Drawing.Point(472, 90);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(29, 20);
             this.label12.TabIndex = 52;
@@ -356,7 +356,7 @@
             // 
             this.unoText.BackColor = System.Drawing.Color.White;
             this.unoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unoText.Location = new System.Drawing.Point(523, 164);
+            this.unoText.Location = new System.Drawing.Point(507, 87);
             this.unoText.MaxLength = 4;
             this.unoText.Name = "unoText";
             this.unoText.Size = new System.Drawing.Size(111, 26);
@@ -396,7 +396,7 @@
             // 
             this.doscientosText.BackColor = System.Drawing.Color.White;
             this.doscientosText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.doscientosText.Location = new System.Drawing.Point(294, 88);
+            this.doscientosText.Location = new System.Drawing.Point(85, 124);
             this.doscientosText.MaxLength = 4;
             this.doscientosText.Name = "doscientosText";
             this.doscientosText.Size = new System.Drawing.Size(111, 26);
@@ -406,7 +406,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(238, 92);
+            this.label13.Location = new System.Drawing.Point(29, 128);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(49, 20);
             this.label13.TabIndex = 54;
