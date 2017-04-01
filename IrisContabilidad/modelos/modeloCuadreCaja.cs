@@ -298,7 +298,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //get lista de ingresos caja
+        //get lista de ingresos caja by cuadre caja
         public List<ingreso_caja> getListaCajaIngresosBycuadreCaja(cuadre_caja cuadre)
         {
             try
@@ -332,7 +332,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //get lista de egresos de caja
+        //get lista de egresos de caja by cuadre caja
         public List<egreso_caja> getListaCajaEgresosBycuadreCaja(cuadre_caja cuadre)
         {
             try
@@ -349,8 +349,23 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //
+        //get lista de gastos completa by cuadre caja
+        public List<gasto> getListaGastosBycuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<gasto> lista = new List<gasto>();
+                lista = new modeloGasto().getListaCompletabyCuadreCaja(cuadre);
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaGastosBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
 
-
+      
     }
 }

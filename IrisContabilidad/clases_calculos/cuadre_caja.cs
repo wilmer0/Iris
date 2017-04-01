@@ -24,6 +24,6 @@ namespace IrisContabilidad.clases_calculos
         public decimal montoPagosCompraEfectivo { get; set; }
         public decimal montoEgresosCajaEfectivo { get; set; }
         public decimal montoGastosEfectivo { get; set; }
-        public List<cuadre_caja_detalle> listaCuadreCajaDetalle { get; set; }
+        public cuadre_caja_detalle CuadreCajaDetalle { get; set; }
     }
 }

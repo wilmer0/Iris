@@ -106,7 +106,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -133,7 +132,6 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
 
         //get objeto
         public gasto getGastoById(int id)
@@ -171,7 +169,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista completa
         public List<gasto> getListaCompleta(bool mantenimiento = false)
@@ -218,5 +215,55 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+
+        //get lista completa by cuadre caja
+        public List<gasto> getListaCompletabyCuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadre.codigo_cajero);
+                if (empleado == null)
+                {
+                    MessageBox.Show("Error empleado nulo en base al cajero.: getListaCompletabyCuadreCaja", "",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+                List<gasto> lista = new List<gasto>();
+                string sql = "select codigo,cod_empleado,cod_tipo_gasto,cod_suplidor,numero_factura,ncf,fecha,monto_subtotal,monto_itebis,monto_isr,monto_total, cod_tipo_isr,cod_tipo_itebis,detalles,detalle_anulado,contabilizado,activo,cuadrado FROM gastos where activo='1' and cuadrado='0' and cod_empleado='" + empleado.codigo + "' and fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' ";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        gasto gasto = new gasto();
+                        gasto.codigo = Convert.ToInt16(row[0].ToString());
+                        gasto.codigo_empleado = Convert.ToInt16(row[1].ToString());
+                        gasto.codigo_tipo_gasto = Convert.ToInt16(row[2].ToString());
+                        gasto.codigo_suplidor = Convert.ToInt16(row[3].ToString());
+                        gasto.numero_factura = row[4].ToString();
+                        gasto.ncf = row[5].ToString();
+                        gasto.fecha = Convert.ToDateTime(row[6].ToString());
+                        gasto.monto_subtotal = Convert.ToDecimal(row[7].ToString());
+                        gasto.monto_itebis = Convert.ToDecimal(row[8].ToString());
+                        gasto.monto_isr = Convert.ToDecimal(row[9].ToString());
+                        gasto.monto_total = Convert.ToDecimal(row[10].ToString());
+                        gasto.codigo_tipo_isr = Convert.ToInt16(row[11].ToString());
+                        gasto.codigo_tipo_itebis = Convert.ToInt16(row[12].ToString());
+                        gasto.detalles = row[13].ToString();
+                        gasto.detalle_anulado = row[14].ToString();
+                        gasto.contabilizado = Convert.ToBoolean(row[15]);
+                        gasto.activo = Convert.ToBoolean(row[16]);
+                        lista.Add(gasto);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
     }
 }
