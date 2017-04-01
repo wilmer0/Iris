@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using IrisContabilidad.modelos;
 
 namespace IrisContabilidad.clases
 {
@@ -19,16 +20,26 @@ namespace IrisContabilidad.clases
         public decimal monto_faltante { get; set; }
         public decimal monto_efectivo_inicial { get; set; }
         public decimal monto_credito { get; set; }
-        public decimal 
+        public decimal monto_cotizacion { get; set; }
+        public decimal monto_pedido { get; set; }
+
+        //facturado
+        public decimal montoFacturaContado { get; set; }
+        public decimal montoFacturaCotizacion { get; set; }
+        public decimal montoFacturaPedido { get; set; }
+        public decimal montoFacturaCredito { get; set; }
+
+        //cobros de ventas
+        public decimal montoCobrosEfectivo { get; set; }
+        public decimal montoCobrosDeposito { get; set; }
+        public decimal montoCobrosCheque { get; set; }
+
+        //ingresos caja
+        public decimal montoIngresoEfectivo { get; set; }
 
         public cuadre_caja_detalle()
         {
-            
-        }
 
-        public cuadre_caja_detalle(cuadre_caja cuadreCaja)
-        {
-            
         }
     }
 }

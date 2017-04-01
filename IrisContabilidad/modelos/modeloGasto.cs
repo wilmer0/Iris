@@ -217,8 +217,8 @@ namespace IrisContabilidad.modelos
         }
 
 
-        //get lista completa by cuadre caja
-        public List<gasto> getListaCompletabyCuadreCaja(cuadre_caja cuadre)
+        //get lista completa gastos by cuadre caja
+        public List<gasto> getListaGastosCompletabyCuadreCaja(cuadre_caja cuadre)
         {
             try
             {
@@ -260,7 +260,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error getListaGastosCompletabyCuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }

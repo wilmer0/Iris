@@ -96,13 +96,13 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`gastos` ADD COLUMN `cuadrado` BOOLEAN NOT NULL DEFAULT 0 AFTER `activo`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_cotizacion` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_notas_credito`, ADD COLUMN `monto_pedido` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cotizacion`; ";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cxc_nota_credito` ADD COLUMN `cuadrado` BOOLEAN NOT NULL DEFAULT 0 AFTER `codigo_devolucion`, ADD COLUMN `contabilizado` BOOLEAN NOT NULL DEFAULT 0 AFTER `cuadrado`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cxc_nota_debito` ADD COLUMN `cuadrado` BOOLEAN NOT NULL DEFAULT 0 AFTER `codigo_concepto`, ADD COLUMN `contabilizado` BOOLEAN NOT NULL DEFAULT 0 AFTER `cuadrado`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

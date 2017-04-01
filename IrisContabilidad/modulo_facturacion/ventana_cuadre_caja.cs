@@ -36,8 +36,6 @@ namespace IrisContabilidad.modulo_facturacion
         private venta_vs_cobros_detalles ventaCobrosDetalle;
         private compra compra;
 
-
-
         //modelos
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
         modeloCuadreCaja modeloCuadreCaja=new modeloCuadreCaja();
@@ -47,35 +45,10 @@ namespace IrisContabilidad.modulo_facturacion
         modeloIngresoCaja modeloIngresoCaja=new modeloIngresoCaja();
         modeloCompra modeloCompra=new modeloCompra();
 
-
-
         //listas
-        private List<venta> listaVentas;
-        private List<venta_detalle> listaVentasDetalles;
-        private List<egreso_caja> listaEgresosCaja;
-        private List<ingreso_caja> listaIngresoCaja;
-        private List<compra_vs_pagos> listaCompraPagos;
-        private List<compra_vs_pagos_detalles> listaCompraPagoDetalle;
-        private List<venta_vs_cobros> listaVentaCobros;
-        private List<venta_vs_cobros_detalles> listaVentaCobrosDetalles;
-        private List<compra> listaCompra; 
 
 
         //variables
-        private decimal montoEfectivoInicial = 0;
-        private decimal montoFacturaEfectivo = 0;
-        public decimal  montoCobrosEfectivo = 0;
-        private decimal montoIngresosCaja = 0;
-        private decimal montoNotascredito = 0;
-        private decimal montoNotasDebito = 0;
-        private decimal montoTarjeta = 0;
-        private decimal montoCheque = 0;
-        private decimal montoDeposito = 0;
-        private decimal montoSobradnte = 0;
-        private decimal montoFaltante = 0;
-        private decimal montoPagosCompraEfectivo = 0;
-        private decimal montoEgresosCajaEfectivo = 0;
-        private decimal montoGastosEfectivo = 0;
 
         private decimal montoTotalEfectivoEsperado = 0;
 
@@ -113,43 +86,6 @@ namespace IrisContabilidad.modulo_facturacion
                     diezText.Text = "0.00";
                     cincoText.Text = "0.00";
                     unoText.Text = "0.00";
-
-
-
-                    //llenando la listas
-                    listaVentas=new List<venta>();
-                    listaVentasDetalles=new List<venta_detalle>();
-                    listaEgresosCaja=new List<egreso_caja>();
-                    listaIngresoCaja=new List<ingreso_caja>();
-                    listaCompraPagos=new List<compra_vs_pagos>();
-                    listaCompraPagoDetalle=new List<compra_vs_pagos_detalles>();
-                    listaVentaCobros=new List<venta_vs_cobros>();
-                    listaVentaCobrosDetalles=new List<venta_vs_cobros_detalles>();
-                    listaCompra=new List<compra>();
-                    
-
-
-                    //lista ventas
-                    listaVentasDetalles = modeloCuadreCaja.getListaVentasDetallesBycuadreCaja(cuadreCaja);
-                    
-                    //lista egresos caja
-                    //listaEgresosCaja = modeloEgreCaja.getListaCompletaNoCuadradoByFechaFinalAndCajeroId(fechaFinal,cajero.codigo);
-
-                    //lista ingresos caja
-                    listaIngresoCaja = modeloIngresoCaja.getListaIngresosCajaNoCuadradaCompletaByCuadreCaja(cuadreCaja);
-
-                    //lista compra detalle
-
-                   
-                    //lista compra pagos
-                   
-                    
-                    //lista venta cobros
-                    
-
-
-
-
                 }
             }
             catch (Exception ex)

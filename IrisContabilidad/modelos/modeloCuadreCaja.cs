@@ -355,7 +355,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 List<gasto> lista = new List<gasto>();
-                lista = new modeloGasto().getListaCompletabyCuadreCaja(cuadre);
+                lista = new modeloGasto().getListaGastosCompletabyCuadreCaja(cuadre);
                 return lista;
             }
             catch (Exception ex)

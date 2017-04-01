@@ -1672,45 +1672,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //get lista al contado completa de venta detalle by cuadre caja
-        public List<venta_detalle> getListaContadoCompletaSinCuadradaBycuadreCaja(cuadre_caja cuadre)
-        {
-            try
-            {
-                List<venta_detalle> lista = new List<venta_detalle>();
-                venta_detalle detalle = new venta_detalle();
-                string sql="select vd.codigo,vd.cod_venta,vd.cod_producto,vd.cod_unidad,vd.cantidad,vd.precio,vd.monto,vd.itebis,vd.descuento,vd.activo,vd.itebis_unitario,vd.descuento_unitario from venta_detalle vd join venta v on v.codigo=vd.cod_venta where cuadrado='0' and v.activo='1' and vd.activo='1' and v.fecha>='"+utilidades.getFechayyyyMMdd(cuadre.fecha)+"' and v.fecha<='"+utilidades.getFechayyyyMMdd(cuadre.fecha)+"' and v.codigo_empleado='"+cuadre.codigo_cajero+"' and v.tipo_venta='CON' and cod_sucursal='"+cuadre.codigo_sucursal+"' ";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    foreach (DataRow row in ds.Tables[0].Rows)
-                    {
-                        detalle = new venta_detalle();
-                        detalle.codigo = Convert.ToInt16(row[0]);
-                        detalle.cod_venta = Convert.ToInt16(row[1]);
-                        detalle.codigo_producto = Convert.ToInt16(row[2]);
-                        detalle.codigo_unidad = Convert.ToInt16(row[3]);
-                        detalle.cantidad = Convert.ToDecimal(row[4]);
-                        detalle.precio = Convert.ToDecimal(row[5]);
-                        detalle.monto_total = Convert.ToDecimal(row[6]);
-                        detalle.monto_itebis = Convert.ToDecimal(row[7]);
-                        detalle.monto_descuento = Convert.ToDecimal(row[8]);
-                        detalle.activo = Convert.ToBoolean(row[9]);
-                        detalle.itbis_unitario = Convert.ToDecimal(row[10]);
-                        detalle.monto_descuento = Convert.ToDecimal(row[11]);
-                        lista.Add(detalle);
-                    }
-                }
-                lista = lista.OrderByDescending(x => x.codigo).ToList();
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error getListaContadoCompletaSinCuadradaBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
+        
         //get lista al completa de venta detalle by cuadre caja
         public List<venta_detalle> getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadre_caja cuadre)
         {
