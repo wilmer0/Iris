@@ -105,6 +105,32 @@ namespace IrisContabilidad.clases
                 }
             }
 
+            //recorriendo la lista de ingresos de caja
+            foreach (var x in listaIngresosCajas)
+            {
+                cuadre_caja_detalle.montoIngresoEfectivo += x.monto;
+            }
+
+            //recorriendo la lista de pagos
+            foreach (var x in listaPagoDetalle)
+            {
+                if (x.codigo_metodo_pago == 1)
+                {
+                    //efectivo
+                    cuadre_caja_detalle.montoPagoEfectivo += x.monto_pagado;
+
+                }else if (x.codigo_metodo_pago == 2)
+                {
+                    //deposito
+                    cuadre_caja_detalle.montoPagoDeposito += x.monto_pagado;
+
+                }else if (x.codigo_metodo_pago == 3)
+                {
+                    //cheque
+                    cuadre_caja_detalle.montoPagoCheque += x.monto_pagado;
+                }
+            }
+
 
 
         }
