@@ -205,5 +205,79 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+
+        //get lista completa by fecha final y cajero id
+        public List<egreso_caja> getListaCompletaNoCuadradoByFechaFinalAndCajeroId(DateTime fechaFinal,int cajeroId)
+        {
+            try
+            {
+
+                List<egreso_caja> lista = new List<egreso_caja>();
+                string sql = "select codigo,cod_concepto,fecha,cod_Cajero,monto,detalles,afecta_cuadre,activo,cuadrado from egresos_caja where activo='1' and fecha<='" + utilidades.getFechayyyyMMdd(fechaFinal) + "' and cod_Cajero='"+cajeroId+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        egreso_caja egreso = new egreso_caja();
+                        egreso.codigo = Convert.ToInt16(row[0]);
+                        egreso.codigo_concepto = Convert.ToInt16(row[1]);
+                        egreso.fecha = Convert.ToDateTime(row[2]);
+                        egreso.codigo_cajero = Convert.ToInt16(row[3]);
+                        egreso.monto = Convert.ToDecimal(row[4].ToString());
+                        egreso.detalle = row[5].ToString();
+                        egreso.afecta_cuadre = Convert.ToBoolean(row[6]);
+                        egreso.activo = Convert.ToBoolean(row[7]);
+                        egreso.cuadrado = Convert.ToBoolean(row[8]);
+                        lista.Add(egreso);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompletaNoCuadradoByFechaFinalAndCajeroId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+
+        //get lista completa by cuadre caja
+        public List<egreso_caja> getListaCompletaByCuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<egreso_caja> lista = new List<egreso_caja>();
+                string sql = "select codigo,cod_concepto,fecha,cod_Cajero,monto,detalles,afecta_cuadre,activo,cuadrado from egresos_caja where cuadrado='0' and activo='1' and cod_cajero='"+cuadre.codigo_cajero+"' and afecta_cuadre='1' and fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' ";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        egreso_caja egreso = new egreso_caja();
+                        egreso.codigo = Convert.ToInt16(row[0]);
+                        egreso.codigo_concepto = Convert.ToInt16(row[1]);
+                        egreso.fecha = Convert.ToDateTime(row[2]);
+                        egreso.codigo_cajero = Convert.ToInt16(row[3]);
+                        egreso.monto = Convert.ToDecimal(row[4].ToString());
+                        egreso.detalle = row[5].ToString();
+                        egreso.afecta_cuadre = Convert.ToBoolean(row[6]);
+                        egreso.activo = Convert.ToBoolean(row[7]);
+                        egreso.cuadrado = Convert.ToBoolean(row[8]);
+                        lista.Add(egreso);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompletaByCuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
     }
 }

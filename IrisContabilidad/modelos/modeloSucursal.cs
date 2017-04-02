@@ -47,7 +47,7 @@ namespace IrisContabilidad.modelos
                 }
 
                 //se agrega  
-                sql = "insert into sucursal(codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax) values('" +sucursal.codigo + "','" + sucursal.codigo_empresa + "','" + sucursal.secuencia + "','" + activo + "','" + sucursal.direccion + "','"+sucursal.telefono1+"','"+sucursal.telefono2+"','"+sucursal.fax+"')";
+                sql = "insert into sucursal(codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema) values('" +sucursal.codigo + "','" + sucursal.codigo_empresa + "','" + sucursal.secuencia + "','" + activo + "','" + sucursal.direccion + "','"+sucursal.telefono1+"','"+sucursal.telefono2+"','"+sucursal.fax+"','"+sucursal.versionSistema+"')";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
 
@@ -142,18 +142,19 @@ namespace IrisContabilidad.modelos
             try
             {
                 sucursal sucursal = new sucursal();
-                string sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax from sucursal where codigo='" + id +"'";
+                string sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema from sucursal where codigo='" + id +"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    sucursal.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    sucursal.codigo_empresa = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                    sucursal.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                    sucursal.codigo_empresa = Convert.ToInt16(ds.Tables[0].Rows[0][1]);
                     sucursal.secuencia = ds.Tables[0].Rows[0][2].ToString();
-                    sucursal.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    sucursal.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
                     sucursal.direccion = ds.Tables[0].Rows[0][4].ToString();
                     sucursal.telefono1 = ds.Tables[0].Rows[0][5].ToString();
                     sucursal.telefono2 = ds.Tables[0].Rows[0][6].ToString();
                     sucursal.fax = ds.Tables[0].Rows[0][7].ToString();
+                    sucursal.versionSistema = Convert.ToInt16(ds.Tables[0].Rows[0][8]);
                 }
                 return sucursal;
             }
@@ -174,7 +175,7 @@ namespace IrisContabilidad.modelos
                
                 List<sucursal> lista =new List<sucursal>();
                 string sql = "";
-                sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax from sucursal ";
+                sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema from sucursal";
                 if (mantenimiento == false)
                 {
                     sql+=" where activo=1";
@@ -184,12 +185,14 @@ namespace IrisContabilidad.modelos
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        sucursal = new sucursal();
-                        sucursal.codigo = Convert.ToInt16(row[0].ToString());
-                        sucursal.codigo_empresa = Convert.ToInt16(row[1].ToString());
+                        sucursal.codigo = Convert.ToInt16(row[0]);
+                        sucursal.codigo_empresa = Convert.ToInt16(row[1]);
                         sucursal.secuencia = row[2].ToString();
-                        sucursal.activo = Convert.ToBoolean(row[3].ToString());
+                        sucursal.activo = Convert.ToBoolean(row[3]);
                         sucursal.direccion = row[4].ToString();
+                        sucursal.telefono1 = row[5].ToString();
+                        sucursal.telefono2 = row[6].ToString();
+                        sucursal.fax = row[7].ToString();
                         lista.Add(sucursal);
                     }
                 }
@@ -202,6 +205,33 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
+        //get sucursal
+        public sucursal getSucursalByEmpleado(int id)
+        {
+            try
+            {
+                sucursal sucursal = new sucursal();
+                string sql = "select s.codigo,s.codigo_empresa,s.secuencia,s.activo,s.direccion,s.telefono1,s.telefono2,s.fax,s.version_sistema from sucursal s join empleado e on s.codigo=e.cod_sucursal where e.codigo='" + id + "'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    sucursal.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    sucursal.codigo_empresa = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                    sucursal.secuencia = ds.Tables[0].Rows[0][2].ToString();
+                    sucursal.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    sucursal.direccion = ds.Tables[0].Rows[0][4].ToString();
+                    sucursal.telefono1 = ds.Tables[0].Rows[0][5].ToString();
+                    sucursal.telefono2 = ds.Tables[0].Rows[0][6].ToString();
+                    sucursal.fax = ds.Tables[0].Rows[0][7].ToString();
+                    sucursal.versionSistema = Convert.ToInt16(ds.Tables[0].Rows[0][8]);
+                }
+                return sucursal;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getSucursalByEmpleado.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

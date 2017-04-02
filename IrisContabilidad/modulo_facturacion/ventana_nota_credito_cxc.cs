@@ -22,10 +22,11 @@ namespace IrisContabilidad.modulo_facturacion
         singleton singleton = new singleton();
         //cxcNotaCredito
         private venta venta;
+        private ventaDevolucion ventaDevolucion;
         private cliente cliente;
         private cxc_nota_credito notaCredito;
         private nota_credito_debito_concepto concepto;
-        private ventaDevolucion ventaDevolucion;
+      
 
 
         //modelos
@@ -34,12 +35,11 @@ namespace IrisContabilidad.modulo_facturacion
         modeloVenta modeloVenta=new modeloVenta();
         modeloCxcNotaCredito modeloNotaCredito=new modeloCxcNotaCredito();
         ModeloReporte modeloReporte=new ModeloReporte();
-        modeloVentaDevolucion modeloDevolucion=new modeloVentaDevolucion();
-
+        private modeloVentaDevolucion modeloVentaDevolucion=new modeloVentaDevolucion();
 
         //listas
         private List<nota_credito_debito_concepto> listaConcepto;
-        private List<ventaDevolucionDetalle> listaDevolucionDetalle; 
+        private List<ventaDevolucionDetalle> listaVentaDevoluciondetalle; 
 
 
         public ventana_nota_credito_cxc()
@@ -59,12 +59,11 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     notaCreditoIdText.Text = notaCredito.codigo.ToString();
 
-                    devolucionIdText.Focus();
-                    devolucionIdText.SelectAll();
+                    ventaIdText.Focus();
+                    ventaIdText.SelectAll();
 
-                    ventaDevolucion = modeloDevolucion.getDevolucionById(notaCredito.codigoDevolucion);
-                    venta = modeloVenta.getVentaById(ventaDevolucion.codigo_venta);
-                    devolucionIdText.Text = ventaDevolucion.codigo.ToString();
+                    venta = modeloVenta.getVentaById(notaCredito.codigoVenta);
+                    ventaIdText.Text = venta.codigo.ToString();
                     NcfText.Text = venta.ncf;
 
                     concepto = modeloConcepto.getConceptoById(notaCredito.codigoConcepto);
@@ -82,8 +81,10 @@ namespace IrisContabilidad.modulo_facturacion
                     notaCreditoIdText.SelectAll();
 
                     notaCreditoIdText.Text = "";
+                    ventaDevolucion = null;
+                    loadVentaDevolucion();
                     venta = null;
-                    devolucionIdText.Text = "";
+                    ventaIdText.Text = "";
                     NcfText.Text = "";
                     concepto = null;
                     montoText.Text = "";
@@ -107,7 +108,7 @@ namespace IrisContabilidad.modulo_facturacion
                 conceptoComboBox.DisplayMember = "concepto";
                 conceptoComboBox.ValueMember = "codigo";
                 conceptoComboBox.DataSource = listaConcepto;
-                conceptoComboBox.SelectedValue = 0;
+                conceptoComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -135,6 +136,7 @@ namespace IrisContabilidad.modulo_facturacion
                     conceptoComboBox.SelectAll();
                     return false;
                 }
+                //validar monto
                 if (montoText.Text == "")
                 {
                     MessageBox.Show("Falta el monto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -142,6 +144,7 @@ namespace IrisContabilidad.modulo_facturacion
                     montoText.SelectAll();
                     return false;
                 }
+                //validar fecha
                 DateTime f;
                 if (DateTime.TryParse(fechaText.Text, out f) == false)
                 {
@@ -150,6 +153,7 @@ namespace IrisContabilidad.modulo_facturacion
                     fechaText.SelectAll();
                     return false;
                 }
+                //validar detalle o nota
                 if (detalleText.Text == "")
                 {
                     MessageBox.Show("Falta el detalle", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -157,11 +161,12 @@ namespace IrisContabilidad.modulo_facturacion
                     detalleText.SelectAll();
                     return false;
                 }
-                if (ventaDevolucion == null)
+                //validar venta
+                if (venta == null)
                 {
-                    MessageBox.Show("Falta seleccionar la devolución", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    devolucionIdText.Focus();
-                    devolucionIdText.SelectAll();
+                    MessageBox.Show("Falta seleccionar la venta", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ventaIdText.Focus();
+                    ventaIdText.SelectAll();
                     return false;
                 }
                
@@ -205,7 +210,11 @@ namespace IrisContabilidad.modulo_facturacion
                 notaCredito.detalle = detalleText.Text;
                 notaCredito.monto = Convert.ToDecimal(montoText.Text);
                 notaCredito.codigoEmpleado = empleado.codigo;
-                
+                if (ventaDevolucion != null)
+                {
+                    notaCredito.codigoDevolucion = ventaDevolucion.codigo;
+                    venta = modeloVenta.getVentaById(ventaDevolucion.codigo_venta);
+                }
 
                 if (crear == true)
                 {
@@ -215,7 +224,6 @@ namespace IrisContabilidad.modulo_facturacion
                         notaCredito = null;
                         loadVentana();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     else
                     {
@@ -230,7 +238,6 @@ namespace IrisContabilidad.modulo_facturacion
                         notaCredito = null;
                         loadVentana();
                         MessageBox.Show("Se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     else
                     {
@@ -238,7 +245,6 @@ namespace IrisContabilidad.modulo_facturacion
                         MessageBox.Show("No se actualizó ", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -253,20 +259,53 @@ namespace IrisContabilidad.modulo_facturacion
 
         }
 
+        public void loadVenta()
+        {
+            try
+            {
+                ventaIdText.Text = "";
+                numeroVentaText.Text = "";
+                NcfText.Text = "";
+                
+                if (venta != null)
+                {
+                    ventaIdText.Text = venta.codigo.ToString();
+                    numeroVentaText.Text = venta.numero_factura.ToString();
+                    NcfText.Text = venta.ncf;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadVentaDevolucion.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public void loadVentaDevolucion()
         {
             try
             {
-                devolucionIdText.Text = "";
+                ventaIdText.Text = "";
+                numeroVentaText.Text = "";
                 NcfText.Text = "";
                 if (ventaDevolucion != null)
                 {
-                    devolucionIdText.Text = ventaDevolucion.codigo.ToString();
+                    //validar que esa devolucion no este en uso en una nota credito
+                    if (notaCredito == null)
+                    {
+                        //no hay nota credito, la devolucion no se puede encontrar registrada
+                        if (modeloNotaCredito.getNotaCreditoByDevolucionId(ventaDevolucion.codigo) != null)
+                        {
+                            MessageBox.Show("Esta Devolución ya se le asigno su respectiva nota de credito, y no puede volver a usarse");
+                            button3_Click(null,null);
+                            return;
+                        }
+                    }
                     venta = modeloVenta.getVentaById(ventaDevolucion.codigo_venta);
+                    ventaIdText.Text = venta.codigo.ToString();
                     numeroVentaText.Text = venta.numero_factura.ToString();
                     NcfText.Text = venta.ncf;
-                    listaDevolucionDetalle=new List<ventaDevolucionDetalle>();
-                    montoText.Text =(listaDevolucionDetalle = modeloDevolucion.getListaVentaDevolucionDetalleByDevolucionId(Convert.ToInt16(devolucionIdText.Text))).Sum(s => s.monto_total).ToString("N");
+
+                    listaVentaDevoluciondetalle =modeloVentaDevolucion.getListaVentaDevolucionDetalleByDevolucionId(ventaDevolucion.codigo);
+                    montoText.Text = listaVentaDevoluciondetalle.Sum(s => s.monto_total).ToString("N");
                 }
             }
             catch (Exception ex)
@@ -282,7 +321,7 @@ namespace IrisContabilidad.modulo_facturacion
             if((venta==ventana.getObjeto())!=null)
             {
                 venta = ventana.getObjeto();
-                loadVentaDevolucion();
+                loadVenta();
             }
         }
 
@@ -329,8 +368,8 @@ namespace IrisContabilidad.modulo_facturacion
                 }
                 if (e.KeyCode == Keys.Enter)
                 {
-                    devolucionIdText.Focus();
-                    devolucionIdText.SelectAll();
+                    ventaIdText.Focus();
+                    ventaIdText.SelectAll();
 
                     notaCredito = modeloNotaCredito.getNotaCreditoById(Convert.ToInt16(notaCreditoIdText.Text));
                     if (notaCredito != null)
@@ -340,8 +379,7 @@ namespace IrisContabilidad.modulo_facturacion
                 }
             }
             catch (Exception)
-            {
-                
+            {   
             }
         }
 
@@ -350,12 +388,10 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-               
                 if (e.KeyCode == Keys.Enter)
                 {
                     montoText.Focus();
                     montoText.SelectAll();
-
                 }
             }
             catch (Exception)
@@ -376,7 +412,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -393,7 +428,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -408,7 +442,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -423,7 +456,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -453,30 +485,56 @@ namespace IrisContabilidad.modulo_facturacion
                     conceptoComboBox.Focus();
                     conceptoComboBox.DroppedDown = true;
 
-                    ventaDevolucion = modeloDevolucion.getDevolucionById(Convert.ToInt16(devolucionIdText.Text));
-                    if (ventaDevolucion != null)
+                    venta = modeloVenta.getVentaById(Convert.ToInt16(ventaIdText.Text));
+                    if (venta != null)
                     {
-                        loadVentaDevolucion();
+                        loadVenta();
                     }
                 }
             }
             catch (Exception)
             {
-
             }
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            ventana_busqueda_venta_devolucion ventana = new ventana_busqueda_venta_devolucion();
-            ventana.Owner = this;
-            ventana.ShowDialog();
-
-            if (ventana.DialogResult == DialogResult.OK)
+            if (radioButtonVenta.Checked == true)
             {
-                ventaDevolucion = ventana.getObjeto();
-                loadVentaDevolucion();
+                ventana_busqueda_venta ventana = new ventana_busqueda_venta();
+                ventana.Owner = this;
+                ventana.ShowDialog();
+
+                if (ventana.DialogResult == DialogResult.OK)
+                {
+                    venta = ventana.getObjeto();
+                    loadVenta();
+                }
             }
+            else
+            {
+                ventana_busqueda_venta_devolucion ventana=new ventana_busqueda_venta_devolucion();
+                ventana.Owner = this;
+                ventana.ShowDialog();
+                if (ventana.DialogResult == DialogResult.OK)
+                {
+                    ventaDevolucion = ventana.getObjeto();
+                    loadVentaDevolucion();
+                }
+            }
+            
+        }
+
+        private void radioButtonDevolucion_Leave(object sender, EventArgs e)
+        {
+            montoText.Enabled = !(bool) radioButtonDevolucion.Checked;
+        }
+
+        private void radioButtonVenta_Leave(object sender, EventArgs e)
+        {
+            montoText.Enabled = (bool)radioButtonVenta.Checked;
+            ventaDevolucion = null;
+            loadVentaDevolucion();
         }
     }
 }

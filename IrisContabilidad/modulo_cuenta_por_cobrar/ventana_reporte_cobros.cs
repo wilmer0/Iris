@@ -14,8 +14,8 @@ using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_cuenta_por_pagar;
 using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
+using IrisContabilidad.ventanas_comunes;
 using Microsoft.Reporting.WinForms;
-using _7ADMFIC_1._0.VentanasComunes;
 
 namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {
@@ -235,7 +235,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
                 
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter,true);
                 ventana.ShowDialog();
             }
             catch (Exception ex)

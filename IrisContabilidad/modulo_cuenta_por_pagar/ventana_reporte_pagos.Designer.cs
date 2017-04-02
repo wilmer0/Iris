@@ -30,14 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_reporte_pagos));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -45,21 +37,30 @@
             this.button6 = new System.Windows.Forms.Button();
             this.checkBoxSoloComprasPagadas = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.fechaFinalVentaText = new System.Windows.Forms.MaskedTextBox();
-            this.fechaInicialVentaText = new System.Windows.Forms.MaskedTextBox();
+            this.fechaFinalText = new System.Windows.Forms.MaskedTextBox();
+            this.fechaInicialText = new System.Windows.Forms.MaskedTextBox();
             this.checkBoxIncluirRangoFechaVenta = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.tipoVentaComboBox = new System.Windows.Forms.ComboBox();
-            this.ventaLabel = new System.Windows.Forms.Label();
+            this.tipoCompraComboBox = new System.Windows.Forms.ComboBox();
+            this.compraLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.ventaIdText = new System.Windows.Forms.TextBox();
-            this.clienteLabel = new System.Windows.Forms.Label();
+            this.compraIdText = new System.Windows.Forms.TextBox();
+            this.suplidorLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
-            this.clienteIdText = new System.Windows.Forms.TextBox();
+            this.suplidorIdText = new System.Windows.Forms.TextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -75,6 +76,7 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -90,6 +92,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(491, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView1
             // 
@@ -103,6 +106,7 @@
             this.Column1,
             this.Column2,
             this.Column3,
+            this.Column9,
             this.Column8,
             this.Column4,
             this.Column5,
@@ -117,57 +121,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1113, 286);
             this.dataGridView1.TabIndex = 108;
             // 
-            // Column1
-            // 
-            this.Column1.FillWeight = 50F;
-            this.Column1.HeaderText = "ID Cliente";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Cliente";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.FillWeight = 50F;
-            this.Column3.HeaderText = "ID Venta";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Tipo Venta";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.FillWeight = 80F;
-            this.Column4.HeaderText = "NCF";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Monto Factura";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Monto Cobrado";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Monto Pendiente";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label8);
@@ -177,15 +130,15 @@
             this.groupBox1.Controls.Add(this.checkBoxSoloComprasPagadas);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.tipoVentaComboBox);
-            this.groupBox1.Controls.Add(this.ventaLabel);
+            this.groupBox1.Controls.Add(this.tipoCompraComboBox);
+            this.groupBox1.Controls.Add(this.compraLabel);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.ventaIdText);
-            this.groupBox1.Controls.Add(this.clienteLabel);
+            this.groupBox1.Controls.Add(this.compraIdText);
+            this.groupBox1.Controls.Add(this.suplidorLabel);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.clienteIdText);
+            this.groupBox1.Controls.Add(this.suplidorIdText);
             this.groupBox1.Location = new System.Drawing.Point(16, 27);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1116, 202);
@@ -201,6 +154,7 @@
             this.label8.Size = new System.Drawing.Size(21, 20);
             this.label8.TabIndex = 99;
             this.label8.Text = "X";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
@@ -211,6 +165,7 @@
             this.label7.Size = new System.Drawing.Size(21, 20);
             this.label7.TabIndex = 98;
             this.label7.Text = "X";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label1
             // 
@@ -221,6 +176,7 @@
             this.label1.Size = new System.Drawing.Size(21, 20);
             this.label1.TabIndex = 97;
             this.label1.Text = "X";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button6
             // 
@@ -235,12 +191,13 @@
             this.button6.TabIndex = 96;
             this.button6.Text = "Imprimir";
             this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // checkBoxSoloComprasPagadas
             // 
             this.checkBoxSoloComprasPagadas.AutoSize = true;
             this.checkBoxSoloComprasPagadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxSoloComprasPagadas.Location = new System.Drawing.Point(915, 19);
+            this.checkBoxSoloComprasPagadas.Location = new System.Drawing.Point(714, 131);
             this.checkBoxSoloComprasPagadas.Name = "checkBoxSoloComprasPagadas";
             this.checkBoxSoloComprasPagadas.Size = new System.Drawing.Size(195, 21);
             this.checkBoxSoloComprasPagadas.TabIndex = 91;
@@ -249,8 +206,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.fechaFinalVentaText);
-            this.groupBox2.Controls.Add(this.fechaInicialVentaText);
+            this.groupBox2.Controls.Add(this.fechaFinalText);
+            this.groupBox2.Controls.Add(this.fechaInicialText);
             this.groupBox2.Controls.Add(this.checkBoxIncluirRangoFechaVenta);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label6);
@@ -261,23 +218,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Fecha Compras";
             // 
-            // fechaFinalVentaText
+            // fechaFinalText
             // 
-            this.fechaFinalVentaText.Location = new System.Drawing.Point(387, 63);
-            this.fechaFinalVentaText.Mask = "00/00/0000";
-            this.fechaFinalVentaText.Name = "fechaFinalVentaText";
-            this.fechaFinalVentaText.Size = new System.Drawing.Size(100, 20);
-            this.fechaFinalVentaText.TabIndex = 92;
-            this.fechaFinalVentaText.ValidatingType = typeof(System.DateTime);
+            this.fechaFinalText.Location = new System.Drawing.Point(387, 63);
+            this.fechaFinalText.Mask = "00/00/0000";
+            this.fechaFinalText.Name = "fechaFinalText";
+            this.fechaFinalText.Size = new System.Drawing.Size(100, 20);
+            this.fechaFinalText.TabIndex = 92;
+            this.fechaFinalText.ValidatingType = typeof(System.DateTime);
             // 
-            // fechaInicialVentaText
+            // fechaInicialText
             // 
-            this.fechaInicialVentaText.Location = new System.Drawing.Point(152, 63);
-            this.fechaInicialVentaText.Mask = "00/00/0000";
-            this.fechaInicialVentaText.Name = "fechaInicialVentaText";
-            this.fechaInicialVentaText.Size = new System.Drawing.Size(100, 20);
-            this.fechaInicialVentaText.TabIndex = 91;
-            this.fechaInicialVentaText.ValidatingType = typeof(System.DateTime);
+            this.fechaInicialText.Location = new System.Drawing.Point(152, 63);
+            this.fechaInicialText.Mask = "00/00/0000";
+            this.fechaInicialText.Name = "fechaInicialText";
+            this.fechaInicialText.Size = new System.Drawing.Size(100, 20);
+            this.fechaInicialText.TabIndex = 91;
+            this.fechaInicialText.ValidatingType = typeof(System.DateTime);
             // 
             // checkBoxIncluirRangoFechaVenta
             // 
@@ -289,6 +246,7 @@
             this.checkBoxIncluirRangoFechaVenta.TabIndex = 90;
             this.checkBoxIncluirRangoFechaVenta.Text = "Incluir rango fecha";
             this.checkBoxIncluirRangoFechaVenta.UseVisualStyleBackColor = true;
+            this.checkBoxIncluirRangoFechaVenta.Click += new System.EventHandler(this.checkBoxIncluirRangoFechaVenta_Click);
             // 
             // label5
             // 
@@ -320,31 +278,31 @@
             this.label4.TabIndex = 85;
             this.label4.Text = "Tipo compra";
             // 
-            // tipoVentaComboBox
+            // tipoCompraComboBox
             // 
-            this.tipoVentaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tipoVentaComboBox.FormattingEnabled = true;
-            this.tipoVentaComboBox.Items.AddRange(new object[] {
+            this.tipoCompraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoCompraComboBox.FormattingEnabled = true;
+            this.tipoCompraComboBox.Items.AddRange(new object[] {
             "",
             "CONTADO",
             "COTIZACION",
             "CREDITO",
             "PEDIDO"});
-            this.tipoVentaComboBox.Location = new System.Drawing.Point(117, 164);
-            this.tipoVentaComboBox.Name = "tipoVentaComboBox";
-            this.tipoVentaComboBox.Size = new System.Drawing.Size(236, 21);
-            this.tipoVentaComboBox.TabIndex = 84;
-            this.tipoVentaComboBox.Tag = "";
+            this.tipoCompraComboBox.Location = new System.Drawing.Point(117, 164);
+            this.tipoCompraComboBox.Name = "tipoCompraComboBox";
+            this.tipoCompraComboBox.Size = new System.Drawing.Size(236, 21);
+            this.tipoCompraComboBox.TabIndex = 84;
+            this.tipoCompraComboBox.Tag = "";
             // 
-            // ventaLabel
+            // compraLabel
             // 
-            this.ventaLabel.AutoSize = true;
-            this.ventaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ventaLabel.Location = new System.Drawing.Point(114, 129);
-            this.ventaLabel.Name = "ventaLabel";
-            this.ventaLabel.Size = new System.Drawing.Size(44, 20);
-            this.ventaLabel.TabIndex = 83;
-            this.ventaLabel.Text = "NCF";
+            this.compraLabel.AutoSize = true;
+            this.compraLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compraLabel.Location = new System.Drawing.Point(114, 129);
+            this.compraLabel.Name = "compraLabel";
+            this.compraLabel.Size = new System.Drawing.Size(44, 20);
+            this.compraLabel.TabIndex = 83;
+            this.compraLabel.Text = "NCF";
             // 
             // label3
             // 
@@ -366,25 +324,26 @@
             this.button4.Size = new System.Drawing.Size(47, 37);
             this.button4.TabIndex = 81;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // ventaIdText
+            // compraIdText
             // 
-            this.ventaIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.ventaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ventaIdText.Location = new System.Drawing.Point(117, 89);
-            this.ventaIdText.Name = "ventaIdText";
-            this.ventaIdText.Size = new System.Drawing.Size(183, 26);
-            this.ventaIdText.TabIndex = 80;
+            this.compraIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.compraIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.compraIdText.Location = new System.Drawing.Point(117, 89);
+            this.compraIdText.Name = "compraIdText";
+            this.compraIdText.Size = new System.Drawing.Size(183, 26);
+            this.compraIdText.TabIndex = 80;
             // 
-            // clienteLabel
+            // suplidorLabel
             // 
-            this.clienteLabel.AutoSize = true;
-            this.clienteLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteLabel.Location = new System.Drawing.Point(114, 57);
-            this.clienteLabel.Name = "clienteLabel";
-            this.clienteLabel.Size = new System.Drawing.Size(127, 20);
-            this.clienteLabel.TabIndex = 79;
-            this.clienteLabel.Text = "nombre cliente";
+            this.suplidorLabel.AutoSize = true;
+            this.suplidorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suplidorLabel.Location = new System.Drawing.Point(114, 57);
+            this.suplidorLabel.Name = "suplidorLabel";
+            this.suplidorLabel.Size = new System.Drawing.Size(137, 20);
+            this.suplidorLabel.TabIndex = 79;
+            this.suplidorLabel.Text = "nombre suplidor";
             // 
             // label2
             // 
@@ -406,15 +365,74 @@
             this.button5.Size = new System.Drawing.Size(47, 37);
             this.button5.TabIndex = 74;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // clienteIdText
+            // suplidorIdText
             // 
-            this.clienteIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.clienteIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteIdText.Location = new System.Drawing.Point(117, 17);
-            this.clienteIdText.Name = "clienteIdText";
-            this.clienteIdText.Size = new System.Drawing.Size(183, 26);
-            this.clienteIdText.TabIndex = 71;
+            this.suplidorIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.suplidorIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.suplidorIdText.Location = new System.Drawing.Point(117, 17);
+            this.suplidorIdText.Name = "suplidorIdText";
+            this.suplidorIdText.Size = new System.Drawing.Size(183, 26);
+            this.suplidorIdText.TabIndex = 71;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 80F;
+            this.Column1.HeaderText = "ID Suplidor";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Suplidor";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 70F;
+            this.Column3.HeaderText = "ID Compra";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column9
+            // 
+            this.Column9.FillWeight = 60F;
+            this.Column9.HeaderText = "Numero";
+            this.Column9.Name = "Column9";
+            this.Column9.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.FillWeight = 70F;
+            this.Column8.HeaderText = "Tipo Compra";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "NCF";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Monto Factura";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Monto Pagado";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.HeaderText = "Monto Pendiente";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
             // 
             // ventana_reporte_pagos
             // 
@@ -446,14 +464,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -461,21 +471,30 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.CheckBox checkBoxSoloComprasPagadas;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.MaskedTextBox fechaFinalVentaText;
-        private System.Windows.Forms.MaskedTextBox fechaInicialVentaText;
+        private System.Windows.Forms.MaskedTextBox fechaFinalText;
+        private System.Windows.Forms.MaskedTextBox fechaInicialText;
         private System.Windows.Forms.CheckBox checkBoxIncluirRangoFechaVenta;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox tipoVentaComboBox;
-        private System.Windows.Forms.Label ventaLabel;
+        private System.Windows.Forms.ComboBox tipoCompraComboBox;
+        private System.Windows.Forms.Label compraLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox ventaIdText;
-        private System.Windows.Forms.Label clienteLabel;
+        private System.Windows.Forms.TextBox compraIdText;
+        private System.Windows.Forms.Label suplidorLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox clienteIdText;
+        private System.Windows.Forms.TextBox suplidorIdText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
 
 
     }

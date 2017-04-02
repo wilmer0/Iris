@@ -39,6 +39,8 @@
             this.fechaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EmpleadoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.meotodocobrodetalle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoventacolumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.anularCobroColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
@@ -143,6 +145,8 @@
             this.fechaColumn,
             this.EmpleadoColumn,
             this.meotodocobrodetalle,
+            this.Column1,
+            this.Column2,
             this.codigoventacolumn,
             this.anularCobroColumn});
             this.dataGridView1.Location = new System.Drawing.Point(12, 206);
@@ -153,13 +157,12 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(914, 331);
             this.dataGridView1.TabIndex = 105;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
             // idPrductoColumn
             // 
             this.idPrductoColumn.FillWeight = 30F;
-            this.idPrductoColumn.HeaderText = "ID Cobro";
+            this.idPrductoColumn.HeaderText = "ID";
             this.idPrductoColumn.Name = "idPrductoColumn";
             this.idPrductoColumn.ReadOnly = true;
             // 
@@ -178,9 +181,24 @@
             // 
             // meotodocobrodetalle
             // 
+            this.meotodocobrodetalle.FillWeight = 70F;
             this.meotodocobrodetalle.HeaderText = "Metodo Cobro";
             this.meotodocobrodetalle.Name = "meotodocobrodetalle";
             this.meotodocobrodetalle.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.FillWeight = 60F;
+            this.Column1.HeaderText = "Monto Cobro";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.FillWeight = 60F;
+            this.Column2.HeaderText = "Monto Descuento";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // codigoventacolumn
             // 
@@ -264,6 +282,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EmpleadoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn meotodocobrodetalle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoventacolumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn anularCobroColumn;
     }

@@ -123,11 +123,13 @@ namespace IrisContabilidad
                 
                 if (!ValidarGetAction())
                     return;
-                if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                {
-                    return;
-                }
+                //if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                //{
+                //    return;
+                //}
                 modeloPrimerLogin.validarPrimerLogin();
+                
+                
 
                 empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));
 
@@ -204,42 +206,9 @@ namespace IrisContabilidad
             }
         }
 
-        private bool primerLogin()
-        {
-            try
-            {
-                string sql = "";
-                sql = "select *from empresa;";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count == 0)
-                {
-                    //debe ingresar todos los datos de primer login
-                    modeloPrimerLogin.primerosDatos();
-                    modeloPrimerLogin.agregarModulos();
-                    modeloPrimerLogin.agregarVentanas();
-                    modeloPrimerLogin.agregarPrimerEmpleado();
-                    modeloPrimerLogin.agregarAccesosVentanas();
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error primerLogin.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-          
-        }
         private void button1_Click(object sender, EventArgs e)
         {
-            if (primerLogin() == false)
-            {
-                modeloPrimerLogin.agregarVentanas();
-                //modeloActualizacion.version1();
-            }
+            //modeloActualizacion.version1();
             GetAction();
         }
 

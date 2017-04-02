@@ -47,7 +47,7 @@ namespace IrisContabilidad.modulo_facturacion
             this.mantenimiento = mantenimiento;
             loadLista();
         }
-        public void loadLista()
+        private void loadLista()
         {
             try
             {
@@ -92,13 +92,13 @@ namespace IrisContabilidad.modulo_facturacion
             }
         }
 
-        public void getAction()
+        private void getAction()
         {
             this.DialogResult = DialogResult.OK;
             getObjeto();
             this.Close();
         }
-        public void Salir()
+        private void Salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {

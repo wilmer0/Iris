@@ -174,7 +174,11 @@ namespace IrisContabilidad.clases
         {
             try
             {
-                SqlConnection conn = new SqlConnection("Data Source=.;" + "Initial Catalog=iris_contabilidad;" + "User id=dextroyex;" + "Password=wilmerlomas1;");
+                if (query == "")
+                {
+                    return null;
+                }
+                SqlConnection conn = new SqlConnection("Data Source=.;" + "Initial Catalog=iris;" + "User id=dextroyex;" + "Password=wilmerlomas1;");
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -191,8 +195,12 @@ namespace IrisContabilidad.clases
         {
             try
             {
-                MySqlConnection conn = new MySqlConnection("server=localhost;uid=bc;" + "pwd=BlackCode123;database=iris_contabilidad;Allow Zero Datetime=false;");
-                //MySqlConnection conn = new MySqlConnection("server=153.92.11.223;uid=bc1;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
+                if (query == "")
+                {
+                    return null;
+                }
+                MySqlConnection conn = new MySqlConnection("server=localhost;uid=bc;" + "pwd=BlackCode123;database=iris;Allow Zero Datetime=false;");
+                //MySqlConnection conn = new MySqlConnection("server=153.92.11.223;uid=bc1;" + "pwd=wilmerlomas1;database=iris;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -208,7 +216,11 @@ namespace IrisContabilidad.clases
         {
             try
             {
-                MySqlConnection conn = new MySqlConnection("server=127.0.0.1;uid=dextroyex;" + "pwd=wilmerlomas1;database=iris_contabilidad;");
+                if (query == "")
+                {
+                    return null;
+                }
+                MySqlConnection conn = new MySqlConnection("server=127.0.0.1;uid=dextroyex;pwd=wilmerlomas1;database=iris;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
@@ -1186,6 +1198,19 @@ namespace IrisContabilidad.clases
             catch (Exception ex)
             {
                 MessageBox.Show("Error getFechayyyyMMdd.:" + ex.ToString());
+                return null;
+            }
+        }
+        public string getFechayyyyMMddhhmmss(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("yyyyMMddhhmmss");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechayyyyMMddhhmmss.:" + ex.ToString());
                 return null;
             }
         }

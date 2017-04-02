@@ -50,7 +50,7 @@ namespace IrisContabilidad.modulo_nomina
                 {
                     situacionIdText.Text = "";
                     situacionText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

@@ -96,7 +96,7 @@ namespace IrisContabilidad.modulo_facturacion
                 }
 
                 listaVentaDetalle=new List<venta_detalle>();
-                listaVentaDetalle = modeloVenta.getListaVentaDetalleByVenta(venta.codigo);
+                listaVentaDetalle = modeloVenta.getListaVentaDetalleByVentaId(venta.codigo);
 
                 listaVentaDetalle.ForEach(x =>
                 {

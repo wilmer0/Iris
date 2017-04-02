@@ -58,6 +58,7 @@ namespace IrisContabilidad.modulo_facturacion
                     itbisIdText.Focus();
                     itbisIdText.SelectAll();
 
+                    itbisIdText.Text = "";
                     nombreText.Text = "";
                     porcientoText.Text = "";
                     activoCheck.Checked = true;
@@ -94,6 +95,15 @@ namespace IrisContabilidad.modulo_facturacion
                     porcientoText.Focus();
                     porcientoText.SelectAll();
                     return false;
+                }
+                //validar que sea porciento
+                int n;
+                decimal porciento;
+                if (int.TryParse(porcientoText.Text, out n) == true)
+                {
+                    porciento = Convert.ToDecimal(porcientoText.Text);
+                    porciento = porciento/100;
+                    porcientoText.Text = porciento.ToString("##.##");
                 }
                 return true;
             }

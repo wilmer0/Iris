@@ -12,7 +12,6 @@ using IrisContabilidad.clases_reportes;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
 using Microsoft.Reporting.WinForms;
-using _7ADMFIC_1._0.VentanasComunes;
 
 
 namespace IrisContabilidad.modulo_facturacion
@@ -106,7 +105,7 @@ namespace IrisContabilidad.modulo_facturacion
                 conceptoComboBox.DisplayMember = "concepto";
                 conceptoComboBox.ValueMember = "codigo";
                 conceptoComboBox.DataSource = listaConcepto;
-                conceptoComboBox.SelectedValue = 0;
+                conceptoComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)
             {

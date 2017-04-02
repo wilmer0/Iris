@@ -342,6 +342,7 @@
             this.label7.Size = new System.Drawing.Size(87, 20);
             this.label7.TabIndex = 26;
             this.label7.Text = "Categoria";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
