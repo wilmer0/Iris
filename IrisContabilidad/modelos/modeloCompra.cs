@@ -485,7 +485,7 @@ namespace IrisContabilidad.modelos
                         activo = 1;
                     }
                     x.codigo_compra = compra.codigo;
-                    sql = "insert into compra_vs_pagos_detalles(codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,activo) values('"+x.codigo+"','"+x.codigo_pago+"','"+x.codigo_compra+"','"+x.codigo_metodo_pago+"','"+x.monto_pagado+"','"+x.monto_descontado+"','"+activo+"')";
+                    sql = "insert into compra_vs_pagos_detalles(codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,activo,monto_subtotal) values('"+x.codigo+"','"+x.codigo_pago+"','"+x.codigo_compra+"','"+x.codigo_metodo_pago+"','"+x.monto_pagado+"','"+x.monto_descontado+"','"+activo+"','"+x.monto_sub_total+"')";
                     utilidades.ejecutarcomando_mysql(sql);
                     
                 });

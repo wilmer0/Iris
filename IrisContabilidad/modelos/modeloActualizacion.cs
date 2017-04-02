@@ -105,13 +105,13 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cxc_nota_debito` ADD COLUMN `cuadrado` BOOLEAN NOT NULL DEFAULT 0 AFTER `codigo_concepto`, ADD COLUMN `contabilizado` BOOLEAN NOT NULL DEFAULT 0 AFTER `cuadrado`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`compra_vs_pagos_detalles` MODIFY COLUMN `activo` TINYINT(3) NOT NULL DEFAULT 1, ADD COLUMN `monto_subtotal` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `activo`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`venta_vs_cobros_detalles` ADD COLUMN `monto_subtotal` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `cod_venta`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`venta_vs_cobros_detalles` MODIFY COLUMN `monto_cobrado` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el monto simbolico que cobro monto + descuento', MODIFY COLUMN `monto_descontado` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el monto descontado en ese cobro', MODIFY COLUMN `monto_subtotal` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el dinero que sale de la empresa, seria monto - descuento';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

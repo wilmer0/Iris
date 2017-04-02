@@ -16,6 +16,7 @@ namespace IrisContabilidad.clases
         public decimal monto_cobrado { get; set; }
         public decimal monto_descontado { get; set; }
         public bool activo { get; set; }
+        public decimal monto_subtotal { get; set; }
 
         public venta_vs_cobros_detalles()
         {
@@ -37,6 +38,7 @@ namespace IrisContabilidad.clases
             this.codigo_metodo_cobro = listaCompraPagoDetalle.codigo_metodo_cobro;
             this.monto_cobrado = listaCompraPagoDetalle.monto_cobrado;
             this.monto_descontado = listaCompraPagoDetalle.monto_descontado;
+            this.monto_subtotal = listaCompraPagoDetalle.monto_subtotal;
             this.activo = listaCompraPagoDetalle.activo;
         }
     }

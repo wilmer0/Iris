@@ -662,7 +662,7 @@ namespace IrisContabilidad.modelos
                     {
                         activo = 1;
                     }
-                    sql = "insert into venta_vs_cobros_detalles(codigo,cod_cobro,cod_venta,cod_metodo_cobro,monto_cobrado,monto_descontado,activo) values('" + x.codigo + "','" + x.codigo_cobro + "','" + x.codigo_venta + "','" + x.codigo_metodo_cobro + "','" + x.monto_cobrado + "','" + x.monto_descontado + "','" + activo + "')";
+                    sql = "insert into venta_vs_cobros_detalles(codigo,cod_cobro,cod_venta,cod_metodo_cobro,monto_cobrado,monto_descontado,monto_subtotal,activo) values('" + x.codigo + "','" + x.codigo_cobro + "','" + x.codigo_venta + "','" + x.codigo_metodo_cobro + "','" + x.monto_cobrado + "','" + x.monto_descontado +"','"+x.monto_subtotal+ "','" + activo + "')";
                     utilidades.ejecutarcomando_mysql(sql);
 
                 });
@@ -953,6 +953,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 decimal montoVenta = 0;
+                decimal montoDescuento = 0;
                 decimal montoPendiente = 0;
                 decimal montoCobrado = 0;
                 decimal montoNotasDebito = 0;
@@ -979,7 +980,7 @@ namespace IrisContabilidad.modelos
                 {
                     listaCobrosDetalle.ForEach(x =>
                     {
-                        montoCobrado += x.monto_cobrado + x.monto_descontado;
+                        montoCobrado += x.monto_cobrado;
                     });
                 }
 
