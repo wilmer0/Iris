@@ -132,6 +132,24 @@ namespace IrisContabilidad.clases
             }
 
 
+            //recorriendo la lista de cobros
+            foreach (var x in listaVentasCobrosDetalles)
+            {
+                if (x.codigo_metodo_cobro == 1)
+                {
+                    //efectivo
+                    cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
+                }else if (x.codigo_metodo_cobro == 2)
+                {
+                    //deposito
+                    cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
+                }else if (x.codigo_metodo_cobro == 3)
+                {
+                    //cheque
+                    cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
+                }
+            }
+
 
         }
     }

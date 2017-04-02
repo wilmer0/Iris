@@ -957,18 +957,21 @@ namespace IrisContabilidad.modelos
                 decimal montoPendiente = 0;
                 decimal montoCobrado = 0;
                 decimal montoNotasDebito = 0;
+                decimal montoNotasCredito = 0;
 
                 List<cxc_nota_debito> listaNotasDebito=new List<cxc_nota_debito>();
+                List<cxc_nota_credito> listaNotasCredito=new List<cxc_nota_credito>();
                 List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
                 List<venta_vs_cobros_detalles> listaCobrosDetalle = new List<venta_vs_cobros_detalles>();
 
                 listaNotasDebito = new modeloCxcNotaDebito().getListaByVentaActivo(ventaID);
+                listaNotasCredito = new modeloCxcNotaCredito().getListaByVentaActivo(ventaID);
                 listaVentaDetalle = getListaVentaDetalleByVentaId(ventaID);
                 listaCobrosDetalle = getListaCobrosDetallesByVenta(ventaID);
 
                 if (listaVentaDetalle.Count > 0)
                 {
-                    //sumar los montos + descuento
+                    //sumar los montos 
                     listaVentaDetalle.ForEach(x =>
                     {
                         montoVenta += x.monto_total + x.monto_descuento;
@@ -990,7 +993,14 @@ namespace IrisContabilidad.modelos
                     montoNotasDebito += x.monto;
                 });
 
-                montoPendiente = (montoVenta + montoNotasDebito) - montoCobrado;
+                //montos notas credito
+                listaNotasCredito.ForEach(x =>
+                {
+                    montoNotasCredito += x.monto;
+                });
+
+                //pendiente = (monto venta + cargos a la venta) - (monto cobrado + descuento a la venta)
+                montoPendiente = (montoVenta + montoNotasDebito) - (montoCobrado + montoNotasCredito);
 
                 return montoPendiente;
             }
@@ -1002,7 +1012,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-       public bool setSalidaInventarioByProductoUnidad(int codigoProducto, int codigoUnidad,decimal cantidad)
+        public bool setSalidaInventarioByProductoUnidad(int codigoProducto, int codigoUnidad,decimal cantidad)
         {
             try
             {

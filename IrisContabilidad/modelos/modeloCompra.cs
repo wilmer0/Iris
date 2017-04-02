@@ -547,9 +547,8 @@ namespace IrisContabilidad.modelos
                     {
                         activo = 1;
                     }
-                    sql = "insert into compra_vs_pagos_detalles(codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,activo) values('" + x.codigo + "','" + x.codigo_pago + "','" + x.codigo_compra + "','" + x.codigo_metodo_pago + "','" + x.monto_pagado + "','" + x.monto_descontado + "','" + activo + "')";
+                    sql = "insert into compra_vs_pagos_detalles(codigo,cod_pago,cod_compra,cod_metodo_pago,monto_pagado,monto_descontado,monto_subtotal,activo) values('" + x.codigo + "','" + x.codigo_pago + "','" + x.codigo_compra + "','" + x.codigo_metodo_pago + "','" + x.monto_pagado + "','" + x.monto_descontado +"','"+x.monto_sub_total+"','" + activo + "')";
                     utilidades.ejecutarcomando_mysql(sql);
-
                 });
 
                 return true;
@@ -606,33 +605,53 @@ namespace IrisContabilidad.modelos
             {
                 decimal montoCompra = 0;
                 decimal montoPendiente = 0;
+                decimal montoDescuento = 0;
                 decimal montoPagado = 0;
+                decimal montoNotasDebito = 0;
+                decimal montoNotasCredito = 0;
 
-
+                List<cxp_nota_debito> listaNotasDebito = new List<cxp_nota_debito>();
+                List<cxp_nota_credito> listaNotasCredito = new List<cxp_nota_credito>();
                 List<compra_detalle> listaCompraDetalle = new List<compra_detalle>();
                 List<compra_vs_pagos_detalles> listaPagos = new List<compra_vs_pagos_detalles>();
 
+                listaNotasDebito = new modeloCxpNotaDebito().getListaByCompraActivo(id);
+                listaNotasCredito = new modeloCxpNotaCredito().getListaByCompraActivo(id);
                 listaCompraDetalle = getListaCompraDetalleByCompra(id);
                 listaPagos = getListaPagosByCompra(id);
 
                 if (listaCompraDetalle.Count > 0)
                 {
-                    //sumar los montos + descuento
+                    //sumar los montos
                     listaCompraDetalle.ForEach(x =>
                     {
-                        montoCompra += x.monto + x.monto_descuento;
+                        montoCompra += x.monto;
+                        montoDescuento += x.monto_descuento;
                     });
                 }
-
+                //montos de pagos
                 if (listaPagos.Count > 0)
                 {
                     listaPagos.ForEach(x =>
                     {
-                        montoPagado += x.monto_pagado + x.monto_descontado;
+                        montoPagado += x.monto_pagado ;
                     });
                 }
 
-                montoPendiente = montoCompra - montoPagado;
+                //monto nota debitos
+                listaNotasDebito.ForEach(x =>
+                {
+                    montoNotasDebito += x.monto;
+                });
+                
+                //monto nota credito
+                listaNotasCredito.ForEach(x =>
+                {
+                    montoNotasCredito += x.monto;
+                });
+
+                //pendiente = (monto compra + cargos a mi compra) - (monto pagado + monto descontado a mi compra)
+                montoPendiente = (montoCompra +montoNotasDebito) - (montoPagado + montoNotasCredito);
                 
                 return montoPendiente;
             }

@@ -72,7 +72,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -99,7 +98,6 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
 
         //get objeto
         public cxp_nota_debito getNotaDebitoById(int id)
@@ -129,7 +127,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista completa
         public List<cxp_nota_debito> getListaCompleta(bool mantenimiento = false)
@@ -171,6 +168,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
         //get lista completa by venta
         public List<cxp_nota_debito> getListaByCompraActivo(int id)
         {
@@ -240,6 +238,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
         //get lista completa by fechas
         public List<cxp_nota_debito> getListaByRangoFecha(DateTime fechaInicial, DateTime fechaFinal)
         {

@@ -18,9 +18,9 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
     {
 
         //objetos
-        utilidades utilidades = new utilidades();
-        singleton singleton = new singleton();
-        empleado empleado;
+        private utilidades utilidades = new utilidades();
+        private singleton singleton = new singleton();
+        private empleado empleado;
         private compra compra;
         private compra_detalle compraDetalle;
         private ventana_desglose_dinero ventanaDesglose;
@@ -29,15 +29,16 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private suplidor suplidor;
 
         //modelos
-        modeloCompra modeloCompra = new modeloCompra();
-        modeloSuplidor modeloSuplidor=new modeloSuplidor();
+        private modeloCompra modeloCompra = new modeloCompra();
+        private modeloSuplidor modeloSuplidor=new modeloSuplidor();
         private modeloEmpleado modeloEmpleado=new modeloEmpleado();
-        ModeloReporte modeloReporte=new ModeloReporte();
+        private ModeloReporte modeloReporte=new ModeloReporte();
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
         private decimal totalPendienteMonto = 0;
         private decimal totalAbonadoMonto = 0;
+        private decimal totalDescontado = 0;
         private string metodoPago = "";
 
         //listas
@@ -82,6 +83,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public bool validarGetAcion()
         {
             try
@@ -136,29 +138,28 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     //validar que tenga monto > 0 y que tenga metodo de pago
-                    if (Convert.ToDecimal(row.Cells[8].Value.ToString()) > 0 && (row.Cells[9].Value.ToString() != ""))
+                    if (Convert.ToDecimal(row.Cells[8].Value.ToString()) > 0 && Convert.ToDecimal(row.Cells[9].Value.ToString()) >=0  && (row.Cells[10].Value.ToString() != ""))
                     {
                         compraPagoDetalle = new compra_vs_pagos_detalles();
                         compraPagoDetalle.codigo = 0;
                         compraPagoDetalle.codigo_pago = compraPago.codigo;
                         compraPagoDetalle.codigo_compra = Convert.ToInt16(row.Cells[0].Value.ToString());
-                        if (row.Cells[9].Value.ToString().ToLower() == "efe")
+                        if (row.Cells[10].Value.ToString().ToLower() == "efe")
                         {
                             compraPagoDetalle.codigo_metodo_pago = 1;
                         }
-                        if (row.Cells[9].Value.ToString().ToLower() == "dep")
+                        if (row.Cells[10].Value.ToString().ToLower() == "dep")
                         {
                             compraPagoDetalle.codigo_metodo_pago = 2;
                         }
-                        if (row.Cells[9].Value.ToString().ToLower() == "che")
+                        if (row.Cells[10].Value.ToString().ToLower() == "che")
                         {
                             compraPagoDetalle.codigo_metodo_pago = 3;
                         }
                         compraPagoDetalle.monto_pagado = Convert.ToDecimal(row.Cells[8].Value.ToString());
-                        compraPagoDetalle.monto_descontado = 0;
+                        compraPagoDetalle.monto_descontado = Convert.ToDecimal(row.Cells[9].Value.ToString());
+                        compraPagoDetalle.monto_sub_total = compraPagoDetalle.monto_pagado - compraPagoDetalle.monto_descontado;
                         compraPagoDetalle.activo = true;
-
-
                         listaCompraPagoDetalle.Add(compraPagoDetalle);
                     }
                 }
@@ -182,6 +183,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void eliminar()
         {
             try
@@ -195,18 +197,19 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 fila = dataGridView1.CurrentRow.Index;
                 if (fila >= 0)
                 {
-                    //dataGridView1.Rows.Remove(dataGridView1.Rows[fila]);
                     dataGridView1.Rows[fila].Cells[8].Value = "0.00";
-                    dataGridView1.Rows[fila].Cells[9].Value = "";
+                    dataGridView1.Rows[fila].Cells[9].Value = "0.00";
+                    dataGridView1.Rows[fila].Cells[10].Value = "";
                 }
                 calcularTotal();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error eliminarProducto.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error eliminando.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void agregar()
+
+        public bool validarAgregar()
         {
             try
             {
@@ -219,29 +222,73 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     montoAbonoText.Focus();
                     montoAbonoText.SelectAll();
                     MessageBox.Show("Falta el abono", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    return false;
                 }
+                //que descuento no este en blanco
                 //el monto es mayor que cero
+                if (montoDescuentoText.Text == "")
+                {
+                    montoDescuentoText.Focus();
+                    montoDescuentoText.SelectAll();
+                    MessageBox.Show("Falta el descuento", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
                 if (Convert.ToDecimal(montoAbonoText.Text) < 0)
                 {
                     montoAbonoText.Focus();
                     montoAbonoText.SelectAll();
                     MessageBox.Show("El abono debe ser mayor que cero", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    return false;
+                }
+                if (Convert.ToDecimal(montoDescuentoText.Text) < 0)
+                {
+                    montoDescuentoText.Focus();
+                    montoDescuentoText.SelectAll();
+                    MessageBox.Show("El descuento debe ser por lo menos cero", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
                 }
                 //monto abonar no sobrepase el monto pendiente
-                if (Convert.ToDecimal(montoAbonoText.Text) >Convert.ToDecimal(dataGridView1.Rows[fila].Cells[7].Value.ToString()))
+                if (Convert.ToDecimal(montoAbonoText.Text) > Convert.ToDecimal(dataGridView1.Rows[fila].Cells[7].Value.ToString()))
                 {
                     montoAbonoText.Focus();
                     montoAbonoText.SelectAll();
                     MessageBox.Show("El abono debe ser menor que el monto pendiente", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                //validar que el descuento sea menor o igual al monto a pagar
+                //monto descuento no sobrepase el monto de abono
+                if (Convert.ToDecimal(montoDescuentoText.Text) > Convert.ToDecimal(montoAbonoText.Text))
+                {
+                    montoDescuentoText.Focus();
+                    montoDescuentoText.SelectAll();
+                    MessageBox.Show("El descuento debe ser menor o igual que el monto deabono", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validarAgregar.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public void agregar()
+        {
+            try
+            {
+                if (validarAgregar() == false)
+                {
                     return;
                 }
+                int fila = 0;
+                fila = dataGridView1.CurrentRow.Index;
                 getMetodoPago();
                 if (fila >= 0)
                 {
                     dataGridView1.Rows[fila].Cells[8].Value = Convert.ToDecimal(montoAbonoText.Text).ToString("N");
-                    dataGridView1.Rows[fila].Cells[9].Value =metodoPago.ToString();
+                    dataGridView1.Rows[fila].Cells[9].Value = Convert.ToDecimal(montoDescuentoText.Text).ToString("N");
+                    dataGridView1.Rows[fila].Cells[10].Value =metodoPago.ToString();
                 }
                 calcularTotal();
             }
@@ -250,12 +297,14 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 MessageBox.Show("Error agregar.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void calcularTotal()
         {
             try
             {
                 totalPendienteText.Text = "0.00";
                 totalAbonadoText.Text = "0.00";
+                totalDescontadoText.Text = "0.00";
 
                 if (dataGridView1.Rows.Count == 0 || dataGridView1.Rows == null)
                 {
@@ -264,21 +313,25 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
                 totalPendienteMonto = 0;
                 totalAbonadoMonto = 0;
-
+                totalDescontado = 0;
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     totalPendienteMonto += Convert.ToDecimal(row.Cells[7].Value);
                     totalAbonadoMonto += Convert.ToDecimal(row.Cells[8].Value);
+                    totalDescontado += Convert.ToDecimal(row.Cells[9].Value);
                 }
+
                 totalPendienteText.Text = totalPendienteMonto.ToString("N");
                 totalAbonadoText.Text = totalAbonadoMonto.ToString("N");
+                totalDescontadoText.Text = totalDescontado.ToString("N");
             }
             catch (Exception ex)
             {
                 //MessageBox.Show("Error calcularTotal.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -339,7 +392,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
                     if (montoPendiente > 0)
                     {
-                        dataGridView1.Rows.Add(x.codigo, x.fecha.ToString("dd/MM/yyyy"), utilidades.getDiasByRangoFecha(x.fecha_limite, DateTime.Today), empleado.nombre, x.tipo_compra, x.ncf, x.fecha_limite.ToString("dd/MM/yyyy"), montoPendiente.ToString("N"));
+                        dataGridView1.Rows.Add(x.codigo, x.fecha.ToString("dd/MM/yyyy"), utilidades.getDiasByRangoFecha(x.fecha_limite, DateTime.Today), empleado.nombre, x.tipo_compra, x.ncf, x.fecha_limite.ToString("dd/MM/yyyy"), montoPendiente.ToString("N"),"0.00","0.00","");
                     }
                     else
                     {
@@ -354,6 +407,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 MessageBox.Show("Error loadCompras.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void loadSuplidor()
         {
             try
@@ -374,6 +428,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 MessageBox.Show("Error loadSuplidor.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void button5_Click(object sender, EventArgs e)
         {
             ventana_busqueda_suplidor ventana=new ventana_busqueda_suplidor();
@@ -412,7 +467,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            utilidades.validarTextBoxNumeroDecimal(e,montoAbonoText.Text);
+
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -456,7 +511,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         {
             if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
             {
-                button20.Focus();
+                montoDescuentoText.Focus();
                 
             }
         }
@@ -524,6 +579,25 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 metodoPagoComboBox.Focus();
                 metodoPagoComboBox.SelectAll();
             }
+        }
+
+        private void montoDescuentoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
+            {
+                button20.Focus();
+
+            }
+        }
+
+        private void montoDescuentoText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, montoAbonoText.Text);
+        }
+
+        private void montoAbonoText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroDecimal(e, montoAbonoText.Text);
         }
     }
 }
