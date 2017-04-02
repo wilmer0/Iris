@@ -396,6 +396,7 @@ namespace IrisContabilidad.modelos
                         lista.Add(compra);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
                 return lista;
             }
             catch (Exception ex)
@@ -560,7 +561,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //get monto pendiente compra by compra
         public List<compra_vs_pagos_detalles> getListaPagosByCompra(int id, bool SoloActivo = true)
         {
@@ -693,7 +693,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //get lista compra pago detalle by codigo compra pago
         public List<compra_vs_pagos_detalles> getListaCompraPagoDetalleByIdCompraPago(int codigoPago, bool SoloActivo = true)
         {
@@ -786,7 +785,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //get lista completa de compras no cuadrada by fecha final
         public List<compra> getListaCompraNoCuadradoByFechaFinalAndCajeroId(DateTime fechaFinal,int cajeroId)
         {
@@ -860,7 +858,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista compra pago detalle completa by cuadre caja
         public List<compra_vs_pagos_detalles> getListaCompraPagoDetalleCompletaByCuadreCaja(cuadre_caja cuadre)

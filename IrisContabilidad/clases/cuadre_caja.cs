@@ -42,7 +42,7 @@ namespace IrisContabilidad.clases
             List<gasto> listaGastos = new List<gasto>();
             List<cxc_nota_credito> listaNotasCredito=new List<cxc_nota_credito>(); 
             List<cxc_nota_debito> listaNotasDebito=new List<cxc_nota_debito>();
-            
+            List<ventaDevolucionDetalle> listaVentaDevolucion=new List<ventaDevolucionDetalle>();
             
             
             listaVentaDetalle = new modeloVenta().getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadreCaja);
@@ -53,6 +53,7 @@ namespace IrisContabilidad.clases
             listaGastos = new modeloGasto().getListaGastosCompletabyCuadreCaja(cuadreCaja);
             listaNotasCredito = new modeloCxcNotaCredito().getListaCompletaByCuadreCaja(cuadreCaja);
             listaNotasDebito = new modeloCxcNotaDebito().getListaCompletaByCuadreCaja(cuadreCaja);
+            listaVentaDevolucion = new modeloVentaDevolucion().getListaVentaDevolucionDetalleByCuadreCaja(cuadreCaja);
 
 
             //llenando el detalle del cuadre de caja
@@ -108,7 +109,7 @@ namespace IrisContabilidad.clases
             //recorriendo la lista de ingresos de caja
             foreach (var x in listaIngresosCajas)
             {
-                cuadre_caja_detalle.montoIngresoEfectivo += x.monto;
+                cuadre_caja_detalle.monto_ingreso += x.monto;
             }
 
             //recorriendo la lista de pagos
@@ -131,7 +132,6 @@ namespace IrisContabilidad.clases
                 }
             }
 
-
             //recorriendo la lista de cobros
             foreach (var x in listaVentasCobrosDetalles)
             {
@@ -148,6 +148,36 @@ namespace IrisContabilidad.clases
                     //cheque
                     cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
                 }
+            }
+
+            //recorriendo la lista de egresos
+            foreach (var x in listaEgresosCaja)
+            {
+                cuadre_caja_detalle.monto_egreso += x.monto;
+            }
+
+            //recorriendo la lista de gastos
+            foreach (var x in listaGastos)
+            {
+                cuadre_caja_detalle.montoGasto += x.monto_total;
+            }
+
+            //recorriendo lista nota debito
+            foreach (var x in listaNotasDebito)
+            {
+                cuadre_caja_detalle.montoNotasDebito += x.monto;
+            }
+
+            //recorriendo lista nota credito
+            foreach (var x in listaNotasCredito)
+            {
+                cuadre_caja_detalle.montoNotasCredito += x.monto;
+            }
+
+            //recorriendo las devoluciones de venta
+            foreach (var x in listaVentaDevolucion)
+            {
+                cuadre_caja_detalle.montoVentaDevolucion += x.monto_total;
             }
 
 

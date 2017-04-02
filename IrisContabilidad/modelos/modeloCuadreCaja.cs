@@ -190,6 +190,37 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //get cuadre caja by cajero
+        public cuadre_caja getCuadreCajaByCajeroId(int id)
+        {
+            try
+            {
+                cuadre_caja cuadreCaja = new cuadre_caja();
+                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre from cuadre_caja where cod_cajero='" + id + "' and caja_abierta='1'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    cuadreCaja.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    cuadreCaja.codigo_cajero = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
+                    cuadreCaja.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][2].ToString());
+                    cuadreCaja.turno = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    cuadreCaja.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
+                    cuadreCaja.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][5].ToString());
+                    cuadreCaja.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][6].ToString());
+                    cuadreCaja.efectivo_inicial = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
+                    cuadreCaja.caja_cuadrada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][9].ToString());
+                }
+                return cuadreCaja;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCuadreCajaByCajeroId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         //get lista Lista Cuadre Caja Detalle By Cuadre Caja Id
         public List<cuadre_caja_detalle> getListaCuadreCajaDetalleByCuadreCajaId(int id)
         {

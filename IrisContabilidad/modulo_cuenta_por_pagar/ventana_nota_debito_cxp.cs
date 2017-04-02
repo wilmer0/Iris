@@ -422,7 +422,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             ventana_busqueda_compra ventana = new ventana_busqueda_compra();
             ventana.Owner = this;
             ventana.ShowDialog();
-            if (ventana.ShowDialog()== DialogResult.OK)
+            if (ventana.DialogResult == DialogResult.OK)
             {
                 compra = ventana.getObjeto();
                 loadCompra();

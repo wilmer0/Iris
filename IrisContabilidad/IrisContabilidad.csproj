@@ -942,6 +942,8 @@
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_nota_debito_cxp.resx">
       <DependentUpon>ventana_nota_debito_cxp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_cuadre_caja_detallado.rdlc" />
+    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_cuadre_caja_general.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_credito.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_anular_cobros.resx">
       <DependentUpon>ventana_anular_cobros.cs</DependentUpon>
