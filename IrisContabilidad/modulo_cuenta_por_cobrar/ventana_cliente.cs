@@ -508,5 +508,12 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 telefono2Text.SelectAll();
             }
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            ventana_categoria_cliente ventana=new ventana_categoria_cliente();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
     }
 }

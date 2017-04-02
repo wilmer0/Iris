@@ -66,12 +66,13 @@ namespace IrisContabilidad.modulo_inventario
                 //se agrega todos los datos de la lista en el gridView
                 listaCompra.ForEach(x =>
                 {
+                    empleado =new empleado();
+                    empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
                     compra = new compra();
                     compra = modeloCompra.getCompraById(x.codigo);
                     suplidor=new suplidor();
                     suplidor = modeloSuplidor.getSuplidorById(x.cod_suplidor);
-                    empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
-                    dataGridView1.Rows.Add(x.codigo, utilidades.getFechaddMMyyyy(x.fecha), utilidades.getFechaddMMyyyy(x.fecha_limite),suplidor.nombre,x.ncf,x.tipo_compra,empleado);
+                    dataGridView1.Rows.Add(x.codigo, utilidades.getFechaddMMyyyy(x.fecha), utilidades.getFechaddMMyyyy(x.fecha_limite),suplidor.nombre,x.ncf,x.tipo_compra,empleado.nombre);
                 });
             }
             catch (Exception ex)

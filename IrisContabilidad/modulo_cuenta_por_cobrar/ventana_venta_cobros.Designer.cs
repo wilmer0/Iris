@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_venta_cobro));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.clienteText = new System.Windows.Forms.TextBox();
@@ -46,6 +46,7 @@
             this.FechaLimiteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoPendienteColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoAbonoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metoopagoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
@@ -57,7 +58,10 @@
             this.label14 = new System.Windows.Forms.Label();
             this.totalAbonadoText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.montoDescuentoText = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.totalDescontadoText = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -164,6 +168,7 @@
             this.FechaLimiteColumn,
             this.MontoPendienteColumn,
             this.MontoAbonoColumn,
+            this.Column1,
             this.metoopagoColumn});
             this.dataGridView1.Location = new System.Drawing.Point(12, 194);
             this.dataGridView1.MultiSelect = false;
@@ -224,24 +229,30 @@
             // 
             // MontoPendienteColumn
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Tomato;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.MontoPendienteColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Tomato;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = "0";
+            this.MontoPendienteColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.MontoPendienteColumn.HeaderText = "Pendiente";
             this.MontoPendienteColumn.Name = "MontoPendienteColumn";
             this.MontoPendienteColumn.ReadOnly = true;
             // 
             // MontoAbonoColumn
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.SkyBlue;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0";
-            this.MontoAbonoColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.SkyBlue;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.MontoAbonoColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.MontoAbonoColumn.HeaderText = "Abonar";
             this.MontoAbonoColumn.Name = "MontoAbonoColumn";
             this.MontoAbonoColumn.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Descuento";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // metoopagoColumn
             // 
@@ -304,7 +315,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(500, 166);
+            this.label3.Location = new System.Drawing.Point(332, 165);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 20);
             this.label3.TabIndex = 106;
@@ -313,9 +324,9 @@
             // montoAbonoText
             // 
             this.montoAbonoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoAbonoText.Location = new System.Drawing.Point(620, 163);
+            this.montoAbonoText.Location = new System.Drawing.Point(447, 161);
             this.montoAbonoText.Name = "montoAbonoText";
-            this.montoAbonoText.Size = new System.Drawing.Size(176, 26);
+            this.montoAbonoText.Size = new System.Drawing.Size(124, 26);
             this.montoAbonoText.TabIndex = 107;
             this.montoAbonoText.Text = "0.00";
             this.montoAbonoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.montoAbonoText_KeyDown);
@@ -325,11 +336,11 @@
             // 
             this.totalPendienteText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalPendienteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalPendienteText.Location = new System.Drawing.Point(444, 474);
+            this.totalPendienteText.Location = new System.Drawing.Point(221, 474);
             this.totalPendienteText.MaxLength = 200;
             this.totalPendienteText.Name = "totalPendienteText";
             this.totalPendienteText.ReadOnly = true;
-            this.totalPendienteText.Size = new System.Drawing.Size(193, 38);
+            this.totalPendienteText.Size = new System.Drawing.Size(153, 38);
             this.totalPendienteText.TabIndex = 109;
             this.totalPendienteText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -337,7 +348,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(304, 481);
+            this.label14.Location = new System.Drawing.Point(81, 481);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(134, 20);
             this.label14.TabIndex = 108;
@@ -347,11 +358,11 @@
             // 
             this.totalAbonadoText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalAbonadoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalAbonadoText.Location = new System.Drawing.Point(773, 474);
+            this.totalAbonadoText.Location = new System.Drawing.Point(810, 474);
             this.totalAbonadoText.MaxLength = 200;
             this.totalAbonadoText.Name = "totalAbonadoText";
             this.totalAbonadoText.ReadOnly = true;
-            this.totalAbonadoText.Size = new System.Drawing.Size(193, 38);
+            this.totalAbonadoText.Size = new System.Drawing.Size(156, 38);
             this.totalAbonadoText.TabIndex = 111;
             this.totalAbonadoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -359,28 +370,63 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(643, 481);
+            this.label4.Location = new System.Drawing.Point(680, 481);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(124, 20);
             this.label4.TabIndex = 110;
             this.label4.Text = "Total abonado";
             // 
+            // montoDescuentoText
+            // 
+            this.montoDescuentoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.montoDescuentoText.Location = new System.Drawing.Point(699, 161);
+            this.montoDescuentoText.Name = "montoDescuentoText";
+            this.montoDescuentoText.Size = new System.Drawing.Size(124, 26);
+            this.montoDescuentoText.TabIndex = 113;
+            this.montoDescuentoText.Text = "0.00";
+            this.montoDescuentoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.montoDescuentoText_KeyDown);
+            this.montoDescuentoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.montoDescuentoText_KeyPress);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(327, 167);
+            this.label5.Location = new System.Drawing.Point(597, 163);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 20);
+            this.label5.Size = new System.Drawing.Size(96, 20);
             this.label5.TabIndex = 112;
-            this.label5.Text = "Cambiar (F2)";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.label5.Text = "Descuento";
+            // 
+            // totalDescontadoText
+            // 
+            this.totalDescontadoText.BackColor = System.Drawing.Color.SkyBlue;
+            this.totalDescontadoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalDescontadoText.Location = new System.Drawing.Point(524, 474);
+            this.totalDescontadoText.MaxLength = 200;
+            this.totalDescontadoText.Name = "totalDescontadoText";
+            this.totalDescontadoText.ReadOnly = true;
+            this.totalDescontadoText.Size = new System.Drawing.Size(150, 38);
+            this.totalDescontadoText.TabIndex = 115;
+            this.totalDescontadoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(380, 481);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(138, 20);
+            this.label6.TabIndex = 114;
+            this.label6.Text = "Total descuento";
             // 
             // ventana_venta_cobro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(981, 592);
+            this.Controls.Add(this.totalDescontadoText);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.montoDescuentoText);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.totalAbonadoText);
             this.Controls.Add(this.label4);
@@ -413,6 +459,9 @@
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.totalAbonadoText, 0);
             this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.montoDescuentoText, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.totalDescontadoText, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -442,6 +491,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox totalAbonadoText;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox montoDescuentoText;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn idPrductoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaColumn;
@@ -452,6 +502,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaLimiteColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoPendienteColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoAbonoColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn metoopagoColumn;
+        private System.Windows.Forms.TextBox totalDescontadoText;
+        private System.Windows.Forms.Label label6;
     }
 }

@@ -36,26 +36,28 @@ namespace IrisContabilidad.modelos
         modeloSituacionEmpleado modeloSituacionEmpleado=new modeloSituacionEmpleado();
         modeloTipoGasto modeloTipoGasto=new modeloTipoGasto();
         modeloNominaTipo modeloNominaTipo=new modeloNominaTipo();
+        private modeloActualizacion modeloActualizacion = new modeloActualizacion();
 
         //validar primer login
         public void validarPrimerLogin()
         {
             try
             {
-                string sql = "select *from empleado";
+                string sql = "select *from empresa";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count == 0)
                 {
-                    //no existe empleado entonces se debe agregar todo
+                    //no existe empresa entonces se debe agregar todo
+                    modeloActualizacion.actualizar();
                     primerosDatos();
                     agregarModulos();
                     agregarVentanas();
-                    agregarPrimerEmpleado();
-                    agregarPrimerEmpleado();
+                    //agregarPrimerEmpleado();
                     agregarAccesosVentanas();
                 }
                 else
                 {
+                    //agregarModulos();
                     agregarVentanas();
                 }
             }
@@ -64,7 +66,6 @@ namespace IrisContabilidad.modelos
                 MessageBox.Show("Error validarPrimerLogin.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         //agregando todos los datos que son necesarios al momento de iniciar el sistemas
         public void primerosDatos()
         {
@@ -237,18 +238,16 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 sql = "insert into producto_permisos(codigo,nombre,activo) values('2','vender sin existencia','1');";
                 utilidades.ejecutarcomando_mysql(sql);
-
-
-
+                #endregion
 
                 //metodos de pago
+                #region
                 sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('1','Efectivo','cuando se recive el dinero en metal','1')";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql ="insert into metodo_pago(codigo,metodo,descripcion,activo) values('2','Deposito','cuando se recive el dinero por transferencia bancaria','1')";
+                sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('2','Deposito','cuando se recive el dinero por transferencia bancaria','1')";
                 utilidades.ejecutarcomando_mysql(sql);
                 sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('3','cheque','cuando se recive el dinero en base a un cheque bancario','1')";
                 utilidades.ejecutarcomando_mysql(sql);
-
                 #endregion
 
                 //caja conceptos egresos ingresos
@@ -372,11 +371,59 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //tamnos ventanas modulo del menu
                 #region
-                sql = "";
+                sql = "INSERT INTO tipo_ventana(codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion, tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra) VALUES (1,150,100,8,15,'Pequeña',150,100,8);";
                 utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
+                sql = "INSERT INTO tipo_ventana(codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion, tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra) values(2,170,130,15,19,'Normal',170,120,15);";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "INSERT INTO tipo_ventana(codigo,tamano_modulo_ancho,tamano_modulo_alto,tamano_separacion, tamano_modulo_letra,nombre,tamano_ventana_ancho,tamano_ventana_alto,tamano_ventana_letra) values(3,200,160,20,22,'Grande',250,190,20);";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //empleado
+                #region
+                sql = "select *from empleado; insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,cod_tipo_nomina,foto,tipo_ventana) values('1','Admin','wilmer','MQAyADMA','1','1','1','1','1','1','1',"+utilidades.getFechayyyyMMdd(DateTime.Today)+",'1','default1.png','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //categoria producto
+                #region
+                sql = "insert into categoria_producto(codigo,nombre,activo) values('1','Categoria general','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into categoria_producto(codigo,nombre,activo) values('2','Comestible','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into categoria_producto(codigo,nombre,activo) values('3','Bebidas','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //categoria cliente
+                #region
+                sql = "insert into cliente_categoria(codigo,nombre,activo) values('1','Cliente general','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into cliente_categoria(codigo,nombre,activo) values('2','Cliente minoritario','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into cliente_categoria(codigo,nombre,activo) values('3','Cliente potencial','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                #endregion
+
+                //unidades
+                #region
+                sql = "insert into unidad(codigo,nombre,activo,unidad_abreviada) values('1','unidad','1','UND');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into unidad(codigo,nombre,activo,unidad_abreviada) values('2','libra','1','LB');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into unidad(codigo,nombre,activo,unidad_abreviada) values('3','saco','1','SAC');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into unidad(codigo,nombre,activo,unidad_abreviada) values('4','paquete','1','PAQ');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into unidad(codigo,nombre,activo,unidad_abreviada) values('5','caja','1','CAJ');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into unidad(codigo,nombre,activo,unidad_abreviada) values('6','kilo','1','KG');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into unidad(codigo,nombre,activo,unidad_abreviada) values('7','gramo','1','GR');";
+                utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into unidad(codigo,nombre,activo,unidad_abreviada) values('8','onza','1','ONZ');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
@@ -396,287 +443,8 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-                //
-                #region
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                #endregion
-
-
+                
+                
 
             }
             catch (Exception ex)
@@ -700,6 +468,7 @@ namespace IrisContabilidad.modelos
                    7-modulo nomina
                    8-modulo inicio rapido
                    9-modulo contabilidad
+                   10-modulo gerencia
                 */
 
 
@@ -776,6 +545,14 @@ namespace IrisContabilidad.modelos
                 modulo.imagen = "contabilidad1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_contabilidad";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = 9;
+                modulo.nombre = "Gerencia";
+                modulo.imagen = "gerencia1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_gerencia";
                 listaModulo.Add(modulo);
 
                 #endregion
@@ -1330,6 +1107,20 @@ namespace IrisContabilidad.modelos
                 ventana.imagen = "nota_credito_debito_concepto1.png";
                 listaVentana.Add(ventana);
                 #endregion
+
+                //modulo gerencia
+                #region
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Ventas Mensuales";
+                ventana.nombre_logico = "IrisContabilidad.modulo_gerencia.ventana_reporte_ventas_mensuales_grafico";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 10;
+                ventana.imagen = "reporte_ventas_mensuales_graficos1.png";
+                listaVentana.Add(ventana);
+                #endregion
+
 
                 listaVentana.ForEach(ventanaActual =>
                 {

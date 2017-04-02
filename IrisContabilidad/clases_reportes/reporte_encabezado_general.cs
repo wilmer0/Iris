@@ -17,11 +17,37 @@ namespace IrisContabilidad.clases_reportes
         public string direccion { get; set; }
         public string fecha_impresion { get; set; }
         public string empleadoImpresion { get; set; }
+       
 
-        //otros
-        public string fecha { get; set; }
+        //rango de valores
+       
         public string fechaInicial { get; set; }
         public string fechaFinal { get; set; }
+        public int anioInicial { get; set; }
+        public int anioFinal { get; set; }
+        public int codigoClienteInicial { get; set; }
+        public int codigoClienteFinal { get; set; }
+
+
+        //valores unitarios
+        public string fecha { get; set; }
+        public int anio { get; set; }
+        public int codigoCliente { get; set; }
+        public string cliente { get; set; }
+        public int codigoSuplidor { get; set; }
+        public string suplidor { get; set; }
+        public int codigoCajero { get; set; }
+        public string cajero { get; set; }
+        public int codigoVendedor { get; set; }
+        public string vendedor { get; set; }
+
+
+
+
+        //booleanas
+        public bool soloPagado { get; set; }
+        public bool soloCobrado { get; set; }
+        public bool todos { get; set; }
 
 
         //listas

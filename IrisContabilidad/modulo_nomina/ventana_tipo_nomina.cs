@@ -51,7 +51,7 @@ namespace IrisContabilidad.modulo_nomina
                 {
                     NominatipoIdText.Text = "";
                     NominaTipoText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

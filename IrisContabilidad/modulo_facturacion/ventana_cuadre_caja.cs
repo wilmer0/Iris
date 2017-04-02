@@ -16,26 +16,49 @@ namespace IrisContabilidad.modulo_facturacion
     public partial class ventana_cuadre_caja : formBase
     {
 
+        //variables
+        private DateTime fechaFinal;
+
         //objetos
         utilidades utilidades = new utilidades();
         private singleton singleton = new singleton();
         private empleado empleado;
         private cuadre_caja cuadreCaja;
         private cajero cajero;
+        private empleado empleadoSesion;
+        private venta venta;
+        private venta_detalle ventaDetalle;
+        private egreso_caja egresoCaja;
+        private ingreso_caja ingresoCaja;
+        private compra_vs_pagos compraPago;
+        private compra_vs_pagos_detalles compraPagoDetalle;
+        private venta_vs_cobros ventaCobro;
+        private venta_vs_cobros_detalles ventaCobrosDetalle;
+        private compra compra;
 
         //modelos
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
         modeloCuadreCaja modeloCuadreCaja=new modeloCuadreCaja();
         modeloCajero modeloCajero=new modeloCajero();
+        modeloVenta modeloVenta=new modeloVenta();
+        modeloEgresoCaja modeloEgreCaja=new modeloEgresoCaja();
+        modeloIngresoCaja modeloIngresoCaja=new modeloIngresoCaja();
+        modeloCompra modeloCompra=new modeloCompra();
 
+        //listas
+
+
+        //variables
+
+        private decimal montoTotalEfectivoEsperado = 0;
 
         public ventana_cuadre_caja()
         {
             InitializeComponent();
-            empleado = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana cuadre caja");
+            empleadoSesion = singleton.getEmpleado();
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSesion, "ventana cuadre caja");
             this.Text = tituloLabel.Text;
-            //loadVentana();
+            loadVentana();
         }
         public void loadVentana()
         {
@@ -43,13 +66,27 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (cuadreCaja != null)
                 {
+                    cajero = modeloCajero.getCajeroByIdEmpleado(empleadoSesion.codigo);
+                    if (cajero == null)
+                    {
+                        MessageBox.Show("Este usuario no es un cajero para poder realizar cierre de caja", "",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        this.Close();
+                    }
 
+                    fechaText.Text = DateTime.Today.ToString("dd/MM/yyyy");
+                    fechaFinal = DateTime.Today;
+                    dosMilText.Text = "0.00";
+                    milText.Text = "0.00";
+                    quinientoText.Text = "0.00";
+                    doscientosText.Text = "0.00";
+                    cienText.Text = "0.00";
+                    cincuentaText.Text = "0.00";
+                    venticincoText.Text = "0.00";
+                    veinteText.Text = "0.00";
+                    diezText.Text = "0.00";
+                    cincoText.Text = "0.00";
+                    unoText.Text = "0.00";
                 }
-                else
-                {
-                    
-                }
-
             }
             catch (Exception ex)
             {
@@ -61,14 +98,14 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-                ////
-                //if (claveConfirmarText.Text == "")
-                //{
-                //    MessageBox.Show("Falta la confirmación de la nueva clave", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    claveConfirmarText.Focus();
-                //    claveConfirmarText.SelectAll();
-                //    return false;
-                //}
+                //cajero
+                if (cajero==null)
+                {
+                    MessageBox.Show("Falta el cajero", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cajeroIdText.Focus();
+                    cajeroIdText.SelectAll();
+                    return false;
+                }
 
 
                 return true;
@@ -123,8 +160,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button4_Click(object sender, EventArgs e)
         {
-            cajero = modeloCajero.getCajeroByIdEmpleado(empleado.codigo);
-            MessageBox.Show(modeloCuadreCaja.getNextTurno().ToString());
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -141,6 +177,38 @@ namespace IrisContabilidad.modulo_facturacion
         private void button1_Click(object sender, EventArgs e)
         {
             GetAction();
+        }
+
+        public void loadCajero()
+        {
+            try
+            {
+                cajeroIdText.Text = "";
+                cajeroLabel.Text = "";
+                if (cajero != null)
+                {
+                    empleado = modeloEmpleado.getEmpleadoByCajeroId(cajero.codigo);
+
+                    cajeroIdText.Text = cajero.codigo.ToString();
+                    cajeroLabel.Text = empleado.nombre;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadCajero.: "+ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            ventana_busqueda_cajero ventana=new ventana_busqueda_cajero();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                cajero = ventana.getObjeto();
+                loadCajero();
+            }
         }
     }
 }

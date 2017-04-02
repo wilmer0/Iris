@@ -27,30 +27,36 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
+                int productoTitular = 0;
                 //validar nombre
-                string sql = "select *from producto where nombre='" + producto.nombre + "' and codigo!='" +
-                             producto.codigo + "'";
+                string sql = "select *from producto where nombre='" + producto.nombre + "' and nombre!='' and codigo!='" +producto.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un producto con ese nombre", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un producto con ese nombre", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     return false;
                 }
                 //validar referencia
-                sql = "select *from producto where referencia='" + producto.referencia + "' and codigo!='" +
+                sql = "select *from producto where referencia='" + producto.referencia + "' and referencia!='' and codigo!='" +
                       producto.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un producto con esa referencia", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un producto con esa referencia", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     return false;
                 }
 
                 if (producto.activo == true)
                 {
                     activo = 1;
+                }
+                if (producto.producto_titular == true)
+                {
+                    productoTitular = 1;
+                }
+                else
+                {
+                    productoTitular = 0;
                 }
                 //validar la foto 
                 if (producto.imagen == "")
@@ -64,12 +70,11 @@ namespace IrisContabilidad.modelos
                     utilidades.copiarPegarArchivo(producto.imagen, rutaImagenesProductos, true);
                     producto.imagen = Path.GetFileName(producto.imagen);
                 }
-                sql =
-                    "insert into producto(codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima) values('" +
+                sql ="insert into producto(codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,producto_titular) values('" +
                     producto.codigo + "','" + producto.nombre + "','" + producto.referencia + "','" + activo.ToString() +
                     "','" + producto.reorden + "','" + producto.punto_maximo + "','" + producto.codigo_itebis + "','" +
                     producto.codigo_categoria + "','" + producto.codigo_subcategoria + "','" + producto.codigo_almacen +
-                    "','" + producto.imagen + "','" + producto.codigo_unidad_minima + "')";
+                    "','" + producto.imagen + "','" + producto.codigo_unidad_minima + "','"+productoTitular+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -88,6 +93,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 int activo = 0;
+                int productoTitular = 0;
                 //validar nombre
                 string sql = "select *from producto where nombre='" + producto.nombre + "' and codigo!='" +
                              producto.codigo + "'";
@@ -112,6 +118,10 @@ namespace IrisContabilidad.modelos
                 {
                     activo = 1;
                 }
+                if (producto.producto_titular == true)
+                {
+                    productoTitular = 1;
+                }
                 //validar la foto 
                 if (producto.imagen == "")
                 {
@@ -129,8 +139,8 @@ namespace IrisContabilidad.modelos
                       producto.punto_maximo + "',cod_itebis='" + producto.codigo_itebis + "',cod_categoria='" +
                       producto.codigo_categoria + "',cod_subcategoria='" + producto.codigo_subcategoria +
                       "',cod_almacen='" + producto.codigo_almacen + "',imagen='" + producto.imagen +
-                      "',cod_unidad_minima='" + producto.codigo_unidad_minima + "' where codigo='" + producto.codigo +
-                      "'";
+                      "',cod_unidad_minima='" + producto.codigo_unidad_minima + "',producto_titular='" + productoTitular +
+                      "' where codigo='" + producto.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
@@ -241,9 +251,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 producto producto = new producto();
-                string sql =
-                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario from producto where codigo='" +
-                    id + "'";
+                string sql ="select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario,producto_titular from producto where codigo='" +id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -260,6 +268,7 @@ namespace IrisContabilidad.modelos
                     producto.imagen = ds.Tables[0].Rows[0][10].ToString();
                     producto.codigo_unidad_minima = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
                     producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
+                    producto.producto_titular = Convert.ToBoolean(ds.Tables[0].Rows[0][13]);
                 }
                 return producto;
             }
@@ -277,7 +286,7 @@ namespace IrisContabilidad.modelos
             {
                 List<producto>lista=new List<producto>();
                 producto producto = new producto();
-                string sql ="select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario from producto";
+                string sql ="select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario,producto_titular from producto";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -295,6 +304,7 @@ namespace IrisContabilidad.modelos
                     producto.imagen = ds.Tables[0].Rows[0][10].ToString();
                     producto.codigo_unidad_minima = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
                     producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
+                    producto.producto_titular = Convert.ToBoolean(ds.Tables[0].Rows[0][13]);
                     lista.Add(producto);
                 }
                 producto = null;
@@ -322,7 +332,7 @@ namespace IrisContabilidad.modelos
                 producto producto = new producto();
                 List<producto> lista = new List<producto>();
                 string sql =
-                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario from producto ";
+                    "select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario,producto_titular from producto ";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";
@@ -345,7 +355,8 @@ namespace IrisContabilidad.modelos
                         producto.codigo_almacen = Convert.ToInt16(row[9].ToString());
                         producto.imagen = row[10].ToString();
                         producto.codigo_unidad_minima = Convert.ToInt16(row[11].ToString());
-                        producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
+                        producto.controla_inventario = Convert.ToBoolean(row[12]);
+                        producto.producto_titular = Convert.ToBoolean(row[13]);
                         lista.Add(producto);
                     }
                 }

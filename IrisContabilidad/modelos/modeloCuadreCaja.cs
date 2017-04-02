@@ -18,6 +18,7 @@ namespace IrisContabilidad.modelos
 
 
 
+
         //agregar 
         public bool agregarCuadreCaja(cuadre_caja cuadreCaja)
         {
@@ -30,8 +31,7 @@ namespace IrisContabilidad.modelos
                 modeloCajero modeloCajero=new modeloCajero();
                 if ((modeloCajero.getValidarCajaAbiertaByCajero(cuadreCaja.codigo_cajero)) == true)
                 {
-                    MessageBox.Show(
-                        "El cajero tiene una caja abierta, primero debe cuadrar antes de realizar una apertura de caja",
+                    MessageBox.Show("El cajero tiene una caja abierta, primero debe cuadrar antes de realizar una apertura de caja",
                         "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
@@ -50,7 +50,7 @@ namespace IrisContabilidad.modelos
                     cajaAbierta = 1;
                 }
 
-                sql = "insert into cuadre_caja(codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta)values('" + cuadreCaja.codigo + "','" + cuadreCaja.codigo_cajero + "'," + utilidades.getFechayyyyMMdd(cuadreCaja.fecha) + ",'" + cuadreCaja.turno + "','" + activo + "','" + cuadreCaja.codigo_sucursal + "','" + cuadreCaja.codigo_caja + "','" + cuadreCaja.efectivo_inicial + "','"+cajaCuadrada+"','"+cajaAbierta+"')";
+                sql = "insert into cuadre_caja(codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre)values('" + cuadreCaja.codigo + "','" + cuadreCaja.codigo_cajero + "'," + utilidades.getFechayyyyMMdd(cuadreCaja.fecha) + ",'" + cuadreCaja.turno + "','" + activo + "','" + cuadreCaja.codigo_sucursal + "','" + cuadreCaja.codigo_caja + "','" + cuadreCaja.efectivo_inicial + "','" + cajaCuadrada + "','" + cajaAbierta + "','" + utilidades.getFechayyyyMMdd(cuadreCaja.fecha_cierre_cuadre) + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -61,8 +61,9 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+
         //obtener el codigo siguiente
-        public int getNext()
+        public int getNextCuadre()
         {
             try
             {
@@ -87,6 +88,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+
         //obtener el codigo siguiente turno
         public int getNextTurno()
         {
@@ -163,7 +165,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 cuadre_caja cuadreCaja = new cuadre_caja();
-                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta from cuadre_caja where codigo='" + id + "'";
+                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre from cuadre_caja where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -177,6 +179,7 @@ namespace IrisContabilidad.modelos
                     cuadreCaja.efectivo_inicial = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
                     cuadreCaja.caja_cuadrada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
                     cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][9].ToString());
                 }
                 return cuadreCaja;
             }
@@ -186,7 +189,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista Lista Cuadre Caja Detalle By Cuadre Caja Id
         public List<cuadre_caja_detalle> getListaCuadreCajaDetalleByCuadreCajaId(int id)
@@ -223,7 +225,8 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-        //get lista completa por nombre
+        
+        //get lista completa
         public List<cuadre_caja_detalle> getListaCompleta()
         {
             try
@@ -258,5 +261,111 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get lista venta detalles sin cuadrar by cuadre
+        public List<venta_detalle> getListaVentasDetallesBycuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<venta_detalle> lista = new List<venta_detalle>();
+                venta venta;
+                lista = new modeloVenta().getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadre);
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentasDetallesBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get lista cobros detalles sin cuadrar by cuadre
+        public List<venta_vs_cobros_detalles> getListaVentasCobrosDetallesBycuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<venta_vs_cobros_detalles> lista = new List<venta_vs_cobros_detalles>();
+                venta venta;
+                lista = new modeloCobro().getListaCobrosDetallesCompletaSinCuadradaBycuadreCaja(cuadre);
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentasCobrosDetallesBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get lista de ingresos caja by cuadre caja
+        public List<ingreso_caja> getListaCajaIngresosBycuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<ingreso_caja> lista = new List<ingreso_caja>();
+                lista = new modeloIngresoCaja().getListaIngresosCajaNoCuadradaCompletaByCuadreCaja(cuadre);
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCajaIngresosBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get lista compra pagos detalles by cuadre caja
+        public List<compra_vs_pagos_detalles> getListaCompraPagosDetallesBycuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<compra_vs_pagos_detalles> lista = new List<compra_vs_pagos_detalles>();
+                lista = new modeloCompra().getListaCompraPagoDetalleCompletaByCuadreCaja(cuadre);
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompraPagosDetallesBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get lista de egresos de caja by cuadre caja
+        public List<egreso_caja> getListaCajaEgresosBycuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<egreso_caja> lista = new List<egreso_caja>();
+                lista = new modeloEgresoCaja().getListaCompletaByCuadreCaja(cuadre);
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCajaEgresosBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get lista de gastos completa by cuadre caja
+        public List<gasto> getListaGastosBycuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<gasto> lista = new List<gasto>();
+                lista = new modeloGasto().getListaGastosCompletabyCuadreCaja(cuadre);
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaGastosBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+      
     }
 }
