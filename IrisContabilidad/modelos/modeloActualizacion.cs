@@ -123,11 +123,29 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cxp_nota_debito` ADD COLUMN `numero_nota` VARCHAR(99) NOT NULL DEFAULT '' COMMENT 'este es el numero de nota que me da el suplidor' AFTER `codigo_concepto` , AUTO_INCREMENT = 1;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
+                sql = "CREATE TABLE `iris`.`computadoras` ( `codigo` INTEGER NOT NULL AUTO_INCREMENT, `nombre_computadora` VARCHAR(999) NOT NULL DEFAULT '', `ip` VARCHAR(20) NOT NULL DEFAULT '', `mascara` VARCHAR(99), PRIMARY KEY(`codigo`) ) ENGINE = InnoDB;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
                 sql = "";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";
                 utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                
+
+
+
+
+
+
+                utilidades.ejecutarcomando_mysql(sql);
+
 
                 #endregion
 

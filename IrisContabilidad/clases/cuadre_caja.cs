@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using IrisContabilidad.modelos;
 
 namespace IrisContabilidad.clases
@@ -34,6 +35,21 @@ namespace IrisContabilidad.clases
         {
             cuadre_caja_detalle = new cuadre_caja_detalle();
 
+            empleado empleado = new modeloEmpleado().getEmpleadoById(singleton.getEmpleado().codigo);
+            if (empleado == null)
+            {
+                MessageBox.Show("Error empleado nulo en base al empleado de sesion","",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            cajero cajero = new modeloCajero().getCajeroByIdEmpleado(empleado.codigo);
+            if (empleado == null)
+            {
+                MessageBox.Show("Error cajero nulo en base al empleado de sesion","",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+
+            cuadreCaja = new modeloCuadreCaja().getCuadreCajaByCajeroId(cajero.codigo);
+
             List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
             List<venta_vs_cobros_detalles> listaVentasCobrosDetalles = new List<venta_vs_cobros_detalles>();
             List<ingreso_caja> listaIngresosCajas = new List<ingreso_caja>();
@@ -58,10 +74,12 @@ namespace IrisContabilidad.clases
 
             //llenando el detalle del cuadre de caja
             cuadre_caja_detalle.codigo_cuadre_caja = cuadreCaja.codigo;
+
             //efectivo inicial
             cuadre_caja_detalle.monto_efectivo_inicial = cuadreCaja.efectivo_inicial;
-            
+
             //recorriendo la lista de venta para ir sacando los montos cheque, deposito, efectivo etc...
+            #region
             foreach (var x in listaVentaDetalle)
             {
                 venta venta = new modeloVenta().getVentaById(x.cod_venta);
@@ -87,8 +105,10 @@ namespace IrisContabilidad.clases
 
                 }
             }
+            #endregion
 
             //recorriendo la lista de cobros para sacar los montos
+            #region
             foreach (var x in listaVentasCobrosDetalles)
             {
                 if (x.codigo_metodo_cobro == 1)
@@ -105,14 +125,18 @@ namespace IrisContabilidad.clases
                     cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
                 }
             }
+            #endregion
 
             //recorriendo la lista de ingresos de caja
+            #region
             foreach (var x in listaIngresosCajas)
             {
                 cuadre_caja_detalle.monto_ingreso += x.monto;
             }
+            #endregion
 
             //recorriendo la lista de pagos
+            #region
             foreach (var x in listaPagoDetalle)
             {
                 if (x.codigo_metodo_pago == 1)
@@ -131,8 +155,10 @@ namespace IrisContabilidad.clases
                     cuadre_caja_detalle.montoPagoCheque += x.monto_pagado;
                 }
             }
+            #endregion
 
             //recorriendo la lista de cobros
+            #region
             foreach (var x in listaVentasCobrosDetalles)
             {
                 if (x.codigo_metodo_cobro == 1)
@@ -149,37 +175,47 @@ namespace IrisContabilidad.clases
                     cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
                 }
             }
+            #endregion
 
             //recorriendo la lista de egresos
+            #region
             foreach (var x in listaEgresosCaja)
             {
                 cuadre_caja_detalle.monto_egreso += x.monto;
             }
+            #endregion
 
             //recorriendo la lista de gastos
+            #region
             foreach (var x in listaGastos)
             {
                 cuadre_caja_detalle.montoGasto += x.monto_total;
             }
+            #endregion
 
             //recorriendo lista nota debito
+            #region
             foreach (var x in listaNotasDebito)
             {
                 cuadre_caja_detalle.montoNotasDebito += x.monto;
             }
+            #endregion
 
             //recorriendo lista nota credito
+            #region
             foreach (var x in listaNotasCredito)
             {
                 cuadre_caja_detalle.montoNotasCredito += x.monto;
             }
+            #endregion
 
             //recorriendo las devoluciones de venta
+            #region
             foreach (var x in listaVentaDevolucion)
             {
                 cuadre_caja_detalle.montoVentaDevolucion += x.monto_total;
             }
-
+            #endregion
 
         }
     }

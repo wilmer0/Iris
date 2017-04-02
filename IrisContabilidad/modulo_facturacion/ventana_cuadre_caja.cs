@@ -64,8 +64,9 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-                if (cuadreCaja != null)
+                if (cuadreCaja == null)
                 {
+                    cuadreCaja=new cuadre_caja();
                     cajero = modeloCajero.getCajeroByIdEmpleado(empleadoSesion.codigo);
                     if (cajero == null)
                     {
@@ -86,6 +87,15 @@ namespace IrisContabilidad.modulo_facturacion
                     diezText.Text = "0.00";
                     cincoText.Text = "0.00";
                     unoText.Text = "0.00";
+
+                    //obtener todos los valores de los montos
+                    cuadreCaja=modeloCuadreCaja.getCuadreCajaByCajeroId(cajero.codigo);
+
+                    //se llenan todos los detalles del cuadre de caja en base al mismo cuadre de caja anterior
+                    cuadreCaja=new cuadre_caja(cuadreCaja);
+
+
+
                 }
             }
             catch (Exception ex)
