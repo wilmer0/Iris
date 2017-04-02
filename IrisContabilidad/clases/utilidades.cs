@@ -174,6 +174,10 @@ namespace IrisContabilidad.clases
         {
             try
             {
+                if (query == "")
+                {
+                    return null;
+                }
                 SqlConnection conn = new SqlConnection("Data Source=.;" + "Initial Catalog=iris;" + "User id=dextroyex;" + "Password=wilmerlomas1;");
                 SqlDataAdapter da = new SqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();
@@ -191,6 +195,10 @@ namespace IrisContabilidad.clases
         {
             try
             {
+                if (query == "")
+                {
+                    return null;
+                }
                 MySqlConnection conn = new MySqlConnection("server=localhost;uid=bc;" + "pwd=BlackCode123;database=iris;Allow Zero Datetime=false;");
                 //MySqlConnection conn = new MySqlConnection("server=153.92.11.223;uid=bc1;" + "pwd=wilmerlomas1;database=iris;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
@@ -208,6 +216,10 @@ namespace IrisContabilidad.clases
         {
             try
             {
+                if (query == "")
+                {
+                    return null;
+                }
                 MySqlConnection conn = new MySqlConnection("server=127.0.0.1;uid=dextroyex;pwd=wilmerlomas1;database=iris;");
                 MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                 DataSet ds = new DataSet();

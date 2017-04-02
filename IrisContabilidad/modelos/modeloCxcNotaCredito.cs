@@ -131,7 +131,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //get lista completa
         public List<cxc_nota_credito> getListaCompleta(bool mantenimiento = false)
         {
@@ -173,6 +172,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista completa by venta
         public List<cxc_nota_credito> getListaByVentaActivo(int id)
         {
@@ -208,6 +208,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         public List<cxc_nota_credito> getListaByVentaActivoAndRangoFechaFinal(int id,DateTime fechaFinal)
         {
             try
@@ -242,6 +243,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista completa by cliente
         public List<cxc_nota_credito> getListaByCliente(int id)
         {
@@ -277,6 +279,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
         //get lista completa by fechas
         public List<cxc_nota_credito> getListaByRangoFecha(DateTime fechaInicial,DateTime fechaFinal)
         {
@@ -344,5 +347,48 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get lista completa by cuadre caja
+        public List<cxc_nota_credito> getListaCompletaByCuadreCaja(cuadre_caja cuadreCaja)
+        {
+            try
+            {
+                empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadreCaja.codigo_cajero);
+                if (empleado == null)
+                {
+                    MessageBox.Show("Error empleado esta nulo en base al cajero .:getListaCompletaByCuadreCaja", "",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+                List<cxc_nota_credito> lista = new List<cxc_nota_credito>();
+                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,codigo_devolucion from cxc_nota_credito where cuadrado='0' and activo='1' and fecha>='" + utilidades.getFechayyyyMMdd(cuadreCaja.fecha) + "' and fecha<='" + utilidades.getFechayyyyMMdd(cuadreCaja.fecha_cierre_cuadre) + "' and codigo_empleado='"+empleado.codigo+"' ";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        cxc_nota_credito notaCredito = new cxc_nota_credito();
+                        notaCredito.codigo = Convert.ToInt16(row[0]);
+                        notaCredito.codigoCliente = Convert.ToInt16(row[1]);
+                        notaCredito.fecha = Convert.ToDateTime(row[2]);
+                        notaCredito.activo = Convert.ToBoolean(row[3]);
+                        notaCredito.codigoEmpleado = Convert.ToInt16(row[4]);
+                        notaCredito.monto = Convert.ToDecimal(row[5]);
+                        notaCredito.detalle = row[6].ToString();
+                        notaCredito.codigoVenta = Convert.ToInt16(row[7]);
+                        notaCredito.codigoConcepto = Convert.ToInt16(row[8]);
+                        notaCredito.codigoDevolucion = Convert.ToInt16(row[9]);
+                        lista.Add(notaCredito);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompletaByCuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+
     }
 }

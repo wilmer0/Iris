@@ -61,7 +61,7 @@ namespace IrisContabilidad.modulo_nomina
                 {
                     cargoIdText.Text = "";
                     CargoText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

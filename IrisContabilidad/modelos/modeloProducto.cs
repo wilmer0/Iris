@@ -29,7 +29,7 @@ namespace IrisContabilidad.modelos
                 int activo = 0;
                 int productoTitular = 0;
                 //validar nombre
-                string sql = "select *from producto where nombre='" + producto.nombre + "' and codigo!='" +producto.codigo + "'";
+                string sql = "select *from producto where nombre='" + producto.nombre + "' and nombre!='' and codigo!='" +producto.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -37,13 +37,12 @@ namespace IrisContabilidad.modelos
                     return false;
                 }
                 //validar referencia
-                sql = "select *from producto where referencia='" + producto.referencia + "' and codigo!='" +
+                sql = "select *from producto where referencia='" + producto.referencia + "' and referencia!='' and codigo!='" +
                       producto.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un producto con esa referencia", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un producto con esa referencia", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     return false;
                 }
 

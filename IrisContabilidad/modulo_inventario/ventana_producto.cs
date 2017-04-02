@@ -117,23 +117,18 @@ namespace IrisContabilidad.modulo_inventario
 
                     productoText.Text = "";
                     referenciaText.Text = "";
-                    categoria = null;
-                    categoriaIdText.Text = "";
-                    categoriaText.Text = "";
-                    subCategoria = null;
-                    subcategoriaIdText.Text = "";
-                    subCategoriaText.Text = "";
-                    puntoMaximoText.Text = "";
-                    puntoReordenText.Text = "";
-                    itebis = null;
-                    itebisIdText.Text = "";
-                    itebisText.Text = "";
-                    almacen = null;
-                    almacenIdText.Text = "";
-                    almacenText.Text = "";
-                    unidadMinima = null;
-                    unidadMinimaIdText.Text = "";
-                    unidadMinimaText.Text = "";
+                    categoria = modeloCategoria.getCategoriaById(1);
+                    loadCategoria();
+                    subCategoria = modeloSubcategoria.getSubCategoriaById(1);
+                    loadSubCategoria();
+                    puntoMaximoText.Text = "0";
+                    puntoReordenText.Text = "0";
+                    itebis = modeloItebis.getItebisById(1);
+                    loadItebis();
+                    almacen = modeloAlmacen.getAlmacenById(1);
+                    loadAlmacen();
+                    unidadMinima = modeloUnidad.getUnidadById(1);
+                    loadUnidadMinima();
                     rutaImagenText.Text = "";
                     imagenProducto.BackgroundImage = Image.FromFile(rutaImagenesProductos + "default1.png");
                     activoCheck.Checked = true;
@@ -218,6 +213,14 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                //validar nombre
+                if (productoText.Text == "")
+                {
+                    MessageBox.Show("Falta el nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    productoText.Focus();
+                    productoText.SelectAll();
+                    return false;
+                }
                 //validar itebis
                 if (itebis==null)
                 {
@@ -250,6 +253,26 @@ namespace IrisContabilidad.modulo_inventario
                     puntoReordenText.SelectAll();
                     return false;
                 }
+                //validar unidad minima
+                if (unidadMinima == null)
+                {
+                    MessageBox.Show("Falta la unidad minima", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    unidadMinimaIdText.Focus();
+                    unidadMinimaIdText.SelectAll();
+                    return false;
+                }
+
+                //validar uniadades
+                if (dataGridView3.Rows.Count < 1)
+                {
+                    MessageBox.Show("Falta establecer las unidades, para saber que cantidad sacar cada vez que se enda una", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tabPage4.Focus();
+                    unidadIdPrecioVentaText.Focus();
+                    unidadIdPrecioVentaText.SelectAll();
+                    return false;
+                }
+
+
                 return true;
             }
             catch (Exception ex)

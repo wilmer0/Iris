@@ -48,7 +48,7 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //no existe empresa entonces se debe agregar todo
-                    modeloActualizacion.version1();
+                    modeloActualizacion.actualizar();
                     primerosDatos();
                     agregarModulos();
                     agregarVentanas();
@@ -57,8 +57,8 @@ namespace IrisContabilidad.modelos
                 }
                 else
                 {
+                    //agregarModulos();
                     agregarVentanas();
-                    //modeloActualizacion.version1(false);
                 }
             }
             catch (Exception ex)
@@ -468,6 +468,7 @@ namespace IrisContabilidad.modelos
                    7-modulo nomina
                    8-modulo inicio rapido
                    9-modulo contabilidad
+                   10-modulo gerencia
                 */
 
 
@@ -544,6 +545,14 @@ namespace IrisContabilidad.modelos
                 modulo.imagen = "contabilidad1.png";
                 modulo.activo = true;
                 modulo.nombre_logico = "IrisContabilidad.modulo_contabilidad";
+                listaModulo.Add(modulo);
+                //nuevo modulo
+                modulo = new modulo();
+                modulo.id = 9;
+                modulo.nombre = "Gerencia";
+                modulo.imagen = "gerencia1.png";
+                modulo.activo = true;
+                modulo.nombre_logico = "IrisContabilidad.modulo_gerencia";
                 listaModulo.Add(modulo);
 
                 #endregion
@@ -1098,6 +1107,20 @@ namespace IrisContabilidad.modelos
                 ventana.imagen = "nota_credito_debito_concepto1.png";
                 listaVentana.Add(ventana);
                 #endregion
+
+                //modulo gerencia
+                #region
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Ventas Mensuales";
+                ventana.nombre_logico = "IrisContabilidad.modulo_gerencia.ventana_reporte_ventas_mensuales_grafico";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 10;
+                ventana.imagen = "reporte_ventas_mensuales_graficos1.png";
+                listaVentana.Add(ventana);
+                #endregion
+
 
                 listaVentana.ForEach(ventanaActual =>
                 {

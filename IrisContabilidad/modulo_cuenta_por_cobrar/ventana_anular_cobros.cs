@@ -81,6 +81,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public bool validarGetAcion()
         {
             try
@@ -113,7 +114,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 existe = false;
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (Convert.ToBoolean(row.Cells[5].Value) == true)
+                    if (Convert.ToBoolean(row.Cells[7].Value) == true)
                     {
                         existe = true;
                     }
@@ -142,21 +143,23 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 }
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
-                    if (Convert.ToBoolean(row.Cells[5].Value) == true)
+                    if (Convert.ToBoolean(row.Cells[7].Value) == true)
                     {
                         string sql = "update venta_vs_cobros_detalles set activo='0' where codigo='" + row.Cells[0].Value.ToString() + "'";
                         utilidades.ejecutarcomando_mysql(sql);
-                        sql = "update venta set pagada=0 where codigo ='" + row.Cells[4] + "'";
+                        sql = "update venta set pagada=0 where codigo ='" + row.Cells[6] + "'";
                         utilidades.ejecutarcomando_mysql(sql);
                     }
                 }
                 MessageBox.Show("Se eliminaron los cobros", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                motivoAnularText.Text = "";
                 loadCobros();
             }
             catch (Exception ex)
             {
                 venta = null;
                 ventaCobro = null;
+                motivoAnularText.Text = "";
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -169,6 +172,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 this.Close();
             }
         }
+
         public void loadCliente()
         {
             try
@@ -203,7 +207,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     empleado = new empleado();
                     empleado = modeloEmpleado.getEmpleadoById(ventaCobro.cod_empleado);
                     metodoPago =modeloMetodoPago.getMetodoPagoById(x.codigo_metodo_cobro);
-                    dataGridView1.Rows.Add(x.codigo,utilidades.getFechaddMMyyyy(ventaCobro.fecha),empleado.nombre,metodoPago.metodo,venta.numero_factura);
+                    dataGridView1.Rows.Add(x.codigo,utilidades.getFechaddMMyyyy(ventaCobro.fecha),empleado.nombre,metodoPago.metodo,x.monto_cobrado.ToString("N"),x.monto_descontado.ToString("N"),venta.numero_factura);
                 });
             }
             catch (Exception ex)
@@ -211,6 +215,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadCobros.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void ventana_anular_cobros_Load(object sender, EventArgs e)
         {
 
@@ -273,7 +278,6 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             }
         }
 
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -292,7 +296,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 fila = dataGridView1.CurrentRow.Index;
                 if (fila >= 0)
                 {
-                    dataGridView1.Rows[fila].Cells[5].Value = !Convert.ToBoolean(dataGridView1.Rows[fila].Cells[5].Value);
+                    dataGridView1.Rows[fila].Cells[7].Value = !Convert.ToBoolean(dataGridView1.Rows[fila].Cells[7].Value);
                 }
             }
             catch (Exception ex)

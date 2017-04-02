@@ -58,6 +58,7 @@ namespace IrisContabilidad.modulo_facturacion
                     itbisIdText.Focus();
                     itbisIdText.SelectAll();
 
+                    itbisIdText.Text = "";
                     nombreText.Text = "";
                     porcientoText.Text = "";
                     activoCheck.Checked = true;

@@ -150,13 +150,14 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     cuadreCaja = new cuadre_caja();
                     crear = true;
-                    cuadreCaja.codigo = modeloCuadreCaja.getNext();
+                    cuadreCaja.codigo = modeloCuadreCaja.getNextCuadre();
                     cuadreCaja.turno = modeloCuadreCaja.getNextTurno();
                     cuadreCaja.activo = true;
                 }
 
                 cuadreCaja.codigo_cajero = cajero.codigo;
                 cuadreCaja.fecha = DateTime.Today;
+                cuadreCaja.fecha_cierre_cuadre=DateTime.Today;
                 cuadreCaja.codigo_sucursal = empleado.codigo_sucursal;
                 cuadreCaja.codigo_caja = cajero.codigo_caja;
                 cuadreCaja.efectivo_inicial = Convert.ToDecimal(montoAperturaText.Text);

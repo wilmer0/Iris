@@ -105,7 +105,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -132,7 +131,6 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
 
         //get objeto
         public ingreso_caja getIngresoCajaById(int id)
@@ -162,7 +160,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista completa
         public List<ingreso_caja> getListaCompleta(bool mantenimiento = false)
@@ -203,5 +200,48 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get lista completa no cuadrada by cuadre caja
+        public List<ingreso_caja> getListaIngresosCajaNoCuadradaCompletaByCuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadre.codigo_cajero);
+                if (empleado == null)
+                {
+                    MessageBox.Show("Error el empleado esta nulo en base al cajero  getListaNoCuadradaCompletaByCuadreCaja .:");
+                    return null;
+                }
+                List<ingreso_caja> lista = new List<ingreso_caja>();
+                string sql = "select codigo,cod_concepto,fecha,cod_Cajero,monto,detalles,afecta_cuadre,activo,cuadrado from ingresos_caja where cuadrado='0' and activo='1' and fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' and cod_cajero='"+cuadre.codigo_cajero+"' and afecta_cuadre='1' ";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        ingreso_caja ingreso = new ingreso_caja();
+                        ingreso.codigo = Convert.ToInt16(row[0]);
+                        ingreso.codigo_concepto = Convert.ToInt16(row[1]);
+                        ingreso.fecha = Convert.ToDateTime(row[2]);
+                        ingreso.codigo_cajero = Convert.ToInt16(row[3]);
+                        ingreso.monto = Convert.ToDecimal(row[4].ToString());
+                        ingreso.detalle = row[5].ToString();
+                        ingreso.afecta_cuadre = Convert.ToBoolean(row[6]);
+                        ingreso.activo = Convert.ToBoolean(row[7]);
+                        ingreso.cuadrado = Convert.ToBoolean(row[8]);
+                        lista.Add(ingreso);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaIngresosCajaNoCuadradaCompletaByCuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        
+    
     }
 }

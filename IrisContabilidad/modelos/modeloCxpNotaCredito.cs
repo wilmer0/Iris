@@ -85,7 +85,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -112,7 +111,6 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
 
         //get objeto
         public cxp_nota_credito getNotaCreditoById(int id)
@@ -146,7 +144,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista completa
         public List<cxp_nota_credito> getListaCompleta(bool mantenimiento = false)
@@ -191,16 +188,14 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //get lista completa by venta
-        public List<cxp_nota_credito> getListaByVentaActivo(int id)
+        //get lista completa by compra
+        public List<cxp_nota_credito> getListaByCompraActivo(int id)
         {
             try
             {
 
                 List<cxp_nota_credito> lista = new List<cxp_nota_credito>();
-                string sql =
-                    "select codigo,codigo_suplidor,fecha,activo,codigo_empleado,monto,detalle,codigo_compra,codigo_concepto,codigo_devolucion from cxp_nota_credito where codigo_venta='" +
-                    id + "' and activo='1'";
+                string sql ="select codigo,codigo_suplidor,fecha,activo,codigo_empleado,monto,detalle,codigo_compra,codigo_concepto,codigo_devolucion from cxp_nota_credito where codigo_compra='"+id + "' and activo='1'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -224,7 +219,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaByVentaActivo.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getListaByCompraActivo.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }
@@ -380,5 +375,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+
     }
 }

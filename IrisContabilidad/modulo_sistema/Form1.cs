@@ -123,10 +123,10 @@ namespace IrisContabilidad
                 
                 if (!ValidarGetAction())
                     return;
-                if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                {
-                    return;
-                }
+                //if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                //{
+                //    return;
+                //}
                 modeloPrimerLogin.validarPrimerLogin();
                 
                 
