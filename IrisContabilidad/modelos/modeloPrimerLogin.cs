@@ -706,7 +706,7 @@ namespace IrisContabilidad.modelos
                 //nueva ventana
                 ventana = new ventana();
                 ventana.nombre_ventana = "cuadre caja";
-                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_cuadre_caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_cuadre_caja_rd";
                 ventana.activo = true;
                 ventana.programador = false;
                 ventana.codigo_modulo = 2;

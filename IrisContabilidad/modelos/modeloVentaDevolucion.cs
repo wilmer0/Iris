@@ -280,5 +280,45 @@ namespace IrisContabilidad.modelos
             }
         }
 
+
+        //get lista venta devolucion by cuadre caja
+        public List<ventaDevolucionDetalle> getListaVentaDevolucionDetalleByCuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadre.codigo_cajero);
+                if (empleado == null)
+                {
+                    MessageBox.Show("Error empleado nulo en base al cajero .:getListaVentaDevolucionDetalleByCuadreCaja", "",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+                List<ventaDevolucionDetalle> lista = new List<ventaDevolucionDetalle>();
+                string sql = "";
+                sql = "select dd.codigo,dd.codigo_devolucion,dd.codigo_producto,dd.codigo_unidad,dd.cantidad,dd.precio,dd.monto_total from venta_devolucion_detalles dd join venta_devolucion d on d.codigo=dd.codigo_devolucion where d.activo='1' and d.fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and d.fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' and d.codigo_empleado='"+empleado.codigo+"' ";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        ventaDevolucionDetalle detalle = new ventaDevolucionDetalle();
+                        detalle.codigo = Convert.ToInt16(row[0].ToString());
+                        detalle.codigo_devolucion = Convert.ToInt16(row[1].ToString());
+                        detalle.codigo_producto = Convert.ToInt16(row[2].ToString());
+                        detalle.codigo_unidad = Convert.ToInt16(row[3].ToString());
+                        detalle.cantidad = Convert.ToDecimal(row[4].ToString());
+                        detalle.precio = Convert.ToDecimal(row[5].ToString());
+                        detalle.monto_total = Convert.ToDecimal(row[6].ToString());
+                        lista.Add(detalle);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentaDevolucionDetalleByCuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
+            }
+        }
     }
 }

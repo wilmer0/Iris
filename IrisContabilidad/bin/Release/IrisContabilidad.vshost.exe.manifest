@@ -154,14 +154,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="9145856">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="9103360">
       <assemblyIdentity name="IrisContabilidad" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6Z4TUKzHSzvqG77roDebTrYhbwhek0qymIiBOAuKaqM=</dsig:DigestValue>
+        <dsig:DigestValue>OCXh4nx1w0uqU6p15c594qwc+XQkyMWQ3vwXws2e2r4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -327,22 +327,22 @@
       <dsig:DigestValue>Oz5UFoLkjz/Shy+FoGJ42i8+eHfulW2om5DXMqHqoL0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Release\IrisContabilidad.exe" size="9145856">
+  <file name="bin\Release\IrisContabilidad.exe" size="9103360">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>Eso2Kgmth4GE9OFz6ct4D2VJ7qupo0+fsCDU3k7U46M=</dsig:DigestValue>
+      <dsig:DigestValue>JRVh1SUq2dxfyAixE617vvzkxW8IzbYN1lCA5e9qpcg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Release\IrisContabilidad.pdb" size="2141696">
+  <file name="bin\Release\IrisContabilidad.pdb" size="2156032">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>A84OMm/FI1lSo+PbD1VzsphoHMd2WFeiIqB/qgSmuBM=</dsig:DigestValue>
+      <dsig:DigestValue>SABYBCrAHFfpkh3Q2em5Amw4c9mGOrzlgLYIEPKKy3E=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\IrisContabilidad.vshost.exe" size="23168">
@@ -6618,13 +6618,13 @@
       <dsig:DigestValue>OrVMbT4gwwlfaD+4UtB2/7+1wzujUh8W0F+gZp8Qlh0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Release\Resources\ventanas\cuadre_caja1.png" size="133241">
+  <file name="bin\Release\Resources\ventanas\cuadre_caja1.png" size="145444">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>UI+n/SeLsDNnFS34DOBxQTxbUTXH6YM8yZZmd/oNzvQ=</dsig:DigestValue>
+      <dsig:DigestValue>gvgxV5tsbn3uI2FUAAhX+2gZscS+/ksT0da/dkd6cIU=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\Resources\ventanas\departamento1.png" size="34081">
