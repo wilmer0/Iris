@@ -52,14 +52,14 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //si la lista esta null se inicializa
-                if (listaCompra == null)
+                if(listaCompra == null)
                 {
                     listaCompra = new List<compra>();
                     listaCompra = modeloCompra.getListaCompra();
                 }
                 
                 //se limpia el grid si tiene datos
-                if (dataGridView1.Rows.Count > 0)
+                if(dataGridView1.Rows.Count > 0)
                 {
                     dataGridView1.Rows.Clear();
                 }

@@ -114,7 +114,19 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`venta_vs_cobros_detalles` MODIFY COLUMN `monto_cobrado` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el monto simbolico que cobro monto + descuento', MODIFY COLUMN `monto_descontado` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el monto descontado en ese cobro', MODIFY COLUMN `monto_subtotal` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el dinero que sale de la empresa, seria monto - descuento';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cxp_nota_debito` ADD COLUMN `codigo_compra` INTEGER NOT NULL DEFAULT 0 AFTER `detalle`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cxp_nota_debito` ADD COLUMN `codigo_concepto` INTEGER NOT NULL DEFAULT 0 AFTER `codigo_compra`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cxp_nota_debito` ADD COLUMN `numero_nota` VARCHAR(99) NOT NULL DEFAULT '' COMMENT 'este es el numero de nota que me da el suplidor' AFTER `codigo_concepto` , AUTO_INCREMENT = 1;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "CREATE TABLE `iris`.`computadoras` ( `codigo` INTEGER NOT NULL AUTO_INCREMENT, `nombre_computadora` VARCHAR(999) NOT NULL DEFAULT '', `ip` VARCHAR(20) NOT NULL DEFAULT '', `mascara` VARCHAR(99), PRIMARY KEY(`codigo`) ) ENGINE = InnoDB;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_transacciones` MODIFY COLUMN `codigo_venta` INTEGER, MODIFY COLUMN `codigo_cobro` INTEGER, MODIFY COLUMN `codigo_ingreso_caja` INTEGER, MODIFY COLUMN `codigo_egreso_caja` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_general_ci, MODIFY COLUMN `codigo_nota_credito` INTEGER, MODIFY COLUMN `codigo_nota_debito` INTEGER, MODIFY COLUMN `codigo_gasto` INTEGER, MODIFY COLUMN `codigo_pago` INTEGER;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";
@@ -125,9 +137,15 @@ namespace IrisContabilidad.modelos
                 //nuevo query
                 sql = "";
                 utilidades.ejecutarcomando_mysql(sql);
-                //nuevo query
-                sql = "";
+                
+
+
+
+
+
+
                 utilidades.ejecutarcomando_mysql(sql);
+
 
                 #endregion
 

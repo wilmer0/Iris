@@ -601,11 +601,11 @@
     <Compile Include="modulo_facturacion\ventana_cajero.Designer.cs">
       <DependentUpon>ventana_cajero.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_facturacion\ventana_cuadre_caja.cs">
+    <Compile Include="modulo_facturacion\ventana_cuadre_caja_rd.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_facturacion\ventana_cuadre_caja.Designer.cs">
-      <DependentUpon>ventana_cuadre_caja.cs</DependentUpon>
+    <Compile Include="modulo_facturacion\ventana_cuadre_caja_rd.Designer.cs">
+      <DependentUpon>ventana_cuadre_caja_rd.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_desglose_dinero.cs">
       <SubType>Form</SubType>
@@ -942,6 +942,8 @@
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_nota_debito_cxp.resx">
       <DependentUpon>ventana_nota_debito_cxp.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_cuadre_caja_detallado.rdlc" />
+    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_cuadre_caja_general.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_credito.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\ventana_anular_cobros.resx">
       <DependentUpon>ventana_anular_cobros.cs</DependentUpon>
@@ -1071,8 +1073,8 @@
     <EmbeddedResource Include="modulo_facturacion\ventana_cajero.resx">
       <DependentUpon>ventana_cajero.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="modulo_facturacion\ventana_cuadre_caja.resx">
-      <DependentUpon>ventana_cuadre_caja.cs</DependentUpon>
+    <EmbeddedResource Include="modulo_facturacion\ventana_cuadre_caja_rd.resx">
+      <DependentUpon>ventana_cuadre_caja_rd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_desglose_dinero.resx">
       <DependentUpon>ventana_desglose_dinero.cs</DependentUpon>
