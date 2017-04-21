@@ -126,7 +126,7 @@ namespace IrisContabilidad.modelos
                 sql = "CREATE TABLE `iris`.`computadoras` ( `codigo` INTEGER NOT NULL AUTO_INCREMENT, `nombre_computadora` VARCHAR(999) NOT NULL DEFAULT '', `ip` VARCHAR(20) NOT NULL DEFAULT '', `mascara` VARCHAR(99), PRIMARY KEY(`codigo`) ) ENGINE = InnoDB;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_transacciones` MODIFY COLUMN `codigo_venta` INTEGER, MODIFY COLUMN `codigo_cobro` INTEGER, MODIFY COLUMN `codigo_ingreso_caja` INTEGER, MODIFY COLUMN `codigo_egreso_caja` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_general_ci, MODIFY COLUMN `codigo_nota_credito` INTEGER, MODIFY COLUMN `codigo_nota_debito` INTEGER, MODIFY COLUMN `codigo_gasto` INTEGER, MODIFY COLUMN `codigo_pago` INTEGER;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

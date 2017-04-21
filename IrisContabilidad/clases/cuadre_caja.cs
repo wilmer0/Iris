@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IrisContabilidad.clases_calculos;
 using IrisContabilidad.modelos;
 
 namespace IrisContabilidad.clases
@@ -31,192 +32,211 @@ namespace IrisContabilidad.clases
             
         }
 
-        public cuadre_caja(cuadre_caja cuadreCaja)
+        public cuadre_caja getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadre_caja cuadreCaja)
         {
-            cuadre_caja_detalle = new cuadre_caja_detalle();
-
-            empleado empleado = new modeloEmpleado().getEmpleadoById(singleton.getEmpleado().codigo);
-            if (empleado == null)
+            try
             {
-                MessageBox.Show("Error empleado nulo en base al empleado de sesion","",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
-            }
-            cajero cajero = new modeloCajero().getCajeroByIdEmpleado(empleado.codigo);
-            if (empleado == null)
-            {
-                MessageBox.Show("Error cajero nulo en base al empleado de sesion","",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return;
-            }
 
-            cuadreCaja = new modeloCuadreCaja().getCuadreCajaByCajeroId(cajero.codigo);
+                cuadre_caja_detalle = new cuadre_caja_detalle();
 
-            List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
-            List<venta_vs_cobros_detalles> listaVentasCobrosDetalles = new List<venta_vs_cobros_detalles>();
-            List<ingreso_caja> listaIngresosCajas = new List<ingreso_caja>();
-            List<compra_vs_pagos_detalles> listaPagoDetalle = new List<compra_vs_pagos_detalles>();
-            List<egreso_caja> listaEgresosCaja = new List<egreso_caja>();
-            List<gasto> listaGastos = new List<gasto>();
-            List<cxc_nota_credito> listaNotasCredito=new List<cxc_nota_credito>(); 
-            List<cxc_nota_debito> listaNotasDebito=new List<cxc_nota_debito>();
-            List<ventaDevolucionDetalle> listaVentaDevolucion=new List<ventaDevolucionDetalle>();
-            
-            
-            listaVentaDetalle = new modeloVenta().getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadreCaja);
-            listaVentasCobrosDetalles = new modeloCobro().getListaCobrosDetallesCompletaSinCuadradaBycuadreCaja(cuadreCaja);
-            listaIngresosCajas = new modeloIngresoCaja().getListaIngresosCajaNoCuadradaCompletaByCuadreCaja(cuadreCaja);
-            listaPagoDetalle = new modeloCompra().getListaCompraPagoDetalleCompletaByCuadreCaja(cuadreCaja);
-            listaEgresosCaja = new modeloEgresoCaja().getListaCompletaByCuadreCaja(cuadreCaja);
-            listaGastos = new modeloGasto().getListaGastosCompletabyCuadreCaja(cuadreCaja);
-            listaNotasCredito = new modeloCxcNotaCredito().getListaCompletaByCuadreCaja(cuadreCaja);
-            listaNotasDebito = new modeloCxcNotaDebito().getListaCompletaByCuadreCaja(cuadreCaja);
-            listaVentaDevolucion = new modeloVentaDevolucion().getListaVentaDevolucionDetalleByCuadreCaja(cuadreCaja);
-
-
-            //llenando el detalle del cuadre de caja
-            cuadre_caja_detalle.codigo_cuadre_caja = cuadreCaja.codigo;
-
-            //efectivo inicial
-            cuadre_caja_detalle.monto_efectivo_inicial = cuadreCaja.efectivo_inicial;
-
-            //recorriendo la lista de venta para ir sacando los montos cheque, deposito, efectivo etc...
-            #region
-            foreach (var x in listaVentaDetalle)
-            {
-                venta venta = new modeloVenta().getVentaById(x.cod_venta);
-                if (venta.tipo_venta.ToLower() == "con")
+                empleado empleado = new modeloEmpleado().getEmpleadoById(singleton.getEmpleado().codigo);
+                if (empleado == null)
                 {
-                    //contado
-                    cuadre_caja_detalle.montoFacturaContado += x.monto_total;
+                    MessageBox.Show("Error empleado nulo en base al empleado de sesion", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
                 }
-                else if (venta.tipo_venta.ToLower() == "cre")
+                cajero cajero = new modeloCajero().getCajeroByIdEmpleado(empleado.codigo);
+                if (empleado == null)
                 {
-                    //credito
-                    cuadre_caja_detalle.montoFacturaCredito += x.monto_total;
+                    MessageBox.Show("Error cajero nulo en base al empleado de sesion", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
                 }
-                else if (venta.tipo_venta.ToLower() == "ped")
-                {
-                    //pedido
-                    cuadre_caja_detalle.montoFacturaPedido += x.monto_total;
 
-                }else if (venta.tipo_venta.ToLower() == "cot")
-                {
-                    //cotizacion
-                    cuadre_caja_detalle.montoFacturaCotizacion += x.monto_total;
+                cuadreCaja = new modeloCuadreCaja().getCuadreCajaByCajeroId(cuadreCaja.codigo_cajero);
 
+                List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
+                List<venta_vs_cobros_detalles> listaVentasCobrosDetalles = new List<venta_vs_cobros_detalles>();
+                List<ingreso_caja> listaIngresosCajas = new List<ingreso_caja>();
+                List<compra_vs_pagos_detalles> listaPagoDetalle = new List<compra_vs_pagos_detalles>();
+                List<egreso_caja> listaEgresosCaja = new List<egreso_caja>();
+                List<gasto> listaGastos = new List<gasto>();
+                List<cxc_nota_credito> listaNotasCredito = new List<cxc_nota_credito>();
+                List<cxc_nota_debito> listaNotasDebito = new List<cxc_nota_debito>();
+                List<ventaDevolucionDetalle> listaVentaDevolucion = new List<ventaDevolucionDetalle>();
+
+
+                listaVentaDetalle = new modeloVenta().getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadreCaja);
+                listaVentasCobrosDetalles = new modeloCobro().getListaCobrosDetallesCompletaSinCuadradaBycuadreCaja(cuadreCaja);
+                listaIngresosCajas = new modeloIngresoCaja().getListaIngresosCajaNoCuadradaCompletaByCuadreCaja(cuadreCaja);
+                listaPagoDetalle = new modeloCompra().getListaCompraPagoDetalleCompletaByCuadreCaja(cuadreCaja);
+                listaEgresosCaja = new modeloEgresoCaja().getListaCompletaByCuadreCaja(cuadreCaja);
+                listaGastos = new modeloGasto().getListaGastosCompletabyCuadreCaja(cuadreCaja);
+                listaNotasCredito = new modeloCxcNotaCredito().getListaCompletaByCuadreCaja(cuadreCaja);
+                listaNotasDebito = new modeloCxcNotaDebito().getListaCompletaByCuadreCaja(cuadreCaja);
+                listaVentaDevolucion = new modeloVentaDevolucion().getListaVentaDevolucionDetalleByCuadreCaja(cuadreCaja);
+
+
+                //llenando el detalle del cuadre de caja
+                cuadre_caja_detalle.codigo_cuadre_caja = cuadreCaja.codigo;
+
+                //efectivo inicial
+                cuadre_caja_detalle.monto_efectivo_inicial = cuadreCaja.efectivo_inicial;
+
+                //recorriendo la lista de venta para ir sacando los montos cheque, deposito, efectivo etc...
+                #region
+                foreach (var x in listaVentaDetalle)
+                {
+                    venta venta = new modeloVenta().getVentaById(x.cod_venta);
+                    if (venta.tipo_venta.ToLower() == "con")
+                    {
+                        //contado
+                        cuadre_caja_detalle.montoFacturaContado += x.monto_total;
+                    }
+                    else if (venta.tipo_venta.ToLower() == "cre")
+                    {
+                        //credito
+                        cuadre_caja_detalle.montoFacturaCredito += x.monto_total;
+                    }
+                    else if (venta.tipo_venta.ToLower() == "ped")
+                    {
+                        //pedido
+                        cuadre_caja_detalle.montoFacturaPedido += x.monto_total;
+
+                    }
+                    else if (venta.tipo_venta.ToLower() == "cot")
+                    {
+                        //cotizacion
+                        cuadre_caja_detalle.montoFacturaCotizacion += x.monto_total;
+
+                    }
                 }
-            }
-            #endregion
+                #endregion
 
-            //recorriendo la lista de cobros para sacar los montos
-            #region
-            foreach (var x in listaVentasCobrosDetalles)
-            {
-                if (x.codigo_metodo_cobro == 1)
+                //recorriendo la lista de cobros para sacar los montos
+                #region
+                foreach (var x in listaVentasCobrosDetalles)
                 {
-                    //efectivo
-                    cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
-                }else if (x.codigo_metodo_cobro == 2)
-                {
-                    //deposito
-                    cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
-                }else if (x.codigo_metodo_cobro == 3)
-                {
-                    //cheque
-                    cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
+                    if (x.codigo_metodo_cobro == 1)
+                    {
+                        //efectivo
+                        cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
+                    }
+                    else if (x.codigo_metodo_cobro == 2)
+                    {
+                        //deposito
+                        cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
+                    }
+                    else if (x.codigo_metodo_cobro == 3)
+                    {
+                        //cheque
+                        cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
+                    }
                 }
-            }
-            #endregion
+                #endregion
 
-            //recorriendo la lista de ingresos de caja
-            #region
-            foreach (var x in listaIngresosCajas)
-            {
-                cuadre_caja_detalle.monto_ingreso += x.monto;
-            }
-            #endregion
-
-            //recorriendo la lista de pagos
-            #region
-            foreach (var x in listaPagoDetalle)
-            {
-                if (x.codigo_metodo_pago == 1)
+                //recorriendo la lista de ingresos de caja
+                #region
+                foreach (var x in listaIngresosCajas)
                 {
-                    //efectivo
-                    cuadre_caja_detalle.montoPagoEfectivo += x.monto_pagado;
-
-                }else if (x.codigo_metodo_pago == 2)
-                {
-                    //deposito
-                    cuadre_caja_detalle.montoPagoDeposito += x.monto_pagado;
-
-                }else if (x.codigo_metodo_pago == 3)
-                {
-                    //cheque
-                    cuadre_caja_detalle.montoPagoCheque += x.monto_pagado;
+                    cuadre_caja_detalle.monto_ingreso += x.monto;
                 }
-            }
-            #endregion
+                #endregion
 
-            //recorriendo la lista de cobros
-            #region
-            foreach (var x in listaVentasCobrosDetalles)
-            {
-                if (x.codigo_metodo_cobro == 1)
+                //recorriendo la lista de pagos
+                #region
+                foreach (var x in listaPagoDetalle)
                 {
-                    //efectivo
-                    cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
-                }else if (x.codigo_metodo_cobro == 2)
-                {
-                    //deposito
-                    cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
-                }else if (x.codigo_metodo_cobro == 3)
-                {
-                    //cheque
-                    cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
+                    if (x.codigo_metodo_pago == 1)
+                    {
+                        //efectivo
+                        cuadre_caja_detalle.montoPagoEfectivo += x.monto_pagado;
+
+                    }
+                    else if (x.codigo_metodo_pago == 2)
+                    {
+                        //deposito
+                        cuadre_caja_detalle.montoPagoDeposito += x.monto_pagado;
+
+                    }
+                    else if (x.codigo_metodo_pago == 3)
+                    {
+                        //cheque
+                        cuadre_caja_detalle.montoPagoCheque += x.monto_pagado;
+                    }
                 }
-            }
-            #endregion
+                #endregion
 
-            //recorriendo la lista de egresos
-            #region
-            foreach (var x in listaEgresosCaja)
+                //recorriendo la lista de cobros
+                #region
+                foreach (var x in listaVentasCobrosDetalles)
+                {
+                    if (x.codigo_metodo_cobro == 1)
+                    {
+                        //efectivo
+                        cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
+                    }
+                    else if (x.codigo_metodo_cobro == 2)
+                    {
+                        //deposito
+                        cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
+                    }
+                    else if (x.codigo_metodo_cobro == 3)
+                    {
+                        //cheque
+                        cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
+                    }
+                }
+                #endregion
+
+                //recorriendo la lista de egresos
+                #region
+                foreach (var x in listaEgresosCaja)
+                {
+                    cuadre_caja_detalle.monto_egreso += x.monto;
+                }
+                #endregion
+
+                //recorriendo la lista de gastos
+                #region
+                foreach (var x in listaGastos)
+                {
+                    cuadre_caja_detalle.montoGasto += x.monto_total;
+                }
+                #endregion
+
+                //recorriendo lista nota debito
+                #region
+                foreach (var x in listaNotasDebito)
+                {
+                    cuadre_caja_detalle.montoNotasDebito += x.monto;
+                }
+                #endregion
+
+                //recorriendo lista nota credito
+                #region
+                foreach (var x in listaNotasCredito)
+                {
+                    cuadre_caja_detalle.montoNotasCredito += x.monto;
+                }
+                #endregion
+
+                //recorriendo las devoluciones de venta
+                #region
+                foreach (var x in listaVentaDevolucion)
+                {
+                    cuadre_caja_detalle.montoVentaDevolucion += x.monto_total;
+                }
+                #endregion
+
+                cuadreCaja.cuadre_caja_detalle = cuadre_caja_detalle;
+
+                return cuadreCaja;
+            }
+            catch (Exception ex)
             {
-                cuadre_caja_detalle.monto_egreso += x.monto;
+                MessageBox.Show("Error getCuadreCajaAndCuadreCajaDetalleByCuadreCaja.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
-            #endregion
-
-            //recorriendo la lista de gastos
-            #region
-            foreach (var x in listaGastos)
-            {
-                cuadre_caja_detalle.montoGasto += x.monto_total;
-            }
-            #endregion
-
-            //recorriendo lista nota debito
-            #region
-            foreach (var x in listaNotasDebito)
-            {
-                cuadre_caja_detalle.montoNotasDebito += x.monto;
-            }
-            #endregion
-
-            //recorriendo lista nota credito
-            #region
-            foreach (var x in listaNotasCredito)
-            {
-                cuadre_caja_detalle.montoNotasCredito += x.monto;
-            }
-            #endregion
-
-            //recorriendo las devoluciones de venta
-            #region
-            foreach (var x in listaVentaDevolucion)
-            {
-                cuadre_caja_detalle.montoVentaDevolucion += x.monto_total;
-            }
-            #endregion
-
         }
     }
 }
