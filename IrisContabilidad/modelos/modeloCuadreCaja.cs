@@ -243,6 +243,10 @@ namespace IrisContabilidad.modelos
                     cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
                     cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][9].ToString());
                 }
+
+                cuadreCaja.cuadre_caja_detalle = getCuadreCajaDetalleByCuadreCajaId(cuadreCaja.codigo);
+                //falta que retorne las transacciones del cuadre de caja
+                //cuadreCaja.cuadreCajaTransacciones=
                 return cuadreCaja;
             }
             catch (Exception ex)
@@ -285,19 +289,19 @@ namespace IrisContabilidad.modelos
         }
 
         //get lista Lista Cuadre Caja Detalle By Cuadre Caja Id
-        public List<cuadre_caja_detalle> getListaCuadreCajaDetalleByCuadreCajaId(int id)
+        public cuadre_caja_detalle getCuadreCajaDetalleByCuadreCajaId(int id)
         {
             try
             {
-                List<cuadre_caja_detalle> lista = new List<cuadre_caja_detalle>();
                 string sql = "";
                 sql = "select codigo_cuadre,monto_efectivo,monto_tarjeta,monto_cheque,monto_deposito,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante from cuadre_caja_detalles where codigo_cuadre='"+id+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                cuadre_caja_detalle cuadreCajaDetalle = new cuadre_caja_detalle();
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        cuadre_caja_detalle cuadreCajaDetalle = new cuadre_caja_detalle();
+                        
                         cuadreCajaDetalle.codigo_cuadre_caja = Convert.ToInt16(row[0].ToString());
                         cuadreCajaDetalle.monto_efectivo = Convert.ToDecimal(row[1].ToString());
                         cuadreCajaDetalle.monto_tarjeta = Convert.ToDecimal(row[2].ToString());
@@ -307,14 +311,14 @@ namespace IrisContabilidad.modelos
                         cuadreCajaDetalle.monto_ingreso = Convert.ToDecimal(row[6].ToString());
                         cuadreCajaDetalle.monto_sobrante = Convert.ToDecimal(row[7].ToString());
                         cuadreCajaDetalle.monto_faltante = Convert.ToDecimal(row[8].ToString());
-                        lista.Add(cuadreCajaDetalle);
+                        
                     }
                 }
-                return lista;
+                return cuadreCajaDetalle;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCuadreCajaDetalleByCuadreCajaId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getCuadreCajaDetalleByCuadreCajaId.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }

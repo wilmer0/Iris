@@ -605,6 +605,56 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //imprimir cuadre caja general
+        public bool imprimirCuadreCajaGeneral(int idCuadreCaja)
+        {
+            try
+            {
+
+                //buscando cuadre caja
+                cuadre_caja cuadreCaja;
+                cuadreCaja = new modeloCuadreCaja().getCuadreCajaById(idCuadreCaja);
+               
+
+
+                //datos generales
+                String reporte = "";
+
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+
+                empleado empleadoSesion = new empleado();
+                empleadoSesion = singleton.getEmpleado();
+
+                //hoja normal
+                reporte = "IrisContabilidad.reportes.reporte_cuadre_caja_general.rdlc";
+
+                //llenar encabezado
+                reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
+                List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                listaReporteEncabezado.Add(reporteEncabezado);
+                ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                listaReportDataSource.Add(reporteE);
+
+
+                //reporte detalle
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                listaReportDataSource.Add(reporteD);
+
+                //reporte parametros
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+
+
+                ventana.ShowDialog();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirCuadreCajaGeneral.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
 
 
 
