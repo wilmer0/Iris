@@ -161,6 +161,7 @@
     <Compile Include="clases\comprobante_fiscal.cs" />
     <Compile Include="clases\cuadre_caja.cs" />
     <Compile Include="clases\cuadre_caja_detalle.cs" />
+    <Compile Include="clases\cuadre_caja_transacciones.cs" />
     <Compile Include="clases\cuenta_contable.cs" />
     <Compile Include="clases\cxc_nota_credito.cs" />
     <Compile Include="clases\cxc_nota_debito.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="modelos\modeloCompraDevolucion.cs" />
     <Compile Include="modelos\modeloComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloCuadreCaja.cs" />
+    <Compile Include="modelos\modeloCuadreCajaTransacciones.cs" />
     <Compile Include="modelos\modeloCuentaContable.cs" />
     <Compile Include="modelos\modeloCxcNotaCredito.cs" />
     <Compile Include="modelos\modeloCxcNotaDebito.cs" />

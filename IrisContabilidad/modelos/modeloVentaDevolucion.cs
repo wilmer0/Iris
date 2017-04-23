@@ -85,6 +85,7 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
+        
         //obtener el codigo siguiente devolucion
         public int getNext()
         {
@@ -111,6 +112,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+        
         //obtener el codigo siguiente devolucion detalle
         public int getNextDevolucionDetalle()
         {
@@ -137,6 +139,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+        
         //get objeto
         public ventaDevolucion getDevolucionById(int id)
         {
@@ -163,6 +166,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista venta devolucion detalle
         public List<ventaDevolucionDetalle> getListaVentaDevolucionDetalleByDevolucionId(int id)
         {
@@ -196,6 +200,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista completa de venta devolucion
         public List<ventaDevolucion> getListaCompleta(bool mantenimiento=false)
         {
@@ -232,6 +237,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //obtener el codigo siguiente devolucion detalle
         public bool anularDevolucion(int id)
         {
@@ -279,7 +285,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista venta devolucion by cuadre caja
         public List<ventaDevolucionDetalle> getListaVentaDevolucionDetalleByCuadreCaja(cuadre_caja cuadre)

@@ -193,7 +193,8 @@ namespace IrisContabilidad.modulo_facturacion
                 cuadreCaja.activo = true;
                 cuadreCaja.caja_abierta = false;
                 cuadreCaja.caja_cuadrada = true;
-                //cambiar la clave
+                cuadreCaja.fecha_cierre_cuadre = DateTime.Today;
+                
                 if (modeloCuadreCaja.modificarCuadreCaja(cuadreCaja,cuadreCaja.cuadre_caja_detalle)==true)
                 {
                     cuadreCaja = null;

@@ -62,7 +62,7 @@ namespace IrisContabilidad.modelos
 
 
         //modificar cuadre de caja
-        public bool modificarCuadreCaja(cuadre_caja cuadreCaja,cuadre_caja_detalle cuadreCajaDetalle)
+        public bool modificarCuadreCaja(cuadre_caja cuadreCaja, cuadre_caja_detalle cuadreCajaDetalle)
         {
             try
             {
@@ -91,12 +91,30 @@ namespace IrisContabilidad.modelos
                     cajaAbierta = 1;
                 }
 
-                sql = "update cuadre_caja set cod_cajero='" + cuadreCaja.codigo_cajero + "',activo='" + activo + "', caja_cuadrada='" + cajaCuadrada + "',caja_abierta='" + cajaAbierta + "',fecha_cierre_cuadre=" + utilidades.getFechayyyyMMdd(cuadreCaja.fecha_cierre_cuadre) + " where codigo='"+cuadreCaja.codigo+"'";
-                utilidades.ejecutarcomando_mysql(sql);
+                //intente finalizar el cuadre de la caja ;
+                //en caso de que de error saldra de una vez y retorna false;
+                try
+                {
+                    List<cuadre_caja_transacciones> listaCuadreCajaTransacciones=new List<cuadre_caja_transacciones>();
+                    //agregando la lista de cuadre caja transacciones
+                    listaCuadreCajaTransacciones = cuadreCaja.cuadreCajaTransacciones.Distinct().ToList();
+                    new modeloCuadreCajaTransacciones().agregarCuadreCajaTransaccion(listaCuadreCajaTransacciones);
 
-                sql = "insert into cuadre_caja_detalles(codigo_cuadre,monto_efectivo,monto_tarjeta,monto_cheque,monto_deposito,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante,monto_notas_debito,monto_notas_credito,monto_cotizacion,monto_pedido) values('" + cuadreCajaDetalle.codigo_cuadre_caja + "','" + cuadreCajaDetalle.monto_efectivo + "','" + cuadreCajaDetalle.monto_tarjeta + "','" + cuadreCajaDetalle.monto_cheque + "','" + cuadreCajaDetalle.monto_deposito + "','" + cuadreCajaDetalle.monto_egreso + "','" + cuadreCajaDetalle.monto_ingreso + "','" + cuadreCajaDetalle.monto_sobrante + "','" + cuadreCajaDetalle.monto_faltante + "','" + cuadreCajaDetalle.montoNotasDebito + "','" + cuadreCajaDetalle.montoNotasCredito + "','" + cuadreCajaDetalle.monto_cotizacion + "','" + cuadreCajaDetalle.monto_pedido + "');";
-                utilidades.ejecutarcomando_mysql(sql);
+                    //agregando el desglose de los montos                
+                    sql = "insert into cuadre_caja_detalles(codigo_cuadre,monto_efectivo,monto_tarjeta,monto_cheque,monto_deposito,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante,monto_notas_debito,monto_notas_credito,monto_cotizacion,monto_pedido) values('" + cuadreCajaDetalle.codigo_cuadre_caja + "','" + cuadreCajaDetalle.monto_efectivo + "','" + cuadreCajaDetalle.monto_tarjeta + "','" + cuadreCajaDetalle.monto_cheque + "','" + cuadreCajaDetalle.monto_deposito + "','" + cuadreCajaDetalle.monto_egreso + "','" + cuadreCajaDetalle.monto_ingreso + "','" + cuadreCajaDetalle.monto_sobrante + "','" + cuadreCajaDetalle.monto_faltante + "','" + cuadreCajaDetalle.montoNotasDebito + "','" + cuadreCajaDetalle.montoNotasCredito + "','" + cuadreCajaDetalle.monto_cotizacion + "','" + cuadreCajaDetalle.monto_pedido + "');";
+                    utilidades.ejecutarcomando_mysql(sql);
                 
+                    //cerrando el cuadre de caja
+                    sql = "update cuadre_caja set cod_cajero='" + cuadreCaja.codigo_cajero + "',activo='" + activo + "', caja_cuadrada='" + cajaCuadrada + "',caja_abierta='" + cajaAbierta + "',fecha_cierre_cuadre=" + utilidades.getFechayyyyMMdd(cuadreCaja.fecha_cierre_cuadre) + " where codigo='"+cuadreCaja.codigo+"'";
+                    utilidades.ejecutarcomando_mysql(sql);
+
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+                
+
                 return true;
             }
             catch (Exception ex)
@@ -254,7 +272,8 @@ namespace IrisContabilidad.modelos
                     cuadreCaja.efectivo_inicial = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
                     cuadreCaja.caja_cuadrada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
                     cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][9]);
-                    cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][10]);
+                    //cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][10]);
+                    cuadreCaja.fecha_cierre_cuadre = DateTime.Today;
                 }
                 return cuadreCaja;
             }
@@ -463,6 +482,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
+       
     }
 }
