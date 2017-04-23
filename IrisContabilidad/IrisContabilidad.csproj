@@ -1282,6 +1282,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="scripts\angular-route.min.js.map" />
+    <None Include="scripts\angular.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -2070,6 +2072,15 @@
     <Content Include="bin\Release\Resources\ventanas\venta_reimprimir1.png" />
     <Content Include="bin\Release\Resources\ventanas\Word-2.ico" />
     <Content Include="bin\Release\Translator.dll" />
+    <Content Include="scripts\angular-mocks.js" />
+    <Content Include="scripts\angular-route.js" />
+    <Content Include="scripts\angular-route.min.js" />
+    <Content Include="scripts\angular.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\angulartics-ga-cordova.js" />
+    <Content Include="scripts\angulartics-ga-cordova.min.js" />
+    <Content Include="scripts\angulartics.js" />
+    <Content Include="scripts\angulartics.min.js" />
     <Content Include="view.ico" />
   </ItemGroup>
   <ItemGroup>
