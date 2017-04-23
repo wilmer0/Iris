@@ -292,5 +292,12 @@ namespace IrisContabilidad.modulo_facturacion
                 loadVentana();
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            ventana_caja ventana=new ventana_caja();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+        }
     }
 }

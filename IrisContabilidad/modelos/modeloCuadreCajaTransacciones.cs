@@ -30,7 +30,7 @@ namespace IrisContabilidad.modelos
                 }
                 else if (transaccion.codigoCobro != null && transaccion.codigoCobro >= 1)
                 {
-                    sql = "update cobros set cuadrado='1' where codigo='" + transaccion.codigoCobro + "';";
+                    sql = "update venta_vs_cobros set cuadrado='1' where codigo='" + transaccion.codigoCobro + "';";
                     utilidades.ejecutarcomando_mysql(sql);
                 }
                 else if (transaccion.codigoIngresoCaja != null && transaccion.codigoIngresoCaja >= 1)

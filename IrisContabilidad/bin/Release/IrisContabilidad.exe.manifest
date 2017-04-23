@@ -161,7 +161,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>5k77EVxNreqSFmDeR55uqsTDfev1WncBwTnTMGkzS0o=</dsig:DigestValue>
+        <dsig:DigestValue>J63lQ7kDgjYBy3GrH48zvdkqOa2jIrYWfpZjxZGE31E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -333,7 +333,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>BPYlqRBA8zL2I4ALP5U4dnruaRODP/rtXzm7UUyI01M=</dsig:DigestValue>
+      <dsig:DigestValue>+1NolYAuAVQmPnXuhkfgUjCYcQwZt4KymWBfYIMMaaY=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\IrisContabilidad.pdb" size="2162176">
@@ -342,7 +342,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>3S3CsuyiO60qRpgCSAqYB7FrifSiFFTRRFpa3FZhAY8=</dsig:DigestValue>
+      <dsig:DigestValue>3W1CGz3eu1Qf/bSakQfKoKqVU/y0/KRMcJ00QHsPbMA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\IrisContabilidad.vshost.exe" size="23168">
@@ -7147,6 +7147,87 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>ulCDs70gkaRTmSC69pOxQ0euLcDe+pscIl/n6oaVDP0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular.js" size="705336">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>StClIWl4FwN6hJJWzQSnuGxfx+FGWYZdt+I0a+aZro8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular.min.js" size="98982">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>HlSu44k55Nq9jMT1RxMtm5Pd4wbtVmplpbPy6N6+YJ8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular-mocks.js" size="68087">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>eGcBpTfNgOEaa6xZvMidQT/pUoVKnKBvIUb7AfebBS0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular-route.js" size="30661">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>QQmthU193woe0egHSX1gO7yajuQgtN6x/SwCg35cjvY=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular-route.min.js" size="3753">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>N4sbVlebatY2n+NmEE/Gw63r+qA0LxDL7kBOpOQuuTs=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angulartics.js" size="9228">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>RpaBgonCdoAoWHasA/gYp6l5VnEgW2UdZPgmbkGwZvE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angulartics.min.js" size="3845">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>E/6av+pL8a/1X+wbthTU25i4jnCjJVyqWWmFMr1gJjQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angulartics-ga-cordova.js" size="2564">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>G7r+HdhzHAmuHxS3OMbPkTW//uXS1twtBJX5yLxSw+Y=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angulartics-ga-cordova.min.js" size="1238">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>mjN+CIgicDy6eHVYQeoiFrIWlakw+KKSPRUA+wfO44I=</dsig:DigestValue>
     </hash>
   </file>
   <file name="view.ico" size="17013">
