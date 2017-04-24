@@ -486,6 +486,39 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //get cuadre cuaja by cajero y fecha cierre caja
+        public cuadre_caja getCuadreCajaByCajeroIdAndFechaCiere(int idCajero,DateTime fechaCiere)
+        {
+            try
+            {
+                cuadre_caja cuadreCaja = new cuadre_caja();
+                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre from cuadre_caja where cod_cajero='" + idCajero + "' and fecha_cierre_cuadre="+utilidades.getFechayyyyMMdd(fechaCiere);
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    cuadreCaja.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                    cuadreCaja.codigo_cajero = Convert.ToInt16(ds.Tables[0].Rows[0][1]);
+                    cuadreCaja.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][2]);
+                    cuadreCaja.turno = Convert.ToInt16(ds.Tables[0].Rows[0][3]);
+                    cuadreCaja.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
+                    cuadreCaja.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][5]);
+                    cuadreCaja.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][6]);
+                    cuadreCaja.efectivo_inicial = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
+                    cuadreCaja.caja_cuadrada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][9]);
+                    cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][10]);
+                }
+
+                cuadreCaja.cuadre_caja_detalle = getCuadreCajaDetalleByCuadreCajaId(cuadreCaja.codigo);
+                cuadreCaja.cuadreCajaTransacciones = new modeloCuadreCajaTransacciones().getListaCompletaByCuadreCajaId(cuadreCaja.codigo);
+                return cuadreCaja;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCuadreCajaById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
        
     }
 }

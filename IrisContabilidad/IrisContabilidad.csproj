@@ -405,6 +405,12 @@
     <Compile Include="modulo_facturacion\ventana_busqueda_venta_devolucion.Designer.cs">
       <DependentUpon>ventana_busqueda_venta_devolucion.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.Designer.cs">
+      <DependentUpon>ventana_imprimir_cuadre_caja_rd.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_nota_credito_cxc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -966,6 +972,9 @@
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_debito.rdlc" />
+    <EmbeddedResource Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.resx">
+      <DependentUpon>ventana_imprimir_cuadre_caja_rd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_gerencia\Reporte\reporte_ventas_mensuales_graficos.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_nota_credito_cxc.resx">
       <DependentUpon>ventana_busqueda_nota_credito_cxc.cs</DependentUpon>
@@ -1251,6 +1260,8 @@
     <None Include="IrisContabilidad_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases.cuadre_caja_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases.cuadre_caja_transacciones.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_detalle.datasource" />

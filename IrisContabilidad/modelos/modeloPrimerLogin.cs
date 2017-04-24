@@ -766,6 +766,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "venta_nota_debito1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Reimprimir cuadre caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_imprimir_cuadre_caja_rd";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "reimprimir_cierre_caja1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
                 //modulo cuentas por cobrar

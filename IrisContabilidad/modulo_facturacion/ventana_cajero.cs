@@ -89,6 +89,7 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
+
         public bool validarGetAction()
         {
             try
@@ -193,6 +194,7 @@ namespace IrisContabilidad.modulo_facturacion
             }
 
         }
+
         private void ventana_cajero_Load(object sender, EventArgs e)
         {
 
@@ -223,6 +225,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadEmpleado.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void loadCaja()
         {
             try
@@ -243,6 +246,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void button5_Click(object sender, EventArgs e)
         {
             ventana_busqueda_caja ventana = new ventana_busqueda_caja();

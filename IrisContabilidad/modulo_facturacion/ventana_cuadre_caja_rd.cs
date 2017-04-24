@@ -60,7 +60,6 @@ namespace IrisContabilidad.modulo_facturacion
             empleadoSesion = singleton.getEmpleado();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSesion, "ventana cuadre caja");
             this.Text = tituloLabel.Text;
-            modeloReporte.imprimirCuadreCajaGeneral(1);
             loadVentana();
         }
 
@@ -104,6 +103,7 @@ namespace IrisContabilidad.modulo_facturacion
                     cincoText.Text = "0.00";
                     unoText.Text = "0.00";
 
+                   
                     //obtener todos los valores de los montos
                     cuadreCaja = modeloCuadreCaja.getCuadreCajaByCajeroId(cajero.codigo);
 
