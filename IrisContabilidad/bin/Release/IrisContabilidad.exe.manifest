@@ -154,14 +154,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="9111552">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="9169920">
       <assemblyIdentity name="IrisContabilidad" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>J63lQ7kDgjYBy3GrH48zvdkqOa2jIrYWfpZjxZGE31E=</dsig:DigestValue>
+        <dsig:DigestValue>EXTVVdV7EFIBI6BAIicTqptfDAKNKQImtOPL818sc9E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -327,22 +327,22 @@
       <dsig:DigestValue>Oz5UFoLkjz/Shy+FoGJ42i8+eHfulW2om5DXMqHqoL0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Release\IrisContabilidad.exe" size="9111552">
+  <file name="bin\Release\IrisContabilidad.exe" size="9169920">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>+1NolYAuAVQmPnXuhkfgUjCYcQwZt4KymWBfYIMMaaY=</dsig:DigestValue>
+      <dsig:DigestValue>XHUYeM8Cb8plaVVgr52AgaxeeZlAQwUA3lL046Xr7ho=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Release\IrisContabilidad.pdb" size="2162176">
+  <file name="bin\Release\IrisContabilidad.pdb" size="2164224">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>3W1CGz3eu1Qf/bSakQfKoKqVU/y0/KRMcJ00QHsPbMA=</dsig:DigestValue>
+      <dsig:DigestValue>nqeFf8LsnJ0lzS3bMnTMTkFM9axHAGAGdkPWSNukltQ=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\IrisContabilidad.vshost.exe" size="23168">

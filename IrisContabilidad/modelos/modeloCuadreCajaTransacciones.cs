@@ -130,7 +130,7 @@ namespace IrisContabilidad.modelos
         }
 
         //get lista completa by cuadre caja
-        public List<cuadre_caja_transacciones> getListaCompleta(int codigoCuadreCaja)
+        public List<cuadre_caja_transacciones> getListaCompletaByCuadreCajaId(int codigoCuadreCaja)
         {
             try
             {

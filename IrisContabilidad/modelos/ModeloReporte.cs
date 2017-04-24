@@ -615,8 +615,6 @@ namespace IrisContabilidad.modelos
                 cuadre_caja cuadreCaja;
                 cuadreCaja = new modeloCuadreCaja().getCuadreCajaById(idCuadreCaja);
                
-
-
                 //datos generales
                 String reporte = "";
 
@@ -637,7 +635,9 @@ namespace IrisContabilidad.modelos
 
 
                 //reporte detalle
-                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
+                List<cuadre_caja_detalle> listaCuadreCajaDetalle=new List<cuadre_caja_detalle>();
+                listaCuadreCajaDetalle.Add(cuadreCaja.cuadre_caja_detalle);
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaCuadreCajaDetalle);
                 listaReportDataSource.Add(reporteD);
 
                 //reporte parametros

@@ -44,6 +44,7 @@ namespace IrisContabilidad.modulo_facturacion
         modeloEgresoCaja modeloEgreCaja=new modeloEgresoCaja();
         modeloIngresoCaja modeloIngresoCaja=new modeloIngresoCaja();
         modeloCompra modeloCompra=new modeloCompra();
+        ModeloReporte modeloReporte=new ModeloReporte();
 
         //listas
 
@@ -59,6 +60,7 @@ namespace IrisContabilidad.modulo_facturacion
             empleadoSesion = singleton.getEmpleado();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSesion, "ventana cuadre caja");
             this.Text = tituloLabel.Text;
+            modeloReporte.imprimirCuadreCajaGeneral(1);
             loadVentana();
         }
 
@@ -181,6 +183,7 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+                
                 if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
@@ -197,8 +200,14 @@ namespace IrisContabilidad.modulo_facturacion
                 
                 if (modeloCuadreCaja.modificarCuadreCaja(cuadreCaja,cuadreCaja.cuadre_caja_detalle)==true)
                 {
-                    cuadreCaja = null;
                     MessageBox.Show("Se realizó el cierre de caja con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (MessageBox.Show("Desea imprimir el reporte de cierre de caja?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        //imprimir
+                        modeloReporte.imprimirCuadreCajaGeneral(cuadreCaja.codigo);
+                    }
+                    
+                    cuadreCaja = null;
                     loadVentana();
                 }
                 else
