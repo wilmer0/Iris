@@ -129,7 +129,7 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cuadre_caja_transacciones` MODIFY COLUMN `codigo_venta` INTEGER, MODIFY COLUMN `codigo_cobro` INTEGER, MODIFY COLUMN `codigo_ingreso_caja` INTEGER, MODIFY COLUMN `codigo_egreso_caja` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_general_ci, MODIFY COLUMN `codigo_nota_credito` INTEGER, MODIFY COLUMN `codigo_nota_debito` INTEGER, MODIFY COLUMN `codigo_gasto` INTEGER, MODIFY COLUMN `codigo_pago` INTEGER;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`producto_unidad_conversion` MODIFY COLUMN `cantidad` DECIMAL(20,2) NOT NULL DEFAULT 1.00, MODIFY COLUMN `precio_venta1` DECIMAL(20,2) NOT NULL DEFAULT 0.00, MODIFY COLUMN `costo` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";
