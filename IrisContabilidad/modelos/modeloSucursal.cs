@@ -16,8 +16,6 @@ namespace IrisContabilidad.modelos
         sucursal sucursal = new sucursal();
 
 
-
-
         //agregar sucursal
         public bool agregarSucursal(sucursal sucursal)
         {
@@ -48,7 +46,7 @@ namespace IrisContabilidad.modelos
 
                 //se agrega  
                 sql = "insert into sucursal(codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema) values('" +sucursal.codigo + "','" + sucursal.codigo_empresa + "','" + sucursal.secuencia + "','" + activo + "','" + sucursal.direccion + "','"+sucursal.telefono1+"','"+sucursal.telefono2+"','"+sucursal.fax+"','"+sucursal.versionSistema+"')";
-                ds = utilidades.ejecutarcomando_mysql(sql);
+                utilidades.ejecutarcomando_mysql(sql);
                 return true;
 
             }
@@ -59,8 +57,6 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
-
-
 
         //modificar sucursal
         public bool modificarSucursal(sucursal sucursal)
@@ -103,10 +99,7 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
-
-
-
-
+        
         //obtener el codigo siguiente sucursal
         public int getNext()
         {
@@ -133,9 +126,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
-
-
+        
         //get sucursal
         public sucursal getSucursalById(int id)
         {
@@ -165,7 +156,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista completa
         public List<sucursal> getListaCompleta(bool mantenimiento=false)
@@ -205,6 +195,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
         //get sucursal
         public sucursal getSucursalByEmpleado(int id)
         {
@@ -233,5 +224,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
     }
 }
