@@ -34,14 +34,22 @@ namespace IrisContabilidad.clases
         public decimal montoCobrosDeposito { get; set; }
         public decimal montoCobrosCheque { get; set; }
 
-        //ingresos caja
-        public decimal montoIngresoEfectivo { get; set; }
-
 
         //montos de pagos
         public decimal montoPagoEfectivo { get; set; }
         public decimal montoPagoDeposito { get; set; }
         public decimal montoPagoCheque { get; set; }
+
+        //gasto
+        public decimal montoGasto { get; set; }
+
+        //notas credito y debito
+        public decimal montoNotasDebito { get; set; }
+        public decimal montoNotasCredito { get; set; }
+
+        //devolucion
+        public decimal montoVentaDevolucion { get; set; }
+
 
         public cuadre_caja_detalle()
         {

@@ -1,6 +1,6 @@
 ﻿namespace IrisContabilidad.modulo_facturacion
 {
-    partial class ventana_cuadre_caja
+    partial class ventana_cuadre_caja_rd
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_cuadre_caja));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cajeroLabel = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.cajeroIdText = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.fechaText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dosMilText = new System.Windows.Forms.TextBox();
@@ -57,7 +53,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.unoText = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.doscientosText = new System.Windows.Forms.TextBox();
+            this.montoTotalEfectivoText = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -94,12 +92,9 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.cajeroLabel);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.cajeroIdText);
-            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(6, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(875, 88);
+            this.groupBox1.Size = new System.Drawing.Size(875, 56);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             // 
@@ -107,46 +102,15 @@
             // 
             this.cajeroLabel.AutoSize = true;
             this.cajeroLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cajeroLabel.Location = new System.Drawing.Point(87, 55);
+            this.cajeroLabel.Location = new System.Drawing.Point(6, 16);
             this.cajeroLabel.Name = "cajeroLabel";
             this.cajeroLabel.Size = new System.Drawing.Size(58, 20);
             this.cajeroLabel.TabIndex = 31;
             this.cajeroLabel.Text = "cajero";
             // 
-            // button4
-            // 
-            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(273, 16);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(47, 37);
-            this.button4.TabIndex = 30;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
-            // 
-            // cajeroIdText
-            // 
-            this.cajeroIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.cajeroIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cajeroIdText.Location = new System.Drawing.Point(84, 20);
-            this.cajeroIdText.Name = "cajeroIdText";
-            this.cajeroIdText.Size = new System.Drawing.Size(183, 26);
-            this.cajeroIdText.TabIndex = 29;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(17, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Cajero";
-            // 
             // fechaText
             // 
-            this.fechaText.Location = new System.Drawing.Point(740, 121);
+            this.fechaText.Location = new System.Drawing.Point(734, 89);
             this.fechaText.Name = "fechaText";
             this.fechaText.ReadOnly = true;
             this.fechaText.Size = new System.Drawing.Size(138, 20);
@@ -156,7 +120,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(607, 119);
+            this.label1.Location = new System.Drawing.Point(601, 87);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 20);
             this.label1.TabIndex = 32;
@@ -171,6 +135,8 @@
             this.dosMilText.Name = "dosMilText";
             this.dosMilText.Size = new System.Drawing.Size(111, 26);
             this.dosMilText.TabIndex = 33;
+            this.dosMilText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dosMilText_KeyPress);
+            this.dosMilText.Leave += new System.EventHandler(this.dosMilText_Leave);
             // 
             // label3
             // 
@@ -201,6 +167,8 @@
             this.milText.Name = "milText";
             this.milText.Size = new System.Drawing.Size(111, 26);
             this.milText.TabIndex = 35;
+            this.milText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.milText_KeyPress);
+            this.milText.Leave += new System.EventHandler(this.milText_Leave);
             // 
             // label5
             // 
@@ -221,6 +189,8 @@
             this.quinientoText.Name = "quinientoText";
             this.quinientoText.Size = new System.Drawing.Size(111, 26);
             this.quinientoText.TabIndex = 37;
+            this.quinientoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.quinientoText_KeyPress);
+            this.quinientoText.Leave += new System.EventHandler(this.quinientoText_Leave);
             // 
             // label6
             // 
@@ -241,6 +211,8 @@
             this.cienText.Name = "cienText";
             this.cienText.Size = new System.Drawing.Size(111, 26);
             this.cienText.TabIndex = 39;
+            this.cienText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cienText_KeyPress);
+            this.cienText.Leave += new System.EventHandler(this.cienText_Leave);
             // 
             // label7
             // 
@@ -261,6 +233,8 @@
             this.cincuentaText.Name = "cincuentaText";
             this.cincuentaText.Size = new System.Drawing.Size(111, 26);
             this.cincuentaText.TabIndex = 41;
+            this.cincuentaText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cincuentaText_KeyPress);
+            this.cincuentaText.Leave += new System.EventHandler(this.cincuentaText_Leave);
             // 
             // label8
             // 
@@ -281,6 +255,8 @@
             this.venticincoText.Name = "venticincoText";
             this.venticincoText.Size = new System.Drawing.Size(111, 26);
             this.venticincoText.TabIndex = 43;
+            this.venticincoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.venticincoText_KeyPress);
+            this.venticincoText.Leave += new System.EventHandler(this.venticincoText_Leave);
             // 
             // label9
             // 
@@ -301,6 +277,8 @@
             this.veinteText.Name = "veinteText";
             this.veinteText.Size = new System.Drawing.Size(111, 26);
             this.veinteText.TabIndex = 45;
+            this.veinteText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.veinteText_KeyPress);
+            this.veinteText.Leave += new System.EventHandler(this.veinteText_Leave);
             // 
             // label10
             // 
@@ -321,6 +299,8 @@
             this.diezText.Name = "diezText";
             this.diezText.Size = new System.Drawing.Size(111, 26);
             this.diezText.TabIndex = 47;
+            this.diezText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.diezText_KeyPress);
+            this.diezText.Leave += new System.EventHandler(this.diezText_Leave);
             // 
             // label11
             // 
@@ -341,6 +321,8 @@
             this.cincoText.Name = "cincoText";
             this.cincoText.Size = new System.Drawing.Size(111, 26);
             this.cincoText.TabIndex = 49;
+            this.cincoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cincoText_KeyPress);
+            this.cincoText.Leave += new System.EventHandler(this.cincoText_Leave);
             // 
             // label12
             // 
@@ -361,10 +343,14 @@
             this.unoText.Name = "unoText";
             this.unoText.Size = new System.Drawing.Size(111, 26);
             this.unoText.TabIndex = 51;
+            this.unoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unoText_KeyPress);
+            this.unoText.Leave += new System.EventHandler(this.unoText_Leave);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.doscientosText);
+            this.groupBox2.Controls.Add(this.montoTotalEfectivoText);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.dosMilText);
             this.groupBox2.Controls.Add(this.label12);
@@ -386,11 +372,21 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.cienText);
-            this.groupBox2.Location = new System.Drawing.Point(12, 147);
+            this.groupBox2.Location = new System.Drawing.Point(12, 115);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(866, 198);
+            this.groupBox2.Size = new System.Drawing.Size(866, 230);
             this.groupBox2.TabIndex = 53;
             this.groupBox2.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(584, 199);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(117, 20);
+            this.label14.TabIndex = 55;
+            this.label14.Text = "Total efectivo";
             // 
             // doscientosText
             // 
@@ -401,6 +397,18 @@
             this.doscientosText.Name = "doscientosText";
             this.doscientosText.Size = new System.Drawing.Size(111, 26);
             this.doscientosText.TabIndex = 53;
+            this.doscientosText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.doscientosText_KeyPress);
+            this.doscientosText.Leave += new System.EventHandler(this.doscientosText_Leave);
+            // 
+            // montoTotalEfectivoText
+            // 
+            this.montoTotalEfectivoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.montoTotalEfectivoText.Location = new System.Drawing.Point(707, 194);
+            this.montoTotalEfectivoText.Name = "montoTotalEfectivoText";
+            this.montoTotalEfectivoText.ReadOnly = true;
+            this.montoTotalEfectivoText.Size = new System.Drawing.Size(153, 30);
+            this.montoTotalEfectivoText.TabIndex = 54;
+            this.montoTotalEfectivoText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label13
             // 
@@ -412,7 +420,7 @@
             this.label13.TabIndex = 54;
             this.label13.Text = "$200";
             // 
-            // ventana_cuadre_caja
+            // ventana_cuadre_caja_rd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -421,7 +429,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.fechaText);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ventana_cuadre_caja";
+            this.Name = "ventana_cuadre_caja_rd";
             this.Text = "s";
             this.Load += new System.EventHandler(this.ventana_cuadre_caja_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
@@ -445,10 +453,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label cajeroLabel;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox cajeroIdText;
         private System.Windows.Forms.TextBox fechaText;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox dosMilText;
@@ -474,6 +479,8 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox doscientosText;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox montoTotalEfectivoText;
 
     }
 }

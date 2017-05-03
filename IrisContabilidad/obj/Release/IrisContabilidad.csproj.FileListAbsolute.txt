@@ -171,7 +171,6 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\I
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_caja_apertura.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_caja_ingresos_egresos_conceptos.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_cajero.resources
-C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_cuadre_caja.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_desglose_dinero.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_facturacion_normal.resources
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_itebis.resources
@@ -241,3 +240,5 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\G
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GoogleApi.xml
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\Newtonsoft.Json.xml
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.application
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_cuadre_caja_rd.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_imprimir_cuadre_caja_rd.resources

@@ -48,6 +48,7 @@ namespace IrisContabilidad.ventanas_comunes
                 MessageBox.Show("Error agregando el log de reporte.: "+ex.ToString());
             }
         }
+
         private void GetLoad(String reporte, List<ReportDataSource> lista, List<ReportParameter> ListaReportParameter)
         {
             Reporte.LocalReport.ReportEmbeddedResource = reporte;
@@ -60,6 +61,7 @@ namespace IrisContabilidad.ventanas_comunes
                 Reporte.LocalReport.SetParameters(ListaReportParameter);
             }
         }
+
         private void visor_reporte_Load(object sender, EventArgs e)
         {
             Reporte.SetDisplayMode(DisplayMode.PrintLayout);

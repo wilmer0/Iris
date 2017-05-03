@@ -31,8 +31,7 @@ namespace IrisContabilidad.modelos
                 modeloCajero modeloCajero=new modeloCajero();
                 if ((modeloCajero.getValidarCajaAbiertaByCajero(cuadreCaja.codigo_cajero)) == true)
                 {
-                    MessageBox.Show("El cajero tiene una caja abierta, primero debe cuadrar antes de realizar una apertura de caja",
-                        "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("El cajero tiene una caja abierta, primero debe cuadrar antes de realizar una apertura de caja","", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 string sql = "";
@@ -51,13 +50,76 @@ namespace IrisContabilidad.modelos
                 }
 
                 sql = "insert into cuadre_caja(codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre)values('" + cuadreCaja.codigo + "','" + cuadreCaja.codigo_cajero + "'," + utilidades.getFechayyyyMMdd(cuadreCaja.fecha) + ",'" + cuadreCaja.turno + "','" + activo + "','" + cuadreCaja.codigo_sucursal + "','" + cuadreCaja.codigo_caja + "','" + cuadreCaja.efectivo_inicial + "','" + cajaCuadrada + "','" + cajaAbierta + "','" + utilidades.getFechayyyyMMdd(cuadreCaja.fecha_cierre_cuadre) + "')";
-                //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error agregarCuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+
+        //modificar cuadre de caja
+        public bool modificarCuadreCaja(cuadre_caja cuadreCaja, cuadre_caja_detalle cuadreCajaDetalle)
+        {
+            try
+            {
+                int activo = 0;
+                int cajaCuadrada = 0;
+                int cajaAbierta = 0;
+                //validar que tenga una apertura de caja activa
+                modeloCajero modeloCajero = new modeloCajero();
+                if ((modeloCajero.getValidarCajaAbiertaByCajero(cuadreCaja.codigo_cajero)) == false)
+                {
+                    MessageBox.Show("El cajero no tiene una caja abierta, primero debe realizar una apertura de caja", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                string sql = "";
+                DataSet ds = new DataSet();
+                if (cuadreCaja.activo == true)
+                {
+                    activo = 1;
+                }
+                if (cuadreCaja.caja_cuadrada == true)
+                {
+                    cajaCuadrada = 1;
+                }
+                if (cuadreCaja.caja_abierta == true)
+                {
+                    cajaAbierta = 1;
+                }
+
+                //intente finalizar el cuadre de la caja ;
+                //en caso de que de error saldra de una vez y retorna false;
+                try
+                {
+                    List<cuadre_caja_transacciones> listaCuadreCajaTransacciones=new List<cuadre_caja_transacciones>();
+                    //agregando la lista de cuadre caja transacciones
+                    listaCuadreCajaTransacciones = cuadreCaja.cuadreCajaTransacciones.Distinct().ToList();
+                    new modeloCuadreCajaTransacciones().agregarCuadreCajaTransaccion(listaCuadreCajaTransacciones);
+
+                    //agregando el desglose de los montos                
+                    sql = "insert into cuadre_caja_detalles(codigo_cuadre,monto_efectivo,monto_tarjeta,monto_cheque,monto_deposito,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante,monto_notas_debito,monto_notas_credito,monto_cotizacion,monto_pedido) values('" + cuadreCajaDetalle.codigo_cuadre_caja + "','" + cuadreCajaDetalle.monto_efectivo + "','" + cuadreCajaDetalle.monto_tarjeta + "','" + cuadreCajaDetalle.monto_cheque + "','" + cuadreCajaDetalle.monto_deposito + "','" + cuadreCajaDetalle.monto_egreso + "','" + cuadreCajaDetalle.monto_ingreso + "','" + cuadreCajaDetalle.monto_sobrante + "','" + cuadreCajaDetalle.monto_faltante + "','" + cuadreCajaDetalle.montoNotasDebito + "','" + cuadreCajaDetalle.montoNotasCredito + "','" + cuadreCajaDetalle.monto_cotizacion + "','" + cuadreCajaDetalle.monto_pedido + "');";
+                    utilidades.ejecutarcomando_mysql(sql);
+                
+                    //cerrando el cuadre de caja
+                    sql = "update cuadre_caja set cod_cajero='" + cuadreCaja.codigo_cajero + "',activo='" + activo + "', caja_cuadrada='" + cajaCuadrada + "',caja_abierta='" + cajaAbierta + "',fecha_cierre_cuadre=" + utilidades.getFechayyyyMMdd(cuadreCaja.fecha_cierre_cuadre) + " where codigo='"+cuadreCaja.codigo+"'";
+                    utilidades.ejecutarcomando_mysql(sql);
+
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+                
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error modificarCuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -169,18 +231,22 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    cuadreCaja.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
-                    cuadreCaja.codigo_cajero = Convert.ToInt16(ds.Tables[0].Rows[0][1].ToString());
-                    cuadreCaja.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][2].ToString());
-                    cuadreCaja.turno = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    cuadreCaja.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                    cuadreCaja.codigo_cajero = Convert.ToInt16(ds.Tables[0].Rows[0][1]);
+                    cuadreCaja.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][2]);
+                    cuadreCaja.turno = Convert.ToInt16(ds.Tables[0].Rows[0][3]);
                     cuadreCaja.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
-                    cuadreCaja.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][5].ToString());
-                    cuadreCaja.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][6].ToString());
+                    cuadreCaja.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][5]);
+                    cuadreCaja.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][6]);
                     cuadreCaja.efectivo_inicial = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
                     cuadreCaja.caja_cuadrada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
-                    cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
-                    cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][9].ToString());
+                    cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][9]);
+                    cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][10]);
                 }
+
+                cuadreCaja.cuadre_caja_detalle = getCuadreCajaDetalleByCuadreCajaId(cuadreCaja.codigo);
+                //falta que retorne las transacciones del cuadre de caja
+                cuadreCaja.cuadreCajaTransacciones = new modeloCuadreCajaTransacciones().getListaCompletaByCuadreCajaId(cuadreCaja.codigo);
                 return cuadreCaja;
             }
             catch (Exception ex)
@@ -190,20 +256,52 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //get lista Lista Cuadre Caja Detalle By Cuadre Caja Id
-        public List<cuadre_caja_detalle> getListaCuadreCajaDetalleByCuadreCajaId(int id)
+        //get cuadre caja by cajero
+        public cuadre_caja getCuadreCajaByCajeroId(int id)
         {
             try
             {
-                List<cuadre_caja_detalle> lista = new List<cuadre_caja_detalle>();
+                cuadre_caja cuadreCaja = new cuadre_caja();
+                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre from cuadre_caja where cod_cajero='" + id + "' and caja_abierta='1'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    cuadreCaja.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    cuadreCaja.codigo_cajero = Convert.ToInt16(ds.Tables[0].Rows[0][1]);
+                    cuadreCaja.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][2].ToString());
+                    cuadreCaja.turno = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    cuadreCaja.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
+                    cuadreCaja.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][5]);
+                    cuadreCaja.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][6].ToString());
+                    cuadreCaja.efectivo_inicial = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
+                    cuadreCaja.caja_cuadrada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][9]);
+                    //cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][10]);
+                    cuadreCaja.fecha_cierre_cuadre = DateTime.Today;
+                }
+                return cuadreCaja;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCuadreCajaByCajeroId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get lista Lista Cuadre Caja Detalle By Cuadre Caja Id
+        public cuadre_caja_detalle getCuadreCajaDetalleByCuadreCajaId(int id)
+        {
+            try
+            {
                 string sql = "";
                 sql = "select codigo_cuadre,monto_efectivo,monto_tarjeta,monto_cheque,monto_deposito,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante from cuadre_caja_detalles where codigo_cuadre='"+id+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                cuadre_caja_detalle cuadreCajaDetalle = new cuadre_caja_detalle();
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        cuadre_caja_detalle cuadreCajaDetalle = new cuadre_caja_detalle();
+                        
                         cuadreCajaDetalle.codigo_cuadre_caja = Convert.ToInt16(row[0].ToString());
                         cuadreCajaDetalle.monto_efectivo = Convert.ToDecimal(row[1].ToString());
                         cuadreCajaDetalle.monto_tarjeta = Convert.ToDecimal(row[2].ToString());
@@ -213,14 +311,14 @@ namespace IrisContabilidad.modelos
                         cuadreCajaDetalle.monto_ingreso = Convert.ToDecimal(row[6].ToString());
                         cuadreCajaDetalle.monto_sobrante = Convert.ToDecimal(row[7].ToString());
                         cuadreCajaDetalle.monto_faltante = Convert.ToDecimal(row[8].ToString());
-                        lista.Add(cuadreCajaDetalle);
+                        
                     }
                 }
-                return lista;
+                return cuadreCajaDetalle;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCuadreCajaDetalleByCuadreCajaId.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getCuadreCajaDetalleByCuadreCajaId.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }
@@ -366,6 +464,61 @@ namespace IrisContabilidad.modelos
             }
         }
 
-      
+        //obtiene el efectivo inicial del cuadre de caja
+        public decimal getMontoAperturaByCuadreCajaId(int id)
+        {
+            
+            try
+            {
+                decimal montoInicial = -1;
+                string sql = "select efectivo_inicial from cuadre_caja where codigo='"+id+"';";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (Convert.ToDecimal(ds.Tables[0].Rows[0][0].ToString()) >= 0)
+                {
+                    montoInicial = Convert.ToDecimal(ds.Tables[0].Rows[0][0]);
+                }
+                return montoInicial;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoAperturaByCuadreCajaId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+
+        //get cuadre cuaja by cajero y fecha cierre caja
+        public cuadre_caja getCuadreCajaByCajeroIdAndFechaCiere(int idCajero,DateTime fechaCiere)
+        {
+            try
+            {
+                cuadre_caja cuadreCaja = new cuadre_caja();
+                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre from cuadre_caja where cod_cajero='" + idCajero + "' and fecha_cierre_cuadre="+utilidades.getFechayyyyMMdd(fechaCiere);
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    cuadreCaja.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
+                    cuadreCaja.codigo_cajero = Convert.ToInt16(ds.Tables[0].Rows[0][1]);
+                    cuadreCaja.fecha = Convert.ToDateTime(ds.Tables[0].Rows[0][2]);
+                    cuadreCaja.turno = Convert.ToInt16(ds.Tables[0].Rows[0][3]);
+                    cuadreCaja.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
+                    cuadreCaja.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][5]);
+                    cuadreCaja.codigo_caja = Convert.ToInt16(ds.Tables[0].Rows[0][6]);
+                    cuadreCaja.efectivo_inicial = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
+                    cuadreCaja.caja_cuadrada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][9]);
+                    cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][10]);
+                }
+
+                cuadreCaja.cuadre_caja_detalle = getCuadreCajaDetalleByCuadreCajaId(cuadreCaja.codigo);
+                cuadreCaja.cuadreCajaTransacciones = new modeloCuadreCajaTransacciones().getListaCompletaByCuadreCajaId(cuadreCaja.codigo);
+                return cuadreCaja;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCuadreCajaById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+       
     }
 }

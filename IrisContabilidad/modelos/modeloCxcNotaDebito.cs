@@ -288,7 +288,7 @@ namespace IrisContabilidad.modelos
                     return null;
                 }
                 List<cxc_nota_debito> lista = new List<cxc_nota_debito>();
-                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,cuadrado,contabilizado from cxc_nota_debito where  activo='1' and cuadrado='0' and fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' and codigo_empleado='"+empleado.codigo+"'";
+                string sql = "select codigo,codigo_cliente,fecha,activo,codigo_empleado,monto,detalle,codigo_venta,codigo_concepto,cuadrado,contabilizado from cxc_nota_debito where  activo='1' and cuadrado='0' and fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' and codigo_empleado='"+cuadre.codigo_cajero+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
