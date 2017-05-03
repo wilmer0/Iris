@@ -250,7 +250,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 List<egreso_caja> lista = new List<egreso_caja>();
-                string sql = "select codigo,cod_concepto,fecha,cod_Cajero,monto,detalles,afecta_cuadre,activo,cuadrado from egresos_caja where cuadrado='0' and activo='1' and cod_cajero='"+cuadre.codigo_cajero+"' and afecta_cuadre='1' and fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' ";
+                string sql = "select codigo,cod_concepto,fecha,cod_Cajero,monto,detalles,afecta_cuadre,activo,cuadrado from egresos_caja where cuadrado='0' and activo='1' and cod_cajero='"+cuadre.codigo_cajero+"' and afecta_cuadre='1' and fecha>=" + utilidades.getFechayyyyMMdd(cuadre.fecha) + " and fecha<=" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {

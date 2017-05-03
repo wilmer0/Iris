@@ -24,6 +24,7 @@ namespace IrisContabilidad.clases
         public Boolean caja_abierta { get; set; }
 
         public cuadre_caja_detalle cuadre_caja_detalle { get; set; }
+        public List<cuadre_caja_transacciones> cuadreCajaTransacciones { get; set; }
 
 
 
@@ -36,8 +37,12 @@ namespace IrisContabilidad.clases
         {
             try
             {
-
+                string sql = "";
+                utilidades utilidades=new utilidades();        
                 cuadre_caja_detalle = new cuadre_caja_detalle();
+
+                List<cuadre_caja_transacciones> listaCuadreCajaTransacciones = new List<cuadre_caja_transacciones>();
+                cuadre_caja_transacciones cuadreCajaTransacciones = new cuadre_caja_transacciones();
 
                 empleado empleado = new modeloEmpleado().getEmpleadoById(singleton.getEmpleado().codigo);
                 if (empleado == null)
@@ -65,16 +70,28 @@ namespace IrisContabilidad.clases
                 List<ventaDevolucionDetalle> listaVentaDevolucion = new List<ventaDevolucionDetalle>();
 
 
-                listaVentaDetalle = new modeloVenta().getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadreCaja);
-                listaVentasCobrosDetalles = new modeloCobro().getListaCobrosDetallesCompletaSinCuadradaBycuadreCaja(cuadreCaja);
+                List<int> listaVenta = new List<int>();
+                List<int> listaCobros = new List<int>();
+                List<int> listaPago = new List<int>();
+                List<int> listaGasto = new List<int>();
+                
+                
+                listaVentaDetalle = new modeloVenta().getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadreCaja).OrderBy(x=> x.cod_venta).ToList();
+                listaVentasCobrosDetalles = new modeloCobro().getListaCobrosDetallesCompletaSinCuadradaBycuadreCaja(cuadreCaja).OrderBy(x => x.codigo_cobro).ToList();
                 listaIngresosCajas = new modeloIngresoCaja().getListaIngresosCajaNoCuadradaCompletaByCuadreCaja(cuadreCaja);
-                listaPagoDetalle = new modeloCompra().getListaCompraPagoDetalleCompletaByCuadreCaja(cuadreCaja);
+                listaPagoDetalle = new modeloCompra().getListaCompraPagoDetalleCompletaByCuadreCaja(cuadreCaja).OrderBy(x => x.codigo_pago).ToList();
                 listaEgresosCaja = new modeloEgresoCaja().getListaCompletaByCuadreCaja(cuadreCaja);
                 listaGastos = new modeloGasto().getListaGastosCompletabyCuadreCaja(cuadreCaja);
                 listaNotasCredito = new modeloCxcNotaCredito().getListaCompletaByCuadreCaja(cuadreCaja);
                 listaNotasDebito = new modeloCxcNotaDebito().getListaCompletaByCuadreCaja(cuadreCaja);
-                listaVentaDevolucion = new modeloVentaDevolucion().getListaVentaDevolucionDetalleByCuadreCaja(cuadreCaja);
+                listaVentaDevolucion = new modeloVentaDevolucion().getListaVentaDevolucionDetalleByCuadreCaja(cuadreCaja).OrderBy(x => x.codigo_devolucion).ToList();
 
+               
+
+
+                //limpiando la tabla transacciones cuadre caja que pertenezcan a este cuadre de caja
+                sql = "delete from cuadre_caja_transacciones where codigo_cuadre_caja='"+cuadreCaja.codigo+"';";
+                utilidades.ejecutarcomando_mysql(sql);
 
                 //llenando el detalle del cuadre de caja
                 cuadre_caja_detalle.codigo_cuadre_caja = cuadreCaja.codigo;
@@ -101,13 +118,20 @@ namespace IrisContabilidad.clases
                     {
                         //pedido
                         cuadre_caja_detalle.montoFacturaPedido += x.monto_total;
-
                     }
                     else if (venta.tipo_venta.ToLower() == "cot")
                     {
                         //cotizacion
                         cuadre_caja_detalle.montoFacturaCotizacion += x.monto_total;
-
+                    }
+                   
+                    if (!listaVenta.Contains(venta.codigo))
+                    {
+                        listaVenta.Add(venta.codigo);
+                        cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                        cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                        cuadreCajaTransacciones.codigoVenta = x.codigo;
+                        listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
                     }
                 }
                 #endregion
@@ -131,6 +155,8 @@ namespace IrisContabilidad.clases
                         //cheque
                         cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
                     }
+                   
+                   
                 }
                 #endregion
 
@@ -139,6 +165,14 @@ namespace IrisContabilidad.clases
                 foreach (var x in listaIngresosCajas)
                 {
                     cuadre_caja_detalle.monto_ingreso += x.monto;
+                    sql = "insert into cuadre_caja_transacciones(codigo_cuadre_caja,codigo_venta,codigo_cobro,codigo_ingreso_caja,codigo_egreso_caja,codigo_nota_credito,codigo_nota_debito,codigo_gasto,codigo_pago) values('" + cuadreCaja.codigo + "','" + x.codigo + "','codigocobro','codigoingresocaja','codigoegresocaja','codigonotacredito','codigonotadebito','codigogasto','codigopago');";
+                    utilidades.ejecutarcomando_mysql(sql);
+
+                    cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                    cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                    cuadreCajaTransacciones.codigoVenta = x.codigo;
+                    listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
+                    
                 }
                 #endregion
 
@@ -163,6 +197,17 @@ namespace IrisContabilidad.clases
                         //cheque
                         cuadre_caja_detalle.montoPagoCheque += x.monto_pagado;
                     }
+
+                    if (!listaPago.Contains(x.codigo))
+                    {
+                        listaPago.Add(x.codigo);
+                        cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                        cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                        cuadreCajaTransacciones.codigoPago = x.codigo_pago;
+                        listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
+
+                    }
+                   
                 }
                 #endregion
 
@@ -185,6 +230,17 @@ namespace IrisContabilidad.clases
                         //cheque
                         cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
                     }
+
+
+                    if (!listaCobros.Contains(x.codigo_cobro))
+                    {
+                        listaCobros.Add(x.codigo_cobro);
+                        cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                        cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                        cuadreCajaTransacciones.codigoCobro = x.codigo_cobro;
+                        listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
+                    }
+                    
                 }
                 #endregion
 
@@ -193,6 +249,13 @@ namespace IrisContabilidad.clases
                 foreach (var x in listaEgresosCaja)
                 {
                     cuadre_caja_detalle.monto_egreso += x.monto;
+
+
+                    cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                    cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                    cuadreCajaTransacciones.codigoEgresoCaja = x.codigo;
+                    listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
+                    
                 }
                 #endregion
 
@@ -201,6 +264,17 @@ namespace IrisContabilidad.clases
                 foreach (var x in listaGastos)
                 {
                     cuadre_caja_detalle.montoGasto += x.monto_total;
+
+                   
+
+                    if (!listaGasto.Contains(x.codigo))
+                    {
+                        listaGasto.Add(x.codigo);
+                        cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                        cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                        cuadreCajaTransacciones.codigoGasto = x.codigo;
+                        listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
+                    }
                 }
                 #endregion
 
@@ -209,6 +283,12 @@ namespace IrisContabilidad.clases
                 foreach (var x in listaNotasDebito)
                 {
                     cuadre_caja_detalle.montoNotasDebito += x.monto;
+
+                    cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                    cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                    cuadreCajaTransacciones.codigoNotaDebito = x.codigo;
+                    listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
+
                 }
                 #endregion
 
@@ -217,6 +297,11 @@ namespace IrisContabilidad.clases
                 foreach (var x in listaNotasCredito)
                 {
                     cuadre_caja_detalle.montoNotasCredito += x.monto;
+
+                    cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                    cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                    cuadreCajaTransacciones.codigoNotaCredito = x.codigo;
+                    listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
                 }
                 #endregion
 
@@ -225,11 +310,14 @@ namespace IrisContabilidad.clases
                 foreach (var x in listaVentaDevolucion)
                 {
                     cuadre_caja_detalle.montoVentaDevolucion += x.monto_total;
+
                 }
                 #endregion
 
                 cuadreCaja.cuadre_caja_detalle = cuadre_caja_detalle;
+                cuadreCaja.cuadreCajaTransacciones = listaCuadreCajaTransacciones;
 
+                
                 return cuadreCaja;
             }
             catch (Exception ex)

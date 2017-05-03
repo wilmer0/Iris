@@ -44,6 +44,7 @@ namespace IrisContabilidad.modulo_facturacion
         modeloEgresoCaja modeloEgreCaja=new modeloEgresoCaja();
         modeloIngresoCaja modeloIngresoCaja=new modeloIngresoCaja();
         modeloCompra modeloCompra=new modeloCompra();
+        ModeloReporte modeloReporte=new ModeloReporte();
 
         //listas
 
@@ -102,6 +103,7 @@ namespace IrisContabilidad.modulo_facturacion
                     cincoText.Text = "0.00";
                     unoText.Text = "0.00";
 
+                   
                     //obtener todos los valores de los montos
                     cuadreCaja = modeloCuadreCaja.getCuadreCajaByCajeroId(cajero.codigo);
 
@@ -181,6 +183,7 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+                
                 if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
@@ -193,11 +196,18 @@ namespace IrisContabilidad.modulo_facturacion
                 cuadreCaja.activo = true;
                 cuadreCaja.caja_abierta = false;
                 cuadreCaja.caja_cuadrada = true;
-                //cambiar la clave
+                cuadreCaja.fecha_cierre_cuadre = DateTime.Today;
+                
                 if (modeloCuadreCaja.modificarCuadreCaja(cuadreCaja,cuadreCaja.cuadre_caja_detalle)==true)
                 {
-                    cuadreCaja = null;
                     MessageBox.Show("Se realizó el cierre de caja con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (MessageBox.Show("Desea imprimir el reporte de cierre de caja?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        //imprimir
+                        modeloReporte.imprimirCuadreCajaGeneral(cuadreCaja.codigo);
+                    }
+                    
+                    cuadreCaja = null;
                     loadVentana();
                 }
                 else

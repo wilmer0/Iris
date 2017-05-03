@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,10 @@ namespace IrisContabilidad.modelos
             {
                 empleado = new empleado();
                 empleado = singleton.getEmpleado();
+                if (empleado == null)
+                {
+                    empleado = new modeloEmpleado().getEmpleadoById(1);
+                }
                 sucursal = new sucursal();
                 sucursal = new modeloSucursal().getSucursalById(empleado.codigo);
                 if (sucursal == null)
@@ -46,6 +51,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
+                
                 getSucursalVersion();
 
                 if (sucursal == null)
@@ -54,11 +60,95 @@ namespace IrisContabilidad.modelos
                     return false;
                 }
 
-                //si la version actual es menor que la 1 actualizala a la 1
-                if (sucursal.versionSistema <1)
+                //actualizaciones
+                #region
+                if (sucursal.versionSistema == 0)
                 {
                     version1(true);
+                    
+                }else if (sucursal.versionSistema == 1)
+                {
+                    version2(true);
+                }else if (sucursal.versionSistema == 2)
+                {
+                    //version3(true);
                 }
+                else if (sucursal.versionSistema == 3)
+                {
+                    //version4(true);
+                }
+                else if (sucursal.versionSistema == 4)
+                {
+                    //version5(true);
+                }
+                else if (sucursal.versionSistema == 5)
+                {
+                    //version6(true);
+                }
+                else if (sucursal.versionSistema == 6)
+                {
+                    //version7(true);
+                }
+                else if (sucursal.versionSistema == 7)
+                {
+                    //version8(true);
+                }
+                else if (sucursal.versionSistema == 8)
+                {
+                    //version9(true);
+                }
+                else if (sucursal.versionSistema == 9)
+                {
+                    //version10(true);
+                }
+                else if (sucursal.versionSistema == 10)
+                {
+                    //version11(true);
+                }
+                else if (sucursal.versionSistema == 11)
+                {
+                    //version12(true);
+                }
+                else if (sucursal.versionSistema == 12)
+                {
+                    //version13(true);
+                }
+                else if (sucursal.versionSistema == 13)
+                {
+                    //version14(true);
+                }
+                else if (sucursal.versionSistema == 14)
+                {
+                    //version15(true);
+                }
+                else if (sucursal.versionSistema == 15)
+                {
+                    //version16(true);
+                }
+                else if (sucursal.versionSistema == 16)
+                {
+                    //version17(true);
+                }
+                else if (sucursal.versionSistema == 17)
+                {
+                    //version18(true);
+                }
+                else if (sucursal.versionSistema == 18)
+                {
+                    //version19(true);
+                }
+                else if (sucursal.versionSistema == 19)
+                {
+                    //version20(true);
+                }
+                else if (sucursal.versionSistema == 20)
+                {
+                    //version21(true);
+                }
+
+                #endregion
+
+
 
                 return true;
             }
@@ -129,18 +219,9 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cuadre_caja_transacciones` MODIFY COLUMN `codigo_venta` INTEGER, MODIFY COLUMN `codigo_cobro` INTEGER, MODIFY COLUMN `codigo_ingreso_caja` INTEGER, MODIFY COLUMN `codigo_egreso_caja` VARCHAR(45) CHARACTER SET utf8 COLLATE utf8_general_ci, MODIFY COLUMN `codigo_nota_credito` INTEGER, MODIFY COLUMN `codigo_nota_debito` INTEGER, MODIFY COLUMN `codigo_gasto` INTEGER, MODIFY COLUMN `codigo_pago` INTEGER;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`producto_unidad_conversion` MODIFY COLUMN `cantidad` DECIMAL(20,2) NOT NULL DEFAULT 1.00, MODIFY COLUMN `precio_venta1` DECIMAL(20,2) NOT NULL DEFAULT 0.00, MODIFY COLUMN `costo` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
                 utilidades.ejecutarcomando_mysql(sql);
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                
-
-
-
+               
 
 
 
@@ -163,6 +244,54 @@ namespace IrisContabilidad.modelos
             }
         }
 
+
+        private void version2(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version2
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 2;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version1.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
 
 
     }

@@ -72,7 +72,6 @@ namespace IrisContabilidad
             }
         }
 
-
         public void ValidarCrearPrimeraEmpresa()
         {
             try
@@ -120,9 +119,11 @@ namespace IrisContabilidad
             try
             {
                 //modeloEmpleado.adminPrimerLogin();
-                
+
                 if (!ValidarGetAction())
+                {
                     return;
+                }
                 //if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 //{
                 //    return;
@@ -175,12 +176,7 @@ namespace IrisContabilidad
                 
             }
         }
-
-
-
-
-
-
+        
         public  void Salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -228,6 +224,7 @@ namespace IrisContabilidad
             ventana.Owner = this;
             ventana.ShowDialog();
         }
+
        
     }
 }
