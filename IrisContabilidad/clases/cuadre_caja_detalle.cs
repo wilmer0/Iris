@@ -30,6 +30,7 @@ namespace IrisContabilidad.clases
         public decimal montoFacturaCotizacion { get; set; }
         public decimal montoFacturaPedido { get; set; }
         public decimal montoFacturaCredito { get; set; }
+        public decimal montoFacturadoEfectivo { get; set; }
 
         //cobros de ventas
         public decimal montoCobrosEfectivo { get; set; }

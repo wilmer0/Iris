@@ -273,10 +273,10 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_efectivo_recibido_cajero` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_pagos_efectivo`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_cobro_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_efectivo_recibido_cajero`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_venta_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cobro_efectivo`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

@@ -136,6 +136,44 @@ namespace IrisContabilidad.clases
                 }
                 #endregion
 
+
+                //recorriendo la lista de cobros para saber cuales cobros fueron de ventas en efectivo
+                #region
+                /*   1-el cobro tiene que ser efectivo
+                     2-la venta que esta atada al cobro debe existir en las ventas detalles
+                
+                 */
+                foreach (var x in listaVentasCobrosDetalles)
+                {
+                    bool existe = false;
+                    //el cobro tiene que ser en efectivo
+                    if (x.codigo_metodo_cobro == 1)
+                    {
+                        //si la venta de ese cobro existe en las ventas detalle
+                        if (listaVentaDetalle.Where(vd => vd.cod_venta == x.codigo_venta).Count() >= 1)
+                        {
+                            cuadre_caja_detalle.montoFacturadoEfectivo += x.monto_cobrado;
+                        }
+
+                        //funciona
+                        //    foreach (var vd in listaVentaDetalle)
+                        //    {
+                        //        if (vd.cod_venta == x.codigo_venta)
+                        //        {
+                        //            existe = true;
+                        //        }
+                        //    }
+                        //    if (existe == true)
+                        //    {
+                        //        cuadre_caja_detalle.montoFacturadoEfectivo += x.monto_cobrado;
+                        //    }
+                        
+                    }
+                }
+
+                #endregion
+
+
                 //recorriendo la lista de cobros para sacar los montos
                 #region
                 foreach (var x in listaVentasCobrosDetalles)
