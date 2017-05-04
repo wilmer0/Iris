@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.linkLabel5 = new System.Windows.Forms.LinkLabel();
@@ -999,6 +999,7 @@
             this.cantidadText.Name = "cantidadText";
             this.cantidadText.Size = new System.Drawing.Size(104, 26);
             this.cantidadText.TabIndex = 62;
+            this.cantidadText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cantidadText_KeyDown);
             this.cantidadText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cantidadText_KeyPress);
             // 
             // label18
@@ -1020,6 +1021,7 @@
             this.precioCostoText.Name = "precioCostoText";
             this.precioCostoText.Size = new System.Drawing.Size(104, 26);
             this.precioCostoText.TabIndex = 60;
+            this.precioCostoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.precioCostoText_KeyDown);
             this.precioCostoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.precioCostoText_KeyPress);
             // 
             // label17
@@ -1041,6 +1043,7 @@
             this.precioVentaText.Name = "precioVentaText";
             this.precioVentaText.Size = new System.Drawing.Size(104, 26);
             this.precioVentaText.TabIndex = 58;
+            this.precioVentaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.precioVentaText_KeyDown);
             this.precioVentaText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.precioVentaText_KeyPress);
             // 
             // label14
@@ -1094,6 +1097,8 @@
             this.unidadIdPrecioVentaText.Name = "unidadIdPrecioVentaText";
             this.unidadIdPrecioVentaText.Size = new System.Drawing.Size(183, 26);
             this.unidadIdPrecioVentaText.TabIndex = 53;
+            this.unidadIdPrecioVentaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.unidadIdPrecioVentaText_KeyDown);
+            this.unidadIdPrecioVentaText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unidadIdPrecioVentaText_KeyPress);
             // 
             // button19
             // 
@@ -1163,8 +1168,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewTextBoxColumn5.FillWeight = 70F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Precio costo";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -1172,8 +1177,8 @@
             // 
             // precioVentaColumn
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle14;
             this.precioVentaColumn.FillWeight = 70F;
             this.precioVentaColumn.HeaderText = "Precio venta";
             this.precioVentaColumn.Name = "precioVentaColumn";
@@ -1392,8 +1397,8 @@
             // 
             // dataGridViewTextBoxColumn8
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn8.FillWeight = 30F;
             this.dataGridViewTextBoxColumn8.HeaderText = "Cantidad";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
