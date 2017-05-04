@@ -48,7 +48,7 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //despues de ingresar la primera, que empiece actualizar todas las tablas
-                    modeloActualizacion.actualizar();
+                    //modeloActualizacion.actualizar();
                     //no existe empresa entonces se debe agregar todo
                     primerosDatos();
                     agregarModulos();
@@ -107,6 +107,7 @@ namespace IrisContabilidad.modelos
                     sucursal.direccion = "Direccion";
                     sucursal.activo = true;
                     sucursal.versionSistema = 0;
+                    sucursal.versionSistemaMaxima = 0;
                     modeloSucursal.agregarSucursal(sucursal);
                 }
                 #endregion
@@ -1008,6 +1009,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 6;
                 ventana.imagen = "tipo_ventana1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Actualización sistema";
+                ventana.nombre_logico = "IrisContabilidad.modulo_opciones.ventana_actualizacion_sistema";
+                ventana.activo = true;
+                ventana.programador = true;
+                ventana.codigo_modulo = 6;
+                ventana.imagen = "actualizacion_sistema1.png";
                 listaVentana.Add(ventana);
                 #endregion
 

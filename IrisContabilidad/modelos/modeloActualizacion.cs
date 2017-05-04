@@ -47,12 +47,19 @@ namespace IrisContabilidad.modelos
         }
 
 
-        public bool actualizar()
+        public bool actualizar(sucursal sucursalParametro=null)
         {
             try
             {
-                
-                getSucursalVersion();
+                if (sucursalParametro == null)
+                {
+                    getSucursalVersion();
+                }
+                else
+                {
+                    sucursal = sucursalParametro;
+                }
+
 
                 if (sucursal == null)
                 {
@@ -69,6 +76,7 @@ namespace IrisContabilidad.modelos
                 }else if (sucursal.versionSistema == 1)
                 {
                     version2(true);
+
                 }else if (sucursal.versionSistema == 2)
                 {
                     //version3(true);
@@ -222,16 +230,11 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`producto_unidad_conversion` MODIFY COLUMN `cantidad` DECIMAL(20,2) NOT NULL DEFAULT 1.00, MODIFY COLUMN `precio_venta1` DECIMAL(20,2) NOT NULL DEFAULT 0.00, MODIFY COLUMN `costo` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
                 utilidades.ejecutarcomando_mysql(sql);
                
-
-
-
-                utilidades.ejecutarcomando_mysql(sql);
-
-
                 #endregion
 
                 //actualizar la version de la sucursal
                 sucursal.versionSistema = 1;
+                sucursal.versionSistemaMaxima = 2;
                 modeloSucursal.modificarSucursal(sucursal);
                 
             }
@@ -253,34 +256,22 @@ namespace IrisContabilidad.modelos
 
                 #region querys version2
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`sucursal` ADD COLUMN `version_sistema_maxima` INTEGER NOT NULL DEFAULT 0 AFTER `version_sistema`;";
                 utilidades.ejecutarcomando_mysql(sql);
-
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sucursal` MODIFY COLUMN `version_sistema_maxima` INTEGER NOT NULL DEFAULT 50;";
+                utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";
                 utilidades.ejecutarcomando_mysql(sql);
                 
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
                 
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-
-
-
-                utilidades.ejecutarcomando_mysql(sql);
-
 
                 #endregion
 
                 //actualizar la version de la sucursal
                 sucursal.versionSistema = 2;
+                sucursal.versionSistemaMaxima = 3;
                 modeloSucursal.modificarSucursal(sucursal);
 
             }
