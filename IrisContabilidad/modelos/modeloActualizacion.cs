@@ -46,7 +46,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         public bool actualizar(sucursal sucursalParametro=null)
         {
             try
@@ -167,7 +166,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         private void version1(bool mostrarErrores=true)
         {
             try
@@ -246,7 +244,6 @@ namespace IrisContabilidad.modelos
                 }
             }
         }
-
 
         private void version2(bool mostrarErrores = true)
         {

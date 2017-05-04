@@ -1247,6 +1247,7 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //validaciones
+
                 //validar que tenga producto seleccionado
                 if (productoProduccion == null)
                 {
@@ -1283,6 +1284,15 @@ namespace IrisContabilidad.modulo_inventario
                     }
                 }
 
+                //validar que el producto no se tenga asi mismo como requisito
+                if (productoProduccion == producto)
+                {
+                    MessageBox.Show("No puede seleccionar el mismo producto como requisito", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                //agregando al datagrid
                 if (existe == false)
                 {
                     dataGridView4.Rows.Add(productoProduccion.codigo.ToString(),productoProduccion.nombre, unidadProduccion.codigo,unidadProduccion.nombre, cantidadProduccionText.Text.Trim());
@@ -1302,7 +1312,7 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //validar que tenga filas el datagrid
-                if (dataGridView4.Rows.Count < 0)
+                if (dataGridView4==null || dataGridView4.Rows.Count < 0)
                 {
                     return;
                 }
