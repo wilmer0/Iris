@@ -62,7 +62,7 @@ namespace IrisContabilidad.modelos
 
 
         //modificar cuadre de caja
-        public bool modificarCuadreCaja(cuadre_caja cuadreCaja, cuadre_caja_detalle cuadreCajaDetalle)
+        public bool modificarCuadreCaja(cuadre_caja cuadreCaja)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace IrisContabilidad.modelos
                     new modeloCuadreCajaTransacciones().agregarCuadreCajaTransaccion(listaCuadreCajaTransacciones);
 
                     //agregando el desglose de los montos                
-                    sql = "insert into cuadre_caja_detalles(codigo_cuadre,monto_efectivo,monto_tarjeta,monto_cheque,monto_deposito,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante,monto_notas_debito,monto_notas_credito,monto_cotizacion,monto_pedido) values('" + cuadreCajaDetalle.codigo_cuadre_caja + "','" + cuadreCajaDetalle.monto_efectivo + "','" + cuadreCajaDetalle.monto_tarjeta + "','" + cuadreCajaDetalle.monto_cheque + "','" + cuadreCajaDetalle.monto_deposito + "','" + cuadreCajaDetalle.monto_egreso + "','" + cuadreCajaDetalle.monto_ingreso + "','" + cuadreCajaDetalle.monto_sobrante + "','" + cuadreCajaDetalle.monto_faltante + "','" + cuadreCajaDetalle.montoNotasDebito + "','" + cuadreCajaDetalle.montoNotasCredito + "','" + cuadreCajaDetalle.monto_cotizacion + "','" + cuadreCajaDetalle.monto_pedido + "');";
+                    sql = "insert into cuadre_caja_detalles(codigo_cuadre,monto_efectivo,monto_tarjeta,monto_cheque,monto_deposito,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante,monto_notas_debito,monto_notas_credito,monto_cotizacion,monto_pedido,monto_venta_contado,monto_efectivo_apertura_caja) values('" + cuadreCaja.cuadre_caja_detalle.codigo_cuadre_caja + "','" + cuadreCaja.cuadre_caja_detalle.monto_efectivo + "','" + cuadreCaja.cuadre_caja_detalle.monto_tarjeta + "','" + cuadreCaja.cuadre_caja_detalle.monto_cheque + "','" + cuadreCaja.cuadre_caja_detalle.monto_deposito + "','" + cuadreCaja.cuadre_caja_detalle.monto_egreso + "','" + cuadreCaja.cuadre_caja_detalle.monto_ingreso + "','" + cuadreCaja.cuadre_caja_detalle.monto_sobrante + "','" + cuadreCaja.cuadre_caja_detalle.monto_faltante + "','" + cuadreCaja.cuadre_caja_detalle.montoNotasDebito + "','" + cuadreCaja.cuadre_caja_detalle.montoNotasCredito + "','" + cuadreCaja.cuadre_caja_detalle.monto_cotizacion + "','" + cuadreCaja.cuadre_caja_detalle.monto_pedido + "','" + cuadreCaja.cuadre_caja_detalle.montoFacturaContado + "','" + cuadreCaja.cuadre_caja_detalle.montoEfectivoAperturaCaja + "');";
                     utilidades.ejecutarcomando_mysql(sql);
                 
                     //cerrando el cuadre de caja

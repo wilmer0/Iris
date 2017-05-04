@@ -197,10 +197,14 @@ namespace IrisContabilidad.modulo_facturacion
                 cuadreCaja.caja_abierta = false;
                 cuadreCaja.caja_cuadrada = true;
                 cuadreCaja.fecha_cierre_cuadre = DateTime.Today;
+
+                //sumatoria del efectivo entregado en caja sumatoria del desglose del dinero al momento de cuadrar
+                cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero =Convert.ToDecimal(montoTotalEfectivoText.Text);
                 
-                if (modeloCuadreCaja.modificarCuadreCaja(cuadreCaja,cuadreCaja.cuadre_caja_detalle)==true)
+                if (modeloCuadreCaja.modificarCuadreCaja(cuadreCaja)==true)
                 {
                     MessageBox.Show("Se realizó el cierre de caja con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
                     if (MessageBox.Show("Desea imprimir el reporte de cierre de caja?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         //imprimir
@@ -230,6 +234,7 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
+
         private void ventana_cuadre_caja_Load(object sender, EventArgs e)
         {
 

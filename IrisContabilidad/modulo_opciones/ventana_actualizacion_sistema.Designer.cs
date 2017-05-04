@@ -41,7 +41,7 @@
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(12, 297);
-            this.panel1.Size = new System.Drawing.Size(750, 54);
+            this.panel1.Size = new System.Drawing.Size(555, 54);
             // 
             // button2
             // 
@@ -51,24 +51,24 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(609, 5);
+            this.button1.Location = new System.Drawing.Point(414, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(774, 21);
+            this.panel2.Size = new System.Drawing.Size(579, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(305, 5);
+            this.button3.Location = new System.Drawing.Point(207, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(42, 21);
+            this.label2.Location = new System.Drawing.Point(42, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(124, 20);
             this.label2.TabIndex = 79;
@@ -78,7 +78,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 75);
+            this.label1.Location = new System.Drawing.Point(13, 120);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(153, 20);
             this.label1.TabIndex = 80;
@@ -88,7 +88,7 @@
             // 
             this.versionActualText.BackColor = System.Drawing.Color.SkyBlue;
             this.versionActualText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.versionActualText.Location = new System.Drawing.Point(175, 19);
+            this.versionActualText.Location = new System.Drawing.Point(175, 64);
             this.versionActualText.Name = "versionActualText";
             this.versionActualText.Size = new System.Drawing.Size(183, 26);
             this.versionActualText.TabIndex = 81;
@@ -97,7 +97,7 @@
             // 
             this.versionActualizarText.BackColor = System.Drawing.Color.SkyBlue;
             this.versionActualizarText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.versionActualizarText.Location = new System.Drawing.Point(175, 74);
+            this.versionActualizarText.Location = new System.Drawing.Point(175, 119);
             this.versionActualizarText.Name = "versionActualizarText";
             this.versionActualizarText.Size = new System.Drawing.Size(183, 26);
             this.versionActualizarText.TabIndex = 82;
@@ -110,7 +110,7 @@
             this.groupBox1.Controls.Add(this.versionActualizarText);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(750, 264);
+            this.groupBox1.Size = new System.Drawing.Size(554, 264);
             this.groupBox1.TabIndex = 83;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 363);
+            this.ClientSize = new System.Drawing.Size(579, 363);
             this.Controls.Add(this.groupBox1);
             this.Name = "ventana_actualizacion_sistema";
             this.Text = "ventana_actualizacion_sistema";
