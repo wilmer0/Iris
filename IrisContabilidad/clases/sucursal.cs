@@ -17,6 +17,7 @@ namespace IrisContabilidad.clases
         public string telefono2 { get; set; }
         public string fax { get; set; }
         public int versionSistema { get; set; }
+        public int versionSistemaMaxima { get; set; }
 
     }
 }

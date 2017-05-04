@@ -154,14 +154,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="9103360">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="9241600">
       <assemblyIdentity name="IrisContabilidad" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IlZqCAaCIHgWEx+kI56UbDAj424qRfjI4hAAfnEGeYI=</dsig:DigestValue>
+        <dsig:DigestValue>FCW3LjqUEq2sVQVmeDMItBFDr9EJA4872RFraOicAXw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -327,22 +327,22 @@
       <dsig:DigestValue>Oz5UFoLkjz/Shy+FoGJ42i8+eHfulW2om5DXMqHqoL0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Release\IrisContabilidad.exe" size="9103360">
+  <file name="bin\Release\IrisContabilidad.exe" size="9241600">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>OCXh4nx1w0uqU6p15c594qwc+XQkyMWQ3vwXws2e2r4=</dsig:DigestValue>
+      <dsig:DigestValue>wdGUZcF1ILBXdytqyPBKBdBHTbXSaK9OLaobzlY5vMI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Release\IrisContabilidad.pdb" size="2156032">
+  <file name="bin\Release\IrisContabilidad.pdb" size="2190848">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>MR4l5W81Fs/cl3nPwpg5zGrYxoR7k45DsBXlpu7d6oY=</dsig:DigestValue>
+      <dsig:DigestValue>YXo+wPKa3YNDl5+bbihrSiu/6dzFxQIr3zm+isn5Kys=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\IrisContabilidad.vshost.exe" size="23168">
@@ -7147,6 +7147,87 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>ulCDs70gkaRTmSC69pOxQ0euLcDe+pscIl/n6oaVDP0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular.js" size="725366">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>r1/ZEiDmAawkarbi15IOv7ngSfbnFvE54rKKIKh5UVI=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular.min.js" size="99182">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>3fATgm4VUKe4z3JxPj7mVifXD8pAf3FMWZJIC2mL4FM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular-mocks.js" size="70216">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>9/Z0fbn/z94HqqyueWGwY7vahszMKQIIL67MrsglduM=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular-route.js" size="31541">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>ov39EFhi5QbeqKooxCPwpypskoSdIGa1iCYSiN3YJqw=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angular-route.min.js" size="3767">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>lb3FwPDvFsszAeTXUYL2NljBCr78SW9z4idEioJ/pFE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angulartics.js" size="9228">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>RpaBgonCdoAoWHasA/gYp6l5VnEgW2UdZPgmbkGwZvE=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angulartics.min.js" size="3845">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>E/6av+pL8a/1X+wbthTU25i4jnCjJVyqWWmFMr1gJjQ=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angulartics-ga-cordova.js" size="2564">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>G7r+HdhzHAmuHxS3OMbPkTW//uXS1twtBJX5yLxSw+Y=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="scripts\angulartics-ga-cordova.min.js" size="1238">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>mjN+CIgicDy6eHVYQeoiFrIWlakw+KKSPRUA+wfO44I=</dsig:DigestValue>
     </hash>
   </file>
   <file name="view.ico" size="17013">

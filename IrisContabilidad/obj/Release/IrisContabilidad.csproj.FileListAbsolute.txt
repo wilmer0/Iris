@@ -241,3 +241,5 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\G
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\Newtonsoft.Json.xml
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.application
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_cuadre_caja_rd.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_facturacion.ventana_imprimir_cuadre_caja_rd.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_opciones.ventana_actualizacion_sistema.resources

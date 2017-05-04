@@ -43,8 +43,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButtonHojaGrande = new System.Windows.Forms.RadioButton();
             this.radioButtonHojaRollo = new System.Windows.Forms.RadioButton();
+            this.radioButtonHojaGrande = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -151,6 +151,7 @@
             this.label1.Size = new System.Drawing.Size(45, 20);
             this.label1.TabIndex = 77;
             this.label1.Text = "Caja";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button5
             // 
@@ -228,6 +229,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tipo de impresion venta";
             // 
+            // radioButtonHojaRollo
+            // 
+            this.radioButtonHojaRollo.AutoSize = true;
+            this.radioButtonHojaRollo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonHojaRollo.Location = new System.Drawing.Point(194, 31);
+            this.radioButtonHojaRollo.Name = "radioButtonHojaRollo";
+            this.radioButtonHojaRollo.Size = new System.Drawing.Size(116, 19);
+            this.radioButtonHojaRollo.TabIndex = 1;
+            this.radioButtonHojaRollo.Text = "Hoja Rollo(3\")";
+            this.radioButtonHojaRollo.UseVisualStyleBackColor = true;
+            // 
             // radioButtonHojaGrande
             // 
             this.radioButtonHojaGrande.AutoSize = true;
@@ -240,17 +252,6 @@
             this.radioButtonHojaGrande.TabStop = true;
             this.radioButtonHojaGrande.Text = "Hoja Carta(8.5x11)";
             this.radioButtonHojaGrande.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonHojaRollo
-            // 
-            this.radioButtonHojaRollo.AutoSize = true;
-            this.radioButtonHojaRollo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonHojaRollo.Location = new System.Drawing.Point(194, 31);
-            this.radioButtonHojaRollo.Name = "radioButtonHojaRollo";
-            this.radioButtonHojaRollo.Size = new System.Drawing.Size(116, 19);
-            this.radioButtonHojaRollo.TabIndex = 1;
-            this.radioButtonHojaRollo.Text = "Hoja Rollo(3\")";
-            this.radioButtonHojaRollo.UseVisualStyleBackColor = true;
             // 
             // ventana_cajero
             // 

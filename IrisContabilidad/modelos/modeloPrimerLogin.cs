@@ -47,13 +47,16 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count == 0)
                 {
+                    //despues de ingresar la primera, que empiece actualizar todas las tablas
+                    //modeloActualizacion.actualizar();
                     //no existe empresa entonces se debe agregar todo
-                    modeloActualizacion.actualizar();
                     primerosDatos();
                     agregarModulos();
                     agregarVentanas();
                     //agregarPrimerEmpleado();
                     agregarAccesosVentanas();
+                    
+                    
                 }
                 else
                 {
@@ -103,6 +106,8 @@ namespace IrisContabilidad.modelos
                     sucursal.secuencia = "001";
                     sucursal.direccion = "Direccion";
                     sucursal.activo = true;
+                    sucursal.versionSistema = 0;
+                    sucursal.versionSistemaMaxima = 0;
                     modeloSucursal.agregarSucursal(sucursal);
                 }
                 #endregion
@@ -329,7 +334,6 @@ namespace IrisContabilidad.modelos
                 sql = "insert into sistema(codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta) values('1','empresa.png','1','0','0','0',"+utilidades.getFechayyyyMMdd(DateTime.Today.AddMonths(4))+",'1','1','0','0','0','1')";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
-
                 
                 //nota credito y debito conceptos
                 #region
@@ -383,7 +387,7 @@ namespace IrisContabilidad.modelos
 
                 //empleado
                 #region
-                sql = "select *from empleado; insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,cod_tipo_nomina,foto,tipo_ventana) values('1','Admin','wilmer','MQAyADMA','1','1','1','1','1','1','1',"+utilidades.getFechayyyyMMdd(DateTime.Today)+",'1','default1.png','1');";
+                sql = "insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,cod_tipo_nomina,foto,tipo_ventana) values('1','Admin','wilmer','MQAyADMA','1','1','1','1','1','1','1',"+utilidades.getFechayyyyMMdd(DateTime.Today)+",'1','default1.png','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
@@ -766,6 +770,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "venta_nota_debito1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Reimprimir cuadre caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_imprimir_cuadre_caja_rd";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "reimprimir_cierre_caja1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
                 //modulo cuentas por cobrar
@@ -996,6 +1009,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 6;
                 ventana.imagen = "tipo_ventana1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Actualización sistema";
+                ventana.nombre_logico = "IrisContabilidad.modulo_opciones.ventana_actualizacion_sistema";
+                ventana.activo = true;
+                ventana.programador = true;
+                ventana.codigo_modulo = 6;
+                ventana.imagen = "actualizacion_sistema1.png";
                 listaVentana.Add(ventana);
                 #endregion
 

@@ -16,8 +16,6 @@ namespace IrisContabilidad.modelos
         sucursal sucursal = new sucursal();
 
 
-
-
         //agregar sucursal
         public bool agregarSucursal(sucursal sucursal)
         {
@@ -47,8 +45,8 @@ namespace IrisContabilidad.modelos
                 }
 
                 //se agrega  
-                sql = "insert into sucursal(codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema) values('" +sucursal.codigo + "','" + sucursal.codigo_empresa + "','" + sucursal.secuencia + "','" + activo + "','" + sucursal.direccion + "','"+sucursal.telefono1+"','"+sucursal.telefono2+"','"+sucursal.fax+"','"+sucursal.versionSistema+"')";
-                ds = utilidades.ejecutarcomando_mysql(sql);
+                sql = "insert into sucursal(codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema,version_sistema,maxima) values('" +sucursal.codigo + "','" + sucursal.codigo_empresa + "','" + sucursal.secuencia + "','" + activo + "','" + sucursal.direccion + "','"+sucursal.telefono1+"','"+sucursal.telefono2+"','"+sucursal.fax+"','"+sucursal.versionSistema+"','"+sucursal.versionSistemaMaxima+"')";
+                utilidades.ejecutarcomando_mysql(sql);
                 return true;
 
             }
@@ -59,8 +57,6 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
-
-
 
         //modificar sucursal
         public bool modificarSucursal(sucursal sucursal)
@@ -78,8 +74,7 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     //existe una sucursal con esa secuencia
-                    MessageBox.Show("No se agregó, existe una sucursal con la misma secuencia", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
+                    MessageBox.Show("No se agregó, existe una sucursal con la misma secuencia", "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return false;
                 }
 
@@ -91,7 +86,7 @@ namespace IrisContabilidad.modelos
                 }
 
                 //se modifica  
-                sql = "update sucursal set codigo_empresa='" + sucursal.codigo_empresa + "',secuencia='" + sucursal.secuencia + "',activo='" + activo + "',direccion='" + sucursal.direccion + "',telefono1='"+sucursal.telefono1+"',telefono2='"+sucursal.telefono2+"',fax='"+sucursal.fax+"' where codigo='" + sucursal.codigo + "'";
+                sql = "update sucursal set codigo_empresa='" + sucursal.codigo_empresa + "',secuencia='" + sucursal.secuencia + "',activo='" + activo + "',direccion='" + sucursal.direccion + "',telefono1='"+sucursal.telefono1+"',telefono2='"+sucursal.telefono2+"',fax='"+sucursal.fax+"',version_sistema='"+sucursal.versionSistema+"',version_sistema_maxima='"+sucursal.versionSistemaMaxima+"' where codigo='" + sucursal.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
 
@@ -103,10 +98,7 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
-
-
-
-
+        
         //obtener el codigo siguiente sucursal
         public int getNext()
         {
@@ -133,16 +125,14 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
-
-
+        
         //get sucursal
         public sucursal getSucursalById(int id)
         {
             try
             {
                 sucursal sucursal = new sucursal();
-                string sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema from sucursal where codigo='" + id +"'";
+                string sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema,version_sistema_maxima from sucursal where codigo='" + id +"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -155,17 +145,16 @@ namespace IrisContabilidad.modelos
                     sucursal.telefono2 = ds.Tables[0].Rows[0][6].ToString();
                     sucursal.fax = ds.Tables[0].Rows[0][7].ToString();
                     sucursal.versionSistema = Convert.ToInt16(ds.Tables[0].Rows[0][8]);
+                    sucursal.versionSistemaMaxima = Convert.ToInt16(ds.Tables[0].Rows[0][9]);
                 }
                 return sucursal;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getSucursalById.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error getSucursalById.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
         }
-
 
         //get lista completa
         public List<sucursal> getListaCompleta(bool mantenimiento=false)
@@ -175,7 +164,7 @@ namespace IrisContabilidad.modelos
                
                 List<sucursal> lista =new List<sucursal>();
                 string sql = "";
-                sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema from sucursal";
+                sql = "select codigo,codigo_empresa,secuencia,activo,direccion,telefono1,telefono2,fax,version_sistema,version_sistema_maxima from sucursal";
                 if (mantenimiento == false)
                 {
                     sql+=" where activo=1";
@@ -193,6 +182,8 @@ namespace IrisContabilidad.modelos
                         sucursal.telefono1 = row[5].ToString();
                         sucursal.telefono2 = row[6].ToString();
                         sucursal.fax = row[7].ToString();
+                        sucursal.versionSistema = Convert.ToInt16(row[8]);
+                        sucursal.versionSistemaMaxima = Convert.ToInt16(row[9]);
                         lista.Add(sucursal);
                     }
                 }
@@ -205,13 +196,14 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
         //get sucursal
         public sucursal getSucursalByEmpleado(int id)
         {
             try
             {
                 sucursal sucursal = new sucursal();
-                string sql = "select s.codigo,s.codigo_empresa,s.secuencia,s.activo,s.direccion,s.telefono1,s.telefono2,s.fax,s.version_sistema from sucursal s join empleado e on s.codigo=e.cod_sucursal where e.codigo='" + id + "'";
+                string sql = "select s.codigo,s.codigo_empresa,s.secuencia,s.activo,s.direccion,s.telefono1,s.telefono2,s.fax,s.version_sistema,s.version_sistema_maxima from sucursal s join empleado e on s.codigo=e.cod_sucursal where e.codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -224,6 +216,7 @@ namespace IrisContabilidad.modelos
                     sucursal.telefono2 = ds.Tables[0].Rows[0][6].ToString();
                     sucursal.fax = ds.Tables[0].Rows[0][7].ToString();
                     sucursal.versionSistema = Convert.ToInt16(ds.Tables[0].Rows[0][8]);
+                    sucursal.versionSistemaMaxima = Convert.ToInt16(ds.Tables[0].Rows[0][9]);
                 }
                 return sucursal;
             }
@@ -233,5 +226,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
     }
 }

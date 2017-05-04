@@ -161,6 +161,7 @@
     <Compile Include="clases\comprobante_fiscal.cs" />
     <Compile Include="clases\cuadre_caja.cs" />
     <Compile Include="clases\cuadre_caja_detalle.cs" />
+    <Compile Include="clases\cuadre_caja_transacciones.cs" />
     <Compile Include="clases\cuenta_contable.cs" />
     <Compile Include="clases\cxc_nota_credito.cs" />
     <Compile Include="clases\cxc_nota_debito.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="modelos\modeloCompraDevolucion.cs" />
     <Compile Include="modelos\modeloComprobanteFiscal.cs" />
     <Compile Include="modelos\modeloCuadreCaja.cs" />
+    <Compile Include="modelos\modeloCuadreCajaTransacciones.cs" />
     <Compile Include="modelos\modeloCuentaContable.cs" />
     <Compile Include="modelos\modeloCxcNotaCredito.cs" />
     <Compile Include="modelos\modeloCxcNotaDebito.cs" />
@@ -402,6 +404,12 @@
     </Compile>
     <Compile Include="modulo_facturacion\ventana_busqueda_venta_devolucion.Designer.cs">
       <DependentUpon>ventana_busqueda_venta_devolucion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.Designer.cs">
+      <DependentUpon>ventana_imprimir_cuadre_caja_rd.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_nota_credito_cxc.cs">
       <SubType>Form</SubType>
@@ -847,6 +855,12 @@
     <Compile Include="modulo_nomina\ventana_cargo.Designer.cs">
       <DependentUpon>ventana_cargo.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_opciones\ventana_actualizacion_sistema.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_opciones\ventana_actualizacion_sistema.Designer.cs">
+      <DependentUpon>ventana_actualizacion_sistema.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_opciones\ventana_cambio_clave.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -964,6 +978,9 @@
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_debito.rdlc" />
+    <EmbeddedResource Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.resx">
+      <DependentUpon>ventana_imprimir_cuadre_caja_rd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_gerencia\Reporte\reporte_ventas_mensuales_graficos.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\ventana_busqueda_nota_credito_cxc.resx">
       <DependentUpon>ventana_busqueda_nota_credito_cxc.cs</DependentUpon>
@@ -1196,6 +1213,9 @@
     <EmbeddedResource Include="modulo_nomina\ventana_tipo_nomina.resx">
       <DependentUpon>ventana_tipo_nomina.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_opciones\ventana_actualizacion_sistema.resx">
+      <DependentUpon>ventana_actualizacion_sistema.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_opciones\ventana_cambio_clave.resx">
       <DependentUpon>ventana_cambio_clave.cs</DependentUpon>
     </EmbeddedResource>
@@ -1236,6 +1256,7 @@
     <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_pago_hoja_completa.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\Reporte\reporte_estado_cuenta_cliente.rdlc" />
+    <EmbeddedResource Include="reportes\reporte_cuadre_caja_general.rdlc" />
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_cobro_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_venta_hoja_completa.rdlc" />
@@ -1248,6 +1269,8 @@
     <None Include="IrisContabilidad_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases.cuadre_caja_detalle.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases.cuadre_caja_transacciones.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_cobros_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_compra_detalle.datasource" />
@@ -1280,6 +1303,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="scripts\angular-route.min.js.map" />
+    <None Include="scripts\angular.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -2068,6 +2093,15 @@
     <Content Include="bin\Release\Resources\ventanas\venta_reimprimir1.png" />
     <Content Include="bin\Release\Resources\ventanas\Word-2.ico" />
     <Content Include="bin\Release\Translator.dll" />
+    <Content Include="scripts\angular-mocks.js" />
+    <Content Include="scripts\angular-route.js" />
+    <Content Include="scripts\angular-route.min.js" />
+    <Content Include="scripts\angular.js" />
+    <Content Include="scripts\angular.min.js" />
+    <Content Include="scripts\angulartics-ga-cordova.js" />
+    <Content Include="scripts\angulartics-ga-cordova.min.js" />
+    <Content Include="scripts\angulartics.js" />
+    <Content Include="scripts\angulartics.min.js" />
     <Content Include="view.ico" />
   </ItemGroup>
   <ItemGroup>
