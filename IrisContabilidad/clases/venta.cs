@@ -27,6 +27,8 @@ namespace IrisContabilidad.clases
         public bool cuadrado { get; set; }
         public string detalle { get; set; }
         public int codigo_tipo_comprobante { get; set; }
+        public bool pedido { get; set; }
+        public decimal monto_impuesto { get; set; }
 
 
     }

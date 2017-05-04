@@ -30,6 +30,7 @@ namespace IrisContabilidad.modelos
                 int despachado = 0;
                 int autorizarPedido = 0;
                 int cuadrado = 0;
+                int pedido = 0;
 
                 if (venta.activo == true)
                 {
@@ -51,9 +52,13 @@ namespace IrisContabilidad.modelos
                 {
                     cuadrado = 1;
                 }
+                if (venta.pedido == true)
+                {
+                    pedido = 1;
+                }
 
                 venta.numero_factura = utilidades.getRellenar(venta.codigo.ToString(), '0', 9);
-                string sql = "insert into venta(codigo,num_factura,fecha,fecha_limite,codigo_empleado,codigo_cliente,ncf,tipo_venta,cod_sucursal,activo,pagada,cod_empleado_anular,motivo_anulada,cod_vendedor,despachado,autorizar_pedido,cuadrado,detalles,cod_tipo_comprobante) values('" + venta.codigo + "','" + venta.numero_factura + "','" + utilidades.getFechayyyyMMdd(venta.fecha) + "','" + utilidades.getFechayyyyMMdd(venta.fecha_limite) + "','" + venta.codigo_empleado + "','" + venta.codigo_cliente + "','" + venta.ncf + "','" + venta.tipo_venta + "','" + venta.codigo_sucursal + "','" + activo + "','" + pagada + "','" + venta.codigo_empelado_anular + "','" + venta.motivo_anulada + "','" + venta.codigo_vendedor + "','" + despachado + "','" + autorizarPedido + "','" + cuadrado + "','" + venta.detalle + "','" + venta.codigo_tipo_comprobante + "')";
+                string sql = "insert into venta(codigo,num_factura,fecha,fecha_limite,codigo_empleado,codigo_cliente,ncf,tipo_venta,cod_sucursal,activo,pagada,cod_empleado_anular,motivo_anulada,cod_vendedor,despachado,autorizar_pedido,cuadrado,detalles,cod_tipo_comprobante,pedido,monto_impuesto) values('" + venta.codigo + "','" + venta.numero_factura + "','" + utilidades.getFechayyyyMMdd(venta.fecha) + "','" + utilidades.getFechayyyyMMdd(venta.fecha_limite) + "','" + venta.codigo_empleado + "','" + venta.codigo_cliente + "','" + venta.ncf + "','" + venta.tipo_venta + "','" + venta.codigo_sucursal + "','" + activo + "','" + pagada + "','" + venta.codigo_empelado_anular + "','" + venta.motivo_anulada + "','" + venta.codigo_vendedor + "','" + despachado + "','" + autorizarPedido + "','" + cuadrado + "','" + venta.detalle + "','" + venta.codigo_tipo_comprobante + "','"+pedido+"','"+venta.monto_impuesto+"')";
                 //MessageBox.Show(sql);
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
 
@@ -207,7 +212,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -234,7 +238,6 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
 
         //obtener el codigo siguiente de compra detalle
         public int getNextVentaDetalle()
@@ -296,7 +299,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 venta venta = new venta();
-                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles,cuadrado from venta where codigo='"+id+"'";
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles,cuadrado,monto_impuesto,pedido from venta where codigo='"+id+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -315,6 +318,8 @@ namespace IrisContabilidad.modelos
                     venta.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
                     venta.cuadrado = Convert.ToBoolean(ds.Tables[0].Rows[0][14]);
                     venta.detalle = ds.Tables[0].Rows[0][13].ToString();
+                    venta.monto_impuesto = Convert.ToDecimal(ds.Tables[0].Rows[0][15]);
+                    venta.pedido = Convert.ToBoolean(ds.Tables[0].Rows[0][16]);
                 }
                 return venta;
             }
@@ -324,7 +329,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista compra detalle
         public List<venta_detalle> getListaVentaDetalle(int id, bool incluirTodos = false)
@@ -376,7 +380,7 @@ namespace IrisContabilidad.modelos
             {
                 List<venta> lista = new List<venta>();
                 venta venta = new venta();
-                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles,cuadrado from venta";
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles,cuadrado,monto_impuesto,pedido from venta";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -398,6 +402,8 @@ namespace IrisContabilidad.modelos
                         venta.motivo_anulada = row[12].ToString();
                         venta.detalle = row[13].ToString();
                         venta.cuadrado = Convert.ToBoolean(row[14]);
+                        venta.monto_impuesto = Convert.ToDecimal(ds.Tables[0].Rows[0][15]);
+                        venta.pedido = Convert.ToBoolean(ds.Tables[0].Rows[0][16]);
                         lista.Add(venta);
                     }
                 }
@@ -418,7 +424,7 @@ namespace IrisContabilidad.modelos
             {
                 List<venta> lista=new List<venta>();
                 venta venta = new venta();
-                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles,cuadrado from venta where codigo_cliente='" + id + "'";
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles,cuadrado,monto_impuesto,pedido from venta where codigo_cliente='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -440,6 +446,8 @@ namespace IrisContabilidad.modelos
                         venta.motivo_anulada = row[12].ToString();
                         venta.detalle = row[13].ToString();
                         venta.cuadrado = Convert.ToBoolean(row[14]);
+                        venta.monto_impuesto = Convert.ToDecimal(ds.Tables[0].Rows[0][15]);
+                        venta.pedido = Convert.ToBoolean(ds.Tables[0].Rows[0][16]);
                         lista.Add(venta);
                     }
                 }
@@ -459,7 +467,7 @@ namespace IrisContabilidad.modelos
             {
                 List<venta> lista = new List<venta>();
                 venta venta = new venta();
-                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles,cuadrado from venta where fecha<='"+utilidades.getFechayyyyMMdd(fechaFinal)+"' and codigo_cliente='" + id + "'";
+                string sql = "select codigo,num_factura,codigo_cliente,fecha,fecha_limite,ncf,tipo_venta,activo,pagada,cod_sucursal,codigo_empleado,cod_empleado_anular,motivo_anulada,detalles,cuadrado,monto_impuesto,pedido from venta where fecha<='"+utilidades.getFechayyyyMMdd(fechaFinal)+"' and codigo_cliente='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -481,6 +489,8 @@ namespace IrisContabilidad.modelos
                         venta.motivo_anulada = row[12].ToString();
                         venta.detalle = row[13].ToString();
                         venta.cuadrado = Convert.ToBoolean(row[14]);
+                        venta.monto_impuesto = Convert.ToDecimal(ds.Tables[0].Rows[0][15]);
+                        venta.pedido = Convert.ToBoolean(ds.Tables[0].Rows[0][16]);
                         lista.Add(venta);
                     }
                 }
@@ -1598,7 +1608,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //get lista completa de venta by rango de anos
         public List<venta> getListaCompletaByRangoAnos(int anioInicial,int anioFinal)
         {
@@ -1683,7 +1692,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        
         //get lista al completa de venta detalle by cuadre caja
         public List<venta_detalle> getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadre_caja cuadre)
         {

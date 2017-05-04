@@ -99,7 +99,7 @@ namespace IrisContabilidad.clases
                 //efectivo inicial o efectivo apertura caja
                 cuadre_caja_detalle.montoEfectivoAperturaCaja = cuadreCaja.efectivo_inicial;
 
-                //recorriendo la lista de venta para ir sacando los montos cheque, deposito, efectivo etc...
+                //recorriendo la lista de venta para ir sacando los montos contado, credito,pedido,cotizacion
                 #region
                 foreach (var x in listaVentaDetalle)
                 {
@@ -136,7 +136,6 @@ namespace IrisContabilidad.clases
                 }
                 #endregion
 
-
                 //recorriendo la lista de cobros para saber cuales cobros fueron de ventas en efectivo
                 #region
                 /*   1-el cobro tiene que ser efectivo
@@ -154,48 +153,33 @@ namespace IrisContabilidad.clases
                         {
                             cuadre_caja_detalle.montoFacturadoEfectivo += x.monto_cobrado;
                         }
-
-                        //funciona
-                        //    foreach (var vd in listaVentaDetalle)
-                        //    {
-                        //        if (vd.cod_venta == x.codigo_venta)
-                        //        {
-                        //            existe = true;
-                        //        }
-                        //    }
-                        //    if (existe == true)
-                        //    {
-                        //        cuadre_caja_detalle.montoFacturadoEfectivo += x.monto_cobrado;
-                        //    }
-                        
                     }
                 }
 
                 #endregion
 
-
                 //recorriendo la lista de cobros para sacar los montos
                 #region
-                foreach (var x in listaVentasCobrosDetalles)
-                {
-                    if (x.codigo_metodo_cobro == 1)
-                    {
-                        //efectivo
-                        cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
-                    }
-                    else if (x.codigo_metodo_cobro == 2)
-                    {
-                        //deposito
-                        cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
-                    }
-                    else if (x.codigo_metodo_cobro == 3)
-                    {
-                        //cheque
-                        cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
-                    }
+                //foreach (var x in listaVentasCobrosDetalles)
+                //{
+                //    if (x.codigo_metodo_cobro == 1)
+                //    {
+                //        //efectivo
+                //        cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
+                //    }
+                //    else if (x.codigo_metodo_cobro == 2)
+                //    {
+                //        //deposito
+                //        cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
+                //    }
+                //    else if (x.codigo_metodo_cobro == 3)
+                //    {
+                //        //cheque
+                //        cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
+                //    }
                    
                    
-                }
+                //}
                 #endregion
 
                 //recorriendo la lista de ingresos de caja
@@ -352,7 +336,8 @@ namespace IrisContabilidad.clases
                 }
                 #endregion
 
-                
+                //recorriendo la lista de venta detalle para sacar los montos 
+                //tarjeta,deposito,cheque,
 
 
 
