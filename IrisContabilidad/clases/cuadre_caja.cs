@@ -96,8 +96,8 @@ namespace IrisContabilidad.clases
                 //llenando el detalle del cuadre de caja
                 cuadre_caja_detalle.codigo_cuadre_caja = cuadreCaja.codigo;
 
-                //efectivo inicial
-                cuadre_caja_detalle.monto_efectivo_inicial = cuadreCaja.efectivo_inicial;
+                //efectivo inicial o efectivo apertura caja
+                cuadre_caja_detalle.montoEfectivoAperturaCaja = cuadreCaja.efectivo_inicial;
 
                 //recorriendo la lista de venta para ir sacando los montos cheque, deposito, efectivo etc...
                 #region
@@ -313,6 +313,10 @@ namespace IrisContabilidad.clases
 
                 }
                 #endregion
+
+                
+
+
 
                 cuadreCaja.cuadre_caja_detalle = cuadre_caja_detalle;
                 cuadreCaja.cuadreCajaTransacciones = listaCuadreCajaTransacciones;

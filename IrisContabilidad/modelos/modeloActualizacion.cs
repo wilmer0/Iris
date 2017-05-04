@@ -46,7 +46,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         public bool actualizar(sucursal sucursalParametro=null)
         {
             try
@@ -167,7 +166,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         private void version1(bool mostrarErrores=true)
         {
             try
@@ -229,7 +227,14 @@ namespace IrisContabilidad.modelos
                 //nuevo query
                 sql = "ALTER TABLE `iris`.`producto_unidad_conversion` MODIFY COLUMN `cantidad` DECIMAL(20,2) NOT NULL DEFAULT 1.00, MODIFY COLUMN `precio_venta1` DECIMAL(20,2) NOT NULL DEFAULT 0.00, MODIFY COLUMN `costo` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
                 utilidades.ejecutarcomando_mysql(sql);
-               
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sucursal` ADD COLUMN `version_sistema_maxima` INTEGER NOT NULL DEFAULT 0 AFTER `version_sistema`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sucursal` MODIFY COLUMN `version_sistema_maxima` INTEGER NOT NULL DEFAULT 50;";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
                 #endregion
 
                 //actualizar la version de la sucursal
@@ -247,7 +252,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         private void version2(bool mostrarErrores = true)
         {
             try
@@ -255,11 +259,45 @@ namespace IrisContabilidad.modelos
                 string sql = "";
 
                 #region querys version2
+               
                 //nuevo query
-                sql = "ALTER TABLE `iris`.`sucursal` ADD COLUMN `version_sistema_maxima` INTEGER NOT NULL DEFAULT 0 AFTER `version_sistema`;";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_venta_contado` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_pedido`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "ALTER TABLE `iris`.`sucursal` MODIFY COLUMN `version_sistema_maxima` INTEGER NOT NULL DEFAULT 50;";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_efectivo_apertura_caja` DECIMAL(20,2) NOT NULL DEFAULT 0 AFTER `monto_venta_contado`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_pagos_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_efectivo_apertura_caja`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_efectivo_recibido_cajero` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_pagos_efectivo`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

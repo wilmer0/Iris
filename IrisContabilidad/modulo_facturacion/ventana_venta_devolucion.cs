@@ -147,7 +147,7 @@ namespace IrisContabilidad.modulo_facturacion
                     return false;
                 }
                 //validar que exista un producto devuelto
-                if (dataGridView1.Rows.Count < 0)
+                if (dataGridView1.Rows.Count > 0)
                 {
                     bool existe = false;
                     foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -163,6 +163,8 @@ namespace IrisContabilidad.modulo_facturacion
                         return false;
                     }
                 }
+
+
                 return true;
             }
             catch (Exception ex)

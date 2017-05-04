@@ -139,6 +139,14 @@ namespace IrisContabilidad.modulo_inventario
                     unidadPrecioVentaText.Text = "";
                     precioVentaText.Text = "";
                     precioCostoText.Text = "";
+
+                    productoProduccionIdText.Text = "";
+                    productoProduccionText.Text = "";
+                    unidadProduccionIdText.Text = "";
+                    unidadProduccionText.Text = "";
+                    cantidadProduccionText.Text = "";
+
+
                     if (dataGridView1.Rows.Count > 0)
                     {
                         dataGridView1.Rows.Clear();
@@ -782,6 +790,8 @@ namespace IrisContabilidad.modulo_inventario
             {
                 unidadConversion = ventana.getObjeto();
                 loadUnidadConversion();
+                cantidadText.Focus();
+                cantidadText.SelectAll();
             }
         }
         private void actualizarUnidadConversion()
@@ -931,6 +941,9 @@ namespace IrisContabilidad.modulo_inventario
                 {
                     dataGridView3.Rows.Add(unidadConversion.codigo.ToString(), unidadConversion.nombre, cantidadText.Text.Trim(), precioCostoText.Text.Trim(), precioVentaText.Text.Trim());
                 }
+
+                unidadPrecioVentaText.Focus();
+                unidadPrecioVentaText.SelectAll();
             }
             catch (Exception ex)
             {
@@ -1247,6 +1260,7 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //validaciones
+
                 //validar que tenga producto seleccionado
                 if (productoProduccion == null)
                 {
@@ -1271,7 +1285,14 @@ namespace IrisContabilidad.modulo_inventario
                     MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-               
+
+                //validar que el producto no se tenga asi mismo como requisito
+                if (productoProduccion.codigo == producto.codigo)
+                {
+                    MessageBox.Show("No puede seleccionar el mismo producto como requisito", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 existe = false;
                 //validar que no se repita la unidad
                 foreach (DataGridViewRow row in dataGridView4.Rows)
@@ -1283,6 +1304,10 @@ namespace IrisContabilidad.modulo_inventario
                     }
                 }
 
+               
+
+
+                //agregando al datagrid
                 if (existe == false)
                 {
                     dataGridView4.Rows.Add(productoProduccion.codigo.ToString(),productoProduccion.nombre, unidadProduccion.codigo,unidadProduccion.nombre, cantidadProduccionText.Text.Trim());
@@ -1302,7 +1327,7 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //validar que tenga filas el datagrid
-                if (dataGridView4.Rows.Count < 0)
+                if (dataGridView4==null || dataGridView4.Rows.Count < 0)
                 {
                     return;
                 }
@@ -1394,6 +1419,62 @@ namespace IrisContabilidad.modulo_inventario
             ventana_itebis ventana = new ventana_itebis();
             ventana.Owner = this;
             ventana.ShowDialog();
+        }
+
+        private void cantidadText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                precioCostoText.Focus();
+                precioCostoText.SelectAll();
+            }
+        }
+
+        private void precioCostoText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                precioVentaText.Focus();
+                precioVentaText.SelectAll();
+            }
+        }
+
+        private void precioVentaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button20.Focus();
+            }
+        }
+
+        private void unidadIdPrecioVentaText_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            utilidades.validarTextBoxNumeroEntero(e);
+        }
+
+        private void unidadIdPrecioVentaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button18_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    unidadConversion = modeloUnidad.getUnidadById(Convert.ToInt16(unidadPrecioVentaText.Text));
+                    if (unidadConversion != null)
+                    {
+                        loadUnidadConversion();
+                        cantidadText.Focus();
+                        cantidadText.SelectAll();    
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
         }
     }
 }
