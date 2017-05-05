@@ -288,6 +288,42 @@ namespace IrisContabilidad.modelos
                 sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('4','tarjeta','cuando se recive dinero en base a tarjeta','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_cobro_deposito` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_venta_efectivo`, ADD COLUMN `monto_cobro_cheque` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cobro_deposito`, ADD COLUMN `monto_cobro_tarjeta` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cobro_cheque`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` CHANGE COLUMN `monto_cobro_deposito` `monto_cobro_deposito_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_cheque` `monto_cobro_cheque_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_tarjeta` `monto_cobro_tarjeta_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` CHANGE COLUMN `monto_cobro_deposito_efectivo` `monto_cobro_deposito` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_cheque_efectivo` `monto_cobro_cheque` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_tarjeta_efectivo` `monto_cobro_tarjeta` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
                 sql = "";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
