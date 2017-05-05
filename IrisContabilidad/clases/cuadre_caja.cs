@@ -87,7 +87,8 @@ namespace IrisContabilidad.clases
                 listaVentaDevolucion = new modeloVentaDevolucion().getListaVentaDevolucionDetalleByCuadreCaja(cuadreCaja).OrderBy(x => x.codigo_devolucion).ToList();
 
                
-
+                cuadreCaja.cuadre_caja_detalle=new cuadre_caja_detalle();
+                cuadreCaja.cuadreCajaTransacciones=new List<cuadre_caja_transacciones>();
 
                 //limpiando la tabla transacciones cuadre caja que pertenezcan a este cuadre de caja
                 sql = "delete from cuadre_caja_transacciones where codigo_cuadre_caja='"+cuadreCaja.codigo+"';";
@@ -148,6 +149,8 @@ namespace IrisContabilidad.clases
                     //el cobro tiene que ser en efectivo
                     if (x.codigo_metodo_cobro == 1)
                     {
+                        cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
+
                         //si la venta de ese cobro existe en las ventas detalle
                         if (listaVentaDetalle.Where(vd => vd.cod_venta == x.codigo_venta).Count() >= 1)
                         {
@@ -169,6 +172,16 @@ namespace IrisContabilidad.clases
                         //tarjeta
                         cuadreCaja.cuadre_caja_detalle.montoCobrosTarjeta += x.monto_cobrado;
                     }
+
+                    if (!listaCobros.Contains(x.codigo_cobro))
+                    {
+                        listaCobros.Add(x.codigo_cobro);
+                        cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                        cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                        cuadreCajaTransacciones.codigoCobro = x.codigo_cobro;
+                        listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
+                    }
+
                 }
 
                 #endregion
@@ -252,31 +265,35 @@ namespace IrisContabilidad.clases
                 #region
                 foreach (var x in listaVentasCobrosDetalles)
                 {
-                    if (x.codigo_metodo_cobro == 1)
-                    {
-                        //efectivo
-                        cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
-                    }
-                    else if (x.codigo_metodo_cobro == 2)
-                    {
-                        //deposito
-                        cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
-                    }
-                    else if (x.codigo_metodo_cobro == 3)
-                    {
-                        //cheque
-                        cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
-                    }
+                    //if (x.codigo_metodo_cobro == 1)
+                    //{
+                    //    //efectivo
+                    //    cuadre_caja_detalle.montoCobrosEfectivo += x.monto_cobrado;
+                    //}
+                    //else if (x.codigo_metodo_cobro == 2)
+                    //{
+                    //    //deposito
+                    //    cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
+                    //}
+                    //else if (x.codigo_metodo_cobro == 3)
+                    //{
+                    //    //cheque
+                    //    cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
+                    //}else if (x.codigo_metodo_cobro == 4)
+                    //{
+                    //    //tarjeta
+                    //    cuadreCaja.cuadre_caja_detalle.montoCobrosTarjeta += x.monto_cobrado;
+                    //}
 
 
-                    if (!listaCobros.Contains(x.codigo_cobro))
-                    {
-                        listaCobros.Add(x.codigo_cobro);
-                        cuadreCajaTransacciones = new cuadre_caja_transacciones();
-                        cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
-                        cuadreCajaTransacciones.codigoCobro = x.codigo_cobro;
-                        listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
-                    }
+                    //if (!listaCobros.Contains(x.codigo_cobro))
+                    //{
+                    //    listaCobros.Add(x.codigo_cobro);
+                    //    cuadreCajaTransacciones = new cuadre_caja_transacciones();
+                    //    cuadreCajaTransacciones.codigoCuadreCaja = cuadreCaja.codigo;
+                    //    cuadreCajaTransacciones.codigoCobro = x.codigo_cobro;
+                    //    listaCuadreCajaTransacciones.Add(cuadreCajaTransacciones);
+                    //}
                     
                 }
                 #endregion

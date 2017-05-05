@@ -7,14 +7,14 @@
     <framework targetVersion="4.5.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="IrisContabilidad.exe.manifest" size="345448">
+    <dependentAssembly dependencyType="install" codebase="IrisContabilidad.exe.manifest" size="342731">
       <assemblyIdentity name="IrisContabilidad.exe" version="1.0.0.0" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kUN62f+0KLUW1nhhMArD1AZ1gOGZrmYSTerGErgkjnA=</dsig:DigestValue>
+        <dsig:DigestValue>w7crtL9rZ1++YQiEoxqDHHKOShBdTEefFfKm8B+b1bo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -82,54 +82,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gmap.net.dll" size="31232">
-      <assemblyIdentity name="Gmap.net" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FUrDy21qzn4ZRWq1VerHdg+aMpJuMcJHAwEhKknFA6s=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GMap.NET.Core.dll" size="2996736">
-      <assemblyIdentity name="GMap.NET.Core" version="1.7.5.0" publicKeyToken="B85B9027B614AFEF" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WMdV/Pxlzd6lYQI9c26JkfCtadpeE3jepZ6YxduQG4Y=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GMap.NET.WindowsForms.dll" size="150528">
-      <assemblyIdentity name="GMap.NET.WindowsForms" version="1.7.5.0" publicKeyToken="B85B9027B614AFEF" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dB4ajwWGOFaiXRAb01v5fLoLY38MBOy0MsHYWnjvE2U=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GMap.NET.WindowsPresentation.dll" size="48640">
-      <assemblyIdentity name="GMap.NET.WindowsPresentation" version="1.7.5.0" publicKeyToken="B85B9027B614AFEF" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aZAwoL5QCTE2m9Zvi7d4mHsEyI+dlR909HzTNQsPRNM=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleApi.dll" size="109056">
       <assemblyIdentity name="GoogleApi" version="2.4.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -161,7 +113,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xwNT52wh2B2xvDPtXxt9L/xWR7JZXNnCYl0MpTAUz/Y=</dsig:DigestValue>
+        <dsig:DigestValue>f+4zOjKyuVEAE/1FWj0rWC4NxBB6VB8XmLmirwZqYOg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -333,7 +285,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>SYlLfogvHEu0VfRmED1rcHmmN+ZzYqHnyU4+srvzGjo=</dsig:DigestValue>
+      <dsig:DigestValue>Vhx9qk6/1ixUN83WoG5errGPUJFW7ojQ87yeW2iHPV4=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\IrisContabilidad.pdb" size="2190848">
@@ -342,7 +294,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>gNxs2Js8V/IYVN+VhU7tZVqCnOJTuugV6fkU2IwaA88=</dsig:DigestValue>
+      <dsig:DigestValue>U1nDN9BGYouEFfH4mJaniRSya2UfUp76BBeEln25/IA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\IrisContabilidad.vshost.exe" size="23168">
