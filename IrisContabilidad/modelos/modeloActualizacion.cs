@@ -285,7 +285,7 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` CHANGE COLUMN `monto_efectivo` `monto_efectivo_esperado` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('4','tarjeta','cuando se recive dinero en base a tarjeta','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

@@ -574,7 +574,7 @@ namespace IrisContabilidad.modelos
         //hacer cobros a 
         public bool setVentaCobro(venta venta, venta_vs_cobros cobro, List<venta_vs_cobros_detalles> listaCobroDetalle)
         {
-             //hacer pagos a compra
+            //hacer pagos a compra
             try
             {
                 //si la compra es a credito entonces no debe hacer ningun pago

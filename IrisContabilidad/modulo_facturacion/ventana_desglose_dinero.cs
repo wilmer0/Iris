@@ -133,6 +133,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -140,6 +141,7 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
+        
         public bool validarGetAction()
         {
             try
@@ -170,6 +172,7 @@ namespace IrisContabilidad.modulo_facturacion
                         pagoDetalle.codigo_metodo_pago = 1;
                         pagoDetalle.monto_descontado = 0;
                         pagoDetalle.monto_pagado = Convert.ToDecimal(montoEfectivoText.Text);
+                        pagoDetalle.monto_sub_total = pagoDetalle.monto_pagado - pagoDetalle.monto_descontado;
                         pagoDetalle.activo = true;
                         listaPagoDetalle.Add(pagoDetalle);
                     }
@@ -190,6 +193,7 @@ namespace IrisContabilidad.modulo_facturacion
                         pagoDetalle.codigo_metodo_pago = 2;
                         pagoDetalle.monto_descontado = 0;
                         pagoDetalle.monto_pagado = Convert.ToDecimal(montoDepositoText.Text);
+                        pagoDetalle.monto_sub_total = pagoDetalle.monto_pagado - pagoDetalle.monto_descontado;
                         pagoDetalle.activo = true;
                         listaPagoDetalle.Add(pagoDetalle);
                     }
@@ -200,8 +204,7 @@ namespace IrisContabilidad.modulo_facturacion
                         {
                             numeroChequeText.Focus();
                             numeroChequeText.SelectAll();
-                            MessageBox.Show("Falta el número de cheque", "", MessageBoxButtons.OK,
-                                MessageBoxIcon.Warning);
+                            MessageBox.Show("Falta el número de cheque", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
                             return false;
                         }
                         if (chequeBancoText.Text == "")
@@ -218,6 +221,7 @@ namespace IrisContabilidad.modulo_facturacion
                         pagoDetalle.codigo_metodo_pago = 3;
                         pagoDetalle.monto_descontado = 0;
                         pagoDetalle.monto_pagado = Convert.ToDecimal(montoChequeText.Text);
+                        pagoDetalle.monto_sub_total = pagoDetalle.monto_pagado - pagoDetalle.monto_descontado;
                         pagoDetalle.activo = true;
                         listaPagoDetalle.Add(pagoDetalle);
                     }
@@ -227,7 +231,7 @@ namespace IrisContabilidad.modulo_facturacion
                     {
                         montoTotalPagar += x.monto_pagado - x.monto_descontado;
                     });
-                    if (Convert.ToDecimal(montoEsperado) > montoTotalPagar)
+                    if (Convert.ToDecimal(montoEsperado) > montoTotalPagar + montoDescuentoFactura)
                     {
                         MessageBox.Show("Falta dinero", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         montoEfectivoText.Focus();
@@ -247,8 +251,8 @@ namespace IrisContabilidad.modulo_facturacion
                         return false;
                     }
 
-
                     //validar si cobrar con efectivo
+                    #region
                     if (Convert.ToDecimal(montoEfectivoText.Text) > 0)
                     {
                         cobroDetalle = new venta_vs_cobros_detalles();
@@ -258,10 +262,14 @@ namespace IrisContabilidad.modulo_facturacion
                         cobroDetalle.codigo_metodo_cobro = 1;
                         cobroDetalle.monto_descontado = 0;
                         cobroDetalle.monto_cobrado = Convert.ToDecimal(montoEfectivoText.Text);
+                        cobroDetalle.monto_subtotal = cobroDetalle.monto_cobrado - cobroDetalle.monto_descontado;
                         cobroDetalle.activo = true;
                         listaCobroDetalle.Add(cobroDetalle);
                     }
+                    #endregion
+                    
                     //validar si cobrar con deposito
+                    #region
                     if (Convert.ToDecimal(montoDepositoText.Text) > 0)
                     {
                         if (depositoBancoText.Text == "")
@@ -278,10 +286,14 @@ namespace IrisContabilidad.modulo_facturacion
                         cobroDetalle.codigo_metodo_cobro = 2;
                         cobroDetalle.monto_descontado = 0;
                         cobroDetalle.monto_cobrado = Convert.ToDecimal(montoDepositoText.Text);
+                        cobroDetalle.monto_subtotal = cobroDetalle.monto_cobrado - cobroDetalle.monto_descontado;
                         cobroDetalle.activo = true;
                         listaCobroDetalle.Add(cobroDetalle);
                     }
+                    #endregion
+                    
                     //validar si cobrar con cheque
+                    #region
                     if (Convert.ToDecimal(montoChequeText.Text) > 0)
                     {
                         if (numeroChequeText.Text == "")
@@ -305,24 +317,48 @@ namespace IrisContabilidad.modulo_facturacion
                         cobroDetalle.codigo_metodo_cobro = 3;
                         cobroDetalle.monto_descontado = 0;
                         cobroDetalle.monto_cobrado = Convert.ToDecimal(montoChequeText.Text);
+                        cobroDetalle.monto_subtotal = cobroDetalle.monto_cobrado - cobroDetalle.monto_descontado;
                         cobroDetalle.activo = true;
                         listaCobroDetalle.Add(cobroDetalle);
                     }
+                    #endregion
+
+                    //validar si cobrar con tarjeta
+                    #region
+                    if (Convert.ToDecimal(montoTarjetaText.Text) > 0)
+                    {
+                        cobroDetalle = new venta_vs_cobros_detalles();
+                        cobroDetalle.codigo = 0;
+                        cobroDetalle.codigo_cobro = 0;
+                        cobroDetalle.codigo_venta = 0;
+                        cobroDetalle.codigo_metodo_cobro = 4;
+                        cobroDetalle.monto_descontado = 0;
+                        cobroDetalle.monto_cobrado = Convert.ToDecimal(montoTarjetaText.Text);
+                        cobroDetalle.monto_subtotal = cobroDetalle.monto_cobrado - cobroDetalle.monto_descontado;
+                        cobroDetalle.activo = true;
+                        listaCobroDetalle.Add(cobroDetalle);
+                    }
+                    #endregion
+
                     montoTotalCobrar = 0;
                     //validar montos si son iguales para poder cobrar
                     listaCobroDetalle.ForEach(x =>
                     {
-                        montoTotalCobrar += x.monto_cobrado - x.monto_descontado;
+                        montoTotalCobrar += x.monto_cobrado;
                     });
-                    if (Convert.ToDecimal(montoEsperado) > montoTotalPagar)
+                    if (Convert.ToDecimal(montoEsperado) > montoTotalPagar + montoDescuentoFactura)
                     {
-                        MessageBox.Show("Falta dinero", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Falta dinero por cobrar, monto establecido no concuerda con el monto esperado", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         montoEfectivoText.Focus();
                         montoEfectivoText.SelectAll();
                         return false;
                     }
                     #endregion
+                
                 }
+
+
+
                 return true;
             }
             catch (Exception ex)
@@ -426,6 +462,7 @@ namespace IrisContabilidad.modulo_facturacion
             }
 
         }
+
         private void ventana_desglose_dinero_Load(object sender, EventArgs e)
         {
 
@@ -508,7 +545,7 @@ namespace IrisContabilidad.modulo_facturacion
 
                 montoTotalPagar = (montoEfectivo + montoDeposito + montoCheque + montoTarjeta);
                 montoDevuelta = montoTotalPagar - montoEsperado;
-                montoDevuelta -= montoDescuentoFactura;
+                montoDevuelta = montoDevuelta + montoDescuentoFactura;
                 montoDevueltoText.Text = montoDevuelta.ToString("N");
             }
             catch (Exception ex)
@@ -630,6 +667,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error imprimircompra.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void imprimircompra()
         {
             try

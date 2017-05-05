@@ -36,6 +36,7 @@ namespace IrisContabilidad.clases
         public decimal montoCobrosEfectivo { get; set; }
         public decimal montoCobrosDeposito { get; set; }
         public decimal montoCobrosCheque { get; set; }
+        public decimal montoCobrosTarjeta { get; set; }
 
 
         //montos de pagos

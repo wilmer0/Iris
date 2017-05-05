@@ -136,7 +136,7 @@ namespace IrisContabilidad.clases
                 }
                 #endregion
 
-                //recorriendo la lista de cobros para saber cuales cobros fueron de ventas en efectivo
+                //recorriendo la lista de cobros para saber cuales cobros fueron de ventas en efectivo,deposito,cheque
                 #region
                 /*   1-el cobro tiene que ser efectivo
                      2-la venta que esta atada al cobro debe existir en las ventas detalles
@@ -153,6 +153,21 @@ namespace IrisContabilidad.clases
                         {
                             cuadre_caja_detalle.montoFacturadoEfectivo += x.monto_cobrado;
                         }
+
+                    }else if (x.codigo_metodo_cobro == 2)
+                    {
+                        //deposito
+                        cuadreCaja.cuadre_caja_detalle.montoCobrosDeposito += x.monto_cobrado;
+                    }
+                    else if (x.codigo_metodo_cobro == 3)
+                    {
+                        //cheque
+                        cuadreCaja.cuadre_caja_detalle.montoCobrosCheque += x.monto_cobrado;
+                    }
+                    else if (x.codigo_metodo_cobro == 4)
+                    {
+                        //tarjeta
+                        cuadreCaja.cuadre_caja_detalle.montoCobrosTarjeta += x.monto_cobrado;
                     }
                 }
 
@@ -336,9 +351,7 @@ namespace IrisContabilidad.clases
                 }
                 #endregion
 
-                //recorriendo la lista de venta detalle para sacar los montos 
-                //tarjeta,deposito,cheque,
-
+               
 
 
                 cuadreCaja.cuadre_caja_detalle = cuadre_caja_detalle;
