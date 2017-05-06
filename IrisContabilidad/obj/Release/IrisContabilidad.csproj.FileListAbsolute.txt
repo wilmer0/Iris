@@ -237,7 +237,7 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\I
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.application
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.exe
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\IrisContabilidad.pdb
-C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\GoogleApi.xml
-C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\Newtonsoft.Json.xml
-C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.application
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache

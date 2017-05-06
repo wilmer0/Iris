@@ -1,13 +1,7 @@
-﻿using IrisContabilidad.clases;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using IrisContabilidad.modelos;
+﻿using System;
 using System.Windows.Forms;
-using MessageBox = System.Windows.Forms.MessageBox;
+using IrisContabilidad.clases;
+using IrisContabilidad.modelos;
 
 namespace IrisContabilidad.clases_reportes
 {

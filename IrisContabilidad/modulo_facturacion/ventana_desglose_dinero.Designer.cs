@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_desglose_dinero
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -437,31 +440,31 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox montoEfectivoText;
-        private System.Windows.Forms.TextBox montoTarjetaText;
-        private System.Windows.Forms.TextBox montoChequeText;
-        private System.Windows.Forms.TextBox montoDepositoText;
-        private System.Windows.Forms.TextBox montoDevueltoText;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox montoDescuentoText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox MontoTotalText;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox numeroChequeText;
-        private System.Windows.Forms.TextBox chequeBancoText;
-        private System.Windows.Forms.TextBox depositoBancoText;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox MontoItebisText;
+        private Label label2;
+        private Label label1;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private TextBox montoEfectivoText;
+        private TextBox montoTarjetaText;
+        private TextBox montoChequeText;
+        private TextBox montoDepositoText;
+        private TextBox montoDevueltoText;
+        private GroupBox groupBox1;
+        private TextBox montoDescuentoText;
+        private Label label6;
+        private TextBox MontoTotalText;
+        private Label label7;
+        private TextBox numeroChequeText;
+        private TextBox chequeBancoText;
+        private TextBox depositoBancoText;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
+        private Label label9;
+        private Label label8;
+        private Label label10;
+        private GroupBox groupBox4;
+        private Label label11;
+        private TextBox MontoItebisText;
     }
 }

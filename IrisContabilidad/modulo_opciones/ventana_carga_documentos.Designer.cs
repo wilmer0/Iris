@@ -1,11 +1,13 @@
-﻿namespace IrisContabilidad.modulo_opciones
+﻿using System.ComponentModel;
+
+namespace IrisContabilidad.modulo_opciones
 {
     partial class ventana_carga_documentos
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.

@@ -77,12 +77,11 @@
     <Reference Include="BarcodeLib">
       <HintPath>..\..\DLR-POS-2.0\proyecto\packages\BarcodeLib.1.0.0.22\lib\net20\BarcodeLib.dll</HintPath>
     </Reference>
-    <Reference Include="GoogleApi, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GoogleApi.2.4.1\lib\net45\GoogleApi.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Ionic.Zip">
       <HintPath>..\..\DLR-POS-2.0\proyecto\puntoVentaWin\librerias\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
@@ -101,10 +100,6 @@
       <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -112,6 +107,7 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -1249,8 +1245,11 @@
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="bin\Release\IrisContabilidad.exe.config" />
+    <None Include="bin\Release\IrisContabilidad.vshost.application" />
     <None Include="bin\Release\IrisContabilidad.vshost.exe.config" />
+    <None Include="bin\Release\IrisContabilidad.vshost.exe.manifest" />
+    <None Include="FakesAssemblies\GoogleApi.2.4.0.0.Fakes.fakesconfig" />
+    <None Include="FakesAssemblies\GoogleApi.2.4.0.0.Fakes.messages" />
     <None Include="IrisContabilidad_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
@@ -1316,20 +1315,12 @@
     <Content Include="bin\Release\Gmap.net.dll" />
     <Content Include="bin\Release\Gmap.net.pdb" />
     <Content Include="bin\Release\GMap.NET.WindowsForms.dll" />
-    <Content Include="bin\Release\GMap.NET.WindowsPresentation.dll" />
-    <Content Include="bin\Release\GMap.NET.WindowsPresentation.xml" />
-    <Content Include="bin\Release\GoogleApi.dll" />
-    <Content Include="bin\Release\GoogleApi.xml" />
     <Content Include="bin\Release\Ionic.Zip.dll" />
-    <Content Include="bin\Release\IrisContabilidad.exe" />
-    <Content Include="bin\Release\IrisContabilidad.pdb" />
     <Content Include="bin\Release\IrisContabilidad.vshost.exe" />
     <Content Include="bin\Release\Microsoft.ReportViewer.Common.dll" />
     <Content Include="bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.DLL" />
     <Content Include="bin\Release\Microsoft.ReportViewer.WebForms.DLL" />
     <Content Include="bin\Release\MySql.Data.dll" />
-    <Content Include="bin\Release\Newtonsoft.Json.dll" />
-    <Content Include="bin\Release\Newtonsoft.Json.xml" />
     <Content Include="bin\Release\Resources\archivos\coneccion\connection.txt" />
     <Content Include="bin\Release\Resources\botones\analisis1.png" />
     <Content Include="bin\Release\Resources\botones\analisis2.png" />
@@ -1370,6 +1361,7 @@
     <Content Include="bin\Release\Resources\gifs\kTTdW2l.gif" />
     <Content Include="bin\Release\Resources\gifs\tumblr_n2eccv6Dev1rgpzseo1_1280.gif" />
     <Content Include="bin\Release\Resources\gifs\tumblr_n3d222ytYM1s32c21o1_400.gif" />
+    <Content Include="bin\Release\Resources\imagenes_empleados\default1.png" />
     <Content Include="bin\Release\Resources\logo\logo.png" />
     <Content Include="bin\Release\Resources\logo\logo_nombre.jpeg" />
     <Content Include="bin\Release\Resources\modulos\13906880_1043988452321701_8234076818093472343_n.png" />
@@ -2078,6 +2070,8 @@
     <Content Include="bin\Release\Resources\ventanas\venta_reimprimir1.png" />
     <Content Include="bin\Release\Resources\ventanas\Word-2.ico" />
     <Content Include="bin\Release\Translator.dll" />
+    <Content Include="FakesAssemblies\GoogleApi.2.4.0.0.Fakes.dll" />
+    <Content Include="FakesAssemblies\GoogleApi.2.4.0.0.Fakes.xml" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-route.js" />
     <Content Include="scripts\angular-route.min.js" />

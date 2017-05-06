@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     partial class ventana_tipo_gasto
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -170,12 +173,12 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox activoCheck;
-        public System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox tipoGastoIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
+        private CheckBox activoCheck;
+        public TextBox nombreText;
+        private Label label3;
+        private GroupBox groupBox1;
+        private TextBox tipoGastoIdText;
+        private Label label2;
+        private Button button4;
     }
 }

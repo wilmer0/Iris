@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_cobrar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {
     partial class ventana_anular_cobros
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -270,21 +273,21 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox clienteText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox clienteIdText;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox motivoAnularText;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPrductoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpleadoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn meotodocobrodetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoventacolumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn anularCobroColumn;
+        private GroupBox groupBox1;
+        private Label label2;
+        private TextBox clienteText;
+        private Button button5;
+        private TextBox clienteIdText;
+        private DataGridView dataGridView1;
+        private Label label1;
+        private TextBox motivoAnularText;
+        private DataGridViewTextBoxColumn idPrductoColumn;
+        private DataGridViewTextBoxColumn fechaColumn;
+        private DataGridViewTextBoxColumn EmpleadoColumn;
+        private DataGridViewTextBoxColumn meotodocobrodetalle;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn codigoventacolumn;
+        private DataGridViewCheckBoxColumn anularCobroColumn;
     }
 }

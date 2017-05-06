@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_nota_debito_cxc
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -339,24 +342,24 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.TextBox detalleText;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox montoText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox conceptoComboBox;
-        private System.Windows.Forms.TextBox NcfText;
-        private System.Windows.Forms.TextBox ventaIdText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.MaskedTextBox fechaText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox notaCreditoIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label1;
+        private CheckBox activoCheck;
+        private TextBox detalleText;
+        private Label label7;
+        private TextBox montoText;
+        private Label label6;
+        private Label label5;
+        private ComboBox conceptoComboBox;
+        private TextBox NcfText;
+        private TextBox ventaIdText;
+        private Label label4;
+        private Button button6;
+        private MaskedTextBox fechaText;
+        private Label label3;
+        private GroupBox groupBox1;
+        private TextBox notaCreditoIdText;
+        private Label label2;
+        private Button button4;
+        public Button button5;
+        private Label label1;
     }
 }

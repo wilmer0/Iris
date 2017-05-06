@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     partial class ventana_anular_pagos
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -251,19 +254,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox motivoAnularText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox suplidorText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox suplidorIdText;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPagoCOlumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpleadoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn meotodopagodetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoCompraColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn anularCobroColumn;
+        private TextBox motivoAnularText;
+        private Label label1;
+        private DataGridView dataGridView1;
+        private GroupBox groupBox1;
+        private Label label2;
+        private TextBox suplidorText;
+        private Button button5;
+        private TextBox suplidorIdText;
+        private DataGridViewTextBoxColumn idPagoCOlumn;
+        private DataGridViewTextBoxColumn fechaColumn;
+        private DataGridViewTextBoxColumn EmpleadoColumn;
+        private DataGridViewTextBoxColumn meotodopagodetalle;
+        private DataGridViewTextBoxColumn codigoCompraColumn;
+        private DataGridViewCheckBoxColumn anularCobroColumn;
     }
 }

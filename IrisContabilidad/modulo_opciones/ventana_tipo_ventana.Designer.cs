@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_opciones
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_opciones
 {
     partial class ventana_tipo_ventana
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -170,12 +173,12 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBoxTipoVentana;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button ventana;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button modulo;
-        private System.Windows.Forms.Label label1;
+        private ComboBox comboBoxTipoVentana;
+        private Label label2;
+        private GroupBox groupBox1;
+        private Button ventana;
+        private Label label3;
+        private Button modulo;
+        private Label label1;
     }
 }

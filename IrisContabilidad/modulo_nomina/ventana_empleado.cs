@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -565,7 +559,7 @@ namespace IrisContabilidad.modulo_nomina
             try
             {
                 OpenFileDialog file = new OpenFileDialog();
-                if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (file.ShowDialog() == DialogResult.OK)
                 {
                     rutaImagenText.Text = file.FileName;
                     imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenText.Text);

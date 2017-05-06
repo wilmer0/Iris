@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_contabilidad
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_contabilidad
 {
     partial class ventana_cuentas_contables
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -334,25 +337,25 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox cuentaIdText;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox numeroCuentaText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.TextBox cuentaPadreIdText;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox cuentaPadreText;
-        private System.Windows.Forms.RadioButton radioCuentaAcumulativa;
-        private System.Windows.Forms.RadioButton radioCuentaMovimiento;
-        private System.Windows.Forms.RadioButton radioOrigenCredito;
-        private System.Windows.Forms.RadioButton radioOrigenDebito;
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private TextBox cuentaIdText;
+        private Button button7;
+        private Label label9;
+        private TextBox textBox1;
+        public TextBox numeroCuentaText;
+        private Label label3;
+        private Label label4;
+        public TextBox nombreText;
+        private TextBox cuentaPadreIdText;
+        private Button button6;
+        private Label label5;
+        public TextBox cuentaPadreText;
+        private RadioButton radioCuentaAcumulativa;
+        private RadioButton radioCuentaMovimiento;
+        private RadioButton radioOrigenCredito;
+        private RadioButton radioOrigenDebito;
+        private CheckBox activoCheck;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
     }
 }

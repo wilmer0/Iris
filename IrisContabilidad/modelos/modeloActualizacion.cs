@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using IrisContabilidad.clases;
 using System.Windows.Forms;
-using MessageBox = System.Windows.Forms.MessageBox;
+using IrisContabilidad.clases;
 
 namespace IrisContabilidad.modelos
 {

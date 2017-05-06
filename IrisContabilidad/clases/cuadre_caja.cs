@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using IrisContabilidad.clases_calculos;
 using IrisContabilidad.modelos;
 
 namespace IrisContabilidad.clases
@@ -137,7 +134,7 @@ namespace IrisContabilidad.clases
                 }
                 #endregion
 
-                //recorriendo la lista de cobros para saber cuales cobros fueron de ventas en efectivo,deposito,cheque
+                //recorriendo la lista de cobros para saber cuales cobros fueron  ventas en efectivo,deposito,cheque
                 #region
                 /*   1-el cobro tiene que ser efectivo
                      2-la venta que esta atada al cobro debe existir en las ventas detalles

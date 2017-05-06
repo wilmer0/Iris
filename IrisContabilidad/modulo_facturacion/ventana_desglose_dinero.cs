@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
-using Message = System.Web.Services.Description.Message;
 
 namespace IrisContabilidad.modulo_facturacion
 {

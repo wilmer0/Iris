@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_opciones
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_opciones
 {
     partial class ventana_permisos_empleado
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -248,18 +251,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox empleadoText;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox empleadoIdText;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idventanaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ventanaColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn seleccionarVentanaColumn;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button5;
+        private Label label6;
+        private TextBox empleadoText;
+        private Button button7;
+        private TextBox empleadoIdText;
+        private GroupBox groupBox1;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn idventanaColumn;
+        private DataGridViewTextBoxColumn ventanaColumn;
+        private DataGridViewCheckBoxColumn seleccionarVentanaColumn;
+        private Button button4;
+        private Label label1;
+        private Label label2;
+        private Button button5;
     }
 }

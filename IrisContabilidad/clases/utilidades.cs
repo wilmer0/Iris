@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Media;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ionic.Zip;
-using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using MySql.Data.MySqlClient;
 using CompressionLevel = Ionic.Zlib.CompressionLevel;
-using DataSet = System.Data.DataSet;
 
 namespace IrisContabilidad.clases
 {
@@ -148,7 +147,7 @@ namespace IrisContabilidad.clases
             {
                 if (string.IsNullOrEmpty(v[f]) == false)
                 {
-                    System.Media.SoundPlayer sonar = new System.Media.SoundPlayer();
+                    SoundPlayer sonar = new SoundPlayer();
                     sonar.SoundLocation = @"C:\Users\wilmer\Desktop\numeros\" + v[f] + ".wav";
                     sonar.PlaySync();
                 }
@@ -231,7 +230,7 @@ namespace IrisContabilidad.clases
         public string encriptar(string _cadenaAencriptar)
         {
             string result = string.Empty;
-            byte[] encryted = System.Text.Encoding.Unicode.GetBytes(_cadenaAencriptar);
+            byte[] encryted = Encoding.Unicode.GetBytes(_cadenaAencriptar);
             result = Convert.ToBase64String(encryted);
             return result;
         }
@@ -242,7 +241,7 @@ namespace IrisContabilidad.clases
             string result = string.Empty;
             byte[] decryted = Convert.FromBase64String(_cadenaAdesencriptar);
             //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
-            result = System.Text.Encoding.Unicode.GetString(decryted);
+            result = Encoding.Unicode.GetString(decryted);
             return result;
         }
 
@@ -657,7 +656,7 @@ namespace IrisContabilidad.clases
         
         public string GetBase64Encriptar(string cadena)
         {
-            byte[] byt = System.Text.Encoding.UTF8.GetBytes(cadena);
+            byte[] byt = Encoding.UTF8.GetBytes(cadena);
             return Convert.ToBase64String(byt);
         }
 
@@ -665,7 +664,7 @@ namespace IrisContabilidad.clases
         {
             byte[] b = Convert.FromBase64String(cadena);
             b = Convert.FromBase64String(cadena);
-            return System.Text.Encoding.UTF8.GetString(b);
+            return Encoding.UTF8.GetString(b);
         }
 
         public string GetSHA256(string str)
@@ -773,7 +772,7 @@ namespace IrisContabilidad.clases
         public String getNombreMaquina()
         {
             String nombre = "";
-            nombre = System.Environment.MachineName;
+            nombre = Environment.MachineName;
 
             return nombre;
 
@@ -959,21 +958,21 @@ namespace IrisContabilidad.clases
         {
             try
             {
-                if (System.IO.Path.GetExtension(destPath) == "")
+                if (Path.GetExtension(destPath) == "")
                 {
-                    destPath = System.IO.Path.Combine(destPath, System.IO.Path.GetFileName(origPath));
+                    destPath = Path.Combine(destPath, Path.GetFileName(origPath));
                 }
 
-                if (!System.IO.File.Exists(destPath))
+                if (!File.Exists(destPath))
                 {
-                    System.IO.File.Copy(origPath, destPath, true);
+                    File.Copy(origPath, destPath, true);
                 }
                 else
                 {
                     if (overwrite == true)
                     {
                         EliminarArchivo(destPath);
-                        System.IO.File.Copy(origPath, destPath, true);
+                        File.Copy(origPath, destPath, true);
                     }
                 }
                 return true;

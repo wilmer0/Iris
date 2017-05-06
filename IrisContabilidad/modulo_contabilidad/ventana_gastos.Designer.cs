@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_contabilidad
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_contabilidad
 {
     partial class ventana_gastos
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -433,33 +436,33 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox suplidorText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox suplidorIdText;
-        public System.Windows.Forms.TextBox NcfText;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox FechaText;
-        private System.Windows.Forms.TextBox tipoGastoIdText;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tipoGastoText;
-        public System.Windows.Forms.TextBox montoItebisText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox montoSubTotalText;
-        private System.Windows.Forms.TextBox tipoRetencionIsrIdText;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tipoRetencionIsrText;
-        public System.Windows.Forms.TextBox montoRetencionIsrText;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox gastoIdText;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label9;
-        public System.Windows.Forms.TextBox numeroFacturaText;
-        private System.Windows.Forms.Label label10;
+        private Label label2;
+        private TextBox suplidorText;
+        private Button button5;
+        private TextBox suplidorIdText;
+        public TextBox NcfText;
+        private GroupBox groupBox1;
+        private Label label4;
+        private Label label3;
+        private MaskedTextBox FechaText;
+        private TextBox tipoGastoIdText;
+        private Button button4;
+        private Label label1;
+        private TextBox tipoGastoText;
+        public TextBox montoItebisText;
+        private Label label6;
+        private Label label5;
+        public TextBox montoSubTotalText;
+        private TextBox tipoRetencionIsrIdText;
+        private Button button6;
+        private Label label7;
+        private TextBox tipoRetencionIsrText;
+        public TextBox montoRetencionIsrText;
+        private Label label8;
+        private TextBox gastoIdText;
+        private Button button7;
+        private Label label9;
+        public TextBox numeroFacturaText;
+        private Label label10;
     }
 }
