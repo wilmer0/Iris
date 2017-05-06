@@ -3,22 +3,18 @@
     public class cuadre_caja_detalle
     {
         public int codigo_cuadre_caja { get; set; }
-        public decimal montoEfectivoAperturaCaja { get; set; }
         public decimal monto_efectivo { get; set; }
-        public decimal monto_tarjeta { get; set; }
-        public decimal monto_cheque { get; set; }
-        public decimal monto_deposito { get; set; }
         public decimal monto_egreso { get; set; }
         public decimal monto_ingreso { get; set; }
         public decimal monto_sobrante { get; set; }
         public decimal monto_faltante { get; set; }
-        public decimal monto_credito { get; set; }
-        public decimal monto_cotizacion { get; set; }
-        public decimal monto_pedido { get; set; }
         public decimal montoEfectivoIngresadoCajero { get; set; } //este monto es el que el cajero ingresa manualmente la sumatoria del desglose de efectivo al momento de cuadrar la caja
 
+        //apertura
+        public decimal montoEfectivoAperturaCaja { get; set; }
+        
 
-        //facturado
+        //facturado o ventas
         public decimal montoFacturaContado { get; set; }
         public decimal montoFacturaCotizacion { get; set; }
         public decimal montoFacturaPedido { get; set; }

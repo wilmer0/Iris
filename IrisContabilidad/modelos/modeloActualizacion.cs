@@ -290,13 +290,13 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` CHANGE COLUMN `monto_cobro_deposito_efectivo` `monto_cobro_deposito` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_cheque_efectivo` `monto_cobro_cheque` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_tarjeta_efectivo` `monto_cobro_tarjeta` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` CHANGE COLUMN `monto_cotizacion` `monto_venta_cotizacion` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_pedido` `monto_venta_pedido` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` DROP COLUMN `monto_tarjeta`, DROP COLUMN `monto_cheque`, DROP COLUMN `monto_deposito`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_venta_credito` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cobro_tarjeta`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";
