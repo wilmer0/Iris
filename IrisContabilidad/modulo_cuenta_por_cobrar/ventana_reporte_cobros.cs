@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.clases_reportes;
@@ -139,6 +133,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadCobros.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public bool validarGetAcion()
         {
             try
@@ -266,6 +261,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadCliente.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -273,6 +269,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 this.Close();
             }
         }
+
         private void button5_Click(object sender, EventArgs e)
         {
             ventana_busqueda_cliente ventana=new ventana_busqueda_cliente();
@@ -313,6 +310,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void button4_Click(object sender, EventArgs e)
         {
             ventana_busqueda_venta ventana= new ventana_busqueda_venta();

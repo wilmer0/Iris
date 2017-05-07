@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
-using compra_vs_pagos = IrisContabilidad.clases.compra_vs_pagos;
-using empleado = IrisContabilidad.clases.empleado;
-using empresa = IrisContabilidad.clases.empresa;
-using sucursal = IrisContabilidad.clases.sucursal;
-using suplidor = IrisContabilidad.clases.suplidor;
-using utilidades = IrisContabilidad.clases.utilidades;
 
 namespace IrisContabilidad.clases_reportes
 {

@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_inventario
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_inventario
 {
     partial class ventana_busqueda_producto
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -267,20 +270,20 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.RadioButton nombreRadioButton;
-        private System.Windows.Forms.RadioButton almacenRadionButton;
-        private System.Windows.Forms.RadioButton subCategoriaRadionButton;
-        private System.Windows.Forms.RadioButton categoriaRadionButton;
-        private System.Windows.Forms.RadioButton referenciaRadioButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReferenciaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CategoriaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SubCategoriaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activoColumn;
+        private GroupBox groupBox1;
+        private TextBox nombreText;
+        private Label label3;
+        private DataGridView dataGridView1;
+        private RadioButton nombreRadioButton;
+        private RadioButton almacenRadionButton;
+        private RadioButton subCategoriaRadionButton;
+        private RadioButton categoriaRadionButton;
+        private RadioButton referenciaRadioButton;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn secuenciacolumn;
+        private DataGridViewTextBoxColumn ReferenciaColumn;
+        private DataGridViewTextBoxColumn CategoriaColumn;
+        private DataGridViewTextBoxColumn SubCategoriaColumn;
+        private DataGridViewTextBoxColumn activoColumn;
     }
 }

@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_itebis
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -200,14 +203,14 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox activoCheck;
-        public System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox itbisIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.TextBox porcientoText;
-        private System.Windows.Forms.Label label1;
+        private CheckBox activoCheck;
+        public TextBox nombreText;
+        private Label label3;
+        private GroupBox groupBox1;
+        private TextBox itbisIdText;
+        private Label label2;
+        private Button button4;
+        public TextBox porcientoText;
+        private Label label1;
     }
 }

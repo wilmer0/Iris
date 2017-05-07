@@ -1,22 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using CtpGglTranslate.Ggl;
-using CtpGglTranslate.Impl;
-using GoogleApi;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_cuenta_por_pagar;
-using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
-using GoogleApi.Entities.Translate;
 
 namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {

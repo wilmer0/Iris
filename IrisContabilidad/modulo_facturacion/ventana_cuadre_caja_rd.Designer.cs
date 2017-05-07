@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_cuadre_caja_rd
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -452,35 +455,35 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label cajeroLabel;
-        private System.Windows.Forms.TextBox fechaText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox dosMilText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox milText;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox quinientoText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox cienText;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox cincuentaText;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox venticincoText;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox veinteText;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox diezText;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox cincoText;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox unoText;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox doscientosText;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox montoTotalEfectivoText;
+        private GroupBox groupBox1;
+        private Label cajeroLabel;
+        private TextBox fechaText;
+        private Label label1;
+        private TextBox dosMilText;
+        private Label label3;
+        private Label label4;
+        private TextBox milText;
+        private Label label5;
+        private TextBox quinientoText;
+        private Label label6;
+        private TextBox cienText;
+        private Label label7;
+        private TextBox cincuentaText;
+        private Label label8;
+        private TextBox venticincoText;
+        private Label label9;
+        private TextBox veinteText;
+        private Label label10;
+        private TextBox diezText;
+        private Label label11;
+        private TextBox cincoText;
+        private Label label12;
+        private TextBox unoText;
+        private GroupBox groupBox2;
+        private TextBox doscientosText;
+        private Label label13;
+        private Label label14;
+        private TextBox montoTotalEfectivoText;
 
     }
 }

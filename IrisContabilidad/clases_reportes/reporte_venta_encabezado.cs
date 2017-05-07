@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 
@@ -41,7 +38,7 @@ namespace IrisContabilidad.clases_reportes
 
         public reporte_venta_encabezado(venta venta )
         {
-            clases.tipo_comprobante_fiscal tipoComprobante;
+            tipo_comprobante_fiscal tipoComprobante;
             singleton singleton=new singleton();
             empleado empleadoSingleton = singleton.getEmpleado();
             empleado empleado = new modeloEmpleado().getEmpleadoById(venta.codigo_empleado);

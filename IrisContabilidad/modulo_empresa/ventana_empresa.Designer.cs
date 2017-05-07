@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_empresa
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_empresa
 {
     partial class ventana_empresa
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -250,18 +253,18 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.TextBox divisionText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox RncText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox empresaText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox empresaIdText;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox serieComprobanteText;
-        private System.Windows.Forms.Label label5;
+        private CheckBox activoCheck;
+        private TextBox divisionText;
+        private Label label4;
+        private TextBox RncText;
+        private Label label3;
+        private TextBox empresaText;
+        private Label label2;
+        private GroupBox groupBox1;
+        private Label label1;
+        private TextBox empresaIdText;
+        private GroupBox groupBox2;
+        private TextBox serieComprobanteText;
+        private Label label5;
     }
 }

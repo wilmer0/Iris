@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_venta_cobros
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -412,32 +415,32 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox totalCobradoText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox totalPendienteText;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox montoAbonoText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox metodoPagoComboBox;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox clienteText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox clienteIdText;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPrductoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn diasVencimientoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn empleadoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TipoCompraColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn numeroComprobanteFiscalColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaLimiteColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MontoPendienteColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MontoAbonoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn metoopagoColumn;
+        private Label label5;
+        private TextBox totalCobradoText;
+        private Label label4;
+        private TextBox totalPendienteText;
+        private Label label14;
+        private TextBox montoAbonoText;
+        private Label label3;
+        private Label label1;
+        private ComboBox metodoPagoComboBox;
+        private Button button20;
+        private DataGridView dataGridView1;
+        private GroupBox groupBox1;
+        private Label label2;
+        private TextBox clienteText;
+        private Button button5;
+        private TextBox clienteIdText;
+        private Button button19;
+        private DataGridViewTextBoxColumn idPrductoColumn;
+        private DataGridViewTextBoxColumn fechaColumn;
+        private DataGridViewTextBoxColumn diasVencimientoColumn;
+        private DataGridViewTextBoxColumn empleadoColumn;
+        private DataGridViewTextBoxColumn TipoCompraColumn;
+        private DataGridViewTextBoxColumn numeroComprobanteFiscalColumn;
+        private DataGridViewTextBoxColumn FechaLimiteColumn;
+        private DataGridViewTextBoxColumn MontoPendienteColumn;
+        private DataGridViewTextBoxColumn MontoAbonoColumn;
+        private DataGridViewTextBoxColumn metoopagoColumn;
     }
 }

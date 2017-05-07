@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_empresa
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_empresa
 {
     partial class ventana_sucursal
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -264,19 +267,19 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox sucursalIdText;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox secuenciaText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox direccionText;
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox telefono2Text;
-        private System.Windows.Forms.TextBox telefono1Text;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label2;
+        private GroupBox groupBox1;
+        private Label label1;
+        private TextBox sucursalIdText;
+        private Button button4;
+        private Label label3;
+        private TextBox secuenciaText;
+        private Label label4;
+        private TextBox direccionText;
+        private CheckBox activoCheck;
+        private GroupBox groupBox2;
+        private TextBox telefono2Text;
+        private TextBox telefono1Text;
+        private Label label5;
+        private Label label2;
     }
 }

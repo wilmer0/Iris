@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IrisContabilidad.clases
+﻿namespace IrisContabilidad.clases
 {
     public class sucursal
     {
@@ -17,6 +11,7 @@ namespace IrisContabilidad.clases
         public string telefono2 { get; set; }
         public string fax { get; set; }
         public int versionSistema { get; set; }
+        public int versionSistemaMaxima { get; set; }
 
     }
 }

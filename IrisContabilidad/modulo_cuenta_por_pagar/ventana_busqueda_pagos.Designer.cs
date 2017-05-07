@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     partial class ventana_busqueda_pagos
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -240,18 +243,18 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButtonCliente;
-        private System.Windows.Forms.RadioButton radioButtonDetalle;
-        private System.Windows.Forms.RadioButton radioButtonEmpleado;
-        private System.Windows.Forms.RadioButton radioButtonFecha;
-        private System.Windows.Forms.RadioButton radioButtonID;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private GroupBox groupBox1;
+        private RadioButton radioButtonCliente;
+        private RadioButton radioButtonDetalle;
+        private RadioButton radioButtonEmpleado;
+        private RadioButton radioButtonFecha;
+        private RadioButton radioButtonID;
+        private TextBox nombreText;
+        private Label label3;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column2;
     }
 }

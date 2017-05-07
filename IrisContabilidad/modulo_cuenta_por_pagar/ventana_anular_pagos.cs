@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -73,6 +67,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public bool validarGetAcion()
         {
             try
@@ -153,7 +148,6 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             }
         }
 
-
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -161,6 +155,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 this.Close();
             }
         }
+
         public void loadSuplidor()
         {
             try
@@ -203,6 +198,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 MessageBox.Show("Error loadPagos.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void ventana_anular_pagos_Load(object sender, EventArgs e)
         {
 
@@ -281,5 +277,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 getAction();
             }
         }
+
+
     }
 }

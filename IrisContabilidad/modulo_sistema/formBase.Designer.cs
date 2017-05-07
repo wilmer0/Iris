@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_sistema
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_sistema
 {
     partial class formBase
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -150,11 +153,11 @@
 
         #endregion
 
-        public System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.Button button2;
-        public System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.Label tituloLabel;
-        public System.Windows.Forms.Button button3;
+        public Panel panel1;
+        public Button button2;
+        public Button button1;
+        public Panel panel2;
+        public Label tituloLabel;
+        public Button button3;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace IrisContabilidad.modulo_nomina
 {
@@ -7,7 +8,7 @@ namespace IrisContabilidad.modulo_nomina
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -837,65 +838,65 @@ namespace IrisContabilidad.modulo_nomina
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.TextBox nombreText;
-        public System.Windows.Forms.TextBox usuarioText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox empresaIdText;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.TextBox claveText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox cargoIdText;
-        public System.Windows.Forms.TextBox sueldoText;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox nominaTipoIdText;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox sucursalIdText;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox departamentoIdText;
-        public System.Windows.Forms.TextBox identificacionText;
-        private System.Windows.Forms.Label label10;
-        public System.Windows.Forms.TextBox sucursalText;
-        public System.Windows.Forms.TextBox departamentoText;
-        public System.Windows.Forms.TextBox cargoText;
-        private System.Windows.Forms.DateTimePicker fechaIngreso;
-        private System.Windows.Forms.Label label11;
-        public System.Windows.Forms.TextBox grupoUsuarioText;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.TextBox grupoUsuarioIdText;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.CheckBox activoCheck;
-        public System.Windows.Forms.TextBox situacionText;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.TextBox situacionIdText;
-        private System.Windows.Forms.Label label13;
-        public System.Windows.Forms.TextBox nominaTipoText;
-        private System.Windows.Forms.Panel imagen_empleado;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button12;
-        public System.Windows.Forms.TextBox permisoText;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
-        public System.Windows.Forms.TextBox pasaporteText;
-        private System.Windows.Forms.Label label16;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private Label label2;
+        public TextBox nombreText;
+        public TextBox usuarioText;
+        private Label label3;
+        private TextBox empresaIdText;
+        private Label label7;
+        private Label label1;
+        private Button button4;
+        public TextBox claveText;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Button button5;
+        private TextBox cargoIdText;
+        public TextBox sueldoText;
+        private Button button8;
+        private TextBox nominaTipoIdText;
+        private Label label9;
+        private Button button7;
+        private TextBox sucursalIdText;
+        private Label label8;
+        private Button button6;
+        private TextBox departamentoIdText;
+        public TextBox identificacionText;
+        private Label label10;
+        public TextBox sucursalText;
+        public TextBox departamentoText;
+        public TextBox cargoText;
+        private DateTimePicker fechaIngreso;
+        private Label label11;
+        public TextBox grupoUsuarioText;
+        private Button button9;
+        private TextBox grupoUsuarioIdText;
+        private Label label12;
+        private CheckBox activoCheck;
+        public TextBox situacionText;
+        private Button button10;
+        private TextBox situacionIdText;
+        private Label label13;
+        public TextBox nominaTipoText;
+        private Panel imagen_empleado;
+        private GroupBox groupBox1;
+        private Button button11;
+        private Label label14;
+        private DataGridView dataGridView1;
+        private GroupBox groupBox3;
+        private TextBox textBox2;
+        private Label label15;
+        private Button button12;
+        public TextBox permisoText;
+        private Button button14;
+        private Button button13;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn secuenciacolumn;
+        public TextBox pasaporteText;
+        private Label label16;
         private TextBox rutaImagenText;
         private Button button15;
     }

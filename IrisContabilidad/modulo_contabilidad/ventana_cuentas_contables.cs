@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -49,7 +42,15 @@ namespace IrisContabilidad.modulo_contabilidad
                     numeroCuentaText.Text = cuentaContable.numero_cuenta;
                     cuentaPadre=new cuenta_contable();
                     cuentaPadre = modeloCuentaContable.getCuentaContableById(cuentaContable.codigo_cuenta_superior);
+                    loadCuentaPadre();
 
+                    radioCuentaAcumulativa.Checked = (bool) cuentaContable.cuenta_acumulativa;
+                    radioCuentaMovimiento.Checked = (bool) cuentaContable.cuenta_movimiento;
+
+                    radioOrigenDebito.Checked = (bool)cuentaContable.origen_debito;
+                    radioOrigenCredito.Checked = (bool) cuentaContable.origen_credito;
+
+                    activoCheck.Checked = (bool) cuentaContable.activo;
 
                 }
                 else
@@ -64,11 +65,13 @@ namespace IrisContabilidad.modulo_contabilidad
                     cuentaPadre = null;
                     cuentaPadreIdText.Text = "";
                     cuentaPadreText.Text = "";
+
                     radioCuentaAcumulativa.Checked = true;
                     radioCuentaMovimiento.Checked = false;
 
                     radioOrigenDebito.Checked = true;
                     radioOrigenCredito.Checked = false;
+
                     activoCheck.Checked = true;
 
                 }
@@ -78,6 +81,7 @@ namespace IrisContabilidad.modulo_contabilidad
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void loadCuentaPadre()
         {
             try
@@ -103,6 +107,7 @@ namespace IrisContabilidad.modulo_contabilidad
                 this.Close();
             }
         }
+
         public bool validarGetAction()
         {
             try
@@ -123,7 +128,7 @@ namespace IrisContabilidad.modulo_contabilidad
                     MessageBox.Show("Falta el número de la cuenta", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                //validar cuent apadre
+                //validar cuenta padre
                 if (cuentaPadre == null)
                 {
                     cuentaPadreIdText.Focus();
@@ -209,6 +214,7 @@ namespace IrisContabilidad.modulo_contabilidad
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void ventana_cuentas_contables_Load(object sender, EventArgs e)
         {
 
@@ -228,6 +234,201 @@ namespace IrisContabilidad.modulo_contabilidad
         {
             cuentaContable = null;
             loadVentana();
+        }
+
+        private void cuentaIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button7_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+
+                    cuentaContable = modeloCuentaContable.getCuentaContableById(Convert.ToInt16(cuentaIdText.Text));
+                    if (cuentaContable != null)
+                    {
+                        loadVentana();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void nombreText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    numeroCuentaText.Focus();
+                    numeroCuentaText.SelectAll();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void numeroCuentaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    cuentaPadreIdText.Focus();
+                    cuentaPadreIdText.SelectAll();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void cuentaPadreIdText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.F1)
+                {
+                    button6_Click(null,null);
+                }
+                if (e.KeyCode == Keys.Enter)
+                {
+                    radioCuentaAcumulativa.Focus();
+
+                    cuentaPadre = modeloCuentaContable.getCuentaContableById(Convert.ToInt16(cuentaPadreIdText.Text));
+                    if (cuentaPadre != null)
+                    {
+                        loadCuentaPadre();
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void radioCuentaAcumulativa_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    radioOrigenDebito.Focus();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void radioOrigenDebito_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    activoCheck.Focus();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void activoCheck_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    button1.Focus();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_cuenta_contable ventana=new ventana_busqueda_cuenta_contable();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                cuentaContable = ventana.getObjeto();
+                loadVentana();
+            }
+        }
+
+        private void radioCuentaMovimiento_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    radioOrigenDebito.Focus();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void radioOrigenCredito_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    activoCheck.Focus();
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_cuenta_contable ventana = new ventana_busqueda_cuenta_contable();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                cuentaPadre = ventana.getObjeto();
+                loadCuentaPadre();
+            }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

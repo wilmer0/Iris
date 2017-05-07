@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
-using MessageBox = System.Windows.MessageBox;
 
 namespace IrisContabilidad.modelos
 {
@@ -28,7 +23,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarLogReportesGenerados.: " + ex.ToString(), "", MessageBoxButton.OK,MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Error agregarLogReportesGenerados.: " + ex.ToString(), "", MessageBoxButton.OK,MessageBoxImage.Error);
                 return false;
             }
         }
@@ -59,5 +54,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+
+
     }
 }

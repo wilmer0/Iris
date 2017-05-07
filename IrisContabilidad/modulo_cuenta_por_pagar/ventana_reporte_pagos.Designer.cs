@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     partial class ventana_reporte_pagos
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -463,38 +466,38 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.CheckBox checkBoxSoloComprasPagadas;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.MaskedTextBox fechaFinalText;
-        private System.Windows.Forms.MaskedTextBox fechaInicialText;
-        private System.Windows.Forms.CheckBox checkBoxIncluirRangoFechaVenta;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox tipoCompraComboBox;
-        private System.Windows.Forms.Label compraLabel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox compraIdText;
-        private System.Windows.Forms.Label suplidorLabel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox suplidorIdText;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private DataGridView dataGridView1;
+        private GroupBox groupBox1;
+        private Label label8;
+        private Label label7;
+        private Label label1;
+        private Button button6;
+        private CheckBox checkBoxSoloComprasPagadas;
+        private GroupBox groupBox2;
+        private MaskedTextBox fechaFinalText;
+        private MaskedTextBox fechaInicialText;
+        private CheckBox checkBoxIncluirRangoFechaVenta;
+        private Label label5;
+        private Label label6;
+        private Label label4;
+        private ComboBox tipoCompraComboBox;
+        private Label compraLabel;
+        private Label label3;
+        private Button button4;
+        private TextBox compraIdText;
+        private Label suplidorLabel;
+        private Label label2;
+        private Button button5;
+        private TextBox suplidorIdText;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column9;
+        private DataGridViewTextBoxColumn Column8;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column7;
 
 
     }

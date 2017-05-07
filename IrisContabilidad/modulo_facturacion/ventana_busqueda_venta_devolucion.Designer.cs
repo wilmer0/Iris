@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_busqueda_venta_devolucion
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -235,18 +238,18 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.RadioButton radioMonto;
-        private System.Windows.Forms.RadioButton radioNCF;
-        private System.Windows.Forms.RadioButton radioID;
-        private System.Windows.Forms.RadioButton radioFecha;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private GroupBox groupBox1;
+        private TextBox nombreText;
+        private Label label3;
+        private DataGridView dataGridView1;
+        private RadioButton radioMonto;
+        private RadioButton radioNCF;
+        private RadioButton radioID;
+        private RadioButton radioFecha;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

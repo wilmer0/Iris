@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_venta_reimprimir
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -277,21 +280,21 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioFecha;
-        private System.Windows.Forms.RadioButton radioID;
-        private System.Windows.Forms.RadioButton radioTipoVenta;
-        private System.Windows.Forms.RadioButton radioNCF;
-        private System.Windows.Forms.RadioButton radioEmpleado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        public System.Windows.Forms.Button button4;
+        private DataGridView dataGridView1;
+        private GroupBox groupBox1;
+        private TextBox nombreText;
+        private Label label3;
+        private RadioButton radioFecha;
+        private RadioButton radioID;
+        private RadioButton radioTipoVenta;
+        private RadioButton radioNCF;
+        private RadioButton radioEmpleado;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn FechaColumn;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column3;
+        public Button button4;
     }
 }
