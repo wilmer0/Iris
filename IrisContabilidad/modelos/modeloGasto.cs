@@ -35,7 +35,7 @@ namespace IrisContabilidad.modelos
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un gasto de este suplidor con el mismo NCF", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un gasto con el mismo número de factura", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
 
@@ -48,8 +48,9 @@ namespace IrisContabilidad.modelos
                     contabilizado = 1;
                 }
                 sql = "insert into gastos(codigo,cod_empleado,cod_tipo_gasto,cod_suplidor,numero_factura,ncf,fecha,monto_subtotal,monto_itebis,monto_isr,monto_total,cod_tipo_isr,cod_tipo_itebis,detalles,detalle_anulado,contabilizado,activo) values ('" + gasto.codigo + "','" + gasto.codigo_empleado + "','" + gasto.codigo_tipo_gasto + "','" + gasto.codigo_suplidor + "','" + gasto.numero_factura + "','" + gasto.ncf + "','" + utilidades.getFechayyyyMMdd(gasto.fecha) + "','" + gasto.monto_subtotal + "','" + gasto.monto_itebis + "','" + gasto.monto_isr + "','" + gasto.monto_total + "','" + gasto.codigo_tipo_isr + "','" + gasto.codigo_tipo_itebis + "','" + gasto.detalles + "','" + gasto.detalle_anulado + "','" + contabilizado + "','" + activo + "') ";
-                //MessageBox.Show(sql);
-                ds = utilidades.ejecutarcomando_mysql(sql);
+                utilidades.ejecutarcomando_mysql(sql);
+                
+                
                 return true;
             }
             catch (Exception ex)
@@ -212,7 +213,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista completa gastos by cuadre caja
         public List<gasto> getListaGastosCompletabyCuadreCaja(cuadre_caja cuadre)

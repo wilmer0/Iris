@@ -241,3 +241,5 @@ C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\M
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\bin\Release\es\Microsoft.QualityTools.Testing.Fakes.resources.dll
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.application
 C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.csprojResolveAssemblyReference.cache
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_parametrizacion_contable.resources
+C:\Users\wilmer\Documents\GitHub\IrisContabilidad\IrisContabilidad\obj\Release\IrisContabilidad.modulo_contabilidad.ventana_busqueda_cuenta_contable.resources

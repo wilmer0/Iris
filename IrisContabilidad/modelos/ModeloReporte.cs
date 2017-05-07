@@ -653,7 +653,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
+    
 
 
 

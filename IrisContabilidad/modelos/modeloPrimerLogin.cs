@@ -1124,6 +1124,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 9;
                 ventana.imagen = "nota_credito_debito_concepto1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "parametrización contable";
+                ventana.nombre_logico = "IrisContabilidad.modulo_contabilidad.ventana_parametrizacion_contable";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 9;
+                ventana.imagen = "parametrizacion_contable1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
                 //modulo gerencia

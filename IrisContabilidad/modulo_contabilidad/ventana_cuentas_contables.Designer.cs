@@ -35,7 +35,6 @@ namespace IrisContabilidad.modulo_contabilidad
             this.cuentaIdText = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.numeroCuentaText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -93,6 +92,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.cuentaIdText.Name = "cuentaIdText";
             this.cuentaIdText.Size = new System.Drawing.Size(183, 26);
             this.cuentaIdText.TabIndex = 118;
+            this.cuentaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cuentaIdText_KeyDown);
             // 
             // button7
             // 
@@ -104,23 +104,17 @@ namespace IrisContabilidad.modulo_contabilidad
             this.button7.Size = new System.Drawing.Size(47, 37);
             this.button7.TabIndex = 119;
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(60, 23);
+            this.label9.Location = new System.Drawing.Point(60, 25);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 20);
             this.label9.TabIndex = 120;
             this.label9.Text = "Cuenta";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(-15, -15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 121;
             // 
             // numeroCuentaText
             // 
@@ -130,6 +124,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.numeroCuentaText.Name = "numeroCuentaText";
             this.numeroCuentaText.Size = new System.Drawing.Size(253, 26);
             this.numeroCuentaText.TabIndex = 122;
+            this.numeroCuentaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numeroCuentaText_KeyDown);
             // 
             // label3
             // 
@@ -145,7 +140,7 @@ namespace IrisContabilidad.modulo_contabilidad
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(56, 77);
+            this.label4.Location = new System.Drawing.Point(56, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 20);
             this.label4.TabIndex = 125;
@@ -159,6 +154,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(253, 26);
             this.nombreText.TabIndex = 124;
+            this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyDown);
             // 
             // cuentaPadreIdText
             // 
@@ -168,6 +164,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.cuentaPadreIdText.Name = "cuentaPadreIdText";
             this.cuentaPadreIdText.Size = new System.Drawing.Size(183, 26);
             this.cuentaPadreIdText.TabIndex = 126;
+            this.cuentaPadreIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cuentaPadreIdText_KeyDown);
             // 
             // button6
             // 
@@ -184,7 +181,7 @@ namespace IrisContabilidad.modulo_contabilidad
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 175);
+            this.label5.Location = new System.Drawing.Point(9, 176);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 20);
             this.label5.TabIndex = 128;
@@ -203,7 +200,7 @@ namespace IrisContabilidad.modulo_contabilidad
             // 
             this.radioCuentaAcumulativa.AutoSize = true;
             this.radioCuentaAcumulativa.Checked = true;
-            this.radioCuentaAcumulativa.Cursor = System.Windows.Forms.Cursors.No;
+            this.radioCuentaAcumulativa.Cursor = System.Windows.Forms.Cursors.Default;
             this.radioCuentaAcumulativa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioCuentaAcumulativa.Location = new System.Drawing.Point(8, 39);
             this.radioCuentaAcumulativa.Name = "radioCuentaAcumulativa";
@@ -212,6 +209,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.radioCuentaAcumulativa.TabStop = true;
             this.radioCuentaAcumulativa.Text = "Cuenta acumulativa";
             this.radioCuentaAcumulativa.UseVisualStyleBackColor = true;
+            this.radioCuentaAcumulativa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioCuentaAcumulativa_KeyDown);
             // 
             // radioCuentaMovimiento
             // 
@@ -223,6 +221,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.radioCuentaMovimiento.TabIndex = 131;
             this.radioCuentaMovimiento.Text = "Cuenta Movimiento";
             this.radioCuentaMovimiento.UseVisualStyleBackColor = true;
+            this.radioCuentaMovimiento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioCuentaMovimiento_KeyDown);
             // 
             // radioOrigenCredito
             // 
@@ -234,12 +233,13 @@ namespace IrisContabilidad.modulo_contabilidad
             this.radioOrigenCredito.TabIndex = 133;
             this.radioOrigenCredito.Text = "Origen crédito";
             this.radioOrigenCredito.UseVisualStyleBackColor = true;
+            this.radioOrigenCredito.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioOrigenCredito_KeyDown);
             // 
             // radioOrigenDebito
             // 
             this.radioOrigenDebito.AutoSize = true;
             this.radioOrigenDebito.Checked = true;
-            this.radioOrigenDebito.Cursor = System.Windows.Forms.Cursors.No;
+            this.radioOrigenDebito.Cursor = System.Windows.Forms.Cursors.Default;
             this.radioOrigenDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioOrigenDebito.Location = new System.Drawing.Point(8, 28);
             this.radioOrigenDebito.Name = "radioOrigenDebito";
@@ -248,6 +248,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.radioOrigenDebito.TabStop = true;
             this.radioOrigenDebito.Text = "Origen debito";
             this.radioOrigenDebito.UseVisualStyleBackColor = true;
+            this.radioOrigenDebito.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioOrigenDebito_KeyDown);
             // 
             // activoCheck
             // 
@@ -255,13 +256,14 @@ namespace IrisContabilidad.modulo_contabilidad
             this.activoCheck.Checked = true;
             this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activoCheck.Location = new System.Drawing.Point(460, 214);
             this.activoCheck.Name = "activoCheck";
-            this.activoCheck.Size = new System.Drawing.Size(68, 21);
+            this.activoCheck.Size = new System.Drawing.Size(83, 28);
             this.activoCheck.TabIndex = 134;
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
             // 
             // groupBox1
             // 
@@ -303,7 +305,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(16, 27);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(912, 328);
+            this.groupBox3.Size = new System.Drawing.Size(912, 335);
             this.groupBox3.TabIndex = 137;
             this.groupBox3.TabStop = false;
             // 
@@ -313,13 +315,11 @@ namespace IrisContabilidad.modulo_contabilidad
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 434);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.textBox1);
             this.Name = "ventana_cuentas_contables";
             this.Text = "ventana_cuentas_contables";
             this.Load += new System.EventHandler(this.ventana_cuentas_contables_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -340,7 +340,6 @@ namespace IrisContabilidad.modulo_contabilidad
         private TextBox cuentaIdText;
         private Button button7;
         private Label label9;
-        private TextBox textBox1;
         public TextBox numeroCuentaText;
         private Label label3;
         private Label label4;

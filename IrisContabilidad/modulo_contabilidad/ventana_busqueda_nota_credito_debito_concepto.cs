@@ -29,6 +29,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.mantenimiento = mantenimiento;
             loadLista();
         }
+
         public void loadLista()
         {
             try
@@ -55,6 +56,7 @@ namespace IrisContabilidad.modulo_contabilidad
                 MessageBox.Show("Error loadLista.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public nota_credito_debito_concepto getObjeto()
         {
             try
@@ -75,12 +77,14 @@ namespace IrisContabilidad.modulo_contabilidad
                 return null;
             }
         }
+
         public void getAction()
         {
             this.DialogResult = DialogResult.OK;
             getObjeto();
             this.Close();
         }
+
         public void Salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -88,6 +92,23 @@ namespace IrisContabilidad.modulo_contabilidad
                 this.Close();
             }
         }
+
+        public void buscar()
+        {
+            try
+            {
+
+                lista = modeloConcepto.getListaCompleta();
+                lista = lista.FindAll(x => x.concepto.ToLower().Contains(nombreText.Text.ToLower()) || x.detalle.ToLower().Contains(nombreText.Text.ToLower()));
+                loadLista();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error buscando.: " + ex.ToString());
+            }
+        }
+
         private void ventana_busqueda_nota_credito_debito_concepto_Load(object sender, EventArgs e)
         {
 
@@ -111,19 +132,7 @@ namespace IrisContabilidad.modulo_contabilidad
 
         private void nombreText_KeyDown(object sender, KeyEventArgs e)
         {
-            try
-            {
-                if (e.KeyCode == Keys.Enter)
-                {
-                    lista = modeloConcepto.getListaCompleta();
-                    lista = lista.FindAll(x => x.concepto.ToLower().Contains(nombreText.Text.ToLower()) || x.detalle.ToLower().Contains(nombreText.Text.ToLower()));
-                    loadLista();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error buscando.: " + ex.ToString());
-            }
+            buscar();
         }
 
         private void nombreText_TextChanged(object sender, EventArgs e)

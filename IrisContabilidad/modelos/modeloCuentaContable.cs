@@ -63,7 +63,7 @@ namespace IrisContabilidad.modelos
                     movimiento = 1;
                 }
 
-                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('" + cuenta.codigo + "','" + cuenta.nombre + "','" + cuenta.numero_cuenta + "','" + cuenta.codigo_cuenta_superior + "','" + acumulativa + "','" + movimiento + "','" + origenCredito + "','" + origenDebito + "','" + activo + "')";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('" + cuenta.codigo + "','" + cuenta.nombre + "','" + cuenta.numero_cuenta + "','" + cuenta.codigo_cuenta_superior + "','" + acumulativa + "','" + movimiento + "','" + origenCredito + "','" + origenDebito + "','" + activo + "')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -122,8 +122,8 @@ namespace IrisContabilidad.modelos
                 {
                     movimiento = 1;
                 }
-                sql = "update almacen set  where codigo='" + cuenta.codigo + "'";
-                ds = utilidades.ejecutarcomando_mysql(sql);
+                sql = "update catalogo_cuentas set nombre='" + cuenta.nombre + "',numero_cuenta='" + cuenta.numero_cuenta + "',codigo_cuenta_superior='" + cuenta.codigo_cuenta_superior + "',cuenta_acumulativa='" + acumulativa + "',cuenta_movimiento='" + movimiento + "',origen_credito='" + origenCredito + "',origen_debito='" + origenDebito + "',activo='" + activo + "'  where codigo='" + cuenta.codigo + "'";
+                utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
             }
@@ -161,15 +161,14 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
-
+        
         //get objeto
         public cuenta_contable getCuentaContableById(int id)
         {
             try
             {
                 cuenta_contable cuentaContable = new cuenta_contable();
-                string sql = "select codigo,nombre,numero_cuenta,cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas where codigo='" + id + "'";
+                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas where codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -192,14 +191,13 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //get lista completa
         public List<cuenta_contable> getListaCompleta(bool mantenimiento = false)
         {
             try
             {
                 List<cuenta_contable> lista = new List<cuenta_contable>();
-                string sql = "select codigo,nombre,numero_cuenta,cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas ";
+                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas ";
                 if (mantenimiento == false)
                 {
                     sql += " where activo=1";

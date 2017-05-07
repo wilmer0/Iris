@@ -299,19 +299,19 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_venta_credito` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cobro_tarjeta`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`catalogo_cuentas` CHANGE COLUMN `cuenta_superior` `codigo_cuenta_superior` INTEGER NOT NULL DEFAULT 0 COMMENT 'para saber a que cuenta pertenece esta';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "CREATE TABLE `iris`.`notas_programador` (`notas` LONGTEXT)ENGINE = InnoDB;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('1','ACTIVOS','1','0','1','0','0','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('2','PASIVOS','2','0','1','0','1','0','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('3','CAPITAL','3','0','1','0','1','0','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";
