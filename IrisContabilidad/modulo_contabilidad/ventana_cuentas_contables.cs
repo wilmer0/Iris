@@ -128,7 +128,7 @@ namespace IrisContabilidad.modulo_contabilidad
                     MessageBox.Show("Falta el número de la cuenta", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                //validar cuent apadre
+                //validar cuenta padre
                 if (cuentaPadre == null)
                 {
                     cuentaPadreIdText.Focus();
@@ -242,7 +242,7 @@ namespace IrisContabilidad.modulo_contabilidad
             {
                 if (e.KeyCode == Keys.F1)
                 {
-                    
+                    button7_Click(null,null);
                 }
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -308,7 +308,7 @@ namespace IrisContabilidad.modulo_contabilidad
             {
                 if (e.KeyCode == Keys.F1)
                 {
-
+                    button6_Click(null,null);
                 }
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -424,6 +424,11 @@ namespace IrisContabilidad.modulo_contabilidad
                 cuentaPadre = ventana.getObjeto();
                 loadCuentaPadre();
             }
+        }
+
+        private void groupBox3_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
