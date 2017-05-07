@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_contabilidad
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_contabilidad
 {
     partial class ventana_busqueda_nota_credito_debito_concepto
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -85,7 +88,6 @@
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(396, 26);
             this.nombreText.TabIndex = 20;
-            this.nombreText.TextChanged += new System.EventHandler(this.nombreText_TextChanged);
             this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyDown);
             // 
             // label3
@@ -173,13 +175,13 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Detalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activoColumn;
+        private GroupBox groupBox1;
+        private TextBox nombreText;
+        private Label label3;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn secuenciacolumn;
+        private DataGridViewTextBoxColumn Detalle;
+        private DataGridViewTextBoxColumn activoColumn;
     }
 }

@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
-using IrisContabilidad.modulo_nomina;
-using empleado = IrisContabilidad.clases.empleado;
 
 namespace IrisContabilidad.modelos
 {
@@ -303,7 +299,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    clases.empleado empleado = new empleado();
+                    empleado empleado = new empleado();
                     empleado.codigo = (int) row[0];
                     empleado.nombre = row[1].ToString();
                     empleado.login = row[2].ToString();

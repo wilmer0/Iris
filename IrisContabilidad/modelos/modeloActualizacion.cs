@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using IrisContabilidad.clases;
 using System.Windows.Forms;
-using MessageBox = System.Windows.Forms.MessageBox;
+using IrisContabilidad.clases;
 
 namespace IrisContabilidad.modelos
 {
@@ -273,16 +266,52 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_efectivo_recibido_cajero` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_pagos_efectivo`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_cobro_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_efectivo_recibido_cajero`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_venta_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cobro_efectivo`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`venta` ADD COLUMN `monto_impuesto` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `cod_tipo_comprobante`, ADD COLUMN `pedido` BOOLEAN NOT NULL DEFAULT 0 AFTER `monto_impuesto`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` CHANGE COLUMN `monto_efectivo` `monto_efectivo_esperado` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "insert into metodo_pago(codigo,metodo,descripcion,activo) values('4','tarjeta','cuando se recive dinero en base a tarjeta','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_cobro_deposito` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_venta_efectivo`, ADD COLUMN `monto_cobro_cheque` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cobro_deposito`, ADD COLUMN `monto_cobro_tarjeta` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cobro_cheque`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` CHANGE COLUMN `monto_cobro_deposito` `monto_cobro_deposito_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_cheque` `monto_cobro_cheque_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_tarjeta` `monto_cobro_tarjeta_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` CHANGE COLUMN `monto_cobro_deposito_efectivo` `monto_cobro_deposito` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_cheque_efectivo` `monto_cobro_cheque` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_cobro_tarjeta_efectivo` `monto_cobro_tarjeta` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` CHANGE COLUMN `monto_cotizacion` `monto_venta_cotizacion` DECIMAL(20,2) NOT NULL DEFAULT 0.00, CHANGE COLUMN `monto_pedido` `monto_venta_pedido` DECIMAL(20,2) NOT NULL DEFAULT 0.00;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` DROP COLUMN `monto_tarjeta`, DROP COLUMN `monto_cheque`, DROP COLUMN `monto_deposito`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_venta_credito` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_cobro_tarjeta`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`catalogo_cuentas` CHANGE COLUMN `cuenta_superior` `codigo_cuenta_superior` INTEGER NOT NULL DEFAULT 0 COMMENT 'para saber a que cuenta pertenece esta';";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "CREATE TABLE `iris`.`notas_programador` (`notas` LONGTEXT)ENGINE = InnoDB;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('1','ACTIVOS','1','0','1','0','0','1','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('2','PASIVOS','2','0','1','0','1','0','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('3','CAPITAL','3','0','1','0','1','0','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

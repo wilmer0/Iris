@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_sistema
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_sistema
 {
     partial class menu1
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -197,12 +200,12 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutVentanas;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutModulos;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button notificacionesBoton;
-        private System.Windows.Forms.Button button5;
+        private FlowLayoutPanel flowLayoutVentanas;
+        private FlowLayoutPanel flowLayoutModulos;
+        private Panel panel3;
+        private Button button14;
+        private Button button4;
+        private Button notificacionesBoton;
+        private Button button5;
     }
 }

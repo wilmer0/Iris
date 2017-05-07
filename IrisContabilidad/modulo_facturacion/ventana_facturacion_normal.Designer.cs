@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_facturacion_normal
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -837,65 +840,65 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox totalCompraText;
-        private System.Windows.Forms.TextBox totalItebisText;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox descuentoText;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox importeText;
-        private System.Windows.Forms.TextBox productoIdText;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox productoText;
-        private System.Windows.Forms.TextBox precioText;
-        private System.Windows.Forms.ComboBox unidadComboText;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox cantidadText;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button botonImprimir;
-        private System.Windows.Forms.MaskedTextBox fechaFinalText;
-        private System.Windows.Forms.MaskedTextBox fechaInicialText;
-        private System.Windows.Forms.TextBox detalleText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox tipoVentaComboBox;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.TextBox numeroFacturaText;
-        private System.Windows.Forms.TextBox clienteText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox clienteIdText;
-        private System.Windows.Forms.TextBox numerocComprobanteFiscalText;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPrductoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idUnidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itebisColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descuentoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn importeColumn;
-        private System.Windows.Forms.TextBox ItebisText;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.ComboBox tipoComprobanteCombo;
-        private System.Windows.Forms.TextBox existenciaText;
-        private System.Windows.Forms.Label label21;
+        private TextBox totalCompraText;
+        private TextBox totalItebisText;
+        private Label label14;
+        private Label label13;
+        private GroupBox groupBox2;
+        private Label label16;
+        private Label label15;
+        private Button button19;
+        private Button button20;
+        private Button button4;
+        private TextBox descuentoText;
+        private Label label7;
+        private Label label12;
+        private Label label8;
+        private TextBox importeText;
+        private TextBox productoIdText;
+        private Label label11;
+        private TextBox productoText;
+        private TextBox precioText;
+        private ComboBox unidadComboText;
+        private Label label10;
+        private Label label9;
+        private TextBox cantidadText;
+        private GroupBox groupBox1;
+        private GroupBox groupBox3;
+        private Button botonImprimir;
+        private MaskedTextBox fechaFinalText;
+        private MaskedTextBox fechaInicialText;
+        private TextBox detalleText;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label1;
+        private ComboBox tipoVentaComboBox;
+        private LinkLabel linkLabel1;
+        private TextBox numeroFacturaText;
+        private TextBox clienteText;
+        private Label label2;
+        private Button button5;
+        private Label label3;
+        private TextBox clienteIdText;
+        private TextBox numerocComprobanteFiscalText;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn idPrductoColumn;
+        private DataGridViewTextBoxColumn ProductoColumn;
+        private DataGridViewTextBoxColumn idUnidadColumn;
+        private DataGridViewTextBoxColumn unidadColumn;
+        private DataGridViewTextBoxColumn cantidadColumn;
+        private DataGridViewTextBoxColumn precioColumn;
+        private DataGridViewTextBoxColumn itebisColumn;
+        private DataGridViewTextBoxColumn descuentoColumn;
+        private DataGridViewTextBoxColumn importeColumn;
+        private TextBox ItebisText;
+        private Label label17;
+        private Label label18;
+        private Label label19;
+        private Label label20;
+        private ComboBox tipoComprobanteCombo;
+        private TextBox existenciaText;
+        private Label label21;
     }
 }

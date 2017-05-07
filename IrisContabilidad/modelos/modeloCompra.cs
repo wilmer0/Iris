@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 
@@ -113,7 +111,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -140,8 +137,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
-
+        
         //obtener el codigo siguiente de compra detalle
         public int getNextCompraDetalle()
         {

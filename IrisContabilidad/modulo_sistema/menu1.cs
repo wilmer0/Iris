@@ -1,23 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
-using IrisContabilidad.modulo_sistema;
-using Application = System.Windows.Forms.Application;
-using empleado = IrisContabilidad.clases.empleado;
-using MessageBox = System.Windows.Forms.MessageBox;
-
 
 namespace IrisContabilidad.modulo_sistema
 {

@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_contabilidad
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_contabilidad
 {
     partial class ventana_nota_credito_debito_concepto
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -204,14 +207,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox conceptoIdText;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox conceptoText;
-        private System.Windows.Forms.TextBox detalleText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox activoCheck;
+        private Label label2;
+        private Button button5;
+        private TextBox conceptoIdText;
+        private GroupBox groupBox1;
+        private TextBox conceptoText;
+        private TextBox detalleText;
+        private Label label1;
+        private Label label3;
+        private CheckBox activoCheck;
     }
 }

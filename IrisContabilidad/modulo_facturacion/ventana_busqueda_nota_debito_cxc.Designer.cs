@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_busqueda_nota_debito_cxc
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -281,22 +284,22 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioNCFVenta;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.RadioButton radioMonto;
-        private System.Windows.Forms.RadioButton radioConcepto;
-        private System.Windows.Forms.RadioButton radioCliente;
-        private System.Windows.Forms.RadioButton radioId;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn conceptoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cajerocolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MontoColumn;
+        private GroupBox groupBox1;
+        private RadioButton radioNCFVenta;
+        private Label label1;
+        private RadioButton radioMonto;
+        private RadioButton radioConcepto;
+        private RadioButton radioCliente;
+        private RadioButton radioId;
+        private TextBox nombreText;
+        private Label label3;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn FechaColumn;
+        private DataGridViewTextBoxColumn conceptoColumn;
+        private DataGridViewTextBoxColumn Cajerocolumn;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn MontoColumn;
     }
 }

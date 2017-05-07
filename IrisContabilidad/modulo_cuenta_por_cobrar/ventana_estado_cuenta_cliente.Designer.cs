@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_cobrar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {
     partial class ventana_estado_cuenta_cliente
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -270,20 +273,20 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label clienteLabel;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox clienteIdText;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
+        private Label label1;
+        private Label clienteLabel;
+        private Label label2;
+        private Button button5;
+        private TextBox clienteIdText;
+        private DataGridView dataGridView1;
+        private GroupBox groupBox1;
+        private Button button6;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column7;
     }
 }

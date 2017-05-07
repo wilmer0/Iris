@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_busqueda_venta
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -260,20 +263,20 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RadioButton radioButtonNCF;
-        private System.Windows.Forms.RadioButton radioButtonId;
-        private System.Windows.Forms.RadioButton radioButtonEmpleado;
-        private System.Windows.Forms.RadioButton radioButtonTipoVenta;
-        private System.Windows.Forms.RadioButton radioButtonCliente;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column5;
+        private GroupBox groupBox1;
+        private TextBox nombreText;
+        private Label label3;
+        private RadioButton radioButtonNCF;
+        private RadioButton radioButtonId;
+        private RadioButton radioButtonEmpleado;
+        private RadioButton radioButtonTipoVenta;
+        private RadioButton radioButtonCliente;
     }
 }

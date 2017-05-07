@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_cajero
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -299,21 +302,21 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox cajeroIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox cajaIdText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox cajaText;
-        private System.Windows.Forms.TextBox empleadoText;
-        private System.Windows.Forms.TextBox empleadoIdText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButtonHojaGrande;
-        private System.Windows.Forms.RadioButton radioButtonHojaRollo;
+        private CheckBox activoCheck;
+        private GroupBox groupBox1;
+        private TextBox cajeroIdText;
+        private Label label2;
+        private Button button4;
+        private TextBox cajaIdText;
+        private Label label1;
+        private Button button5;
+        private TextBox cajaText;
+        private TextBox empleadoText;
+        private TextBox empleadoIdText;
+        private Label label3;
+        private Button button6;
+        private GroupBox groupBox2;
+        private RadioButton radioButtonHojaGrande;
+        private RadioButton radioButtonHojaRollo;
     }
 }

@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
-using System.Windows.Forms;
-using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace IrisContabilidad.clases_reportes
 {
@@ -36,7 +31,7 @@ namespace IrisContabilidad.clases_reportes
             suplidor suplidor = new modeloSuplidor().getSuplidorByCompraPago(pago.codigo_pago);
             compra_vs_pagos compraPago = new modeloCompra().getCompraPagoById(pago.codigo_pago);
             compra compra = new modeloCompra().getCompraById(pago.codigo_compra);
-            clases.metodo_pago metodoPago = new modeloMetodoPago().getMetodoPagoById(pago.codigo_metodo_pago);
+            metodo_pago metodoPago = new modeloMetodoPago().getMetodoPagoById(pago.codigo_metodo_pago);
             this.numero_compra = compra.numero_factura;
             this.codigoCompra = compra.codigo;
             this.monto_descuento = pago.monto_descontado;

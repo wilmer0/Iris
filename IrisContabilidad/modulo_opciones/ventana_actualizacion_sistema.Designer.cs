@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_opciones
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_opciones
 {
     partial class ventana_actualizacion_sistema
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -139,10 +142,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox versionActualText;
-        private System.Windows.Forms.TextBox versionActualizarText;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private Label label2;
+        private Label label1;
+        private TextBox versionActualText;
+        private TextBox versionActualizarText;
+        private GroupBox groupBox1;
     }
 }
