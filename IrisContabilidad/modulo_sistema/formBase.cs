@@ -99,5 +99,10 @@ namespace IrisContabilidad.modulo_sistema
         {
 
         }
+
+        public void mensajeAyuda(string mensaje)
+        {
+            MessageBox.Show(mensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

@@ -1250,6 +1250,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="reportes\reporte_cobros.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
@@ -1345,6 +1346,7 @@
     <Content Include="bin\Release\Resources\botones\analisis3.png" />
     <Content Include="bin\Release\Resources\botones\analisis4.png" />
     <Content Include="bin\Release\Resources\botones\analisis5.png" />
+    <None Include="bin\Release\Resources\botones\ayuda1.png" />
     <Content Include="bin\Release\Resources\botones\Blue-Backup-W-icon.png" />
     <Content Include="bin\Release\Resources\botones\Bus-icon.png" />
     <Content Include="bin\Release\Resources\botones\buscar1.png" />

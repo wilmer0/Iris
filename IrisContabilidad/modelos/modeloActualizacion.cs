@@ -71,7 +71,7 @@ namespace IrisContabilidad.modelos
 
                 }else if (sucursal.versionSistema == 2)
                 {
-                    //version3(true);
+                    version3(true);
                 }
                 else if (sucursal.versionSistema == 3)
                 {
@@ -305,32 +305,25 @@ namespace IrisContabilidad.modelos
                 sql = "CREATE TABLE `iris`.`notas_programador` (`notas` LONGTEXT)ENGINE = InnoDB;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('1','ACTIVOS','1','0','1','0','0','1','1');";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('1','ACTIVOS','1','1','1','0','0','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('2','PASIVOS','2','0','1','0','1','0','1');";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('2','PASIVOS','2','2','1','0','1','0','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('3','CAPITAL','3','0','1','0','1','0','1');";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('3','CAPITAL','3','3','1','0','1','0','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('4','INGRESOS','4','4','1','0','0','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('5','COSTOS','5','5','1','0','1','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('6','GASTOS','6','6','1','0','1','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
+                
+
                 
                 
 
@@ -350,6 +343,111 @@ namespace IrisContabilidad.modelos
                 }
             }
         }
+
+        private void version3(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version3
+
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 3;
+                sucursal.versionSistemaMaxima = 4;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version1.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
 
     }

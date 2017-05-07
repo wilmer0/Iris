@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 
@@ -11,7 +12,8 @@ namespace IrisContabilidad.modelos
         //objetos
         utilidades utilidades = new utilidades();
 
-
+        //listas
+        private List<cuenta_contable> listaCuentaContables;
 
 
 
@@ -192,22 +194,56 @@ namespace IrisContabilidad.modelos
         }
 
         //get lista completa
-        public List<cuenta_contable> getListaCompleta(bool mantenimiento = false)
+        public List<cuenta_contable> getListaCompleta()
+        {
+            try
+            {
+                listaCuentaContables = new List<cuenta_contable>();
+                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas where cuenta_acumulativa='1' order by numero_cuenta;";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        cuenta_contable cuentaContable = new cuenta_contable();
+                        cuentaContable = getCuentaContableById(Convert.ToInt16(row[0].ToString()));
+
+                        //validar si la cuenta actual tiene hijos
+                        if (validarCuentaTieneHijos(cuentaContable.codigo) == true)
+                        {
+                            listaCuentaContables.AddRange(getListaCuentasHijoByPadreId(cuentaContable.codigo));
+                        }
+                    }
+                }
+
+                listaCuentaContables = listaCuentaContables.OrderBy(x => x.numero_cuenta).ToList();
+                return listaCuentaContables;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        
+        //get lista de cuentas contables hija
+        public List<cuenta_contable> getListaCuentasHijoByPadreId(Int64 idCuentaPadre,bool mantenimiento=false)
         {
             try
             {
                 List<cuenta_contable> lista = new List<cuenta_contable>();
-                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas ";
+                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas where codigo_cuenta_superior='"+idCuentaPadre+"'";
                 if (mantenimiento == false)
                 {
-                    sql += " where activo=1";
+                    sql += " and activo=1 order by numero_cuenta;";
                 }
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
-                        cuenta_contable cuentaContable=new cuenta_contable();
+                        cuenta_contable cuentaContable = new cuenta_contable();
                         cuentaContable.codigo = Convert.ToInt16(row[0].ToString());
                         cuentaContable.nombre = row[1].ToString();
                         cuentaContable.numero_cuenta = row[2].ToString();
@@ -224,10 +260,70 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getListaCuentasHijoByPadreId.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }
         }
+
+        //saber si esta cuenta tiene cuenta hijos
+        public bool validarCuentaTieneHijos(Int64 idCuentaPadre)
+        {
+            try
+            {
+                bool hijos = false;//para saber si tiene hijos
+                List<cuenta_contable> lista = new List<cuenta_contable>();
+                string sql = "select count(*) from catalogo_cuentas where  activo=1 and codigo_cuenta_superior='"+idCuentaPadre+"';";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    if (Convert.ToInt64(ds.Tables[0].Rows[0][0].ToString()) >= 0)
+                    {
+                        hijos = true;
+                    }
+                }
+                return hijos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validarCuentaTieneHijos.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //tomar el primer hijo de una cuenta contable
+        public List<cuenta_contable> getListaCuentaContablesHijos(Int64 idCuentaPadre)
+        {
+            try
+            {
+                List<cuenta_contable> lista = new List<cuenta_contable>();
+                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas where codigo_cuenta_superior='" + idCuentaPadre + "' order by numero_cuenta;";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        cuenta_contable cuentaContable = new cuenta_contable();
+                        cuentaContable.codigo = Convert.ToInt16(row[0].ToString());
+                        cuentaContable.nombre = row[1].ToString();
+                        cuentaContable.numero_cuenta = row[2].ToString();
+                        cuentaContable.codigo_cuenta_superior = Convert.ToInt16(row[3].ToString());
+                        cuentaContable.cuenta_acumulativa = Convert.ToBoolean(row[4]);
+                        cuentaContable.cuenta_movimiento = Convert.ToBoolean(row[5]);
+                        cuentaContable.origen_credito = Convert.ToBoolean(row[6]);
+                        cuentaContable.origen_debito = Convert.ToBoolean(row[7]);
+                        cuentaContable.activo = Convert.ToBoolean(row[8]);
+                        lista.Add(cuentaContable);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCuentaContablesHijos.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
     }
 }

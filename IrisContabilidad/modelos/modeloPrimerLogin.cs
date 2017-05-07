@@ -427,7 +427,7 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //primeras cuentas contables
                 #region
                 sql = "";
                 utilidades.ejecutarcomando_mysql(sql);
