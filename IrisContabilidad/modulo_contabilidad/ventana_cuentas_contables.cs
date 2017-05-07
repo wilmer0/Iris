@@ -413,5 +413,17 @@ namespace IrisContabilidad.modulo_contabilidad
 
             }
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ventana_busqueda_cuenta_contable ventana = new ventana_busqueda_cuenta_contable();
+            ventana.Owner = this;
+            ventana.ShowDialog();
+            if (ventana.DialogResult == DialogResult.OK)
+            {
+                cuentaPadre = ventana.getObjeto();
+                loadCuentaPadre();
+            }
+        }
     }
 }
