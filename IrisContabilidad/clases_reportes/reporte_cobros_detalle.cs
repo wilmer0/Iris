@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IrisContabilidad.clases;
+﻿using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 
 namespace IrisContabilidad.clases_reportes
@@ -52,7 +47,11 @@ namespace IrisContabilidad.clases_reportes
             }
             this.idVenta = venta.codigo;
             this.NCF = venta.ncf;
-            this.tipoVenta = venta.tipo_venta;
+            this.tipoVenta = "Desconocido";
+            if (venta.tipo_venta != null)
+            {
+                this.tipoVenta = venta.tipo_venta;    
+            }
             this.fechaVenta = new utilidades().getFechaddMMyyyy(venta.fecha);
             this.montoPendiente = new modeloVenta().getMontoPendienteByVenta(venta.codigo);
             this.montoFactura = new modeloVenta().getMontoFacturaByVenta(venta.codigo);

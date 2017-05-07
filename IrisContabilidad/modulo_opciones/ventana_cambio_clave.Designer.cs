@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_opciones
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_opciones
 {
     partial class ventana_cambio_clave
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -182,13 +185,13 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox claveActualText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox claveConfirmarText;
-        private System.Windows.Forms.TextBox claveNuevaText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label usuarioLabelText;
+        private GroupBox groupBox2;
+        private TextBox claveActualText;
+        private Label label2;
+        private TextBox claveConfirmarText;
+        private TextBox claveNuevaText;
+        private Label label3;
+        private Label label1;
+        private Label usuarioLabelText;
     }
 }

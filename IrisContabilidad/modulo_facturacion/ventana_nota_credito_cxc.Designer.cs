@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_nota_credito_cxc
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -415,30 +418,30 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox notaCreditoIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox fechaText;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox conceptoComboBox;
-        private System.Windows.Forms.TextBox montoText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox detalleText;
-        private System.Windows.Forms.CheckBox activoCheck;
-        public System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox ventaIdText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox NcfText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox numeroVentaText;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.RadioButton radioButtonVenta;
-        private System.Windows.Forms.RadioButton radioButtonDevolucion;
+        private GroupBox groupBox1;
+        private TextBox notaCreditoIdText;
+        private Label label2;
+        private Button button4;
+        private Label label3;
+        private MaskedTextBox fechaText;
+        private Label label5;
+        private ComboBox conceptoComboBox;
+        private TextBox montoText;
+        private Label label6;
+        private Label label7;
+        private TextBox detalleText;
+        private CheckBox activoCheck;
+        public Button button5;
+        private TextBox ventaIdText;
+        private Label label1;
+        private Button button7;
+        private TextBox NcfText;
+        private Label label4;
+        private Label label8;
+        private TextBox numeroVentaText;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
+        private RadioButton radioButtonVenta;
+        private RadioButton radioButtonDevolucion;
     }
 }

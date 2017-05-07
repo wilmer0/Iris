@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     partial class ventana_suplidor
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -454,35 +457,35 @@
 
         #endregion
 
-        private System.Windows.Forms.TabPage tabPage1;
-        public System.Windows.Forms.TextBox ciudadText;
-        public System.Windows.Forms.TextBox rncText;
-        public System.Windows.Forms.TextBox limiteCreditoText;
-        private System.Windows.Forms.TextBox ciudadIdText;
-        public System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox suplidorIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TabControl tabControl1;
-        public System.Windows.Forms.TextBox telefono2Text;
-        private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.TextBox telefono1Text;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.TextBox faxText;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox tipoGastoText;
-        private System.Windows.Forms.TextBox tipoGastoIdText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        public System.Windows.Forms.TextBox direccionText;
+        private TabPage tabPage1;
+        public TextBox ciudadText;
+        public TextBox rncText;
+        public TextBox limiteCreditoText;
+        private TextBox ciudadIdText;
+        public TextBox nombreText;
+        private GroupBox groupBox1;
+        private TextBox suplidorIdText;
+        private Label label2;
+        private Button button4;
+        private CheckBox activoCheck;
+        private Label label10;
+        private Button button8;
+        private Label label9;
+        private Label label6;
+        private Label label3;
+        private TabControl tabControl1;
+        public TextBox telefono2Text;
+        private Label label4;
+        public TextBox telefono1Text;
+        private Label label1;
+        public TextBox faxText;
+        private Label label5;
+        public TextBox tipoGastoText;
+        private TextBox tipoGastoIdText;
+        private Button button5;
+        private Label label7;
+        private Label label8;
+        public TextBox direccionText;
 
     }
 }

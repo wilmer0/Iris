@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
-using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_nomina;
 
 namespace IrisContabilidad.modelos
@@ -48,7 +44,7 @@ namespace IrisContabilidad.modelos
                 if (ds.Tables[0].Rows.Count == 0)
                 {
                     //despues de ingresar la primera, que empiece actualizar todas las tablas
-                    modeloActualizacion.actualizar();
+                    //modeloActualizacion.actualizar();
                     //no existe empresa entonces se debe agregar todo
                     primerosDatos();
                     agregarModulos();
@@ -107,6 +103,7 @@ namespace IrisContabilidad.modelos
                     sucursal.direccion = "Direccion";
                     sucursal.activo = true;
                     sucursal.versionSistema = 0;
+                    sucursal.versionSistemaMaxima = 0;
                     modeloSucursal.agregarSucursal(sucursal);
                 }
                 #endregion
@@ -1009,6 +1006,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 6;
                 ventana.imagen = "tipo_ventana1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Actualización sistema";
+                ventana.nombre_logico = "IrisContabilidad.modulo_opciones.ventana_actualizacion_sistema";
+                ventana.activo = true;
+                ventana.programador = true;
+                ventana.codigo_modulo = 6;
+                ventana.imagen = "actualizacion_sistema1.png";
+                listaVentana.Add(ventana);
                 #endregion
 
                 //modulo nomina
@@ -1117,6 +1123,15 @@ namespace IrisContabilidad.modelos
                 ventana.programador = false;
                 ventana.codigo_modulo = 9;
                 ventana.imagen = "nota_credito_debito_concepto1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "parametrización contable";
+                ventana.nombre_logico = "IrisContabilidad.modulo_contabilidad.ventana_parametrizacion_contable";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 9;
+                ventana.imagen = "parametrizacion_contable1.png";
                 listaVentana.Add(ventana);
                 #endregion
 

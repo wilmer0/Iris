@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_empresa
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_empresa
 {
     partial class ventana_ciudad
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -170,12 +173,12 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox ciudadIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox activoCheck;
+        private GroupBox groupBox1;
+        private TextBox ciudadIdText;
+        private Label label2;
+        private Button button4;
+        public TextBox nombreText;
+        private Label label3;
+        private CheckBox activoCheck;
     }
 }

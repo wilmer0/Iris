@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_gerencia
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_gerencia
 {
     partial class ventana_reporte_ventas_mensuales_grafico
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -270,19 +273,19 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox anofinalText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox anoInicialText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox clienteIdText;
-        private System.Windows.Forms.Label clienteLabel;
-        private System.Windows.Forms.Label empleadoLabel;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox empleadoIdText;
-        private System.Windows.Forms.RadioButton radioSoloVentasCobradas;
+        private GroupBox groupBox1;
+        private TextBox anofinalText;
+        private Label label1;
+        private TextBox anoInicialText;
+        private Label label2;
+        private Button button4;
+        private Label label3;
+        private TextBox clienteIdText;
+        private Label clienteLabel;
+        private Label empleadoLabel;
+        private Button button5;
+        private Label label5;
+        private TextBox empleadoIdText;
+        private RadioButton radioSoloVentasCobradas;
     }
 }

@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_empresa
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_empresa
 {
     partial class ventana_configuracion_comprobante_fiscal
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -269,20 +272,20 @@
 
         #endregion
 
-        public System.Windows.Forms.TextBox numeroInicialText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        public System.Windows.Forms.TextBox cajaText;
-        private System.Windows.Forms.TextBox cajaIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.TextBox comprobanteTipoText;
-        private System.Windows.Forms.TextBox comprobanteTipoIdText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
-        public System.Windows.Forms.TextBox numeroFinalText;
-        private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.TextBox ultimoUsadoText;
-        private System.Windows.Forms.Label label5;
+        public TextBox numeroInicialText;
+        private Label label3;
+        private GroupBox groupBox1;
+        public TextBox cajaText;
+        private TextBox cajaIdText;
+        private Label label2;
+        private Button button4;
+        public TextBox comprobanteTipoText;
+        private TextBox comprobanteTipoIdText;
+        private Label label1;
+        private Button button5;
+        public TextBox numeroFinalText;
+        private Label label4;
+        public TextBox ultimoUsadoText;
+        private Label label5;
     }
 }

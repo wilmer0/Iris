@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Media;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ionic.Zip;
-using Microsoft.ReportingServices.ReportProcessing.ReportObjectModel;
 using MySql.Data.MySqlClient;
 using CompressionLevel = Ionic.Zlib.CompressionLevel;
-using DataSet = System.Data.DataSet;
 
 namespace IrisContabilidad.clases
 {
@@ -74,9 +73,7 @@ namespace IrisContabilidad.clases
             else
                 return false;
         }
-
-
-
+        
         public string conv999(Int64 n)
         {
             if (n == 0) return "";
@@ -108,8 +105,6 @@ namespace IrisContabilidad.clases
             letras = letras.Replace("nueve cientos", "novecientos");
             return letras;
         }
-
-
 
         public string conv15digitos(Int64 n)
         {
@@ -145,8 +140,6 @@ namespace IrisContabilidad.clases
             return Letras;
         }
 
-
-
         public void hablar(string letras)
         {
             string[] v = letras.Split();
@@ -154,14 +147,12 @@ namespace IrisContabilidad.clases
             {
                 if (string.IsNullOrEmpty(v[f]) == false)
                 {
-                    System.Media.SoundPlayer sonar = new System.Media.SoundPlayer();
+                    SoundPlayer sonar = new SoundPlayer();
                     sonar.SoundLocation = @"C:\Users\wilmer\Desktop\numeros\" + v[f] + ".wav";
                     sonar.PlaySync();
                 }
             }
         }
-
-
 
         public void escribir(string ruta, string contenido)
         {
@@ -191,12 +182,14 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+
         public DataSet ejecutarcomando_mysql(string query)
         {
             try
             {
                 if (query == "")
                 {
+                    MessageBox.Show("Query ingreso nulo","",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                     return null;
                 }
                 MySqlConnection conn = new MySqlConnection("server=localhost;uid=bc;" + "pwd=BlackCode123;database=iris;Allow Zero Datetime=false;");
@@ -212,6 +205,7 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+
         public DataSet ejecutarcomando_mysql_remoto(string query)
         {
             try
@@ -233,29 +227,23 @@ namespace IrisContabilidad.clases
             }
         }
 
-
-
         public string encriptar(string _cadenaAencriptar)
         {
             string result = string.Empty;
-            byte[] encryted = System.Text.Encoding.Unicode.GetBytes(_cadenaAencriptar);
+            byte[] encryted = Encoding.Unicode.GetBytes(_cadenaAencriptar);
             result = Convert.ToBase64String(encryted);
             return result;
         }
-
-
-
+        
         /// Esta función desencripta la cadena que le envíamos en el parámentro de entrada.
         public string desencriptar(string _cadenaAdesencriptar)
         {
             string result = string.Empty;
             byte[] decryted = Convert.FromBase64String(_cadenaAdesencriptar);
             //result = System.Text.Encoding.Unicode.GetString(decryted, 0, decryted.ToArray().Length);
-            result = System.Text.Encoding.Unicode.GetString(decryted);
+            result = Encoding.Unicode.GetString(decryted);
             return result;
         }
-
-
 
         public bool numero_entero(string cadena)
         {
@@ -270,8 +258,6 @@ namespace IrisContabilidad.clases
             }
         }
 
-
-
         public bool numero_decimal(string cadena)
         {
             try
@@ -284,8 +270,6 @@ namespace IrisContabilidad.clases
                 return false;
             }
         }
-
-
 
         public string numero_miles(double numero)
         {
@@ -300,8 +284,6 @@ namespace IrisContabilidad.clases
             }
         }
 
-
-
         public bool solo_letras(string cadena)
         {
             try
@@ -315,9 +297,6 @@ namespace IrisContabilidad.clases
                 return true;
             }
         }
-
-
-
 
         public string CadenaEliminarPalabra(string cadena, string palabra)
         {
@@ -347,12 +326,7 @@ namespace IrisContabilidad.clases
 
             return nuevaCadena;
         }
-
-
-
-
-      
-
+        
         public Boolean comprimirArchivo(string rutaArchivo)
         {
             try
@@ -377,11 +351,7 @@ namespace IrisContabilidad.clases
                 return false;
             }
         }
-
-
-
-
-
+        
         public Boolean Compress(string rutaArchivo)
         {
             try
@@ -416,12 +386,7 @@ namespace IrisContabilidad.clases
                 return false;
             }
         }
-
-
-
-
-
-
+        
         public Boolean Decompress(string rutaArchivo)
         {
             try
@@ -455,7 +420,6 @@ namespace IrisContabilidad.clases
             }
         }
        
-
         //public  Boolean limpiarDatosTodasTablasMysql()
         //{
         //    try
@@ -481,8 +445,6 @@ namespace IrisContabilidad.clases
             return fecha.ToString("dd/MM/yyyy");
         }
 
-
-
         public Boolean ValidarCorreo(string correo)
         {
             try
@@ -507,11 +469,7 @@ namespace IrisContabilidad.clases
             }
         }
 
-
-
-
-        public Boolean EnviarCorreo(string emisor, string password, string destinatario, string asunto, string mensaje,
-            string ruta_archivo, int opcionCorreo)
+        public Boolean EnviarCorreo(string emisor, string password, string destinatario, string asunto, string mensaje,string ruta_archivo, int opcionCorreo)
         {
             try
             {
@@ -585,8 +543,6 @@ namespace IrisContabilidad.clases
             }
         }
 
-
-
         //public Boolean ImprimirCodigoBarra(string NombreProducto, string numero)
         //{
         //    try
@@ -639,10 +595,6 @@ namespace IrisContabilidad.clases
         //        return false;
         //    }
         //}
-
-
-
-
         public void CopiarArchivosRecursivo(DirectoryInfo Origen, DirectoryInfo Destino)
         {
             foreach (DirectoryInfo dir in Origen.GetDirectories())
@@ -654,8 +606,6 @@ namespace IrisContabilidad.clases
                 file.CopyTo(Path.Combine(Destino.FullName, file.Name));
             }
         }
-
-
 
         public string GetSHA1(string str)
         {
@@ -703,11 +653,10 @@ namespace IrisContabilidad.clases
             }
             return texto;
         }
-
-
+        
         public string GetBase64Encriptar(string cadena)
         {
-            byte[] byt = System.Text.Encoding.UTF8.GetBytes(cadena);
+            byte[] byt = Encoding.UTF8.GetBytes(cadena);
             return Convert.ToBase64String(byt);
         }
 
@@ -715,7 +664,7 @@ namespace IrisContabilidad.clases
         {
             byte[] b = Convert.FromBase64String(cadena);
             b = Convert.FromBase64String(cadena);
-            return System.Text.Encoding.UTF8.GetString(b);
+            return Encoding.UTF8.GetString(b);
         }
 
         public string GetSHA256(string str)
@@ -739,8 +688,6 @@ namespace IrisContabilidad.clases
             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
             return sb.ToString();
         }
-
-
 
         public Boolean comprimirArchivos(List<string> rutaArchivos, string rutaDestino, string password)
         {
@@ -822,11 +769,10 @@ namespace IrisContabilidad.clases
             }
         }
 
-
         public String getNombreMaquina()
         {
             String nombre = "";
-            nombre = System.Environment.MachineName;
+            nombre = Environment.MachineName;
 
             return nombre;
 
@@ -847,17 +793,12 @@ namespace IrisContabilidad.clases
             return respuesta;
         }
 
-
         public Boolean isDecimal(String Cadena)
         {
             decimal resul;
             return decimal.TryParse(Cadena, out resul);
         }
-
-      
-
-
-
+        
         public Boolean getValidarNCF(Boolean activarMensaje, String ncf)
         {
             Boolean respuesta = false;
@@ -873,9 +814,7 @@ namespace IrisContabilidad.clases
             }
             return false;
         }
-
-
-
+        
         public string getFormaFechaYYYYMMdd(DateTime fecha)
         {
 
@@ -944,12 +883,14 @@ namespace IrisContabilidad.clases
             }
 
         }
+
         public int GetRandon(int tamano)
         {
             var seed = Convert.ToInt32(Regex.Match(Guid.NewGuid().ToString(), @"\d+").Value);
             return new Random(seed).Next(0, tamano);
 
         }
+
         public String GetNumeroRandon(int tamano)
         {
             String Trama = "";
@@ -1013,26 +954,25 @@ namespace IrisContabilidad.clases
             }
         }
 
-        
         public bool copiarPegarArchivo(string origPath, string destPath, bool overwrite)
         {
             try
             {
-                if (System.IO.Path.GetExtension(destPath) == "")
+                if (Path.GetExtension(destPath) == "")
                 {
-                    destPath = System.IO.Path.Combine(destPath, System.IO.Path.GetFileName(origPath));
+                    destPath = Path.Combine(destPath, Path.GetFileName(origPath));
                 }
 
-                if (!System.IO.File.Exists(destPath))
+                if (!File.Exists(destPath))
                 {
-                    System.IO.File.Copy(origPath, destPath, true);
+                    File.Copy(origPath, destPath, true);
                 }
                 else
                 {
                     if (overwrite == true)
                     {
                         EliminarArchivo(destPath);
-                        System.IO.File.Copy(origPath, destPath, true);
+                        File.Copy(origPath, destPath, true);
                     }
                 }
                 return true;
@@ -1042,7 +982,6 @@ namespace IrisContabilidad.clases
                 return false;
             }
         }
-
 
         public void validarTextBoxNumeroDecimal(KeyPressEventArgs e,string numeroCompleto)
         {
@@ -1147,8 +1086,6 @@ namespace IrisContabilidad.clases
             }
         }
 
-       
-
         public string getFechaHoraMinutosSegundos(DateTime fecha)
         {
             try
@@ -1162,6 +1099,7 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+        
         public string getFechaddMMyyyy(DateTime fecha)
         {
             try
@@ -1175,6 +1113,7 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+        
         public string getFechaddMMyyyyhhmmsstt(DateTime fecha)
         {
             try
@@ -1188,6 +1127,7 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+        
         public string getFechayyyyMMdd(DateTime fecha)
         {
             try
@@ -1201,6 +1141,7 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+        
         public string getFechayyyyMMddhhmmss(DateTime fecha)
         {
             try
@@ -1214,6 +1155,7 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+        
         public string getDiasByRangoFecha(DateTime fechaInicial, DateTime fechaFinal)
         {
             try
@@ -1271,5 +1213,7 @@ namespace IrisContabilidad.clases
                 return "";
             }
         }
+
+
     }
 }

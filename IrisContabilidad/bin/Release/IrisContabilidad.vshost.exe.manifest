@@ -82,66 +82,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Gmap.net.dll" size="31232">
-      <assemblyIdentity name="Gmap.net" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FUrDy21qzn4ZRWq1VerHdg+aMpJuMcJHAwEhKknFA6s=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GMap.NET.Core.dll" size="2996736">
-      <assemblyIdentity name="GMap.NET.Core" version="1.7.5.0" publicKeyToken="B85B9027B614AFEF" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>WMdV/Pxlzd6lYQI9c26JkfCtadpeE3jepZ6YxduQG4Y=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GMap.NET.WindowsForms.dll" size="150528">
-      <assemblyIdentity name="GMap.NET.WindowsForms" version="1.7.5.0" publicKeyToken="B85B9027B614AFEF" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dB4ajwWGOFaiXRAb01v5fLoLY38MBOy0MsHYWnjvE2U=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GMap.NET.WindowsPresentation.dll" size="48640">
-      <assemblyIdentity name="GMap.NET.WindowsPresentation" version="1.7.5.0" publicKeyToken="B85B9027B614AFEF" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aZAwoL5QCTE2m9Zvi7d4mHsEyI+dlR909HzTNQsPRNM=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GoogleApi.dll" size="109056">
-      <assemblyIdentity name="GoogleApi" version="2.4.0.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>incQKS+SwlXpAlP0PYgGQURb4upXkM3koUHTFaS9tXU=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Ionic.Zip.dll" size="462336">
       <assemblyIdentity name="Ionic.Zip" version="1.9.1.8" publicKeyToken="EDBE51AD942A3F5C" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -154,14 +94,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="9236992">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="9189888">
       <assemblyIdentity name="IrisContabilidad" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1RLki+YF2lSoDp173RX1LcIQPqSfsSVzioolQG5rUpI=</dsig:DigestValue>
+        <dsig:DigestValue>fHJegyxqsxtz8xsbmX/F+WxMMBRD36NdhcxaUqE7SVE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.QualityTools.Testing.Fakes.dll" size="302320">
+      <assemblyIdentity name="Microsoft.QualityTools.Testing.Fakes" version="12.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>iWhI1wXrmUfcaUZQnfNrN+GrdQ5JR8QitQ4vY2iDbF0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.QualityTools.Testing.Fakes.resources.dll" size="23872">
+      <assemblyIdentity name="Microsoft.QualityTools.Testing.Fakes.resources" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>u7vBkW9WUZCu+is03sEGkzVftYhbZ1DShDPXNoDav9o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -225,18 +189,6 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="519168">
-      <assemblyIdentity name="Newtonsoft.Json" version="8.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>pGWQAsVZjlsOIMZeVj568Z5y0JSYelTrqyyOPWZQW0k=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
   <file name="bin\Release\BarcodeLib.dll" size="107520">
     <hash>
       <dsig:Transforms>
@@ -282,42 +234,6 @@
       <dsig:DigestValue>dB4ajwWGOFaiXRAb01v5fLoLY38MBOy0MsHYWnjvE2U=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="bin\Release\GMap.NET.WindowsPresentation.dll" size="48640">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>aZAwoL5QCTE2m9Zvi7d4mHsEyI+dlR909HzTNQsPRNM=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="bin\Release\GMap.NET.WindowsPresentation.xml" size="17918" writeableType="applicationData">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>BLmc146+UKtyKFnDNTftIogYKNk4lm8c6aB6/byrrBo=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="bin\Release\GoogleApi.dll" size="109056">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>incQKS+SwlXpAlP0PYgGQURb4upXkM3koUHTFaS9tXU=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="bin\Release\GoogleApi.xml" size="254458" writeableType="applicationData">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>CJPA8BIqXmXt5rXj0wIt3w6H6bEM6g+e/U6swytS+AM=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="bin\Release\Ionic.Zip.dll" size="462336">
     <hash>
       <dsig:Transforms>
@@ -325,24 +241,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>Oz5UFoLkjz/Shy+FoGJ42i8+eHfulW2om5DXMqHqoL0=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="bin\Release\IrisContabilidad.exe" size="9236992">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>hx0mz0NnGSpWsejs202MkpD0okp+e6mnGm6IdFb9C+g=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="bin\Release\IrisContabilidad.pdb" size="2178560">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>5cX4CEWCwRd7ieBYf0CNzm/vOLlA1j5bGQualcgvX2Q=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\IrisContabilidad.vshost.exe" size="23168">
@@ -388,24 +286,6 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>z1JCyodj5/UiC37FF0m11VPrQRt8tszqKfa8jk+yNYc=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="bin\Release\Newtonsoft.Json.dll" size="519168">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>pGWQAsVZjlsOIMZeVj568Z5y0JSYelTrqyyOPWZQW0k=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="bin\Release\Newtonsoft.Json.xml" size="513715" writeableType="applicationData">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>ILsW8UxLDxCqcrURIeSEGSo13XWhG8/qZCrA5viZKOA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\Resources\archivos\coneccion\connection.txt" size="81">
@@ -766,6 +646,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>tk7gT5AiwcIbFpmc9F6ufalmbLDK/jGfZOhNvVuVpJ0=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="bin\Release\Resources\imagenes_empleados\default1.png" size="25887">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>JFpl/yr3O4DiHwIoEtfZ1ngMLVXe7MNEVKbT2YAXCbc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="bin\Release\Resources\logo\logo.png" size="4389">
@@ -7140,6 +7029,24 @@
       <dsig:DigestValue>3WypIp1CeUhb44Jym/SuKnVTy8NbA6xWRQvDLI4mptQ=</dsig:DigestValue>
     </hash>
   </file>
+  <file name="FakesAssemblies\GoogleApi.2.4.0.0.Fakes.dll" size="618496">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XTFmrmGqmkImb8ZQY7+XSZQ9fzovOfNlCO+5YYp0Fc8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="FakesAssemblies\GoogleApi.2.4.0.0.Fakes.xml" size="1101464" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>m0mhCcIYNz3Dbq9BGgsXfBrdXpX3Mi6TxfL7gxZu04g=</dsig:DigestValue>
+    </hash>
+  </file>
   <file name="IrisContabilidad.exe.config" size="1004">
     <hash>
       <dsig:Transforms>
@@ -7149,49 +7056,49 @@
       <dsig:DigestValue>ulCDs70gkaRTmSC69pOxQ0euLcDe+pscIl/n6oaVDP0=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="scripts\angular.js" size="705336">
+  <file name="scripts\angular.js" size="725366">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>StClIWl4FwN6hJJWzQSnuGxfx+FGWYZdt+I0a+aZro8=</dsig:DigestValue>
+      <dsig:DigestValue>r1/ZEiDmAawkarbi15IOv7ngSfbnFvE54rKKIKh5UVI=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="scripts\angular.min.js" size="98982">
+  <file name="scripts\angular.min.js" size="99182">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>HlSu44k55Nq9jMT1RxMtm5Pd4wbtVmplpbPy6N6+YJ8=</dsig:DigestValue>
+      <dsig:DigestValue>3fATgm4VUKe4z3JxPj7mVifXD8pAf3FMWZJIC2mL4FM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="scripts\angular-mocks.js" size="68087">
+  <file name="scripts\angular-mocks.js" size="70216">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>eGcBpTfNgOEaa6xZvMidQT/pUoVKnKBvIUb7AfebBS0=</dsig:DigestValue>
+      <dsig:DigestValue>9/Z0fbn/z94HqqyueWGwY7vahszMKQIIL67MrsglduM=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="scripts\angular-route.js" size="30661">
+  <file name="scripts\angular-route.js" size="31541">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>QQmthU193woe0egHSX1gO7yajuQgtN6x/SwCg35cjvY=</dsig:DigestValue>
+      <dsig:DigestValue>ov39EFhi5QbeqKooxCPwpypskoSdIGa1iCYSiN3YJqw=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="scripts\angular-route.min.js" size="3753">
+  <file name="scripts\angular-route.min.js" size="3767">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>N4sbVlebatY2n+NmEE/Gw63r+qA0LxDL7kBOpOQuuTs=</dsig:DigestValue>
+      <dsig:DigestValue>lb3FwPDvFsszAeTXUYL2NljBCr78SW9z4idEioJ/pFE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="scripts\angulartics.js" size="9228">

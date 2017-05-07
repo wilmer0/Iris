@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_sistema
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_sistema
 {
     partial class ventana_procesando
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -73,7 +76,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private PictureBox pictureBox1;
+        private Label label1;
     }
 }

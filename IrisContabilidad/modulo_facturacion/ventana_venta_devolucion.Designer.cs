@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_venta_devolucion
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -387,30 +390,30 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox ventaIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label labl1;
-        private System.Windows.Forms.Label lbl3;
-        private System.Windows.Forms.Label lbl4;
-        private System.Windows.Forms.Label clienteLabel;
-        private System.Windows.Forms.Label tipoVentaLabel;
-        private System.Windows.Forms.Label ncfLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rncColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.TextBox cantidadDevolverText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.TextBox detalleText;
-        private System.Windows.Forms.CheckBox egresoCajaAutomaticoCheck;
+        private GroupBox groupBox1;
+        private TextBox ventaIdText;
+        private Label label2;
+        private Button button4;
+        private DataGridView dataGridView1;
+        private Label labl1;
+        private Label lbl3;
+        private Label lbl4;
+        private Label clienteLabel;
+        private Label tipoVentaLabel;
+        private Label ncfLabel;
+        private DataGridViewTextBoxColumn secuenciacolumn;
+        private DataGridViewTextBoxColumn cedulaColumn;
+        private DataGridViewTextBoxColumn rncColumn;
+        private DataGridViewTextBoxColumn categoriaColumn;
+        private DataGridViewTextBoxColumn telefonoColumn;
+        private DataGridViewTextBoxColumn activoColumn;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private TextBox cantidadDevolverText;
+        private Label label3;
+        private Button button19;
+        private Button button20;
+        private TextBox detalleText;
+        private CheckBox egresoCajaAutomaticoCheck;
     }
 }

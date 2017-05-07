@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_imprimir_cuadre_caja_rd
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -162,12 +165,12 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox cajeroIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox cajeroText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox fechaCierreDateTime;
+        private TextBox cajeroIdText;
+        private Label label2;
+        private Button button4;
+        private TextBox cajeroText;
+        private Label label1;
+        private MaskedTextBox fechaCierreDateTime;
 
     }
 }

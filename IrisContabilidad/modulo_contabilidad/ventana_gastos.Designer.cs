@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_contabilidad
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_contabilidad
 {
     partial class ventana_gastos
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -35,6 +38,8 @@
             this.suplidorIdText = new System.Windows.Forms.TextBox();
             this.NcfText = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.numeroFacturaText = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.gastoIdText = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -55,8 +60,6 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tipoGastoText = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.numeroFacturaText = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -64,7 +67,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 454);
+            this.panel1.Location = new System.Drawing.Point(12, 349);
             this.panel1.Size = new System.Drawing.Size(916, 54);
             // 
             // button2
@@ -135,7 +138,7 @@
             // NcfText
             // 
             this.NcfText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NcfText.Location = new System.Drawing.Point(121, 285);
+            this.NcfText.Location = new System.Drawing.Point(645, 50);
             this.NcfText.MaxLength = 19;
             this.NcfText.Name = "NcfText";
             this.NcfText.Size = new System.Drawing.Size(253, 26);
@@ -173,9 +176,29 @@
             this.groupBox1.Controls.Add(this.suplidorText);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(913, 420);
+            this.groupBox1.Size = new System.Drawing.Size(913, 314);
             this.groupBox1.TabIndex = 111;
             this.groupBox1.TabStop = false;
+            // 
+            // numeroFacturaText
+            // 
+            this.numeroFacturaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numeroFacturaText.Location = new System.Drawing.Point(121, 210);
+            this.numeroFacturaText.MaxLength = 19;
+            this.numeroFacturaText.Name = "numeroFacturaText";
+            this.numeroFacturaText.Size = new System.Drawing.Size(253, 26);
+            this.numeroFacturaText.TabIndex = 111;
+            this.numeroFacturaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numeroFacturaText_KeyDown);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(44, 213);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(71, 20);
+            this.label10.TabIndex = 110;
+            this.label10.Text = "Factura";
             // 
             // gastoIdText
             // 
@@ -213,10 +236,10 @@
             // montoRetencionIsrText
             // 
             this.montoRetencionIsrText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoRetencionIsrText.Location = new System.Drawing.Point(585, 102);
+            this.montoRetencionIsrText.Location = new System.Drawing.Point(645, 248);
             this.montoRetencionIsrText.MaxLength = 30;
             this.montoRetencionIsrText.Name = "montoRetencionIsrText";
-            this.montoRetencionIsrText.Size = new System.Drawing.Size(253, 26);
+            this.montoRetencionIsrText.Size = new System.Drawing.Size(236, 26);
             this.montoRetencionIsrText.TabIndex = 105;
             this.montoRetencionIsrText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.montoRetencionIsrText_KeyDown);
             this.montoRetencionIsrText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.montoRetencionIsrText_KeyPress);
@@ -225,7 +248,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(436, 102);
+            this.label8.Location = new System.Drawing.Point(493, 251);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(146, 20);
             this.label8.TabIndex = 104;
@@ -235,7 +258,7 @@
             // 
             this.tipoRetencionIsrIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.tipoRetencionIsrIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipoRetencionIsrIdText.Location = new System.Drawing.Point(585, 19);
+            this.tipoRetencionIsrIdText.Location = new System.Drawing.Point(645, 167);
             this.tipoRetencionIsrIdText.Name = "tipoRetencionIsrIdText";
             this.tipoRetencionIsrIdText.Size = new System.Drawing.Size(183, 26);
             this.tipoRetencionIsrIdText.TabIndex = 100;
@@ -245,7 +268,7 @@
             this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(774, 15);
+            this.button6.Location = new System.Drawing.Point(834, 163);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 101;
@@ -256,7 +279,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(441, 19);
+            this.label7.Location = new System.Drawing.Point(512, 170);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(127, 20);
             this.label7.TabIndex = 103;
@@ -266,7 +289,7 @@
             // 
             this.tipoRetencionIsrText.BackColor = System.Drawing.Color.White;
             this.tipoRetencionIsrText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipoRetencionIsrText.Location = new System.Drawing.Point(585, 56);
+            this.tipoRetencionIsrText.Location = new System.Drawing.Point(645, 204);
             this.tipoRetencionIsrText.MaxLength = 200;
             this.tipoRetencionIsrText.Name = "tipoRetencionIsrText";
             this.tipoRetencionIsrText.ReadOnly = true;
@@ -276,7 +299,7 @@
             // montoItebisText
             // 
             this.montoItebisText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoItebisText.Location = new System.Drawing.Point(121, 370);
+            this.montoItebisText.Location = new System.Drawing.Point(645, 131);
             this.montoItebisText.MaxLength = 30;
             this.montoItebisText.Name = "montoItebisText";
             this.montoItebisText.Size = new System.Drawing.Size(253, 26);
@@ -288,7 +311,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(71, 370);
+            this.label6.Location = new System.Drawing.Point(595, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 20);
             this.label6.TabIndex = 98;
@@ -298,7 +321,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(29, 328);
+            this.label5.Location = new System.Drawing.Point(553, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 20);
             this.label5.TabIndex = 97;
@@ -307,7 +330,7 @@
             // montoSubTotalText
             // 
             this.montoSubTotalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoSubTotalText.Location = new System.Drawing.Point(121, 328);
+            this.montoSubTotalText.Location = new System.Drawing.Point(645, 91);
             this.montoSubTotalText.MaxLength = 30;
             this.montoSubTotalText.Name = "montoSubTotalText";
             this.montoSubTotalText.Size = new System.Drawing.Size(253, 26);
@@ -319,7 +342,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(71, 286);
+            this.label4.Location = new System.Drawing.Point(595, 54);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 20);
             this.label4.TabIndex = 95;
@@ -329,7 +352,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(56, 246);
+            this.label3.Location = new System.Drawing.Point(580, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(59, 20);
             this.label3.TabIndex = 94;
@@ -337,7 +360,7 @@
             // 
             // FechaText
             // 
-            this.FechaText.Location = new System.Drawing.Point(121, 249);
+            this.FechaText.Location = new System.Drawing.Point(645, 15);
             this.FechaText.Mask = "00/00/0000";
             this.FechaText.Name = "FechaText";
             this.FechaText.Size = new System.Drawing.Size(100, 20);
@@ -389,31 +412,11 @@
             this.tipoGastoText.Size = new System.Drawing.Size(236, 26);
             this.tipoGastoText.TabIndex = 91;
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(44, 213);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(71, 20);
-            this.label10.TabIndex = 110;
-            this.label10.Text = "Factura";
-            // 
-            // numeroFacturaText
-            // 
-            this.numeroFacturaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroFacturaText.Location = new System.Drawing.Point(121, 210);
-            this.numeroFacturaText.MaxLength = 19;
-            this.numeroFacturaText.Name = "numeroFacturaText";
-            this.numeroFacturaText.Size = new System.Drawing.Size(253, 26);
-            this.numeroFacturaText.TabIndex = 111;
-            this.numeroFacturaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numeroFacturaText_KeyDown);
-            // 
             // ventana_gastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 520);
+            this.ClientSize = new System.Drawing.Size(940, 415);
             this.Controls.Add(this.groupBox1);
             this.Name = "ventana_gastos";
             this.Text = "ventana_gastos";
@@ -433,33 +436,33 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox suplidorText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox suplidorIdText;
-        public System.Windows.Forms.TextBox NcfText;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox FechaText;
-        private System.Windows.Forms.TextBox tipoGastoIdText;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tipoGastoText;
-        public System.Windows.Forms.TextBox montoItebisText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox montoSubTotalText;
-        private System.Windows.Forms.TextBox tipoRetencionIsrIdText;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox tipoRetencionIsrText;
-        public System.Windows.Forms.TextBox montoRetencionIsrText;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox gastoIdText;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label9;
-        public System.Windows.Forms.TextBox numeroFacturaText;
-        private System.Windows.Forms.Label label10;
+        private Label label2;
+        private TextBox suplidorText;
+        private Button button5;
+        private TextBox suplidorIdText;
+        public TextBox NcfText;
+        private GroupBox groupBox1;
+        private Label label4;
+        private Label label3;
+        private MaskedTextBox FechaText;
+        private TextBox tipoGastoIdText;
+        private Button button4;
+        private Label label1;
+        private TextBox tipoGastoText;
+        public TextBox montoItebisText;
+        private Label label6;
+        private Label label5;
+        public TextBox montoSubTotalText;
+        private TextBox tipoRetencionIsrIdText;
+        private Button button6;
+        private Label label7;
+        private TextBox tipoRetencionIsrText;
+        public TextBox montoRetencionIsrText;
+        private Label label8;
+        private TextBox gastoIdText;
+        private Button button7;
+        private Label label9;
+        public TextBox numeroFacturaText;
+        private Label label10;
     }
 }
