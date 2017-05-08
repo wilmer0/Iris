@@ -63,6 +63,16 @@ namespace IrisContabilidad.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _7b736a33be802fc2e737e3df56b4ef0e {
+            get {
+                object obj = ResourceManager.GetObject("7b736a33be802fc2e737e3df56b4ef0e", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ayuda1 {
             get {
                 object obj = ResourceManager.GetObject("ayuda1", resourceCulture);

@@ -1376,6 +1376,7 @@
     <Content Include="bin\Release\Resources\botones\salir1.png" />
     <Content Include="bin\Release\Resources\fondos\wall4.jpg" />
     <Content Include="bin\Release\Resources\gifs\3499424w91v795brv.gif" />
+    <None Include="bin\Release\Resources\gifs\7b736a33be802fc2e737e3df56b4ef0e.gif" />
     <Content Include="bin\Release\Resources\gifs\8YsAmq3.gif" />
     <Content Include="bin\Release\Resources\gifs\Cento-Lodigiani-animated-GIFs-10.gif" />
     <Content Include="bin\Release\Resources\gifs\dribbbleloading.gif" />

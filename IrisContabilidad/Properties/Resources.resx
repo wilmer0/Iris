@@ -121,4 +121,7 @@
   <data name="ayuda1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Release\Resources\botones\ayuda1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="7b736a33be802fc2e737e3df56b4ef0e" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\bin\Release\Resources\gifs\7b736a33be802fc2e737e3df56b4ef0e.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
