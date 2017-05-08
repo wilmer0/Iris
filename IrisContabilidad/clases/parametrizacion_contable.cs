@@ -31,6 +31,24 @@ namespace IrisContabilidad.clases
         //flete o trasporte
         public int codigo_cuenta_flete { get; set; }
 
-
+        /*
+         `empresa` int(11) NOT NULL DEFAULT '0',
+  `anticipo_cliente` int(11) DEFAULT NULL,
+  `descuento_pronto_pago` int(11) DEFAULT NULL,
+  `itbis_adelanto_compras` int(11) DEFAULT NULL,
+  `itbis_adelento_compra_bienes_servicios` int(11) DEFAULT NULL,
+  `itbis_ventas` int(11) DEFAULT NULL,
+  `itbis_retenido_servicio` int(11) DEFAULT NULL,
+  `isr_retenido_servicio` int(11) DEFAULT NULL,
+  `flete_pago_compras` int(11) DEFAULT NULL,
+  `descuento_compras` int(11) DEFAULT NULL,
+  `flete_ventas` int(11) DEFAULT NULL,
+  `otras_ventas` int(11) DEFAULT NULL,
+  `ventas` int(11) DEFAULT NULL,
+  `compras` int(11) DEFAULT NULL,
+  `suplidores` int(11) DEFAULT NULL,
+  `caja` int(11) DEFAULT NULL,
+  `compras_fanegas` int(11) DEFAULT NULL,
+         */
     }
 }

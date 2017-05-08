@@ -38,9 +38,9 @@ namespace IrisContabilidad.modulo_sistema
             // pictureBox1
             // 
             this.pictureBox1.Image = global::IrisContabilidad.Properties.Resources._7b736a33be802fc2e737e3df56b4ef0e;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(0, -2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(799, 544);
+            this.pictureBox1.Size = new System.Drawing.Size(799, 546);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -53,6 +53,8 @@ namespace IrisContabilidad.modulo_sistema
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ventana_procesando";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ventana_procesando";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
