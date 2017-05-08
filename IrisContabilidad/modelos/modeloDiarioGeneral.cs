@@ -63,7 +63,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //obtener el codigo siguiente
+        //obtener el codigo siguiente del movimiento(principal)
         public int getNext()
         {
             try
@@ -90,7 +90,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //obtener el codigo siguiente
+        //obtener el codigo siguiente del asiento contable(secundario)
         public int getNextAsiento()
         {
             try
@@ -184,6 +184,51 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get debitos de una cuenta by id y rango de fechas
+        public decimal getDebitosByCuentaIdAndRangoFecha(int idcuenta, DateTime fechaInicial,DateTime fechaFinal)
+        {
+            decimal montoDebitos=new decimal();
+            try
+            {
+                string sql = "select sum(debito) from diario_general where codigo_cuenta_contable='"+idcuenta+"' and fecha>=" + utilidades.getFechayyyyMMdd(fechaInicial) + " and fecha<=" + utilidades.getFechayyyyMMdd(fechaFinal) + ";";
+                DataSet ds=new DataSet();
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows[0][0].ToString() != "")
+                {
+                    montoDebitos = Convert.ToDecimal(ds.Tables[0].Rows[0][0]);
+                }
+                return montoDebitos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getDebitosByCuentaIdAndRangoFecha.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return montoDebitos;
+            }
+        }
+
+        //get debitos de una cuenta by id y rango de fechas
+        public decimal getCreditosByCuentaIdAndRangoFecha(int idcuenta, DateTime fechaInicial, DateTime fechaFinal)
+        {
+            decimal montoCreditos = new decimal();
+            try
+            {
+                string sql = "select sum(credito) from diario_general where codigo_cuenta_contable='" + idcuenta + "' and fecha>=" + utilidades.getFechayyyyMMdd(fechaInicial) + " and fecha<=" + utilidades.getFechayyyyMMdd(fechaFinal) + ";";
+                DataSet ds = new DataSet();
+                ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows[0][0].ToString() != "")
+                {
+                    montoCreditos = Convert.ToDecimal(ds.Tables[0].Rows[0][0]);
+                }
+                return montoCreditos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCreditosByCuentaIdAndRangoFecha.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return montoCreditos;
+            }
+        }
+
 
 
 
