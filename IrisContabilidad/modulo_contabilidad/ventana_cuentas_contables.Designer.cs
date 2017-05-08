@@ -54,8 +54,8 @@ namespace IrisContabilidad.modulo_contabilidad
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -348,8 +348,8 @@ namespace IrisContabilidad.modulo_contabilidad
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codigoColumn,
-            this.Column1,
             this.Column2,
+            this.Column1,
             this.Column3,
             this.Column4,
             this.Column5});
@@ -370,17 +370,17 @@ namespace IrisContabilidad.modulo_contabilidad
             this.codigoColumn.Name = "codigoColumn";
             this.codigoColumn.ReadOnly = true;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
             // Column2
             // 
             this.Column2.HeaderText = "No. cuenta";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Nombre";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // Column3
             // 
@@ -454,8 +454,8 @@ namespace IrisContabilidad.modulo_contabilidad
         private DataGridView dataGridView1;
         public Button button4;
         private DataGridViewTextBoxColumn codigoColumn;
-        private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;

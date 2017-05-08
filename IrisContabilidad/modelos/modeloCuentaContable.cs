@@ -16,7 +16,6 @@ namespace IrisContabilidad.modelos
         private List<cuenta_contable> listaCuentaContables;
 
 
-
         //agregar 
         public bool agregarCuentaContable(cuenta_contable cuenta)
         {
@@ -64,10 +63,17 @@ namespace IrisContabilidad.modelos
                 {
                     movimiento = 1;
                 }
-
-                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('" + cuenta.codigo + "','" + cuenta.nombre + "','" + cuenta.numero_cuenta + "','" + cuenta.codigo_cuenta_superior + "','" + acumulativa + "','" + movimiento + "','" + origenCredito + "','" + origenDebito + "','" + activo + "')";
+                if (cuenta.origen_debito == true)
+                {
+                    cuenta.origenCuenta = "Debito";
+                }
+                else
+                {
+                    cuenta.origenCuenta = "Credito";
+                }
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo,origen_cuenta) values('" + cuenta.codigo + "','" + cuenta.nombre + "','" + cuenta.numero_cuenta + "','" + cuenta.codigo_cuenta_superior + "','" + acumulativa + "','" + movimiento + "','" + origenCredito + "','" + origenDebito + "','" + activo + "','"+cuenta.origenCuenta+"')";
                 //MessageBox.Show(sql);
-                ds = utilidades.ejecutarcomando_mysql(sql);
+                utilidades.ejecutarcomando_mysql(sql);
                 return true;
             }
             catch (Exception ex)
@@ -124,7 +130,18 @@ namespace IrisContabilidad.modelos
                 {
                     movimiento = 1;
                 }
-                sql = "update catalogo_cuentas set nombre='" + cuenta.nombre + "',numero_cuenta='" + cuenta.numero_cuenta + "',codigo_cuenta_superior='" + cuenta.codigo_cuenta_superior + "',cuenta_acumulativa='" + acumulativa + "',cuenta_movimiento='" + movimiento + "',origen_credito='" + origenCredito + "',origen_debito='" + origenDebito + "',activo='" + activo + "'  where codigo='" + cuenta.codigo + "'";
+
+                if (cuenta.origen_debito == true)
+                {
+                    cuenta.origenCuenta = "Debito";
+                }
+                else
+                {
+                    cuenta.origenCuenta = "Credito";
+                }
+
+
+                sql = "update catalogo_cuentas set nombre='" + cuenta.nombre + "',numero_cuenta='" + cuenta.numero_cuenta + "',codigo_cuenta_superior='" + cuenta.codigo_cuenta_superior + "',cuenta_acumulativa='" + acumulativa + "',cuenta_movimiento='" + movimiento + "',origen_credito='" + origenCredito + "',origen_debito='" + origenDebito + "',activo='" + activo + "',origen_cuenta='"+cuenta.origenCuenta+"'  where codigo='" + cuenta.codigo + "'";
                 utilidades.ejecutarcomando_mysql(sql);
                 //MessageBox.Show(sql);
                 return true;
@@ -135,7 +152,6 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
-
 
         //obtener el codigo siguiente
         public int getNext()
@@ -183,6 +199,7 @@ namespace IrisContabilidad.modelos
                     cuentaContable.origen_credito = Convert.ToBoolean(ds.Tables[0].Rows[0][6]);
                     cuentaContable.origen_debito = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
                     cuentaContable.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cuentaContable.origenCuenta = ds.Tables[0].Rows[0][9].ToString();
                 }
                 return cuentaContable;
             }
@@ -199,7 +216,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 listaCuentaContables = new List<cuenta_contable>();
-                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas where cuenta_acumulativa='1' order by numero_cuenta;";
+                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo,origen_cuenta from catalogo_cuentas where cuenta_acumulativa='1' order by numero_cuenta;";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -226,14 +243,13 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        
-        //get lista de cuentas contables hija
+        //get lista de cuentas contables hijo
         public List<cuenta_contable> getListaCuentasHijoByPadreId(Int64 idCuentaPadre,bool mantenimiento=false)
         {
             try
             {
                 List<cuenta_contable> lista = new List<cuenta_contable>();
-                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas where codigo_cuenta_superior='"+idCuentaPadre+"'";
+                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo,origen_cuenta from catalogo_cuentas where codigo_cuenta_superior='"+idCuentaPadre+"'";
                 if (mantenimiento == false)
                 {
                     sql += " and activo=1 order by numero_cuenta;";
@@ -253,6 +269,7 @@ namespace IrisContabilidad.modelos
                         cuentaContable.origen_credito = Convert.ToBoolean(row[6]);
                         cuentaContable.origen_debito = Convert.ToBoolean(row[7]);
                         cuentaContable.activo = Convert.ToBoolean(row[8]);
+                        cuentaContable.origenCuenta = row[9].ToString();
                         lista.Add(cuentaContable);
                     }
                 }
@@ -297,7 +314,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 List<cuenta_contable> lista = new List<cuenta_contable>();
-                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo from catalogo_cuentas where codigo_cuenta_superior='" + idCuentaPadre + "' order by numero_cuenta;";
+                string sql = "select codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo,origen_cuenta from catalogo_cuentas where codigo_cuenta_superior='" + idCuentaPadre + "' order by numero_cuenta;";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -313,6 +330,7 @@ namespace IrisContabilidad.modelos
                         cuentaContable.origen_credito = Convert.ToBoolean(row[6]);
                         cuentaContable.origen_debito = Convert.ToBoolean(row[7]);
                         cuentaContable.activo = Convert.ToBoolean(row[8]);
+                        cuentaContable.origenCuenta = row[9].ToString();
                         lista.Add(cuentaContable);
                     }
                 }

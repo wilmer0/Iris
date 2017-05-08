@@ -150,6 +150,7 @@
     <Compile Include="clases\cxp_nota_debito.cs" />
     <Compile Include="clases\departamento.cs" />
     <Compile Include="clases\desglose_dinero.cs" />
+    <Compile Include="clases\diario_general.cs" />
     <Compile Include="clases\dias.cs" />
     <Compile Include="clases\egreso_caja.cs" />
     <Compile Include="clases\empleado.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="clases\modulo.cs" />
     <Compile Include="clases\nomina_tipo.cs" />
     <Compile Include="clases\nota_credito_debito_concepto.cs" />
+    <Compile Include="clases\parametrizacion_contable.cs" />
     <Compile Include="clases\producto.cs" />
     <Compile Include="clases\productoUnidadConversion.cs" />
     <Compile Include="clases\producto_precio_venta.cs" />
@@ -240,6 +242,7 @@
     <Compile Include="modelos\modeloCxpNotaCredito.cs" />
     <Compile Include="modelos\modeloCxpNotaDebito.cs" />
     <Compile Include="modelos\modeloDepartamento.cs" />
+    <Compile Include="modelos\modeloDiarioGeneral.cs" />
     <Compile Include="modelos\modeloEgresoCaja.cs" />
     <Compile Include="modelos\modeloEmpleado.cs" />
     <Compile Include="modelos\modeloEmpresa.cs" />

@@ -252,7 +252,6 @@ namespace IrisContabilidad.modelos
                 string sql = "";
 
                 #region querys version2
-               
                 //nuevo query
                 sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_venta_contado` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_pedido`;";
                 utilidades.ejecutarcomando_mysql(sql);
@@ -351,6 +350,97 @@ namespace IrisContabilidad.modelos
                 string sql = "";
 
                 #region querys version3
+                //nuevo query
+                sql = "CREATE TABLE `iris`.`diario_general` ( `codigo` INTEGER NOT NULL DEFAULT 0, `fecha_sistema` DATETIME NOT NULL DEFAULT 0, `fecha` DATE NOT NULL DEFAULT 0, `codigo_cuenta` INTEGER NOT NULL DEFAULT 0, `debito` DECIMAL(20,2) NOT NULL DEFAULT 0, `credito` DECIMAL(20,2) NOT NULL DEFAULT 0, `codigo_usuario` INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(`codigo`) ) ENGINE = InnoDB;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` CHARACTER SET Default COLLATE utf8_bin;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` CHANGE COLUMN `codigo_cuenta` `codigo_cuenta_contable` INTEGER NOT NULL DEFAULT 0, CHANGE COLUMN `codigo_usuario` `codigo_empleado` INTEGER NOT NULL DEFAULT 0, ADD CONSTRAINT `FK_diario_general_1` FOREIGN KEY `FK_diario_general_1` (`codigo_cuenta_contable`) REFERENCES `catalogo_cuentas` (`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT, ADD CONSTRAINT `FK_diario_general_2` FOREIGN KEY `FK_diario_general_2` (`codigo_empleado`) REFERENCES `empleado` (`codigo`) ON DELETE RESTRICT";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` ADD COLUMN `codigo_asiento` INTEGER NOT NULL DEFAULT 0 AFTER `codigo`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` DROP PRIMARY KEY;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` ADD PRIMARY KEY(`codigo`, `codigo_asiento`);";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`catalogo_cuentas` ADD COLUMN `origen_cuenta` VARCHAR(99) NOT NULL DEFAULT '' AFTER `activo`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 3;
+                sucursal.versionSistemaMaxima = 4;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version1.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void version4(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version3
 
                 //nuevo query
                 sql = "";
@@ -434,8 +524,8 @@ namespace IrisContabilidad.modelos
                 #endregion
 
                 //actualizar la version de la sucursal
-                sucursal.versionSistema = 3;
-                sucursal.versionSistemaMaxima = 4;
+                sucursal.versionSistema = 4;
+                sucursal.versionSistemaMaxima = 5;
                 modeloSucursal.modificarSucursal(sucursal);
 
             }
@@ -447,8 +537,6 @@ namespace IrisContabilidad.modelos
                 }
             }
         }
-
-
 
     }
 }

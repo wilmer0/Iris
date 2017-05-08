@@ -103,7 +103,7 @@ namespace IrisContabilidad.modulo_contabilidad
                     {
                         cuentaPadre = modeloCuentaContable.getCuentaContableById(x.codigo_cuenta_superior);
                     }
-                    dataGridView1.Rows.Add(x.codigo, x.nombre,x.numero_cuenta,cuentaPadre.codigo,cuentaPadre.nombre,cuentaPadre.numero_cuenta);
+                    dataGridView1.Rows.Add(x.codigo,x.numero_cuenta, x.nombre,cuentaPadre.codigo,cuentaPadre.nombre,cuentaPadre.numero_cuenta);
                 }
             }
             catch (Exception)
