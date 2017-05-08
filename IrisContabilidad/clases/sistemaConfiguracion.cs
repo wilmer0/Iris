@@ -15,8 +15,9 @@ namespace IrisContabilidad.clases
         public bool verNombreProductoFacturacionTouch { get; set; }
         public decimal porcientoPropina { get; set; }
         public bool emitirNotasCreditoDebito { get; set; }
-        public bool limitar_devoluciones_venta_30dias { get; set; }
-        public int codigo_concepto_egreso_caja_devolucion_venta { get; set; }
+        public bool limitarDevolucionesVenta30Dias { get; set; }
+        public int codigoConceptoEgresoCajaDevolucionVenta { get; set; }
+        public int codigoIdiomaSistema { get; set; }
 
 
     }

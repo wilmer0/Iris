@@ -38,12 +38,12 @@ namespace IrisContabilidad.modelos
                 {
                     emitirNotasCreditoDebito = 1;
                 }
-                if (sistemaconfiguracion.limitar_devoluciones_venta_30dias == true)
+                if (sistemaconfiguracion.limitarDevolucionesVenta30Dias == true)
                 {
                     limitarDevolucionesVenta30Dias = 1;
                 }
 
-                string sql = "update sistema set imagen_logo_empresa='',codigo_moneda='1',permisos_por_grupos_usuarios='1',autorizar_pedidos_apartir='0',limite_egreso_caja='0',fecha_vencimiento='20301231',ver_imagen_fact_touch='1',ver_nombre_fact_touch='1',porciento_propina='0',emitir_notas_credito_debito='0',limitar_devoluciones_venta_30dias='0',concepto_egreso_caja_devolucion_venta='1' where codigo='1'";
+                string sql = "update sistema set imagen_logo_empresa='',codigo_moneda='1',permisos_por_grupos_usuarios='1',autorizar_pedidos_apartir='0',limite_egreso_caja='0',fecha_vencimiento='20301231',ver_imagen_fact_touch='1',ver_nombre_fact_touch='1',porciento_propina='0',emitir_notas_credito_debito='0',limitar_devoluciones_venta_30dias='0',concepto_egreso_caja_devolucion_venta='1',codigo_idioma_sistema='"+sistemaconfiguracion.codigoIdiomaSistema+"' where codigo='1'";
                 utilidades.ejecutarcomando_mysql(sql);
 
 
@@ -70,7 +70,7 @@ namespace IrisContabilidad.modelos
 
                 sistemaConfiguracion sistemaConfiguracion=new sistemaConfiguracion();
 
-                string sql = "select codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta from sistema where codigo='1'";
+                string sql = "select codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta,codigo_idioma_sistema from sistema where codigo='1'";
                 DataSet ds=utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows[0][0].ToString() != "")
                 {
@@ -87,8 +87,9 @@ namespace IrisContabilidad.modelos
                     sistemaConfiguracion.verNombreProductoFacturacionTouch = Convert.ToBoolean(ds.Tables[0].Rows[0][9]);
                     sistemaConfiguracion.porcientoPropina = Convert.ToDecimal(ds.Tables[0].Rows[0][10]);
                     sistemaConfiguracion.emitirNotasCreditoDebito = Convert.ToBoolean(ds.Tables[0].Rows[0][11]);
-                    sistemaConfiguracion.limitar_devoluciones_venta_30dias = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
-                    sistemaConfiguracion.codigo_concepto_egreso_caja_devolucion_venta = Convert.ToInt16(ds.Tables[0].Rows[0][13]);
+                    sistemaConfiguracion.limitarDevolucionesVenta30Dias = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
+                    sistemaConfiguracion.codigoConceptoEgresoCajaDevolucionVenta = Convert.ToInt16(ds.Tables[0].Rows[0][13]);
+                    sistemaConfiguracion.codigoIdiomaSistema = Convert.ToInt16(ds.Tables[0].Rows[0][14]);
                 }
                 else
                 {
@@ -105,5 +106,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
     }
 }
