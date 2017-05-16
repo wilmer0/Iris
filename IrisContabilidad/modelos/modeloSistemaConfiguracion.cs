@@ -10,6 +10,7 @@ namespace IrisContabilidad.modelos
         
         //objetos
         utilidades utilidades=new utilidades();
+        
 
         //agregar 
         public bool modificarSistemaConsiguracion(sistemaConfiguracion sistemaconfiguracion)
@@ -43,7 +44,7 @@ namespace IrisContabilidad.modelos
                     limitarDevolucionesVenta30Dias = 1;
                 }
 
-                string sql = "update sistema set imagen_logo_empresa='',codigo_moneda='1',permisos_por_grupos_usuarios='1',autorizar_pedidos_apartir='0',limite_egreso_caja='0',fecha_vencimiento='20301231',ver_imagen_fact_touch='1',ver_nombre_fact_touch='1',porciento_propina='0',emitir_notas_credito_debito='0',limitar_devoluciones_venta_30dias='0',concepto_egreso_caja_devolucion_venta='1',codigo_idioma_sistema='"+sistemaconfiguracion.codigoIdiomaSistema+"' where codigo='1'";
+                string sql = "update sistema set imagen_logo_empresa='',codigo_moneda='1',permisos_por_grupos_usuarios='1',autorizar_pedidos_apartir='0',limite_egreso_caja='0',fecha_vencimiento='20301231',ver_imagen_fact_touch='1',ver_nombre_fact_touch='1',porciento_propina='0',emitir_notas_credito_debito='0',limitar_devoluciones_venta_30dias='0',concepto_egreso_caja_devolucion_venta='1',codigo_idioma_sistema='" + sistemaconfiguracion.codigoIdiomaSistema + "',tipo_ventana_cuadre_caja='"+sistemaconfiguracion.tipoVentanaCuadreCaja+"' where codigo='1'";
                 utilidades.ejecutarcomando_mysql(sql);
 
 
@@ -70,7 +71,7 @@ namespace IrisContabilidad.modelos
 
                 sistemaConfiguracion sistemaConfiguracion=new sistemaConfiguracion();
 
-                string sql = "select codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta,codigo_idioma_sistema,codigo_numero_comprobante_fiscal_defecto_ventas,codigo_tipo_venta_defecto from sistema where codigo='1'";
+                string sql = "select codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta,codigo_idioma_sistema,codigo_numero_comprobante_fiscal_defecto_ventas,codigo_tipo_venta_defecto,tipo_ventana_cuadre_caja from sistema where codigo='1'";
                 DataSet ds=utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows[0][0].ToString() != "")
                 {
@@ -92,6 +93,7 @@ namespace IrisContabilidad.modelos
                     sistemaConfiguracion.codigoIdiomaSistema = Convert.ToInt16(ds.Tables[0].Rows[0][14]);
                     sistemaConfiguracion.codigoNumeroComprobanteFiscalDefectoVentas = Convert.ToInt16(ds.Tables[0].Rows[0][15]);
                     sistemaConfiguracion.codigoTipoVentaDefecto = Convert.ToInt16(ds.Tables[0].Rows[0][16]);
+                    sistemaConfiguracion.tipoVentanaCuadreCaja = Convert.ToInt16(ds.Tables[0].Rows[0][17]);
                 }
                 else
                 {

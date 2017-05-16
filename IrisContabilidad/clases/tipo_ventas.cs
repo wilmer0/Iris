@@ -10,6 +10,7 @@ namespace IrisContabilidad.clases
     {
         public int codigo { get; set; }
         public string nombre { get; set; }
+        public string nombreAbreviado { get;set; }//para tener el nombre corto ejemplo CON<CRE<COT<PED
         public bool activo { get; set; }
     }
 }

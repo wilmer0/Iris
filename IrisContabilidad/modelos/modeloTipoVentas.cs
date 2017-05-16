@@ -14,6 +14,8 @@ namespace IrisContabilidad.modelos
         //objetos
         utilidades utilidades = new utilidades();
 
+        //sql general
+        private string sql = "select codigo,nombre,nombre_abreviado,activo from tipo_ventas where codigo>= '1' ";
 
         //get objeto
         public tipo_ventas getTipoVentaById(int id)
@@ -21,13 +23,14 @@ namespace IrisContabilidad.modelos
             try
             {
                 tipo_ventas tipoVenta = new tipo_ventas();
-                string sql = "select codigo,nombre,activo from tipo_ventas where codigo='" + id + "'";
+                sql += " and codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     tipoVenta.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
                     tipoVenta.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    tipoVenta.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2]);
+                    tipoVenta.nombreAbreviado = ds.Tables[0].Rows[0][2].ToString();
+                    tipoVenta.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
                 }
                 return tipoVenta;
             }
@@ -45,11 +48,9 @@ namespace IrisContabilidad.modelos
             {
 
                 List<tipo_ventas> lista = new List<tipo_ventas>();
-                string sql = "";
-                sql = "select codigo,nombre,activo from tipo_ventas";
                 if (mantenimiento == false)
                 {
-                    sql += " where activo=1";
+                    sql += " and activo=1";
                 }
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -57,9 +58,10 @@ namespace IrisContabilidad.modelos
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         tipo_ventas tipoVenta = new tipo_ventas();
-                        tipoVenta.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
-                        tipoVenta.nombre = ds.Tables[0].Rows[0][1].ToString();
-                        tipoVenta.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2]);
+                        tipoVenta.codigo = Convert.ToInt16(row[0]);
+                        tipoVenta.nombre = row[1].ToString();
+                        tipoVenta.nombreAbreviado = row[2].ToString();
+                        tipoVenta.activo = Convert.ToBoolean(row[3]);
                         lista.Add(tipoVenta);
                     }
                 }
@@ -80,14 +82,15 @@ namespace IrisContabilidad.modelos
             {
                 tipo_ventas tipoVenta;
                 string sql = "";
-                sql = "select codigo,nombre,activo from tipo_ventas where activo='1' and nombre like '%"+nombre+"%'";
+                sql = " and activo='1' and nombre like '%"+nombre+"%'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     tipoVenta = new tipo_ventas();
                     tipoVenta.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
                     tipoVenta.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    tipoVenta.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][2]);
+                    tipoVenta.nombreAbreviado = ds.Tables[0].Rows[0][2].ToString();
+                    tipoVenta.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
                     return tipoVenta;
                 }
                 return null;

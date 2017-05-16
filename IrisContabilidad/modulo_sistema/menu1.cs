@@ -6,9 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
+using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace IrisContabilidad.modulo_sistema
 {
@@ -361,6 +363,32 @@ namespace IrisContabilidad.modulo_sistema
             if (inicioSesion == false)
             {
                 e.Cancel = true;    
+            }
+        }
+
+        private void menu1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+        }
+
+        private void busquedaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    NotifyIcon icono=new NotifyIcon();
+                    icono.Visible = true;
+                    icono.BalloonTipText = busquedaText.Text;
+                    icono.BalloonTipTitle = "tittle";
+                    icono.BalloonTipIcon= ToolTipIcon.Info;
+                    icono.ShowBalloonTip(5000,"titulo","texto", ToolTipIcon.Info);
+                    
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error buscando", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

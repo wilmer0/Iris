@@ -97,18 +97,10 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-                listaTipoComprobanteFiscal = modeloTipoComprobanteFiscal.getListaCompleta();
+                
                 loadTipoVentas();
-                if (listaTipoComprobanteFiscal != null)
-                {
-                    tipoComprobanteCombo.DataSource = listaTipoComprobanteFiscal;
-                    tipoComprobanteCombo.DisplayMember = "nombre";
-                    tipoComprobanteCombo.ValueMember = "codigo";
-                    tipoComprobanteCombo.SelectedIndex = 0;
-                }
+                loadListaComprobantesFiscales();
 
-                tipoVentaComboBox.SelectedIndex = 0;
-                tipoComprobanteCombo.SelectedIndex = 0;
                 if (singleton.sistema.codigoIdiomaSistema == 1)
                 {
                     //espanol
@@ -392,7 +384,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            salir();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -640,7 +632,6 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     listaVentas=new List<tipo_ventas>();
                 }
-
                 listaVentas = modeloTipoVentas.getListaCompleta();
                 tipoVentaComboBox.DisplayMember = "nombre";
                 tipoVentaComboBox.ValueMember = "codigo";
@@ -672,6 +663,27 @@ namespace IrisContabilidad.modulo_facturacion
             catch (Exception ex)
             {
                 MessageBox.Show("Error loadTipoVentaDefecto.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        public void loadListaComprobantesFiscales()
+        {
+            try
+            {
+                if (listaTipoComprobanteFiscal == null)
+                {
+                    listaTipoComprobanteFiscal=new List<tipo_comprobante_fiscal>();
+                }
+                listaTipoComprobanteFiscal = modeloTipoComprobanteFiscal.getListaCompleta();
+                tipoComprobanteCombo.DisplayMember = "nombre";
+                tipoComprobanteCombo.ValueMember = "codigo";
+                tipoComprobanteCombo.DataSource = listaTipoComprobanteFiscal;
+                tipoComprobanteCombo.SelectedIndex = 0;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadListacomprobanteFiscal.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 
@@ -1015,5 +1027,6 @@ namespace IrisContabilidad.modulo_facturacion
                 button1_Click(null,null);
             }
         }
+
     }
 }
