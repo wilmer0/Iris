@@ -35,7 +35,7 @@ namespace IrisContabilidad.modulo_facturacion
         private producto_precio_venta productoPrecioVenta;
         private cajero cajero;
         private tipo_comprobante_fiscal tipoComprobanteFiscal;
-
+        private venta_detalle_lista ventaDetalleLista;
 
         //modelos
         modeloTipoComprobanteFiscal modeloTipoComprobanteFiscal = new modeloTipoComprobanteFiscal();
@@ -65,7 +65,7 @@ namespace IrisContabilidad.modulo_facturacion
         private List<venta_detalle> listaVentaDetalle;
         private List<unidad> listaUnidad;
         private List<tipo_comprobante_fiscal> listaTipoComprobanteFiscal;
-
+        private List<venta_detalle_lista> listaVentaDetalleLista; 
 
         //variables
         private decimal cantidad_monto = 0;
@@ -401,12 +401,23 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     return;
                 }
+                if (listaVentaDetalleLista == null)
+                {
+                    return;
+                }
+                if (listaVentaDetalleLista.Count == 0)
+                {
+                    return;
+                }
                 int fila = 0;
                 fila = dataGridView1.CurrentRow.Index;
                 if (fila >= 0)
                 {
-                    dataGridView1.Rows.Remove(dataGridView1.Rows[fila]);
+                    listaVentaDetalleLista.RemoveAt(fila);
+                    loadVentaDetalleLista();
+                    //dataGridView1.Rows.Remove(dataGridView1.Rows[fila]);
                 }
+                
             }
             catch (Exception ex)
             {
@@ -418,8 +429,12 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+                if (listaVentaDetalleLista == null)
+                {
+                    listaVentaDetalleLista=new List<venta_detalle_lista>(); 
+                }
                 //validaciones
-
+                
                 //validar que tenga producto seleccionado
                 if (producto == null)
                 {
@@ -439,25 +454,26 @@ namespace IrisContabilidad.modulo_facturacion
                 //validar que tenga cantidad 
                 if (cantidadText.Text == "")
                 {
-                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     cantidadText.Focus();
                     cantidadText.SelectAll();
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if (Convert.ToDecimal(cantidadText.Text) <= 0)
                 {
-                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     cantidadText.Focus();
                     cantidadText.SelectAll();
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 //validar que tenga precio 
                 if (precioText.Text == "")
                 {
-                    MessageBox.Show("Falta el precio del producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     precioText.Focus();
                     precioText.SelectAll();
+                    
+                    MessageBox.Show("Falta el precio del producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 //validar que tenga descuento o que sea 0
@@ -476,9 +492,11 @@ namespace IrisContabilidad.modulo_facturacion
                 //validar que si existe el producto y unidad se sume la cantidad
                 int fila = 0;
                 existe = false;
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                //foreach (DataGridViewRow row in dataGridView1.Rows)
+                foreach(var x in listaVentaDetalleLista)
                 {
-                    if (row.Cells[0].Value.ToString() == producto.codigo.ToString() && row.Cells[2].Value.ToString() == unidad.codigo.ToString())
+                    //if (row.Cells[0].Value.ToString() == producto.codigo.ToString() && row.Cells[2].Value.ToString() == unidad.codigo.ToString())
+                    if (x.codigoProducto == producto.codigo && x.codigoUnidad == unidad.codigo)
                     {
                         existe = true;
                         //son iguales se sacan los valores de los textBox
@@ -487,25 +505,33 @@ namespace IrisContabilidad.modulo_facturacion
                         {
                             descuentoText.Text = (Convert.ToDecimal(descuentoText.Text) / 100).ToString();
                         }
+
+                        //datos de los textboxs
                         cantidad_monto = Convert.ToDecimal(cantidadText.Text);
                         precio_monto = Convert.ToDecimal(precioText.Text);
                         importe_monto = Convert.ToDecimal(importeText.Text);
                         itebis = modeloItebis.getItebisById(producto.codigo_itebis);
 
                         //sumar y procesar
-                        cantidad_monto += Convert.ToDecimal(row.Cells[4].Value.ToString());
+                        //cantidad_monto += Convert.ToDecimal(row.Cells[4].Value.ToString());
+                        cantidad_monto += x.cantidad;
                         importe_monto = cantidad_monto * precio_monto;
                         itebis_monto = Convert.ToDecimal(itebis.porciento * Convert.ToDecimal(importe_monto));
                         descuento_monto = Convert.ToDecimal(descuentoText.Text) * importe_monto;
                         importe_monto = importe_monto - descuento_monto;
 
 
-                        //asignar los nuevos valores en el grid
-                        row.Cells[4].Value = cantidad_monto.ToString("N");
-                        row.Cells[5].Value = precio_monto.ToString("N");
-                        row.Cells[6].Value = itebis_monto.ToString("N");
-                        row.Cells[7].Value = descuento_monto.ToString("N");
-                        row.Cells[8].Value = importe_monto.ToString("N");
+                        //asignar los nuevos valores en el grid o la lista detalle lista
+                        //row.Cells[4].Value = cantidad_monto.ToString("N");
+                        x.cantidad= cantidad_monto;
+                        //row.Cells[5].Value = precio_monto.ToString("N");
+                        x.precio = precio_monto;
+                        //row.Cells[6].Value = itebis_monto.ToString("N");
+                        x.itbis = itebis_monto;
+                        //row.Cells[7].Value = descuento_monto.ToString("N");
+                        x.descuento = descuento_monto;
+                        //row.Cells[8].Value = importe_monto.ToString("N");
+                        x.total = importe_monto;
                     }
                     //si no se repite el producto y unidad entonces se agrega los valores del textbox
                 }
@@ -522,13 +548,59 @@ namespace IrisContabilidad.modulo_facturacion
                     }
                     descuento_monto = Convert.ToDecimal(descuentoText.Text) * importe_monto;
                     importe_monto = importe_monto - descuento_monto;
-                    dataGridView1.Rows.Add(producto.codigo.ToString(), producto.nombre, unidad.codigo.ToString(), unidad.nombre, cantidadText.Text, precioText.Text, itebis_monto.ToString("N"), descuento_monto.ToString("N"), importe_monto.ToString("N"));
+                    //creando el objeto del detalle de venta de la lista
+                    if (listaVentaDetalleLista == null)
+                    {
+                        listaVentaDetalleLista=new List<venta_detalle_lista>();
+                    }
+                    ventaDetalleLista=new venta_detalle_lista();
+                    ventaDetalleLista.producto = producto;
+                    ventaDetalleLista.codigoProducto = producto.codigo;
+                    ventaDetalleLista.referencia = producto.referencia;
+                    ventaDetalleLista.nombreProducto = producto.nombre;
+                    ventaDetalleLista.codigoBarra = "";
+                    ventaDetalleLista.unidad = unidad;
+                    ventaDetalleLista.codigoUnidad = unidad.codigo;
+                    ventaDetalleLista.nombreUnidad = unidad.nombre;
+                    ventaDetalleLista.descuento = descuento_monto;
+                    ventaDetalleLista.itbis = itebis_monto;
+                    ventaDetalleLista.precio = Convert.ToDecimal(precioText.Text);
+                    ventaDetalleLista.cantidad = Convert.ToDecimal(cantidadText.Text);
+                    ventaDetalleLista.total = importe_monto;
+                    listaVentaDetalleLista.Add(ventaDetalleLista);
+                    //dataGridView1.Rows.Add(producto.codigo.ToString(), producto.nombre, unidad.codigo.ToString(), unidad.nombre, cantidadText.Text, precioText.Text, itebis_monto.ToString("N"), descuento_monto.ToString("N"), importe_monto.ToString("N"));
+                    loadVentaDetalleLista();
                 }
+                fila++;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error agregarProducto.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void loadVentaDetalleLista()
+        {
+            try
+            {
+                if (listaVentaDetalleLista == null)
+                {
+                    return;
+                }
+                if (listaVentaDetalleLista.Count==0)
+                {
+                    return;
+                }
+                dataGridView1.Rows.Clear();
+                foreach (var x in listaVentaDetalleLista)
+                {
+                    dataGridView1.Rows.Add(x.nombreProducto, x.nombreUnidad, x.cantidad, x.precio.ToString("N"), x.itbis.ToString("N"), x.descuento.ToString("N"), x.total.ToString("N"));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadVentaDetalleLista.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }    
         }
 
         public void loadProducto()
@@ -666,7 +738,7 @@ namespace IrisContabilidad.modulo_facturacion
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
                 {
                     //id
-                    producto = modeloProducto.getProductoById(Convert.ToInt16(productoIdText.Text));
+                    producto = null;
                     if (producto == null)
                     {
                         //referencia
@@ -676,6 +748,11 @@ namespace IrisContabilidad.modulo_facturacion
                     {
                         //codigo barra
                         producto = modeloProducto.getProductoByCodigoBarra(productoIdText.Text);
+                    }
+                    if (producto == null)
+                    {
+                        //by id
+                        producto = modeloProducto.getProductoById(Convert.ToInt16(productoIdText.Text));
                     }
 
                     if (producto != null)
@@ -823,11 +900,12 @@ namespace IrisContabilidad.modulo_facturacion
                 totalVentaMonto = 0;
 
 
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                foreach (var x in listaVentaDetalleLista)
                 {
-                    totalItebisMonto += Convert.ToDecimal(row.Cells[6].Value.ToString());
-                    totalVentaMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalItebisMonto += x.itbis;
+                    totalVentaMonto += x.total;
                 }
+
                 totalItebisText.Text = totalItebisMonto.ToString("N");
                 totalVentaText.Text = totalVentaMonto.ToString("N");
             }
@@ -843,6 +921,7 @@ namespace IrisContabilidad.modulo_facturacion
             productoIdText.Focus();
             productoIdText.SelectAll();
             calcularTotalItbis();
+            loadVentaDetalleLista();
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -851,11 +930,15 @@ namespace IrisContabilidad.modulo_facturacion
             productoIdText.Focus();
             productoIdText.SelectAll();
             calcularTotalItbis();
+            loadVentaDetalleLista();
         }
-        
 
-
-
-
+        private void button3_Click(object sender, EventArgs e)
+        {
+            producto = null;
+            unidad = null;
+            listaVentaDetalleLista = null;
+            loadVentana();
+        }
     }
 }

@@ -192,6 +192,7 @@
     <Compile Include="clases\ventaDevolucionDetalle.cs" />
     <Compile Include="clases\ventana.cs" />
     <Compile Include="clases\venta_detalle.cs" />
+    <Compile Include="clases\venta_detalle_venta_lista.cs" />
     <Compile Include="clases\venta_vs_cobros.cs" />
     <Compile Include="clases\venta_vs_cobros_detalles.cs" />
     <Compile Include="clases_reportes\reporte_compra_devolucion_detalle.cs" />

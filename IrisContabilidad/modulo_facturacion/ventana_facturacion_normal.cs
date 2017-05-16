@@ -393,25 +393,27 @@ namespace IrisContabilidad.modulo_facturacion
                 //validar que tenga cantidad 
                 if (cantidadText.Text == "")
                 {
-                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     cantidadText.Focus();
                     cantidadText.SelectAll();
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if (Convert.ToDecimal(cantidadText.Text) <=0)
                 {
-                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     cantidadText.Focus();
                     cantidadText.SelectAll();
+                    
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 //validar que tenga precio 
                 if (precioText.Text == "")
                 {
-                    MessageBox.Show("Falta el precio del producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     precioText.Focus();
                     precioText.SelectAll();
+                    
+                    MessageBox.Show("Falta el precio del producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 //validar que tenga descuento o que sea 0
@@ -1004,6 +1006,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error cambiarTipoVentacombo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         public void cambiarUnidadCombo()
         {
             try

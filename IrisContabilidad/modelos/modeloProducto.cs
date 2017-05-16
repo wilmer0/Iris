@@ -284,7 +284,7 @@ namespace IrisContabilidad.modelos
             {
                 List<producto>lista=new List<producto>();
                 producto producto = new producto();
-                string sql ="select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario,producto_titular from producto";
+                string sql ="select codigo,nombre,referencia,activo,reorden,punto_maximo,cod_itebis,cod_categoria,cod_subcategoria,cod_almacen,imagen,cod_unidad_minima,controla_inventario,producto_titular from producto where referencia like '%"+referencia+"%'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -363,7 +363,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista completa
         public List<producto> getListaCompleta(bool mantenimiento = false)
