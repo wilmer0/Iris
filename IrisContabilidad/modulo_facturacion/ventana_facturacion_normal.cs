@@ -12,8 +12,6 @@ namespace IrisContabilidad.modulo_facturacion
 {
     public partial class ventana_facturacion_normal : formBase
     {
-
-
         //objetos
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
@@ -31,8 +29,9 @@ namespace IrisContabilidad.modulo_facturacion
         private producto_precio_venta productoPrecioVenta;
         private cajero cajero;
         private tipo_comprobante_fiscal tipoComprobanteFiscal;
+        private sistemaConfiguracion sistemaConfiguracion;
 
-
+     
         //modelos
         modeloTipoComprobanteFiscal modeloTipoComprobanteFiscal=new modeloTipoComprobanteFiscal();
         private modeloItebis modeloItebis = new modeloItebis();
@@ -53,6 +52,7 @@ namespace IrisContabilidad.modulo_facturacion
         private decimal cantidadExistencia = 0;
         public bool modoCotizacion = false;
 
+
         //listas
         private List<producto_vs_codigobarra> listaCodigoBarra;
         private List<productoUnidadConversion> listaProductoUnidadConversion;
@@ -61,6 +61,7 @@ namespace IrisContabilidad.modulo_facturacion
         private List<unidad> listaUnidad;
         private List<tipo_comprobante_fiscal> listaTipoComprobanteFiscal; 
 
+        
         //variables
         private decimal cantidad_monto = 0;
         private decimal precio_monto = 0;
@@ -74,14 +75,17 @@ namespace IrisContabilidad.modulo_facturacion
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();
+            sistemaConfiguracion = singleton.getSistemaconfiguracion();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana facturación");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
+
         public void loadVentana()
         {
             try
             {
+                sistemaConfiguracion = singleton.getSistemaconfiguracion();
                 listaTipoComprobanteFiscal = modeloTipoComprobanteFiscal.getListaCompleta();
                 if (listaTipoComprobanteFiscal != null)
                 {

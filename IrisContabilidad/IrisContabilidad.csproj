@@ -403,11 +403,17 @@
     <Compile Include="modulo_facturacion\ventana_busqueda_venta_devolucion.Designer.cs">
       <DependentUpon>ventana_busqueda_venta_devolucion.cs</DependentUpon>
     </Compile>
-    <Compile Include="modulo_facturacion\ventana_facturacion_touch.cs">
+    <Compile Include="modulo_facturacion\ventana_cuadre_caja_usa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="modulo_facturacion\ventana_facturacion_touch.Designer.cs">
-      <DependentUpon>ventana_facturacion_touch.cs</DependentUpon>
+    <Compile Include="modulo_facturacion\ventana_cuadre_caja_usa.Designer.cs">
+      <DependentUpon>ventana_cuadre_caja_usa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_tienda_v1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_tienda_v1.Designer.cs">
+      <DependentUpon>ventana_facturacion_tienda_v1.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.cs">
       <SubType>Form</SubType>
@@ -988,8 +994,11 @@
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_debito.rdlc" />
-    <EmbeddedResource Include="modulo_facturacion\ventana_facturacion_touch.resx">
-      <DependentUpon>ventana_facturacion_touch.cs</DependentUpon>
+    <EmbeddedResource Include="modulo_facturacion\ventana_cuadre_caja_usa.resx">
+      <DependentUpon>ventana_cuadre_caja_usa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_facturacion_tienda_v1.resx">
+      <DependentUpon>ventana_facturacion_tienda_v1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.resx">
       <DependentUpon>ventana_imprimir_cuadre_caja_rd.cs</DependentUpon>

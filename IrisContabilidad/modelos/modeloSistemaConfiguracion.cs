@@ -71,7 +71,7 @@ namespace IrisContabilidad.modelos
 
                 sistemaConfiguracion sistemaConfiguracion=new sistemaConfiguracion();
 
-                string sql = "select codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta,codigo_idioma_sistema,codigo_numero_comprobante_fiscal_defecto_ventas,codigo_tipo_venta_defecto,tipo_ventana_cuadre_caja from sistema where codigo='1'";
+                string sql = "select codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta,codigo_idioma_sistema,codigo_numero_comprobante_fiscal_defecto_ventas,codigo_tipo_venta_defecto,tipo_ventana_cuadre_caja_sistema_full from sistema where codigo='1'";
                 DataSet ds=utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows[0][0].ToString() != "")
                 {
@@ -80,20 +80,20 @@ namespace IrisContabilidad.modelos
                     sistemaConfiguracion.imagenLogoEmpresa = ds.Tables[0].Rows[0][1].ToString();
                     sistemaConfiguracion.codigoMonedaDefault = Convert.ToInt16(ds.Tables[0].Rows[0][2]);
                     sistemaConfiguracion.permisosGrupo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
-                    sistemaConfiguracion.codigoMonedaDefault = Convert.ToInt16(ds.Tables[0].Rows[0][4]);
-                    sistemaConfiguracion.montoMaximoPedido = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
-                    sistemaConfiguracion.montoLimiteEgresoCaja = Convert.ToDecimal(ds.Tables[0].Rows[0][6]);
-                    sistemaConfiguracion.fechaVencimientoSistema = Convert.ToDateTime(ds.Tables[0].Rows[0][7]);
-                    sistemaConfiguracion.verImagenProductoFacturacionTouch = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
-                    sistemaConfiguracion.verNombreProductoFacturacionTouch = Convert.ToBoolean(ds.Tables[0].Rows[0][9]);
-                    sistemaConfiguracion.porcientoPropina = Convert.ToDecimal(ds.Tables[0].Rows[0][10]);
-                    sistemaConfiguracion.emitirNotasCreditoDebito = Convert.ToBoolean(ds.Tables[0].Rows[0][11]);
-                    sistemaConfiguracion.limitarDevolucionesVenta30Dias = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
-                    sistemaConfiguracion.codigoConceptoEgresoCajaDevolucionVenta = Convert.ToInt16(ds.Tables[0].Rows[0][13]);
-                    sistemaConfiguracion.codigoIdiomaSistema = Convert.ToInt16(ds.Tables[0].Rows[0][14]);
-                    sistemaConfiguracion.codigoNumeroComprobanteFiscalDefectoVentas = Convert.ToInt16(ds.Tables[0].Rows[0][15]);
-                    sistemaConfiguracion.codigoTipoVentaDefecto = Convert.ToInt16(ds.Tables[0].Rows[0][16]);
-                    sistemaConfiguracion.tipoVentanaCuadreCaja = Convert.ToInt16(ds.Tables[0].Rows[0][17]);
+                    sistemaConfiguracion.montoMaximoPedido = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                    sistemaConfiguracion.montoLimiteEgresoCaja = Convert.ToDecimal(ds.Tables[0].Rows[0][5]);
+                    sistemaConfiguracion.fechaVencimientoSistema = Convert.ToDateTime(ds.Tables[0].Rows[0][6]);
+                    sistemaConfiguracion.verImagenProductoFacturacionTouch = Convert.ToBoolean(ds.Tables[0].Rows[0][7]);
+                    sistemaConfiguracion.verNombreProductoFacturacionTouch = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    sistemaConfiguracion.porcientoPropina = Convert.ToDecimal(ds.Tables[0].Rows[0][9]);
+                    sistemaConfiguracion.emitirNotasCreditoDebito = Convert.ToBoolean(ds.Tables[0].Rows[0][10]);
+                    sistemaConfiguracion.limitarDevolucionesVenta30Dias = Convert.ToBoolean(ds.Tables[0].Rows[0][11]);
+                    sistemaConfiguracion.codigoConceptoEgresoCajaDevolucionVenta = Convert.ToInt16(ds.Tables[0].Rows[0][12]);
+                    sistemaConfiguracion.codigoIdiomaSistema = Convert.ToInt16(ds.Tables[0].Rows[0][13]);
+                    sistemaConfiguracion.codigoNumeroComprobanteFiscalDefectoVentas = Convert.ToInt16(ds.Tables[0].Rows[0][14]);
+                    sistemaConfiguracion.codigoTipoVentaDefecto = Convert.ToInt16(ds.Tables[0].Rows[0][15]);
+                    sistemaConfiguracion.tipoVentanaCuadreCaja = Convert.ToInt16(ds.Tables[0].Rows[0][16]);
+                    sistemaConfiguracion.sistemaFull = Convert.ToBoolean(ds.Tables[0].Rows[0][17]);
                 }
                 else
                 {
