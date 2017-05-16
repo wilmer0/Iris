@@ -19,7 +19,7 @@ namespace IrisContabilidad.clases
         public int codigoConceptoEgresoCajaDevolucionVenta { get; set; }
         public int codigoIdiomaSistema { get; set; }
         public int codigoNumeroComprobanteFiscalDefectoVentas { get; set; }
-
+        public int codigoTipoVentaDefecto { get; set; }
 
     }
 }

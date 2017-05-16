@@ -225,11 +225,6 @@
             // 
             this.tipoVentaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoVentaComboBox.FormattingEnabled = true;
-            this.tipoVentaComboBox.Items.AddRange(new object[] {
-            "CON",
-            "COT",
-            "CRE",
-            "PED"});
             this.tipoVentaComboBox.Location = new System.Drawing.Point(407, 14);
             this.tipoVentaComboBox.Name = "tipoVentaComboBox";
             this.tipoVentaComboBox.Size = new System.Drawing.Size(128, 21);
@@ -281,7 +276,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1379, 369);
+            this.dataGridView1.Size = new System.Drawing.Size(1379, 381);
             this.dataGridView1.TabIndex = 105;
             // 
             // ProductoColumn
@@ -555,7 +550,7 @@
             // 
             this.totalVentaText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalVentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalVentaText.Location = new System.Drawing.Point(1167, 592);
+            this.totalVentaText.Location = new System.Drawing.Point(1167, 599);
             this.totalVentaText.MaxLength = 200;
             this.totalVentaText.Name = "totalVentaText";
             this.totalVentaText.ReadOnly = true;
@@ -567,7 +562,7 @@
             // 
             this.totalItebisText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalItebisText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalItebisText.Location = new System.Drawing.Point(841, 593);
+            this.totalItebisText.Location = new System.Drawing.Point(841, 600);
             this.totalItebisText.MaxLength = 200;
             this.totalItebisText.Name = "totalItebisText";
             this.totalItebisText.ReadOnly = true;
@@ -579,7 +574,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1088, 593);
+            this.label14.Location = new System.Drawing.Point(1088, 600);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(73, 29);
             this.label14.TabIndex = 137;
@@ -589,11 +584,11 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(757, 595);
+            this.label13.Location = new System.Drawing.Point(784, 602);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(84, 29);
+            this.label13.Size = new System.Drawing.Size(56, 29);
             this.label13.TabIndex = 136;
-            this.label13.Text = "Taxes";
+            this.label13.Text = "Tax";
             // 
             // ventana_facturacion_touch
             // 
@@ -627,6 +622,7 @@
             this.Name = "ventana_facturacion_touch";
             this.Text = "ventana_facturacion_touch";
             this.Load += new System.EventHandler(this.ventana_facturacion_touch_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventana_facturacion_touch_KeyDown);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.groupBox1, 0);

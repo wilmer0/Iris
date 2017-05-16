@@ -13,6 +13,7 @@ namespace IrisContabilidad.modelos
         singleton singleton=new singleton();
         private sucursal sucursal;
         modeloSucursal modeloSucursal=new modeloSucursal();
+        private sistemaConfiguracion sistemaConfiguracion;
 
 
         public void getSucursalVersion()
@@ -390,19 +391,19 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `codigo_numero_comprobante_fiscal_defecto_ventas` INTEGER NOT NULL DEFAULT 1 AFTER `codigo_idioma_sistema`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `tipo_venta_defecto` INTEGER NOT NULL DEFAULT 1 AFTER `codigo_numero_comprobante_fiscal_defecto_ventas`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`sistema` CHANGE COLUMN `tipo_venta_defecto` `codigo_tipo_venta_defecto` INTEGER NOT NULL DEFAULT 1;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "CREATE TABLE `iris`.`tipo_ventas` (`codigo` INTEGER UNSIGNED NOT NULL DEFAULT 0,`nombre` VARCHAR(99) NOT NULL DEFAULT '',`activo` BOOLEAN NOT NULL DEFAULT 1, PRIMARY KEY(`codigo`))ENGINE = InnoDB;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`tipo_ventas` ADD COLUMN `nombre_abreviado` VARCHAR(99) NOT NULL DEFAULT '' AFTER `nombre`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into tipo_ventas(codigo,nombre,nombre_abreviado,activo) values('1','CONTADO','CON','1');insert into tipo_ventas(codigo,nombre,nombre_abreviado,activo) values('2','CREDITO','CRE','1');insert into tipo_ventas(codigo,nombre,nombre_abreviado,activo)values('3','COTIZACION','COT','1');insert into tipo_ventas(codigo,nombre,nombre_abreviado,activo) values('4','PEDIDO','PED','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

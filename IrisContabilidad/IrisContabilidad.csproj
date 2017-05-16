@@ -184,6 +184,7 @@
     <Compile Include="clases\tipoVentana.cs" />
     <Compile Include="clases\tipo_comprobante_fiscal.cs" />
     <Compile Include="clases\tipo_gasto.cs" />
+    <Compile Include="clases\tipo_ventas.cs" />
     <Compile Include="clases\unidad.cs" />
     <Compile Include="clases\utilidades.cs" />
     <Compile Include="clases\vendedor.cs" />
@@ -270,6 +271,7 @@
     <Compile Include="modelos\modeloTipoGasto.cs" />
     <Compile Include="modelos\modeloTipoRetencionItbis.cs" />
     <Compile Include="modelos\modeloTipoVentana.cs" />
+    <Compile Include="modelos\modeloTipoVentas.cs" />
     <Compile Include="modelos\modeloTraduccion.cs" />
     <Compile Include="modelos\modeloUnidad.cs" />
     <Compile Include="modelos\modeloVendedor.cs" />

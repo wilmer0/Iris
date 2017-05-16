@@ -70,7 +70,7 @@ namespace IrisContabilidad.modelos
 
                 sistemaConfiguracion sistemaConfiguracion=new sistemaConfiguracion();
 
-                string sql = "select codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta,codigo_idioma_sistema from sistema where codigo='1'";
+                string sql = "select codigo,imagen_logo_empresa,codigo_moneda,permisos_por_grupos_usuarios,autorizar_pedidos_apartir,limite_egreso_caja,fecha_vencimiento,ver_imagen_fact_touch,ver_nombre_fact_touch,porciento_propina,emitir_notas_credito_debito,limitar_devoluciones_venta_30dias,concepto_egreso_caja_devolucion_venta,codigo_idioma_sistema,codigo_numero_comprobante_fiscal_defecto_ventas,codigo_tipo_venta_defecto from sistema where codigo='1'";
                 DataSet ds=utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows[0][0].ToString() != "")
                 {
@@ -90,6 +90,8 @@ namespace IrisContabilidad.modelos
                     sistemaConfiguracion.limitarDevolucionesVenta30Dias = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
                     sistemaConfiguracion.codigoConceptoEgresoCajaDevolucionVenta = Convert.ToInt16(ds.Tables[0].Rows[0][13]);
                     sistemaConfiguracion.codigoIdiomaSistema = Convert.ToInt16(ds.Tables[0].Rows[0][14]);
+                    sistemaConfiguracion.codigoNumeroComprobanteFiscalDefectoVentas = Convert.ToInt16(ds.Tables[0].Rows[0][15]);
+                    sistemaConfiguracion.codigoTipoVentaDefecto = Convert.ToInt16(ds.Tables[0].Rows[0][16]);
                 }
                 else
                 {

@@ -36,6 +36,9 @@ namespace IrisContabilidad.modulo_facturacion
         private cajero cajero;
         private tipo_comprobante_fiscal tipoComprobanteFiscal;
         private venta_detalle_lista ventaDetalleLista;
+        private sistemaConfiguracion sistemaConfiguracion;
+        private tipo_ventas tipoVenta;
+
 
         //modelos
         modeloTipoComprobanteFiscal modeloTipoComprobanteFiscal = new modeloTipoComprobanteFiscal();
@@ -48,6 +51,8 @@ namespace IrisContabilidad.modulo_facturacion
         modeloVenta modeloVenta = new modeloVenta();
         modeloComprobanteFiscal modeloComprobantefiscal = new modeloComprobanteFiscal();
         modeloCajero modeloCajero = new modeloCajero();
+        modeloSistemaConfiguracion modeloSistemaconfiguracion=new modeloSistemaConfiguracion();
+        modeloTipoVentas modeloTipoVentas=new modeloTipoVentas();
 
 
         //variables
@@ -65,7 +70,9 @@ namespace IrisContabilidad.modulo_facturacion
         private List<venta_detalle> listaVentaDetalle;
         private List<unidad> listaUnidad;
         private List<tipo_comprobante_fiscal> listaTipoComprobanteFiscal;
-        private List<venta_detalle_lista> listaVentaDetalleLista; 
+        private List<venta_detalle_lista> listaVentaDetalleLista;
+        private List<tipo_ventas> listaVentas; 
+
 
         //variables
         private decimal cantidad_monto = 0;
@@ -91,6 +98,7 @@ namespace IrisContabilidad.modulo_facturacion
             try
             {
                 listaTipoComprobanteFiscal = modeloTipoComprobanteFiscal.getListaCompleta();
+                loadTipoVentas();
                 if (listaTipoComprobanteFiscal != null)
                 {
                     tipoComprobanteCombo.DataSource = listaTipoComprobanteFiscal;
@@ -624,6 +632,49 @@ namespace IrisContabilidad.modulo_facturacion
             }
         }
 
+        public void loadTipoVentas()
+        {
+            try
+            {
+                if (listaVentas == null)
+                {
+                    listaVentas=new List<tipo_ventas>();
+                }
+
+                listaVentas = modeloTipoVentas.getListaCompleta();
+                tipoVentaComboBox.DisplayMember = "nombre";
+                tipoVentaComboBox.ValueMember = "codigo";
+                tipoVentaComboBox.DataSource = listaVentas;
+                tipoVentaComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTipoVentas.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+        public void loadTipoVentaDefecto()
+        {
+            try
+            {
+                sistemaConfiguracion=new sistemaConfiguracion();
+                sistemaConfiguracion = modeloSistemaconfiguracion.getSistemaConfiguracion();
+                if (sistemaConfiguracion.codigoTipoVentaDefecto != null)
+                {
+                    tipoVentaComboBox.SelectedValue = sistemaConfiguracion.codigoTipoVentaDefecto;
+                }
+                /*CON
+                  COT
+                  CRE
+                  PED
+                 */
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTipoVentaDefecto.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
         public void loadUnidad()
         {
             try
@@ -939,6 +990,30 @@ namespace IrisContabilidad.modulo_facturacion
             unidad = null;
             listaVentaDetalleLista = null;
             loadVentana();
+        }
+
+        public void salir()
+        {
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void ventana_facturacion_touch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                button2_Click(null,null);
+
+            }else if (e.KeyCode == Keys.F5)
+            {   
+                button3_Click(null,null);
+
+            }else if (e.KeyCode == Keys.F2)
+            {
+                button1_Click(null,null);
+            }
         }
     }
 }
