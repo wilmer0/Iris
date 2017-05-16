@@ -37,8 +37,6 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         modeloMetodoPago modeloMetodoPago = new modeloMetodoPago();
         private modelo_reporte_cobros modeloReporteCobros = new modelo_reporte_cobros();
 
-
-
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
         private bool incluirRangoFechaVenta = false;
@@ -47,14 +45,11 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private DateTime fechaFinalVentaDateTime;
         private string tipoVenta="";
         
-
-
         //listas
         private List<reporte_cobros_encabezado> listaCobroReporteEncabezado; 
         private List<venta_vs_cobros_detalles> listaVentacobroDetalle;
         private List<venta> listaVenta;
         private List<venta_detalle> listaVentaDetalle;
-
 
         //Proceso
         private ventana_procesando procesando;

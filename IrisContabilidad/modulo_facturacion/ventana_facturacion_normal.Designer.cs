@@ -36,7 +36,7 @@ namespace IrisContabilidad.modulo_facturacion
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.totalCompraText = new System.Windows.Forms.TextBox();
+            this.totalVentaText = new System.Windows.Forms.TextBox();
             this.totalItebisText = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -130,17 +130,17 @@ namespace IrisContabilidad.modulo_facturacion
             this.button3.Location = new System.Drawing.Point(430, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // totalCompraText
+            // totalVentaText
             // 
-            this.totalCompraText.BackColor = System.Drawing.Color.SkyBlue;
-            this.totalCompraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalCompraText.Location = new System.Drawing.Point(862, 597);
-            this.totalCompraText.MaxLength = 200;
-            this.totalCompraText.Name = "totalCompraText";
-            this.totalCompraText.ReadOnly = true;
-            this.totalCompraText.Size = new System.Drawing.Size(150, 26);
-            this.totalCompraText.TabIndex = 109;
-            this.totalCompraText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.totalVentaText.BackColor = System.Drawing.Color.SkyBlue;
+            this.totalVentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalVentaText.Location = new System.Drawing.Point(862, 597);
+            this.totalVentaText.MaxLength = 200;
+            this.totalVentaText.Name = "totalVentaText";
+            this.totalVentaText.ReadOnly = true;
+            this.totalVentaText.Size = new System.Drawing.Size(150, 26);
+            this.totalVentaText.TabIndex = 109;
+            this.totalVentaText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // totalItebisText
             // 
@@ -352,7 +352,6 @@ namespace IrisContabilidad.modulo_facturacion
             this.importeText.TabIndex = 97;
             this.importeText.Text = "0.00";
             this.importeText.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.importeText.TextChanged += new System.EventHandler(this.importeText_TextChanged);
             this.importeText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.importeText_KeyDown);
             // 
             // productoIdText
@@ -804,7 +803,7 @@ namespace IrisContabilidad.modulo_facturacion
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 697);
-            this.Controls.Add(this.totalCompraText);
+            this.Controls.Add(this.totalVentaText);
             this.Controls.Add(this.totalItebisText);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
@@ -823,7 +822,7 @@ namespace IrisContabilidad.modulo_facturacion
             this.Controls.SetChildIndex(this.label13, 0);
             this.Controls.SetChildIndex(this.label14, 0);
             this.Controls.SetChildIndex(this.totalItebisText, 0);
-            this.Controls.SetChildIndex(this.totalCompraText, 0);
+            this.Controls.SetChildIndex(this.totalVentaText, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -840,7 +839,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         #endregion
 
-        private TextBox totalCompraText;
+        private TextBox totalVentaText;
         private TextBox totalItebisText;
         private Label label14;
         private Label label13;

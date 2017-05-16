@@ -775,6 +775,18 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "reimprimir_cierre_caja1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "facturacion touch";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_facturacion_touch";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "facturacion_normal1.png";
+                listaVentana.Add(ventana);
+                
+                
+                
                 #endregion
 
                 //modulo cuentas por cobrar

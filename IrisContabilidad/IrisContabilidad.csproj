@@ -400,6 +400,12 @@
     <Compile Include="modulo_facturacion\ventana_busqueda_venta_devolucion.Designer.cs">
       <DependentUpon>ventana_busqueda_venta_devolucion.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_touch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_touch.Designer.cs">
+      <DependentUpon>ventana_facturacion_touch.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -979,6 +985,9 @@
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_debito.rdlc" />
+    <EmbeddedResource Include="modulo_facturacion\ventana_facturacion_touch.resx">
+      <DependentUpon>ventana_facturacion_touch.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.resx">
       <DependentUpon>ventana_imprimir_cuadre_caja_rd.cs</DependentUpon>
     </EmbeddedResource>

@@ -387,7 +387,7 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`sistema` MODIFY COLUMN `codigo_idioma_sistema` INTEGER NOT NULL DEFAULT 1;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `codigo_numero_comprobante_fiscal_defecto_ventas` INTEGER NOT NULL DEFAULT 1 AFTER `codigo_idioma_sistema`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

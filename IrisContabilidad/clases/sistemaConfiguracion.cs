@@ -18,6 +18,7 @@ namespace IrisContabilidad.clases
         public bool limitarDevolucionesVenta30Dias { get; set; }
         public int codigoConceptoEgresoCajaDevolucionVenta { get; set; }
         public int codigoIdiomaSistema { get; set; }
+        public int codigoNumeroComprobanteFiscalDefectoVentas { get; set; }
 
 
     }

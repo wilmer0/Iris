@@ -276,6 +276,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get producto by referencia
         public producto getProductoByReferencia(string referencia)
         {
@@ -314,11 +315,55 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error getProductoById.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                MessageBox.Show("Error getProductoByReferencia.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get producto by codigo de barra
+        public producto getProductoByCodigoBarra(string codigoBarra)
+        {
+            try
+            {
+                List<producto> lista = new List<producto>();
+                producto producto = new producto();
+                string sql = "select p.codigo,p.nombre,p.referencia,p.activo,p.reorden,p.punto_maximo,p.cod_itebis,p.cod_categoria,p.cod_subcategoria,p.cod_almacen,p.imagen,p.cod_unidad_minima,p.controla_inventario,p.producto_titular from producto p, producto_vs_codigobarra pc where p.codigo=pc.cod_producto and pc.codigo_barra like '%"+codigoBarra+"%';";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    producto = new producto();
+                    producto.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    producto.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    producto.referencia = ds.Tables[0].Rows[0][2].ToString();
+                    producto.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3].ToString());
+                    producto.reorden = Convert.ToDecimal(ds.Tables[0].Rows[0][4].ToString());
+                    producto.punto_maximo = Convert.ToDecimal(ds.Tables[0].Rows[0][5].ToString());
+                    producto.codigo_itebis = Convert.ToInt16(ds.Tables[0].Rows[0][6].ToString());
+                    producto.codigo_categoria = Convert.ToInt16(ds.Tables[0].Rows[0][7].ToString());
+                    producto.codigo_subcategoria = Convert.ToInt16(ds.Tables[0].Rows[0][8].ToString());
+                    producto.codigo_almacen = Convert.ToInt16(ds.Tables[0].Rows[0][9].ToString());
+                    producto.imagen = ds.Tables[0].Rows[0][10].ToString();
+                    producto.codigo_unidad_minima = Convert.ToInt16(ds.Tables[0].Rows[0][11].ToString());
+                    producto.controla_inventario = Convert.ToBoolean(ds.Tables[0].Rows[0][12]);
+                    producto.producto_titular = Convert.ToBoolean(ds.Tables[0].Rows[0][13]);
+                    lista.Add(producto);
+                }
+                producto = null;
+                lista.FindAll(x => x.referencia.ToLower().Contains(codigoBarra.ToLower()));
+                if (lista.Count > 0)
+                {
+                    producto = lista.ToList().FirstOrDefault();
+                }
+                return producto;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getProductoByCodigoBarra.:" + ex.ToString(), "", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 return null;
             }
         }
+
 
         //get lista completa
         public List<producto> getListaCompleta(bool mantenimiento = false)
