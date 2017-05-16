@@ -15,13 +15,14 @@ namespace IrisContabilidad
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
         private modeloPrimerLogin modeloPrimerLogin = new modeloPrimerLogin();
         modeloActualizacion modeloActualizacion=new modeloActualizacion();
+        modeloSistemaConfiguracion modeloSistemaConfiguracion=new modeloSistemaConfiguracion();
 
         //objetos
         private empleado empleado;
         utilidades utilidades = new utilidades();
         private singleton singleton;
-
-
+        private sistemaConfiguracion sistemaConfiguracion;
+        
 
         public Form1()
         {
@@ -30,7 +31,46 @@ namespace IrisContabilidad
             this.Text = tituloLabel.Text;
             usuarioText.Select();
             utilidades.notificacionWindows("titulo prueba", "hola mundo esto es un mensaje",5);
-           
+
+            validarSistema();
+        }
+
+        public void validarSistema()
+        {
+            try
+            {
+                //validar sistema si el sistema no es full debe ver la fecha de vencimiento para saber si caduco la version de prueba
+                sistemaConfiguracion = modeloSistemaConfiguracion.getSistemaConfiguracion();
+                if (sistemaConfiguracion.sistemaFull == false)
+                {
+                    DateTime hoy=DateTime.Today;
+                    if (sistemaConfiguracion.fechaVencimientoSistema != null)
+                    {
+                        if (hoy <= sistemaConfiguracion.fechaVencimientoSistema)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("La version de prueba se ha terminado, por favor contacte con el encargado, si desea mandar un correo automatico solicitando la version full pulse el boton de 'YES'","", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            {
+                                //se manda el correo automatico solitando que instalen la version full
+
+                            }
+                            
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta la fecha de ingreso", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validando sistema .:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
