@@ -21,6 +21,7 @@ namespace IrisContabilidad.clases
         public int codigoNumeroComprobanteFiscalDefectoVentas { get; set; }
         public int codigoTipoVentaDefecto { get; set; }
         public int tipoVentanaCuadreCaja { get; set; }
+        public bool sistemaFull { get; set; }
 
     }
 }

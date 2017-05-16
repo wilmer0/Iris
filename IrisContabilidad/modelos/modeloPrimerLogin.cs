@@ -777,8 +777,8 @@ namespace IrisContabilidad.modelos
                 listaVentana.Add(ventana);
                 //nueva ventana
                 ventana = new ventana();
-                ventana.nombre_ventana = "facturacion touch";
-                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_facturacion_touch";
+                ventana.nombre_ventana = "facturación";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_facturacion_tienda_v1";
                 ventana.activo = true;
                 ventana.programador = false;
                 ventana.codigo_modulo = 2;

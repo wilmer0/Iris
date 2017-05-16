@@ -444,19 +444,19 @@ namespace IrisContabilidad.modelos
                 #region querys version4
 
                 //nuevo query
-                sql = "";
+                sql = "insert into pais(codigo,nombre,estado) values('1','REPUBLICA DOMINICANA','1');insert into pais(codigo,nombre,estado) values('2','UNITED STATES OF AMERICA','1');insert into pais(codigo,nombre,estado) values('3','MEXICO','1');insert into pais(codigo,nombre,estado) values('4','COLOMBIA','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into region(codigo,cod_pais,nombre,activo) values('1','1','NORTE','1');insert into region(codigo,cod_pais,nombre,activo) values('2','1','SUR','1');insert into region(codigo,cod_pais,nombre,activo) values('3','1','ESTE','1');insert into region(codigo,cod_pais,nombre,activo) values('4','1','OESTE','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into ciudad(codigo,nombre,activo) values('6','YONKERS','1');insert into ciudad(codigo,nombre,activo) values('7','BRONX','1');insert into ciudad(codigo,nombre,activo) values('8','QUEENS','1');insert into ciudad(codigo,nombre,activo) values('9','MANHATTAN','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `sistema_full` BOOLEAN NOT NULL DEFAULT 1 COMMENT 'saber si el sistema es full, de no ser asi corta con la fecha' AFTER `tipo_ventana_cuadre_caja`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`sistema` MODIFY COLUMN `sistema_full` TINYINT(1) NOT NULL DEFAULT 0 COMMENT 'saber si el sistema es full, de no ser asi corta con la fecha';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";
