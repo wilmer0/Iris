@@ -45,7 +45,7 @@ namespace IrisContabilidad.modulo_sistema
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
         modeloModulo modeloModulo=new modeloModulo();
         modeloTipoVentana modeloTipoVentana=new modeloTipoVentana();
-
+        modeloSistemaConfiguracion modeloSistemaConfiguracion=new modeloSistemaConfiguracion();
 
         //listas
         private List<string> listaTemp;
@@ -71,6 +71,7 @@ namespace IrisContabilidad.modulo_sistema
         {
             try
             {
+                validarSistema();
                 tipoVentana=new tipoVentana();
                 tipoVentana = modeloTipoVentana.getTipoVentanaById(empleado.tipoVentana);
 
@@ -83,6 +84,49 @@ namespace IrisContabilidad.modulo_sistema
                 MessageBox.Show("Error LoadVentana.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+
+        public void validarSistema()
+        {
+            try
+            {
+                //validar sistema si el sistema no es full debe ver la fecha de vencimiento para saber si caduco la version de prueba
+                sistemaConfiguracion = modeloSistemaConfiguracion.getSistemaConfiguracion();
+                if (sistemaConfiguracion.sistemaFull == false)
+                {
+                    DateTime hoy = DateTime.Today;
+                    if (sistemaConfiguracion.fechaVencimientoSistema != null)
+                    {
+                        if (hoy <= sistemaConfiguracion.fechaVencimientoSistema)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("La version de prueba se ha terminado, por favor contacte con el encargado, si desea mandar un correo automatico solicitando la version full pulse el boton de 'YES'", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            {
+                                //se manda el correo automatico solitando que instalen la version full y se cierra la aplicacion
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                Application.Exit();
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta la fecha de ingreso", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validando sistema .:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void menu1_Load(object sender, EventArgs e)
         {
 
@@ -92,6 +136,7 @@ namespace IrisContabilidad.modulo_sistema
         {
             this.WindowState = FormWindowState.Maximized;
         }
+        
         private void BotonModuloOnClick(object sender, EventArgs eventArgs)
         {
             try

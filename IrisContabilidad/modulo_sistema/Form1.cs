@@ -32,7 +32,7 @@ namespace IrisContabilidad
             usuarioText.Select();
             utilidades.notificacionWindows("titulo prueba", "hola mundo esto es un mensaje",5);
 
-            validarSistema();
+            //validarSistema();
         }
 
         public void validarSistema()
@@ -54,10 +54,17 @@ namespace IrisContabilidad
                         {
                             if (MessageBox.Show("La version de prueba se ha terminado, por favor contacte con el encargado, si desea mandar un correo automatico solicitando la version full pulse el boton de 'YES'","", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                             {
-                                //se manda el correo automatico solitando que instalen la version full
+                                //se manda el correo automatico solitando que instalen la version full y se cierra la aplicacion
+                                
 
+                                Application.Exit();
                             }
-                            
+                            else
+                            {
+
+                                Application.Exit();    
+                            }
+
                         }
                     }
                     else
