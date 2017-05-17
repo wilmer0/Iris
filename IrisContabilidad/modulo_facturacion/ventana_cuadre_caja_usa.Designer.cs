@@ -32,11 +32,13 @@
             this.cajeroLabel = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.unCentavoText = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.cincoCentavosText = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.diezText = new System.Windows.Forms.TextBox();
+            this.ventiCincoCentavosText = new System.Windows.Forms.TextBox();
             this.veinticincoCentavosText = new System.Windows.Forms.Label();
-            this.cincoText = new System.Windows.Forms.TextBox();
+            this.diezCentavosText = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -74,6 +76,7 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -89,6 +92,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(364, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
             // 
@@ -121,14 +125,17 @@
             this.groupBox2.Size = new System.Drawing.Size(866, 256);
             this.groupBox2.TabIndex = 56;
             this.groupBox2.TabStop = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.unCentavoText);
+            this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.cincoCentavosText);
             this.groupBox4.Controls.Add(this.label5);
-            this.groupBox4.Controls.Add(this.diezText);
+            this.groupBox4.Controls.Add(this.ventiCincoCentavosText);
             this.groupBox4.Controls.Add(this.veinticincoCentavosText);
-            this.groupBox4.Controls.Add(this.cincoText);
+            this.groupBox4.Controls.Add(this.diezCentavosText);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Location = new System.Drawing.Point(442, 16);
             this.groupBox4.Name = "groupBox4";
@@ -136,6 +143,29 @@
             this.groupBox4.TabIndex = 59;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Dinero Moneda";
+            // 
+            // unCentavoText
+            // 
+            this.unCentavoText.BackColor = System.Drawing.Color.White;
+            this.unCentavoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unCentavoText.Location = new System.Drawing.Point(51, 115);
+            this.unCentavoText.MaxLength = 4;
+            this.unCentavoText.Name = "unCentavoText";
+            this.unCentavoText.Size = new System.Drawing.Size(111, 26);
+            this.unCentavoText.TabIndex = 53;
+            this.unCentavoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.unCentavoText_KeyDown);
+            this.unCentavoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unCentavoText_KeyPress);
+            this.unCentavoText.Leave += new System.EventHandler(this.unCentavoText_Leave);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(16, 114);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(29, 20);
+            this.label8.TabIndex = 54;
+            this.label8.Text = "$1";
             // 
             // cincoCentavosText
             // 
@@ -146,6 +176,9 @@
             this.cincoCentavosText.Name = "cincoCentavosText";
             this.cincoCentavosText.Size = new System.Drawing.Size(111, 26);
             this.cincoCentavosText.TabIndex = 51;
+            this.cincoCentavosText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cincoCentavosText_KeyDown);
+            this.cincoCentavosText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cincoCentavosText_KeyPress);
+            this.cincoCentavosText.Leave += new System.EventHandler(this.cincoCentavosText_Leave);
             // 
             // label5
             // 
@@ -157,15 +190,18 @@
             this.label5.TabIndex = 52;
             this.label5.Text = "$5";
             // 
-            // diezText
+            // ventiCincoCentavosText
             // 
-            this.diezText.BackColor = System.Drawing.Color.White;
-            this.diezText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.diezText.Location = new System.Drawing.Point(51, 18);
-            this.diezText.MaxLength = 4;
-            this.diezText.Name = "diezText";
-            this.diezText.Size = new System.Drawing.Size(111, 26);
-            this.diezText.TabIndex = 47;
+            this.ventiCincoCentavosText.BackColor = System.Drawing.Color.White;
+            this.ventiCincoCentavosText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ventiCincoCentavosText.Location = new System.Drawing.Point(51, 18);
+            this.ventiCincoCentavosText.MaxLength = 4;
+            this.ventiCincoCentavosText.Name = "ventiCincoCentavosText";
+            this.ventiCincoCentavosText.Size = new System.Drawing.Size(111, 26);
+            this.ventiCincoCentavosText.TabIndex = 47;
+            this.ventiCincoCentavosText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventiCincoCentavosText_KeyDown);
+            this.ventiCincoCentavosText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ventiCincoCentavosText_KeyPress);
+            this.ventiCincoCentavosText.Leave += new System.EventHandler(this.ventiCincoCentavosText_Leave);
             // 
             // veinticincoCentavosText
             // 
@@ -177,15 +213,18 @@
             this.veinticincoCentavosText.TabIndex = 48;
             this.veinticincoCentavosText.Text = "$25";
             // 
-            // cincoText
+            // diezCentavosText
             // 
-            this.cincoText.BackColor = System.Drawing.Color.White;
-            this.cincoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cincoText.Location = new System.Drawing.Point(51, 51);
-            this.cincoText.MaxLength = 4;
-            this.cincoText.Name = "cincoText";
-            this.cincoText.Size = new System.Drawing.Size(111, 26);
-            this.cincoText.TabIndex = 49;
+            this.diezCentavosText.BackColor = System.Drawing.Color.White;
+            this.diezCentavosText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.diezCentavosText.Location = new System.Drawing.Point(51, 51);
+            this.diezCentavosText.MaxLength = 4;
+            this.diezCentavosText.Name = "diezCentavosText";
+            this.diezCentavosText.Size = new System.Drawing.Size(111, 26);
+            this.diezCentavosText.TabIndex = 49;
+            this.diezCentavosText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.diezCentavosText_KeyDown);
+            this.diezCentavosText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.diezCentavosText_KeyPress);
+            this.diezCentavosText.Leave += new System.EventHandler(this.diezCentavosText_Leave);
             // 
             // label11
             // 
@@ -239,6 +278,9 @@
             this.dosDolaresText.Name = "dosDolaresText";
             this.dosDolaresText.Size = new System.Drawing.Size(111, 26);
             this.dosDolaresText.TabIndex = 55;
+            this.dosDolaresText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dosDolaresText_KeyDown);
+            this.dosDolaresText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dosDolaresText_KeyPress);
+            this.dosDolaresText.Leave += new System.EventHandler(this.dosDolaresText_Leave);
             // 
             // cincoDolaresText
             // 
@@ -249,6 +291,9 @@
             this.cincoDolaresText.Name = "cincoDolaresText";
             this.cincoDolaresText.Size = new System.Drawing.Size(111, 26);
             this.cincoDolaresText.TabIndex = 51;
+            this.cincoDolaresText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cincoDolaresText_KeyDown);
+            this.cincoDolaresText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cincoDolaresText_KeyPress);
+            this.cincoDolaresText.Leave += new System.EventHandler(this.cincoDolaresText_Leave);
             // 
             // label3
             // 
@@ -269,6 +314,9 @@
             this.diezDolaresText.Name = "diezDolaresText";
             this.diezDolaresText.Size = new System.Drawing.Size(111, 26);
             this.diezDolaresText.TabIndex = 51;
+            this.diezDolaresText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.diezDolaresText_KeyDown);
+            this.diezDolaresText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.diezDolaresText_KeyPress);
+            this.diezDolaresText.Leave += new System.EventHandler(this.diezDolaresText_Leave);
             // 
             // label2
             // 
@@ -299,6 +347,9 @@
             this.veinteDolaresText.Name = "veinteDolaresText";
             this.veinteDolaresText.Size = new System.Drawing.Size(111, 26);
             this.veinteDolaresText.TabIndex = 45;
+            this.veinteDolaresText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.veinteDolaresText_KeyDown);
+            this.veinteDolaresText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.veinteDolaresText_KeyPress);
+            this.veinteDolaresText.Leave += new System.EventHandler(this.veinteDolaresText_Leave);
             // 
             // label12
             // 
@@ -319,6 +370,9 @@
             this.unoDolarText.Name = "unoDolarText";
             this.unoDolarText.Size = new System.Drawing.Size(111, 26);
             this.unoDolarText.TabIndex = 51;
+            this.unoDolarText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.unoDolarText_KeyDown);
+            this.unoDolarText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unoDolarText_KeyPress);
+            this.unoDolarText.Leave += new System.EventHandler(this.unoDolarText_Leave);
             // 
             // cienDolaresText
             // 
@@ -329,6 +383,9 @@
             this.cienDolaresText.Name = "cienDolaresText";
             this.cienDolaresText.Size = new System.Drawing.Size(111, 26);
             this.cienDolaresText.TabIndex = 39;
+            this.cienDolaresText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cienDolaresText_KeyDown);
+            this.cienDolaresText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cienDolaresText_KeyPress);
+            this.cienDolaresText.Leave += new System.EventHandler(this.cienDolaresText_Leave);
             // 
             // label6
             // 
@@ -349,6 +406,9 @@
             this.cincuentaDolaresText.Name = "cincuentaDolaresText";
             this.cincuentaDolaresText.Size = new System.Drawing.Size(111, 26);
             this.cincuentaDolaresText.TabIndex = 41;
+            this.cincuentaDolaresText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cincuentaDolaresText_KeyDown);
+            this.cincuentaDolaresText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cincuentaDolaresText_KeyPress);
+            this.cincuentaDolaresText.Leave += new System.EventHandler(this.cincuentaDolaresText_Leave);
             // 
             // label7
             // 
@@ -374,7 +434,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(652, 230);
+            this.label14.Location = new System.Drawing.Point(652, 220);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 20);
             this.label14.TabIndex = 55;
@@ -383,7 +443,7 @@
             // montoTotalEfectivoText
             // 
             this.montoTotalEfectivoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoTotalEfectivoText.Location = new System.Drawing.Point(707, 227);
+            this.montoTotalEfectivoText.Location = new System.Drawing.Point(707, 217);
             this.montoTotalEfectivoText.Name = "montoTotalEfectivoText";
             this.montoTotalEfectivoText.ReadOnly = true;
             this.montoTotalEfectivoText.Size = new System.Drawing.Size(153, 30);
@@ -453,9 +513,9 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox unoDolarText;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox cincoText;
+        private System.Windows.Forms.TextBox diezCentavosText;
         private System.Windows.Forms.Label veinticincoCentavosText;
-        private System.Windows.Forms.TextBox diezText;
+        private System.Windows.Forms.TextBox ventiCincoCentavosText;
         private System.Windows.Forms.TextBox veinteDolaresText;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
@@ -475,5 +535,7 @@
         private System.Windows.Forms.TextBox dosDolaresText;
         private System.Windows.Forms.TextBox cincoCentavosText;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox unCentavoText;
+        private System.Windows.Forms.Label label8;
     }
 }

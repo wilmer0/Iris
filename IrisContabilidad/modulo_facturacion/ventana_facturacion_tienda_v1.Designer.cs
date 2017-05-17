@@ -362,7 +362,7 @@
             this.fechaLabelText.AutoSize = true;
             this.fechaLabelText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.fechaLabelText.ForeColor = System.Drawing.Color.White;
-            this.fechaLabelText.Location = new System.Drawing.Point(1291, -1);
+            this.fechaLabelText.Location = new System.Drawing.Point(1291, 1);
             this.fechaLabelText.Name = "fechaLabelText";
             this.fechaLabelText.Size = new System.Drawing.Size(59, 20);
             this.fechaLabelText.TabIndex = 115;
@@ -584,13 +584,13 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(784, 602);
+            this.label13.Location = new System.Drawing.Point(756, 602);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(56, 29);
+            this.label13.Size = new System.Drawing.Size(84, 29);
             this.label13.TabIndex = 136;
-            this.label13.Text = "Tax";
+            this.label13.Text = "Taxes";
             // 
-            // ventana_facturacion_touch
+            // ventana_facturacion_tienda_v1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -619,7 +619,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ventana_facturacion_touch";
+            this.Name = "ventana_facturacion_tienda_v1";
             this.Text = "ventana_facturacion_touch";
             this.Load += new System.EventHandler(this.ventana_facturacion_touch_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ventana_facturacion_touch_KeyDown);

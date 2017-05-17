@@ -69,7 +69,7 @@ namespace IrisContabilidad.clases_reportes
             this.numero_comprobante_fiscal = venta.ncf;
             this.detalles = venta.detalle;
 
-            listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo);
+            listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo,false);
             listaVentaDetalle.ForEach(x =>
             {
                 reporte_venta_detalle reporteVentaDetalle = new reporte_venta_detalle(x);

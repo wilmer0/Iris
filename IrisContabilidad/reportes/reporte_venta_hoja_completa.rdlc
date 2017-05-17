@@ -779,7 +779,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>reporte_detalle</DataSetName>
-        <Top>0.02778in</Top>
+        <Top>0.15278in</Top>
         <Left>0.16145in</Left>
         <Height>0.75in</Height>
         <Width>8.17544in</Width>
@@ -939,7 +939,7 @@
   <Width>8.45833in</Width>
   <Page>
     <PageHeader>
-      <Height>2.28695in</Height>
+      <Height>2.45362in</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

@@ -243,7 +243,7 @@ namespace IrisContabilidad.modelos
 
 
         //get producto by id
-        public producto getProductoById(int id)
+        public producto getProductoById(Int64 id)
         {
             try
             {

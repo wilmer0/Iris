@@ -31,7 +31,7 @@ namespace IrisContabilidad.clases_reportes
                 List<cxc_nota_credito> listaNotaCredito=new List<cxc_nota_credito>();
                 List<cxc_nota_debito> listaNotaDebito=new List<cxc_nota_debito>();
                 List<venta_detalle> listaVentaDetalle=new List<venta_detalle>();
-                listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo);
+                listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo,false);
                 listaNotaCredito = new modeloCxcNotaCredito().getListaByVentaActivo(venta.codigo);
                 listaNotaDebito = new modeloCxcNotaDebito().getListaByVentaActivo(venta.codigo);
                 this.anoNumero = venta.fecha.Year;

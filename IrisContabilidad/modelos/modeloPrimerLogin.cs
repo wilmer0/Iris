@@ -784,7 +784,15 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "facturacion_normal1.png";
                 listaVentana.Add(ventana);
-                
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "cuadre caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_cuadre_caja_usa";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "cuadre_caja_usa1.png";
+                listaVentana.Add(ventana);
                 
                 
                 #endregion

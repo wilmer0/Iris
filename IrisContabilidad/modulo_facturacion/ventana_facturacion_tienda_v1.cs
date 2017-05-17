@@ -67,7 +67,6 @@ namespace IrisContabilidad.modulo_facturacion
         private List<producto_vs_codigobarra> listaCodigoBarra;
         private List<productoUnidadConversion> listaProductoUnidadConversion;
         private List<venta> listaVenta;
-        private List<venta_detalle> listaVentaDetalle;
         private List<unidad> listaUnidad;
         private List<tipo_comprobante_fiscal> listaTipoComprobanteFiscal;
         private List<venta_detalle_lista> listaVentaDetalleLista;
@@ -134,7 +133,7 @@ namespace IrisContabilidad.modulo_facturacion
 
                     //llenar el detalle de la venta
                     dataGridView1.Rows.Clear();
-                    listaVentaDetalle = modeloVenta.getListaVentaDetalle(venta.codigo, true);
+                    listaVentaDetalleLista = modeloVenta.getListaVentaDetalle(venta.codigo);
                     //loadListaVentaDetalle();
                     //botonImprimir.Visible = true;
                 }
@@ -155,7 +154,7 @@ namespace IrisContabilidad.modulo_facturacion
                     //fechaFinalText.Text = DateTime.Today.ToString("d");
                     detalleText.Text = "Any description";
                     //limpiar el detalle de la compra
-                    listaVentaDetalle = new List<venta_detalle>();
+                    listaVentaDetalleLista = new List<venta_detalle_lista>();
                     if (dataGridView1.Rows.Count > 0)
                     {
                         dataGridView1.Rows.Clear();
@@ -292,6 +291,7 @@ namespace IrisContabilidad.modulo_facturacion
                 venta.fecha_limite = DateTime.Today;
                 venta.ncf = modeloComprobantefiscal.getNextComprobanteFiscalByTipoId(cajero.codigo_caja, Convert.ToInt16(tipoComprobanteCombo.SelectedValue));
                 venta.tipo_venta = tipoVentaComboBox.Text;
+                venta.codigo_tipo_venta = Convert.ToInt16(tipoVentaComboBox.SelectedValue.ToString());
                 venta.activo = true;
                 venta.pagada = false;
                 venta.codigo_sucursal = empleado.codigo_sucursal;
@@ -301,35 +301,13 @@ namespace IrisContabilidad.modulo_facturacion
                 venta.detalle = detalleText.Text;
                 venta.codigo_tipo_comprobante = Convert.ToInt16(tipoComprobanteCombo.SelectedValue);
 
-
-                //hacer lista del detalle de la venta
-                listaVentaDetalle = new List<venta_detalle>();
-                int cont = 1;
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {
-                    ventaDetalle = new venta_detalle();
-                    ventaDetalle.codigo = cont;
-                    ventaDetalle.cod_venta = venta.codigo;
-                    //MessageBox.Show(row.Cells[0].ToString() + "-" + row.Cells[2].Value.ToString() + "-" + row.Cells[5].Value.ToString() + "-" + row.Cells[4].Value.ToString() + "-" + row.Cells[8].Value.ToString() + "-" + row.Cells[7].Value.ToString());
-                    ventaDetalle.codigo_producto = Convert.ToInt16(row.Cells[0].Value);
-                    ventaDetalle.codigo_unidad = Convert.ToInt16(row.Cells[2].Value);
-                    ventaDetalle.precio = Convert.ToDecimal(row.Cells[5].Value.ToString());
-                    ventaDetalle.cantidad = Convert.ToDecimal(row.Cells[4].Value.ToString());
-                    ventaDetalle.monto_total = Convert.ToDecimal(row.Cells[8].Value.ToString());
-                    ventaDetalle.monto_itebis = Convert.ToDecimal(row.Cells[6].Value.ToString());
-                    ventaDetalle.monto_descuento = Convert.ToDecimal(row.Cells[7].Value.ToString());
-                    ventaDetalle.activo = true;
-                    listaVentaDetalle.Add(ventaDetalle);
-                    cont++;
-                }
-
                 if (crear == true)
                 {
                     //agregar
-                    //validar si la compra es al contado para proceder hacer el cobro
-                    if (venta.tipo_venta == "CON")
+                    //validar si la venta es al contado para proceder hacer el cobro
+                    if (venta.codigo_tipo_venta==1)
                     {
-                        ventanaDesglose = new ventana_desglose_dinero(venta, listaVentaDetalle);
+                        ventanaDesglose = new ventana_desglose_dinero(venta, listaVentaDetalleLista);
                         venta = null;
                         ventanaDesglose.ShowDialog();
                         if (ventanaDesglose.DialogResult == DialogResult.OK)
@@ -339,8 +317,8 @@ namespace IrisContabilidad.modulo_facturacion
                     }
                     else
                     {
-                        //la compra no es al contado entonces solo se guarda pero no hay desglose de pago
-                        if (modeloVenta.agregarVenta(venta, listaVentaDetalle) == true)
+                        //la venta no es al contado entonces solo se guarda pero no hay desglose de pago
+                        if (modeloVenta.agregarVenta(venta, listaVentaDetalleLista) == true)
                         {
                             if (MessageBox.Show("Se agregó, desea Imprimir la venta?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                             {

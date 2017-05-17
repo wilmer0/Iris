@@ -459,10 +459,10 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`sistema` MODIFY COLUMN `sistema_full` TINYINT(1) NOT NULL DEFAULT 0 COMMENT 'saber si el sistema es full, de no ser asi corta con la fecha';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`venta` ADD COLUMN `codigo_tipo_venta` INTEGER NOT NULL DEFAULT 1 AFTER `pedido`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`venta` MODIFY COLUMN `tipo_venta` VARCHAR(99) CHARACTER SET utf8 COLLATE utf8_bin;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

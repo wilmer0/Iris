@@ -31,8 +31,6 @@ namespace IrisContabilidad
             this.Text = tituloLabel.Text;
             usuarioText.Select();
             utilidades.notificacionWindows("titulo prueba", "hola mundo esto es un mensaje",5);
-
-            //validarSistema();
         }
 
         public void validarSistema()
@@ -164,14 +162,7 @@ namespace IrisContabilidad
                 {
                     return;
                 }
-                //if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                //{
-                //    return;
-                //}
                 modeloPrimerLogin.validarPrimerLogin();
-                
-                
-
                 empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));
 
                 if (empleado == null)
@@ -179,14 +170,12 @@ namespace IrisContabilidad
                     limpiar();
                     return;
                 }
-                //empleado = modeloEmpleado.validarLogin(usuarioText.Text, claveText.Text);
                 if (empleado.login != null || empleado.login!="")
                 {
                     singleton.empleado = empleado;
                     menu1 ventana = new menu1(empleado);
                     ventana.Show();
                     this.Hide();
-                    //MessageBox.Show(empleado.fecha_ingreso.ToString());
                 }
                 else
                 {
@@ -199,7 +188,6 @@ namespace IrisContabilidad
             {
                 MessageBox.Show("Error GetAction.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
         }
 
         public void limpiar()

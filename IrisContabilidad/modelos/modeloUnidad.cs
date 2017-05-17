@@ -124,7 +124,7 @@ namespace IrisContabilidad.modelos
 
 
         //get objeto
-        public unidad getUnidadById(int id)
+        public unidad getUnidadById(Int64 id)
         {
             try
             {
