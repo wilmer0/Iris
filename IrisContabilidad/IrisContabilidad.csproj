@@ -415,6 +415,12 @@
     <Compile Include="modulo_facturacion\ventana_facturacion_tienda_v1.Designer.cs">
       <DependentUpon>ventana_facturacion_tienda_v1.cs</DependentUpon>
     </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_touch1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_facturacion\ventana_facturacion_touch1.Designer.cs">
+      <DependentUpon>ventana_facturacion_touch1.cs</DependentUpon>
+    </Compile>
     <Compile Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -999,6 +1005,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_facturacion_tienda_v1.resx">
       <DependentUpon>ventana_facturacion_tienda_v1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_facturacion\ventana_facturacion_touch1.resx">
+      <DependentUpon>ventana_facturacion_touch1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\ventana_imprimir_cuadre_caja_rd.resx">
       <DependentUpon>ventana_imprimir_cuadre_caja_rd.cs</DependentUpon>

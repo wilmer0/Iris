@@ -64,17 +64,17 @@ namespace IrisContabilidad.modulo_sistema
             if (e.KeyCode == Keys.Escape)
             {
                 //salir
-                button2_Click(null,null);
+                this.button2_Click(null,null);
             }
             if (e.KeyCode == Keys.F2)
             {
                 //proceso
-                button1_Click(null, null);
+                this.button1_Click(null, null);
             }
             if (e.KeyCode == Keys.F5)
             {
                 //limpiar
-                button3_Click(null, null);
+                this.button3_Click(null, null);
             }
         }
 
