@@ -142,7 +142,7 @@
             this.groupBox4.Size = new System.Drawing.Size(418, 173);
             this.groupBox4.TabIndex = 59;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Dinero Moneda";
+            this.groupBox4.Text = "Coins";
             // 
             // unCentavoText
             // 
@@ -257,7 +257,7 @@
             this.groupBox3.Size = new System.Drawing.Size(427, 170);
             this.groupBox3.TabIndex = 58;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Dinero Papel";
+            this.groupBox3.Text = "Bills";
             // 
             // label4
             // 
