@@ -34,8 +34,7 @@ namespace IrisContabilidad.modelos
                     return false;
                 }
                 //validar referencia
-                sql = "select *from producto where referencia='" + producto.referencia + "' and referencia!='' and codigo!='" +
-                      producto.codigo + "'";
+                sql = "select *from producto where referencia='" + producto.referencia + "' and referencia!='' and codigo!='"+producto.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -78,8 +77,7 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarProducto.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Error agregarProducto.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -92,23 +90,19 @@ namespace IrisContabilidad.modelos
                 int activo = 0;
                 int productoTitular = 0;
                 //validar nombre
-                string sql = "select *from producto where nombre='" + producto.nombre + "' and codigo!='" +
-                             producto.codigo + "'";
+                string sql = "select *from producto where nombre='" + producto.nombre + "' and nombre!='' and codigo!='" + producto.codigo + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un producto con ese nombre", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un producto con ese nombre", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 //validar referencia
-                sql = "select *from producto where referencia='" + producto.referencia + "' and codigo!='" +
-                      producto.codigo + "'";
+                sql = "select *from producto where referencia='" + producto.referencia + "' and referencia!='' and codigo!='" + producto.codigo + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    MessageBox.Show("Existe un producto con esa referencia", "", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
+                    MessageBox.Show("Existe un producto con esa referencia", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return false;
                 }
                 if (producto.activo == true)

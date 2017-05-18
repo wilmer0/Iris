@@ -216,8 +216,7 @@ namespace IrisContabilidad.modulo_facturacion
                 Button boton = (Button)sender;
                 producto = modeloProducto.getProductoById(Convert.ToInt16(boton.Tag.ToString()));
                 loadProducto();
-                agregarProducto();
-                loadVentaDetalleLista();
+                //agregarProducto();
                 
             }
             catch (Exception)
@@ -280,6 +279,8 @@ namespace IrisContabilidad.modulo_facturacion
 
                     //blanquear campos
                     cantidadText.Text = "1.00";
+                    totalItebisText.Text = "0.00";
+                    totalVentaText.Text = "0.00";
                     cliente = modeloCliente.getClienteById(1);
                     loadCliente();
                     //numeroFacturaText.Text = "";
@@ -817,6 +818,7 @@ namespace IrisContabilidad.modulo_facturacion
                     unidadComboText.DisplayMember = null;
                     return;
                 }
+                listaUnidad=new List<unidad>();
                 listaUnidad = modeloUnidad.getListaByProducto(producto.codigo);
                 unidadComboText.DataSource = listaUnidad;
                 unidadComboText.ValueMember = "codigo";
@@ -845,6 +847,11 @@ namespace IrisContabilidad.modulo_facturacion
                     return;
                 }
                 precioText.Text = modeloProducto.getPrecioProductoUnidad(producto.codigo, Convert.ToInt16(unidadComboText.SelectedValue)).precio_venta1.ToString("N");
+                
+                if (listaUnidad.Count > 0)
+                {
+                    unidad = modeloUnidad.getUnidadById(Convert.ToInt16(unidadComboText.SelectedValue.ToString()));
+                }
             }
             catch (Exception ex)
             {
@@ -954,6 +961,11 @@ namespace IrisContabilidad.modulo_facturacion
         private void unidadComboText_TextChanged(object sender, EventArgs e)
         {
             getPrecioVentaProductoUnidad();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            agregarProducto();
         }
 
 

@@ -96,9 +96,9 @@ namespace IrisContabilidad.modulo_empresa
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(71, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
+            this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Cudad";
+            this.label2.Text = "Ciudad";
             // 
             // button4
             // 
