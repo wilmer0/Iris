@@ -891,7 +891,6 @@ namespace IrisContabilidad.modulo_facturacion
             }
         }
 
-
         private void ventana_facturacion_touch1_Load(object sender, EventArgs e)
         {
 
@@ -901,5 +900,32 @@ namespace IrisContabilidad.modulo_facturacion
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+         salir();   
+        }
+        public void salir()
+        {
+            if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            venta = null;
+            loadVentana();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getAction();
+        }
+
+
+
+
     }
 }

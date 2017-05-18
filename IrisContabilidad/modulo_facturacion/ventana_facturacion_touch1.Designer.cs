@@ -28,15 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_facturacion_touch1));
             this.flowLayoutCategorias = new System.Windows.Forms.FlowLayoutPanel();
-            this.button14 = new System.Windows.Forms.Button();
             this.flowLayoutProductos = new System.Windows.Forms.FlowLayoutPanel();
-            this.button31 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.ProductoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,8 +66,6 @@
             this.unidadComboText = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.flowLayoutCategorias.SuspendLayout();
-            this.flowLayoutProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,11 +77,13 @@
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.Location = new System.Drawing.Point(1205, 5);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
@@ -98,6 +96,7 @@
             // 
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.Location = new System.Drawing.Point(603, 5);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // flowLayoutCategorias
             // 
@@ -106,21 +105,11 @@
             this.flowLayoutCategorias.AutoScroll = true;
             this.flowLayoutCategorias.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flowLayoutCategorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.flowLayoutCategorias.Controls.Add(this.button14);
             this.flowLayoutCategorias.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutCategorias.Location = new System.Drawing.Point(12, 27);
             this.flowLayoutCategorias.Name = "flowLayoutCategorias";
             this.flowLayoutCategorias.Size = new System.Drawing.Size(1343, 99);
             this.flowLayoutCategorias.TabIndex = 13;
-            // 
-            // button14
-            // 
-            this.button14.Location = new System.Drawing.Point(3, 3);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(123, 93);
-            this.button14.TabIndex = 25;
-            this.button14.Text = "button14";
-            this.button14.UseVisualStyleBackColor = true;
             // 
             // flowLayoutProductos
             // 
@@ -129,20 +118,10 @@
             this.flowLayoutProductos.AutoScroll = true;
             this.flowLayoutProductos.BackColor = System.Drawing.Color.WhiteSmoke;
             this.flowLayoutProductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.flowLayoutProductos.Controls.Add(this.button31);
             this.flowLayoutProductos.Location = new System.Drawing.Point(918, 132);
             this.flowLayoutProductos.Name = "flowLayoutProductos";
             this.flowLayoutProductos.Size = new System.Drawing.Size(437, 396);
             this.flowLayoutProductos.TabIndex = 14;
-            // 
-            // button31
-            // 
-            this.button31.Location = new System.Drawing.Point(3, 3);
-            this.button31.Name = "button31";
-            this.button31.Size = new System.Drawing.Size(123, 99);
-            this.button31.TabIndex = 30;
-            this.button31.Text = "button31";
-            this.button31.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -194,8 +173,8 @@
             // 
             // precioColumn
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle17;
             this.precioColumn.FillWeight = 50F;
             this.precioColumn.HeaderText = "Price";
             this.precioColumn.Name = "precioColumn";
@@ -203,8 +182,8 @@
             // 
             // itebisColumn
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle18;
             this.itebisColumn.FillWeight = 50F;
             this.itebisColumn.HeaderText = "Taxes";
             this.itebisColumn.Name = "itebisColumn";
@@ -212,8 +191,8 @@
             // 
             // descuentoColumn
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle19;
             this.descuentoColumn.FillWeight = 50F;
             this.descuentoColumn.HeaderText = "Discount";
             this.descuentoColumn.Name = "descuentoColumn";
@@ -221,8 +200,8 @@
             // 
             // importeColumn
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle20;
             this.importeColumn.FillWeight = 50F;
             this.importeColumn.HeaderText = "Total";
             this.importeColumn.Name = "importeColumn";
@@ -327,7 +306,7 @@
             // 
             // detalleText
             // 
-            this.detalleText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.detalleText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.detalleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detalleText.Location = new System.Drawing.Point(1039, 534);
             this.detalleText.MaxLength = 500;
@@ -346,6 +325,7 @@
             this.label20.Size = new System.Drawing.Size(44, 20);
             this.label20.TabIndex = 148;
             this.label20.Text = "NCF";
+            this.label20.Visible = false;
             // 
             // tipoComprobanteCombo
             // 
@@ -361,11 +341,12 @@
             this.tipoComprobanteCombo.Size = new System.Drawing.Size(236, 21);
             this.tipoComprobanteCombo.TabIndex = 147;
             this.tipoComprobanteCombo.Tag = "";
+            this.tipoComprobanteCombo.Visible = false;
             // 
             // descuentoText
             // 
             this.descuentoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.descuentoText.Location = new System.Drawing.Point(368, 181);
+            this.descuentoText.Location = new System.Drawing.Point(359, 181);
             this.descuentoText.MaxLength = 5;
             this.descuentoText.Name = "descuentoText";
             this.descuentoText.Size = new System.Drawing.Size(119, 26);
@@ -376,7 +357,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(366, 160);
+            this.label12.Location = new System.Drawing.Point(357, 160);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(106, 18);
             this.label12.TabIndex = 155;
@@ -385,7 +366,7 @@
             // importeText
             // 
             this.importeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.importeText.Location = new System.Drawing.Point(542, 182);
+            this.importeText.Location = new System.Drawing.Point(537, 182);
             this.importeText.Name = "importeText";
             this.importeText.ReadOnly = true;
             this.importeText.Size = new System.Drawing.Size(119, 26);
@@ -397,7 +378,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(541, 161);
+            this.label11.Location = new System.Drawing.Point(536, 161);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(46, 18);
             this.label11.TabIndex = 153;
@@ -406,7 +387,7 @@
             // precioText
             // 
             this.precioText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.precioText.Location = new System.Drawing.Point(195, 182);
+            this.precioText.Location = new System.Drawing.Point(178, 182);
             this.precioText.Name = "precioText";
             this.precioText.ReadOnly = true;
             this.precioText.Size = new System.Drawing.Size(119, 26);
@@ -417,7 +398,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(197, 161);
+            this.label10.Location = new System.Drawing.Point(180, 161);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(47, 18);
             this.label10.TabIndex = 151;
@@ -524,8 +505,6 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.flowLayoutCategorias.ResumeLayout(false);
-            this.flowLayoutProductos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -536,8 +515,6 @@
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutCategorias;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutProductos;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button31;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn unidadColumn;
