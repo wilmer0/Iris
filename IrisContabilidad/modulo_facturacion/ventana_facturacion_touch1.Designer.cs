@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_facturacion_touch1));
             this.flowLayoutCategorias = new System.Windows.Forms.FlowLayoutPanel();
             this.flowLayoutProductos = new System.Windows.Forms.FlowLayoutPanel();
@@ -103,7 +103,7 @@
             this.flowLayoutCategorias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutCategorias.AutoScroll = true;
-            this.flowLayoutCategorias.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.flowLayoutCategorias.BackColor = System.Drawing.Color.LightSkyBlue;
             this.flowLayoutCategorias.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.flowLayoutCategorias.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutCategorias.Location = new System.Drawing.Point(12, 27);
@@ -116,7 +116,7 @@
             this.flowLayoutProductos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutProductos.AutoScroll = true;
-            this.flowLayoutProductos.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.flowLayoutProductos.BackColor = System.Drawing.Color.LightSkyBlue;
             this.flowLayoutProductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.flowLayoutProductos.Location = new System.Drawing.Point(918, 132);
             this.flowLayoutProductos.Name = "flowLayoutProductos";
@@ -173,8 +173,8 @@
             // 
             // precioColumn
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.precioColumn.FillWeight = 50F;
             this.precioColumn.HeaderText = "Price";
             this.precioColumn.Name = "precioColumn";
@@ -182,8 +182,8 @@
             // 
             // itebisColumn
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.itebisColumn.FillWeight = 50F;
             this.itebisColumn.HeaderText = "Taxes";
             this.itebisColumn.Name = "itebisColumn";
@@ -191,8 +191,8 @@
             // 
             // descuentoColumn
             // 
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.descuentoColumn.FillWeight = 50F;
             this.descuentoColumn.HeaderText = "Discount";
             this.descuentoColumn.Name = "descuentoColumn";
@@ -200,8 +200,8 @@
             // 
             // importeColumn
             // 
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.importeColumn.FillWeight = 50F;
             this.importeColumn.HeaderText = "Total";
             this.importeColumn.Name = "importeColumn";
@@ -443,6 +443,7 @@
             this.unidadComboText.Size = new System.Drawing.Size(164, 28);
             this.unidadComboText.TabIndex = 157;
             this.unidadComboText.Tag = "";
+            this.unidadComboText.TextChanged += new System.EventHandler(this.unidadComboText_TextChanged);
             // 
             // ventana_facturacion_touch1
             // 

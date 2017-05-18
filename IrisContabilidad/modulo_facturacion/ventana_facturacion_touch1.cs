@@ -104,30 +104,27 @@ namespace IrisContabilidad.modulo_facturacion
                     flowLayoutCategorias.Controls.Clear();
                 }
 
-                if (listaCategoriaProductos == null)
+                listaCategoriaProductos=new List<categoria_producto>();
+                listaCategoriaProductos = modeloCategoriaProducto.getListaCompleta();
+                foreach (var categoriaActual in listaCategoriaProductos)
                 {
-                    listaCategoriaProductos=new List<categoria_producto>();
-                    listaCategoriaProductos = modeloCategoriaProducto.getListaCompleta();
-                    foreach (var categoriaActual in listaCategoriaProductos)
-                    {
-                        Button boton = new Button();
-                        boton.FlatStyle = FlatStyle.Flat;
-                        boton.BackgroundImageLayout = ImageLayout.Stretch;
-                        boton.Width = 123;
-                        boton.Height = 93;
-                        //boton.BackgroundImage = Image.FromFile(RutaImagenesModulos + modulo.imagen);
-                        boton.Click += BotonCategoriaProductoClick;
-                        boton.Tag = categoriaActual.codigo;
-                        //letras
-                        boton.TextAlign = ContentAlignment.BottomCenter;
-                        boton.Text = categoriaActual.nombre;
-                        boton.BackColor = Color.Gray;
-                        boton.ForeColor = Color.Black;
-                        boton.Font = new Font(boton.Font.FontFamily.Name, 10);
-                        flowLayoutCategorias.Controls.Add(boton);
+                    Button botonCategoria = new Button();
+                    botonCategoria.FlatStyle = FlatStyle.Flat;
+                    botonCategoria.BackgroundImageLayout = ImageLayout.Stretch;
+                    botonCategoria.Width = 123;
+                    botonCategoria.Height = 93;
+                    //boton.BackgroundImage = Image.FromFile(RutaImagenesModulos + modulo.imagen);
+                    botonCategoria.Click += BotonCategoriaProductoClick;
+                    botonCategoria.Tag = categoriaActual.codigo;
+                    //letras
+                    botonCategoria.TextAlign = ContentAlignment.MiddleCenter;
+                    botonCategoria.Text = categoriaActual.nombre;
+                    botonCategoria.BackColor = Color.LightGray;
+                    botonCategoria.ForeColor = Color.Black;
+                    botonCategoria.Font = new Font(botonCategoria.Font.FontFamily.Name, 12,FontStyle.Bold);
+                    flowLayoutCategorias.Controls.Add(botonCategoria);
                     
-                    }
-                }
+                 }
             }
             catch (Exception ex)
             {
@@ -183,16 +180,16 @@ namespace IrisContabilidad.modulo_facturacion
                     //izquierda-arriba-derecha-abajo
                     Padding espacio = new Padding(10, 10, 10, 10);
                     botonProducto.Margin = espacio;
-                    botonProducto.TextAlign = ContentAlignment.BottomCenter;
+                    botonProducto.TextAlign = ContentAlignment.MiddleCenter;
                     botonProducto.Text = productoActual.nombre;
                     botonProducto.ForeColor = Color.Black;
-                    botonProducto.BackColor = Color.Gray;
-                    botonProducto.Font = new Font(botonProducto.Font.FontFamily.Name, 9);
+                    botonProducto.BackColor = Color.LightGray;
+                    botonProducto.Font = new Font(botonProducto.Font.FontFamily.Name, 14,FontStyle.Bold);
                     //botonProducto.MouseHover += BotonVentanaOnMouseHover;
                     //botonProducto.MouseLeave += BotonVentanaOnMouseLeave;
 
                     //estableciendo la imagen de fondo del boton
-                    botonProducto.BackgroundImage = Image.FromFile(RutaImagenesProductos + productoActual.imagen);
+                    //botonProducto.BackgroundImage = Image.FromFile(RutaImagenesProductos + productoActual.imagen);
                     botonProducto.Tag = productoActual.codigo;
                     botonProducto.Click += BotonProductoClick;
 
@@ -219,12 +216,9 @@ namespace IrisContabilidad.modulo_facturacion
                 Button boton = (Button)sender;
                 producto = modeloProducto.getProductoById(Convert.ToInt16(boton.Tag.ToString()));
                 loadProducto();
-                if (cantidadText.Text == "")
-                {
-                    cantidadText.Text = "0.00";
-                }
-                cantidadText.Text = (Convert.ToDecimal(cantidadText.Text) + 1).ToString();
                 agregarProducto();
+                loadVentaDetalleLista();
+                
             }
             catch (Exception)
             {
@@ -285,6 +279,7 @@ namespace IrisContabilidad.modulo_facturacion
 
 
                     //blanquear campos
+                    cantidadText.Text = "1.00";
                     cliente = modeloCliente.getClienteById(1);
                     loadCliente();
                     //numeroFacturaText.Text = "";
@@ -521,7 +516,7 @@ namespace IrisContabilidad.modulo_facturacion
                     loadVentaDetalleLista();
                     //dataGridView1.Rows.Remove(dataGridView1.Rows[fila]);
                 }
-
+                calcularTotal();
             }
             catch (Exception ex)
             {
@@ -596,10 +591,8 @@ namespace IrisContabilidad.modulo_facturacion
                 //validar que si existe el producto y unidad se sume la cantidad
                 int fila = 0;
                 existe = false;
-                //foreach (DataGridViewRow row in dataGridView1.Rows)
                 foreach (var x in listaVentaDetalleLista)
                 {
-                    //if (row.Cells[0].Value.ToString() == producto.codigo.ToString() && row.Cells[2].Value.ToString() == unidad.codigo.ToString())
                     if (x.codigoProducto == producto.codigo && x.codigoUnidad == unidad.codigo)
                     {
                         existe = true;
@@ -617,7 +610,6 @@ namespace IrisContabilidad.modulo_facturacion
                         itebis = modeloItebis.getItebisById(producto.codigo_itebis);
 
                         //sumar y procesar
-                        //cantidad_monto += Convert.ToDecimal(row.Cells[4].Value.ToString());
                         cantidad_monto += x.cantidad;
                         importe_monto = cantidad_monto * precio_monto;
                         itebis_monto = Convert.ToDecimal(itebis.porciento * Convert.ToDecimal(importe_monto));
@@ -625,20 +617,15 @@ namespace IrisContabilidad.modulo_facturacion
                         importe_monto = importe_monto - descuento_monto;
 
                         //asignar los nuevos valores en el grid o la lista detalle lista
-                        //row.Cells[4].Value = cantidad_monto.ToString("N");
                         x.cantidad = cantidad_monto;
-                        //row.Cells[5].Value = precio_monto.ToString("N");
                         x.precio = precio_monto;
-                        //row.Cells[6].Value = itebis_monto.ToString("N");
                         x.itbis = itebis_monto;
-                        //row.Cells[7].Value = descuento_monto.ToString("N");
                         x.descuento = descuento_monto;
-                        //row.Cells[8].Value = importe_monto.ToString("N");
                         x.total = importe_monto;
                     }
-                    //si no se repite el producto y unidad entonces se agrega los valores del textbox
+                    
                 }
-
+                //si no se repite el producto y unidad entonces se agrega los valores del textbox
                 if (existe == false)
                 {
                     importe_monto = Convert.ToDecimal(cantidadText.Text) * Convert.ToDecimal(precioText.Text);
@@ -672,9 +659,10 @@ namespace IrisContabilidad.modulo_facturacion
                     ventaDetalleLista.total = importe_monto;
                     listaVentaDetalleLista.Add(ventaDetalleLista);
                     //dataGridView1.Rows.Add(producto.codigo.ToString(), producto.nombre, unidad.codigo.ToString(), unidad.nombre, cantidadText.Text, precioText.Text, itebis_monto.ToString("N"), descuento_monto.ToString("N"), importe_monto.ToString("N"));
-                    loadVentaDetalleLista();
+                    
                 }
                 fila++;
+                loadVentaDetalleLista();
             }
             catch (Exception ex)
             {
@@ -699,6 +687,7 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     dataGridView1.Rows.Add(x.nombreProducto, x.nombreUnidad, x.cantidad, x.precio.ToString("N"), x.itbis.ToString("N"), x.descuento.ToString("N"), x.total.ToString("N"));
                 }
+                calcularTotal();
             }
             catch (Exception ex)
             {
@@ -706,6 +695,34 @@ namespace IrisContabilidad.modulo_facturacion
             }
         }
 
+        private void calcularTotal()
+        {
+            try
+            {
+                if (dataGridView1.Rows.Count <= 0)
+                {
+                    //totalItebisText.Text = "0.00";
+                    //totalCompraText.Text = "0.00";
+                    return;
+                }
+
+                totalItebisMonto = 0;
+                totalVentaMonto = 0;
+                foreach (var x in listaVentaDetalleLista)
+                {
+                    totalItebisMonto += x.itbis;
+                    totalVentaMonto += x.total;
+                }
+
+                totalItebisText.Text = totalItebisMonto.ToString("N");
+                totalVentaText.Text = totalVentaMonto.ToString("N");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error calcularTotal.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
         public void loadProducto()
         {
             try
@@ -788,7 +805,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadListacomprobanteFiscal.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        
         public void loadUnidad()
         {
             try
@@ -819,6 +836,14 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+                if (producto == null)
+                {
+                    return;
+                }
+                if (unidadComboText.Text == "")
+                {
+                    return;
+                }
                 precioText.Text = modeloProducto.getPrecioProductoUnidad(producto.codigo, Convert.ToInt16(unidadComboText.SelectedValue)).precio_venta1.ToString("N");
             }
             catch (Exception ex)
@@ -826,6 +851,7 @@ namespace IrisContabilidad.modulo_facturacion
                 precioText.Text = "0.00";
                 //MessageBox.Show("Error getPrecioVentaProductoUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
+
         }
 
         public void getInventarioByProductoUnidad()
@@ -898,13 +924,14 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button15_Click(object sender, EventArgs e)
         {
-
+            eliminarProducto();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
          salir();   
         }
+        
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -922,6 +949,11 @@ namespace IrisContabilidad.modulo_facturacion
         private void button1_Click(object sender, EventArgs e)
         {
             getAction();
+        }
+
+        private void unidadComboText_TextChanged(object sender, EventArgs e)
+        {
+            getPrecioVentaProductoUnidad();
         }
 
 

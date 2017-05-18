@@ -695,6 +695,14 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+                if (producto == null)
+                {
+                    return;
+                }
+                if (unidadComboText.Text == "")
+                {
+                    return;
+                }
                 precioText.Text = modeloProducto.getPrecioProductoUnidad(producto.codigo, Convert.ToInt16(unidadComboText.SelectedValue)).precio_venta1.ToString("N");
             }
             catch (Exception ex)
@@ -841,15 +849,7 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void unidadComboText_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                getInventarioByProductoUnidad();
-                getPrecioVentaProductoUnidad();
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show("Error cambiando de unidad", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            getPrecioVentaProductoUnidad();
         }
 
         private void unidadComboText_KeyDown(object sender, KeyEventArgs e)
@@ -926,7 +926,7 @@ namespace IrisContabilidad.modulo_facturacion
             }
         }
 
-        private void calcularTotalItbis()
+        private void calcularTotal()
         {
             try
             {
@@ -939,8 +939,6 @@ namespace IrisContabilidad.modulo_facturacion
 
                 totalItebisMonto = 0;
                 totalVentaMonto = 0;
-
-
                 foreach (var x in listaVentaDetalleLista)
                 {
                     totalItebisMonto += x.itbis;
@@ -961,7 +959,7 @@ namespace IrisContabilidad.modulo_facturacion
             agregarProducto();
             productoIdText.Focus();
             productoIdText.SelectAll();
-            calcularTotalItbis();
+            calcularTotal();
             loadVentaDetalleLista();
         }
 
@@ -970,7 +968,7 @@ namespace IrisContabilidad.modulo_facturacion
             eliminarProducto();
             productoIdText.Focus();
             productoIdText.SelectAll();
-            calcularTotalItbis();
+            calcularTotal();
             loadVentaDetalleLista();
         }
 
