@@ -76,8 +76,7 @@ namespace IrisContabilidad.modelos
                 return false;
             }
         }
-
-
+        
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -104,8 +103,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
-
+        
         //get objeto
         public categoria_producto getCategoriaById(int id)
         {
@@ -128,8 +126,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
-
+        
         //get lista completa
         public List<categoria_producto> getListaCompleta(bool mantenimiento = false)
         {
@@ -164,6 +161,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista completa por nombre
         public List<categoria_producto> getListaByNombre(string nombre)
         {
@@ -196,6 +194,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get categoria completa por nombre
         public categoria_producto getCategoriaByNombre(string nombre)
         {
@@ -230,5 +229,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+
     }
 }

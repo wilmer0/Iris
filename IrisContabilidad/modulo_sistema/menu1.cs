@@ -171,7 +171,7 @@ namespace IrisContabilidad.modulo_sistema
                     flowLayoutModulos.Controls.Clear();
                 }
 
-                listaTemp.ForEach(moduloActual =>
+                foreach(var moduloActual in listaTemp)
                 {
                     //MessageBox.Show("Modulo actual-> " + modulo);
                     //instanciando el modulo actual
@@ -192,7 +192,7 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo.Font = new Font(botonModulo.Font.FontFamily.Name, tipoVentana.tamanoModuloLetra);
                     flowLayoutModulos.Controls.Add(botonModulo);
                     
-                });
+                }
             }
             catch (Exception ex)
             {
@@ -200,6 +200,7 @@ namespace IrisContabilidad.modulo_sistema
                     MessageBoxIcon.Error);
             }
         }
+        
         public void loadVentanas(int idModulo)
         {
             try
