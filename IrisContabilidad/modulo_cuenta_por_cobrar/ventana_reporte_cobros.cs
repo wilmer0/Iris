@@ -344,7 +344,6 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private void button6_Click(object sender, EventArgs e)
         {
             SicronizarProceso.RunWorkerAsync();
-            //loadImprimir();
         }
 
         private void clienteIdText_KeyDown(object sender, KeyEventArgs e)
