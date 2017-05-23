@@ -471,7 +471,7 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`compra_vs_pagos_detalles` ADD COLUMN `monto_devuelta` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_subtotal`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `mensaje_pie_pagina_factura` VARCHAR(9999) NOT NULL DEFAULT '' COMMENT 'Thank you for coming !!!' AFTER `sistema_full`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

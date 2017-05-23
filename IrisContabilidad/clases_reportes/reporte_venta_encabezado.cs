@@ -31,6 +31,11 @@ namespace IrisContabilidad.clases_reportes
         public string detalles { get; set; }
         public List<reporte_venta_detalle> listaDetalles { get; set; }
         utilidades utilidades=new utilidades();
+        public string mensajePiePaginaFactura { get; set; }
+
+
+
+
         public reporte_venta_encabezado()
         {
             
@@ -79,6 +84,7 @@ namespace IrisContabilidad.clases_reportes
             this.tipo_comprobante_fiscal = tipoComprobante.nombre;
             this.numero_comprobante_fiscal = venta.ncf;
             this.detalles = venta.detalle;
+            this.mensajePiePaginaFactura = sistemaConfiguracion.mensajePiePaginaFactura;
 
             listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo,false);
             foreach (var x in listaVentaDetalle)

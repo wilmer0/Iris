@@ -1006,6 +1006,7 @@
       <DependentUpon>ventana_estado_cuenta_cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_nota_debito.rdlc" />
+    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_venta_hoja_completa_usa.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_venta_hoja_rollo_usa.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\ventana_cuadre_caja_usa.resx">
       <DependentUpon>ventana_cuadre_caja_usa.cs</DependentUpon>
@@ -1301,7 +1302,7 @@
     <EmbeddedResource Include="reportes\reporte_cuadre_caja_general.rdlc" />
     <EmbeddedResource Include="reportes\reporte_producto.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_venta_cobro_hoja_completa.rdlc" />
-    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_venta_hoja_completa.rdlc" />
+    <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_venta_hoja_completa_rd.rdlc" />
     <EmbeddedResource Include="modulo_facturacion\Reporte\reporte_venta_hoja_rollo_rd.rdlc" />
     <EmbeddedResource Include="ventanas_comunes\VisorReporteComun.resx">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
@@ -1361,6 +1362,7 @@
     <Folder Include="bin\Release\Resources\backup\database\" />
     <Folder Include="bin\Release\Resources\backup\system\" />
     <Folder Include="bin\Release\Resources\productos\" />
+    <Folder Include="idiomas\" />
     <Folder Include="modulo_contabilidad\Reporte\" />
     <Folder Include="modulo_empresa\Reporte\" />
     <Folder Include="modulo_inicio_rapido\" />

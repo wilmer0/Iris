@@ -133,7 +133,19 @@ namespace IrisContabilidad.modelos
                 if (cajero.tipoImpresionVenta == 1)
                 {
                     //hoja normal
-                    reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_completa.rdlc";
+                    //reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_completa_rd.rdlc";
+                    if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                    {
+                        //rd
+                        reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_completa_rd.rdlc";
+                    
+                    }
+                    else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                    {
+                        //usa
+                        reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_completa_usa.rdlc";
+                    
+                    }
                 }
                 else if (cajero.tipoImpresionVenta == 2)
                 {

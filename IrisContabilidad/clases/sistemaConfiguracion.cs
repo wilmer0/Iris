@@ -22,6 +22,7 @@ namespace IrisContabilidad.clases
         public int codigoTipoVentaDefecto { get; set; }
         public int tipoVentanaCuadreCaja { get; set; }
         public bool sistemaFull { get; set; }
+        public string mensajePiePaginaFactura { get; set; }
 
     }
 }
