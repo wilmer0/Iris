@@ -36,6 +36,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         modeloCobro modeloCobro = new modeloCobro();
         modeloMetodoPago modeloMetodoPago = new modeloMetodoPago();
         private modelo_reporte_cobros modeloReporteCobros = new modelo_reporte_cobros();
+        ModeloReporte modeloReporte=new ModeloReporte();
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
@@ -75,7 +76,8 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             SicronizarProceso.ReportProgress(10);
             try
             {
-                loadImprimir();
+                modeloReporte.imprimirCobrosFiltrado(empleado,cliente,venta,tipoVenta,incluirRangoFechaVenta,fechaInicialVentaDateTime,fechaFinalVentaDateTime,SoloVentasPagadas);
+                //loadImprimir();
             }
             catch (Exception ex)
             {
@@ -238,39 +240,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             }
         }
 
-        public void loadImprimir()
-        {
-            try
-            {
-                if (reporteCobrosEncabezado == null)
-                {
-                    MessageBox.Show("Debe procesar antes de imprimir.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                //datos generales
-                String reporte = "IrisContabilidad.reportes.reporte_cobros.rdlc";
-                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
-               
-                //encabezado
-                listaCobroReporteEncabezado=new List<reporte_cobros_encabezado>();
-                listaCobroReporteEncabezado.Add(reporteCobrosEncabezado);
-                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaCobroReporteEncabezado);
-                listaReportDataSource.Add(reporteGrafico);
-
-                //detalle
-                ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", reporteCobrosEncabezado.listaDetalle);
-                listaReportDataSource.Add(reporteProblemas);
-
-                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
-                
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter,true);
-                ventana.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loadImprimir.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
 
         private void ventana_reporte_cobros_Load(object sender, EventArgs e)
         {

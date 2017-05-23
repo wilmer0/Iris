@@ -681,7 +681,117 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        
+        //imprimir reporte de cobros filtrado
+        public bool imprimirCobrosFiltrado(empleado empleado, cliente cliente, venta venta, string tipoVenta, Boolean incluirRangoFechaVenta, DateTime fechaInicialVenta, DateTime fechaFinalVenta, bool soloVentasPagadas)
+        {
+            try
+            {
+                reporte_cobros_encabezado reporteEncabezado = new reporte_cobros_encabezado();
+                reporte_cobros_detalle reporteDetalle=new reporte_cobros_detalle();
+                sistemaConfiguracion sistemaConfiguracion=new sistemaConfiguracion();
+                sistemaConfiguracion = new modeloSistemaConfiguracion().getSistemaConfiguracion();
+
+                reporteEncabezado.listaDetalle = new List<reporte_cobros_detalle>();
+
+
+                empresa empresa = new empresa();
+                empresa = new modeloEmpresa().getEmpresaByEmpleadoId(empleado.codigo);
+
+                sucursal sucursal = new sucursal();
+                sucursal = new modeloSucursal().getSucursalById(empleado.codigo_sucursal);
+
+                List<cliente> listaCliente = new List<cliente>();
+                listaCliente = new modeloCliente().getListaCompleta();
+
+                List<venta> listaVenta = new List<venta>();
+                listaVenta = new modeloVenta().getListaCompleta();
+
+                //llenando el encabezado
+                reporteEncabezado.empleadoImpresion = empleado.nombre;
+                if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                {
+                    //rd
+                    reporteEncabezado.fecha_impresion = utilidades.getFecha_MM_dd_yyyy_hh_mm_ss_tt(DateTime.Now);
+                }
+                else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                {
+                    //usa
+                    reporteEncabezado.fecha_impresion = utilidades.getFecha_MM_dd_yyyy_hh_mm_ss_tt(DateTime.Now);
+                }
+                reporteEncabezado.empresa = empresa.nombre;
+                reporteEncabezado.direccion = sucursal.direccion;
+                reporteEncabezado.rnc = empresa.rnc;
+                reporteEncabezado.telefonos = sucursal.telefono1 + " - " + sucursal.telefono2;
+
+                //filtrando por cliente
+                if (cliente != null)
+                {
+                    listaVenta = listaVenta.FindAll(x => x.codigo_cliente == cliente.codigo);
+                }
+                //filtrando por venta
+                if (venta != null)
+                {
+                    listaVenta = listaVenta.FindAll(x => x.codigo == venta.codigo);
+                }
+                //filtrando por tipo venta
+                if (tipoVenta != "")
+                {
+                    listaVenta = listaVenta.FindAll(x => tipoVenta.ToLower().Contains(x.tipo_venta.ToLower()));
+                }
+
+                //rango fechas ventas
+                if (incluirRangoFechaVenta == true)
+                {
+                    listaVenta = listaVenta.FindAll(x => x.fecha >= fechaInicialVenta.Date && x.fecha <= fechaFinalVenta.Date);
+                }
+
+                //si solo son ventas pagadas
+                if (soloVentasPagadas == true)
+                {
+                    listaVenta = listaVenta.FindAll(x => x.pagada == true);
+                }
+
+                foreach (var clienteActual in listaCliente)
+                {
+                    foreach (var ventaActual in listaVenta)
+                    {
+                        if (clienteActual.codigo == ventaActual.codigo_cliente)
+                        {
+                            reporteDetalle = new reporte_cobros_detalle(ventaActual.codigo);
+                            reporteEncabezado.listaDetalle.Add(reporteDetalle);
+                        }
+                    }
+                }
+
+                reporteEncabezado.listaDetalle = reporteEncabezado.listaDetalle.OrderByDescending(x => x.idVenta).ToList();
+
+                //datos generales
+                String reporte = "IrisContabilidad.modulo_cuenta_por_cobrar.Reporte.reporte_cobros.rdlc";
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+
+                //encabezado
+                List<reporte_cobros_encabezado> listaCobroReporteEncabezado = new List<reporte_cobros_encabezado>();
+                listaCobroReporteEncabezado.Add(reporteEncabezado);
+                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaCobroReporteEncabezado);
+                listaReportDataSource.Add(reporteGrafico);
+
+                //detalle
+                ReportDataSource reporteDetalles = new ReportDataSource("reporte_detalle", reporteEncabezado.listaDetalle);
+                listaReportDataSource.Add(reporteDetalles);
+
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true);
+                ventana.ShowDialog();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirCobrosFiltrado.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
 
 
 

@@ -1295,7 +1295,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="reportes\reporte_cobros.rdlc" />
+    <EmbeddedResource Include="modulo_cuenta_por_cobrar\Reporte\reporte_cobros.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_hoja_completa.rdlc" />
     <EmbeddedResource Include="reportes\reporte_compra_pago_hoja_completa.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_cobrar\Reporte\reporte_estado_cuenta_cliente.rdlc" />
