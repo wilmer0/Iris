@@ -149,7 +149,7 @@ namespace IrisContabilidad.modulo_sistema
             this.busquedaText.Location = new System.Drawing.Point(84, 118);
             this.busquedaText.MaxLength = 25;
             this.busquedaText.Name = "busquedaText";
-            this.busquedaText.Size = new System.Drawing.Size(348, 26);
+            this.busquedaText.Size = new System.Drawing.Size(402, 26);
             this.busquedaText.TabIndex = 117;
             this.busquedaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.busquedaText_KeyDown);
             // 
