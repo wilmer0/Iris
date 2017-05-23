@@ -94,14 +94,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="10363904">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="IrisContabilidad.exe" size="10429952">
       <assemblyIdentity name="IrisContabilidad" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>JQe4XJKQWraJwetgVnUUPo15TUDP4CFNEbQZMLz7OYE=</dsig:DigestValue>
+        <dsig:DigestValue>QiH0OALY7EZ0aI+Wn8psLOzGv616g7u4OM4Qjq26VyA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -1113,8 +1113,37 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+
+        public string getFecha_dd_MM_yyyy(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFecha_dd_MM_yyyy.:" + ex.ToString());
+                return null;
+            }
+        }
         
+
         public string getFechaddMMyyyyhhmmsstt(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("ddMMyyyy hhmmsstt");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaddMMyyyyhhmmsstt.:" + ex.ToString());
+                return null;
+            }
+        }
+        
+        public string getFechaddMM_yyyy_hh_mm_ss_tt(DateTime fecha)
         {
             try
             {
@@ -1123,7 +1152,35 @@ namespace IrisContabilidad.clases
             }
             catch (Exception ex)
             {
+                MessageBox.Show("Error getFechaddMM_yyyy_hh_mm_ss_tt.:" + ex.ToString());
+                return null;
+            }
+        }
+
+        public string getFechaMMyddyyyhhmmsstt(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("MM/dd/yyyy hh:mm:ss tt");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
                 MessageBox.Show("Error getFechaddMMyyyyhhmmsstt.:" + ex.ToString());
+                return null;
+            }
+        }
+
+        public string getFecha_MM_dd_yyyy_hh_mm_ss_tt(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("MM/dd/yyyy hh:mm:ss tt");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFecha_MM_dd_yyyy_hh_mm_ss_tt.:" + ex.ToString());
                 return null;
             }
         }
@@ -1155,7 +1212,36 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+
+        public string getFechaMMddyyyy(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("MMddyyyy");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFechaMMddyyyy.:" + ex.ToString());
+                return null;
+            }
+        }
+
+        public string getFecha_MM_dd_yyyy(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("MM/dd/yyyy");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFecha_MM_dd_yyyy.:" + ex.ToString());
+                return null;
+            }
+        }
         
+
         public string getDiasByRangoFecha(DateTime fechaInicial, DateTime fechaFinal)
         {
             try

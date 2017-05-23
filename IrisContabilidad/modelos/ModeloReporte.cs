@@ -15,6 +15,10 @@ namespace IrisContabilidad.modelos
         private empleado empleado;
         utilidades utilidades=new utilidades();
         singleton singleton=new singleton();
+        private sistemaConfiguracion sistemaConfiguracion;
+
+        //modulo
+        modeloSistemaConfiguracion modeloSistema=new modeloSistemaConfiguracion();
 
         //imprimri compra
         public bool imprimirCompra(int idcompra)
@@ -114,6 +118,9 @@ namespace IrisContabilidad.modelos
         {
             try
             {
+                sistemaConfiguracion=new sistemaConfiguracion();
+                sistemaConfiguracion = modeloSistema.getSistemaConfiguracion();
+
                 //datos generales
                 String reporte = "";
 
@@ -126,12 +133,21 @@ namespace IrisContabilidad.modelos
                 if (cajero.tipoImpresionVenta == 1)
                 {
                     //hoja normal
-                    reporte = "IrisContabilidad.reportes.reporte_venta_hoja_completa.rdlc";
+                    reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_completa.rdlc";
                 }
                 else if (cajero.tipoImpresionVenta == 2)
                 {
-                    //hoja rollo de 3 "
-                    reporte = "IrisContabilidad.reportes.reporte_venta_hoja_rollo.rdlc";
+                    //hoja rollo de 3 pulgadas"
+                    if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                    {
+                        //rd
+                        reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_rollo_rd.rdlc";
+                    }
+                    else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                    {
+                        //usa
+                        reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_rollo_usa.rdlc";
+                    }
                 }
 
                 if (venta == null)
@@ -169,7 +185,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
-                String reporte = "IrisContabilidad.reportes.reporte_venta_cobro_hoja_completa.rdlc";
+                String reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_cobro_hoja_completa.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
                 List<reporte_venta_cobro_encabezado> listaReporteVentaEncabezado = new List<reporte_venta_cobro_encabezado>();
                 reporte_venta_cobro_encabezado reporteVentaCobroEncabezado;
@@ -622,7 +638,7 @@ namespace IrisContabilidad.modelos
                 empleadoSesion = singleton.getEmpleado();
 
                 //hoja normal
-                reporte = "IrisContabilidad.reportes.reporte_cuadre_caja_general.rdlc";
+                reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_general.rdlc";
 
                 //llenar encabezado
                 reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
@@ -653,7 +669,7 @@ namespace IrisContabilidad.modelos
             }
         }
 
-    
+        
 
 
 

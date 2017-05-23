@@ -23,6 +23,8 @@ namespace IrisContabilidad.clases
         public decimal descuento { get; set; }
         public decimal itbis { get; set; }
         public decimal total { get; set; }
+        public decimal subTotal { get; set; }
         public bool activo { get; set; }
+
     }
 }

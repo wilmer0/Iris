@@ -623,6 +623,7 @@ namespace IrisContabilidad.modulo_facturacion
                         x.itbis = itebis_monto;
                         x.descuento = descuento_monto;
                         x.total = importe_monto;
+                        x.subTotal = x.total - x.itbis;
                     }
                     
                 }
@@ -658,6 +659,7 @@ namespace IrisContabilidad.modulo_facturacion
                     ventaDetalleLista.precio = Convert.ToDecimal(precioText.Text);
                     ventaDetalleLista.cantidad = Convert.ToDecimal(cantidadText.Text);
                     ventaDetalleLista.total = importe_monto;
+                    ventaDetalleLista.subTotal = ventaDetalleLista.total - ventaDetalleLista.itbis;
                     listaVentaDetalleLista.Add(ventaDetalleLista);
                     //dataGridView1.Rows.Add(producto.codigo.ToString(), producto.nombre, unidad.codigo.ToString(), unidad.nombre, cantidadText.Text, precioText.Text, itebis_monto.ToString("N"), descuento_monto.ToString("N"), importe_monto.ToString("N"));
                     

@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_facturacion_tienda_v1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -56,8 +56,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.productoIdText = new System.Windows.Forms.TextBox();
             this.fechaLabelText = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.button19 = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.descuentoText = new System.Windows.Forms.TextBox();
@@ -169,9 +167,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(9, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 20);
+            this.label1.Size = new System.Drawing.Size(86, 20);
             this.label1.TabIndex = 82;
-            this.label1.Text = "Client";
+            this.label1.Text = "Customer";
             // 
             // tipoComprobanteCombo
             // 
@@ -192,22 +190,22 @@
             // 
             this.clienteText.BackColor = System.Drawing.Color.White;
             this.clienteText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteText.Location = new System.Drawing.Point(79, 56);
+            this.clienteText.Location = new System.Drawing.Point(13, 56);
             this.clienteText.MaxLength = 200;
             this.clienteText.Name = "clienteText";
             this.clienteText.ReadOnly = true;
-            this.clienteText.Size = new System.Drawing.Size(236, 26);
+            this.clienteText.Size = new System.Drawing.Size(302, 26);
             this.clienteText.TabIndex = 81;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(322, 14);
+            this.label2.Location = new System.Drawing.Point(322, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 20);
+            this.label2.Size = new System.Drawing.Size(93, 20);
             this.label2.TabIndex = 112;
-            this.label2.Text = "Type sell";
+            this.label2.Text = "Order type";
             // 
             // button5
             // 
@@ -225,9 +223,9 @@
             // 
             this.tipoVentaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoVentaComboBox.FormattingEnabled = true;
-            this.tipoVentaComboBox.Location = new System.Drawing.Point(407, 14);
+            this.tipoVentaComboBox.Location = new System.Drawing.Point(421, 15);
             this.tipoVentaComboBox.Name = "tipoVentaComboBox";
-            this.tipoVentaComboBox.Size = new System.Drawing.Size(128, 21);
+            this.tipoVentaComboBox.Size = new System.Drawing.Size(119, 21);
             this.tipoVentaComboBox.TabIndex = 111;
             this.tipoVentaComboBox.Tag = "";
             // 
@@ -235,9 +233,9 @@
             // 
             this.clienteIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.clienteIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clienteIdText.Location = new System.Drawing.Point(79, 19);
+            this.clienteIdText.Location = new System.Drawing.Point(101, 19);
             this.clienteIdText.Name = "clienteIdText";
-            this.clienteIdText.Size = new System.Drawing.Size(183, 26);
+            this.clienteIdText.Size = new System.Drawing.Size(161, 26);
             this.clienteIdText.TabIndex = 79;
             // 
             // detalleText
@@ -301,8 +299,8 @@
             // 
             // precioColumn
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle17;
             this.precioColumn.FillWeight = 50F;
             this.precioColumn.HeaderText = "Price";
             this.precioColumn.Name = "precioColumn";
@@ -310,8 +308,8 @@
             // 
             // itebisColumn
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle18;
             this.itebisColumn.FillWeight = 50F;
             this.itebisColumn.HeaderText = "Taxes";
             this.itebisColumn.Name = "itebisColumn";
@@ -319,8 +317,8 @@
             // 
             // descuentoColumn
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle19;
             this.descuentoColumn.FillWeight = 50F;
             this.descuentoColumn.HeaderText = "Discount";
             this.descuentoColumn.Name = "descuentoColumn";
@@ -328,8 +326,8 @@
             // 
             // importeColumn
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle20;
             this.importeColumn.FillWeight = 50F;
             this.importeColumn.HeaderText = "Total";
             this.importeColumn.Name = "importeColumn";
@@ -367,26 +365,6 @@
             this.fechaLabelText.Size = new System.Drawing.Size(59, 20);
             this.fechaLabelText.TabIndex = 115;
             this.fechaLabelText.Text = "Fecha";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(1335, 125);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(38, 17);
-            this.label16.TabIndex = 129;
-            this.label16.Text = "(F2)";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(1260, 125);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(38, 17);
-            this.label15.TabIndex = 128;
-            this.label15.Text = "(F1)";
             // 
             // button19
             // 
@@ -603,8 +581,6 @@
             this.Controls.Add(this.productoText);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.unidadComboText);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.button19);
             this.Controls.Add(this.button20);
             this.Controls.Add(this.descuentoText);
@@ -639,8 +615,6 @@
             this.Controls.SetChildIndex(this.descuentoText, 0);
             this.Controls.SetChildIndex(this.button20, 0);
             this.Controls.SetChildIndex(this.button19, 0);
-            this.Controls.SetChildIndex(this.label15, 0);
-            this.Controls.SetChildIndex(this.label16, 0);
             this.Controls.SetChildIndex(this.unidadComboText, 0);
             this.Controls.SetChildIndex(this.label8, 0);
             this.Controls.SetChildIndex(this.productoText, 0);
@@ -685,8 +659,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn itebisColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn importeColumn;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button button19;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.TextBox descuentoText;

@@ -53,7 +53,7 @@ namespace IrisContabilidad.modulo_facturacion
         modeloCajero modeloCajero = new modeloCajero();
         modeloSistemaConfiguracion modeloSistemaconfiguracion=new modeloSistemaConfiguracion();
         modeloTipoVentas modeloTipoVentas=new modeloTipoVentas();
-
+        
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
@@ -510,6 +510,7 @@ namespace IrisContabilidad.modulo_facturacion
                         x.descuento = descuento_monto;
                         //row.Cells[8].Value = importe_monto.ToString("N");
                         x.total = importe_monto;
+                        x.subTotal = x.total - x.itbis;
                     }
                     //si no se repite el producto y unidad entonces se agrega los valores del textbox
                 }
@@ -545,6 +546,7 @@ namespace IrisContabilidad.modulo_facturacion
                     ventaDetalleLista.precio = Convert.ToDecimal(precioText.Text);
                     ventaDetalleLista.cantidad = Convert.ToDecimal(cantidadText.Text);
                     ventaDetalleLista.total = importe_monto;
+                    ventaDetalleLista.subTotal = ventaDetalleLista.total - ventaDetalleLista.itbis;
                     listaVentaDetalleLista.Add(ventaDetalleLista);
                     //dataGridView1.Rows.Add(producto.codigo.ToString(), producto.nombre, unidad.codigo.ToString(), unidad.nombre, cantidadText.Text, precioText.Text, itebis_monto.ToString("N"), descuento_monto.ToString("N"), importe_monto.ToString("N"));
                     loadVentaDetalleLista();

@@ -465,10 +465,10 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`venta` MODIFY COLUMN `tipo_venta` VARCHAR(99) CHARACTER SET utf8 COLLATE utf8_bin;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`venta_vs_cobros_detalles` MODIFY COLUMN `monto_subtotal` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el dinero que entra de la empresa, seria monto - descuento', ADD COLUMN `monto_devuelta` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el monto devuelto al cliente cuando paga con un billete mayor al monto esperado' AFTER `monto_subtotal`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`compra_vs_pagos_detalles` ADD COLUMN `monto_devuelta` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_subtotal`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";
