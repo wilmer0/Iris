@@ -67,7 +67,6 @@ namespace IrisContabilidad.modulo_sistema
             RutaImagenesModulos = rutaProyectoActual + @"Resources\modulos\";
             LoadVentana();
             loadTodasVentanas("");
-
         }
         public void LoadVentana()
         {

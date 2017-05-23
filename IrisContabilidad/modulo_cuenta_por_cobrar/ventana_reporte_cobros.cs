@@ -98,6 +98,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         {
             procesando.Close();
             procesando = null;
+            
         }
 
         public void loadListaVentaCobros()

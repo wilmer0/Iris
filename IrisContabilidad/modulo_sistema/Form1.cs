@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
@@ -11,6 +12,11 @@ namespace IrisContabilidad
     public partial class Form1 : formBase
     {
 
+        //variables
+        private string usuarioS;
+        private string claveS;
+        private bool inicioSesion = false;
+
         //modelos
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
         private modeloPrimerLogin modeloPrimerLogin = new modeloPrimerLogin();
@@ -22,7 +28,11 @@ namespace IrisContabilidad
         utilidades utilidades = new utilidades();
         private singleton singleton;
         private sistemaConfiguracion sistemaConfiguracion;
-        
+
+        //Proceso
+        private ventana_procesando procesando;
+        private BackgroundWorker SicronizarProceso = new BackgroundWorker();
+
 
         public Form1()
         {
@@ -30,7 +40,43 @@ namespace IrisContabilidad
             this.tituloLabel.Text = "Inicio sesión";
             this.Text = tituloLabel.Text;
             usuarioText.Select();
-            utilidades.notificacionWindows("titulo prueba", "hola mundo esto es un mensaje",5);
+
+            SicronizarProceso.WorkerReportsProgress = true;
+            SicronizarProceso.DoWork += LoadReporte;
+            SicronizarProceso.ProgressChanged += ProcesoRun;
+            SicronizarProceso.RunWorkerCompleted += ProcesoCompleto;
+        }
+
+        private void LoadReporte(object sender, DoWorkEventArgs e)
+        {
+            SicronizarProceso.ReportProgress(10);
+            try
+            {
+                GetAction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimiendo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ProcesoRun(object sender, ProgressChangedEventArgs e)
+        {
+            if (procesando == null)
+            {
+                procesando = new ventana_procesando();
+                procesando.ShowDialog();
+            }
+        }
+
+        private void ProcesoCompleto(object sender, RunWorkerCompletedEventArgs e)
+        {
+            procesando.Close();
+            procesando = null;
+            if (inicioSesion == true)
+            {
+                this.Hide();
+            }
         }
 
         public void validarSistema()
@@ -82,6 +128,7 @@ namespace IrisContabilidad
         {
 
         }
+
         public  bool ValidarGetAction()
         {
             try
@@ -101,6 +148,8 @@ namespace IrisContabilidad
                     claveText.SelectAll();
                     return false;
                 }
+                usuarioS = usuarioText.Text;
+                claveS = claveText.Text;
                 return true;
             }
             catch (Exception ex)
@@ -157,36 +206,32 @@ namespace IrisContabilidad
             try
             {
                 //modeloEmpleado.adminPrimerLogin();
-
-                if (!ValidarGetAction())
-                {
-                    return;
-                }
                 modeloPrimerLogin.validarPrimerLogin();
-                empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));
+                empleado = modeloEmpleado.getEmpleadoByLogin(usuarioS, utilidades.encriptar(claveS));
 
-                if (empleado == null)
+                if(empleado == null)
                 {
                     limpiar();
                     return;
                 }
                 if (empleado.login != null || empleado.login!="")
                 {
+                    inicioSesion = true;
                     singleton.empleado = empleado;
                     menu1 ventana = new menu1(empleado);
                     ventana.Show();
-                    this.Hide();
                 }
                 else
                 {
+                    inicioSesion = false;
                     empleado = null;
                     MessageBox.Show("Datos incorrectos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     limpiar();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error GetAction.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error GetAction.:"+ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -233,7 +278,13 @@ namespace IrisContabilidad
         private void button1_Click(object sender, EventArgs e)
         {
             //modeloActualizacion.version1();
+            //GetAction();
+            if (!ValidarGetAction())
+            {
+                return;
+            }
             GetAction();
+            //SicronizarProceso.RunWorkerAsync();
         }
 
         private void button3_Click(object sender, EventArgs e)

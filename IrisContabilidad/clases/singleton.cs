@@ -46,7 +46,6 @@ namespace IrisContabilidad.clases
                 listaMes = new List<mes>();
                 listaMes = new modeloMes().getListaCompleta();
             }
-
             return listaMes;
         }
     }

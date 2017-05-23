@@ -28,6 +28,10 @@ namespace IrisContabilidad.clases_reportes
         {
             try
             {
+                singleton singleton=new singleton();
+                
+                List<mes> listaMes=new List<mes>();
+                listaMes = singleton.obtenerListaMes();
                 List<cxc_nota_credito> listaNotaCredito=new List<cxc_nota_credito>();
                 List<cxc_nota_debito> listaNotaDebito=new List<cxc_nota_debito>();
                 List<venta_detalle> listaVentaDetalle=new List<venta_detalle>();
@@ -36,18 +40,18 @@ namespace IrisContabilidad.clases_reportes
                 listaNotaDebito = new modeloCxcNotaDebito().getListaByVentaActivo(venta.codigo);
                 this.anoNumero = venta.fecha.Year;
                 this.mesNumero = venta.fecha.Month;
-                this.mesNombre = venta.fecha.Month.ToString();
-                this.montoTotal = listaVentaDetalle.Sum(s => s.monto_total);
-                this.montoItbis = listaVentaDetalle.Sum(s => s.monto_itebis);
+                this.mesNombre = listaMes.FindAll(x => x.numeroMes == this.mesNumero).FirstOrDefault().nombre;
                 this.montoDescuento = listaVentaDetalle.Sum(s => s.monto_descuento);
-                this.montoSubTotal = montoTotal - montoItbis;
                 this.montoNotaDebito = listaNotaDebito.Sum(s=> s.monto);
                 this.montoNotaCredito = listaNotaCredito.Sum(s => s.monto);
-
+                this.montoTotal = listaVentaDetalle.Sum(s => s.monto_total);
+                this.montoItbis = listaVentaDetalle.Sum(s => s.monto_itebis);
+                this.montoSubTotal = montoTotal - montoItbis;
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error reporte_ventas_mensuales_grafico_detalles.: " + ex.ToString(), "",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error reporte_ventas_mensuales_grafico_detalles.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

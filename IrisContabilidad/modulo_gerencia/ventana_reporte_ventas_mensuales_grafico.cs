@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
@@ -30,6 +31,11 @@ namespace IrisContabilidad.modulo_gerencia
         private int anioFinal = 0;
         private bool soloCobradas = false;
 
+        //Proceso
+        private ventana_procesando procesando;
+        private BackgroundWorker SicronizarProceso = new BackgroundWorker();
+
+
 
         public ventana_reporte_ventas_mensuales_grafico()
         {
@@ -38,6 +44,40 @@ namespace IrisContabilidad.modulo_gerencia
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSesion, "reporte ventas mensuales gráfico");
             this.Text = tituloLabel.Text;
             loadVentana();
+
+            SicronizarProceso.WorkerReportsProgress = true;
+            SicronizarProceso.DoWork += LoadReporte;
+            SicronizarProceso.ProgressChanged += ProcesoRun;
+            SicronizarProceso.RunWorkerCompleted += ProcesoCompleto;
+        }
+
+        private void LoadReporte(object sender, DoWorkEventArgs e)
+        {
+            SicronizarProceso.ReportProgress(10);
+            try
+            {
+                modeloReporte.imprimirVentasMensualesByRangoAnos(anioInicial, anioFinal, soloCobradas, cliente, empleado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimiendo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ProcesoRun(object sender, ProgressChangedEventArgs e)
+        {
+            if (procesando == null)
+            {
+                procesando = new ventana_procesando();
+                procesando.ShowDialog();
+            }
+        }
+
+        private void ProcesoCompleto(object sender, RunWorkerCompletedEventArgs e)
+        {
+            procesando.Close();
+            procesando = null;
+            
         }
 
         public void loadVentana()
@@ -132,12 +172,20 @@ namespace IrisContabilidad.modulo_gerencia
                 {
                     anofinalText.Focus();
                     anofinalText.SelectAll();
-                    System.Windows.MessageBox.Show("El año final debe tener 4 digitos", "", MessageBoxButton.OK,
-                        MessageBoxImage.Error);
+                    MessageBox.Show("debe tener 4 digitos", "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return false;
                 }
 
-
+                anioInicial = Convert.ToInt16(anoInicialText.Text);
+                anioFinal = Convert.ToInt16(anofinalText.Text);
+                if (radioSoloVentasCobradas.Checked == true)
+                {
+                    soloCobradas = true;
+                }
+                else
+                {
+                    soloCobradas = false;
+                }
                 return true;
             }
             catch (Exception ex)
@@ -152,28 +200,12 @@ namespace IrisContabilidad.modulo_gerencia
         {
             try
             {
-
                 if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
                 }
 
-                if (!ValidarGetAction())
-                {
-                    return;
-                }
-                anioInicial = Convert.ToInt16(anoInicialText.Text);
-                anioFinal = Convert.ToInt16(anofinalText.Text);
-                if (radioSoloVentasCobradas.Checked == true)
-                {
-                    soloCobradas = true;
-                }
-                else
-                {
-                    soloCobradas = false;
-                }
-                modeloReporte.imprimirVentasMensualesGraficos(anioInicial,anioFinal,soloCobradas,cliente,empleado);
-
+                SicronizarProceso.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -196,6 +228,10 @@ namespace IrisContabilidad.modulo_gerencia
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!ValidarGetAction())
+            {
+                return;
+            }
             GetAction();
         }
 

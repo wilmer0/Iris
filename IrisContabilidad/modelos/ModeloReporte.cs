@@ -546,17 +546,17 @@ namespace IrisContabilidad.modelos
         }
 
         //imprimir ventas mensuales graficos
-        public bool imprimirVentasMensualesGraficos(int anoInicial,int anoFinal, bool soloCobradas ,cliente cliente,empleado empleado)
+        public bool imprimirVentasMensualesByRangoAnos(int anoInicial,int anoFinal, bool soloCobradas ,cliente cliente,empleado empleado)
         {
             try
             {
-
                 //buscando ventas en base al anio
                 List<venta> listaVentas=new List<venta>();
                 listaVentas = new modeloVenta().getListaCompletaByRangoAnos(anoInicial,anoFinal);
 
                 reporte_ventas_mensuales_grafico_detalles reporteDetalle=new reporte_ventas_mensuales_grafico_detalles();
-                List<reporte_ventas_mensuales_grafico_detalles> listaDetalle=new List<reporte_ventas_mensuales_grafico_detalles>();
+                List<reporte_ventas_mensuales_grafico_detalles> listaDetalle =new List<reporte_ventas_mensuales_grafico_detalles>();
+                List<reporte_ventas_mensuales_grafico_detalles> listaDetalleTemporal = new List<reporte_ventas_mensuales_grafico_detalles>();
 
                 //filtros
                 //solo cobradas
@@ -583,7 +583,35 @@ namespace IrisContabilidad.modelos
                     listaDetalle.Add(reporteDetalle);
                 }
 
+                listaDetalleTemporal=new List<reporte_ventas_mensuales_grafico_detalles>();
+                foreach (var d1 in listaDetalle)
+                {
+                    reporteDetalle = new reporte_ventas_mensuales_grafico_detalles();
+                    reporteDetalle.anoNumero = d1.anoNumero;
+                    reporteDetalle.mesNumero = d1.mesNumero;
+                    reporteDetalle.mesNombre = d1.mesNombre;
+                    foreach (var d2 in listaDetalle)
+                    {
+                        if (reporteDetalle.anoNumero == d2.anoNumero && reporteDetalle.mesNumero == d2.mesNumero)
+                        {
+                            reporteDetalle.montoDescuento += d2.montoDescuento;
+                            reporteDetalle.montoItbis += d2.montoDescuento;
+                            reporteDetalle.montoNotaCredito += d2.montoNotaCredito;
+                            reporteDetalle.montoNotaDebito += d2.montoNotaDebito;
+                            reporteDetalle.montoSubTotal += d2.montoSubTotal;
+                            reporteDetalle.montoTotal += d2.montoTotal;
+                        }
+                    }
 
+
+                    if (listaDetalleTemporal.Where(x => x.anoNumero == reporteDetalle.anoNumero && x.mesNumero == reporteDetalle.mesNumero).Count() == 0)
+                    {
+                        // si no existe el mes junto con el anio se agrega a la lista
+                        listaDetalleTemporal.Add(reporteDetalle);
+                    }
+                }
+
+                listaDetalle = listaDetalleTemporal;
 
                 //datos generales
                 String reporte = "";
@@ -610,8 +638,6 @@ namespace IrisContabilidad.modelos
                 ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
                 listaReportDataSource.Add(reporteE);
 
-
-                
                 //reporte detalle
                 ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaDetalle);
                 listaReportDataSource.Add(reporteD);
@@ -620,13 +646,12 @@ namespace IrisContabilidad.modelos
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
                 VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
                 
-                
                 ventana.ShowDialog();
                 return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error imprimirVentasMensualesGraficos.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error imprimirVentasMensualesByRangoAnos.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
