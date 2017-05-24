@@ -50,6 +50,8 @@ namespace IrisContabilidad.clases_reportes
         //listas
         public List<reporte_venta_devolucion_detalle> listaReporteVentaDevolucionDetalle { get; set; }
         public List<reporte_compra_devolucion_detalle> listaReporteCompraDevolucionDetalle { get; set; }
+        public List<reporte_estado_cuenta_cliente_detalle> listaDetalle { get; set; }
+
 
         public reporte_encabezado_general(empleado empleado)
         {

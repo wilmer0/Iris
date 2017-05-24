@@ -895,5 +895,78 @@ namespace IrisContabilidad.modelos
         }
 
 
+
+        internal decimal getMontoFacturadoBySuplidorId(int suplidorId)
+        {
+            try
+            {
+                decimal montoCompra = 0;
+                decimal montoPendiente = 0;
+                decimal montoPagado = 0;
+                decimal montoNotasDebito = 0;
+                decimal montoNotasCredito = 0;
+
+                List<compra> listaCompra = new List<compra>();
+                List<compra_detalle> listaCompraDetalle = new List<compra_detalle>();
+                List<compra_vs_pagos_detalles> listaPagosDetalle = new List<compra_vs_pagos_detalles>();
+                List<cxp_nota_debito> listaNotasDebito = new List<cxp_nota_debito>();
+                List<cxp_nota_credito> listaNotasCredito = new List<cxp_nota_credito>();
+
+
+                listaCompra = getListaCompraBySuplidor(suplidorId);
+                listaCompraDetalle = getListaVentaDetalleByClienteId(id);
+                listaPagosDetalle = getListaCobrosDetallesByClienteId(id);
+
+
+
+                if (listaCompraDetalle.Count > 0)
+                {
+                    //sumar los montos de venta + descuento
+                    listaCompraDetalle.ForEach(x =>
+                    {
+                        montoCompra += x.monto_total + x.monto_descuento;
+                    });
+                }
+
+                //sumando los monto cobrados
+                if (listaPagosDetalle.Count > 0)
+                {
+                    listaPagosDetalle.ForEach(x =>
+                    {
+                        montoPagado += x.monto_cobrado + x.monto_descontado;
+                    });
+                }
+
+                //sumando las notas de debito
+                //que son los cargos a la factura del cliente
+                montoNotasDebito = 0;
+                foreach (var x in listaVenta)
+                {
+                    listaNotasDebito = new List<cxc_nota_debito>();
+                    listaNotasDebito = new modeloCxcNotaDebito().getListaByVentaActivo(x.codigo);
+                    montoNotasDebito += listaNotasDebito.Sum(s => s.monto);
+                }
+
+                //sumando las notas de credito
+                //que son los descuentos a la factura del cliente
+                montoNotasCredito = 0;
+                foreach (var x in listaVenta)
+                {
+                    listaNotasCredito = new List<cxc_nota_credito>();
+                    listaNotasCredito = new modeloCxcNotaCredito().getListaByVentaActivo(x.codigo);
+                    montoNotasCredito += listaNotasCredito.Sum(s => s.monto);
+                }
+
+                montoPendiente = (montoCompra + montoNotasDebito) - (montoPagado + montoNotasCredito);
+
+                return montoCompra;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getMontoFacturadoBySuplidorId.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return -1;
+            }
+        }
+
     }
 }
