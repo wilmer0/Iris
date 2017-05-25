@@ -26,8 +26,9 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         //modelos
         modeloSuplidor modeloSuplidor = new modeloSuplidor();
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
-        private modelo_reporte_estado_cuenta_cliente modeloReporte = new modelo_reporte_estado_cuenta_cliente();
-        
+        //private modelo_reporte_estado_cuenta_cliente modeloReporte = new modelo_reporte_estado_cuenta_cliente();
+        ModeloReporte modeloReporte=new ModeloReporte();
+
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
         private DateTime fechaFinalDateTime;
@@ -65,7 +66,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             SicronizarProceso.ReportProgress(10);
             try
             {
-                reporteEncabezado = modeloReporte.getReporteEstadoCuentaEncabezado(suplidor, empleado, fechaFinalDateTime);
+                modeloReporte.imprimirEstadoCuentaSuplidor(suplidor,fechaFinalDateTime);
                 
             }
             catch (Exception ex)
@@ -96,7 +97,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             {
                 listaCompra = new List<compra>();
                 listaCompraDetalle = new List<compra_detalle>();
-                listaCompraPagosDetalle = new List<venta_vs_cobros_detalles>();
+                listaCompraPagosDetalle = new List<compra_vs_pagos_detalles>();
 
             }
             catch (Exception ex)
@@ -113,15 +114,15 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 if (reporteEncabezado != null)
                 {
                     //cargar
-                    clienteIdText.Focus();
-                    clienteIdText.SelectAll();
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
 
                     suplidor = null;
-                    clienteIdText.Text = "";
-                    clienteLabel.Text = "";
+                    suplidorIdText.Text = "";
+                    suplidorLabel.Text = "";
 
-                    clienteIdText.Text = suplidor.codigo.ToString();
-                    clienteLabel.Text = suplidor.nombre;
+                    suplidorIdText.Text = suplidor.codigo.ToString();
+                    suplidorLabel.Text = suplidor.nombre;
 
                     loadLista();
                 }
@@ -129,11 +130,11 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 {
                     //limpiar
 
-                    clienteIdText.Focus();
-                    clienteIdText.SelectAll();
+                    suplidorIdText.Focus();
+                    suplidorIdText.SelectAll();
 
-                    clienteIdText.Text = "";
-                    clienteLabel.Text = "";
+                    suplidorIdText.Text = "";
+                    suplidorLabel.Text = "";
 
                     //fechaFinalVentaText.Text = utilidades.getFechaddMMyyyy(DateTime.Today);
                     
@@ -224,7 +225,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     return;
                 }
                 //datos generales
-                String reporte = "IrisContabilidad.modulo_cuenta_por_cobrar.Reporte.reporte_estado_cuenta_cliente.rdlc";
+                String reporte = "IrisContabilidad.modulo_cuenta_por_pagar.Reporte.reporte_estado_cuenta_cliente.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
 
@@ -250,22 +251,22 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             }
         }
         
-        public void loadCliente()
+        public void loadSuplidor()
         {
             try
             {
-                clienteIdText.Text = "";
-                clienteLabel.Text = "";
+                suplidorIdText.Text = "";
+                suplidorLabel.Text = "";
                 if (suplidor != null)
                 {
-                    clienteIdText.Text = suplidor.codigo.ToString();
-                    clienteLabel.Text = suplidor.nombre;
+                    suplidorIdText.Text = suplidor.codigo.ToString();
+                    suplidorLabel.Text = suplidor.nombre;
                 }
             }
             catch (Exception ex)
             {
                 suplidor = null;
-                MessageBox.Show("Error loadCliente.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error loadSuplidor.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         
@@ -295,7 +296,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             if (ventana.DialogResult == DialogResult.OK)
             {
                 suplidor = ventana.getObjeto();
-                loadCliente();
+                loadSuplidor();
             }
         }
 
@@ -307,7 +308,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private void label1_Click(object sender, EventArgs e)
         {
             suplidor = null;
-            loadCliente();
+            loadSuplidor();
         }
 
         private void clienteIdText_KeyDown(object sender, KeyEventArgs e)
@@ -320,11 +321,11 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 }
                 if (e.KeyCode == Keys.Enter)
                 {
-                    clienteIdText.Text = "";
-                    clienteLabel.Text = "";
+                    suplidorIdText.Text = "";
+                    suplidorLabel.Text = "";
 
-                    suplidor = modeloSuplidor.getClienteById(Convert.ToInt16(clienteIdText.Text));
-                    loadCliente();
+                    suplidor = modeloSuplidor.getSuplidorById(Convert.ToInt16(suplidorIdText.Text));
+                    loadSuplidor();
                 }
             }
             catch (Exception)

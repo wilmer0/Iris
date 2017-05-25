@@ -823,11 +823,18 @@ namespace IrisContabilidad.modelos
         {
             try
             {
+                sistemaConfiguracion sistema=new sistemaConfiguracion();
+                sistema = new modeloSistemaConfiguracion().getSistemaConfiguracion();
 
-                reporte_estado_cuenta_cliente_encabezado reporteEncabezado = new reporte_estado_cuenta_cliente_encabezado();
-                reporte_estado_cuenta_cliente_detalle reporteDetalle;
+                singleton singleton=new singleton();
+                empleado empleado = new empleado();
+                empleado = singleton.getEmpleado();
 
-                reporteEncabezado.listaDetalle = new List<reporte_estado_cuenta_cliente_detalle>();
+                reporte_encabezado_general reporteEncabezado=new reporte_encabezado_general(empleado);
+
+                reporte_estado_cuenta_suplidor_detalle reporteDetalle;
+
+                reporteEncabezado.listaReporteEstadoCuentaSuplidorDetalle = new List<reporte_estado_cuenta_suplidor_detalle>();
 
                 empresa empresa = new empresa();
                 empresa = new modeloEmpresa().getEmpresaByEmpleadoId(empleado.codigo);
@@ -835,46 +842,68 @@ namespace IrisContabilidad.modelos
                 sucursal sucursal = new sucursal();
                 sucursal = new modeloSucursal().getSucursalById(empleado.codigo_sucursal);
 
-                List<cliente> listaCliente = new List<cliente>();
-                listaCliente = new modeloCliente().getListaCompleta();
+                List<suplidor> listaSuplidor = new List<suplidor>();
+                listaSuplidor = new modeloSuplidor().getListaCompleta();
 
-                List<venta> listaVenta = new List<venta>();
-                listaVenta = new modeloVenta().getListaCompleta();
+                List<compra> listaCompra = new List<compra>();
+                listaCompra = new modeloCompra().getListaCompra();
 
                 //llenando el encabezado
                 reporteEncabezado.empleadoImpresion = empleado.nombre;
-                reporteEncabezado.fecha_impresion = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
+                if (sistema.tipoVentanaCuadreCaja == 1)
+                {
+                    //rd
+                    reporteEncabezado.fecha_impresion = utilidades.getFecha_dd_MM_yyyy_hh_mm_ss_tt(DateTime.Now);
+                }else if (sistema.tipoVentanaCuadreCaja == 2)
+                {
+                    //usa
+                    reporteEncabezado.fecha_impresion = utilidades.getFecha_MM_dd_yyyy_hh_mm_ss_tt(DateTime.Now);
+                }
                 reporteEncabezado.empresa = empresa.nombre;
                 reporteEncabezado.direccion = sucursal.direccion;
                 reporteEncabezado.rnc = empresa.rnc;
                 reporteEncabezado.telefonos = sucursal.telefono1 + " - " + sucursal.telefono2;
 
-
                 //filtrando por cliente
-                if (cliente != null)
+                if (suplidor != null)
                 {
-                    listaVenta = listaVenta.FindAll(x => x.codigo_cliente == cliente.codigo);
-                    listaCliente = listaCliente.FindAll(x => x.codigo == cliente.codigo);
+                    listaCompra = listaCompra.FindAll(x => x.cod_suplidor == suplidor.codigo);
+                    listaSuplidor = listaSuplidor.FindAll(x => x.codigo == suplidor.codigo);
                 }
 
                 //filtrando por fecha final
                 if (fechaFinal != null)
                 {
-                    listaVenta = listaVenta.FindAll(x => x.fecha <= fechaFinal.Date);
+                    listaCompra = listaCompra.FindAll(x => x.fecha <= fechaFinal.Date);
                 }
 
-                foreach (var clienteActual in listaCliente)
+                foreach (var clienteActual in listaSuplidor)
                 {
-
-                    reporteDetalle = new reporte_estado_cuenta_cliente_detalle(clienteActual);
-                    reporteEncabezado.listaDetalle.Add(reporteDetalle);
+                    reporteDetalle = new reporte_estado_cuenta_suplidor_detalle(suplidor);
+                    reporteEncabezado.listaReporteEstadoCuentaSuplidorDetalle.Add(reporteDetalle);
                 }
 
+                //datos generales
+                String reporte = "IrisContabilidad.modulo_cuenta_por_cobrar.Reporte.reporte_cobros.rdlc";
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
-                //return reporteEncabezado;
+                //encabezado
+                List<reporte_encabezado_general> listaEncabezado = new List<reporte_encabezado_general>();
+                listaEncabezado.Add(reporteEncabezado);
+                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaEncabezado);
+                listaReportDataSource.Add(reporteGrafico);
 
+                //detalle
+                ReportDataSource reporteDetalles = new ReportDataSource("reporte_detalle", reporteEncabezado.listaReporteEstadoCuentaSuplidorDetalle);
+                listaReportDataSource.Add(reporteDetalles);
+
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true);
+                ventana.ShowDialog();
 
                 return true;
+
             }
             catch (Exception ex)
             {

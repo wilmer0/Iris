@@ -1127,6 +1127,20 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+
+        public string getFecha_dd_MM_yyyy_hh_mm_ss_tt(DateTime fecha)
+        {
+            try
+            {
+                string fechaConvertida = fecha.ToString("dd/MM/yyyy hh:mm:ss tt");
+                return fechaConvertida;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getFecha_dd_MM_yyyy_hh_mm_ss_tt.:" + ex.ToString());
+                return null;
+            }
+        }
         
 
         public string getFechaddMMyyyyhhmmsstt(DateTime fecha)

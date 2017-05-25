@@ -198,6 +198,7 @@
     <Compile Include="clases\venta_vs_cobros_detalles.cs" />
     <Compile Include="clases_reportes\reporte_compra_devolucion_detalle.cs" />
     <Compile Include="clases_reportes\reporte_compra_pago_agrupado_compra.cs" />
+    <Compile Include="clases_reportes\reporte_estado_cuenta_suplidor_detalle.cs" />
     <Compile Include="clases_reportes\reporte_nota_credito_cxc_detalle.cs" />
     <Compile Include="clases_reportes\reporte_cobros_detalle.cs" />
     <Compile Include="clases_reportes\reporte_cobros_encabezado.cs" />
@@ -372,6 +373,12 @@
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_busqueda_nota_debito_cxp.Designer.cs">
       <DependentUpon>ventana_busqueda_nota_debito_cxp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_estado_cuenta_suplidor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modulo_cuenta_por_pagar\ventana_estado_cuenta_suplidor.Designer.cs">
+      <DependentUpon>ventana_estado_cuenta_suplidor.cs</DependentUpon>
     </Compile>
     <Compile Include="modulo_cuenta_por_pagar\ventana_nota_credito_cxp.cs">
       <SubType>Form</SubType>
@@ -977,6 +984,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_busqueda_nota_debito_cxp.resx">
       <DependentUpon>ventana_busqueda_nota_debito_cxp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_estado_cuenta_suplidor.resx">
+      <DependentUpon>ventana_estado_cuenta_suplidor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="modulo_cuenta_por_pagar\ventana_nota_credito_cxp.resx">
       <DependentUpon>ventana_nota_credito_cxp.cs</DependentUpon>

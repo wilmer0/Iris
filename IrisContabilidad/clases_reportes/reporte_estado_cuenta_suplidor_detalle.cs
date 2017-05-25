@@ -25,7 +25,7 @@ namespace IrisContabilidad.clases_reportes
 
         public reporte_estado_cuenta_suplidor_detalle()
         {
-            
+
         }
 
         public reporte_estado_cuenta_suplidor_detalle(suplidor suplidor)
@@ -35,17 +35,20 @@ namespace IrisContabilidad.clases_reportes
                 this.idSuplidor = suplidor.codigo;
                 this.suplidor = suplidor.nombre;
                 this.rnc = suplidor.rnc;
-                this.telefonos = cliente.telefono1 + " - " + cliente.telefono2;
-                this.montoFacturado = new modeloVenta().getMontoFacturadoByClienteId(cliente.codigo);
-                this.montoPendiente = new modeloVenta().getMontoPendienteByClienteId(cliente.codigo);
-                this.montoPagado = new modeloVenta().getMontoCobradoByClienteId(cliente.codigo);
-                this.montoNotasCredito = new modeloVenta().getMontoNotasCreditoByClienteId(cliente.codigo);
-                this.montoNotasDebito = new modeloVenta().getMontoNotasDebitoByClienteId(cliente.codigo);
+                this.telefonos = suplidor.telefono1 + " - " + suplidor.telefono2;
+                this.montoFacturado = new modeloCompra().getMontoFacturadoBySuplidorId(suplidor.codigo);
+                this.montoPendiente = new modeloCompra().getMontoPendienteBySuplidorId(suplidor.codigo);
+                this.montoPagado = new modeloCompra().getMontoPagadoBySuplidorId(suplidor.codigo);
+                this.montoNotasCredito = new modeloCompra().getMontoNotasCreditoBySuplidorId(suplidor.codigo);
+                this.montoNotasDebito = new modeloCompra().getMontoNotasDebitoBySuplidorId(suplidor.codigo);
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error reporte_estado_cuenta_cliente_detalle.:"+ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);   
+                MessageBox.Show("Error reporte_estado_cuenta_suplidor_detalle.:"+ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);   
             }
         }
+    
+    
     }
 }
