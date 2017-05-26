@@ -914,10 +914,11 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error imprimirEstadoCuentasuplidor.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Error imprimirEstadoCuentaSuplidor.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return null;
             }
         }
+       
 
 
     }
