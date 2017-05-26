@@ -222,6 +222,11 @@
     <Compile Include="clases_reportes\reporte_venta_encabezado.cs" />
     <Compile Include="clases_reportes_modelos\modelo_reporte_cobros.cs" />
     <Compile Include="clases_reportes_modelos\modelo_reporte_estado_cuenta_cliente.cs" />
+    <Compile Include="idiomas\Es-do.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Es-do.resx</DependentUpon>
+    </Compile>
     <Compile Include="modelos\modeloActualizacion.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
     <Compile Include="modelos\modeloCaja.cs" />
@@ -952,6 +957,10 @@
     <Compile Include="ventanas_comunes\VisorReporteComun.Designer.cs">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="idiomas\Es-do.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Es-do.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="modulo_contabilidad\ventana_busqueda_cuenta_contable.resx">
       <DependentUpon>ventana_busqueda_cuenta_contable.cs</DependentUpon>
     </EmbeddedResource>
@@ -976,6 +985,7 @@
     <EmbeddedResource Include="modulo_contabilidad\ventana_tipo_gastos.resx">
       <DependentUpon>ventana_tipo_gastos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_estado_cuenta_suplidor.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_nota_credito.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_nota_debito.rdlc" />
     <EmbeddedResource Include="modulo_cuenta_por_pagar\Reporte\reporte_pagos_compras_agrupado_compra.rdlc" />
@@ -1339,6 +1349,7 @@
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_cliente_encabezado.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_encabezado.datasource" />
+    <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_estado_cuenta_suplidor_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_credito_cxc_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_credito_cxp_detalle.datasource" />
     <None Include="Properties\DataSources\IrisContabilidad.clases_reportes.reporte_nota_debito_cxc_detalle.datasource" />
@@ -1372,7 +1383,6 @@
     <Folder Include="bin\Release\Resources\backup\database\" />
     <Folder Include="bin\Release\Resources\backup\system\" />
     <Folder Include="bin\Release\Resources\productos\" />
-    <Folder Include="idiomas\" />
     <Folder Include="modulo_contabilidad\Reporte\" />
     <Folder Include="modulo_empresa\Reporte\" />
     <Folder Include="modulo_inicio_rapido\" />

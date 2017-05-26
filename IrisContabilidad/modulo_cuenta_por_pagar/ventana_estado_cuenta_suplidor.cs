@@ -20,9 +20,9 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         singleton singleton = new singleton();
         empleado empleado;
         private suplidor suplidor;
-        private reporte_estado_cuenta_cliente_encabezado reporteEncabezado;
         private reporte_encabezado_general reporteEncabezadoGeneral;
         
+
         //modelos
         modeloSuplidor modeloSuplidor = new modeloSuplidor();
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
@@ -32,29 +32,25 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
         private DateTime fechaFinalDateTime;
-        
-        //listas
-        private List<reporte_encabezado_general> listaReporteEncabezado;
-        private List<compra_vs_pagos_detalles> listaCompraPagosDetalle;
-        private List<compra> listaCompra;
-        private List<compra_detalle> listaCompraDetalle;
-
+        private bool imprimir = false;
 
         //Proceso
         private ventana_procesando procesando;
         private BackgroundWorker SicronizarProceso = new BackgroundWorker();
 
 
+        //listas
+        private List<reporte_encabezado_general> listaReporteEncabezadoGeneral; 
+
 
         public ventana_estado_cuenta_suplidor()
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana estado cuenta cliente");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana estado cuenta suplidor");
             this.Text = tituloLabel.Text;
             loadVentana();
-            loadListaCompraPagos();
-
+            
             SicronizarProceso.WorkerReportsProgress = true;
             SicronizarProceso.DoWork += LoadReporte;
             SicronizarProceso.ProgressChanged += ProcesoRun;
@@ -66,8 +62,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             SicronizarProceso.ReportProgress(10);
             try
             {
-                modeloReporte.imprimirEstadoCuentaSuplidor(suplidor,fechaFinalDateTime);
-                
+                reporteEncabezadoGeneral = modeloReporte.imprimirEstadoCuentaSuplidor(suplidor, fechaFinalDateTime, imprimir);
             }
             catch (Exception ex)
             {
@@ -91,54 +86,19 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             loadLista();
         }
 
-        public void loadListaCompraPagos()
-        {
-            try
-            {
-                listaCompra = new List<compra>();
-                listaCompraDetalle = new List<compra_detalle>();
-                listaCompraPagosDetalle = new List<compra_vs_pagos_detalles>();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loadListaVentaCobros.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        
         public void loadVentana()
         {
             try
             {
                 fechaFinalDateTime=DateTime.Today;
-                if (reporteEncabezado != null)
-                {
-                    //cargar
-                    suplidorIdText.Focus();
-                    suplidorIdText.SelectAll();
-
-                    suplidor = null;
-                    suplidorIdText.Text = "";
-                    suplidorLabel.Text = "";
-
-                    suplidorIdText.Text = suplidor.codigo.ToString();
-                    suplidorLabel.Text = suplidor.nombre;
-
-                    loadLista();
-                }
-                else
-                {
+                
                     //limpiar
-
                     suplidorIdText.Focus();
                     suplidorIdText.SelectAll();
-
                     suplidorIdText.Text = "";
                     suplidorLabel.Text = "";
-
                     //fechaFinalVentaText.Text = utilidades.getFechaddMMyyyy(DateTime.Today);
                     
-                }
                 dataGridView1.Rows.Clear();
 
             }
@@ -156,11 +116,14 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 {
                     dataGridView1.Rows.Clear();
                 }
-
-                reporteEncabezado.listaDetalle.ForEach(x =>
+                if (reporteEncabezadoGeneral == null)
                 {
-                    dataGridView1.Rows.Add(x.idCliente,x.cliente, x.montoFacturado.ToString("N"),x.montoNotasDebito.ToString("N"), x.montoCobrado.ToString("N"),x.montoNotasCredito.ToString("N"), x.montoPendiente.ToString("N"));
-                });
+                    return;
+                }
+                foreach (var x in reporteEncabezadoGeneral.listaReporteEstadoCuentaSuplidorDetalle)
+                {
+                    dataGridView1.Rows.Add(x.suplidor,x.suplidor, x.montoFacturado.ToString("N"),x.montoNotasDebito.ToString("N"), x.montoPagado.ToString("N"),x.montoNotasCredito.ToString("N"), x.montoPendiente.ToString("N"));
+                }
             }
             catch (Exception ex)
             {
@@ -215,41 +178,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             }
         }
 
-        public void loadImprimir()
-        {
-            try
-            {
-                if (reporteEncabezado == null)
-                {
-                    MessageBox.Show("Debe procesar antes de imprimir.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                //datos generales
-                String reporte = "IrisContabilidad.modulo_cuenta_por_pagar.Reporte.reporte_estado_cuenta_cliente.rdlc";
-                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
-
-
-                //encabezado general
-                listaReporteEncabezado = new List<reporte_encabezado_general>();
-                reporteEncabezadoGeneral=new reporte_encabezado_general(empleado);
-                listaReporteEncabezado.Add(reporteEncabezadoGeneral);
-                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
-                listaReportDataSource.Add(reporteGrafico);
-
-                //detalle
-                ReportDataSource reporteProblemas = new ReportDataSource("reporte_detalle", reporteEncabezado.listaDetalle);
-                listaReportDataSource.Add(reporteProblemas);
-
-                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
-
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
-                ventana.ShowDialog();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error loadImprimir.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        
         
         public void loadSuplidor()
         {
@@ -285,6 +214,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
         private void button1_Click(object sender, EventArgs e)
         {
+            imprimir = false;
             getAction();
         }
 
@@ -302,7 +232,12 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
         private void button6_Click(object sender, EventArgs e)
         {
-            loadImprimir();
+            if (!validarGetAcion())
+            {
+                return;
+            }
+            imprimir = true;
+            SicronizarProceso.RunWorkerAsync();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -336,9 +271,16 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
 
         private void button3_Click(object sender, EventArgs e)
         {
-            reporteEncabezado = null;
+            reporteEncabezadoGeneral = null;
             loadVentana();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            salir();
+        }
+
+
  
     }
 

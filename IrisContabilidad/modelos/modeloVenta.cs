@@ -55,13 +55,11 @@ namespace IrisContabilidad.modelos
                 }
 
                 venta.numero_factura = utilidades.getRellenar(venta.codigo.ToString(), '0', 9);
-                string sql = "insert into venta(codigo,num_factura,fecha,fecha_limite,codigo_empleado,codigo_cliente,ncf,tipo_venta,cod_sucursal,activo,pagada,cod_empleado_anular,motivo_anulada,cod_vendedor,despachado,autorizar_pedido,cuadrado,detalles,cod_tipo_comprobante,pedido,monto_impuesto) values('" + venta.codigo + "','" + venta.numero_factura + "','" + utilidades.getFechayyyyMMdd(venta.fecha) + "','" + utilidades.getFechayyyyMMdd(venta.fecha_limite) + "','" + venta.codigo_empleado + "','" + venta.codigo_cliente + "','" + venta.ncf + "','" + venta.tipo_venta + "','" + venta.codigo_sucursal + "','" + activo + "','" + pagada + "','" + venta.codigo_empelado_anular + "','" + venta.motivo_anulada + "','" + venta.codigo_vendedor + "','" + despachado + "','" + autorizarPedido + "','" + cuadrado + "','" + venta.detalle + "','" + venta.codigo_tipo_comprobante + "','"+pedido+"','"+venta.monto_impuesto+"')";
-                //MessageBox.Show(sql);
+                string sql = "insert into venta(codigo,num_factura,fecha,fecha_limite,codigo_empleado,codigo_cliente,ncf,tipo_venta,cod_sucursal,activo,pagada,cod_empleado_anular,motivo_anulada,cod_vendedor,despachado,autorizar_pedido,cuadrado,detalles,cod_tipo_comprobante,pedido,monto_impuesto,codigo_tipo_venta) values('" + venta.codigo + "','" + venta.numero_factura + "','" + utilidades.getFechayyyyMMdd(venta.fecha) + "','" + utilidades.getFechayyyyMMdd(venta.fecha_limite) + "','" + venta.codigo_empleado + "','" + venta.codigo_cliente + "','" + venta.ncf + "','" + venta.tipo_venta + "','" + venta.codigo_sucursal + "','" + activo + "','" + pagada + "','" + venta.codigo_empelado_anular + "','" + venta.motivo_anulada + "','" + venta.codigo_vendedor + "','" + despachado + "','" + autorizarPedido + "','" + cuadrado + "','" + venta.detalle + "','" + venta.codigo_tipo_comprobante + "','"+pedido+"','"+venta.monto_impuesto+"','"+venta.codigo_tipo_venta+"')";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
 
-
                 //insertar venta detalle
-                listaDetalle.ForEach(x =>
+                foreach(var x in listaDetalle)
                 {
                     x.codigo = getNextVentaDetalle();
                     decimal itebisUnitario = 0;
@@ -76,7 +74,7 @@ namespace IrisContabilidad.modelos
                     }
                     sql = "insert into venta_detalle(codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo,itebis_unitario,descuento_unitario) values('" + x.codigo + "','" + venta.codigo + "','" + x.codigo_producto + "','" + x.codigo_unidad + "','" + x.cantidad + "','" + x.precio + "','" + x.monto_total + "','" + x.monto_itebis + "','"+x.monto_descuento+"','1','"+itebisUnitario+"','"+descuentoUnitario+"')";
                     utilidades.ejecutarcomando_mysql(sql);
-                });
+                }
 
                 //sacar de inventario
                 foreach(var x in listaDetalle)
@@ -547,7 +545,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //get lista completa de venta
         public List<venta> getListaCompleta()
         {
@@ -896,7 +893,7 @@ namespace IrisContabilidad.modelos
             {
                 List<venta_detalle> lista = new List<venta_detalle>();
                 venta_detalle ventaDetalle = new venta_detalle();
-                string sql = "select codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo from venta_detalle where cod_venta='" + ventaId + "'";
+                string sql = "select codigo,cod_venta,cod_producto,cod_unidad,cantidad,precio,monto,itebis,descuento,activo,itebis_unitario,descuento_unitario from venta_detalle where cod_venta='" + ventaId + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -913,6 +910,9 @@ namespace IrisContabilidad.modelos
                         ventaDetalle.monto_itebis = Convert.ToDecimal(row[7].ToString());
                         ventaDetalle.monto_descuento = Convert.ToDecimal(row[8].ToString());
                         ventaDetalle.activo = Convert.ToBoolean(row[9]);
+                        ventaDetalle.itbis_unitario = Convert.ToDecimal(row[10]);
+                        ventaDetalle.descuento_unitario = Convert.ToDecimal(row[11]);
+                        
                         lista.Add(ventaDetalle);
                     }
                 }
@@ -932,7 +932,7 @@ namespace IrisContabilidad.modelos
             {
                 List<venta_detalle> lista = new List<venta_detalle>();
                 venta_detalle ventaDetalle = new venta_detalle();
-                string sql = "select vd.codigo,vd.cod_venta,vd.cod_producto,vd.cod_unidad,vd.cantidad,vd.precio,vd.monto,vd.itebis,vd.descuento,vd.activo from venta_detalle vd join venta v on vd.cod_venta=v.codigo join cliente c on c.codigo=v.codigo_cliente where vd.activo='1' and c.codigo='" + id + "'";
+                string sql = "select vd.codigo,vd.cod_venta,vd.cod_producto,vd.cod_unidad,vd.cantidad,vd.precio,vd.monto,vd.itebis,vd.descuento,vd.activo,vd.itebis_unitario,vd.descuento_unitario from venta_detalle vd join venta v on vd.cod_venta=v.codigo join cliente c on c.codigo=v.codigo_cliente where vd.activo='1' and c.codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -949,6 +949,8 @@ namespace IrisContabilidad.modelos
                         ventaDetalle.monto_itebis = Convert.ToDecimal(row[7].ToString());
                         ventaDetalle.monto_descuento = Convert.ToDecimal(row[8].ToString());
                         ventaDetalle.activo = Convert.ToBoolean(row[9]);
+                        ventaDetalle.itbis_unitario = Convert.ToDecimal(row[10]);
+                        ventaDetalle.descuento_unitario = Convert.ToDecimal(row[11]);
                         lista.Add(ventaDetalle);
                     }
                 }
@@ -961,13 +963,14 @@ namespace IrisContabilidad.modelos
             }
         }
        
+        //get lista venta detalles bycliente y fecha final
         public List<venta_detalle> getListaVentaDetalleByClienteIdAndRangoFechaFinal(int id,DateTime fechaFinal)
         {
             try
             {
                 List<venta_detalle> lista = new List<venta_detalle>();
                 venta_detalle ventaDetalle = new venta_detalle();
-                string sql = "select vd.codigo,vd.cod_venta,vd.cod_producto,vd.cod_unidad,vd.cantidad,vd.precio,vd.monto,vd.itebis,vd.descuento,vd.activo from venta_detalle vd join venta v on vd.cod_venta=v.codigo join cliente c on c.codigo=v.codigo_cliente where v.fecha<='"+utilidades.getFechayyyyMMdd(fechaFinal)+"' and c.codigo='" + id + "'";
+                string sql = "select vd.codigo,vd.cod_venta,vd.cod_producto,vd.cod_unidad,vd.cantidad,vd.precio,vd.monto,vd.itebis,vd.descuento,vd.activo,vd.ietbis_unitario,vd.descuento_unitario from venta_detalle vd join venta v on vd.cod_venta=v.codigo join cliente c on c.codigo=v.codigo_cliente where v.fecha<='"+utilidades.getFechayyyyMMdd(fechaFinal)+"' and c.codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -984,6 +987,8 @@ namespace IrisContabilidad.modelos
                         ventaDetalle.monto_itebis = Convert.ToDecimal(row[7].ToString());
                         ventaDetalle.monto_descuento = Convert.ToDecimal(row[8].ToString());
                         ventaDetalle.activo = Convert.ToBoolean(row[9]);
+                        ventaDetalle.itbis_unitario = Convert.ToDecimal(row[10]);
+                        ventaDetalle.descuento_unitario = Convert.ToDecimal(row[11]);
                         lista.Add(ventaDetalle);
                     }
                 }
@@ -992,6 +997,46 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error getListaVentaDetalleByClienteIdAndRangoFechaFinal.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
+        //get lista completa de venta detalle by cuadre caja
+        public List<venta_detalle> getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<venta_detalle> lista = new List<venta_detalle>();
+                venta_detalle detalle = new venta_detalle();
+                empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadre.codigo_cajero);
+                string sql = "select vd.codigo,vd.cod_venta,vd.cod_producto,vd.cod_unidad,vd.cantidad,vd.precio,vd.monto,vd.itebis,vd.descuento,vd.activo,vd.itebis_unitario,vd.descuento_unitario from venta_detalle vd join venta v on v.codigo=vd.cod_venta where cuadrado='0' and v.activo='1' and vd.activo='1' and v.fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and v.fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and v.codigo_empleado='" + empleado.codigo + "' and cod_sucursal='" + cuadre.codigo_sucursal + "' ";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        detalle = new venta_detalle();
+                        detalle.codigo = Convert.ToInt16(row[0]);
+                        detalle.cod_venta = Convert.ToInt16(row[1]);
+                        detalle.codigo_producto = Convert.ToInt16(row[2]);
+                        detalle.codigo_unidad = Convert.ToInt16(row[3]);
+                        detalle.cantidad = Convert.ToDecimal(row[4]);
+                        detalle.precio = Convert.ToDecimal(row[5]);
+                        detalle.monto_total = Convert.ToDecimal(row[6]);
+                        detalle.monto_itebis = Convert.ToDecimal(row[7]);
+                        detalle.monto_descuento = Convert.ToDecimal(row[8]);
+                        detalle.activo = Convert.ToBoolean(row[9]);
+                        detalle.itbis_unitario = Convert.ToDecimal(row[10]);
+                        detalle.descuento_unitario = Convert.ToDecimal(row[11]);
+                        lista.Add(detalle);
+                    }
+                }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentaDetallesCompletaSinCuadradaBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }
@@ -1871,46 +1916,6 @@ namespace IrisContabilidad.modelos
             catch (Exception ex)
             {
                 MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
-        //get lista al completa de venta detalle by cuadre caja
-        public List<venta_detalle> getListaVentaDetallesCompletaSinCuadradaBycuadreCaja(cuadre_caja cuadre)
-        {
-            try
-            {
-                List<venta_detalle> lista = new List<venta_detalle>();
-                venta_detalle detalle = new venta_detalle();
-                empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadre.codigo_cajero);
-                string sql = "select vd.codigo,vd.cod_venta,vd.cod_producto,vd.cod_unidad,vd.cantidad,vd.precio,vd.monto,vd.itebis,vd.descuento,vd.activo,vd.itebis_unitario,vd.descuento_unitario from venta_detalle vd join venta v on v.codigo=vd.cod_venta where cuadrado='0' and v.activo='1' and vd.activo='1' and v.fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and v.fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and v.codigo_empleado='" + empleado.codigo + "' and cod_sucursal='" + cuadre.codigo_sucursal + "' ";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    foreach (DataRow row in ds.Tables[0].Rows)
-                    {
-                        detalle = new venta_detalle();
-                        detalle.codigo = Convert.ToInt16(row[0]);
-                        detalle.cod_venta = Convert.ToInt16(row[1]);
-                        detalle.codigo_producto = Convert.ToInt16(row[2]);
-                        detalle.codigo_unidad = Convert.ToInt16(row[3]);
-                        detalle.cantidad = Convert.ToDecimal(row[4]);
-                        detalle.precio = Convert.ToDecimal(row[5]);
-                        detalle.monto_total = Convert.ToDecimal(row[6]);
-                        detalle.monto_itebis = Convert.ToDecimal(row[7]);
-                        detalle.monto_descuento = Convert.ToDecimal(row[8]);
-                        detalle.activo = Convert.ToBoolean(row[9]);
-                        detalle.itbis_unitario = Convert.ToDecimal(row[10]);
-                        detalle.monto_descuento = Convert.ToDecimal(row[11]);
-                        lista.Add(detalle);
-                    }
-                }
-                lista = lista.OrderByDescending(x => x.codigo).ToList();
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error getListaVentaDetallesCompletaSinCuadradaBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
         }

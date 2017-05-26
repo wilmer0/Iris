@@ -66,6 +66,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             // button2
             // 
             this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 

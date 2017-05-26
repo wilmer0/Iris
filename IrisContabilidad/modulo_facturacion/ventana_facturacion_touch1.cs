@@ -69,7 +69,7 @@ namespace IrisContabilidad.modulo_facturacion
         private List<unidad> listaUnidad;
         private List<tipo_comprobante_fiscal> listaTipoComprobanteFiscal;
         private List<venta_detalle_lista> listaVentaDetalleLista;
-        private List<tipo_ventas> listaVentas;
+        private List<tipo_ventas> listaTiposVentas;
         private List<categoria_producto> listaCategoriaProductos;
         private List<producto> listaProducto; 
 
@@ -750,14 +750,14 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-                if (listaVentas == null)
+                if (listaTiposVentas == null)
                 {
-                    listaVentas = new List<tipo_ventas>();
+                    listaTiposVentas = new List<tipo_ventas>();
                 }
-                listaVentas = modeloTipoVentas.getListaCompleta();
+                listaTiposVentas = modeloTipoVentas.getListaCompleta();
                 tipoVentaComboBox.DisplayMember = "nombre";
                 tipoVentaComboBox.ValueMember = "codigo";
-                tipoVentaComboBox.DataSource = listaVentas;
+                tipoVentaComboBox.DataSource = listaTiposVentas;
                 tipoVentaComboBox.SelectedIndex = 0;
             }
             catch (Exception ex)

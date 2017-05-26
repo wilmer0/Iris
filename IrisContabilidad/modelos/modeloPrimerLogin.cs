@@ -929,6 +929,16 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 4;
                 ventana.imagen = "compra_nota_debito1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Estado Cuenta Suplidor";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_estado_cuenta_suplidor";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "estado_cuenta_suplidor1.png";
+                listaVentana.Add(ventana);
+                
                 #endregion
 
                 //modulo inventario

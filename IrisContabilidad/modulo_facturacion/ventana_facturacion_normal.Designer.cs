@@ -607,11 +607,6 @@ namespace IrisContabilidad.modulo_facturacion
             // 
             this.tipoVentaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoVentaComboBox.FormattingEnabled = true;
-            this.tipoVentaComboBox.Items.AddRange(new object[] {
-            "CON",
-            "COT",
-            "CRE",
-            "PED"});
             this.tipoVentaComboBox.Location = new System.Drawing.Point(122, 138);
             this.tipoVentaComboBox.Name = "tipoVentaComboBox";
             this.tipoVentaComboBox.Size = new System.Drawing.Size(236, 21);

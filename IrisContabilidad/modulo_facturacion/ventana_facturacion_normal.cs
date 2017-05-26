@@ -43,7 +43,7 @@ namespace IrisContabilidad.modulo_facturacion
         modeloVenta modeloVenta=new modeloVenta();
         modeloComprobanteFiscal modeloComprobantefiscal=new modeloComprobanteFiscal();
         modeloCajero modeloCajero=new modeloCajero();
-
+        modeloTipoVentas modeloTipoVentas=new modeloTipoVentas();
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
@@ -59,8 +59,9 @@ namespace IrisContabilidad.modulo_facturacion
         private List<venta> listaVenta;
         private List<venta_detalle> listaVentaDetalle;
         private List<unidad> listaUnidad;
-        private List<tipo_comprobante_fiscal> listaTipoComprobanteFiscal; 
-
+        private List<tipo_comprobante_fiscal> listaTipoComprobanteFiscal;
+        private List<tipo_ventas> listaTiposVentas;
+        
         
         //variables
         private decimal cantidad_monto = 0;
@@ -87,6 +88,7 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 sistemaConfiguracion = singleton.getSistemaconfiguracion();
                 listaTipoComprobanteFiscal = modeloTipoComprobanteFiscal.getListaCompleta();
+                loadTipoVentas();
                 if (listaTipoComprobanteFiscal != null)
                 {
                     tipoComprobanteCombo.DataSource = listaTipoComprobanteFiscal;
@@ -95,7 +97,6 @@ namespace IrisContabilidad.modulo_facturacion
                     tipoComprobanteCombo.SelectedIndex = 0;
                 }
 
-                tipoVentaComboBox.SelectedIndex = 0;
                 tipoComprobanteCombo.SelectedIndex = 0;
                 if (venta != null)
                 {
@@ -158,6 +159,27 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public void loadTipoVentas()
+        {
+            try
+            {
+                if (listaTiposVentas == null)
+                {
+                    listaTiposVentas = new List<tipo_ventas>();
+                }
+                listaTiposVentas = modeloTipoVentas.getListaCompleta();
+                tipoVentaComboBox.DisplayMember = "nombre";
+                tipoVentaComboBox.ValueMember = "codigo";
+                tipoVentaComboBox.DataSource = listaTiposVentas;
+                tipoVentaComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTipoVentas.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         public bool validarGetAcion()
         {
@@ -1126,6 +1148,11 @@ namespace IrisContabilidad.modulo_facturacion
                 modoCotizacion = false;
                 ventanaModoCotizacion();
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
 

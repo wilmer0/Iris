@@ -35,5 +35,6 @@ namespace IrisContabilidad.clases_reportes
             this.precio = devolucionDetalle.precio;
             this.montoTotal = devolucionDetalle.monto_total;
         }
+
     }
 }

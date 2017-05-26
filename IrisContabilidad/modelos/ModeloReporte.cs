@@ -819,7 +819,7 @@ namespace IrisContabilidad.modelos
         }
 
         //imprimir estado cuenta suplidor
-        public bool imprimirEstadoCuentaSuplidor(suplidor suplidor,DateTime fechaFinal)
+        public reporte_encabezado_general imprimirEstadoCuentaSuplidor(suplidor suplidor,DateTime fechaFinal,bool imprimir)
         {
             try
             {
@@ -877,38 +877,45 @@ namespace IrisContabilidad.modelos
                     listaCompra = listaCompra.FindAll(x => x.fecha <= fechaFinal.Date);
                 }
 
-                foreach (var clienteActual in listaSuplidor)
+                foreach (var suplidorActual in listaSuplidor)
                 {
-                    reporteDetalle = new reporte_estado_cuenta_suplidor_detalle(suplidor);
+                    reporteDetalle = new reporte_estado_cuenta_suplidor_detalle(suplidorActual);
                     reporteEncabezado.listaReporteEstadoCuentaSuplidorDetalle.Add(reporteDetalle);
                 }
 
-                //datos generales
-                String reporte = "IrisContabilidad.modulo_cuenta_por_cobrar.Reporte.reporte_cobros.rdlc";
-                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+                if (imprimir == true)
+                {
+                    //datos generales
+                    String reporte = "IrisContabilidad.modulo_cuenta_por_pagar.Reporte.reporte_estado_cuenta_suplidor.rdlc";
+                    List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
-                //encabezado
-                List<reporte_encabezado_general> listaEncabezado = new List<reporte_encabezado_general>();
-                listaEncabezado.Add(reporteEncabezado);
-                ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaEncabezado);
-                listaReportDataSource.Add(reporteGrafico);
+                    //encabezado
+                    List<reporte_encabezado_general> listaEncabezado = new List<reporte_encabezado_general>();
+                    listaEncabezado.Add(reporteEncabezado);
+                    ReportDataSource reporteGrafico = new ReportDataSource("reporte_encabezado", listaEncabezado);
+                    listaReportDataSource.Add(reporteGrafico);
 
-                //detalle
-                ReportDataSource reporteDetalles = new ReportDataSource("reporte_detalle", reporteEncabezado.listaReporteEstadoCuentaSuplidorDetalle);
-                listaReportDataSource.Add(reporteDetalles);
+                    //detalle
+                    ReportDataSource reporteDetalles = new ReportDataSource("reporte_detalle", reporteEncabezado.listaReporteEstadoCuentaSuplidorDetalle);
+                    listaReportDataSource.Add(reporteDetalles);
 
-                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+                    List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true);
-                ventana.ShowDialog();
+                    VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter, true);
+                    ventana.ShowDialog();
 
-                return true;
+                    return null;
+                }
+                else
+                {
+                    return reporteEncabezado;
+                }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error imprimirEstadoCuentasuplidor.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
-                return false;
+                return null;
             }
         }
 

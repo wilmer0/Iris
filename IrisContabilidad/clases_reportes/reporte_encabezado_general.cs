@@ -17,7 +17,6 @@ namespace IrisContabilidad.clases_reportes
        
 
         //rango de valores
-       
         public string fechaInicial { get; set; }
         public string fechaFinal { get; set; }
         public int anioInicial { get; set; }
@@ -40,7 +39,6 @@ namespace IrisContabilidad.clases_reportes
 
 
 
-
         //booleanas
         public bool soloPagado { get; set; }
         public bool soloCobrado { get; set; }
@@ -52,6 +50,11 @@ namespace IrisContabilidad.clases_reportes
         public List<reporte_compra_devolucion_detalle> listaReporteCompraDevolucionDetalle { get; set; }
         public List<reporte_estado_cuenta_cliente_detalle> listaReporteEstadoCuentaClienteDetalle { get; set; }
         public List<reporte_estado_cuenta_suplidor_detalle> listaReporteEstadoCuentaSuplidorDetalle { get; set; }
+
+
+
+
+
 
         public reporte_encabezado_general(empleado empleado)
         {
@@ -67,5 +70,8 @@ namespace IrisContabilidad.clases_reportes
             this.fecha_impresion = DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt");
             this.empleadoImpresion = empleado.nombre;
         }
+    
+    
+    
     }
 }

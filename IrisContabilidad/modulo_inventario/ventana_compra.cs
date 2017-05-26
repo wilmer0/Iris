@@ -127,7 +127,6 @@ namespace IrisContabilidad.modulo_inventario
             }
         }
 
-
         public bool validarGetAcion()
         {
             try
@@ -290,7 +289,6 @@ namespace IrisContabilidad.modulo_inventario
                     listaCompraDetalle.Add(compraDetalle);
                     cont++;
                 }
-
                 if (crear == true)
                 {
                     //agregar
@@ -331,6 +329,7 @@ namespace IrisContabilidad.modulo_inventario
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+
         public void loadListaCompraDetalle()
         {
             try
@@ -353,6 +352,7 @@ namespace IrisContabilidad.modulo_inventario
                 MessageBox.Show("Error loadListaCompraDetalle.:"+ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+        
         private void ventana_compra_Load(object sender, EventArgs e)
         {
 
@@ -408,6 +408,7 @@ namespace IrisContabilidad.modulo_inventario
             agregarProducto();
             calcularTotal();
         }
+        
         public void agregarProducto()
         {
             try
@@ -545,6 +546,7 @@ namespace IrisContabilidad.modulo_inventario
                 MessageBox.Show("Error calcularTotal.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         private void button4_Click(object sender, EventArgs e)
         {
             ventana_busqueda_producto ventana = new ventana_busqueda_producto();
@@ -579,6 +581,7 @@ namespace IrisContabilidad.modulo_inventario
                 MessageBox.Show("Error loadProducto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        
         public void loadUnidad()
         {
             try
@@ -609,6 +612,7 @@ namespace IrisContabilidad.modulo_inventario
         {
             
         }
+        
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -616,6 +620,7 @@ namespace IrisContabilidad.modulo_inventario
                 this.Close();
             }
         }
+        
         private void button2_Click(object sender, EventArgs e)
         {
             salir();
@@ -712,8 +717,6 @@ namespace IrisContabilidad.modulo_inventario
                 fechaInicialText.SelectAll();
             }
         }
-
-        
 
         private void fechaLimiteTimePicker_KeyDown(object sender, KeyEventArgs e)
         {
@@ -835,6 +838,7 @@ namespace IrisContabilidad.modulo_inventario
                 MessageBox.Show("Error loadSuplidor.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         private void button5_Click(object sender, EventArgs e)
         {
             ventana_busqueda_suplidor ventana = new ventana_busqueda_suplidor();
@@ -848,6 +852,7 @@ namespace IrisContabilidad.modulo_inventario
                 numeroFacturaText.SelectAll();
             }
         }
+        
         public void cargarPrecioProductoUnidad()
         {
             try
@@ -879,6 +884,7 @@ namespace IrisContabilidad.modulo_inventario
                 MessageBox.Show("Error cargarPrecioProductoUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void calularImporte()
         {
             try
@@ -1002,5 +1008,7 @@ namespace IrisContabilidad.modulo_inventario
             {
             }
         }
+
+
     }
 }

@@ -13,9 +13,6 @@ namespace IrisContabilidad.modelos
         utilidades utilidades = new utilidades();
 
 
-
-
-
         //agregar 
         public bool agregarCompra(compra compra, List<compra_detalle> listaDetalle )
         {
@@ -47,7 +44,17 @@ namespace IrisContabilidad.modelos
                 listaDetalle.ForEach(x =>
                 {
                     x.codigo = getNextCompraDetalle();
-                    sql = "insert into compra_detalle(codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo) values('"+x.codigo+"','"+compra.codigo+"','"+x.cod_producto+"','"+x.cod_unidad+"','"+x.precio+"','"+x.cantidad+"','"+x.monto+"','"+x.monto_descuento+"','1')";
+                    decimal itebisUnitario = 0;
+                    decimal descuentoUnitario = 0;
+                    if (x.monto_itebis > 0)
+                    {
+                        itebisUnitario = x.monto_itebis / x.cantidad;
+                    }
+                    if (x.monto_descuento > 0)
+                    {
+                        descuentoUnitario = x.monto_descuento / x.cantidad;
+                    }
+                    sql = "insert into compra_detalle(codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo,itebis_unitario,descuento_unitario) values('"+x.codigo+"','"+compra.codigo+"','"+x.cod_producto+"','"+x.cod_unidad+"','"+x.precio+"','"+x.cantidad+"','"+x.monto+"','"+x.monto_descuento+"','1','"+itebisUnitario+"','"+descuentoUnitario+"')";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
 
@@ -326,7 +333,7 @@ namespace IrisContabilidad.modelos
 
                 List<compra_detalle> lista = new List<compra_detalle>();
                 string sql = "";
-                sql = "select codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo from compra_detalle where cod_compra='"+id+"'";
+                sql = "select codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo,itebis_unitario,descuento_unitario from compra_detalle where cod_compra='"+id+"'";
                 if (SoloActivo == true)
                 {
                     //se traen solo los activo
@@ -347,6 +354,8 @@ namespace IrisContabilidad.modelos
                         compraDetalle.monto=Convert.ToDecimal(row[6].ToString());
                         compraDetalle.monto_descuento=Convert.ToDecimal(row[7].ToString());
                         compraDetalle.activo = Convert.ToBoolean(row[8].ToString());
+                        compraDetalle.itebis_unitario = Convert.ToDecimal(row[9]);
+                        compraDetalle.descuento_unitario = Convert.ToDecimal(row[10]);
                         lista.Add(compraDetalle);
                     }
                 }
@@ -367,7 +376,7 @@ namespace IrisContabilidad.modelos
             {
                 List<compra_detalle> lista = new List<compra_detalle>();
                 string sql = "";
-                sql = "select cd.codigo,cd.cod_compra,cd.cod_producto,cd.cod_unidad,cd.precio,cd.cantidad,cd.monto,cd.descuento,cd.activo from compra_detalle cd join compra c on cd.cod_compra=c.codigo where cd.activo='1' and c.activo='1' and c.cod_suplidor='"+id+"';";
+                sql = "select cd.codigo,cd.cod_compra,cd.cod_producto,cd.cod_unidad,cd.precio,cd.cantidad,cd.monto,cd.descuento,cd.activo,cd.itebis_unitario,cd.descuento_unitario from compra_detalle cd join compra c on cd.cod_compra=c.codigo where cd.activo='1' and c.activo='1' and c.cod_suplidor='"+id+"';";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -381,8 +390,10 @@ namespace IrisContabilidad.modelos
                         compraDetalle.precio = Convert.ToDecimal(row[4].ToString());
                         compraDetalle.cantidad = Convert.ToDecimal(row[5].ToString());
                         compraDetalle.monto = Convert.ToDecimal(row[6].ToString());
-                        compraDetalle.monto_descuento = Convert.ToDecimal(row[7].ToString());
-                        compraDetalle.activo = Convert.ToBoolean(row[8].ToString());
+                        compraDetalle.monto_descuento = Convert.ToDecimal(row[7]);
+                        compraDetalle.activo = Convert.ToBoolean(row[8]);
+                        compraDetalle.itebis_unitario = Convert.ToDecimal(row[9]);
+                        compraDetalle.descuento_unitario = Convert.ToDecimal(row[10]);
                         lista.Add(compraDetalle);
                     }
                 }
@@ -445,7 +456,7 @@ namespace IrisContabilidad.modelos
             {
                 List<compra> lista = new List<compra>();
                 compra compra = new compra();
-                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra where cod_suplidor='" + id + "'";
+                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra where activo='1' and cod_suplidor='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
