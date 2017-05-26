@@ -656,6 +656,7 @@ namespace IrisContabilidad.modelos
                 reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
                 reporteEncabezado.anioInicial = anoInicial;
                 reporteEncabezado.anioFinal = anoFinal;
+                reporteEncabezado.promedioMontoVenta = promedioMontoVenta;
                 if (tipoVenta != null)
                 {
                     reporteEncabezado.tipoVenta = tipoVenta.nombre;
@@ -667,7 +668,6 @@ namespace IrisContabilidad.modelos
                     reporteEncabezado.cliente = cliente.nombre;
                 }
                 List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
-                reporteEncabezado.promedioMontoVenta = promedioMontoVenta;
                 listaReporteEncabezado.Add(reporteEncabezado);
                 ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
                 listaReportDataSource.Add(reporteE);
