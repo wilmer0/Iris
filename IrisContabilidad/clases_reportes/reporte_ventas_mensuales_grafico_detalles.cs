@@ -19,7 +19,7 @@ namespace IrisContabilidad.clases_reportes
         public decimal montoNotaCredito { get; set; }
         public decimal montoNotaDebito { get; set; }
         public decimal porcientoCrecimiento { get; set; }
-
+        public string montoTotalS { get; set; }
 
 
         public  reporte_ventas_mensuales_grafico_detalles()

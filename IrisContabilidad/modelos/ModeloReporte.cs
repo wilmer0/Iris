@@ -608,6 +608,7 @@ namespace IrisContabilidad.modelos
                             reporteDetalle.montoNotaDebito += d2.montoNotaDebito;
                             reporteDetalle.montoSubTotal += d2.montoSubTotal;
                             reporteDetalle.montoTotal += d2.montoTotal;
+                            reporteDetalle.montoTotalS += d2.montoTotal.ToString("N");
                         }
                     }
 
