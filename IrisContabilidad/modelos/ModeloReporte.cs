@@ -546,10 +546,14 @@ namespace IrisContabilidad.modelos
         }
 
         //imprimir ventas mensuales graficos
-        public bool imprimirVentasMensualesByRangoAnos(int anoInicial,int anoFinal, bool soloCobradas ,cliente cliente,empleado empleado)
+        public bool imprimirVentasMensualesByRangoAnos(int anoInicial,int anoFinal, bool soloCobradas ,cliente cliente,empleado empleado,tipo_ventas tipoVenta)
         {
             try
             {
+
+                decimal promedioMontoVenta=0;
+                decimal porcientoCrecimiento = 0;
+
                 //buscando ventas en base al anio
                 List<venta> listaVentas=new List<venta>();
                 listaVentas = new modeloVenta().getListaCompletaByRangoAnos(anoInicial,anoFinal);
@@ -574,7 +578,11 @@ namespace IrisContabilidad.modelos
                 {
                     listaVentas = listaVentas.FindAll(x => x.codigo_empleado ==empleado.codigo);
                 }
-
+                //por tipo de venta
+                if (tipoVenta != null)
+                {
+                    listaVentas = listaVentas.FindAll(x => x.codigo_tipo_venta == tipoVenta.codigo);
+                }
 
                 //llenando la lista detalle
                 foreach (var x in listaVentas)
@@ -613,6 +621,25 @@ namespace IrisContabilidad.modelos
 
                 listaDetalle = listaDetalleTemporal;
 
+                //buscando el monto de venta promedio
+                promedioMontoVenta = listaDetalle.Average(x => x.montoTotal);
+
+                //buscando el porciento de crecimiento positivo o negativo
+                foreach (var x in listaDetalle)
+                {
+                    if (x.montoTotal > promedioMontoVenta)
+                    {
+                        //el crecimiento fue positivo
+                        x.porcientoCrecimiento = x.montoTotal/promedioMontoVenta;
+                    }
+                    else
+                    {
+                        //el crecimiento fue negativo
+                        x.porcientoCrecimiento = -1 * (promedioMontoVenta / x.montoTotal);
+                    }
+                }
+
+
                 //datos generales
                 String reporte = "";
 
@@ -628,12 +655,18 @@ namespace IrisContabilidad.modelos
                 reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
                 reporteEncabezado.anioInicial = anoInicial;
                 reporteEncabezado.anioFinal = anoFinal;
+                if (tipoVenta != null)
+                {
+                    reporteEncabezado.tipoVenta = tipoVenta.nombre;
+                }
+                
                 if (cliente != null)
                 {
                     reporteEncabezado.codigoCliente = cliente.codigo;
                     reporteEncabezado.cliente = cliente.nombre;
                 }
                 List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                reporteEncabezado.promedioMontoVenta = promedioMontoVenta;
                 listaReporteEncabezado.Add(reporteEncabezado);
                 ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
                 listaReportDataSource.Add(reporteE);

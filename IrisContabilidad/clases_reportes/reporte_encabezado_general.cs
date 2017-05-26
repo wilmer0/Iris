@@ -38,11 +38,23 @@ namespace IrisContabilidad.clases_reportes
         public string vendedor { get; set; }
 
 
-
         //booleanas
         public bool soloPagado { get; set; }
         public bool soloCobrado { get; set; }
         public bool todos { get; set; }
+
+
+        //tipos
+        public string tipoVenta { get; set; }
+        public string tipoCompra { get; set; }
+        public string tipoCliente { get; set; }
+        public string tipoSuplidor { get; set; }
+
+
+        //promedios
+        public decimal promedioMontoVenta { get; set; }
+        public decimal promedioMontoCompra { get; set; }
+        
 
 
         //listas

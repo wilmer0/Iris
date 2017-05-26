@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
@@ -20,11 +22,15 @@ namespace IrisContabilidad.modulo_gerencia
         private empleado empleado;
         private empleado empleadoSesion;
         private cliente cliente;
+        private tipo_ventas tipoventa;
+
 
         //modelos
         ModeloReporte modeloReporte=new ModeloReporte();
         modeloCliente modelocliente=new modeloCliente();
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
+        modeloTipoVentas modeloTipoVentas=new modeloTipoVentas();
+
 
         //variables
         private int anioInicial = 0;
@@ -35,6 +41,8 @@ namespace IrisContabilidad.modulo_gerencia
         private ventana_procesando procesando;
         private BackgroundWorker SicronizarProceso = new BackgroundWorker();
 
+        //listas
+        private List<tipo_ventas> listaTiposVentas; 
 
 
         public ventana_reporte_ventas_mensuales_grafico()
@@ -56,7 +64,7 @@ namespace IrisContabilidad.modulo_gerencia
             SicronizarProceso.ReportProgress(10);
             try
             {
-                modeloReporte.imprimirVentasMensualesByRangoAnos(anioInicial, anioFinal, soloCobradas, cliente, empleado);
+                modeloReporte.imprimirVentasMensualesByRangoAnos(anioInicial, anioFinal, soloCobradas, cliente, empleado,tipoventa);
             }
             catch (Exception ex)
             {
@@ -94,6 +102,7 @@ namespace IrisContabilidad.modulo_gerencia
                 loadCliente();
                 empleado = null;
                 loadEmpleado();
+                loadTipoVentas();
             }
             catch (Exception ex)
             {
@@ -137,6 +146,36 @@ namespace IrisContabilidad.modulo_gerencia
             }
         }
 
+        public void loadTipoVentas()
+        {
+            try
+            {
+                if (listaTiposVentas == null)
+                {
+                    listaTiposVentas = new List<tipo_ventas>();
+                }
+
+                tipoventa = new tipo_ventas();
+                tipoventa.codigo = 0;
+                tipoventa.nombre = "";
+                tipoventa.activo = true;
+
+                
+                listaTiposVentas = modeloTipoVentas.getListaCompleta();
+                listaTiposVentas.Add(tipoventa);
+                listaTiposVentas = listaTiposVentas.OrderBy(x => x.codigo).ToList();
+                
+                tipoVentaComboBox.DisplayMember = "nombre";
+                tipoVentaComboBox.ValueMember = "codigo";
+                tipoVentaComboBox.DataSource = listaTiposVentas;
+                tipoVentaComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTipoVentas.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public bool ValidarGetAction()
         {
             try
@@ -176,6 +215,7 @@ namespace IrisContabilidad.modulo_gerencia
                     return false;
                 }
 
+                //ano inicial y ano final
                 anioInicial = Convert.ToInt16(anoInicialText.Text);
                 anioFinal = Convert.ToInt16(anofinalText.Text);
                 if (radioSoloVentasCobradas.Checked == true)
@@ -186,6 +226,18 @@ namespace IrisContabilidad.modulo_gerencia
                 {
                     soloCobradas = false;
                 }
+
+                //tipo venta
+                if (tipoVentaComboBox.Text != "")
+                {
+                    tipoventa=new tipo_ventas();
+                    tipoventa =modeloTipoVentas.getTipoVentaById(Convert.ToInt16(tipoVentaComboBox.SelectedValue.ToString()));
+                }
+                else
+                {
+                    tipoventa = null;
+                }
+
                 return true;
             }
             catch (Exception ex)
@@ -341,5 +393,8 @@ namespace IrisContabilidad.modulo_gerencia
         {
 
         }
+
+
+
     }
 }

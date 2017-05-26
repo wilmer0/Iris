@@ -220,6 +220,7 @@ namespace IrisContabilidad
                     singleton.empleado = empleado;
                     menu1 ventana = new menu1(empleado);
                     ventana.Show();
+                    this.Hide();
                 }
                 else
                 {

@@ -1368,6 +1368,7 @@
                               <Value>=Sum(Fields!montoNotaCredito.Value)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00</Format>
                               </Style>
                             </TextRun>
@@ -1407,6 +1408,7 @@
                               <Value>=Sum(Fields!montoNotaDebito.Value)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00</Format>
                               </Style>
                             </TextRun>
@@ -1446,6 +1448,7 @@
                               <Value>=Sum(Fields!montoDescuento.Value)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00</Format>
                               </Style>
                             </TextRun>
@@ -1485,6 +1488,7 @@
                               <Value>=Sum(Fields!montoSubTotal.Value)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00</Format>
                               </Style>
                             </TextRun>
@@ -1524,6 +1528,7 @@
                               <Value>=Sum(Fields!montoItbis.Value)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00</Format>
                               </Style>
                             </TextRun>
@@ -1563,6 +1568,7 @@
                               <Value>=Sum(Fields!montoTotal.Value)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
                                 <Format>#,0.00</Format>
                               </Style>
                             </TextRun>
@@ -1888,35 +1894,6 @@
             </Style>
           </ChartArea>
         </ChartAreas>
-        <ChartLegends>
-          <ChartLegend Name="Default">
-            <Style>
-              <BackgroundGradientType>None</BackgroundGradientType>
-              <FontSize>8pt</FontSize>
-            </Style>
-            <ChartLegendTitle>
-              <Caption />
-              <Style>
-                <FontSize>8pt</FontSize>
-                <FontWeight>Bold</FontWeight>
-                <TextAlign>Center</TextAlign>
-              </Style>
-            </ChartLegendTitle>
-            <HeaderSeparatorColor>Black</HeaderSeparatorColor>
-            <ColumnSeparatorColor>Black</ColumnSeparatorColor>
-          </ChartLegend>
-        </ChartLegends>
-        <ChartTitles>
-          <ChartTitle Name="Default">
-            <Caption>Montos Ventas Mensuales</Caption>
-            <Style>
-              <BackgroundGradientType>None</BackgroundGradientType>
-              <FontWeight>Bold</FontWeight>
-              <TextAlign>General</TextAlign>
-              <VerticalAlign>Top</VerticalAlign>
-            </Style>
-          </ChartTitle>
-        </ChartTitles>
         <Palette>BrightPastel</Palette>
         <ChartBorderSkin>
           <Style>
@@ -2136,7 +2113,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Páginas.:</Value>
+                  <Value>Pages.:</Value>
                   <Style>
                     <FontSize>9pt</FontSize>
                     <FontWeight>Bold</FontWeight>
@@ -2177,7 +2154,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>REPORTE VENTAS MENSUALES</Value>
+                  <Value>REPORTE VENTAS MENSUALES / MONTLY SELLS REPORT </Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                   </Style>
@@ -2212,7 +2189,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>Empleado.:</Value>
+                  <Value>Employee.:</Value>
                   <Style>
                     <FontSize>9pt</FontSize>
                     <FontWeight>Bold</FontWeight>

@@ -12,7 +12,7 @@ namespace IrisContabilidad.clases_reportes
     public class reporte_estado_cuenta_suplidor_detalle
     {
         
-        public int idSuplidor { get; set; }
+        public int codigoSuplidor { get; set; }
         public string suplidor { get; set; }
         public string rnc { get; set; }
         public string telefonos { get; set; }
@@ -32,7 +32,7 @@ namespace IrisContabilidad.clases_reportes
         {
             try
             {
-                this.idSuplidor = suplidor.codigo;
+                this.codigoSuplidor = suplidor.codigo;
                 this.suplidor = suplidor.nombre;
                 this.rnc = suplidor.rnc;
                 this.telefonos = suplidor.telefono1 + " - " + suplidor.telefono2;

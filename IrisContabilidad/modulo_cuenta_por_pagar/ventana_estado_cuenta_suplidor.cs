@@ -122,7 +122,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 }
                 foreach (var x in reporteEncabezadoGeneral.listaReporteEstadoCuentaSuplidorDetalle)
                 {
-                    dataGridView1.Rows.Add(x.suplidor,x.suplidor, x.montoFacturado.ToString("N"),x.montoNotasDebito.ToString("N"), x.montoPagado.ToString("N"),x.montoNotasCredito.ToString("N"), x.montoPendiente.ToString("N"));
+                    dataGridView1.Rows.Add(x.codigoSuplidor, x.suplidor, x.montoFacturado.ToString("N"), x.montoNotasDebito.ToString("N"), x.montoPagado.ToString("N"), x.montoNotasCredito.ToString("N"), x.montoPendiente.ToString("N"));
                 }
             }
             catch (Exception ex)
@@ -178,8 +178,6 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             }
         }
 
-        
-        
         public void loadSuplidor()
         {
             try
@@ -281,7 +279,5 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         }
 
 
- 
     }
-
 }

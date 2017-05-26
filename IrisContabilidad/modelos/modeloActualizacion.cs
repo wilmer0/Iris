@@ -480,7 +480,7 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`compra_detalle` ADD COLUMN `itebis_unitario` DECIMAL(20,2) NOT NULL DEFAULT 0 AFTER `itbis`, ADD COLUMN `descuento_unitario` DECIMAL(20,2) NOT NULL DEFAULT 0 AFTER `itebis_unitario`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`compra_detalle` MODIFY COLUMN `monto` DECIMAL(20,2) NOT NULL DEFAULT 0, ADD COLUMN `monto_total` DECIMAL(20,2) NOT NULL DEFAULT 0 AFTER `descuento_unitario`; ";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

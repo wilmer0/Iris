@@ -1000,7 +1000,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>ID Suplidor</Value>
+                  <Value>ID </Value>
                   <Style>
                     <FontSize>9pt</FontSize>
                     <FontWeight>Bold</FontWeight>

@@ -54,7 +54,8 @@ namespace IrisContabilidad.modelos
                     {
                         descuentoUnitario = x.monto_descuento / x.cantidad;
                     }
-                    sql = "insert into compra_detalle(codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo,itebis_unitario,descuento_unitario) values('"+x.codigo+"','"+compra.codigo+"','"+x.cod_producto+"','"+x.cod_unidad+"','"+x.precio+"','"+x.cantidad+"','"+x.monto+"','"+x.monto_descuento+"','1','"+itebisUnitario+"','"+descuentoUnitario+"')";
+                    x.monto_total = x.monto + x.monto_descuento + x.monto_itebis;
+                    sql = "insert into compra_detalle(codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo,itebis_unitario,descuento_unitario,monto_total) values('"+x.codigo+"','"+compra.codigo+"','"+x.cod_producto+"','"+x.cod_unidad+"','"+x.precio+"','"+x.cantidad+"','"+x.monto+"','"+x.monto_descuento+"','1','"+itebisUnitario+"','"+descuentoUnitario+"','"+x.monto_total+"')";
                     utilidades.ejecutarcomando_mysql(sql);
                 });
 
@@ -333,7 +334,7 @@ namespace IrisContabilidad.modelos
 
                 List<compra_detalle> lista = new List<compra_detalle>();
                 string sql = "";
-                sql = "select codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo,itebis_unitario,descuento_unitario from compra_detalle where cod_compra='"+id+"'";
+                sql = "select codigo,cod_compra,cod_producto,cod_unidad,precio,cantidad,monto,descuento,activo,itebis_unitario,descuento_unitario,monto_total from compra_detalle where cod_compra='"+id+"'";
                 if (SoloActivo == true)
                 {
                     //se traen solo los activo
@@ -356,6 +357,8 @@ namespace IrisContabilidad.modelos
                         compraDetalle.activo = Convert.ToBoolean(row[8].ToString());
                         compraDetalle.itebis_unitario = Convert.ToDecimal(row[9]);
                         compraDetalle.descuento_unitario = Convert.ToDecimal(row[10]);
+                        compraDetalle.monto_total = Convert.ToDecimal(row[11]);
+                        
                         lista.Add(compraDetalle);
                     }
                 }
@@ -376,7 +379,7 @@ namespace IrisContabilidad.modelos
             {
                 List<compra_detalle> lista = new List<compra_detalle>();
                 string sql = "";
-                sql = "select cd.codigo,cd.cod_compra,cd.cod_producto,cd.cod_unidad,cd.precio,cd.cantidad,cd.monto,cd.descuento,cd.activo,cd.itebis_unitario,cd.descuento_unitario from compra_detalle cd join compra c on cd.cod_compra=c.codigo where cd.activo='1' and c.activo='1' and c.cod_suplidor='"+id+"';";
+                sql = "select cd.codigo,cd.cod_compra,cd.cod_producto,cd.cod_unidad,cd.precio,cd.cantidad,cd.monto,cd.descuento,cd.activo,cd.itebis_unitario,cd.descuento_unitario,cd.monto_total from compra_detalle cd join compra c on cd.cod_compra=c.codigo where cd.activo='1' and c.activo='1' and c.cod_suplidor='"+id+"';";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -394,6 +397,7 @@ namespace IrisContabilidad.modelos
                         compraDetalle.activo = Convert.ToBoolean(row[8]);
                         compraDetalle.itebis_unitario = Convert.ToDecimal(row[9]);
                         compraDetalle.descuento_unitario = Convert.ToDecimal(row[10]);
+                        compraDetalle.monto_total = Convert.ToDecimal(row[11]);
                         lista.Add(compraDetalle);
                     }
                 }
@@ -994,7 +998,7 @@ namespace IrisContabilidad.modelos
 
 
                 listaCompra = getListaCompraBySuplidor(suplidorId);
-                listaCompraDetalle = getListaCompraDetalleByCompra(1);
+                listaCompraDetalle = getListaCompraDetalleBySuplidorID(suplidorId);
                 listaPagosDetalle = getListaPagosDetallesBySuplidorId(suplidorId);
 
                 if (listaCompraDetalle.Count > 0)
@@ -1002,7 +1006,8 @@ namespace IrisContabilidad.modelos
                     //sumar los montos de venta + descuento
                     listaCompraDetalle.ForEach(x =>
                     {
-                        montoCompra += x.monto + x.monto_descuento;
+                        //montoCompra += x.monto + x.monto_descuento;
+                        montoCompra += x.monto_total;
                     });
                 }
 
