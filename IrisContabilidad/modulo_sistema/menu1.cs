@@ -6,9 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
+using ContentAlignment = System.Drawing.ContentAlignment;
 
 namespace IrisContabilidad.modulo_sistema
 {
@@ -43,32 +45,34 @@ namespace IrisContabilidad.modulo_sistema
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
         modeloModulo modeloModulo=new modeloModulo();
         modeloTipoVentana modeloTipoVentana=new modeloTipoVentana();
-
+        modeloSistemaConfiguracion modeloSistemaConfiguracion=new modeloSistemaConfiguracion();
 
         //listas
         private List<string> listaTemp;
         private List<modulo> listaModulo; 
-        private List<ventana> listaVentanas; 
-
-
+        private List<ventana> listaVentanas;
+        private List<ventana> listaVentanasCompleta;
+        private List<ventana> listaVentanaCompletaTemporal;
 
 
         public menu1(empleado empleadoApp)
         {
             InitializeComponent();
             this.empleado = singleton.getEmpleado();
-            this.sistemaConfiguracion = singleton.getSistemaconfiguracion();
+            //this.empleado = empleadoApp;
+            this.sistemaConfiguracion = modeloSistemaConfiguracion.getSistemaConfiguracion();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "menú");
             this.Text = tituloLabel.Text;
             RutaImagenesVentanas = rutaProyectoActual + @"Resources\ventanas\";
             RutaImagenesModulos = rutaProyectoActual + @"Resources\modulos\";
             LoadVentana();
-
+            loadTodasVentanas("");
         }
         public void LoadVentana()
         {
             try
             {
+                validarSistema();
                 tipoVentana=new tipoVentana();
                 tipoVentana = modeloTipoVentana.getTipoVentanaById(empleado.tipoVentana);
 
@@ -81,6 +85,150 @@ namespace IrisContabilidad.modulo_sistema
                 MessageBox.Show("Error LoadVentana.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+
+        public void loadTodasVentanas(string ventanaNombre)
+        {
+            try
+            {
+                listaVentanaCompletaTemporal = new List<ventana>(); 
+                    
+                if (listaVentanasCompleta == null)
+                {
+                    listaVentanasCompleta = new List<ventana>();
+                    listaVentanasCompleta = modeloModulo.getListaVentanasProgramadorNo();
+                }
+                else
+                {
+                    if (ventanaNombre != "")
+                    {
+                        listaVentanaCompletaTemporal = listaVentanasCompleta.FindAll(x => x.nombre_ventana.ToLower().Contains(ventanaNombre.ToLower()));
+                    }
+                }
+
+                foreach (var x in listaVentanasCompleta)
+                {
+                    //si el empleado no tiene acceso a la ventana actual se elimina de la lista
+                    if ((modeloModulo.getAccederVentanaByEmpleadoId(empleado.codigo, x.codigo)) == false)
+                    {
+                        listaVentanaCompletaTemporal.Remove(x);
+                    }
+                }
+
+                cargarListaVentanas();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("error loadTotasVentanas.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+
+        public void cargarListaVentanas()
+        {
+            try
+            {
+                if (flowLayoutVentanas.Controls.Count > 0)
+                {
+                    flowLayoutVentanas.Controls.Clear();
+                }
+
+                List<Button> listaBotonesVentanas = new List<Button>();
+                foreach (var ventanaActual in listaVentanaCompletaTemporal)
+                {
+                    #region
+                    botonVentana = new Button();
+                    ventana = new ventana();
+                    ventana.codigo = ventanaActual.codigo;
+                    ventana = modeloModulo.getVentanaById(ventana.codigo);
+
+
+                    //estableciendo el estilo del boton
+                    botonVentana.FlatStyle = FlatStyle.Flat;
+                    botonVentana.BackgroundImageLayout = ImageLayout.Stretch;
+                    botonVentana.Width = tipoVentana.tamanoVentanaAncho;
+                    botonVentana.Height = tipoVentana.tamanoVentanaAlto;
+
+
+                    //dando estilo al texto del boton
+                    //izquierda-arriba-derecha-abajo
+                    Padding espacio = new Padding(25, 25, 25, 25);
+                    botonVentana.Margin = espacio;
+                    botonVentana.TextAlign = ContentAlignment.BottomCenter;
+                    botonVentana.Text = ventana.nombre_ventana;
+                    botonVentana.ForeColor = Color.White;
+                    botonVentana.Font = new Font(botonVentana.Font.FontFamily.Name, tipoVentana.tamanoModuloLetra);
+                    botonVentana.MouseHover += BotonVentanaOnMouseHover;
+                    botonVentana.MouseLeave += BotonVentanaOnMouseLeave;
+
+
+                    //estableciendo la imagen de fondo del boton
+                    botonVentana.BackgroundImage = Image.FromFile(RutaImagenesVentanas + ventana.imagen);
+                    botonVentana.Tag = ventana.codigo;
+                    botonVentana.Click += BotonVentanaOnClick;
+
+                    listaBotonesVentanas.Add(botonVentana);
+                    
+
+                    #endregion
+                }
+
+                //ordenar las ventanas en orden alfabetico
+                listaBotonesVentanas = listaBotonesVentanas.OrderBy(x => x.Text).ToList();
+                listaBotonesVentanas.ForEach(x =>
+                {
+                    flowLayoutVentanas.Controls.Add(x);
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error cargarListaVentanas .:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
+        
+        public void validarSistema()
+        {
+            try
+            {
+                //validar sistema si el sistema no es full debe ver la fecha de vencimiento para saber si caduco la version de prueba
+                sistemaConfiguracion = modeloSistemaConfiguracion.getSistemaConfiguracion();
+                if (sistemaConfiguracion.sistemaFull == false)
+                {
+                    DateTime hoy = DateTime.Today;
+                    if (sistemaConfiguracion.fechaVencimientoSistema != null)
+                    {
+                        if (hoy <= sistemaConfiguracion.fechaVencimientoSistema)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("La version de prueba se ha terminado, por favor contacte con el encargado, si desea mandar un correo automatico solicitando la version full pulse el boton de 'YES'", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            {
+                                //se manda el correo automatico solitando que instalen la version full y se cierra la aplicacion
+                                Application.Exit();
+                            }
+                            else
+                            {
+                                Application.Exit();
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta la fecha de ingreso", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validando sistema .:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void menu1_Load(object sender, EventArgs e)
         {
 
@@ -90,6 +238,7 @@ namespace IrisContabilidad.modulo_sistema
         {
             this.WindowState = FormWindowState.Maximized;
         }
+        
         private void BotonModuloOnClick(object sender, EventArgs eventArgs)
         {
             try
@@ -124,7 +273,7 @@ namespace IrisContabilidad.modulo_sistema
                     flowLayoutModulos.Controls.Clear();
                 }
 
-                listaTemp.ForEach(moduloActual =>
+                foreach(var moduloActual in listaTemp)
                 {
                     //MessageBox.Show("Modulo actual-> " + modulo);
                     //instanciando el modulo actual
@@ -145,7 +294,7 @@ namespace IrisContabilidad.modulo_sistema
                     botonModulo.Font = new Font(botonModulo.Font.FontFamily.Name, tipoVentana.tamanoModuloLetra);
                     flowLayoutModulos.Controls.Add(botonModulo);
                     
-                });
+                }
             }
             catch (Exception ex)
             {
@@ -153,6 +302,7 @@ namespace IrisContabilidad.modulo_sistema
                     MessageBoxIcon.Error);
             }
         }
+        
         public void loadVentanas(int idModulo)
         {
             try
@@ -273,8 +423,7 @@ namespace IrisContabilidad.modulo_sistema
             }
         }
 
-       
-        private void button4_Click(object sender, EventArgs e)
+       private void button4_Click(object sender, EventArgs e)
         {
             Salir();
         }
@@ -283,6 +432,7 @@ namespace IrisContabilidad.modulo_sistema
         {
             
         }
+        
         public  void Salir()
         {
             inicioSesion = true;
@@ -361,6 +511,26 @@ namespace IrisContabilidad.modulo_sistema
             if (inicioSesion == false)
             {
                 e.Cancel = true;    
+            }
+        }
+
+        private void menu1_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+        }
+
+        private void busquedaText_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    loadTodasVentanas(busquedaText.Text);
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error buscando", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

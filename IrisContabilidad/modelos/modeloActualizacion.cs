@@ -13,6 +13,7 @@ namespace IrisContabilidad.modelos
         singleton singleton=new singleton();
         private sucursal sucursal;
         modeloSucursal modeloSucursal=new modeloSucursal();
+        private sistemaConfiguracion sistemaConfiguracion;
 
 
         public void getSucursalVersion()
@@ -71,35 +72,35 @@ namespace IrisContabilidad.modelos
 
                 }else if (sucursal.versionSistema == 2)
                 {
-                    //version3(true);
+                    version3(true);
                 }
                 else if (sucursal.versionSistema == 3)
                 {
-                    //version4(true);
+                    version4(true);
                 }
                 else if (sucursal.versionSistema == 4)
                 {
-                    //version5(true);
+                    version5(true);
                 }
                 else if (sucursal.versionSistema == 5)
                 {
-                    //version6(true);
+                    version6(true);
                 }
                 else if (sucursal.versionSistema == 6)
                 {
-                    //version7(true);
+                    version7(true);
                 }
                 else if (sucursal.versionSistema == 7)
                 {
-                    //version8(true);
+                    version8(true);
                 }
                 else if (sucursal.versionSistema == 8)
                 {
-                    //version9(true);
+                    version9(true);
                 }
                 else if (sucursal.versionSistema == 9)
                 {
-                    //version10(true);
+                    version10(true);
                 }
                 else if (sucursal.versionSistema == 10)
                 {
@@ -252,7 +253,6 @@ namespace IrisContabilidad.modelos
                 string sql = "";
 
                 #region querys version2
-               
                 //nuevo query
                 sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` ADD COLUMN `monto_venta_contado` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_pedido`;";
                 utilidades.ejecutarcomando_mysql(sql);
@@ -305,32 +305,25 @@ namespace IrisContabilidad.modelos
                 sql = "CREATE TABLE `iris`.`notas_programador` (`notas` LONGTEXT)ENGINE = InnoDB;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('1','ACTIVOS','1','0','1','0','0','1','1');";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('1','ACTIVOS','1','1','1','0','0','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('2','PASIVOS','2','0','1','0','1','0','1');";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('2','PASIVOS','2','2','1','0','1','0','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_credito,origen_debito,activo) values('3','CAPITAL','3','0','1','0','1','0','1');";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('3','CAPITAL','3','3','1','0','1','0','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('4','INGRESOS','4','4','1','0','0','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('5','COSTOS','5','5','1','0','1','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "insert into catalogo_cuentas(codigo,nombre,numero_cuenta,codigo_cuenta_superior,cuenta_acumulativa,cuenta_movimiento,origen_debito,origen_credito,activo) values('6','GASTOS','6','6','1','0','1','1','1');";
                 utilidades.ejecutarcomando_mysql(sql);
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
-                //nuevo query
-                sql = "";
-                utilidades.ejecutarcomando_mysql(sql);
+                
+
                 
                 
 
@@ -346,11 +339,831 @@ namespace IrisContabilidad.modelos
             {
                 if (mostrarErrores == true)
                 {
-                    MessageBox.Show("Error version1.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error version2.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
+        private void version3(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version3
+                //nuevo query
+                sql = "CREATE TABLE `iris`.`diario_general` ( `codigo` INTEGER NOT NULL DEFAULT 0, `fecha_sistema` DATETIME NOT NULL DEFAULT 0, `fecha` DATE NOT NULL DEFAULT 0, `codigo_cuenta` INTEGER NOT NULL DEFAULT 0, `debito` DECIMAL(20,2) NOT NULL DEFAULT 0, `credito` DECIMAL(20,2) NOT NULL DEFAULT 0, `codigo_usuario` INTEGER NOT NULL DEFAULT 0, PRIMARY KEY(`codigo`) ) ENGINE = InnoDB;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` CHARACTER SET Default COLLATE utf8_bin;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` CHANGE COLUMN `codigo_cuenta` `codigo_cuenta_contable` INTEGER NOT NULL DEFAULT 0, CHANGE COLUMN `codigo_usuario` `codigo_empleado` INTEGER NOT NULL DEFAULT 0, ADD CONSTRAINT `FK_diario_general_1` FOREIGN KEY `FK_diario_general_1` (`codigo_cuenta_contable`) REFERENCES `catalogo_cuentas` (`codigo`) ON DELETE RESTRICT ON UPDATE RESTRICT, ADD CONSTRAINT `FK_diario_general_2` FOREIGN KEY `FK_diario_general_2` (`codigo_empleado`) REFERENCES `empleado` (`codigo`) ON DELETE RESTRICT";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` ADD COLUMN `codigo_asiento` INTEGER NOT NULL DEFAULT 0 AFTER `codigo`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` DROP PRIMARY KEY;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`diario_general` ADD PRIMARY KEY(`codigo`, `codigo_asiento`);";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`catalogo_cuentas` ADD COLUMN `origen_cuenta` VARCHAR(99) NOT NULL DEFAULT '' AFTER `activo`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "CREATE TABLE `iris`.`parametrizacion_contable` ( `codigo_cuenta_caja_efectivo` INTEGER, `codigo_cuenta_compras` INTEGER, `codigo_cuenta_suplidores` INTEGER, `codigo_cuenta_gastos` INTEGER, `codigo_cuenta_pago_suplidores` INTEGER NOT NULL DEFAULT 0, `codigo_cuenta_ingreso_cobros_venta` INTEGER NOT NULL DEFAULT 0, `codigo_cuenta_itbis` INTEGER NOT NULL DEFAULT 0, `codigo_cuenta_flete` INTEGER NOT NULL DEFAULT 0 ) ENGINE = InnoDB;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `codigo_idioma_sistema` INTEGER NOT NULL DEFAULT 0 AFTER `concepto_egreso_caja_devolucion_venta`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "CREATE TABLE `iris`.`idiomas` ( `codigo` INTEGER UNSIGNED NOT NULL DEFAULT 0, `idioma` VARCHAR(99) NOT NULL DEFAULT '', PRIMARY KEY(`codigo`) ) ENGINE = InnoDB;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "insert into idiomas(codigo,idioma) values('1','español');insert into idiomas(codigo,idioma) values('2','english');";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` MODIFY COLUMN `codigo_idioma_sistema` INTEGER NOT NULL DEFAULT 1;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `codigo_numero_comprobante_fiscal_defecto_ventas` INTEGER NOT NULL DEFAULT 1 AFTER `codigo_idioma_sistema`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `tipo_venta_defecto` INTEGER NOT NULL DEFAULT 1 AFTER `codigo_numero_comprobante_fiscal_defecto_ventas`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` CHANGE COLUMN `tipo_venta_defecto` `codigo_tipo_venta_defecto` INTEGER NOT NULL DEFAULT 1;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "CREATE TABLE `iris`.`tipo_ventas` (`codigo` INTEGER UNSIGNED NOT NULL DEFAULT 0,`nombre` VARCHAR(99) NOT NULL DEFAULT '',`activo` BOOLEAN NOT NULL DEFAULT 1, PRIMARY KEY(`codigo`))ENGINE = InnoDB;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`tipo_ventas` ADD COLUMN `nombre_abreviado` VARCHAR(99) NOT NULL DEFAULT '' AFTER `nombre`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "insert into tipo_ventas(codigo,nombre,nombre_abreviado,activo) values('1','CONTADO','CON','1');insert into tipo_ventas(codigo,nombre,nombre_abreviado,activo) values('2','CREDITO','CRE','1');insert into tipo_ventas(codigo,nombre,nombre_abreviado,activo)values('3','COTIZACION','COT','1');insert into tipo_ventas(codigo,nombre,nombre_abreviado,activo) values('4','PEDIDO','PED','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `tipo_ventana_cuadre_caja` INTEGER NOT NULL DEFAULT 1 AFTER `codigo_tipo_venta_defecto`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` MODIFY COLUMN `tipo_ventana_cuadre_caja` INTEGER NOT NULL DEFAULT 1 COMMENT '1 republica dominicana, 2 usa';";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 3;
+                sucursal.versionSistemaMaxima = 4;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version3.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void version4(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version4
+
+                //nuevo query
+                sql = "insert into pais(codigo,nombre,estado) values('1','REPUBLICA DOMINICANA','1');insert into pais(codigo,nombre,estado) values('2','UNITED STATES OF AMERICA','1');insert into pais(codigo,nombre,estado) values('3','MEXICO','1');insert into pais(codigo,nombre,estado) values('4','COLOMBIA','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "insert into region(codigo,cod_pais,nombre,activo) values('1','1','NORTE','1');insert into region(codigo,cod_pais,nombre,activo) values('2','1','SUR','1');insert into region(codigo,cod_pais,nombre,activo) values('3','1','ESTE','1');insert into region(codigo,cod_pais,nombre,activo) values('4','1','OESTE','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "insert into ciudad(codigo,nombre,activo) values('6','YONKERS','1');insert into ciudad(codigo,nombre,activo) values('7','BRONX','1');insert into ciudad(codigo,nombre,activo) values('8','QUEENS','1');insert into ciudad(codigo,nombre,activo) values('9','MANHATTAN','1');";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `sistema_full` BOOLEAN NOT NULL DEFAULT 1 COMMENT 'saber si el sistema es full, de no ser asi corta con la fecha' AFTER `tipo_ventana_cuadre_caja`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` MODIFY COLUMN `sistema_full` TINYINT(1) NOT NULL DEFAULT 0 COMMENT 'saber si el sistema es full, de no ser asi corta con la fecha';";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`venta` ADD COLUMN `codigo_tipo_venta` INTEGER NOT NULL DEFAULT 1 AFTER `pedido`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`venta` MODIFY COLUMN `tipo_venta` VARCHAR(99) CHARACTER SET utf8 COLLATE utf8_bin;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`venta_vs_cobros_detalles` MODIFY COLUMN `monto_subtotal` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el dinero que entra de la empresa, seria monto - descuento', ADD COLUMN `monto_devuelta` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'es el monto devuelto al cliente cuando paga con un billete mayor al monto esperado' AFTER `monto_subtotal`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`compra_vs_pagos_detalles` ADD COLUMN `monto_devuelta` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `monto_subtotal`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`sistema` ADD COLUMN `mensaje_pie_pagina_factura` VARCHAR(9999) NOT NULL DEFAULT '' COMMENT 'Thank you for coming !!!' AFTER `sistema_full`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`compra_detalle` ADD COLUMN `itbis` DECIMAL(20,2) NOT NULL DEFAULT 0.00 AFTER `activo`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`compra_detalle` ADD COLUMN `itebis_unitario` DECIMAL(20,2) NOT NULL DEFAULT 0 AFTER `itbis`, ADD COLUMN `descuento_unitario` DECIMAL(20,2) NOT NULL DEFAULT 0 AFTER `itebis_unitario`;";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`compra_detalle` MODIFY COLUMN `monto` DECIMAL(20,2) NOT NULL DEFAULT 0, ADD COLUMN `monto_total` DECIMAL(20,2) NOT NULL DEFAULT 0 AFTER `descuento_unitario`; ";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "ALTER TABLE `iris`.`compra` MODIFY COLUMN `tipo_compra` VARCHAR(99) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'cre,con,ped,cot';";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 4;
+                sucursal.versionSistemaMaxima = 5;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version4.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void version5(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version5
+
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 5;
+                sucursal.versionSistemaMaxima = 6;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version5.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void version6(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version6
+
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 6;
+                sucursal.versionSistemaMaxima = 7;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version6.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void version7(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version7
+
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema =7;
+                sucursal.versionSistemaMaxima = 8;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version7.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void version8(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version8
+
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 8;
+                sucursal.versionSistemaMaxima = 9;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version8.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void version9(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version9
+
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 9;
+                sucursal.versionSistemaMaxima = 10;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version9.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void version10(bool mostrarErrores = true)
+        {
+            try
+            {
+                string sql = "";
+
+                #region querys version10
+
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+                //nuevo query
+                sql = "";
+                utilidades.ejecutarcomando_mysql(sql);
+
+
+
+
+
+
+
+                #endregion
+
+                //actualizar la version de la sucursal
+                sucursal.versionSistema = 10;
+                sucursal.versionSistemaMaxima = 11;
+                modeloSucursal.modificarSucursal(sucursal);
+
+            }
+            catch (Exception ex)
+            {
+                if (mostrarErrores == true)
+                {
+                    MessageBox.Show("Error version10.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+     
 
     }
 }

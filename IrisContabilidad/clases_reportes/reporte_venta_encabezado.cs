@@ -31,6 +31,11 @@ namespace IrisContabilidad.clases_reportes
         public string detalles { get; set; }
         public List<reporte_venta_detalle> listaDetalles { get; set; }
         utilidades utilidades=new utilidades();
+        public string mensajePiePaginaFactura { get; set; }
+
+
+
+
         public reporte_venta_encabezado()
         {
             
@@ -48,7 +53,8 @@ namespace IrisContabilidad.clases_reportes
             tipoComprobante = new modeloTipoComprobanteFiscal().getTipoComprobanteByNCF(venta.ncf);
             listaDetalles = new List<reporte_venta_detalle>();
             List<venta_detalle> listaVentaDetalle = new List<venta_detalle>();
-
+            sistemaConfiguracion sistemaConfiguracion=new sistemaConfiguracion();
+            sistemaConfiguracion = new modeloSistemaConfiguracion().getSistemaConfiguracion();
 
             this.empresa = empresa.nombre;
             this.telefonos = sucursal.telefono1 + "-" + sucursal.telefono2;
@@ -56,8 +62,18 @@ namespace IrisContabilidad.clases_reportes
             this.telefonos = "Tel.: "+sucursal.telefono1 + " / " + sucursal.telefono2;
             this.direccion = sucursal.direccion;
             this.usuarioImpresion = empleadoSingleton.nombre;
-            this.fecha_impresion = utilidades.getFechaddMMyyyyhhmmsstt(DateTime.Now);
-            this.fecha_venta = utilidades.getFechaddMMyyyy(venta.fecha);
+            if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+            {
+                //rd
+                this.fecha_impresion = utilidades.getFechaddMM_yyyy_hh_mm_ss_tt(DateTime.Now);
+                this.fecha_venta = utilidades.getFecha_dd_MM_yyyy(venta.fecha);
+            }
+            else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+            {
+                //usa
+                this.fecha_impresion = utilidades.getFecha_MM_dd_yyyy_hh_mm_ss_tt(DateTime.Now);
+                this.fecha_venta = utilidades.getFecha_MM_dd_yyyy(venta.fecha);
+            }
             this.codigo_venta = venta.codigo;
             this.numero_venta = utilidades.getRellenar(venta.codigo.ToString(), '0', 9);
             this.codigo_cliente = venta.codigo_cliente;
@@ -68,14 +84,14 @@ namespace IrisContabilidad.clases_reportes
             this.tipo_comprobante_fiscal = tipoComprobante.nombre;
             this.numero_comprobante_fiscal = venta.ncf;
             this.detalles = venta.detalle;
+            this.mensajePiePaginaFactura = sistemaConfiguracion.mensajePiePaginaFactura;
 
-            listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo);
-            listaVentaDetalle.ForEach(x =>
+            listaVentaDetalle = new modeloVenta().getListaVentaDetalle(venta.codigo,false);
+            foreach (var x in listaVentaDetalle)
             {
                 reporte_venta_detalle reporteVentaDetalle = new reporte_venta_detalle(x);
                 listaDetalles.Add(reporteVentaDetalle);
-
-            });
+            }
         }
 
     }

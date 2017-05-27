@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Citiport.Util.Google.Language;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
@@ -74,10 +75,6 @@ namespace IrisContabilidad.modulo_empresa
             Salir();
         }
 
-        public void salir()
-        {
-            
-        }
         private void groupBox2_Enter(object sender, EventArgs e)
         {
         }
@@ -248,5 +245,24 @@ namespace IrisContabilidad.modulo_empresa
                 }
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            localizarEmpresa();
+        }
+
+        public void localizarEmpresa()
+        {
+            try
+            {
+                //localizar la empresa
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error localizando empresa.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+        }
+
+
     }
 }

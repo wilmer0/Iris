@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -19,6 +20,9 @@ namespace IrisContabilidad.modulo_contabilidad
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
         modeloCuentaContable modeloCuentaContable=new modeloCuentaContable();
 
+        //listas
+        private List<cuenta_contable> listaCuentacontable; 
+
         public ventana_cuentas_contables()
         {
             InitializeComponent();
@@ -26,6 +30,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana cuentas contables");
             this.Text = tituloLabel.Text;
             loadVentana(); 
+            loadListaCuentascontables();
         }
         public void loadVentana()
         {
@@ -79,6 +84,32 @@ namespace IrisContabilidad.modulo_contabilidad
             catch (Exception ex)
             {
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void loadListaCuentascontables()
+        {
+            try
+            {
+                dataGridView1.Rows.Clear();
+                listaCuentacontable = modeloCuentaContable.getListaCompleta();
+
+                foreach (var x in listaCuentacontable)
+                {
+                    cuentaPadre = new cuenta_contable();
+                    cuentaPadre.codigo =0;
+                    cuentaPadre.nombre = ".";
+                    if (x.codigo_cuenta_superior != 0)
+                    {
+                        cuentaPadre = modeloCuentaContable.getCuentaContableById(x.codigo_cuenta_superior);
+                    }
+                    dataGridView1.Rows.Add(x.codigo,x.numero_cuenta, x.nombre,cuentaPadre.codigo,cuentaPadre.nombre,cuentaPadre.numero_cuenta);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error cargando las lista de cuenta contables", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
 
@@ -185,7 +216,9 @@ namespace IrisContabilidad.modulo_contabilidad
                     //se agrega
                     if ((modeloCuentaContable.agregarCuentaContable(cuentaContable) == true))
                     {
+                        cuentaContable = null;
                         loadVentana();
+                        loadListaCuentascontables();
                         MessageBox.Show("Se agregó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -200,6 +233,7 @@ namespace IrisContabilidad.modulo_contabilidad
                     if ((modeloCuentaContable.modificarCuentaContable(cuentaContable) == true))
                     {
                         loadVentana();
+                        loadListaCuentascontables();
                         MessageBox.Show("Se modificó ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
@@ -312,8 +346,18 @@ namespace IrisContabilidad.modulo_contabilidad
                 }
                 if (e.KeyCode == Keys.Enter)
                 {
-                    radioCuentaAcumulativa.Focus();
+                    if (radioCuentaAcumulativa.Checked == true)
+                    {
+                        radioCuentaAcumulativa.Focus();
 
+                    }else if (radioCuentaMovimiento.Checked == true)
+                    {
+                        radioCuentaMovimiento.Focus();
+                    }
+                    else
+                    {
+                        radioCuentaAcumulativa.Focus();
+                    }
                     cuentaPadre = modeloCuentaContable.getCuentaContableById(Convert.ToInt16(cuentaPadreIdText.Text));
                     if (cuentaPadre != null)
                     {
@@ -333,7 +377,18 @@ namespace IrisContabilidad.modulo_contabilidad
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    radioOrigenDebito.Focus();
+                    if (radioOrigenDebito.Checked == true)
+                    {
+                        radioOrigenDebito.Focus();    
+                    
+                    }else if (radioOrigenCredito.Checked == true)
+                    {
+                        radioOrigenCredito.Focus();
+                    }
+                    else
+                    {
+                        radioOrigenDebito.Focus();  
+                    }
                 }
             }
             catch (Exception)
@@ -391,6 +446,18 @@ namespace IrisContabilidad.modulo_contabilidad
                 if (e.KeyCode == Keys.Enter)
                 {
                     radioOrigenDebito.Focus();
+                    if (radioOrigenDebito.Checked == true)
+                    {
+                        radioOrigenDebito.Focus();
+
+                    }else if (radioOrigenCredito.Checked == true)
+                    {
+                        radioOrigenCredito.Focus();
+                    }
+                    else
+                    {
+                        radioOrigenDebito.Focus();
+                    }
                 }
             }
             catch (Exception)
@@ -429,6 +496,50 @@ namespace IrisContabilidad.modulo_contabilidad
         private void groupBox3_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                int fila = -1;
+                if (dataGridView1.Rows.Count >= 0)
+                {
+                    fila = dataGridView1.CurrentRow.Index;
+                    if (fila >= 0)
+                    {
+                        cuentaContable =modeloCuentaContable.getCuentaContableById(Convert.ToInt16(dataGridView1.Rows[fila].Cells[0].Value.ToString()));
+                        loadVentana();
+                        cuentaIdText.Text = "";
+                        nombreText.Focus();
+                        nombreText.SelectAll();
+                        cuentaContable = null;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No hay cuenta contable para seleccionar", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No hay cuenta contable para seleccionar", "", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error seleccionando la cuenta contable", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            string mensajeAyuda = "Si selecciona una de las cuentas contables de la lista inferior no modificara dicha cuenta, mas bien se utiliza como guia para crear más cuentas contables usando la cuenta seleccionada.";
+            this.mensajeAyuda(mensajeAyuda);
         }
     }
 }

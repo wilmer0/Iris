@@ -12,8 +12,6 @@ namespace IrisContabilidad.modulo_facturacion
 {
     public partial class ventana_facturacion_normal : formBase
     {
-
-
         //objetos
         utilidades utilidades = new utilidades();
         singleton singleton = new singleton();
@@ -31,8 +29,9 @@ namespace IrisContabilidad.modulo_facturacion
         private producto_precio_venta productoPrecioVenta;
         private cajero cajero;
         private tipo_comprobante_fiscal tipoComprobanteFiscal;
+        private sistemaConfiguracion sistemaConfiguracion;
 
-
+     
         //modelos
         modeloTipoComprobanteFiscal modeloTipoComprobanteFiscal=new modeloTipoComprobanteFiscal();
         private modeloItebis modeloItebis = new modeloItebis();
@@ -44,14 +43,15 @@ namespace IrisContabilidad.modulo_facturacion
         modeloVenta modeloVenta=new modeloVenta();
         modeloComprobanteFiscal modeloComprobantefiscal=new modeloComprobanteFiscal();
         modeloCajero modeloCajero=new modeloCajero();
-
+        modeloTipoVentas modeloTipoVentas=new modeloTipoVentas();
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
         private decimal totalItebisMonto = 0;
-        private decimal totalCompraMonto = 0;
+        private decimal totalVentaMonto = 0;
         private decimal cantidadExistencia = 0;
         public bool modoCotizacion = false;
+
 
         //listas
         private List<producto_vs_codigobarra> listaCodigoBarra;
@@ -59,8 +59,10 @@ namespace IrisContabilidad.modulo_facturacion
         private List<venta> listaVenta;
         private List<venta_detalle> listaVentaDetalle;
         private List<unidad> listaUnidad;
-        private List<tipo_comprobante_fiscal> listaTipoComprobanteFiscal; 
-
+        private List<tipo_comprobante_fiscal> listaTipoComprobanteFiscal;
+        private List<tipo_ventas> listaTiposVentas;
+        
+        
         //variables
         private decimal cantidad_monto = 0;
         private decimal precio_monto = 0;
@@ -74,15 +76,19 @@ namespace IrisContabilidad.modulo_facturacion
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();
+            sistemaConfiguracion = singleton.getSistemaconfiguracion();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana facturación");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
+
         public void loadVentana()
         {
             try
             {
+                sistemaConfiguracion = singleton.getSistemaconfiguracion();
                 listaTipoComprobanteFiscal = modeloTipoComprobanteFiscal.getListaCompleta();
+                loadTipoVentas();
                 if (listaTipoComprobanteFiscal != null)
                 {
                     tipoComprobanteCombo.DataSource = listaTipoComprobanteFiscal;
@@ -91,7 +97,6 @@ namespace IrisContabilidad.modulo_facturacion
                     tipoComprobanteCombo.SelectedIndex = 0;
                 }
 
-                tipoVentaComboBox.SelectedIndex = 0;
                 tipoComprobanteCombo.SelectedIndex = 0;
                 if (venta != null)
                 {
@@ -154,6 +159,28 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public void loadTipoVentas()
+        {
+            try
+            {
+                if (listaTiposVentas == null)
+                {
+                    listaTiposVentas = new List<tipo_ventas>();
+                }
+                listaTiposVentas = modeloTipoVentas.getListaCompleta();
+                tipoVentaComboBox.DisplayMember = "nombre";
+                tipoVentaComboBox.ValueMember = "codigo";
+                tipoVentaComboBox.DataSource = listaTiposVentas;
+                tipoVentaComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTipoVentas.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
         public bool validarGetAcion()
         {
             try
@@ -321,6 +348,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error getAction.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void loadListaVentaDetalle()
         {
             try
@@ -343,6 +371,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadListaVentaDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void eliminarProducto()
         {
             try
@@ -364,6 +393,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error eliminarProducto.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void agregarProducto()
         {
             try
@@ -389,25 +419,27 @@ namespace IrisContabilidad.modulo_facturacion
                 //validar que tenga cantidad 
                 if (cantidadText.Text == "")
                 {
-                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     cantidadText.Focus();
                     cantidadText.SelectAll();
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 if (Convert.ToDecimal(cantidadText.Text) <=0)
                 {
-                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     cantidadText.Focus();
                     cantidadText.SelectAll();
+                    
+                    MessageBox.Show("Falta la cantidad", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 //validar que tenga precio 
                 if (precioText.Text == "")
                 {
-                    MessageBox.Show("Falta el precio del producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     precioText.Focus();
                     precioText.SelectAll();
+                    
+                    MessageBox.Show("Falta el precio del producto", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 //validar que tenga descuento o que sea 0
@@ -481,34 +513,35 @@ namespace IrisContabilidad.modulo_facturacion
             }
         }
 
-        private void calcularTotal()
+        private void calcularTotalItbis()
         {
             try
             {
                 if (dataGridView1.Rows.Count <= 0)
                 {
                     totalItebisText.Text = "0.00";
-                    totalCompraText.Text = "0.00";
+                    totalVentaText.Text = "0.00";
                     return;
                 }
 
                 totalItebisMonto = 0;
-                totalCompraMonto = 0;
+                totalVentaMonto = 0;
 
 
                 foreach (DataGridViewRow row in dataGridView1.Rows)
                 {
                     totalItebisMonto += Convert.ToDecimal(row.Cells[6].Value.ToString());
-                    totalCompraMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
+                    totalVentaMonto += Convert.ToDecimal(row.Cells[8].Value.ToString());
                 }
                 totalItebisText.Text = totalItebisMonto.ToString("N");
-                totalCompraText.Text = totalCompraMonto.ToString("N");
+                totalVentaText.Text = totalVentaMonto.ToString("N");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error calcularTotal.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void loadProducto()
         {
             try
@@ -529,6 +562,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadProducto.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        
         public void loadUnidad()
         {
             try
@@ -583,6 +617,7 @@ namespace IrisContabilidad.modulo_facturacion
                 //MessageBox.Show("Error getInventarioByProductoUnidad.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+        
         public void calularImporte()
         {
             try
@@ -617,6 +652,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error calularImporte.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         private void actualizarCompraDetalle()
         {
             try
@@ -633,6 +669,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error actualizarCompraDetalle.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         private void ventana_facturacion_normal_Load(object sender, EventArgs e)
         {
 
@@ -658,7 +695,7 @@ namespace IrisContabilidad.modulo_facturacion
             agregarProducto();
             productoIdText.Focus();
             productoIdText.SelectAll();
-            calcularTotal();
+            calcularTotalItbis();
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -666,7 +703,7 @@ namespace IrisContabilidad.modulo_facturacion
             eliminarProducto();
             productoIdText.Focus();
             productoIdText.SelectAll();
-            calcularTotal();
+            calcularTotalItbis();
         }
 
         private void unidadComboText_TextChanged(object sender, EventArgs e)
@@ -701,6 +738,7 @@ namespace IrisContabilidad.modulo_facturacion
                 
             }
         }
+
         private void button5_Click(object sender, EventArgs e)
         {
             ventana_busqueda_cliente ventana = new ventana_busqueda_cliente();
@@ -749,6 +787,16 @@ namespace IrisContabilidad.modulo_facturacion
                 if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Tab)
                 {
                     producto = modeloProducto.getProductoById(Convert.ToInt16(productoIdText.Text));
+                    if (producto == null)
+                    {
+                        producto = modeloProducto.getProductoByReferencia(productoIdText.Text);
+                    }
+                    if (producto == null)
+                    {
+                        producto = modeloProducto.getProductoByCodigoBarra(productoIdText.Text);
+                    }
+
+
                     if (producto != null)
                     {
                         loadProducto();
@@ -876,6 +924,7 @@ namespace IrisContabilidad.modulo_facturacion
                 button19.Focus();
             }
         }
+        
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -883,6 +932,7 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
+        
         private void button2_Click(object sender, EventArgs e)
         {
             salir();
@@ -960,7 +1010,6 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 cambiarUnidadCombo();
             }
-            
         }
 
         public void cambiarTipoVentacombo()
@@ -983,6 +1032,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error cambiarTipoVentacombo.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
         public void cambiarUnidadCombo()
         {
             try
@@ -1099,6 +1149,13 @@ namespace IrisContabilidad.modulo_facturacion
                 ventanaModoCotizacion();
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
 
     }
 }

@@ -60,6 +60,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             this.Text = tituloLabel.Text;
             loadVentana();
         }
+
         public void loadVentana()
         {
             try

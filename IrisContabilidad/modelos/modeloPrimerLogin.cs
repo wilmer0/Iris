@@ -427,7 +427,7 @@ namespace IrisContabilidad.modelos
                 utilidades.ejecutarcomando_mysql(sql);
                 #endregion
 
-                //
+                //primeras cuentas contables
                 #region
                 sql = "";
                 utilidades.ejecutarcomando_mysql(sql);
@@ -775,6 +775,35 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 2;
                 ventana.imagen = "reimprimir_cierre_caja1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "facturación";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_facturacion_tienda_v1";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "facturacion_normal1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "cuadre caja";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_cuadre_caja_usa";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "cuadre_caja_usa1.png";
+                listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "facturacion touch";
+                ventana.nombre_logico = "IrisContabilidad.modulo_facturacion.ventana_facturacion_touch1";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 2;
+                ventana.imagen = "facturacion_touch1.png";
+                listaVentana.Add(ventana);
+                
+                
                 #endregion
 
                 //modulo cuentas por cobrar
@@ -900,6 +929,16 @@ namespace IrisContabilidad.modelos
                 ventana.codigo_modulo = 4;
                 ventana.imagen = "compra_nota_debito1.png";
                 listaVentana.Add(ventana);
+                //nueva ventana
+                ventana = new ventana();
+                ventana.nombre_ventana = "Estado Cuenta Suplidor";
+                ventana.nombre_logico = "IrisContabilidad.modulo_cuenta_por_pagar.ventana_estado_cuenta_suplidor";
+                ventana.activo = true;
+                ventana.programador = false;
+                ventana.codigo_modulo = 4;
+                ventana.imagen = "estado_cuenta_suplidor1.png";
+                listaVentana.Add(ventana);
+                
                 #endregion
 
                 //modulo inventario

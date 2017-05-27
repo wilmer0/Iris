@@ -12,9 +12,6 @@ namespace IrisContabilidad.modelos
         utilidades utilidades = new utilidades();
 
 
-
-
-
         //agregar 
         public bool agregarAlmacen(almacen almacen)
         {
@@ -241,5 +238,10 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+    
+        
+
+
+    
     }
 }

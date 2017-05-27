@@ -46,6 +46,8 @@ namespace IrisContabilidad.modulo_gerencia
             this.label5 = new System.Windows.Forms.Label();
             this.empleadoIdText = new System.Windows.Forms.TextBox();
             this.radioSoloVentasCobradas = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tipoVentaComboBox = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -53,8 +55,8 @@ namespace IrisContabilidad.modulo_gerencia
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 345);
-            this.panel1.Size = new System.Drawing.Size(692, 54);
+            this.panel1.Location = new System.Drawing.Point(12, 481);
+            this.panel1.Size = new System.Drawing.Size(843, 54);
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button2
@@ -65,17 +67,17 @@ namespace IrisContabilidad.modulo_gerencia
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(551, 5);
+            this.button1.Location = new System.Drawing.Point(702, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(716, 21);
+            this.panel2.Size = new System.Drawing.Size(867, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(276, 5);
+            this.button3.Location = new System.Drawing.Point(351, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
@@ -86,7 +88,7 @@ namespace IrisContabilidad.modulo_gerencia
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(692, 79);
+            this.groupBox1.Size = new System.Drawing.Size(840, 79);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rango años";
@@ -223,7 +225,7 @@ namespace IrisContabilidad.modulo_gerencia
             // 
             this.radioSoloVentasCobradas.AutoSize = true;
             this.radioSoloVentasCobradas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioSoloVentasCobradas.Location = new System.Drawing.Point(145, 285);
+            this.radioSoloVentasCobradas.Location = new System.Drawing.Point(672, 126);
             this.radioSoloVentasCobradas.Name = "radioSoloVentasCobradas";
             this.radioSoloVentasCobradas.Size = new System.Drawing.Size(183, 21);
             this.radioSoloVentasCobradas.TabIndex = 33;
@@ -231,11 +233,33 @@ namespace IrisContabilidad.modulo_gerencia
             this.radioSoloVentasCobradas.Text = "Solo ventas cobradas";
             this.radioSoloVentasCobradas.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(42, 280);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 20);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Tipo venta";
+            // 
+            // tipoVentaComboBox
+            // 
+            this.tipoVentaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoVentaComboBox.FormattingEnabled = true;
+            this.tipoVentaComboBox.Location = new System.Drawing.Point(145, 280);
+            this.tipoVentaComboBox.Name = "tipoVentaComboBox";
+            this.tipoVentaComboBox.Size = new System.Drawing.Size(183, 21);
+            this.tipoVentaComboBox.TabIndex = 145;
+            this.tipoVentaComboBox.Tag = "";
+            // 
             // ventana_reporte_ventas_mensuales_grafico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 411);
+            this.ClientSize = new System.Drawing.Size(867, 547);
+            this.Controls.Add(this.tipoVentaComboBox);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.radioSoloVentasCobradas);
             this.Controls.Add(this.empleadoLabel);
             this.Controls.Add(this.button5);
@@ -261,6 +285,8 @@ namespace IrisContabilidad.modulo_gerencia
             this.Controls.SetChildIndex(this.button5, 0);
             this.Controls.SetChildIndex(this.empleadoLabel, 0);
             this.Controls.SetChildIndex(this.radioSoloVentasCobradas, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.tipoVentaComboBox, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -287,5 +313,7 @@ namespace IrisContabilidad.modulo_gerencia
         private Label label5;
         private TextBox empleadoIdText;
         private RadioButton radioSoloVentasCobradas;
+        private Label label6;
+        private ComboBox tipoVentaComboBox;
     }
 }

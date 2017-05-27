@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
@@ -19,16 +22,27 @@ namespace IrisContabilidad.modulo_gerencia
         private empleado empleado;
         private empleado empleadoSesion;
         private cliente cliente;
+        private tipo_ventas tipoventa;
+
 
         //modelos
         ModeloReporte modeloReporte=new ModeloReporte();
         modeloCliente modelocliente=new modeloCliente();
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
+        modeloTipoVentas modeloTipoVentas=new modeloTipoVentas();
+
 
         //variables
         private int anioInicial = 0;
         private int anioFinal = 0;
         private bool soloCobradas = false;
+
+        //Proceso
+        private ventana_procesando procesando;
+        private BackgroundWorker SicronizarProceso = new BackgroundWorker();
+
+        //listas
+        private List<tipo_ventas> listaTiposVentas; 
 
 
         public ventana_reporte_ventas_mensuales_grafico()
@@ -38,6 +52,40 @@ namespace IrisContabilidad.modulo_gerencia
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSesion, "reporte ventas mensuales gráfico");
             this.Text = tituloLabel.Text;
             loadVentana();
+
+            SicronizarProceso.WorkerReportsProgress = true;
+            SicronizarProceso.DoWork += LoadReporte;
+            SicronizarProceso.ProgressChanged += ProcesoRun;
+            SicronizarProceso.RunWorkerCompleted += ProcesoCompleto;
+        }
+
+        private void LoadReporte(object sender, DoWorkEventArgs e)
+        {
+            SicronizarProceso.ReportProgress(10);
+            try
+            {
+                modeloReporte.imprimirVentasMensualesByRangoAnos(anioInicial, anioFinal, soloCobradas, cliente, empleado,tipoventa);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimiendo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ProcesoRun(object sender, ProgressChangedEventArgs e)
+        {
+            if (procesando == null)
+            {
+                procesando = new ventana_procesando();
+                procesando.ShowDialog();
+            }
+        }
+
+        private void ProcesoCompleto(object sender, RunWorkerCompletedEventArgs e)
+        {
+            procesando.Close();
+            procesando = null;
+            
         }
 
         public void loadVentana()
@@ -54,6 +102,7 @@ namespace IrisContabilidad.modulo_gerencia
                 loadCliente();
                 empleado = null;
                 loadEmpleado();
+                loadTipoVentas();
             }
             catch (Exception ex)
             {
@@ -97,6 +146,36 @@ namespace IrisContabilidad.modulo_gerencia
             }
         }
 
+        public void loadTipoVentas()
+        {
+            try
+            {
+                if (listaTiposVentas == null)
+                {
+                    listaTiposVentas = new List<tipo_ventas>();
+                }
+
+                tipoventa = new tipo_ventas();
+                tipoventa.codigo = 0;
+                tipoventa.nombre = "";
+                tipoventa.activo = true;
+
+                
+                listaTiposVentas = modeloTipoVentas.getListaCompleta();
+                listaTiposVentas.Add(tipoventa);
+                listaTiposVentas = listaTiposVentas.OrderBy(x => x.codigo).ToList();
+                
+                tipoVentaComboBox.DisplayMember = "nombre";
+                tipoVentaComboBox.ValueMember = "codigo";
+                tipoVentaComboBox.DataSource = listaTiposVentas;
+                tipoVentaComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTipoVentas.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public bool ValidarGetAction()
         {
             try
@@ -132,11 +211,32 @@ namespace IrisContabilidad.modulo_gerencia
                 {
                     anofinalText.Focus();
                     anofinalText.SelectAll();
-                    System.Windows.MessageBox.Show("El año final debe tener 4 digitos", "", MessageBoxButton.OK,
-                        MessageBoxImage.Error);
+                    MessageBox.Show("debe tener 4 digitos", "", MessageBoxButtons.OK,MessageBoxIcon.Error);
                     return false;
                 }
 
+                //ano inicial y ano final
+                anioInicial = Convert.ToInt16(anoInicialText.Text);
+                anioFinal = Convert.ToInt16(anofinalText.Text);
+                if (radioSoloVentasCobradas.Checked == true)
+                {
+                    soloCobradas = true;
+                }
+                else
+                {
+                    soloCobradas = false;
+                }
+
+                //tipo venta
+                if (tipoVentaComboBox.Text != "")
+                {
+                    tipoventa=new tipo_ventas();
+                    tipoventa =modeloTipoVentas.getTipoVentaById(Convert.ToInt16(tipoVentaComboBox.SelectedValue.ToString()));
+                }
+                else
+                {
+                    tipoventa = null;
+                }
 
                 return true;
             }
@@ -152,28 +252,12 @@ namespace IrisContabilidad.modulo_gerencia
         {
             try
             {
-
                 if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
                 }
 
-                if (!ValidarGetAction())
-                {
-                    return;
-                }
-                anioInicial = Convert.ToInt16(anoInicialText.Text);
-                anioFinal = Convert.ToInt16(anofinalText.Text);
-                if (radioSoloVentasCobradas.Checked == true)
-                {
-                    soloCobradas = true;
-                }
-                else
-                {
-                    soloCobradas = false;
-                }
-                modeloReporte.imprimirVentasMensualesGraficos(anioInicial,anioFinal,soloCobradas,cliente,empleado);
-
+                SicronizarProceso.RunWorkerAsync();
             }
             catch (Exception ex)
             {
@@ -196,6 +280,10 @@ namespace IrisContabilidad.modulo_gerencia
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (!ValidarGetAction())
+            {
+                return;
+            }
             GetAction();
         }
 
@@ -305,5 +393,8 @@ namespace IrisContabilidad.modulo_gerencia
         {
 
         }
+
+
+
     }
 }

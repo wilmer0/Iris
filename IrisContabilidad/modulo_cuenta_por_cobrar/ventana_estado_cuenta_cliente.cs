@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.clases_reportes;
@@ -38,6 +39,12 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private List<venta_detalle> listaVentaDetalle;
 
 
+        //Proceso
+        private ventana_procesando procesando;
+        private BackgroundWorker SicronizarProceso = new BackgroundWorker();
+
+
+
         public ventana_estado_cuenta_cliente()
         {
             InitializeComponent();
@@ -46,7 +53,43 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             this.Text = tituloLabel.Text;
             loadVentana();
             loadListaVentaCobros();
+
+            SicronizarProceso.WorkerReportsProgress = true;
+            SicronizarProceso.DoWork += LoadReporte;
+            SicronizarProceso.ProgressChanged += ProcesoRun;
+            SicronizarProceso.RunWorkerCompleted += ProcesoCompleto;
         }
+
+        private void LoadReporte(object sender, DoWorkEventArgs e)
+        {
+            SicronizarProceso.ReportProgress(10);
+            try
+            {
+                reporteEncabezado = modeloReporte.getReporteEstadoCuentaEncabezado(cliente, empleado, fechaFinalDateTime);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimiendo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ProcesoRun(object sender, ProgressChangedEventArgs e)
+        {
+            if (procesando == null)
+            {
+                procesando = new ventana_procesando();
+                procesando.ShowDialog();
+            }
+        }
+
+        private void ProcesoCompleto(object sender, RunWorkerCompletedEventArgs e)
+        {
+            procesando.Close();
+            procesando = null;
+            loadLista();
+        }
+
         public void loadListaVentaCobros()
         {
             try
@@ -61,6 +104,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadListaVentaCobros.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void loadVentana()
         {
             try
@@ -102,6 +146,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void loadLista()
         {
             try
@@ -121,6 +166,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadLista.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public bool validarGetAcion()
         {
             try
@@ -159,8 +205,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     return;
                 }
 
-                reporteEncabezado = modeloReporte.getReporteEstadoCuentaEncabezado(cliente, empleado,fechaFinalDateTime);
-                loadLista();
+                SicronizarProceso.RunWorkerAsync();
 
             }
             catch (Exception ex)
@@ -204,6 +249,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadImprimir.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void loadCliente()
         {
             try
@@ -222,6 +268,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadCliente.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -229,6 +276,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 this.Close();
             }
         }
+        
         private void ventana_estado_cuenta_cliente_Load(object sender, EventArgs e)
         {
 
@@ -290,5 +338,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             reporteEncabezado = null;
             loadVentana();
         }
+ 
     }
+
 }
