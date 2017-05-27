@@ -68,6 +68,7 @@ namespace IrisContabilidad.modulo_inventario
             this.Text = tituloLabel.Text;
             loadVentana();
         }
+
         public void loadVentana()
         {
             try
