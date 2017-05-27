@@ -288,7 +288,6 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
-
                 if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;

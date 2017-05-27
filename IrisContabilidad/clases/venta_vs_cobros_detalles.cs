@@ -13,6 +13,7 @@ namespace IrisContabilidad.clases
         public decimal monto_descontado { get; set; }
         public bool activo { get; set; }
         public decimal monto_subtotal { get; set; }
+        public decimal monto_devuelta { get; set; }
 
         public venta_vs_cobros_detalles()
         {

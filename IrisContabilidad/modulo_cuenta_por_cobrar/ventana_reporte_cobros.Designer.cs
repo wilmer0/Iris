@@ -173,7 +173,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             // 
             this.checkBoxSoloVentasPagadas.AutoSize = true;
             this.checkBoxSoloVentasPagadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxSoloVentasPagadas.Location = new System.Drawing.Point(928, 19);
+            this.checkBoxSoloVentasPagadas.Location = new System.Drawing.Point(413, 165);
             this.checkBoxSoloVentasPagadas.Name = "checkBoxSoloVentasPagadas";
             this.checkBoxSoloVentasPagadas.Size = new System.Drawing.Size(182, 21);
             this.checkBoxSoloVentasPagadas.TabIndex = 91;

@@ -260,6 +260,7 @@ namespace IrisContabilidad.modulo_nomina
                 empleado.sueldo = Convert.ToDecimal(sueldoText.Text);
                 empleado.codigo_situacion = situacion.codigo;
                 empleado.codigo_departamento = departamento.codigo;
+                empleado.tipoVentana = 1;
                 empleado.activo= Convert.ToBoolean(activoCheck.Checked);
                 if (rutaImagenText.Text != "")
                 {

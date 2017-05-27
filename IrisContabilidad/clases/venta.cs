@@ -11,6 +11,7 @@ namespace IrisContabilidad.clases
         public int codigo_empleado { get; set; }
         public int codigo_cliente { get; set; }
         public string ncf { get; set; }
+        public int codigo_tipo_venta { get; set; }
         public string tipo_venta { get; set; }
         public int codigo_sucursal { get; set; }
         public bool activo { get; set; }

@@ -11,6 +11,7 @@ namespace IrisContabilidad.modelos
     {
         private utilidades utilidades = new utilidades();
 
+
         //get lista cobros todos
         public List<venta_vs_cobros> getListaCompleta(bool mantenimiento=false)
         {
@@ -132,7 +133,7 @@ namespace IrisContabilidad.modelos
             {
                 List<venta_vs_cobros_detalles> lista = new List<venta_vs_cobros_detalles>();
                 venta_vs_cobros_detalles cobroDetalle = new venta_vs_cobros_detalles();
-                string sql = "select cd.codigo,cd.cod_cobro,cd.cod_metodo_cobro,cd.monto_cobrado,cd.monto_descontado,cd.activo,cd.cod_venta from venta_vs_cobros_detalles cd join venta v on cd.cod_venta=v.codigo where cd.activo='1' and v.codigo_cliente='" + id + "'";
+                string sql = "select cd.codigo,cd.cod_cobro,cd.cod_metodo_cobro,cd.monto_cobrado,cd.monto_descontado,cd.activo,cd.cod_venta,cd.monto_devuelta from venta_vs_cobros_detalles cd join venta v on cd.cod_venta=v.codigo where cd.activo='1' and v.codigo_cliente='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -146,6 +147,7 @@ namespace IrisContabilidad.modelos
                         cobroDetalle.monto_descontado = Convert.ToDecimal(row[4].ToString());
                         cobroDetalle.activo = Convert.ToBoolean(row[5]);
                         cobroDetalle.codigo_venta = Convert.ToInt16(row[6]);
+                        cobroDetalle.monto_devuelta = Convert.ToDecimal(row[7]);
                         lista.Add(cobroDetalle);
                     }
                 }
@@ -197,7 +199,7 @@ namespace IrisContabilidad.modelos
                 List<venta_vs_cobros_detalles> lista = new List<venta_vs_cobros_detalles>();
                 venta_vs_cobros_detalles cobroDetalle = new venta_vs_cobros_detalles();
                 empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadre.codigo_cajero);
-                string sql = "select vc.codigo,vc.cod_cobro,vc.cod_metodo_cobro,vc.monto_cobrado,vc.monto_descontado,vc.activo,vc.cod_venta from venta_vs_cobros_detalles vc join venta_vs_cobros c on c.codigo=vc.cod_cobro join venta v on v.codigo=vc.cod_venta where vc.activo='1' and c.cuadrado='0' and c.activo='1' and c.fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and c.fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' and c.cod_empleado='"+empleado.codigo+"' and v.cod_sucursal='"+cuadre.codigo_sucursal+"' ";
+                string sql = "select vc.codigo,vc.cod_cobro,vc.cod_metodo_cobro,vc.monto_cobrado,vc.monto_descontado,vc.activo,vc.cod_venta,vc.monto_devuelta from venta_vs_cobros_detalles vc join venta_vs_cobros c on c.codigo=vc.cod_cobro join venta v on v.codigo=vc.cod_venta where vc.activo='1' and c.cuadrado='0' and c.activo='1' and c.fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and c.fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' and c.cod_empleado='"+empleado.codigo+"' and v.cod_sucursal='"+cuadre.codigo_sucursal+"' ";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -211,6 +213,7 @@ namespace IrisContabilidad.modelos
                         cobroDetalle.monto_descontado = Convert.ToDecimal(row[4].ToString());
                         cobroDetalle.activo = Convert.ToBoolean(row[5]);
                         cobroDetalle.codigo_venta = Convert.ToInt16(row[6]);
+                        cobroDetalle.monto_devuelta = Convert.ToDecimal(row[7]);
                         lista.Add(cobroDetalle);
                     }
                 }

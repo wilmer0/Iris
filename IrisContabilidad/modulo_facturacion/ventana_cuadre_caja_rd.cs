@@ -110,9 +110,7 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
-
         
-
         public void calcularTotalEfectivo()
         {
             try

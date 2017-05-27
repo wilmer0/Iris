@@ -66,8 +66,8 @@ namespace IrisContabilidad.modulo_sistema
             this.button3.Location = new System.Drawing.Point(60, 5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(142, 42);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Limpiar(F5)";
+            this.button3.TabIndex = 0;
+            this.button3.Text = "Clear";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
@@ -83,7 +83,7 @@ namespace IrisContabilidad.modulo_sistema
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(138, 42);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Cancelar(Esc)";
+            this.button2.Text = "Exit";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -98,8 +98,8 @@ namespace IrisContabilidad.modulo_sistema
             this.button1.Location = new System.Drawing.Point(119, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(138, 42);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Procesar(F2)";
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Process";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

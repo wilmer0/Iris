@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
@@ -11,16 +12,26 @@ namespace IrisContabilidad
     public partial class Form1 : formBase
     {
 
+        //variables
+        private string usuarioS;
+        private string claveS;
+        private bool inicioSesion = false;
+
         //modelos
         modeloEmpleado modeloEmpleado=new modeloEmpleado();
         private modeloPrimerLogin modeloPrimerLogin = new modeloPrimerLogin();
         modeloActualizacion modeloActualizacion=new modeloActualizacion();
+        modeloSistemaConfiguracion modeloSistemaConfiguracion=new modeloSistemaConfiguracion();
 
         //objetos
         private empleado empleado;
         utilidades utilidades = new utilidades();
         private singleton singleton;
+        private sistemaConfiguracion sistemaConfiguracion;
 
+        //Proceso
+        private ventana_procesando procesando;
+        private BackgroundWorker SicronizarProceso = new BackgroundWorker();
 
 
         public Form1()
@@ -29,14 +40,95 @@ namespace IrisContabilidad
             this.tituloLabel.Text = "Inicio sesión";
             this.Text = tituloLabel.Text;
             usuarioText.Select();
-            utilidades.notificacionWindows("titulo prueba", "hola mundo esto es un mensaje",5);
-           
+
+            SicronizarProceso.WorkerReportsProgress = true;
+            SicronizarProceso.DoWork += LoadReporte;
+            SicronizarProceso.ProgressChanged += ProcesoRun;
+            SicronizarProceso.RunWorkerCompleted += ProcesoCompleto;
+        }
+
+        private void LoadReporte(object sender, DoWorkEventArgs e)
+        {
+            SicronizarProceso.ReportProgress(10);
+            try
+            {
+                GetAction();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimiendo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ProcesoRun(object sender, ProgressChangedEventArgs e)
+        {
+            if (procesando == null)
+            {
+                procesando = new ventana_procesando();
+                procesando.ShowDialog();
+            }
+        }
+
+        private void ProcesoCompleto(object sender, RunWorkerCompletedEventArgs e)
+        {
+            procesando.Close();
+            procesando = null;
+            if (inicioSesion == true)
+            {
+                this.Hide();
+            }
+        }
+
+        public void validarSistema()
+        {
+            try
+            {
+                //validar sistema si el sistema no es full debe ver la fecha de vencimiento para saber si caduco la version de prueba
+                sistemaConfiguracion = modeloSistemaConfiguracion.getSistemaConfiguracion();
+                if (sistemaConfiguracion.sistemaFull == false)
+                {
+                    DateTime hoy=DateTime.Today;
+                    if (sistemaConfiguracion.fechaVencimientoSistema != null)
+                    {
+                        if (hoy <= sistemaConfiguracion.fechaVencimientoSistema)
+                        {
+                            return;
+                        }
+                        else
+                        {
+                            if (MessageBox.Show("La version de prueba se ha terminado, por favor contacte con el encargado, si desea mandar un correo automatico solicitando la version full pulse el boton de 'YES'","", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            {
+                                //se manda el correo automatico solitando que instalen la version full y se cierra la aplicacion
+                                
+
+                                Application.Exit();
+                            }
+                            else
+                            {
+
+                                Application.Exit();    
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Falta la fecha de ingreso", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Application.Exit();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error validando sistema .:" + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+
         public  bool ValidarGetAction()
         {
             try
@@ -56,6 +148,8 @@ namespace IrisContabilidad
                     claveText.SelectAll();
                     return false;
                 }
+                usuarioS = usuarioText.Text;
+                claveS = claveText.Text;
                 return true;
             }
             catch (Exception ex)
@@ -112,47 +206,34 @@ namespace IrisContabilidad
             try
             {
                 //modeloEmpleado.adminPrimerLogin();
-
-                if (!ValidarGetAction())
-                {
-                    return;
-                }
-                //if (MessageBox.Show("Desea procesar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                //{
-                //    return;
-                //}
                 modeloPrimerLogin.validarPrimerLogin();
-                
-                
+                empleado = modeloEmpleado.getEmpleadoByLogin(usuarioS, utilidades.encriptar(claveS));
 
-                empleado = modeloEmpleado.getEmpleadoByLogin(usuarioText.Text.Trim(), utilidades.encriptar(claveText.Text.Trim()));
-
-                if (empleado == null)
+                if(empleado == null)
                 {
                     limpiar();
                     return;
                 }
-                //empleado = modeloEmpleado.validarLogin(usuarioText.Text, claveText.Text);
                 if (empleado.login != null || empleado.login!="")
                 {
+                    inicioSesion = true;
                     singleton.empleado = empleado;
                     menu1 ventana = new menu1(empleado);
                     ventana.Show();
                     this.Hide();
-                    //MessageBox.Show(empleado.fecha_ingreso.ToString());
                 }
                 else
                 {
+                    inicioSesion = false;
                     empleado = null;
                     MessageBox.Show("Datos incorrectos", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     limpiar();
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error GetAction.:", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Error GetAction.:"+ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
         }
 
         public void limpiar()
@@ -198,7 +279,13 @@ namespace IrisContabilidad
         private void button1_Click(object sender, EventArgs e)
         {
             //modeloActualizacion.version1();
+            //GetAction();
+            if (!ValidarGetAction())
+            {
+                return;
+            }
             GetAction();
+            //SicronizarProceso.RunWorkerAsync();
         }
 
         private void button3_Click(object sender, EventArgs e)

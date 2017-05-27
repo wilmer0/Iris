@@ -46,7 +46,7 @@ namespace IrisContabilidad.modulo_contabilidad
                 if (lista == null)
                 {
                     lista = new List<cuenta_contable>();
-                    lista = modeloCuentaContable.getListaCompleta(mantenimiento);
+                    lista = modeloCuentaContable.getListaCompleta();
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)

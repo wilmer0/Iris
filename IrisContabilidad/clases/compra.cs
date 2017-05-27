@@ -19,6 +19,7 @@ namespace IrisContabilidad.clases
         public string motivo_anulada { get; set; }
         public string detalle { get; set; }
         public bool suplidor_informal { get; set; }
+        public int codigo_tipo_compra { get; set; }
 
     }
 }
