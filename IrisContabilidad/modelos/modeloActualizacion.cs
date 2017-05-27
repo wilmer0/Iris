@@ -483,7 +483,7 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`compra_detalle` MODIFY COLUMN `monto` DECIMAL(20,2) NOT NULL DEFAULT 0, ADD COLUMN `monto_total` DECIMAL(20,2) NOT NULL DEFAULT 0 AFTER `descuento_unitario`; ";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`compra` MODIFY COLUMN `tipo_compra` VARCHAR(99) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'cre,con,ped,cot';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

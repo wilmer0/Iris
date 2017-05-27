@@ -12,7 +12,7 @@ namespace IrisContabilidad.modelos
         //objetos
         utilidades utilidades = new utilidades();
 
-        private string sqlGeneral = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal,codigo_tipo_compra from compra where codigo>0 ;";
+        private string sqlGeneral = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal,codigo_tipo_compra from compra where codigo>'0' ";
 
         //agregar 
         public bool agregarCompra(compra compra, List<compra_detalle> listaDetalle )
