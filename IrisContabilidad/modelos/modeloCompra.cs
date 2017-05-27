@@ -36,7 +36,7 @@ namespace IrisContabilidad.modelos
                 {
                     pagada = 1;
                 }
-                string sql = "insert into compra(codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal) values('" + compra.codigo + "','" + compra.numero_factura + "','" + compra.cod_suplidor + "'," + utilidades.getFechayyyyMMdd(compra.fecha) + "," + utilidades.getFechayyyyMMdd(compra.fecha_limite.AddDays(120)) + ",'" + compra.ncf + "','" + compra.tipo_compra + "','" + activo + "','" + pagada + "','" + compra.codigo_sucursal + "','" + compra.codigo_empleado + "','0','','" + compra.detalle + "','" + suplidorInformal + "')";
+                string sql = "insert into compra(codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal,codigo_tipo_compra) values('" + compra.codigo + "','" + compra.numero_factura + "','" + compra.cod_suplidor + "'," + utilidades.getFechayyyyMMdd(compra.fecha) + "," + utilidades.getFechayyyyMMdd(compra.fecha_limite.AddDays(120)) + ",'" + compra.ncf + "','" + compra.tipo_compra + "','" + activo + "','" + pagada + "','" + compra.codigo_sucursal + "','" + compra.codigo_empleado + "','0','','" + compra.detalle + "','" + suplidorInformal + "','"+compra.codigo_tipo_compra+"')";
                 //MessageBox.Show(sql);
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
 

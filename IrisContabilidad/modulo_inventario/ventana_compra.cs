@@ -35,7 +35,7 @@ namespace IrisContabilidad.modulo_inventario
         modeloSuplidor modeloSuplidor=new modeloSuplidor();
         modeloCompra modeloCompra=new modeloCompra();
         ModeloReporte modeloReporte=new ModeloReporte();
-        
+        modeloTipoVentas modeloTipoCompras=new modeloTipoVentas();
 
         
         //variables
@@ -48,8 +48,8 @@ namespace IrisContabilidad.modulo_inventario
         private List<productoUnidadConversion> listaProductoUnidadConversion;
         private List<compra> listaCompra; 
         private List<compra_detalle> listaCompraDetalle;
-        private List<unidad> listaUnidad; 
-
+        private List<unidad> listaUnidad;
+        private List<tipo_ventas> listaTipoCompra; 
 
         //variables
         private decimal cantidad_monto = 0;
@@ -72,6 +72,7 @@ namespace IrisContabilidad.modulo_inventario
         {
             try
             {
+                loadTipoCompras();
                 tipoCompraComboBox.SelectedIndex = 0;
                 if (compra != null)
                 {
@@ -373,6 +374,26 @@ namespace IrisContabilidad.modulo_inventario
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        public void loadTipoCompras()
+        {
+            try
+            {
+                if (listaTipoCompra == null)
+                {
+                    listaTipoCompra = new List<tipo_ventas>();
+                }
+                listaTipoCompra = modeloTipoCompras.getListaCompleta();
+                tipoCompraComboBox.DisplayMember = "nombre";
+                tipoCompraComboBox.ValueMember = "codigo";
+                tipoCompraComboBox.DataSource = listaTipoCompra;
+                tipoCompraComboBox.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loadTipoVentas.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button19_Click(object sender, EventArgs e)
