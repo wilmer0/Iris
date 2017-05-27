@@ -12,6 +12,7 @@ namespace IrisContabilidad.modelos
         //objetos
         utilidades utilidades = new utilidades();
 
+        private string sqlGeneral = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal,codigo_tipo_compra from compra where codigo>0 ;";
 
         //agregar 
         public bool agregarCompra(compra compra, List<compra_detalle> listaDetalle )
@@ -260,7 +261,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 compra compra=new compra();
-                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra where codigo='" + id + "'";
+                string sql = sqlGeneral + " and codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -279,7 +280,7 @@ namespace IrisContabilidad.modelos
                     compra.motivo_anulada=ds.Tables[0].Rows[0][12].ToString();
                     compra.detalle=ds.Tables[0].Rows[0][13].ToString();
                     compra.suplidor_informal=Convert.ToBoolean(ds.Tables[0].Rows[0][14].ToString());
-                    
+                    compra.codigo_tipo_compra = Convert.ToInt16(ds.Tables[0].Rows[0][15].ToString());
                 }
                 return compra;
             }
@@ -290,13 +291,13 @@ namespace IrisContabilidad.modelos
             }
         }
         
-        //get compra by id
+        //get compra by suplidor y numero compra
         public compra getCompraBySuplidorNumeroCompra(suplidor suplidor,string numeroCompra)
         {
             try
             {
                 compra compra = new compra();
-                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra where num_factura='" + numeroCompra + "' and cod_suplidor='"+suplidor.codigo+"'";
+                string sql =sqlGeneral + " and num_factura='" + numeroCompra + "' and cod_suplidor='"+suplidor.codigo+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -315,6 +316,7 @@ namespace IrisContabilidad.modelos
                     compra.motivo_anulada = ds.Tables[0].Rows[0][12].ToString();
                     compra.detalle = ds.Tables[0].Rows[0][13].ToString();
                     compra.suplidor_informal = Convert.ToBoolean(ds.Tables[0].Rows[0][14]);
+                    compra.codigo_tipo_compra = Convert.ToInt16(ds.Tables[0].Rows[0][15].ToString());
 
                 }
                 return compra;
@@ -418,7 +420,7 @@ namespace IrisContabilidad.modelos
             {
                 List<compra>lista=new List<compra>();
                 compra compra = new compra();
-                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra";
+                string sql = sqlGeneral;
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -440,6 +442,7 @@ namespace IrisContabilidad.modelos
                         compra.motivo_anulada = row[12].ToString();
                         compra.detalle = row[13].ToString();
                         compra.suplidor_informal = Convert.ToBoolean(row[14]);
+                        compra.codigo_tipo_compra = Convert.ToInt16(row[15].ToString());
                         lista.Add(compra);
                     }
                 }
@@ -460,7 +463,7 @@ namespace IrisContabilidad.modelos
             {
                 List<compra> lista = new List<compra>();
                 compra compra = new compra();
-                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra where activo='1' and cod_suplidor='" + id + "'";
+                string sql = sqlGeneral + " and activo='1' and cod_suplidor='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -482,6 +485,7 @@ namespace IrisContabilidad.modelos
                         compra.motivo_anulada = row[12].ToString();
                         compra.detalle = row[13].ToString();
                         compra.suplidor_informal = Convert.ToBoolean(row[14]);
+                        compra.codigo_tipo_compra = Convert.ToInt16(row[15].ToString());
                         lista.Add(compra);
                     }
                 }
@@ -839,7 +843,7 @@ namespace IrisContabilidad.modelos
             {
                 List<compra> lista = new List<compra>();
                 compra compra = new compra();
-                string sql = "select codigo,num_factura,cod_suplidor,fecha,fecha_limite,ncf,tipo_compra,activo,pagada,cod_sucursal,codigo_empleado,codigo_empleado_anular,motivo_anulado,detalle,suplidor_informal from compra";
+                string sql = sqlGeneral + " and codigo_empleado='"+cajeroId+"' and fecha<='"+utilidades.getFechayyyyMMdd(fechaFinal)+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -861,6 +865,7 @@ namespace IrisContabilidad.modelos
                         compra.motivo_anulada = row[12].ToString();
                         compra.detalle = row[13].ToString();
                         compra.suplidor_informal = Convert.ToBoolean(row[14]);
+                        compra.codigo_tipo_compra = Convert.ToInt16(row[15].ToString());
                         lista.Add(compra);
                     }
                 }

@@ -1188,6 +1188,7 @@
     <EmbeddedResource Include="modulo_gerencia\ventana_reporte_ventas_mensuales_grafico.resx">
       <DependentUpon>ventana_reporte_ventas_mensuales_grafico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modulo_inventario\Reporte\reporte_compra_vs_venta.rdlc" />
     <EmbeddedResource Include="modulo_inventario\ventana_almacen.resx">
       <DependentUpon>ventana_almacen.cs</DependentUpon>
     </EmbeddedResource>
@@ -1386,7 +1387,6 @@
     <Folder Include="modulo_contabilidad\Reporte\" />
     <Folder Include="modulo_empresa\Reporte\" />
     <Folder Include="modulo_inicio_rapido\" />
-    <Folder Include="modulo_inventario\Reporte\" />
     <Folder Include="modulo_nomina\Reporte\" />
     <Folder Include="modulo_opciones\Reporte\" />
     <Folder Include="pruebas\" />
