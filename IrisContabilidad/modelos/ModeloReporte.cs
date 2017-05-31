@@ -695,6 +695,7 @@ namespace IrisContabilidad.modelos
         {
             try
             {
+                sistemaConfiguracion = modeloSistema.getSistemaConfiguracion();
 
                 //buscando cuadre caja
                 cuadre_caja cuadreCaja;
@@ -713,11 +714,19 @@ namespace IrisContabilidad.modelos
 
                 //llenar encabezado
                 reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
+                if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                {
+                    //rd
+                    reporteEncabezado.fecha = utilidades.getFechaddMMyyyy(cuadreCaja.fecha_cierre_cuadre);
+                }else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                {
+                    //usa
+                    reporteEncabezado.fecha = utilidades.getFechaMMddyyyy(cuadreCaja.fecha_cierre_cuadre);
+                }
                 List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
                 listaReporteEncabezado.Add(reporteEncabezado);
                 ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
                 listaReportDataSource.Add(reporteE);
-
 
                 //reporte detalle
                 List<cuadre_caja_detalle> listaCuadreCajaDetalle=new List<cuadre_caja_detalle>();

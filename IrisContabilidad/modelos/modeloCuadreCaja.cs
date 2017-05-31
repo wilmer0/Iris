@@ -64,6 +64,8 @@ namespace IrisContabilidad.modelos
         {
             try
             {
+                //cuadreCaja= new cuadre_caja().getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadreCaja);
+
                 int activo = 0;
                 int cajaCuadrada = 0;
                 int cajaAbierta = 0;
@@ -99,7 +101,7 @@ namespace IrisContabilidad.modelos
                     new modeloCuadreCajaTransacciones().agregarCuadreCajaTransaccion(listaCuadreCajaTransacciones);
 
                     //agregando el desglose de los montos                
-                    sql = "insert into cuadre_caja_detalles(codigo_cuadre,monto_efectivo_esperado,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante,monto_notas_debito,monto_notas_credito,monto_venta_cotizacion,monto_venta_pedido,monto_venta_contado,monto_efectivo_apertura_caja,monto_pagos_efectivo,monto_efectivo_recibido_cajero,monto_cobro_efectivo,monto_venta_efectivo,monto_cobro_deposito,monto_cobro_cheque,monto_cobro_tarjeta,monto_venta_credito) values('" + cuadreCaja.cuadre_caja_detalle.codigo_cuadre_caja + "','" + cuadreCaja.cuadre_caja_detalle.monto_efectivo + "','" + cuadreCaja.cuadre_caja_detalle.monto_egreso + "','" + cuadreCaja.cuadre_caja_detalle.monto_ingreso + "','" + cuadreCaja.cuadre_caja_detalle.monto_sobrante + "','" + cuadreCaja.cuadre_caja_detalle.monto_faltante + "','" + cuadreCaja.cuadre_caja_detalle.montoNotasDebito + "','" + cuadreCaja.cuadre_caja_detalle.montoNotasCredito + "','" + cuadreCaja.cuadre_caja_detalle.montoFacturaCotizacion + "','" + cuadreCaja.cuadre_caja_detalle.montoFacturaPedido + "','" + cuadreCaja.cuadre_caja_detalle.montoFacturaContado + "','" + cuadreCaja.cuadre_caja_detalle.montoEfectivoAperturaCaja + "','" + cuadreCaja.cuadre_caja_detalle.montoPagoEfectivo + "','" + cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero + "','" + cuadreCaja.cuadre_caja_detalle.montoCobrosEfectivo + "','" + cuadreCaja.cuadre_caja_detalle.montoFacturadoEfectivo + "','" + cuadreCaja.cuadre_caja_detalle.montoCobrosDeposito + "','" + cuadreCaja.cuadre_caja_detalle.montoCobrosCheque + "','" + cuadreCaja.cuadre_caja_detalle.montoCobrosTarjeta + "','"+cuadreCaja.cuadre_caja_detalle.montoFacturaCredito+"');";
+                    sql = "insert into cuadre_caja_detalles(codigo_cuadre,monto_efectivo_esperado,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante,monto_notas_debito,monto_notas_credito,monto_venta_cotizacion,monto_venta_pedido,monto_venta_contado,monto_efectivo_apertura_caja,monto_pagos_efectivo,monto_efectivo_recibido_cajero,monto_cobro_efectivo,monto_venta_efectivo,monto_cobro_deposito,monto_cobro_cheque,monto_cobro_tarjeta,monto_venta_credito) values('" + cuadreCaja.cuadre_caja_detalle.codigo_cuadre_caja + "','" + cuadreCaja.cuadre_caja_detalle.monto_efectivo_esperado + "','" + cuadreCaja.cuadre_caja_detalle.monto_egreso + "','" + cuadreCaja.cuadre_caja_detalle.monto_ingreso + "','" + cuadreCaja.cuadre_caja_detalle.monto_sobrante + "','" + cuadreCaja.cuadre_caja_detalle.monto_faltante + "','" + cuadreCaja.cuadre_caja_detalle.montoNotasDebito + "','" + cuadreCaja.cuadre_caja_detalle.montoNotasCredito + "','" + cuadreCaja.cuadre_caja_detalle.montoFacturaCotizacion + "','" + cuadreCaja.cuadre_caja_detalle.montoFacturaPedido + "','" + cuadreCaja.cuadre_caja_detalle.montoFacturaContado + "','" + cuadreCaja.cuadre_caja_detalle.montoEfectivoAperturaCaja + "','" + cuadreCaja.cuadre_caja_detalle.montoPagoEfectivo + "','" + cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero + "','" + cuadreCaja.cuadre_caja_detalle.montoCobrosEfectivo + "','" + cuadreCaja.cuadre_caja_detalle.montoFacturadoEfectivo + "','" + cuadreCaja.cuadre_caja_detalle.montoCobrosDeposito + "','" + cuadreCaja.cuadre_caja_detalle.montoCobrosCheque + "','" + cuadreCaja.cuadre_caja_detalle.montoCobrosTarjeta + "','"+cuadreCaja.cuadre_caja_detalle.montoFacturaCredito+"');";
                     utilidades.ejecutarcomando_mysql(sql);
                 
                     //cerrando el cuadre de caja
@@ -274,7 +276,6 @@ namespace IrisContabilidad.modelos
                     cuadreCaja.efectivo_inicial = Convert.ToDecimal(ds.Tables[0].Rows[0][7].ToString());
                     cuadreCaja.caja_cuadrada = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
                     cuadreCaja.caja_abierta = Convert.ToBoolean(ds.Tables[0].Rows[0][9]);
-                    //cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(ds.Tables[0].Rows[0][10]);
                     cuadreCaja.fecha_cierre_cuadre = DateTime.Today;
                 }
                 return cuadreCaja;
@@ -292,7 +293,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 string sql = "";
-                sql = "select codigo_cuadre,monto_efectivo,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante from cuadre_caja_detalles where codigo_cuadre='"+id+"'";
+                sql = "select codigo_cuadre,monto_efectivo_esperado,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante from cuadre_caja_detalles where codigo_cuadre='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 cuadre_caja_detalle cuadreCajaDetalle = new cuadre_caja_detalle();
                 if (ds.Tables[0].Rows.Count > 0)
