@@ -112,11 +112,11 @@ namespace IrisContabilidad.modulo_facturacion
                     cincoCentavosText.Text = "0.00";
                     unCentavoText.Text = "0.00";
 
-                    //obtener todos los valores de los montos
-                    cuadreCaja = modeloCuadreCaja.getCuadreCajaByCajeroId(cajero.codigo);
+                    ////obtener todos los valores de los montos
+                    //cuadreCaja = modeloCuadreCaja.getCuadreCajaByCajeroId(cajero.codigo);
 
-                    //se llenan todos los detalles del cuadre de caja en base al mismo cuadre de caja anterior
-                    cuadreCaja = cuadreCaja.getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadreCaja);
+                    ////se llenan todos los detalles del cuadre de caja en base al mismo cuadre de caja anterior
+                    //cuadreCaja = cuadreCaja.getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadreCaja);
                 }
             }
             catch (Exception ex)
@@ -191,7 +191,6 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-
                 if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
@@ -206,14 +205,22 @@ namespace IrisContabilidad.modulo_facturacion
                 cuadreCaja.caja_cuadrada = true;
                 cuadreCaja.fecha_cierre_cuadre = DateTime.Today;
 
-                //sumatoria del efectivo entregado en caja sumatoria del desglose del dinero al momento de cuadrar
-                cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero = Convert.ToDecimal(montoTotalEfectivoText.Text);
+                
+                //obtener todos los valores de los montos
+                cuadreCaja = modeloCuadreCaja.getCuadreCajaByCajeroId(cajero.codigo);
 
+                //sumatoria del efectivo entregado en caja sumatoria del desglose del dinero al momento de cuadrar
+                decimal montoEfectivoIngresadoCajero = Convert.ToDecimal(montoTotalEfectivoText.Text);
+
+                //se llenan todos los detalles del cuadre de caja en base al mismo cuadre de caja anterior
+                cuadreCaja = cuadreCaja.getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadreCaja,montoEfectivoIngresadoCajero);
+
+                
                 if (modeloCuadreCaja.modificarCuadreCaja(cuadreCaja) == true)
                 {
-                    MessageBox.Show("Se realizó el cierre de caja con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Operation finished susefull", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (MessageBox.Show("Desea imprimir el reporte de cierre de caja?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Do you want impress cashier report?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         //imprimir
                         modeloReporte.imprimirCuadreCajaGeneral(cuadreCaja.codigo);
@@ -225,7 +232,7 @@ namespace IrisContabilidad.modulo_facturacion
                 else
                 {
                     cuadreCaja = null;
-                    MessageBox.Show("No se realizó el cierre de caja", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Operation can't finish", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     loadVentana();
                 }
             }

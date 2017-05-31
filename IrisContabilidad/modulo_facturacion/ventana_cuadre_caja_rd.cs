@@ -101,7 +101,7 @@ namespace IrisContabilidad.modulo_facturacion
                     cuadreCaja = modeloCuadreCaja.getCuadreCajaByCajeroId(cajero.codigo);
 
                     //se llenan todos los detalles del cuadre de caja en base al mismo cuadre de caja anterior
-                    cuadreCaja = cuadreCaja.getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadreCaja);
+                    cuadreCaja = cuadreCaja.getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadreCaja,0);
                 }
             }
             catch (Exception ex)
@@ -174,7 +174,6 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
-                
                 if (MessageBox.Show("Desea guardar?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 {
                     return;
@@ -189,19 +188,27 @@ namespace IrisContabilidad.modulo_facturacion
                 cuadreCaja.caja_cuadrada = true;
                 cuadreCaja.fecha_cierre_cuadre = DateTime.Today;
 
+
+                //obtener todos los valores de los montos
+                cuadreCaja = modeloCuadreCaja.getCuadreCajaByCajeroId(cajero.codigo);
+
                 //sumatoria del efectivo entregado en caja sumatoria del desglose del dinero al momento de cuadrar
-                cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero =Convert.ToDecimal(montoTotalEfectivoText.Text);
-                
-                if (modeloCuadreCaja.modificarCuadreCaja(cuadreCaja)==true)
+                decimal montoEfectivoIngresadoCajero = Convert.ToDecimal(montoTotalEfectivoText.Text);
+
+                //se llenan todos los detalles del cuadre de caja en base al mismo cuadre de caja anterior
+                cuadreCaja = cuadreCaja.getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadreCaja, montoEfectivoIngresadoCajero);
+
+
+                if (modeloCuadreCaja.modificarCuadreCaja(cuadreCaja) == true)
                 {
                     MessageBox.Show("Se realizó el cierre de caja con exito", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
                     if (MessageBox.Show("Desea imprimir el reporte de cierre de caja?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         //imprimir
                         modeloReporte.imprimirCuadreCajaGeneral(cuadreCaja.codigo);
                     }
-                    
+
                     cuadreCaja = null;
                     loadVentana();
                 }
@@ -217,6 +224,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error GetAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         public void salir()
         {
