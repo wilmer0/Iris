@@ -37,7 +37,6 @@ namespace IrisContabilidad.modulo_facturacion
         private venta_detalle_lista ventaDetalleLista;
         private sistemaConfiguracion sistemaConfiguracion;
         private tipo_ventas tipoVenta;
-        private sistemaConfiguracion sistemaconfiguracion;
 
         //modelos
         modeloTipoComprobanteFiscal modeloTipoComprobanteFiscal = new modeloTipoComprobanteFiscal();
@@ -229,12 +228,13 @@ namespace IrisContabilidad.modulo_facturacion
         {
             try
             {
+                sistemaConfiguracion = modeloSistemaconfiguracion.getSistemaConfiguracion();
                 loadTipoVentas();
                 loadTipoVentaPorDefecto();
                 loadListaComprobantesFiscales();
                 loadCategoriasProductos();
 
-                if (singleton.sistema.codigoIdiomaSistema == 1)
+                if (sistemaConfiguracion.codigoIdiomaSistema == 1)
                 {
                     //espanol
                     fechaLabelText.Text = DateTime.Today.ToString("dd/MM/yyyy");

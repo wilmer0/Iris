@@ -83,7 +83,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -110,7 +109,6 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
 
         //get by id
         public cajero getCajeroById(int id)

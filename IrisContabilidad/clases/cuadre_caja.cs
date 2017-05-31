@@ -30,12 +30,12 @@ namespace IrisContabilidad.clases
             
         }
 
-        public cuadre_caja getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadre_caja cuadreCaja)
+        public cuadre_caja getCuadreCajaAndCuadreCajaDetalleByCuadreCaja(cuadre_caja cuadreCaja,decimal montoEfectivoIngresadoCajero)
         {
             try
             {
                 string sql = "";
-                utilidades utilidades=new utilidades();        
+                utilidades utilidades=new utilidades();
 
                 List<cuadre_caja_transacciones> listaCuadreCajaTransacciones = new List<cuadre_caja_transacciones>();
                 cuadre_caja_transacciones cuadreCajaTransacciones = new cuadre_caja_transacciones();
@@ -182,7 +182,6 @@ namespace IrisContabilidad.clases
 
                 #endregion
 
-              
                 //recorriendo la lista de ingresos de caja
                 #region
                 foreach (var x in listaIngresosCajas)
@@ -234,7 +233,6 @@ namespace IrisContabilidad.clases
                 }
                 #endregion
 
-               
                 //recorriendo la lista de egresos
                 #region
                 foreach (var x in listaEgresosCaja)
@@ -296,12 +294,30 @@ namespace IrisContabilidad.clases
                 }
                 #endregion
 
-               
+                cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero = montoEfectivoIngresadoCajero;
 
+                //obteniendo el efectivo esperado
+                //en el monto efectivo cobro esta incluido lo facturado y lo cobrado en efectivo
+                cuadreCaja.cuadre_caja_detalle.monto_efectivo_esperado = 
+                    (cuadreCaja.cuadre_caja_detalle.montoEfectivoAperturaCaja +cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero + 
+                    cuadreCaja.cuadre_caja_detalle.montoCobrosEfectivo +cuadreCaja.cuadre_caja_detalle.monto_ingreso) - 
+                    (cuadreCaja.cuadre_caja_detalle.montoPagoEfectivo +cuadreCaja.cuadre_caja_detalle.monto_egreso);
 
-                //cuadreCaja.cuadre_caja_detalle = cuadre_caja_detalle;
-                //cuadreCaja.cuadreCajaTransacciones = listaCuadreCajaTransacciones;
-
+                //obteniendo el monto sobrante
+                if (cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero >= cuadreCaja.cuadre_caja_detalle.monto_efectivo_esperado)
+                {
+                    cuadreCaja.cuadre_caja_detalle.monto_sobrante =
+                        cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero
+                        - cuadreCaja.cuadre_caja_detalle.monto_efectivo_esperado;
+                }
+                //obteniendo el monto faltante
+                if (cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero <= cuadreCaja.cuadre_caja_detalle.monto_efectivo_esperado)
+                {
+                    cuadreCaja.cuadre_caja_detalle.monto_faltante =
+                        cuadreCaja.cuadre_caja_detalle.monto_efectivo_esperado -
+                        cuadreCaja.cuadre_caja_detalle.montoEfectivoIngresadoCajero;
+                }
+                
                 
                 return cuadreCaja;
             }

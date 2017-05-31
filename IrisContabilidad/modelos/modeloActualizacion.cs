@@ -486,7 +486,7 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`compra` MODIFY COLUMN `tipo_compra` VARCHAR(99) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '' COMMENT 'cre,con,ped,cot';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` MODIFY COLUMN `monto_cobro_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'aqui se incluye lo facturadoen efectivo +/ y tambien los cobros en efectivos',MODIFY COLUMN `monto_venta_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'solo lo facturado en efectivo';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

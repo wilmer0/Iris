@@ -9,9 +9,8 @@
         public decimal monto_sobrante { get; set; }
         public decimal monto_faltante { get; set; }
         public decimal montoEfectivoIngresadoCajero { get; set; } //este monto es el que el cajero ingresa manualmente la sumatoria del desglose de efectivo al momento de cuadrar la caja
-
-        //apertura
-        public decimal montoEfectivoAperturaCaja { get; set; }
+        public decimal monto_efectivo_esperado { get; set; }//monto efectivo esperado
+        public decimal montoEfectivoAperturaCaja { get; set; } //apertura
         
 
         //facturado o ventas
