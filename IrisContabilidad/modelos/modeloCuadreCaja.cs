@@ -12,7 +12,8 @@ namespace IrisContabilidad.modelos
         //objetos
         utilidades utilidades = new utilidades();
 
-
+        string sqlGeneral = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre from cuadre_caja where codigo>'0' ";
+                
 
 
 
@@ -221,13 +222,13 @@ namespace IrisContabilidad.modelos
             }
         }
 
-        //get objeto
+        //get cuadre caja by id
         public cuadre_caja getCuadreCajaById(int id)
         {
             try
             {
                 cuadre_caja cuadreCaja = new cuadre_caja();
-                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre from cuadre_caja where codigo='" + id + "'";
+                string sql = sqlGeneral + " and codigo='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -262,7 +263,7 @@ namespace IrisContabilidad.modelos
             try
             {
                 cuadre_caja cuadreCaja = new cuadre_caja();
-                string sql = "select codigo,cod_cajero,fecha,turno,activo,cod_sucursal,cod_caja,efectivo_inicial,caja_cuadrada,caja_abierta,fecha_cierre_cuadre from cuadre_caja where cod_cajero='" + id + "' and caja_abierta='1'";
+                string sql = sqlGeneral + " and cod_cajero='" + id + "' and caja_abierta='1'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -287,27 +288,70 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //get cuadre caja by fecha cuadre y codigo cajero
+        public cuadre_caja getCuadreCajaByFechaCuadreAndCajeroId(DateTime fechaCuadre,int idCajero)
+        {
+            try
+            {
+                List<cuadre_caja> lista=new List<cuadre_caja>();
+                cuadre_caja cuadreCaja = new cuadre_caja();
+                string sql = sqlGeneral + " and fecha_cierre_cuadre=" + utilidades.getFechayyyyMMdd(fechaCuadre) + " and cod_cajero='"+idCajero+"'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        cuadreCaja = new cuadre_caja();
+                        cuadreCaja.codigo = Convert.ToInt16(row[0]);
+                        cuadreCaja.codigo_cajero = Convert.ToInt16(row[1]);
+                        cuadreCaja.fecha = Convert.ToDateTime(row[2]);
+                        cuadreCaja.turno = Convert.ToInt16(row[3]);
+                        cuadreCaja.activo = Convert.ToBoolean(row[4]);
+                        cuadreCaja.codigo_sucursal = Convert.ToInt16(row[5]);
+                        cuadreCaja.codigo_caja = Convert.ToInt16(row[6]);
+                        cuadreCaja.efectivo_inicial = Convert.ToDecimal(row[7].ToString());
+                        cuadreCaja.caja_cuadrada = Convert.ToBoolean(row[8]);
+                        cuadreCaja.caja_abierta = Convert.ToBoolean(row[9]);
+                        cuadreCaja.fecha_cierre_cuadre = Convert.ToDateTime(row[10]);
+                        //el detalle del cierre de caja los montos
+                        cuadreCaja.cuadre_caja_detalle = getCuadreCajaDetalleByCuadreCajaId(cuadreCaja.codigo);
+                        //las transacciones de este cierre de caja
+                        cuadreCaja.cuadreCajaTransacciones = new modeloCuadreCajaTransacciones().getListaCompletaByCuadreCajaId(cuadreCaja.codigo);
+                
+                        lista.Add(cuadreCaja);
+                    }
+                }
+
+                //como es posible que encuentre varios resultados que devuelva siempre el ultimo
+
+                return lista.LastOrDefault();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getCuadreCajaById.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+
         //get lista Lista Cuadre Caja Detalle By Cuadre Caja Id
         public cuadre_caja_detalle getCuadreCajaDetalleByCuadreCajaId(int id)
         {
             try
             {
                 string sql = "";
-                sql = "select codigo_cuadre,monto_efectivo_esperado,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante from cuadre_caja_detalles where codigo_cuadre='" + id + "'";
+                sql = "select codigo_cuadre,monto_efectivo_esperado,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante from cuadre_caja_detalles where codigo_cuadre='"+id+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 cuadre_caja_detalle cuadreCajaDetalle = new cuadre_caja_detalle();
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     foreach (DataRow row in ds.Tables[0].Rows)
-                    {
-                        
-                        cuadreCajaDetalle.codigo_cuadre_caja = Convert.ToInt16(row[0].ToString());
-                        cuadreCajaDetalle.monto_efectivo = Convert.ToDecimal(row[1].ToString());
-                        cuadreCajaDetalle.monto_egreso = Convert.ToDecimal(row[5].ToString());
-                        cuadreCajaDetalle.monto_ingreso = Convert.ToDecimal(row[6].ToString());
-                        cuadreCajaDetalle.monto_sobrante = Convert.ToDecimal(row[7].ToString());
-                        cuadreCajaDetalle.monto_faltante = Convert.ToDecimal(row[8].ToString());
-                        
+                    {   
+                        cuadreCajaDetalle.codigo_cuadre_caja = Convert.ToInt16(row[0]);
+                        cuadreCajaDetalle.monto_efectivo_esperado = Convert.ToDecimal(row[1]);
+                        cuadreCajaDetalle.monto_egreso = Convert.ToDecimal(row[2]);
+                        cuadreCajaDetalle.monto_ingreso = Convert.ToDecimal(row[3]);
+                        cuadreCajaDetalle.monto_sobrante = Convert.ToDecimal(row[4]);
+                        cuadreCajaDetalle.monto_faltante = Convert.ToDecimal(row[5]);         
                     }
                 }
                 return cuadreCajaDetalle;
@@ -320,39 +364,6 @@ namespace IrisContabilidad.modelos
             }
         }
         
-        //get lista completa
-        public List<cuadre_caja_detalle> getListaCompleta()
-        {
-            try
-            {
-                List<cuadre_caja_detalle> lista = new List<cuadre_caja_detalle>();
-                string sql = "";
-                sql = "select codigo_cuadre,monto_efectivo,monto_egreso,monto_ingreso,monto_sobrante,monto_faltante from cuadre_caja_detalles";
-                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
-                if (ds.Tables[0].Rows.Count > 0)
-                {
-                    foreach (DataRow row in ds.Tables[0].Rows)
-                    {
-                        cuadre_caja_detalle cuadreCajaDetalle = new cuadre_caja_detalle();
-                        cuadreCajaDetalle.codigo_cuadre_caja = Convert.ToInt16(row[0].ToString());
-                        cuadreCajaDetalle.monto_efectivo = Convert.ToDecimal(row[1].ToString());
-                        cuadreCajaDetalle.monto_egreso = Convert.ToDecimal(row[5].ToString());
-                        cuadreCajaDetalle.monto_ingreso = Convert.ToDecimal(row[6].ToString());
-                        cuadreCajaDetalle.monto_sobrante = Convert.ToDecimal(row[7].ToString());
-                        cuadreCajaDetalle.monto_faltante = Convert.ToDecimal(row[8].ToString());
-                        lista.Add(cuadreCajaDetalle);
-                    }
-                }
-                return lista;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error getListaCompleta.:" + ex.ToString(), "", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return null;
-            }
-        }
-
         //get lista venta detalles sin cuadrar by cuadre
         public List<venta_detalle> getListaVentasDetallesBycuadreCaja(cuadre_caja cuadre)
         {

@@ -486,9 +486,9 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(375, 154);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 20);
+            this.label8.Size = new System.Drawing.Size(42, 20);
             this.label8.TabIndex = 132;
-            this.label8.Text = "Unity (F5)";
+            this.label8.Text = "Unit";
             // 
             // unidadComboText
             // 
@@ -540,7 +540,7 @@
             // 
             this.totalItebisText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalItebisText.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalItebisText.Location = new System.Drawing.Point(841, 600);
+            this.totalItebisText.Location = new System.Drawing.Point(787, 599);
             this.totalItebisText.MaxLength = 200;
             this.totalItebisText.Name = "totalItebisText";
             this.totalItebisText.ReadOnly = true;
@@ -552,17 +552,17 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1088, 600);
+            this.label14.Location = new System.Drawing.Point(1010, 602);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(73, 29);
+            this.label14.Size = new System.Drawing.Size(151, 29);
             this.label14.TabIndex = 137;
-            this.label14.Text = "Total";
+            this.label14.Text = "Grand Total";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(756, 602);
+            this.label13.Location = new System.Drawing.Point(702, 601);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(84, 29);
             this.label13.TabIndex = 136;

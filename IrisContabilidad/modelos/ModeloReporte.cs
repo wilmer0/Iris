@@ -718,10 +718,14 @@ namespace IrisContabilidad.modelos
                 {
                     //rd
                     reporteEncabezado.fecha = utilidades.getFechaddMMyyyy(cuadreCaja.fecha_cierre_cuadre);
+                    reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_general_rd.rdlc";
+
                 }else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
                 {
                     //usa
                     reporteEncabezado.fecha = utilidades.getFechaMMddyyyy(cuadreCaja.fecha_cierre_cuadre);
+                    reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_general_usa.rdlc";
+
                 }
                 List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
                 listaReporteEncabezado.Add(reporteEncabezado);
@@ -749,6 +753,68 @@ namespace IrisContabilidad.modelos
             }
         }
 
+        //imprimir cuadre caja detallado
+        public bool imprimirCuadreCajaDetallado(int idCuadreCaja)
+        {
+            try
+            {
+                sistemaConfiguracion = modeloSistema.getSistemaConfiguracion();
+
+                //buscando cuadre caja
+                cuadre_caja cuadreCaja;
+                cuadreCaja = new modeloCuadreCaja().getCuadreCajaById(idCuadreCaja);
+
+                //datos generales
+                String reporte = "";
+
+                List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
+
+                empleado empleadoSesion = new empleado();
+                empleadoSesion = singleton.getEmpleado();
+
+                //hoja normal
+                reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_detallado_rd.rdlc";
+
+                //llenar encabezado
+                reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
+                if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                {
+                    //rd
+                    reporteEncabezado.fecha = utilidades.getFecha_dd_MM_yyyy(cuadreCaja.fecha_cierre_cuadre);
+                    reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_detallado_rd.rdlc";
+                }
+                else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                {
+                    //usa
+                    reporteEncabezado.fecha = utilidades.getFecha_MM_dd_yyyy(cuadreCaja.fecha_cierre_cuadre);
+                    reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_detallado_usa.rdlc";
+                }
+                List<reporte_encabezado_general> listaReporteEncabezado = new List<reporte_encabezado_general>();
+                listaReporteEncabezado.Add(reporteEncabezado);
+                ReportDataSource reporteE = new ReportDataSource("reporte_encabezado", listaReporteEncabezado);
+                listaReportDataSource.Add(reporteE);
+
+                //reporte detalle
+                List<cuadre_caja_detalle> listaCuadreCajaDetalle = new List<cuadre_caja_detalle>();
+                listaCuadreCajaDetalle.Add(cuadreCaja.cuadre_caja_detalle);
+                ReportDataSource reporteD = new ReportDataSource("reporte_detalle", listaCuadreCajaDetalle);
+                listaReportDataSource.Add(reporteD);
+
+                //reporte parametros
+                List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+
+
+                ventana.ShowDialog();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimirCuadreCajaDetallado.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+        
         //imprimir reporte de cobros filtrado
         public bool imprimirCobrosFiltrado(empleado empleado, cliente cliente, venta venta, string tipoVenta, Boolean incluirRangoFechaVenta, DateTime fechaInicialVenta, DateTime fechaFinalVenta, bool soloVentasPagadas)
         {
