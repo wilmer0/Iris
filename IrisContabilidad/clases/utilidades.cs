@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -1142,7 +1143,6 @@ namespace IrisContabilidad.clases
             }
         }
         
-
         public string getFechaddMMyyyyhhmmsstt(DateTime fecha)
         {
             try
@@ -1255,7 +1255,6 @@ namespace IrisContabilidad.clases
             }
         }
         
-
         public string getDiasByRangoFecha(DateTime fechaInicial, DateTime fechaFinal)
         {
             try
@@ -1311,6 +1310,30 @@ namespace IrisContabilidad.clases
             {
                 MessageBox.Show("Error getFechaDiferenciaDias.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "";
+            }
+        }
+
+        public TextBox placeHolder(System.Windows.Forms.TextBox textBox, string texto, Color colorHolder,Color colorNoHolder)
+        {
+            try
+            {
+                if (String.IsNullOrEmpty(textBox.Text) || textBox.Text==texto)
+                {
+                    textBox.Text = texto;
+                    textBox.ForeColor = colorHolder;
+                }
+                else
+                {
+                    //se queda el mismo texto pero se pone la letra en negrita
+                    textBox.ForeColor = colorNoHolder;
+                }
+
+                return textBox;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error en placeHolder.: " + ex.ToString(), "", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return null;
             }
         }
 

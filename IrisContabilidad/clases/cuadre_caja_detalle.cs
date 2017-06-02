@@ -42,6 +42,11 @@
         //devolucion
         public decimal montoVentaDevolucion { get; set; }
 
+        //documento
+        public int codigoDocumento { get; set; } //para tener el codigo del documento
+        public string tipoDocumento { get; set; } //para saber si el documento es una venta, pago, cobro, nc, nd etc...
+        public decimal montoDocumento { get; set; } //para saber el monto de cada documento por separado
+        public string fechaDocumentoS { get; set; } // para saber la fecha de creacion del documento
 
         public cuadre_caja_detalle()
         {

@@ -54,7 +54,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
         //Proceso
         private ventana_procesando procesando;
-        private BackgroundWorker SicronizarProceso = new BackgroundWorker();
+        private BackgroundWorker SincronizarProceso = new BackgroundWorker();
 
        
         public ventana_reporte_cobros()
@@ -65,15 +65,16 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             this.Text = tituloLabel.Text;
             loadVentana();
             loadListaVentaCobros();
-            SicronizarProceso.WorkerReportsProgress = true;
-            SicronizarProceso.DoWork += LoadReporte;
-            SicronizarProceso.ProgressChanged += ProcesoRun;
-            SicronizarProceso.RunWorkerCompleted += ProcesoCompleto;
+            
+            SincronizarProceso.WorkerReportsProgress = true;
+            SincronizarProceso.DoWork += LoadReporte;
+            SincronizarProceso.ProgressChanged += ProcesoRun;
+            SincronizarProceso.RunWorkerCompleted += ProcesoCompleto;
         }
 
         private void LoadReporte(object sender, DoWorkEventArgs e)
         {
-            SicronizarProceso.ReportProgress(10);
+            SincronizarProceso.ReportProgress(10);
             try
             {
                 modeloReporte.imprimirCobrosFiltrado(empleado,cliente,venta,tipoVenta,incluirRangoFechaVenta,fechaInicialVentaDateTime,fechaFinalVentaDateTime,SoloVentasPagadas);
@@ -344,7 +345,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
         private void button6_Click(object sender, EventArgs e)
         {
-            SicronizarProceso.RunWorkerAsync();
+            SincronizarProceso.RunWorkerAsync();
         }
 
         private void clienteIdText_KeyDown(object sender, KeyEventArgs e)

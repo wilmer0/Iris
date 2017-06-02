@@ -37,7 +37,9 @@ namespace IrisContabilidad.modulo_facturacion
             this.button4 = new System.Windows.Forms.Button();
             this.cajeroText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.fechaCierreDateTime = new System.Windows.Forms.MaskedTextBox();
+            this.radioButtonGeneral = new System.Windows.Forms.RadioButton();
+            this.radioButtonDetallado = new System.Windows.Forms.RadioButton();
+            this.fechaCierreDateTime = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -83,11 +85,11 @@ namespace IrisContabilidad.modulo_facturacion
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(82, 83);
+            this.label2.Location = new System.Drawing.Point(16, 83);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
+            this.label2.Size = new System.Drawing.Size(127, 20);
             this.label2.TabIndex = 24;
-            this.label2.Text = "Cajero";
+            this.label2.Text = "Cajero/Cashier";
             // 
             // button4
             // 
@@ -117,21 +119,45 @@ namespace IrisContabilidad.modulo_facturacion
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 180);
+            this.label1.Location = new System.Drawing.Point(40, 179);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(112, 20);
+            this.label1.Size = new System.Drawing.Size(103, 20);
             this.label1.TabIndex = 83;
-            this.label1.Text = "Fecha Cierre";
+            this.label1.Text = "Fecha/Date";
+            // 
+            // radioButtonGeneral
+            // 
+            this.radioButtonGeneral.AutoSize = true;
+            this.radioButtonGeneral.Checked = true;
+            this.radioButtonGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonGeneral.Location = new System.Drawing.Point(149, 243);
+            this.radioButtonGeneral.Name = "radioButtonGeneral";
+            this.radioButtonGeneral.Size = new System.Drawing.Size(84, 21);
+            this.radioButtonGeneral.TabIndex = 85;
+            this.radioButtonGeneral.TabStop = true;
+            this.radioButtonGeneral.Text = "General";
+            this.radioButtonGeneral.UseVisualStyleBackColor = true;
+            this.radioButtonGeneral.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioButtonGeneral_KeyDown);
+            // 
+            // radioButtonDetallado
+            // 
+            this.radioButtonDetallado.AutoSize = true;
+            this.radioButtonDetallado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonDetallado.Location = new System.Drawing.Point(310, 243);
+            this.radioButtonDetallado.Name = "radioButtonDetallado";
+            this.radioButtonDetallado.Size = new System.Drawing.Size(95, 21);
+            this.radioButtonDetallado.TabIndex = 86;
+            this.radioButtonDetallado.Text = "Detallado";
+            this.radioButtonDetallado.UseVisualStyleBackColor = true;
+            this.radioButtonDetallado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioButtonDetallado_KeyDown);
             // 
             // fechaCierreDateTime
             // 
-            this.fechaCierreDateTime.Location = new System.Drawing.Point(150, 179);
-            this.fechaCierreDateTime.Mask = "00/00/0000";
+            this.fechaCierreDateTime.Location = new System.Drawing.Point(149, 178);
             this.fechaCierreDateTime.Name = "fechaCierreDateTime";
-            this.fechaCierreDateTime.Size = new System.Drawing.Size(100, 20);
-            this.fechaCierreDateTime.TabIndex = 84;
-            this.fechaCierreDateTime.ValidatingType = typeof(System.DateTime);
-            this.fechaCierreDateTime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaCierreDateTime_KeyDown);
+            this.fechaCierreDateTime.Size = new System.Drawing.Size(200, 20);
+            this.fechaCierreDateTime.TabIndex = 87;
+            this.fechaCierreDateTime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.fechaCierreDateTime_KeyDown_1);
             // 
             // ventana_imprimir_cuadre_caja_rd
             // 
@@ -139,6 +165,8 @@ namespace IrisContabilidad.modulo_facturacion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 406);
             this.Controls.Add(this.fechaCierreDateTime);
+            this.Controls.Add(this.radioButtonDetallado);
+            this.Controls.Add(this.radioButtonGeneral);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cajeroText);
             this.Controls.Add(this.cajeroIdText);
@@ -154,6 +182,8 @@ namespace IrisContabilidad.modulo_facturacion
             this.Controls.SetChildIndex(this.cajeroIdText, 0);
             this.Controls.SetChildIndex(this.cajeroText, 0);
             this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.radioButtonGeneral, 0);
+            this.Controls.SetChildIndex(this.radioButtonDetallado, 0);
             this.Controls.SetChildIndex(this.fechaCierreDateTime, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -170,7 +200,9 @@ namespace IrisContabilidad.modulo_facturacion
         private Button button4;
         private TextBox cajeroText;
         private Label label1;
-        private MaskedTextBox fechaCierreDateTime;
+        private RadioButton radioButtonGeneral;
+        private RadioButton radioButtonDetallado;
+        private DateTimePicker fechaCierreDateTime;
 
     }
 }

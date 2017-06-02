@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -37,14 +39,29 @@ namespace IrisContabilidad
         public Form1()
         {
             InitializeComponent();
-            this.tituloLabel.Text = "Inicio sesión";
+            this.tituloLabel.Text = "Sign in";
             this.Text = tituloLabel.Text;
+            usuarioText.Focus();
             usuarioText.Select();
+
 
             SicronizarProceso.WorkerReportsProgress = true;
             SicronizarProceso.DoWork += LoadReporte;
             SicronizarProceso.ProgressChanged += ProcesoRun;
             SicronizarProceso.RunWorkerCompleted += ProcesoCompleto;
+
+            usuarioText.GotFocus += UsuarioTextOnGotFocus;
+            usuarioText.LostFocus += UsuarioTextOnLostFocus;
+        }
+
+        private void UsuarioTextOnLostFocus(object sender, EventArgs eventArgs)
+        {
+            usuarioText = utilidades.placeHolder(usuarioText, "user name", Color.LightGray, Color.Black);
+        }
+
+        private void UsuarioTextOnGotFocus(object sender, EventArgs eventArgs)
+        {
+            usuarioText = utilidades.placeHolder(usuarioText, "user name", Color.LightGray,Color.Black);
         }
 
         private void LoadReporte(object sender, DoWorkEventArgs e)
@@ -205,6 +222,10 @@ namespace IrisContabilidad
         {
             try
             {
+                if (ValidarGetAction() == false)
+                {
+                    return;
+                }
                 //modeloEmpleado.adminPrimerLogin();
                 modeloPrimerLogin.validarPrimerLogin();
                 empleado = modeloEmpleado.getEmpleadoByLogin(usuarioS, utilidades.encriptar(claveS));
@@ -247,7 +268,7 @@ namespace IrisContabilidad
             }
             catch (Exception)
             {
-                
+
             }
         }
         
@@ -305,6 +326,65 @@ namespace IrisContabilidad
             ventana.ShowDialog();
         }
 
-       
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            limpiar();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            GetAction();
+        }
+
+        private void usuarioText_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    claveText.Focus();
+                    claveText.SelectAll();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void claveText_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    button1.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void usuarioText_Leave(object sender, EventArgs e)
+        {
+        }
+
+        
+
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void usuarioText_KeyUp(object sender, KeyEventArgs e)
+        {
+        }
+
     }
 }
