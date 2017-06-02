@@ -495,7 +495,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>0.98958in</Top>
+        <Top>0.86458in</Top>
         <Left>0.17711in</Left>
         <Height>0.22917in</Height>
         <Width>8.13541in</Width>
@@ -515,16 +515,16 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.03385in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.03385in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.03385in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1in</Width>
+              <Width>2.03385in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -540,13 +540,15 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Codigo</Value>
+                              <Value>ID</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox2</rd:DefaultName>
@@ -572,13 +574,15 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Tipo</Value>
+                              <Value>Type</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox4</rd:DefaultName>
@@ -604,13 +608,15 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Fecha</Value>
+                              <Value>Date</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox23</rd:DefaultName>
@@ -636,7 +642,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Monto</Value>
+                              <Value>Total</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -679,14 +685,15 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>codigoDocumento</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -709,14 +716,15 @@
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>tipoDocumento</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -728,25 +736,26 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="Textbox24">
+                    <Textbox Name="fechaDocumentoS">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!fechaDocumentoS.Value</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Left</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>Textbox24</rd:DefaultName>
+                      <rd:DefaultName>fechaDocumentoS</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -765,7 +774,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value />
+                              <Value>=Fields!montoDocumento.Value</Value>
                               <Style>
                                 <Format>#,0.00</Format>
                               </Style>
@@ -779,8 +788,7 @@
                       <rd:DefaultName>tipoDocumento</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -813,10 +821,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>reporte_detalle</DataSetName>
-        <Top>1.27431in</Top>
+        <Top>1.14931in</Top>
         <Left>0.17711in</Left>
         <Height>0.5in</Height>
-        <Width>4in</Width>
+        <Width>8.13539in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -1366,6 +1374,10 @@
           <DataField>codigoDocumento</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="fechaDocumentoS">
+          <DataField>fechaDocumentoS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="monto_efectivo">
           <DataField>monto_efectivo</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
@@ -1404,6 +1416,10 @@
         </Field>
         <Field Name="montoCobrosTarjeta">
           <DataField>montoCobrosTarjeta</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="montoDocumento">
+          <DataField>montoDocumento</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="montoEfectivoAperturaCaja">
