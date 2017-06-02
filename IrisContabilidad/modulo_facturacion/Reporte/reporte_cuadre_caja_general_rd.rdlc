@@ -12,16 +12,16 @@
               <Width>1.23759in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.42092in</Width>
+              <Width>1.2579in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.28227in</Width>
+              <Width>1.44529in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.29703in</Width>
+              <Width>1.32828in</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.52083in</Width>
+              <Width>1.48956in</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -173,7 +173,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>monto cobrado efectivo</Value>
+                              <Value>cobrado efectivo</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -207,7 +207,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>monto pagado efectivo</Value>
+                              <Value>pagado efectivo</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -469,7 +469,7 @@
         <Top>0.13888in</Top>
         <Left>0.1363in</Left>
         <Height>0.5in</Height>
-        <Width>8.13541in</Width>
+        <Width>8.13539in</Width>
         <Style>
           <Border>
             <Style>None</Style>

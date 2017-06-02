@@ -37,7 +37,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>efectivo esperado</Value>
+                              <Value>Expected cash</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -71,7 +71,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>efectivo faltante</Value>
+                              <Value>Missing cash</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -105,7 +105,8 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>efectivo sobrante</Value>
+                              <Value>Surplus cash
+</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -139,7 +140,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>facturado efectivo</Value>
+                              <Value>Invoiced cash</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -173,7 +174,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>monto cobrado efectivo</Value>
+                              <Value>Cash collected</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -207,7 +208,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>monto pagado efectivo</Value>
+                              <Value>Cash paid</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -562,7 +563,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>CASHIER DETAILED REPORT</Value>
+                  <Value>CASH CLOSING DETAILED REPORT</Value>
                   <Style>
                     <FontWeight>Bold</FontWeight>
                   </Style>
