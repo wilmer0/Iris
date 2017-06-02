@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_contabilidad
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_contabilidad
 {
     partial class ventana_cuentas_contables
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -32,7 +35,6 @@
             this.cuentaIdText = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.numeroCuentaText = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -49,17 +51,26 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 368);
-            this.panel1.Size = new System.Drawing.Size(919, 54);
+            this.panel1.Location = new System.Drawing.Point(12, 555);
+            this.panel1.Size = new System.Drawing.Size(952, 54);
             // 
             // button2
             // 
@@ -69,17 +80,17 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(778, 5);
+            this.button1.Location = new System.Drawing.Point(811, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(943, 21);
+            this.panel2.Size = new System.Drawing.Size(976, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(389, 5);
+            this.button3.Location = new System.Drawing.Point(406, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // cuentaIdText
@@ -90,6 +101,7 @@
             this.cuentaIdText.Name = "cuentaIdText";
             this.cuentaIdText.Size = new System.Drawing.Size(183, 26);
             this.cuentaIdText.TabIndex = 118;
+            this.cuentaIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cuentaIdText_KeyDown);
             // 
             // button7
             // 
@@ -101,23 +113,17 @@
             this.button7.Size = new System.Drawing.Size(47, 37);
             this.button7.TabIndex = 119;
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(60, 23);
+            this.label9.Location = new System.Drawing.Point(60, 25);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 20);
             this.label9.TabIndex = 120;
             this.label9.Text = "Cuenta";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(-15, -15);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 121;
             // 
             // numeroCuentaText
             // 
@@ -127,6 +133,7 @@
             this.numeroCuentaText.Name = "numeroCuentaText";
             this.numeroCuentaText.Size = new System.Drawing.Size(253, 26);
             this.numeroCuentaText.TabIndex = 122;
+            this.numeroCuentaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numeroCuentaText_KeyDown);
             // 
             // label3
             // 
@@ -142,7 +149,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(56, 77);
+            this.label4.Location = new System.Drawing.Point(56, 79);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 20);
             this.label4.TabIndex = 125;
@@ -152,10 +159,11 @@
             // 
             this.nombreText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nombreText.Location = new System.Drawing.Point(133, 74);
-            this.nombreText.MaxLength = 19;
+            this.nombreText.MaxLength = 150;
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(253, 26);
             this.nombreText.TabIndex = 124;
+            this.nombreText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nombreText_KeyDown);
             // 
             // cuentaPadreIdText
             // 
@@ -165,6 +173,7 @@
             this.cuentaPadreIdText.Name = "cuentaPadreIdText";
             this.cuentaPadreIdText.Size = new System.Drawing.Size(183, 26);
             this.cuentaPadreIdText.TabIndex = 126;
+            this.cuentaPadreIdText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cuentaPadreIdText_KeyDown);
             // 
             // button6
             // 
@@ -176,12 +185,13 @@
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 127;
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 175);
+            this.label5.Location = new System.Drawing.Point(9, 176);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 20);
             this.label5.TabIndex = 128;
@@ -200,7 +210,7 @@
             // 
             this.radioCuentaAcumulativa.AutoSize = true;
             this.radioCuentaAcumulativa.Checked = true;
-            this.radioCuentaAcumulativa.Cursor = System.Windows.Forms.Cursors.No;
+            this.radioCuentaAcumulativa.Cursor = System.Windows.Forms.Cursors.Default;
             this.radioCuentaAcumulativa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioCuentaAcumulativa.Location = new System.Drawing.Point(8, 39);
             this.radioCuentaAcumulativa.Name = "radioCuentaAcumulativa";
@@ -209,6 +219,7 @@
             this.radioCuentaAcumulativa.TabStop = true;
             this.radioCuentaAcumulativa.Text = "Cuenta acumulativa";
             this.radioCuentaAcumulativa.UseVisualStyleBackColor = true;
+            this.radioCuentaAcumulativa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioCuentaAcumulativa_KeyDown);
             // 
             // radioCuentaMovimiento
             // 
@@ -220,6 +231,7 @@
             this.radioCuentaMovimiento.TabIndex = 131;
             this.radioCuentaMovimiento.Text = "Cuenta Movimiento";
             this.radioCuentaMovimiento.UseVisualStyleBackColor = true;
+            this.radioCuentaMovimiento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioCuentaMovimiento_KeyDown);
             // 
             // radioOrigenCredito
             // 
@@ -231,12 +243,13 @@
             this.radioOrigenCredito.TabIndex = 133;
             this.radioOrigenCredito.Text = "Origen crédito";
             this.radioOrigenCredito.UseVisualStyleBackColor = true;
+            this.radioOrigenCredito.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioOrigenCredito_KeyDown);
             // 
             // radioOrigenDebito
             // 
             this.radioOrigenDebito.AutoSize = true;
             this.radioOrigenDebito.Checked = true;
-            this.radioOrigenDebito.Cursor = System.Windows.Forms.Cursors.No;
+            this.radioOrigenDebito.Cursor = System.Windows.Forms.Cursors.Default;
             this.radioOrigenDebito.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioOrigenDebito.Location = new System.Drawing.Point(8, 28);
             this.radioOrigenDebito.Name = "radioOrigenDebito";
@@ -245,6 +258,7 @@
             this.radioOrigenDebito.TabStop = true;
             this.radioOrigenDebito.Text = "Origen debito";
             this.radioOrigenDebito.UseVisualStyleBackColor = true;
+            this.radioOrigenDebito.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioOrigenDebito_KeyDown);
             // 
             // activoCheck
             // 
@@ -252,13 +266,14 @@
             this.activoCheck.Checked = true;
             this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.activoCheck.Location = new System.Drawing.Point(460, 214);
             this.activoCheck.Name = "activoCheck";
-            this.activoCheck.Size = new System.Drawing.Size(68, 21);
+            this.activoCheck.Size = new System.Drawing.Size(83, 28);
             this.activoCheck.TabIndex = 134;
             this.activoCheck.Text = "Activo";
             this.activoCheck.UseVisualStyleBackColor = true;
+            this.activoCheck.KeyDown += new System.Windows.Forms.KeyEventHandler(this.activoCheck_KeyDown);
             // 
             // groupBox1
             // 
@@ -284,6 +299,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.cuentaIdText);
             this.groupBox3.Controls.Add(this.groupBox2);
             this.groupBox3.Controls.Add(this.label9);
@@ -300,24 +316,105 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(16, 27);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(912, 328);
+            this.groupBox3.Size = new System.Drawing.Size(948, 250);
             this.groupBox3.TabIndex = 137;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // button4
+            // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button4.BackColor = System.Drawing.Color.Transparent;
+            this.button4.BackgroundImage = global::IrisContabilidad.Properties.Resources.ayuda1;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(874, 25);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(68, 54);
+            this.button4.TabIndex = 137;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codigoColumn,
+            this.Column2,
+            this.Column1,
+            this.Column3,
+            this.Column4,
+            this.Column5});
+            this.dataGridView1.Location = new System.Drawing.Point(16, 283);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(948, 266);
+            this.dataGridView1.TabIndex = 138;
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
+            // 
+            // codigoColumn
+            // 
+            this.codigoColumn.FillWeight = 50F;
+            this.codigoColumn.HeaderText = "Id";
+            this.codigoColumn.Name = "codigoColumn";
+            this.codigoColumn.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "No. cuenta";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Nombre";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.FillWeight = 50F;
+            this.Column3.HeaderText = "Id";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Cuenta padre";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "No. cuenta";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             // 
             // ventana_cuentas_contables
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 434);
+            this.ClientSize = new System.Drawing.Size(976, 621);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.textBox1);
             this.Name = "ventana_cuentas_contables";
             this.Text = "ventana_cuentas_contables";
             this.Load += new System.EventHandler(this.ventana_cuentas_contables_Load);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
-            this.Controls.SetChildIndex(this.textBox1, 0);
             this.Controls.SetChildIndex(this.groupBox3, 0);
+            this.Controls.SetChildIndex(this.dataGridView1, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -327,6 +424,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,25 +432,32 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox cuentaIdText;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox numeroCuentaText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.TextBox cuentaPadreIdText;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label5;
-        public System.Windows.Forms.TextBox cuentaPadreText;
-        private System.Windows.Forms.RadioButton radioCuentaAcumulativa;
-        private System.Windows.Forms.RadioButton radioCuentaMovimiento;
-        private System.Windows.Forms.RadioButton radioOrigenCredito;
-        private System.Windows.Forms.RadioButton radioOrigenDebito;
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private TextBox cuentaIdText;
+        private Button button7;
+        private Label label9;
+        public TextBox numeroCuentaText;
+        private Label label3;
+        private Label label4;
+        public TextBox nombreText;
+        private TextBox cuentaPadreIdText;
+        private Button button6;
+        private Label label5;
+        public TextBox cuentaPadreText;
+        private RadioButton radioCuentaAcumulativa;
+        private RadioButton radioCuentaMovimiento;
+        private RadioButton radioOrigenCredito;
+        private RadioButton radioOrigenDebito;
+        private CheckBox activoCheck;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
+        private DataGridView dataGridView1;
+        public Button button4;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
     }
 }

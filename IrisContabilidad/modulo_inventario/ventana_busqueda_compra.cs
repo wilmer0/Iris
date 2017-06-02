@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -52,26 +47,27 @@ namespace IrisContabilidad.modulo_inventario
             try
             {
                 //si la lista esta null se inicializa
-                if (listaCompra == null)
+                if(listaCompra == null)
                 {
                     listaCompra = new List<compra>();
                     listaCompra = modeloCompra.getListaCompra();
                 }
                 
                 //se limpia el grid si tiene datos
-                if (dataGridView1.Rows.Count > 0)
+                if(dataGridView1.Rows.Count > 0)
                 {
                     dataGridView1.Rows.Clear();
                 }
                 //se agrega todos los datos de la lista en el gridView
                 listaCompra.ForEach(x =>
                 {
+                    empleado =new empleado();
+                    empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
                     compra = new compra();
                     compra = modeloCompra.getCompraById(x.codigo);
                     suplidor=new suplidor();
                     suplidor = modeloSuplidor.getSuplidorById(x.cod_suplidor);
-                    empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
-                    dataGridView1.Rows.Add(x.codigo, utilidades.getFechaddMMyyyy(x.fecha), utilidades.getFechaddMMyyyy(x.fecha_limite),suplidor.nombre,x.ncf,x.tipo_compra,empleado);
+                    dataGridView1.Rows.Add(x.codigo, utilidades.getFechaddMMyyyy(x.fecha), utilidades.getFechaddMMyyyy(x.fecha_limite),suplidor.nombre,x.ncf,x.tipo_compra,empleado.nombre);
                 });
             }
             catch (Exception ex)

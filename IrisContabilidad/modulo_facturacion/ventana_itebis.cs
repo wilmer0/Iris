@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
-using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_facturacion
@@ -47,7 +39,6 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     nombreText.Focus();
                     nombreText.SelectAll();
-                    
 
                     itbisIdText.Text = itebis.codigo.ToString();
                     nombreText.Text = itebis.nombre;
@@ -59,6 +50,7 @@ namespace IrisContabilidad.modulo_facturacion
                     itbisIdText.Focus();
                     itbisIdText.SelectAll();
 
+                    itbisIdText.Text = "";
                     nombreText.Text = "";
                     porcientoText.Text = "";
                     activoCheck.Checked = true;
@@ -95,6 +87,15 @@ namespace IrisContabilidad.modulo_facturacion
                     porcientoText.Focus();
                     porcientoText.SelectAll();
                     return false;
+                }
+                //validar que sea porciento
+                int n;
+                decimal porciento;
+                if (int.TryParse(porcientoText.Text, out n) == true)
+                {
+                    porciento = Convert.ToDecimal(porcientoText.Text);
+                    porciento = porciento/100;
+                    porcientoText.Text = porciento.ToString("##.##");
                 }
                 return true;
             }

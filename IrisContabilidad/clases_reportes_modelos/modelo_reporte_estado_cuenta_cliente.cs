@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.clases_reportes;
@@ -45,6 +42,7 @@ namespace IrisContabilidad.clases_reportes_modelos
                 reporteEncabezado.direccion = sucursal.direccion;
                 reporteEncabezado.rnc = empresa.rnc;
                 reporteEncabezado.telefonos = sucursal.telefono1 + " - " + sucursal.telefono2;
+                
 
                 //filtrando por cliente
                 if (cliente != null)
@@ -61,6 +59,7 @@ namespace IrisContabilidad.clases_reportes_modelos
 
                 foreach (var clienteActual in listaCliente)
                 {
+
                     reporteDetalle = new reporte_estado_cuenta_cliente_detalle(clienteActual);
                     reporteEncabezado.listaDetalle.Add(reporteDetalle);
                 }

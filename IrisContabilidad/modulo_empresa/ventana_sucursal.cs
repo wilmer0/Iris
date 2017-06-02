@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -67,6 +60,8 @@ namespace IrisContabilidad.modulo_empresa
                 {
                     sucursalIdText.Text = sucursal.codigo.ToString();
                     secuenciaText.Text = sucursal.secuencia.ToString();
+                    telefono1Text.Text = sucursal.telefono1;
+                    telefono2Text.Text = sucursal.telefono2;
                     direccionText.Text = sucursal.direccion;
                     activoCheck.Checked = (bool) sucursal.activo;
                 }
@@ -74,6 +69,8 @@ namespace IrisContabilidad.modulo_empresa
                 {
                     sucursalIdText.Text = "";
                     secuenciaText.Text = "";
+                    telefono1Text.Text = "";
+                    telefono2Text.Text = "";
                     direccionText.Text = "";
                     activoCheck.Checked = false;
                 }

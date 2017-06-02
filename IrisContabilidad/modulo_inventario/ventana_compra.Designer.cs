@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_inventario
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_inventario
 {
     partial class ventana_compra
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -29,10 +32,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_compra));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.botonImprimir = new System.Windows.Forms.Button();
@@ -96,7 +99,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 691);
+            this.panel1.Location = new System.Drawing.Point(12, 587);
             this.panel1.Size = new System.Drawing.Size(1001, 54);
             // 
             // button2
@@ -140,7 +143,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.suplidorIdText);
             this.groupBox1.Controls.Add(this.numerocComprobanteFiscalText);
-            this.groupBox1.Location = new System.Drawing.Point(12, 27);
+            this.groupBox1.Location = new System.Drawing.Point(12, 26);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1001, 213);
             this.groupBox1.TabIndex = 9;
@@ -253,11 +256,6 @@
             // 
             this.tipoCompraComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoCompraComboBox.FormattingEnabled = true;
-            this.tipoCompraComboBox.Items.AddRange(new object[] {
-            "CON",
-            "COT",
-            "CRE",
-            "PED"});
             this.tipoCompraComboBox.Location = new System.Drawing.Point(122, 182);
             this.tipoCompraComboBox.Name = "tipoCompraComboBox";
             this.tipoCompraComboBox.Size = new System.Drawing.Size(236, 21);
@@ -372,13 +370,13 @@
             this.itebisColumn,
             this.descuentoColumn,
             this.importeColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 363);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 339);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1001, 294);
+            this.dataGridView1.Size = new System.Drawing.Size(1001, 214);
             this.dataGridView1.TabIndex = 87;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -416,32 +414,32 @@
             // 
             // precioColumn
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.precioColumn.HeaderText = "Precio";
             this.precioColumn.Name = "precioColumn";
             this.precioColumn.ReadOnly = true;
             // 
             // itebisColumn
             // 
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.itebisColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.itebisColumn.HeaderText = "Itbis";
             this.itebisColumn.Name = "itebisColumn";
             this.itebisColumn.ReadOnly = true;
             // 
             // descuentoColumn
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.descuentoColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.descuentoColumn.HeaderText = "Descuento";
             this.descuentoColumn.Name = "descuentoColumn";
             this.descuentoColumn.ReadOnly = true;
             // 
             // importeColumn
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.importeColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.importeColumn.HeaderText = "Importe";
             this.importeColumn.Name = "importeColumn";
             this.importeColumn.ReadOnly = true;
@@ -608,9 +606,9 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.cantidadText);
-            this.groupBox2.Location = new System.Drawing.Point(12, 246);
+            this.groupBox2.Location = new System.Drawing.Point(12, 239);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1001, 111);
+            this.groupBox2.Size = new System.Drawing.Size(1001, 97);
             this.groupBox2.TabIndex = 100;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
@@ -619,7 +617,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(946, 12);
+            this.label16.Location = new System.Drawing.Point(946, 10);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(38, 17);
             this.label16.TabIndex = 103;
@@ -629,7 +627,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(871, 12);
+            this.label15.Location = new System.Drawing.Point(871, 10);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(38, 17);
             this.label15.TabIndex = 102;
@@ -640,7 +638,7 @@
             this.button19.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button19.BackgroundImage")));
             this.button19.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button19.Location = new System.Drawing.Point(931, 32);
+            this.button19.Location = new System.Drawing.Point(931, 30);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(64, 58);
             this.button19.TabIndex = 101;
@@ -652,7 +650,7 @@
             this.button20.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button20.BackgroundImage")));
             this.button20.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button20.Location = new System.Drawing.Point(860, 32);
+            this.button20.Location = new System.Drawing.Point(860, 30);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(65, 58);
             this.button20.TabIndex = 100;
@@ -663,7 +661,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(569, 663);
+            this.label13.Location = new System.Drawing.Point(569, 559);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 20);
             this.label13.TabIndex = 88;
@@ -673,7 +671,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(808, 663);
+            this.label14.Location = new System.Drawing.Point(808, 559);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 20);
             this.label14.TabIndex = 101;
@@ -683,7 +681,7 @@
             // 
             this.totalItebisText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalItebisText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalItebisText.Location = new System.Drawing.Point(629, 660);
+            this.totalItebisText.Location = new System.Drawing.Point(629, 556);
             this.totalItebisText.MaxLength = 200;
             this.totalItebisText.Name = "totalItebisText";
             this.totalItebisText.ReadOnly = true;
@@ -695,7 +693,7 @@
             // 
             this.totalCompraText.BackColor = System.Drawing.Color.SkyBlue;
             this.totalCompraText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalCompraText.Location = new System.Drawing.Point(863, 660);
+            this.totalCompraText.Location = new System.Drawing.Point(863, 556);
             this.totalCompraText.MaxLength = 200;
             this.totalCompraText.Name = "totalCompraText";
             this.totalCompraText.ReadOnly = true;
@@ -707,7 +705,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1025, 757);
+            this.ClientSize = new System.Drawing.Size(1025, 653);
             this.Controls.Add(this.totalCompraText);
             this.Controls.Add(this.totalItebisText);
             this.Controls.Add(this.label14);
@@ -744,58 +742,58 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.TextBox suplidorText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox numerocComprobanteFiscalText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox suplidorIdText;
-        private System.Windows.Forms.TextBox numeroFacturaText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox tipoCompraComboBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox detalleText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.CheckBox suplidorInformalCheck;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox productoIdText;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox productoText;
-        private System.Windows.Forms.ComboBox unidadComboText;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox cantidadText;
-        private System.Windows.Forms.TextBox precioText;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox importeText;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox descuentoText;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox totalItebisText;
-        private System.Windows.Forms.TextBox totalCompraText;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.MaskedTextBox fechaFinalText;
-        private System.Windows.Forms.MaskedTextBox fechaInicialText;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPrductoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idUnidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itebisColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descuentoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn importeColumn;
-        private System.Windows.Forms.Button botonImprimir;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private GroupBox groupBox1;
+        private LinkLabel linkLabel1;
+        private TextBox suplidorText;
+        private Button button5;
+        private TextBox numerocComprobanteFiscalText;
+        private Label label3;
+        private TextBox suplidorIdText;
+        private TextBox numeroFacturaText;
+        private Label label2;
+        private Label label1;
+        private ComboBox tipoCompraComboBox;
+        private Label label5;
+        private Label label4;
+        private TextBox detalleText;
+        private Label label6;
+        private DataGridView dataGridView1;
+        private CheckBox suplidorInformalCheck;
+        private Label label7;
+        private Label label8;
+        private TextBox productoIdText;
+        private Button button4;
+        private TextBox productoText;
+        private ComboBox unidadComboText;
+        private Label label9;
+        private TextBox cantidadText;
+        private TextBox precioText;
+        private Label label10;
+        private TextBox importeText;
+        private Label label11;
+        private TextBox descuentoText;
+        private Label label12;
+        private GroupBox groupBox2;
+        private Button button19;
+        private Button button20;
+        private Label label13;
+        private Label label14;
+        private TextBox totalItebisText;
+        private TextBox totalCompraText;
+        private Label label16;
+        private Label label15;
+        private MaskedTextBox fechaFinalText;
+        private MaskedTextBox fechaInicialText;
+        private DataGridViewTextBoxColumn idPrductoColumn;
+        private DataGridViewTextBoxColumn ProductoColumn;
+        private DataGridViewTextBoxColumn idUnidadColumn;
+        private DataGridViewTextBoxColumn unidadColumn;
+        private DataGridViewTextBoxColumn cantidadColumn;
+        private DataGridViewTextBoxColumn precioColumn;
+        private DataGridViewTextBoxColumn itebisColumn;
+        private DataGridViewTextBoxColumn descuentoColumn;
+        private DataGridViewTextBoxColumn importeColumn;
+        private Button botonImprimir;
+        private GroupBox groupBox3;
     }
 }

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 
@@ -13,9 +10,6 @@ namespace IrisContabilidad.modelos
     {
         //objetos
         utilidades utilidades = new utilidades();
-
-
-
 
 
         //agregar 
@@ -88,7 +82,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -116,7 +109,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //get objeto
         public almacen getAlmacenById(int id)
         {
@@ -127,9 +119,9 @@ namespace IrisContabilidad.modelos
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    almacen.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    almacen.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0]);
                     almacen.nombre = ds.Tables[0].Rows[0][1].ToString();
-                    almacen.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2].ToString());
+                    almacen.codigo_sucursal = Convert.ToInt16(ds.Tables[0].Rows[0][2]);
                     almacen.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][3]);
                 }
                 return almacen;
@@ -140,7 +132,6 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-
 
         //get lista completa
         public List<almacen> getListaCompleta(bool mantenimiento = false)
@@ -161,9 +152,9 @@ namespace IrisContabilidad.modelos
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         almacen almacen = new almacen();
-                        almacen.codigo = Convert.ToInt16(row[0].ToString());
+                        almacen.codigo = Convert.ToInt16(row[0]);
                         almacen.nombre = row[1].ToString();
-                        almacen.codigo_sucursal = Convert.ToInt16(row[2].ToString());
+                        almacen.codigo_sucursal = Convert.ToInt16(row[2]);
                         almacen.activo = Convert.ToBoolean(row[3]);
                         lista.Add(almacen);
                     }
@@ -177,6 +168,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
         //get lista completa por nombre
         public List<almacen> getListaByNombre(string nombre)
         {
@@ -193,9 +185,9 @@ namespace IrisContabilidad.modelos
                     foreach (DataRow row in ds.Tables[0].Rows)
                     {
                         almacen almacen = new almacen();
-                        almacen.codigo = Convert.ToInt16(row[0].ToString());
+                        almacen.codigo = Convert.ToInt16(row[0]);
                         almacen.nombre = row[1].ToString();
-                        almacen.codigo_sucursal = Convert.ToInt16(row[2].ToString());
+                        almacen.codigo_sucursal = Convert.ToInt16(row[2]);
                         almacen.activo = Convert.ToBoolean(row[3]);
                         lista.Add(almacen);
                     }
@@ -210,7 +202,8 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
-         //get almacen by nombre
+        
+        //get almacen by nombre
         public almacen getAlmacenByNombre(string nombre)
         {
             try
@@ -245,5 +238,10 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+    
+        
+
+
+    
     }
 }

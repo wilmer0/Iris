@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_caja_ingresos_egresos_conceptos
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -175,12 +178,12 @@
 
         #endregion
 
-        public System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox conceptoIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox activoCheck;
+        public TextBox nombreText;
+        private Label label3;
+        private GroupBox groupBox1;
+        private TextBox conceptoIdText;
+        private Label label2;
+        private Button button4;
+        private CheckBox activoCheck;
     }
 }

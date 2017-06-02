@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IrisContabilidad;
-using IrisContabilidad.modelos;
-using IrisContabilidadConsola.clases;
+﻿using IrisContabilidadConsola.clases;
 
 namespace IrisContabilidadConsola
 {

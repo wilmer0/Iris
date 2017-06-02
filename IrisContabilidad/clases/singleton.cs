@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using IrisContabilidad.modelos;
 
 namespace IrisContabilidad.clases
 {
@@ -11,12 +8,11 @@ namespace IrisContabilidad.clases
         //objetos
         public static singleton singletonInstance = null;
         public static empleado empleado;
+        public static sistemaConfiguracion sistema;
 
-        
-        
-        
-        
-        
+        //listas
+        public static List<mes> listaMes; 
+
         
         public static singleton obtenerDatos()
         {
@@ -34,15 +30,23 @@ namespace IrisContabilidad.clases
             return empleado;
         }
 
+        public static sistemaConfiguracion getSistemaconfiguracion()
+        {
+            if (sistema == null)
+                sistema=new sistemaConfiguracion();
 
 
+                return sistema;
+        }
 
-
-
-
-
-
-
-
+        public static List<mes> obtenerListaMes()
+        {
+            if (listaMes == null)
+            {
+                listaMes = new List<mes>();
+                listaMes = new modeloMes().getListaCompleta();
+            }
+            return listaMes;
+        }
     }
 }

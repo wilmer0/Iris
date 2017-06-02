@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -45,6 +38,8 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     nombreText.Focus();
                     nombreText.SelectAll();
+
+                    tipoComprobanteIdText.Text = tipoComprobante.codigo.ToString();
                     nombreText.Text = tipoComprobante.nombre;
                     secuenciaText.Text = tipoComprobante.secuencia;
                     activoCheck.Checked = Convert.ToBoolean(tipoComprobante.activo);

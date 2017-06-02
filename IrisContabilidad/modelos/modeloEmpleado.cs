@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
-using IrisContabilidad.modulo_nomina;
-using empleado = IrisContabilidad.clases.empleado;
 
 namespace IrisContabilidad.modelos
 {
@@ -73,13 +69,13 @@ namespace IrisContabilidad.modelos
                     activo = 1;
                 }
                 sql =
-                    "insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto) values('" +
+                    "insert into empleado(codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto,tipo_ventana) values('" +
                     empleado.codigo + "','" + empleado.nombre + "','" + empleado.login + "','" + empleado.clave + "','" +
                     empleado.sueldo + "','" + empleado.codigo_situacion + "','" + activo + "','" +
                     empleado.codigo_sucursal + "','" + empleado.codigo_departamento + "','" + empleado.codigo_cargo +
                     "','" + empleado.codigo_grupo_usuario + "','" + empleado.fecha_ingreso.ToString("yyyy-MM-dd") +
                     "','" + empleado.tipo_permiso + "','" + empleado.codigo_tipo_nomina + "','" +
-                    empleado.identificacion + "','" + empleado.pasaporte + "','" + empleado.foto + "')";
+                    empleado.identificacion + "','" + empleado.pasaporte + "','" + empleado.foto + "','"+empleado.tipoVentana+"')";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -151,8 +147,7 @@ namespace IrisContabilidad.modelos
                       empleado.fecha_ingreso.ToString("yyyy-MM-dd") + "',permiso='" + empleado.tipo_permiso +
                       "',cod_tipo_nomina='" + empleado.codigo_tipo_nomina + "',identificacion='" +
                       empleado.identificacion + "',pasaporte='" + empleado.pasaporte + "',foto='" + empleado.foto +
-                      "' where codigo='" +
-                      empleado.codigo + "'";
+                      "',tipo_ventana='"+empleado.tipoVentana+"' where codigo='" +empleado.codigo + "'";
                 //MessageBox.Show(sql);
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 return true;
@@ -206,7 +201,9 @@ namespace IrisContabilidad.modelos
 on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e.clave='MQAyADMA';
                  */
                 sql =
-                    "select e.codigo,e.nombre,e.login,e.clave,e.sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento,e.cod_cargo,e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion,e.pasaporte,e.foto from empleado e join sucursal suc on e.cod_sucursal=suc.codigo and suc.activo='1' join empresa emp on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='" +
+                    "select e.codigo,e.nombre,e.login,e.clave,e.sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento,e.cod_cargo," +
+                    "e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion,e.pasaporte,e.foto,e.tipo_ventana " +
+                    "from empleado e join sucursal suc on e.cod_sucursal=suc.codigo and suc.activo='1' join empresa emp on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='" +
                     usuario + "' and e.clave='" + clave + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows[0][0].ToString() != "" || ds.Tables[0].Rows.Count > 0)
@@ -232,6 +229,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                         empleado.identificacion = row[14].ToString();
                         empleado.pasaporte = row[15].ToString();
                         empleado.foto = row[16].ToString();
+                        empleado.tipoVentana = Convert.ToInt16(row[17]);
                     }
                     return empleado;
                 }
@@ -292,7 +290,8 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
             {
                 List<empleado> listaEmpleado = new List<empleado>();
                 string sql =
-                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado";
+                    "select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario," +
+                    "fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto,tipo_ventana from empleado";
                 if (mantenimiento == false)
                 {
                     sql += "  where activo='1'";
@@ -300,7 +299,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    clases.empleado empleado = new empleado();
+                    empleado empleado = new empleado();
                     empleado.codigo = (int) row[0];
                     empleado.nombre = row[1].ToString();
                     empleado.login = row[2].ToString();
@@ -318,6 +317,8 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                     empleado.identificacion = row[14].ToString();
                     empleado.pasaporte = row[15].ToString();
                     empleado.foto = row[16].ToString();
+                    empleado.tipoVentana = Convert.ToInt16(row[17]);
+
 
                     listaEmpleado.Add(empleado);
                 }
@@ -350,7 +351,8 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                     return null;
                 }
                
-                sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado where login='" +
+                sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario," +
+                     "fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto,tipo_ventana from empleado where login='" +
                     usuario + "' and clave='" + clave + "'";
                 ds = utilidades.ejecutarcomando_mysql(sql);
                 foreach (DataRow row in ds.Tables[0].Rows)
@@ -372,6 +374,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                     empleado.identificacion = row[14].ToString();
                     empleado.pasaporte = row[15].ToString();
                     empleado.foto = row[16].ToString();
+                    empleado.tipoVentana = Convert.ToInt16(row[17]);
 
                 }
                 return empleado;
@@ -389,7 +392,8 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
             try
             {
                 empleado empleado = new empleado();
-                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario,fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto from empleado where codigo='" +id + "'";
+                string sql ="select codigo,nombre,login,clave,sueldo,cod_situacion,activo,cod_sucursal,cod_departamento,cod_cargo,cod_grupo_usuario," +
+                            "fecha_ingreso,permiso,cod_tipo_nomina,identificacion,pasaporte,foto,tipo_ventana from empleado where codigo='" +id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -415,6 +419,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                     empleado.identificacion = ds.Tables[0].Rows[0][14].ToString();
                     empleado.pasaporte = ds.Tables[0].Rows[0][15].ToString();
                     empleado.foto = ds.Tables[0].Rows[0][16].ToString();
+                    empleado.tipoVentana = Convert.ToInt16(ds.Tables[0].Rows[0][17].ToString());
                 }
                 return empleado;
             }
@@ -484,7 +489,9 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
             try
             {
                 empleado empleado = new empleado();
-                string sql = "select e.codigo,e.nombre,e.login,e.clave,e.sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento,e.cod_cargo,e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion,e.pasaporte,e.foto from empleado e join cajero c on e.codigo=c.cod_empleado where c.codigo='"+id+"'";
+                string sql = "select e.codigo,e.nombre,e.login,e.clave,e.sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento," +
+                             "e.cod_cargo,e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion," +
+                             "e.pasaporte,e.foto,e.tipo_ventana from empleado e join cajero c on e.codigo=c.cod_empleado where c.codigo='"+id+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -510,6 +517,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                     empleado.identificacion = ds.Tables[0].Rows[0][14].ToString();
                     empleado.pasaporte = ds.Tables[0].Rows[0][15].ToString();
                     empleado.foto = ds.Tables[0].Rows[0][16].ToString();
+                    empleado.tipoVentana = Convert.ToInt16(ds.Tables[0].Rows[0][17].ToString());
                 }
                 return empleado;
             }
@@ -527,7 +535,9 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
             try
             {
                 empleado empleado = new empleado();
-                string sql = "select e.codigo,e.nombre,e.login,e.clave,sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento,e.cod_cargo,e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion,e.pasaporte,e.foto from empleado e join compra_vs_pagos cp on e.codigo=cp.cod_empleado where cp.codigo='"+id+"'";
+                string sql = "select e.codigo,e.nombre,e.login,e.clave,sueldo,e.cod_situacion,e.activo,e.cod_sucursal,e.cod_departamento,e.cod_cargo," +
+                             "e.cod_grupo_usuario,e.fecha_ingreso,e.permiso,e.cod_tipo_nomina,e.identificacion," +
+                             "e.pasaporte,e.foto,e.tipo_ventana from empleado e join compra_vs_pagos cp on e.codigo=cp.cod_empleado where cp.codigo='"+id+"'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -553,6 +563,7 @@ on suc.codigo_empresa=emp.codigo and emp.activo='1' where e.login='wilmer' and e
                     empleado.identificacion = ds.Tables[0].Rows[0][14].ToString();
                     empleado.pasaporte = ds.Tables[0].Rows[0][15].ToString();
                     empleado.foto = ds.Tables[0].Rows[0][16].ToString();
+                    empleado.tipoVentana = Convert.ToInt16(ds.Tables[0].Rows[0][17].ToString());
                 }
                 return empleado;
             }

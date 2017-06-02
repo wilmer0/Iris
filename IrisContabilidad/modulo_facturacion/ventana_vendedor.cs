@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -48,10 +41,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (vendedor != null)
                 {
-                    vendedorIdText.Text=vendedor.codigo.ToString();
 
                     empleadoIdText.Focus();
                     empleadoIdText.SelectAll();
+
+                    vendedorIdText.Text=vendedor.codigo.ToString();
                     empleado = modeloEmpleado.getEmpleadoById(vendedor.codigo_empelado);
                     loadEmpleado();
                     porcientoText.Text = vendedor.porciento_ganancia.ToString("N");

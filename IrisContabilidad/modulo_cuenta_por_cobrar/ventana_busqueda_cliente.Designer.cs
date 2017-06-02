@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     partial class ventana_busqueda_cliente
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -267,21 +270,21 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.RadioButton radioButtonTelefono;
-        private System.Windows.Forms.RadioButton radioButtonCatgoria;
-        private System.Windows.Forms.RadioButton radioButtonRnc;
-        private System.Windows.Forms.RadioButton radioButtonCedula;
-        private System.Windows.Forms.RadioButton radioButtonNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rncColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activoColumn;
+        private GroupBox groupBox1;
+        private TextBox nombreText;
+        private Label label3;
+        private DataGridView dataGridView1;
+        private RadioButton radioButtonTelefono;
+        private RadioButton radioButtonCatgoria;
+        private RadioButton radioButtonRnc;
+        private RadioButton radioButtonCedula;
+        private RadioButton radioButtonNombre;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn secuenciacolumn;
+        private DataGridViewTextBoxColumn cedulaColumn;
+        private DataGridViewTextBoxColumn rncColumn;
+        private DataGridViewTextBoxColumn categoriaColumn;
+        private DataGridViewTextBoxColumn telefonoColumn;
+        private DataGridViewTextBoxColumn activoColumn;
     }
 }

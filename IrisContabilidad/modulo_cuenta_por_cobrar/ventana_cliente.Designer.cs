@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_cobrar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {
     partial class ventana_cliente
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -342,6 +345,7 @@
             this.label7.Size = new System.Drawing.Size(87, 20);
             this.label7.TabIndex = 26;
             this.label7.Text = "Categoria";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label6
             // 
@@ -518,38 +522,38 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox clienteIdText;
-        private System.Windows.Forms.TextBox rncText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox cedulaText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox telefono2Text;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox telefono1Text;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox categoriaText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox categoriaIdText;
-        private System.Windows.Forms.TextBox creditoText;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckBox abrirCreditoCheck;
-        private System.Windows.Forms.TextBox tipoNcfText;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox tipoNcfIdText;
-        private System.Windows.Forms.CheckBox clienteContadoCheck;
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.TextBox direccion2Text;
-        private System.Windows.Forms.TextBox direccion1Text;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private GroupBox groupBox1;
+        private Button button4;
+        private Label label1;
+        private TextBox clienteIdText;
+        private TextBox rncText;
+        private Label label4;
+        private TextBox cedulaText;
+        private Label label3;
+        private TextBox nombreText;
+        private Label label2;
+        private TextBox telefono2Text;
+        private Label label6;
+        private TextBox telefono1Text;
+        private Label label5;
+        private TextBox categoriaText;
+        private Button button5;
+        private Label label7;
+        private TextBox categoriaIdText;
+        private TextBox creditoText;
+        private Label label8;
+        private CheckBox abrirCreditoCheck;
+        private TextBox tipoNcfText;
+        private Button button6;
+        private Label label9;
+        private TextBox tipoNcfIdText;
+        private CheckBox clienteContadoCheck;
+        private CheckBox activoCheck;
+        private TextBox direccion2Text;
+        private TextBox direccion1Text;
+        private Label label11;
+        private Label label10;
     }
 }

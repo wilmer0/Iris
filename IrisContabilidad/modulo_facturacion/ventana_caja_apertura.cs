@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_sistema;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace IrisContabilidad.modulo_facturacion
 {
@@ -20,7 +15,6 @@ namespace IrisContabilidad.modulo_facturacion
         singleton singleton=new singleton();
         utilidades utilidades = new utilidades();
         empleado empleado;
-        private empleado empleadoCajero;
         private cuadre_caja cuadreCaja;
         private cajero cajero;
 
@@ -51,6 +45,7 @@ namespace IrisContabilidad.modulo_facturacion
                 cajeroIdText.Text = "";
                 cajeroText.Text = "";
                 montoAperturaText.Text = "0.00";
+                validarCajero();
             }
             catch (Exception ex)
             {
@@ -58,6 +53,27 @@ namespace IrisContabilidad.modulo_facturacion
             }
         }
 
+        //validando que el usuario que esta en sesion es cajero
+        public void validarCajero()
+        {
+            try
+            {
+                cajero = modeloCajero.getCajeroByIdEmpleado(empleado.codigo);
+                if (cajero == null)
+                {
+                    MessageBox.Show("Su usuario no es un cajero, debe ser cajero para realizar apertura de caja", "",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Close();
+                }
+                loadCajero();
+            }
+            catch (Exception)
+            {
+                System.Windows.MessageBox.Show("Error validando si su usuario es un cajero", "", MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+        }
+
+        //cargando datos del cajero
         public void loadCajero()
         {
             try
@@ -68,16 +84,15 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     return;
                 }
-                empleadoCajero=new empleado();
-                empleadoCajero = modeloEmpleado.getEmpleadoByCajeroId(cajero.codigo);
                 cajeroIdText.Text = cajero.codigo.ToString();
-                cajeroText.Text = empleadoCajero.nombre;
+                cajeroText.Text = empleado.nombre;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error loadCajero.:"+ex.ToString(),"",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
+
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -85,6 +100,7 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
+
         public bool validarGetAction()
         {
             try
@@ -95,6 +111,12 @@ namespace IrisContabilidad.modulo_facturacion
                     cajeroIdText.Focus();
                     cajeroIdText.SelectAll();
                     MessageBox.Show("Falta el cajero", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+                //validar si este cajero tiene caja abierta
+                if ((modeloCajero.getValidarCajaAbiertaByCajero(cajero.codigo)) == true)
+                {
+                    MessageBox.Show("Este cajero ya tiene una caja abierta, no puede realizar apertura sobre una ya existente", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
                 //validar que tenga monto de apertura
@@ -113,12 +135,7 @@ namespace IrisContabilidad.modulo_facturacion
                     MessageBox.Show("El monto debe ser un número mayor o igual a cero", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
                 }
-                //validar si este cajero tiene caja abierta
-                if ((modeloCajero.getValidarCajaAbiertaByCajero(cajero.codigo))==true)
-                {
-                    MessageBox.Show("Este cajero ya tiene una caja abierta, no puede realizar apertura sobre una ya existente", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return false;
-                }
+               
                 
                 return true;
             }
@@ -150,13 +167,14 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     cuadreCaja = new cuadre_caja();
                     crear = true;
-                    cuadreCaja.codigo = modeloCuadreCaja.getNext();
+                    cuadreCaja.codigo = modeloCuadreCaja.getNextCuadre();
                     cuadreCaja.turno = modeloCuadreCaja.getNextTurno();
                     cuadreCaja.activo = true;
                 }
 
                 cuadreCaja.codigo_cajero = cajero.codigo;
                 cuadreCaja.fecha = DateTime.Today;
+                cuadreCaja.fecha_cierre_cuadre=DateTime.Today;
                 cuadreCaja.codigo_sucursal = empleado.codigo_sucursal;
                 cuadreCaja.codigo_caja = cajero.codigo_caja;
                 cuadreCaja.efectivo_inicial = Convert.ToDecimal(montoAperturaText.Text);
@@ -184,6 +202,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error  getAction.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void ventana_caja_apertura_Load(object sender, EventArgs e)
         {
 
@@ -249,6 +268,11 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 button1.Focus();
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

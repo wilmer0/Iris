@@ -1,20 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.clases_reportes;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
+using IrisContabilidad.ventanas_comunes;
 using Microsoft.Reporting.WinForms;
-using _7ADMFIC_1._0.VentanasComunes;
 
 namespace IrisContabilidad.modulo_inventario
 {
@@ -241,7 +235,7 @@ namespace IrisContabilidad.modulo_inventario
 
                 List<ReportParameter> ListaReportParameter = new List<ReportParameter>();
 
-                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter);
+                VisorReporteComun ventana = new VisorReporteComun(reporte, listaReportDataSource, ListaReportParameter,true);
                 ventana.ShowDialog();
 
                 #endregion

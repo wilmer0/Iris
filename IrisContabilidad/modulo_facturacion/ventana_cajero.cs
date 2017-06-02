@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
-using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
 
@@ -50,11 +42,21 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (cajero != null)
                 {
+                    cajeroIdText.Text = cajero.codigo.ToString();
                     caja = modeloCaja.getCajaById(cajero.codigo_caja);
                     loadCaja();
                     empleado = modeloEmpelado.getEmpleadoById(cajero.codigo_empleado);
                     loadEmpleado();
+                    if (cajero.tipoImpresionVenta == 1)
+                    {
+                        radioButtonHojaGrande.Checked = true;
+                    }
+                    else if (cajero.tipoImpresionVenta == 2)
+                    {
+                        radioButtonHojaRollo.Checked = true;
+                    }
                     activoCheck.Checked = Convert.ToBoolean(cajero.activo);
+
                 }
                 else
                 {
@@ -63,7 +65,8 @@ namespace IrisContabilidad.modulo_facturacion
                     loadCaja();
                     empleado = null;
                     loadEmpleado();
-                    activoCheck.Checked = false;
+                    radioButtonHojaGrande.Checked = true;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)
@@ -78,6 +81,7 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
+
         public bool validarGetAction()
         {
             try
@@ -133,6 +137,15 @@ namespace IrisContabilidad.modulo_facturacion
                 cajero.codigo_caja = caja.codigo;
                 cajero.codigo_empleado = empleado.codigo;
                 cajero.activo = Convert.ToBoolean(activoCheck.Checked);
+                cajero.tipoImpresionVenta = 1;
+                if (radioButtonHojaGrande.Checked == true)
+                {
+                    cajero.tipoImpresionVenta = 1;
+                }
+                else if (radioButtonHojaRollo.Checked == true)
+                {
+                    cajero.tipoImpresionVenta = 2;
+                }
 
                 if (crear == true)
                 {
@@ -173,6 +186,7 @@ namespace IrisContabilidad.modulo_facturacion
             }
 
         }
+
         private void ventana_cajero_Load(object sender, EventArgs e)
         {
 
@@ -203,6 +217,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadEmpleado.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void loadCaja()
         {
             try
@@ -223,6 +238,7 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void button5_Click(object sender, EventArgs e)
         {
             ventana_busqueda_caja ventana = new ventana_busqueda_caja();
@@ -271,6 +287,13 @@ namespace IrisContabilidad.modulo_facturacion
                 cajero = ventana.getObjeto();
                 loadVentana();
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            ventana_caja ventana=new ventana_caja();
+            ventana.Owner = this;
+            ventana.ShowDialog();
         }
     }
 }

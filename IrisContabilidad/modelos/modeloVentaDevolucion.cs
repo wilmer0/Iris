@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
+using IrisContabilidad.clases_reportes;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace IrisContabilidad.modelos
 {
@@ -78,10 +78,11 @@ namespace IrisContabilidad.modelos
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error agregarVenta.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error agregarDevolucion.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
+        
         //obtener el codigo siguiente devolucion
         public int getNext()
         {
@@ -108,6 +109,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+        
         //obtener el codigo siguiente devolucion detalle
         public int getNextDevolucionDetalle()
         {
@@ -134,6 +136,7 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
+        
         //get objeto
         public ventaDevolucion getDevolucionById(int id)
         {
@@ -160,8 +163,9 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista venta devolucion detalle
-        public List<ventaDevolucionDetalle> getListaVentaDevolucionDetalle(int id)
+        public List<ventaDevolucionDetalle> getListaVentaDevolucionDetalleByDevolucionId(int id)
         {
             try
             {
@@ -193,6 +197,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista completa de venta devolucion
         public List<ventaDevolucion> getListaCompleta(bool mantenimiento=false)
         {
@@ -229,6 +234,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //obtener el codigo siguiente devolucion detalle
         public bool anularDevolucion(int id)
         {
@@ -242,6 +248,78 @@ namespace IrisContabilidad.modelos
             {
                 MessageBox.Show("Error anularDevolucion.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
+            }
+        }
+
+        //get lista reporte venta devolucion detalle by devolucion id
+        public List<reporte_venta_devolucion_detalle> getListaReporteVentaDevolucionDetalleByDevolucionId(int id)
+        {
+            try
+            {
+                ventaDevolucionDetalle ventaDevolucionDetalle=new ventaDevolucionDetalle();
+                List<ventaDevolucionDetalle> listaVentaDevolucionDetalle=new List<ventaDevolucionDetalle>();
+
+                reporte_venta_devolucion_detalle reporteVentaDevolucionDetalle=new reporte_venta_devolucion_detalle();
+                List<reporte_venta_devolucion_detalle> lista=new List<reporte_venta_devolucion_detalle>();
+
+                listaVentaDevolucionDetalle = getListaVentaDevolucionDetalleByDevolucionId(id);
+                if (listaVentaDevolucionDetalle == null)
+                {
+                    return null;
+                }
+
+                listaVentaDevolucionDetalle.ForEach(x =>
+                {
+                    reporteVentaDevolucionDetalle=new reporte_venta_devolucion_detalle(x);
+                    lista.Add(reporteVentaDevolucionDetalle);
+                });
+
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show("Error getListaReporteVentaDevolucionDetalleByDevolucionId.:" + ex.ToString(), "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+        }
+
+        //get lista venta devolucion by cuadre caja
+        public List<ventaDevolucionDetalle> getListaVentaDevolucionDetalleByCuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadre.codigo_cajero);
+                if (empleado == null)
+                {
+                    MessageBox.Show("Error empleado nulo en base al cajero .:getListaVentaDevolucionDetalleByCuadreCaja", "",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+                List<ventaDevolucionDetalle> lista = new List<ventaDevolucionDetalle>();
+                string sql = "";
+                sql = "select dd.codigo,dd.codigo_devolucion,dd.codigo_producto,dd.codigo_unidad,dd.cantidad,dd.precio,dd.monto_total from venta_devolucion_detalles dd join venta_devolucion d on d.codigo=dd.codigo_devolucion where d.activo='1' and d.fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and d.fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' and d.codigo_empleado='"+empleado.codigo+"' ";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        ventaDevolucionDetalle detalle = new ventaDevolucionDetalle();
+                        detalle.codigo = Convert.ToInt16(row[0].ToString());
+                        detalle.codigo_devolucion = Convert.ToInt16(row[1].ToString());
+                        detalle.codigo_producto = Convert.ToInt16(row[2].ToString());
+                        detalle.codigo_unidad = Convert.ToInt16(row[3].ToString());
+                        detalle.cantidad = Convert.ToDecimal(row[4].ToString());
+                        detalle.precio = Convert.ToDecimal(row[5].ToString());
+                        detalle.monto_total = Convert.ToDecimal(row[6].ToString());
+                        lista.Add(detalle);
+                    }
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaVentaDevolucionDetalleByCuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return null;
             }
         }
     }

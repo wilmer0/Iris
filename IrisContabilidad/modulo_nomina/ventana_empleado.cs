@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -55,6 +49,12 @@ namespace IrisContabilidad.modulo_nomina
             this.Text = tituloLabel.Text;
             rutaResources = Directory.GetCurrentDirectory().ToString() + @"\Resources\";
             rutaImagenesEmpleados = rutaResources + @"imagenes_empleados\";
+            if (!File.Exists(rutaImagenesEmpleados + "default1.png"))
+            {
+                MessageBox.Show("Error, no existe la imagen de empleado por defecto 'default1'", "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
             imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + "default1.png");
             loadVentana();
         }
@@ -121,7 +121,7 @@ namespace IrisContabilidad.modulo_nomina
                     situacionText.Text = "";
                     rutaImagenText.Text = "";
                     imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenesEmpleados + "default1.png");
-                    activoCheck.Checked =false;
+                    activoCheck.Checked =true;
                 }
             }
             catch (Exception ex)
@@ -260,6 +260,7 @@ namespace IrisContabilidad.modulo_nomina
                 empleado.sueldo = Convert.ToDecimal(sueldoText.Text);
                 empleado.codigo_situacion = situacion.codigo;
                 empleado.codigo_departamento = departamento.codigo;
+                empleado.tipoVentana = 1;
                 empleado.activo= Convert.ToBoolean(activoCheck.Checked);
                 if (rutaImagenText.Text != "")
                 {
@@ -559,7 +560,7 @@ namespace IrisContabilidad.modulo_nomina
             try
             {
                 OpenFileDialog file = new OpenFileDialog();
-                if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (file.ShowDialog() == DialogResult.OK)
                 {
                     rutaImagenText.Text = file.FileName;
                     imagen_empleado.BackgroundImage = Image.FromFile(rutaImagenText.Text);

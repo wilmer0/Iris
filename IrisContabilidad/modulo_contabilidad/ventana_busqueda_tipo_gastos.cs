@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -14,7 +8,8 @@ using IrisContabilidad.modulo_sistema;
 namespace IrisContabilidad.modulo_contabilidad
 {
     public partial class ventana_busqueda_tipo_gastos : formBase
-    {//objetos
+    {
+        //objetos
         private tipo_gasto tipoGasto;
 
         //listas
@@ -114,7 +109,7 @@ namespace IrisContabilidad.modulo_contabilidad
                 if (e.KeyCode == Keys.Enter)
                 {
                     lista = modeloTipoCliente.getListaCompleta();
-                    lista = lista.FindAll(x => x.nombre.Contains(nombreText.Text));
+                    lista = lista.FindAll(x => x.nombre.ToLower().Contains(nombreText.Text.ToLower()));
                     loadLista();
                 }
             }

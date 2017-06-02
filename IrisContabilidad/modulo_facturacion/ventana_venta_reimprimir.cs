@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -66,9 +61,15 @@ namespace IrisContabilidad.modulo_facturacion
                 listaVenta.ForEach(x =>
                 {
                     empleado=new empleado();
-                    empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
+                    if (x.codigo_empleado != null)
+                    {
+                        empleado = modeloEmpleado.getEmpleadoById(x.codigo_empleado);
+                    }
                     cliente=new cliente();
-                    cliente = modeloCliente.getClienteById(x.codigo_cliente);
+                    if (x.codigo_cliente != null)
+                    {
+                        cliente = modeloCliente.getClienteById(x.codigo_cliente);
+                    }
                     dataGridView1.Rows.Add(x.codigo,utilidades.getFechaddMMyyyy(x.fecha),x.ncf,empleado.nombre,cliente.nombre,x.tipo_venta);
                 });
             }

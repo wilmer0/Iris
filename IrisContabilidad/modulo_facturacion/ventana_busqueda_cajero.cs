@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -47,7 +41,7 @@ namespace IrisContabilidad.modulo_facturacion
             this.mantenimiento = mantenimiento;
             loadLista();
         }
-        public void loadLista()
+        private void loadLista()
         {
             try
             {
@@ -92,13 +86,13 @@ namespace IrisContabilidad.modulo_facturacion
             }
         }
 
-        public void getAction()
+        private void getAction()
         {
             this.DialogResult = DialogResult.OK;
             getObjeto();
             this.Close();
         }
-        public void Salir()
+        private void Salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {

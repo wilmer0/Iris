@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 
@@ -12,6 +10,7 @@ namespace IrisContabilidad.modelos
     public class modeloCobro
     {
         private utilidades utilidades = new utilidades();
+
 
         //get lista cobros todos
         public List<venta_vs_cobros> getListaCompleta(bool mantenimiento=false)
@@ -126,6 +125,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
         //get lista cobros activo detalle by cliente
         public List<venta_vs_cobros_detalles> getListaCobrosDetallesActivosByClienteId(int id)
         {
@@ -133,7 +133,7 @@ namespace IrisContabilidad.modelos
             {
                 List<venta_vs_cobros_detalles> lista = new List<venta_vs_cobros_detalles>();
                 venta_vs_cobros_detalles cobroDetalle = new venta_vs_cobros_detalles();
-                string sql = "select cd.codigo,cd.cod_cobro,cd.cod_metodo_cobro,cd.monto_cobrado,cd.monto_descontado,cd.activo,cd.cod_venta from venta_vs_cobros_detalles cd join venta v on cd.cod_venta=v.codigo where cd.activo='1' and v.codigo_cliente='" + id + "'";
+                string sql = "select cd.codigo,cd.cod_cobro,cd.cod_metodo_cobro,cd.monto_cobrado,cd.monto_descontado,cd.activo,cd.cod_venta,cd.monto_devuelta from venta_vs_cobros_detalles cd join venta v on cd.cod_venta=v.codigo where cd.activo='1' and v.codigo_cliente='" + id + "'";
                 DataSet ds = utilidades.ejecutarcomando_mysql(sql);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
@@ -147,9 +147,12 @@ namespace IrisContabilidad.modelos
                         cobroDetalle.monto_descontado = Convert.ToDecimal(row[4].ToString());
                         cobroDetalle.activo = Convert.ToBoolean(row[5]);
                         cobroDetalle.codigo_venta = Convert.ToInt16(row[6]);
+                        cobroDetalle.monto_devuelta = Convert.ToDecimal(row[7]);
                         lista.Add(cobroDetalle);
                     }
                 }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
+
                 return lista;
             }
             catch (Exception ex)
@@ -187,5 +190,44 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+        //get lista al completa de venta detalle by cuadre caja
+        public List<venta_vs_cobros_detalles> getListaCobrosDetallesCompletaSinCuadradaBycuadreCaja(cuadre_caja cuadre)
+        {
+            try
+            {
+                List<venta_vs_cobros_detalles> lista = new List<venta_vs_cobros_detalles>();
+                venta_vs_cobros_detalles cobroDetalle = new venta_vs_cobros_detalles();
+                empleado empleado = new modeloEmpleado().getEmpleadoByCajeroId(cuadre.codigo_cajero);
+                string sql = "select vc.codigo,vc.cod_cobro,vc.cod_metodo_cobro,vc.monto_cobrado,vc.monto_descontado,vc.activo,vc.cod_venta,vc.monto_devuelta from venta_vs_cobros_detalles vc join venta_vs_cobros c on c.codigo=vc.cod_cobro join venta v on v.codigo=vc.cod_venta where vc.activo='1' and c.cuadrado='0' and c.activo='1' and c.fecha>='" + utilidades.getFechayyyyMMdd(cuadre.fecha) + "' and c.fecha<='" + utilidades.getFechayyyyMMdd(cuadre.fecha_cierre_cuadre) + "' and c.cod_empleado='"+empleado.codigo+"' and v.cod_sucursal='"+cuadre.codigo_sucursal+"' ";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        cobroDetalle = new venta_vs_cobros_detalles();
+                        cobroDetalle.codigo = Convert.ToInt16(row[0].ToString());
+                        cobroDetalle.codigo_cobro = Convert.ToInt16(row[1].ToString());
+                        cobroDetalle.codigo_metodo_cobro = Convert.ToInt16(row[2].ToString());
+                        cobroDetalle.monto_cobrado = Convert.ToDecimal(row[3]);
+                        cobroDetalle.monto_descontado = Convert.ToDecimal(row[4].ToString());
+                        cobroDetalle.activo = Convert.ToBoolean(row[5]);
+                        cobroDetalle.codigo_venta = Convert.ToInt16(row[6]);
+                        cobroDetalle.monto_devuelta = Convert.ToDecimal(row[7]);
+                        lista.Add(cobroDetalle);
+                    }
+                }
+                lista = lista.OrderByDescending(x => x.codigo).ToList();
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getListaCobrosDetallesCompletaSinCuadradaBycuadreCaja.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+    
+    
+    
     }
 }

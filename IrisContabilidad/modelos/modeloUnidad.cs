@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 
@@ -127,7 +124,7 @@ namespace IrisContabilidad.modelos
 
 
         //get objeto
-        public unidad getUnidadById(int id)
+        public unidad getUnidadById(Int64 id)
         {
             try
             {

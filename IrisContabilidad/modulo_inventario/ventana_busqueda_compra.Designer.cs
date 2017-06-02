@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_inventario
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_inventario
 {
     partial class ventana_busqueda_compra
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -273,21 +276,21 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton tipoCompraRadionButton;
-        private System.Windows.Forms.RadioButton ncfRadionButton;
-        private System.Windows.Forms.RadioButton todoRadioButton;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.RadioButton suplidorRadioButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaVenceColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn suplidorColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ncfColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipocompraColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn empleadocolumn;
-        private System.Windows.Forms.RadioButton numeroCompraRadioButton;
+        private GroupBox groupBox1;
+        private RadioButton tipoCompraRadionButton;
+        private RadioButton ncfRadionButton;
+        private RadioButton todoRadioButton;
+        private TextBox nombreText;
+        private Label label3;
+        private DataGridView dataGridView1;
+        private RadioButton suplidorRadioButton;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn fechaColumn;
+        private DataGridViewTextBoxColumn fechaVenceColumn;
+        private DataGridViewTextBoxColumn suplidorColumn;
+        private DataGridViewTextBoxColumn ncfColumn;
+        private DataGridViewTextBoxColumn tipocompraColumn;
+        private DataGridViewTextBoxColumn empleadocolumn;
+        private RadioButton numeroCompraRadioButton;
     }
 }

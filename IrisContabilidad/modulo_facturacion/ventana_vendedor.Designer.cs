@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_vendedor
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -47,7 +50,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 373);
+            this.panel1.Location = new System.Drawing.Point(12, 325);
             this.panel1.Size = new System.Drawing.Size(527, 54);
             // 
             // button2
@@ -186,7 +189,7 @@
             this.activoCheck.CheckState = System.Windows.Forms.CheckState.Checked;
             this.activoCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.activoCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.activoCheck.Location = new System.Drawing.Point(140, 299);
+            this.activoCheck.Location = new System.Drawing.Point(140, 285);
             this.activoCheck.Name = "activoCheck";
             this.activoCheck.Size = new System.Drawing.Size(68, 21);
             this.activoCheck.TabIndex = 80;
@@ -199,7 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(551, 439);
+            this.ClientSize = new System.Drawing.Size(551, 391);
             this.Controls.Add(this.activoCheck);
             this.Controls.Add(this.empleadoIdText);
             this.Controls.Add(this.button5);
@@ -233,16 +236,16 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox vendedorIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.TextBox empleadoText;
-        private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox porcientoText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox empleadoIdText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.CheckBox activoCheck;
+        private GroupBox groupBox1;
+        private TextBox vendedorIdText;
+        private Label label2;
+        private Button button4;
+        public TextBox empleadoText;
+        private Label label3;
+        public TextBox porcientoText;
+        private Label label1;
+        private TextBox empleadoIdText;
+        private Button button5;
+        private CheckBox activoCheck;
     }
 }

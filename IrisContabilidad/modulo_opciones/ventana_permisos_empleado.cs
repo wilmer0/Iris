@@ -1,17 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_nomina;
 using IrisContabilidad.modulo_sistema;
-using DataGrid = System.Web.UI.WebControls.DataGrid;
 
 namespace IrisContabilidad.modulo_opciones
 {

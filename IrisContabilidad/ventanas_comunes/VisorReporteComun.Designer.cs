@@ -1,11 +1,14 @@
-﻿namespace _7ADMFIC_1._0.VentanasComunes
+﻿using System.ComponentModel;
+using Microsoft.Reporting.WinForms;
+
+namespace IrisContabilidad.ventanas_comunes
 {
     partial class VisorReporteComun
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -59,6 +62,6 @@
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer Reporte;
+        private ReportViewer Reporte;
     }
 }
