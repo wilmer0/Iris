@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -27,6 +28,13 @@ namespace IrisContabilidad.modulo_facturacion
 
         //variables
         private DateTime fechaCierre;
+        private bool reporteGeneral = false;
+
+
+        //Proceso
+        private ventana_procesando procesando;
+        private BackgroundWorker SincronizarProceso = new BackgroundWorker();
+
 
 
         public ventana_imprimir_cuadre_caja_rd()
@@ -36,8 +44,58 @@ namespace IrisContabilidad.modulo_facturacion
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSingleton, "reiprimir cuadre caja");
             this.Text = tituloLabel.Text;
             loadVentana();
+
+            SincronizarProceso.WorkerReportsProgress = true;
+            SincronizarProceso.DoWork += LoadReporte;
+            SincronizarProceso.ProgressChanged += ProcesoRun;
+            SincronizarProceso.RunWorkerCompleted += ProcesoCompleto;
+            
         }
 
+        private void LoadReporte(object sender, DoWorkEventArgs e)
+        {
+            SincronizarProceso.ReportProgress(10);
+            try
+            {
+                cuadreCaja=new cuadre_caja();
+                cuadreCaja = modeloCuadreCaja.getCuadreCajaByFechaCuadreAndCajeroId(fechaCierre, cajero.codigo);
+                //loadImprimir();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimiendo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ProcesoRun(object sender, ProgressChangedEventArgs e)
+        {
+            if (procesando == null)
+            {
+                procesando = new ventana_procesando();
+                procesando.ShowDialog();
+            }
+        }
+
+        private void ProcesoCompleto(object sender, RunWorkerCompletedEventArgs e)
+        {
+            procesando.Close();
+            procesando = null;
+            if (cuadreCaja == null)
+            {
+                MessageBox.Show("No hay cierre de caja registrado para la fecha y el cajero seleccionado", "",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (reporteGeneral == true)
+            {
+                modeloReporte.imprimirCuadreCajaGeneral(cuadreCaja.codigo);
+            }
+            else
+            {
+                modeloReporte.imprimirCuadreCajaDetallado(cuadreCaja.codigo);
+            }
+        }
+        
         public void loadVentana()
         {
             try
@@ -53,11 +111,12 @@ namespace IrisContabilidad.modulo_facturacion
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+       
         private void ventana_imprimir_cuadre_caja_rd_Load(object sender, EventArgs e)
         {
 
         }
-
+        
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -65,7 +124,6 @@ namespace IrisContabilidad.modulo_facturacion
                 this.Close();
             }
         }
-
 
         public bool validarGetAction()
         {
@@ -84,9 +142,19 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     MessageBox.Show("Fecha cierre cuadre, formato incorrecto", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     fechaCierreDateTime.Focus();
-                    fechaCierreDateTime.SelectAll();
+                    fechaCierreDateTime.Select();
                     return false;
                 }
+                if (radioButtonGeneral.Checked == true)
+                {
+                    reporteGeneral = true;
+                }
+                else
+                {
+                    reporteGeneral = false;
+                }
+
+
                 fechaCierre = Convert.ToDateTime(fechaCierreDateTime.Text);
                 
                 return true;
@@ -134,7 +202,11 @@ namespace IrisContabilidad.modulo_facturacion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            getAction();
+            if (validarGetAction() == false)
+            {
+                return;
+            }
+            SincronizarProceso.RunWorkerAsync();
         }
 
         public void loadCajero()
@@ -200,7 +272,7 @@ namespace IrisContabilidad.modulo_facturacion
                 if (e.KeyCode == Keys.Enter)
                 {
                     fechaCierreDateTime.Focus();
-                    fechaCierreDateTime.SelectAll();
+                    fechaCierreDateTime.Select();
                 }
             }
             catch (Exception)
@@ -213,6 +285,48 @@ namespace IrisContabilidad.modulo_facturacion
             if (e.KeyCode == Keys.Enter)
             {
                 button1.Focus();
+            }
+        }
+
+        private void fechaCierreDateTime_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    radioButtonGeneral.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void radioButtonGeneral_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    radioButtonDetallado.Focus();
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void radioButtonDetallado_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    button1.Focus();
+                }
+            }
+            catch (Exception)
+            {
             }
         }
     }

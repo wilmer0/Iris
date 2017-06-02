@@ -59,7 +59,7 @@ namespace IrisContabilidad.modulo_facturacion
         {
             InitializeComponent();
             empleadoSesion = singleton.getEmpleado();
-            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSesion, "ventana cuadre caja");
+            this.tituloLabel.Text = utilidades.GetTituloVentana(empleadoSesion, "cashbox closing");
             this.Text = tituloLabel.Text;
             loadVentana();
         }
