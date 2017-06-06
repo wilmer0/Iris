@@ -218,9 +218,9 @@ namespace IrisContabilidad.modulo_facturacion
                 
                 if (modeloCuadreCaja.modificarCuadreCaja(cuadreCaja) == true)
                 {
-                    MessageBox.Show("Operation finished susefull", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Operation successfully completed", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if (MessageBox.Show("Do you want impress cashier report?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Do you want to print cash closing detailed report?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         //imprimir
                         modeloReporte.imprimirCuadreCajaGeneral(cuadreCaja.codigo);
@@ -232,7 +232,7 @@ namespace IrisContabilidad.modulo_facturacion
                 else
                 {
                     cuadreCaja = null;
-                    MessageBox.Show("Operation can't finish", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Operation was not completed successfully", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     loadVentana();
                 }
             }

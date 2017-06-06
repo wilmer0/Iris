@@ -717,13 +717,13 @@ namespace IrisContabilidad.modelos
                 if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
                 {
                     //rd
-                    reporteEncabezado.fecha = utilidades.getFechaddMMyyyy(cuadreCaja.fecha_cierre_cuadre);
+                    reporteEncabezado.fecha = utilidades.getFecha_dd_MM_yyyy(cuadreCaja.fecha_cierre_cuadre);
                     reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_general_rd.rdlc";
 
                 }else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
                 {
                     //usa
-                    reporteEncabezado.fecha = utilidades.getFechaMMddyyyy(cuadreCaja.fecha_cierre_cuadre);
+                    reporteEncabezado.fecha = utilidades.getFecha_MM_dd_yyyy(cuadreCaja.fecha_cierre_cuadre);
                     reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_general_usa.rdlc";
 
                 }
