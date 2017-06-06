@@ -377,7 +377,7 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                 }
                 listaCompra = modeloCompra.getListaCompraBySuplidor(suplidor.codigo);
                 //filtrando las compra que esten activa, que no esten pagada y que no sean a contado
-                listaCompra = listaCompra.FindAll(x => x.pagada == false && x.activo==true && x.tipo_compra!="CON").ToList();
+                listaCompra = listaCompra.FindAll(x => x.pagada == false && x.activo==true && x.codigo_tipo_compra==2 || x.codigo_tipo_compra==4).ToList();
                 listaCompra = listaCompra.OrderByDescending(x => x.codigo).ToList();
                 listaCompra = listaCompra.OrderByDescending(x => x.codigo).ToList();
                 foreach(var x in listaCompra)
