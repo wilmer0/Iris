@@ -50,8 +50,8 @@ namespace IrisContabilidad
             SicronizarProceso.ProgressChanged += ProcesoRun;
             SicronizarProceso.RunWorkerCompleted += ProcesoCompleto;
 
-            usuarioText.GotFocus += UsuarioTextOnGotFocus;
-            usuarioText.LostFocus += UsuarioTextOnLostFocus;
+            //usuarioText.GotFocus += UsuarioTextOnGotFocus;
+            //usuarioText.LostFocus += UsuarioTextOnLostFocus;
         }
 
         private void UsuarioTextOnLostFocus(object sender, EventArgs eventArgs)
