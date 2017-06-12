@@ -489,13 +489,13 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`cuadre_caja_detalles` MODIFY COLUMN `monto_cobro_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'aqui se incluye lo facturadoen efectivo +/ y tambien los cobros en efectivos',MODIFY COLUMN `monto_venta_efectivo` DECIMAL(20,2) NOT NULL DEFAULT 0.00 COMMENT 'solo lo facturado en efectivo';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`catalogo_cuentas` DROP COLUMN `origen_cuenta`;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`catalogo_cuentas` MODIFY COLUMN `codigo_cuenta_superior` INTEGER COMMENT 'para saber a que cuenta pertenece esta';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "ALTER TABLE `iris`.`catalogo_cuentas` MODIFY COLUMN `codigo_cuenta_superior` INTEGER NOT NULL DEFAULT 1 COMMENT 'para saber a que cuenta pertenece esta';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";

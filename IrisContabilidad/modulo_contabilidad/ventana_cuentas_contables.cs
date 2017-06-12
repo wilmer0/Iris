@@ -541,5 +541,20 @@ namespace IrisContabilidad.modulo_contabilidad
             string mensajeAyuda = "Si selecciona una de las cuentas contables de la lista inferior no modificara dicha cuenta, mas bien se utiliza como guia para crear más cuentas contables usando la cuenta seleccionada.";
             this.mensajeAyuda(mensajeAyuda);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Desea cargar un catalogo de cuentas desde un archivo de excel", "", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (DialogResult.No == MessageBox.Show("Desea cargar un catalogo de cuentas desde un archivo de excel", "",MessageBoxButtons.YesNo,MessageBoxIcon.Question))
+            {
+                return;
+            }
+
+            //la respuesta fue si
+
+
+
+
+        }
     }
 }
