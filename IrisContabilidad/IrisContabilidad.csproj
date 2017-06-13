@@ -123,6 +123,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clases\asiento_contable.cs" />
     <Compile Include="clases\caja.cs" />
     <Compile Include="clases\almacen.cs" />
     <Compile Include="clases\año.cs" />
@@ -229,6 +230,7 @@
     </Compile>
     <Compile Include="modelos\modeloActualizacion.cs" />
     <Compile Include="modelos\modeloAlmacen.cs" />
+    <Compile Include="modelos\modeloAsientoContable.cs" />
     <Compile Include="modelos\modeloCaja.cs" />
     <Compile Include="modelos\modeloCajaIngresosEgresosConceptos.cs" />
     <Compile Include="modelos\modeloCajero.cs" />

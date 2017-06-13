@@ -498,7 +498,7 @@ namespace IrisContabilidad.modelos
                 sql = "ALTER TABLE `iris`.`catalogo_cuentas` MODIFY COLUMN `codigo_cuenta_superior` INTEGER NOT NULL DEFAULT 1 COMMENT 'para saber a que cuenta pertenece esta';";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
-                sql = "";
+                sql = "CREATE TABLE `iris`.`asiento_contable` ( `codigo` INTEGER NOT NULL AUTO_INCREMENT, `codigo_asiento` BIGINT NOT NULL DEFAULT 0, `fecha_sistema` DATETIME NOT NULL DEFAULT 0 COMMENT 'para tener la fecha enterta hasta segundos', `fecha` DATE NOT NULL DEFAULT 0 COMMENT 'para tener la fecha hasta dia', `monto` DECIMAL(20,2) NOT NULL DEFAULT 0 COMMENT 'el monto del asiento', `codigo_cuenta` INTEGER NOT NULL DEFAULT 0 COMMENT 'el codigo de la cuenta del catalogo de cuenta', `debito` BOOLEAN NOT NULL DEFAULT 0 COMMENT 'para saber si el monto fue debito', `credito` BOOLEAN NOT NULL DEFAULT 0 COMMENT 'para saber si el monto fue credito', `activo` BOOLEAN NOT NULL DEFAULT 1, PRIMARY KEY(`codigo`) ) ENGINE = InnoDB;";
                 utilidades.ejecutarcomando_mysql(sql);
                 //nuevo query
                 sql = "";
