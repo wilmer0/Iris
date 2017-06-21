@@ -61,7 +61,16 @@ namespace IrisContabilidad.idiomas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a clave.
+        ///   Busca una cadena traducida similar a Activo.
+        /// </summary>
+        internal static string activo {
+            get {
+                return ResourceManager.GetString("activo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Clave.
         /// </summary>
         internal static string clave {
             get {
@@ -70,7 +79,97 @@ namespace IrisContabilidad.idiomas {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a usuario.
+        ///   Busca una cadena traducida similar a Cuenta.
+        /// </summary>
+        internal static string cuenta {
+            get {
+                return ResourceManager.GetString("cuenta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cuenta acumulativa.
+        /// </summary>
+        internal static string cuentaAcumulativa {
+            get {
+                return ResourceManager.GetString("cuentaAcumulativa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cuenta movimiento.
+        /// </summary>
+        internal static string cuentaMovimiento {
+            get {
+                return ResourceManager.GetString("cuentaMovimiento", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Superior account.
+        /// </summary>
+        internal static string cuentaPadre {
+            get {
+                return ResourceManager.GetString("cuentaPadre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ID.
+        /// </summary>
+        internal static string id {
+            get {
+                return ResourceManager.GetString("id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Monto.
+        /// </summary>
+        internal static string monto {
+            get {
+                return ResourceManager.GetString("monto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nombre.
+        /// </summary>
+        internal static string nombre {
+            get {
+                return ResourceManager.GetString("nombre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Numero Cuenta.
+        /// </summary>
+        internal static string numeroCuenta {
+            get {
+                return ResourceManager.GetString("numeroCuenta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Origen credito.
+        /// </summary>
+        internal static string origenCredito {
+            get {
+                return ResourceManager.GetString("origenCredito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Origen debito.
+        /// </summary>
+        internal static string origenDebito {
+            get {
+                return ResourceManager.GetString("origenDebito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Usuario.
         /// </summary>
         internal static string usuario {
             get {

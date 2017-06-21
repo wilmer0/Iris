@@ -11,6 +11,6 @@
         public bool origen_credito { get; set; }
         public bool origen_debito { get; set; }
         public bool activo { get; set; }
-        public string origenCuenta { get; set; }
+        public string origenCuentaS { get; set; }
     }
 }

@@ -117,10 +117,56 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="activo" xml:space="preserve">
+    <value>Activo</value>
+    <comment>activo para las checkbox</comment>
+  </data>
   <data name="clave" xml:space="preserve">
-    <value>clave</value>
+    <value>Clave</value>
+    <comment>clave/contrasena</comment>
+  </data>
+  <data name="cuenta" xml:space="preserve">
+    <value>Cuenta</value>
+    <comment>cuenta</comment>
+  </data>
+  <data name="cuentaAcumulativa" xml:space="preserve">
+    <value>Cuenta acumulativa</value>
+    <comment>cuenta acumulativa</comment>
+  </data>
+  <data name="cuentaMovimiento" xml:space="preserve">
+    <value>Cuenta movimiento</value>
+    <comment>cuenta de movimiento </comment>
+  </data>
+  <data name="cuentaPadre" xml:space="preserve">
+    <value>Superior account</value>
+    <comment>cuenta padre contabilidad</comment>
+  </data>
+  <data name="id" xml:space="preserve">
+    <value>ID</value>
+    <comment>id para datagrid</comment>
+  </data>
+  <data name="monto" xml:space="preserve">
+    <value>Monto</value>
+    <comment>monto para para datagrid y label</comment>
+  </data>
+  <data name="nombre" xml:space="preserve">
+    <value>Nombre</value>
+    <comment>nombre para datagrid</comment>
+  </data>
+  <data name="numeroCuenta" xml:space="preserve">
+    <value>Numero Cuenta</value>
+    <comment>numero de cuenta</comment>
+  </data>
+  <data name="origenCredito" xml:space="preserve">
+    <value>Origen credito</value>
+    <comment>origen credito</comment>
+  </data>
+  <data name="origenDebito" xml:space="preserve">
+    <value>Origen debito</value>
+    <comment>origen debito</comment>
   </data>
   <data name="usuario" xml:space="preserve">
-    <value>usuario</value>
+    <value>Usuario</value>
+    <comment>nombre de usuario</comment>
   </data>
 </root>

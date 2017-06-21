@@ -34,14 +34,14 @@ namespace IrisContabilidad.modulo_contabilidad
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_cuentas_contables));
             this.cuentaIdText = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
+            this.cuenta_label = new System.Windows.Forms.Label();
             this.numeroCuentaText = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.numeroCuentaLabel = new System.Windows.Forms.Label();
+            this.nombre_label = new System.Windows.Forms.Label();
             this.nombreText = new System.Windows.Forms.TextBox();
             this.cuentaPadreIdText = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.cuentaPadreLabel = new System.Windows.Forms.Label();
             this.cuentaPadreText = new System.Windows.Forms.TextBox();
             this.radioCuentaAcumulativa = new System.Windows.Forms.RadioButton();
             this.radioCuentaMovimiento = new System.Windows.Forms.RadioButton();
@@ -51,15 +51,15 @@ namespace IrisContabilidad.modulo_contabilidad
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.codigoColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button5 = new System.Windows.Forms.Button();
+            this.idColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroCuentaColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCuentaPadreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuentaPadreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroCuentaPadreColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -116,15 +116,15 @@ namespace IrisContabilidad.modulo_contabilidad
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // label9
+            // cuenta_label
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(60, 25);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(67, 20);
-            this.label9.TabIndex = 120;
-            this.label9.Text = "Cuenta";
+            this.cuenta_label.AutoSize = true;
+            this.cuenta_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuenta_label.Location = new System.Drawing.Point(60, 25);
+            this.cuenta_label.Name = "cuenta_label";
+            this.cuenta_label.Size = new System.Drawing.Size(67, 20);
+            this.cuenta_label.TabIndex = 120;
+            this.cuenta_label.Text = "Cuenta";
             // 
             // numeroCuentaText
             // 
@@ -136,25 +136,25 @@ namespace IrisContabilidad.modulo_contabilidad
             this.numeroCuentaText.TabIndex = 122;
             this.numeroCuentaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numeroCuentaText_KeyDown);
             // 
-            // label3
+            // numeroCuentaLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(45, 126);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 20);
-            this.label3.TabIndex = 123;
-            this.label3.Text = "# Cuenta";
+            this.numeroCuentaLabel.AutoSize = true;
+            this.numeroCuentaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numeroCuentaLabel.Location = new System.Drawing.Point(45, 126);
+            this.numeroCuentaLabel.Name = "numeroCuentaLabel";
+            this.numeroCuentaLabel.Size = new System.Drawing.Size(82, 20);
+            this.numeroCuentaLabel.TabIndex = 123;
+            this.numeroCuentaLabel.Text = "# Cuenta";
             // 
-            // label4
+            // nombre_label
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(56, 79);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(71, 20);
-            this.label4.TabIndex = 125;
-            this.label4.Text = "Nombre";
+            this.nombre_label.AutoSize = true;
+            this.nombre_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombre_label.Location = new System.Drawing.Point(56, 79);
+            this.nombre_label.Name = "nombre_label";
+            this.nombre_label.Size = new System.Drawing.Size(71, 20);
+            this.nombre_label.TabIndex = 125;
+            this.nombre_label.Text = "Nombre";
             // 
             // nombreText
             // 
@@ -188,15 +188,15 @@ namespace IrisContabilidad.modulo_contabilidad
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // label5
+            // cuentaPadreLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 176);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(118, 20);
-            this.label5.TabIndex = 128;
-            this.label5.Text = "Cuenta padre";
+            this.cuentaPadreLabel.AutoSize = true;
+            this.cuentaPadreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cuentaPadreLabel.Location = new System.Drawing.Point(9, 176);
+            this.cuentaPadreLabel.Name = "cuentaPadreLabel";
+            this.cuentaPadreLabel.Size = new System.Drawing.Size(118, 20);
+            this.cuentaPadreLabel.TabIndex = 128;
+            this.cuentaPadreLabel.Text = "Cuenta padre";
             // 
             // cuentaPadreText
             // 
@@ -304,24 +304,41 @@ namespace IrisContabilidad.modulo_contabilidad
             this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.cuentaIdText);
             this.groupBox3.Controls.Add(this.groupBox2);
-            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.cuenta_label);
             this.groupBox3.Controls.Add(this.groupBox1);
             this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.Controls.Add(this.activoCheck);
             this.groupBox3.Controls.Add(this.numeroCuentaText);
             this.groupBox3.Controls.Add(this.cuentaPadreText);
-            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.numeroCuentaLabel);
             this.groupBox3.Controls.Add(this.cuentaPadreIdText);
             this.groupBox3.Controls.Add(this.nombreText);
             this.groupBox3.Controls.Add(this.button6);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Controls.Add(this.nombre_label);
+            this.groupBox3.Controls.Add(this.cuentaPadreLabel);
             this.groupBox3.Location = new System.Drawing.Point(16, 27);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(948, 250);
             this.groupBox3.TabIndex = 137;
             this.groupBox3.TabStop = false;
             this.groupBox3.Enter += new System.EventHandler(this.groupBox3_Enter);
+            // 
+            // button5
+            // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button5.BackColor = System.Drawing.Color.Transparent;
+            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(874, 186);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(68, 54);
+            this.button5.TabIndex = 138;
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button4
             // 
@@ -349,12 +366,12 @@ namespace IrisContabilidad.modulo_contabilidad
             this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigoColumn,
-            this.Column2,
-            this.Column1,
-            this.Column3,
-            this.Column4,
-            this.Column5});
+            this.idColumn,
+            this.numeroCuentaColumn,
+            this.nombreColumn,
+            this.idCuentaPadreColumn,
+            this.cuentaPadreColumn,
+            this.numeroCuentaPadreColumn});
             this.dataGridView1.Location = new System.Drawing.Point(16, 283);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -365,60 +382,43 @@ namespace IrisContabilidad.modulo_contabilidad
             this.dataGridView1.TabIndex = 138;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
-            // codigoColumn
+            // idColumn
             // 
-            this.codigoColumn.FillWeight = 50F;
-            this.codigoColumn.HeaderText = "Id";
-            this.codigoColumn.Name = "codigoColumn";
-            this.codigoColumn.ReadOnly = true;
+            this.idColumn.FillWeight = 50F;
+            this.idColumn.HeaderText = "Id";
+            this.idColumn.Name = "idColumn";
+            this.idColumn.ReadOnly = true;
             // 
-            // Column2
+            // numeroCuentaColumn
             // 
-            this.Column2.HeaderText = "No. cuenta";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
+            this.numeroCuentaColumn.HeaderText = "No. cuenta";
+            this.numeroCuentaColumn.Name = "numeroCuentaColumn";
+            this.numeroCuentaColumn.ReadOnly = true;
             // 
-            // Column1
+            // nombreColumn
             // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
+            this.nombreColumn.HeaderText = "Nombre";
+            this.nombreColumn.Name = "nombreColumn";
+            this.nombreColumn.ReadOnly = true;
             // 
-            // Column3
+            // idCuentaPadreColumn
             // 
-            this.Column3.FillWeight = 50F;
-            this.Column3.HeaderText = "Id";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
+            this.idCuentaPadreColumn.FillWeight = 50F;
+            this.idCuentaPadreColumn.HeaderText = "Id";
+            this.idCuentaPadreColumn.Name = "idCuentaPadreColumn";
+            this.idCuentaPadreColumn.ReadOnly = true;
             // 
-            // Column4
+            // cuentaPadreColumn
             // 
-            this.Column4.HeaderText = "Cuenta padre";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
+            this.cuentaPadreColumn.HeaderText = "Cuenta padre";
+            this.cuentaPadreColumn.Name = "cuentaPadreColumn";
+            this.cuentaPadreColumn.ReadOnly = true;
             // 
-            // Column5
+            // numeroCuentaPadreColumn
             // 
-            this.Column5.HeaderText = "No. cuenta";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // button5
-            // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.BackColor = System.Drawing.Color.Transparent;
-            this.button5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button5.BackgroundImage")));
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(874, 186);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(68, 54);
-            this.button5.TabIndex = 138;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.numeroCuentaPadreColumn.HeaderText = "No. cuenta";
+            this.numeroCuentaPadreColumn.Name = "numeroCuentaPadreColumn";
+            this.numeroCuentaPadreColumn.ReadOnly = true;
             // 
             // ventana_cuentas_contables
             // 
@@ -453,14 +453,14 @@ namespace IrisContabilidad.modulo_contabilidad
 
         private TextBox cuentaIdText;
         private Button button7;
-        private Label label9;
+        private Label cuenta_label;
         public TextBox numeroCuentaText;
-        private Label label3;
-        private Label label4;
+        private Label numeroCuentaLabel;
+        private Label nombre_label;
         public TextBox nombreText;
         private TextBox cuentaPadreIdText;
         private Button button6;
-        private Label label5;
+        private Label cuentaPadreLabel;
         public TextBox cuentaPadreText;
         private RadioButton radioCuentaAcumulativa;
         private RadioButton radioCuentaMovimiento;
@@ -472,12 +472,12 @@ namespace IrisContabilidad.modulo_contabilidad
         private GroupBox groupBox3;
         private DataGridView dataGridView1;
         public Button button4;
-        private DataGridViewTextBoxColumn codigoColumn;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
         public Button button5;
+        private DataGridViewTextBoxColumn idColumn;
+        private DataGridViewTextBoxColumn numeroCuentaColumn;
+        private DataGridViewTextBoxColumn nombreColumn;
+        private DataGridViewTextBoxColumn idCuentaPadreColumn;
+        private DataGridViewTextBoxColumn cuentaPadreColumn;
+        private DataGridViewTextBoxColumn numeroCuentaPadreColumn;
     }
 }

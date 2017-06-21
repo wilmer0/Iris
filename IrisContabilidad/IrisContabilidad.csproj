@@ -223,6 +223,11 @@
     <Compile Include="clases_reportes\reporte_venta_encabezado.cs" />
     <Compile Include="clases_reportes_modelos\modelo_reporte_cobros.cs" />
     <Compile Include="clases_reportes_modelos\modelo_reporte_estado_cuenta_cliente.cs" />
+    <Compile Include="idiomas\En-us.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>En-us.resx</DependentUpon>
+    </Compile>
     <Compile Include="idiomas\Es-do.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -965,6 +970,10 @@
     <Compile Include="ventanas_comunes\VisorReporteComun.Designer.cs">
       <DependentUpon>VisorReporteComun.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="idiomas\En-us.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>En-us.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="idiomas\Es-do.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Es-do.Designer.cs</LastGenOutput>

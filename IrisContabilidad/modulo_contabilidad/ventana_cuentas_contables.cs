@@ -32,6 +32,7 @@ namespace IrisContabilidad.modulo_contabilidad
             loadVentana(); 
             loadListaCuentascontables();
         }
+
         public void loadVentana()
         {
             try
@@ -555,6 +556,33 @@ namespace IrisContabilidad.modulo_contabilidad
 
 
 
+        }
+
+        public void traducirContenido()
+        {
+            try
+            {
+                if (singleton.sistema.codigoIdiomaSistema == 1)
+                {
+                    //es
+                    cuenta_label.Text = idiomas.Es_do.cuenta;
+                    nombre_label.Text = idiomas.Es_do.nombre;
+                    numeroCuentaLabel.Text = idiomas.Es_do.numeroCuenta;
+                    cuentaPadreLabel.Text = idiomas.Es_do.cuentaPadre;
+
+
+
+                }else if (singleton.sistema.codigoIdiomaSistema == 2)
+                {
+                    //usa
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error traducir contenido.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }    
         }
     }
 }
