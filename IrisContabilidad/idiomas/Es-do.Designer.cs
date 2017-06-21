@@ -133,6 +133,15 @@ namespace IrisContabilidad.idiomas {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Nu. account.
+        /// </summary>
+        internal static string noCuenta {
+            get {
+                return ResourceManager.GetString("noCuenta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Nombre.
         /// </summary>
         internal static string nombre {

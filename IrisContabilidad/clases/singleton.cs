@@ -27,16 +27,6 @@ namespace IrisContabilidad.clases
         #endregion
 
 
-        public static singleton obtenerDatos()
-        {
-            if (singletonInstance == null)
-            {
-                singletonInstance = new singleton();
-                obtenerDatos();
-            }
-            return singletonInstance;
-        }
-
         public static empleado getEmpleado()
         {
             if (empleado == null)
@@ -45,6 +35,15 @@ namespace IrisContabilidad.clases
                 GetIdioma();
             }
             return empleado;
+        }
+
+        public static singleton obtenerDatos()
+        {
+            if (singletonInstance == null)
+            {
+                singletonInstance = new singleton();
+            }
+            return singletonInstance;
         }
 
         public static sistemaConfiguracion getSistemaconfiguracion()

@@ -149,6 +149,10 @@
     <value>Amount</value>
     <comment>monto para para datagrid y label</comment>
   </data>
+  <data name="noCuenta" xml:space="preserve">
+    <value>Nu. account</value>
+    <comment>no. cuenta</comment>
+  </data>
   <data name="nombre" xml:space="preserve">
     <value>Name</value>
     <comment>nombre para datagrid</comment>
