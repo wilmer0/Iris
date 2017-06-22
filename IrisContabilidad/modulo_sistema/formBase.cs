@@ -19,13 +19,18 @@ namespace IrisContabilidad.modulo_sistema
 
 
 
-
-
-
-
         //objeto
         utilidades utilidades = new utilidades();
         private empleado empleado;
+
+
+
+        //metodos padres
+        public static void traducirContenidoVentana()
+        {
+          
+        }
+
 
 
         public formBase()
@@ -54,11 +59,7 @@ namespace IrisContabilidad.modulo_sistema
         {
 
         }
-
-      
-
-      
-
+        
         private void formBase_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
@@ -77,9 +78,7 @@ namespace IrisContabilidad.modulo_sistema
                 this.button3_Click(null, null);
             }
         }
-
         
-
         private void formBase_Load_1(object sender, EventArgs e)
         {
 
@@ -104,5 +103,6 @@ namespace IrisContabilidad.modulo_sistema
         {
             MessageBox.Show(mensaje, "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+    
     }
 }
