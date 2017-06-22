@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_desglose_dinero
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -65,7 +68,7 @@
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(12, 565);
-            this.panel1.Size = new System.Drawing.Size(958, 54);
+            this.panel1.Size = new System.Drawing.Size(1096, 54);
             // 
             // button2
             // 
@@ -75,58 +78,58 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(817, 5);
+            this.button1.Location = new System.Drawing.Point(955, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(982, 21);
+            this.panel2.Size = new System.Drawing.Size(1120, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(409, 5);
+            this.button3.Location = new System.Drawing.Point(478, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(53, 54);
+            this.label2.Location = new System.Drawing.Point(55, 54);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(74, 20);
+            this.label2.Size = new System.Drawing.Size(130, 20);
             this.label2.TabIndex = 74;
-            this.label2.Text = "Efectivo";
+            this.label2.Text = "Efectivo / Cash";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(564, 54);
+            this.label1.Location = new System.Drawing.Point(587, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.Size = new System.Drawing.Size(168, 20);
             this.label1.TabIndex = 75;
-            this.label1.Text = "Tarjeta";
+            this.label1.Text = "Tarjeta / Credit card";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(9, 24);
+            this.label3.Location = new System.Drawing.Point(2, 24);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 20);
+            this.label3.Size = new System.Drawing.Size(173, 20);
             this.label3.TabIndex = 76;
-            this.label3.Text = "Cheque($$)";
+            this.label3.Text = "Cheque / Check ($$)";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(22, 24);
+            this.label4.Location = new System.Drawing.Point(8, 24);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 20);
+            this.label4.Size = new System.Drawing.Size(195, 20);
             this.label4.TabIndex = 77;
-            this.label4.Text = "Deposito($$)";
+            this.label4.Text = "Deposito / Deposit ($$)";
             // 
             // label5
             // 
@@ -134,16 +137,16 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(5, 26);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(132, 20);
+            this.label5.Size = new System.Drawing.Size(209, 20);
             this.label5.TabIndex = 78;
-            this.label5.Text = "Monto devuelto";
+            this.label5.Text = "Monto devuelto / Change";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // montoEfectivoText
             // 
             this.montoEfectivoText.BackColor = System.Drawing.Color.SkyBlue;
             this.montoEfectivoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoEfectivoText.Location = new System.Drawing.Point(133, 49);
+            this.montoEfectivoText.Location = new System.Drawing.Point(191, 49);
             this.montoEfectivoText.Name = "montoEfectivoText";
             this.montoEfectivoText.Size = new System.Drawing.Size(312, 38);
             this.montoEfectivoText.TabIndex = 79;
@@ -157,7 +160,7 @@
             // 
             this.montoTarjetaText.BackColor = System.Drawing.Color.SkyBlue;
             this.montoTarjetaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoTarjetaText.Location = new System.Drawing.Point(635, 49);
+            this.montoTarjetaText.Location = new System.Drawing.Point(761, 49);
             this.montoTarjetaText.Name = "montoTarjetaText";
             this.montoTarjetaText.Size = new System.Drawing.Size(312, 38);
             this.montoTarjetaText.TabIndex = 80;
@@ -171,7 +174,7 @@
             // 
             this.montoChequeText.BackColor = System.Drawing.Color.SkyBlue;
             this.montoChequeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoChequeText.Location = new System.Drawing.Point(118, 19);
+            this.montoChequeText.Location = new System.Drawing.Point(181, 19);
             this.montoChequeText.Name = "montoChequeText";
             this.montoChequeText.Size = new System.Drawing.Size(312, 38);
             this.montoChequeText.TabIndex = 81;
@@ -185,7 +188,7 @@
             // 
             this.montoDepositoText.BackColor = System.Drawing.Color.SkyBlue;
             this.montoDepositoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoDepositoText.Location = new System.Drawing.Point(141, 19);
+            this.montoDepositoText.Location = new System.Drawing.Point(209, 19);
             this.montoDepositoText.Name = "montoDepositoText";
             this.montoDepositoText.Size = new System.Drawing.Size(312, 38);
             this.montoDepositoText.TabIndex = 82;
@@ -199,7 +202,7 @@
             // 
             this.montoDevueltoText.BackColor = System.Drawing.Color.Red;
             this.montoDevueltoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoDevueltoText.Location = new System.Drawing.Point(143, 19);
+            this.montoDevueltoText.Location = new System.Drawing.Point(220, 19);
             this.montoDevueltoText.Name = "montoDevueltoText";
             this.montoDevueltoText.ReadOnly = true;
             this.montoDevueltoText.Size = new System.Drawing.Size(307, 38);
@@ -214,7 +217,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Location = new System.Drawing.Point(15, 266);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(473, 71);
+            this.groupBox1.Size = new System.Drawing.Size(1090, 116);
             this.groupBox1.TabIndex = 84;
             this.groupBox1.TabStop = false;
             // 
@@ -222,7 +225,7 @@
             // 
             this.montoDescuentoText.BackColor = System.Drawing.Color.Tomato;
             this.montoDescuentoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.montoDescuentoText.Location = new System.Drawing.Point(118, 19);
+            this.montoDescuentoText.Location = new System.Drawing.Point(200, 19);
             this.montoDescuentoText.Name = "montoDescuentoText";
             this.montoDescuentoText.Size = new System.Drawing.Size(312, 38);
             this.montoDescuentoText.TabIndex = 86;
@@ -236,18 +239,18 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(11, 25);
+            this.label6.Location = new System.Drawing.Point(12, 26);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(96, 20);
+            this.label6.Size = new System.Drawing.Size(182, 20);
             this.label6.TabIndex = 85;
-            this.label6.Text = "Descuento";
+            this.label6.Text = "Descuento / Discount";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // MontoTotalText
             // 
             this.MontoTotalText.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.MontoTotalText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MontoTotalText.Location = new System.Drawing.Point(638, 127);
+            this.MontoTotalText.Location = new System.Drawing.Point(776, 125);
             this.MontoTotalText.Name = "MontoTotalText";
             this.MontoTotalText.ReadOnly = true;
             this.MontoTotalText.Size = new System.Drawing.Size(307, 38);
@@ -259,18 +262,18 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(532, 134);
+            this.label7.Location = new System.Drawing.Point(560, 134);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 20);
+            this.label7.Size = new System.Drawing.Size(210, 20);
             this.label7.TabIndex = 85;
-            this.label7.Text = "Monto total";
+            this.label7.Text = "Monto total / Grand Total";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // numeroChequeText
             // 
             this.numeroChequeText.BackColor = System.Drawing.Color.SkyBlue;
             this.numeroChequeText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroChequeText.Location = new System.Drawing.Point(118, 63);
+            this.numeroChequeText.Location = new System.Drawing.Point(181, 63);
             this.numeroChequeText.Name = "numeroChequeText";
             this.numeroChequeText.Size = new System.Drawing.Size(312, 38);
             this.numeroChequeText.TabIndex = 87;
@@ -281,7 +284,7 @@
             // 
             this.chequeBancoText.BackColor = System.Drawing.Color.SkyBlue;
             this.chequeBancoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chequeBancoText.Location = new System.Drawing.Point(118, 104);
+            this.chequeBancoText.Location = new System.Drawing.Point(181, 104);
             this.chequeBancoText.MaxLength = 50;
             this.chequeBancoText.Name = "chequeBancoText";
             this.chequeBancoText.Size = new System.Drawing.Size(312, 38);
@@ -292,7 +295,7 @@
             // 
             this.depositoBancoText.BackColor = System.Drawing.Color.SkyBlue;
             this.depositoBancoText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.depositoBancoText.Location = new System.Drawing.Point(141, 63);
+            this.depositoBancoText.Location = new System.Drawing.Point(209, 63);
             this.depositoBancoText.MaxLength = 50;
             this.depositoBancoText.Name = "depositoBancoText";
             this.depositoBancoText.Size = new System.Drawing.Size(312, 38);
@@ -309,30 +312,30 @@
             this.groupBox2.Controls.Add(this.numeroChequeText);
             this.groupBox2.Location = new System.Drawing.Point(15, 98);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(473, 162);
+            this.groupBox2.Size = new System.Drawing.Size(518, 162);
             this.groupBox2.TabIndex = 91;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Cheque";
+            this.groupBox2.Text = "Cheque / Check";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(52, 113);
+            this.label9.Location = new System.Drawing.Point(59, 113);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 20);
+            this.label9.Size = new System.Drawing.Size(116, 20);
             this.label9.TabIndex = 91;
-            this.label9.Text = "Banco";
+            this.label9.Text = "Banco / Bank";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(19, 71);
+            this.label8.Location = new System.Drawing.Point(12, 70);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(93, 20);
+            this.label8.Size = new System.Drawing.Size(163, 20);
             this.label8.TabIndex = 90;
-            this.label8.Text = "Cheque(#)";
+            this.label8.Text = "Cheque / Check (#)";
             // 
             // groupBox3
             // 
@@ -340,22 +343,22 @@
             this.groupBox3.Controls.Add(this.montoDepositoText);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.depositoBancoText);
-            this.groupBox3.Location = new System.Drawing.Point(494, 98);
+            this.groupBox3.Location = new System.Drawing.Point(552, 98);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(471, 162);
+            this.groupBox3.Size = new System.Drawing.Size(553, 162);
             this.groupBox3.TabIndex = 92;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Deposito";
+            this.groupBox3.Text = "Deposito / Deposit";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(75, 71);
+            this.label10.Location = new System.Drawing.Point(87, 70);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 20);
+            this.label10.Size = new System.Drawing.Size(116, 20);
             this.label10.TabIndex = 91;
-            this.label10.Text = "Banco";
+            this.label10.Text = "Banco / Bank";
             // 
             // groupBox4
             // 
@@ -367,7 +370,7 @@
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Location = new System.Drawing.Point(16, 388);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(951, 171);
+            this.groupBox4.Size = new System.Drawing.Size(1089, 171);
             this.groupBox4.TabIndex = 93;
             this.groupBox4.TabStop = false;
             // 
@@ -375,17 +378,17 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(40, 69);
+            this.label11.Location = new System.Drawing.Point(55, 69);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(97, 20);
+            this.label11.Size = new System.Drawing.Size(159, 20);
             this.label11.TabIndex = 88;
-            this.label11.Text = "Monto itbis";
+            this.label11.Text = "Monto itbis / Taxes";
             // 
             // MontoItebisText
             // 
             this.MontoItebisText.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.MontoItebisText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MontoItebisText.Location = new System.Drawing.Point(143, 63);
+            this.MontoItebisText.Location = new System.Drawing.Point(220, 63);
             this.MontoItebisText.Name = "MontoItebisText";
             this.MontoItebisText.ReadOnly = true;
             this.MontoItebisText.Size = new System.Drawing.Size(307, 38);
@@ -397,7 +400,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(982, 631);
+            this.ClientSize = new System.Drawing.Size(1120, 631);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -437,31 +440,31 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox montoEfectivoText;
-        private System.Windows.Forms.TextBox montoTarjetaText;
-        private System.Windows.Forms.TextBox montoChequeText;
-        private System.Windows.Forms.TextBox montoDepositoText;
-        private System.Windows.Forms.TextBox montoDevueltoText;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox montoDescuentoText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox MontoTotalText;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox numeroChequeText;
-        private System.Windows.Forms.TextBox chequeBancoText;
-        private System.Windows.Forms.TextBox depositoBancoText;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox MontoItebisText;
+        private Label label2;
+        private Label label1;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private TextBox montoEfectivoText;
+        private TextBox montoTarjetaText;
+        private TextBox montoChequeText;
+        private TextBox montoDepositoText;
+        private TextBox montoDevueltoText;
+        private GroupBox groupBox1;
+        private TextBox montoDescuentoText;
+        private Label label6;
+        private TextBox MontoTotalText;
+        private Label label7;
+        private TextBox numeroChequeText;
+        private TextBox chequeBancoText;
+        private TextBox depositoBancoText;
+        private GroupBox groupBox2;
+        private GroupBox groupBox3;
+        private Label label9;
+        private Label label8;
+        private Label label10;
+        private GroupBox groupBox4;
+        private Label label11;
+        private TextBox MontoItebisText;
     }
 }

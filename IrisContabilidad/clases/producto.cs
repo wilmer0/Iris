@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IrisContabilidad.clases
 {
@@ -22,6 +18,7 @@ namespace IrisContabilidad.clases
         public string imagen { get; set; }
         public int codigo_unidad_minima { get; set; }
         public Boolean controla_inventario { get; set; }
+        public bool producto_titular { get; set; }
 
     }
 }

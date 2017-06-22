@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_empresa
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_empresa
 {
     partial class ventana_empresa
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -28,6 +31,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_empresa));
             this.activoCheck = new System.Windows.Forms.CheckBox();
             this.divisionText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.empresaIdText = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.serieComprobanteText = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -115,7 +120,7 @@
             this.RncText.BackColor = System.Drawing.Color.White;
             this.RncText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RncText.Location = new System.Drawing.Point(175, 91);
-            this.RncText.MaxLength = 9;
+            this.RncText.MaxLength = 11;
             this.RncText.Name = "RncText";
             this.RncText.Size = new System.Drawing.Size(256, 26);
             this.RncText.TabIndex = 17;
@@ -185,6 +190,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.serieComprobanteText);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.empresaText);
@@ -200,6 +206,23 @@
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // button4
+            // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.FlatAppearance.BorderSize = 0;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.ForeColor = System.Drawing.Color.White;
+            this.button4.Location = new System.Drawing.Point(477, 181);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(96, 68);
+            this.button4.TabIndex = 24;
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Visible = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // serieComprobanteText
             // 
@@ -250,18 +273,19 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.TextBox divisionText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox RncText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox empresaText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox empresaIdText;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox serieComprobanteText;
-        private System.Windows.Forms.Label label5;
+        private CheckBox activoCheck;
+        private TextBox divisionText;
+        private Label label4;
+        private TextBox RncText;
+        private Label label3;
+        private TextBox empresaText;
+        private Label label2;
+        private GroupBox groupBox1;
+        private Label label1;
+        private TextBox empresaIdText;
+        private GroupBox groupBox2;
+        private TextBox serieComprobanteText;
+        private Label label5;
+        public Button button4;
     }
 }

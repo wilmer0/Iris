@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -41,6 +34,7 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 if (caja != null)
                 {
+                    cajaIdText.Text = caja.codigo.ToString();
                     nombreText.Text = caja.nombre;
                     secuenciaText.Text = caja.secuencia;
                     activoCheck.Checked = Convert.ToBoolean(caja.activo);
@@ -49,7 +43,7 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     nombreText.Text = "";
                     secuenciaText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

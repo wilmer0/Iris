@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_inventario
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_inventario
 {
     partial class ventana_reporte_producto
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -395,29 +398,29 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox productoText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox itebisIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox referenciaText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox itebisText;
-        private System.Windows.Forms.TextBox categoriaText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox categoriaIdText;
-        private System.Windows.Forms.TextBox subcategoriaText;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox subcategoriaIdText;
-        private System.Windows.Forms.TextBox almacenText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.TextBox almacenIdText;
-        private System.Windows.Forms.TextBox unidadMinimaText;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox unidadMinimaIdText;
+        private Label label1;
+        private TextBox productoText;
+        private Button button5;
+        private TextBox itebisIdText;
+        private Label label2;
+        private TextBox referenciaText;
+        private Label label3;
+        private TextBox itebisText;
+        private TextBox categoriaText;
+        private Label label4;
+        private Button button4;
+        private TextBox categoriaIdText;
+        private TextBox subcategoriaText;
+        private Label label5;
+        private Button button6;
+        private TextBox subcategoriaIdText;
+        private TextBox almacenText;
+        private Label label6;
+        private Button button7;
+        private TextBox almacenIdText;
+        private TextBox unidadMinimaText;
+        private Label label7;
+        private Button button8;
+        private TextBox unidadMinimaIdText;
     }
 }

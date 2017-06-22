@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_inventario
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_inventario
 {
     partial class ventana_producto_oferta
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -375,31 +378,31 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox ventaIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rncColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn telefonoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn activoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button5;
-        public System.Windows.Forms.TextBox textBox3;
+        private GroupBox groupBox1;
+        private TextBox ventaIdText;
+        private Label label2;
+        private Button button4;
+        public TextBox nombreText;
+        private Label label3;
+        public TextBox textBox1;
+        private Label label1;
+        private Label label4;
+        private Label label5;
+        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker2;
+        private GroupBox groupBox2;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn secuenciacolumn;
+        private DataGridViewTextBoxColumn cedulaColumn;
+        private DataGridViewTextBoxColumn rncColumn;
+        private DataGridViewTextBoxColumn categoriaColumn;
+        private DataGridViewTextBoxColumn telefonoColumn;
+        private DataGridViewTextBoxColumn activoColumn;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private TextBox textBox2;
+        private Label label6;
+        private Button button5;
+        public TextBox textBox3;
     }
 }

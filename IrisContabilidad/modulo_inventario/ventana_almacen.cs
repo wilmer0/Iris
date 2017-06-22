@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -39,15 +32,22 @@ namespace IrisContabilidad.modulo_inventario
             {
                 if (almacen != null)
                 {
+                    nombreText.Focus();
+                    nombreText.SelectAll();
+
+                    almacenIdText.Text = almacen.codigo.ToString();
                     almacenIdText.Text = almacen.codigo.ToString();
                     nombreText.Text = almacen.nombre;
                     activoCheck.Checked = Convert.ToBoolean(almacen.activo);
                 }
                 else
                 {
+                    almacenIdText.Focus();
+                    almacenIdText.SelectAll();
+
                     almacenIdText.Text = "";
                     nombreText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

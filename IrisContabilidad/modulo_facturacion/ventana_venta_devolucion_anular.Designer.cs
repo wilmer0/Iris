@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_venta_devolucion_anular
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -53,7 +56,7 @@
             // panel1
             // 
             this.panel1.Location = new System.Drawing.Point(12, 552);
-            this.panel1.Size = new System.Drawing.Size(1092, 54);
+            this.panel1.Size = new System.Drawing.Size(982, 54);
             // 
             // button2
             // 
@@ -63,17 +66,17 @@
             // button1
             // 
             this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.Location = new System.Drawing.Point(951, 5);
+            this.button1.Location = new System.Drawing.Point(841, 5);
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel2
             // 
-            this.panel2.Size = new System.Drawing.Size(1116, 21);
+            this.panel2.Size = new System.Drawing.Size(1006, 21);
             // 
             // button3
             // 
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.Location = new System.Drawing.Point(476, 5);
+            this.button3.Location = new System.Drawing.Point(421, 5);
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // dataGridView1
@@ -97,7 +100,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1089, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(979, 429);
             this.dataGridView1.TabIndex = 31;
             // 
             // codigoColumn
@@ -152,7 +155,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 27);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1092, 84);
+            this.groupBox1.Size = new System.Drawing.Size(979, 84);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
@@ -248,7 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 618);
+            this.ClientSize = new System.Drawing.Size(1006, 618);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
             this.Name = "ventana_venta_devolucion_anular";
@@ -271,21 +274,21 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButtonTipoVenta;
-        private System.Windows.Forms.RadioButton radioButtonEmpleado;
-        private System.Windows.Forms.RadioButton radioButtonCliente;
-        private System.Windows.Forms.RadioButton radioButtonIdVenta;
-        private System.Windows.Forms.RadioButton radioButtonFecha;
-        private System.Windows.Forms.RadioButton radioButtonID;
-        private System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private GroupBox groupBox1;
+        private RadioButton radioButtonTipoVenta;
+        private RadioButton radioButtonEmpleado;
+        private RadioButton radioButtonCliente;
+        private RadioButton radioButtonIdVenta;
+        private RadioButton radioButtonFecha;
+        private RadioButton radioButtonID;
+        private TextBox nombreText;
+        private Label label3;
     }
 }

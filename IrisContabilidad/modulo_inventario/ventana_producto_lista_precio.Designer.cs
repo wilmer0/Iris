@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_inventario
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_inventario
 {
     partial class ventana_producto_lista_precio
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -285,22 +288,22 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox productoIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Label productoLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cedulaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rncColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn categoriaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Label label1;
+        private GroupBox groupBox2;
+        private TextBox productoIdText;
+        private Label label2;
+        private Button button4;
+        private DataGridView dataGridView1;
+        private Button button5;
+        private Label productoLabel;
+        private DataGridViewTextBoxColumn secuenciacolumn;
+        private DataGridViewTextBoxColumn cedulaColumn;
+        private DataGridViewTextBoxColumn rncColumn;
+        private DataGridViewTextBoxColumn categoriaColumn;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
+        private DataGridViewTextBoxColumn Column5;
+        private Label label1;
     }
 }

@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.clases_reportes;
@@ -13,8 +8,8 @@ using IrisContabilidad.clases_reportes_modelos;
 using IrisContabilidad.modelos;
 using IrisContabilidad.modulo_cuenta_por_pagar;
 using IrisContabilidad.modulo_sistema;
+using IrisContabilidad.ventanas_comunes;
 using Microsoft.Reporting.WinForms;
-using _7ADMFIC_1._0.VentanasComunes;
 
 namespace IrisContabilidad.modulo_cuenta_por_cobrar
 {
@@ -44,6 +39,12 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
         private List<venta_detalle> listaVentaDetalle;
 
 
+        //Proceso
+        private ventana_procesando procesando;
+        private BackgroundWorker SicronizarProceso = new BackgroundWorker();
+
+
+
         public ventana_estado_cuenta_cliente()
         {
             InitializeComponent();
@@ -52,7 +53,43 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             this.Text = tituloLabel.Text;
             loadVentana();
             loadListaVentaCobros();
+
+            SicronizarProceso.WorkerReportsProgress = true;
+            SicronizarProceso.DoWork += LoadReporte;
+            SicronizarProceso.ProgressChanged += ProcesoRun;
+            SicronizarProceso.RunWorkerCompleted += ProcesoCompleto;
         }
+
+        private void LoadReporte(object sender, DoWorkEventArgs e)
+        {
+            SicronizarProceso.ReportProgress(10);
+            try
+            {
+                reporteEncabezado = modeloReporte.getReporteEstadoCuentaEncabezado(cliente, empleado, fechaFinalDateTime);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error imprimiendo.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ProcesoRun(object sender, ProgressChangedEventArgs e)
+        {
+            if (procesando == null)
+            {
+                procesando = new ventana_procesando();
+                procesando.ShowDialog();
+            }
+        }
+
+        private void ProcesoCompleto(object sender, RunWorkerCompletedEventArgs e)
+        {
+            procesando.Close();
+            procesando = null;
+            loadLista();
+        }
+
         public void loadListaVentaCobros()
         {
             try
@@ -67,10 +104,12 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadListaVentaCobros.: " + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void loadVentana()
         {
             try
             {
+                fechaFinalDateTime=DateTime.Today;
                 if (reporteEncabezado != null)
                 {
                     //cargar
@@ -96,7 +135,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     clienteIdText.Text = "";
                     clienteLabel.Text = "";
 
-                    fechaFinalVentaText.Text = utilidades.getFechaddMMyyyy(DateTime.Today);
+                    //fechaFinalVentaText.Text = utilidades.getFechaddMMyyyy(DateTime.Today);
                     
                 }
                 dataGridView1.Rows.Clear();
@@ -107,6 +146,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadVentana.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void loadLista()
         {
             try
@@ -118,7 +158,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
 
                 reporteEncabezado.listaDetalle.ForEach(x =>
                 {
-                    dataGridView1.Rows.Add(x.idCliente,x.cliente, x.montoFacturado.ToString("N"), x.montoCobrado.ToString("N"), x.montoPendiente.ToString("N"));
+                    dataGridView1.Rows.Add(x.idCliente,x.cliente, x.montoFacturado.ToString("N"),x.montoNotasDebito.ToString("N"), x.montoCobrado.ToString("N"),x.montoNotasCredito.ToString("N"), x.montoPendiente.ToString("N"));
                 });
             }
             catch (Exception ex)
@@ -126,21 +166,22 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadLista.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public bool validarGetAcion()
         {
             try
             {
                 //incluir fecha venta
-                DateTime fecha;
-                if (DateTime.TryParse(fechaFinalVentaText.Text, out fecha) == false)
-                {
-                    fechaFinalVentaText.Focus();
-                    fechaFinalVentaText.SelectAll();
-                    MessageBox.Show("Error formato de fecha incorrecto");
-                    return false;
-                }
+                //DateTime fecha;
+                //if (DateTime.TryParse(fechaFinalVentaText.Text, out fecha) == false)
+                //{
+                //    fechaFinalVentaText.Focus();
+                //    fechaFinalVentaText.SelectAll();
+                //    MessageBox.Show("Error formato de fecha incorrecto");
+                //    return false;
+                //}
 
-                fechaFinalDateTime = Convert.ToDateTime(fechaFinalVentaText.Text);
+                //fechaFinalDateTime = Convert.ToDateTime(fechaFinalVentaText.Text);
 
                 return true;
             }
@@ -164,8 +205,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     return;
                 }
 
-                reporteEncabezado = modeloReporte.getReporteEstadoCuentaEncabezado(cliente, empleado,fechaFinalDateTime);
-                loadLista();
+                SicronizarProceso.RunWorkerAsync();
 
             }
             catch (Exception ex)
@@ -184,7 +224,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     return;
                 }
                 //datos generales
-                String reporte = "IrisContabilidad.reportes.reporte_estado_cuenta_cliente.rdlc";
+                String reporte = "IrisContabilidad.modulo_cuenta_por_cobrar.Reporte.reporte_estado_cuenta_cliente.rdlc";
                 List<ReportDataSource> listaReportDataSource = new List<ReportDataSource>();
 
 
@@ -209,6 +249,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadImprimir.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void loadCliente()
         {
             try
@@ -227,6 +268,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 MessageBox.Show("Error loadCliente.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        
         public void salir()
         {
             if (MessageBox.Show("Desea salir?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -234,6 +276,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 this.Close();
             }
         }
+        
         private void ventana_estado_cuenta_cliente_Load(object sender, EventArgs e)
         {
 
@@ -295,5 +338,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
             reporteEncabezado = null;
             loadVentana();
         }
+ 
     }
+
 }

@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_empresa
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_empresa
 {
     partial class ventana_ciudad
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -30,7 +33,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_ciudad));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.suplidorIdText = new System.Windows.Forms.TextBox();
+            this.ciudadIdText = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.nombreText = new System.Windows.Forms.TextBox();
@@ -69,7 +72,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.suplidorIdText);
+            this.groupBox1.Controls.Add(this.ciudadIdText);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Location = new System.Drawing.Point(16, 27);
@@ -78,14 +81,14 @@
             this.groupBox1.TabIndex = 63;
             this.groupBox1.TabStop = false;
             // 
-            // suplidorIdText
+            // ciudadIdText
             // 
-            this.suplidorIdText.BackColor = System.Drawing.Color.SkyBlue;
-            this.suplidorIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.suplidorIdText.Location = new System.Drawing.Point(138, 22);
-            this.suplidorIdText.Name = "suplidorIdText";
-            this.suplidorIdText.Size = new System.Drawing.Size(155, 26);
-            this.suplidorIdText.TabIndex = 18;
+            this.ciudadIdText.BackColor = System.Drawing.Color.SkyBlue;
+            this.ciudadIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ciudadIdText.Location = new System.Drawing.Point(138, 22);
+            this.ciudadIdText.Name = "ciudadIdText";
+            this.ciudadIdText.Size = new System.Drawing.Size(155, 26);
+            this.ciudadIdText.TabIndex = 18;
             // 
             // label2
             // 
@@ -93,9 +96,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(71, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 20);
+            this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Cudad";
+            this.label2.Text = "Ciudad";
             // 
             // button4
             // 
@@ -170,12 +173,12 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox suplidorIdText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button4;
-        public System.Windows.Forms.TextBox nombreText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox activoCheck;
+        private GroupBox groupBox1;
+        private TextBox ciudadIdText;
+        private Label label2;
+        private Button button4;
+        public TextBox nombreText;
+        private Label label3;
+        private CheckBox activoCheck;
     }
 }

@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
-using IrisContabilidad.modulo_empresa;
 using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_cuenta_por_pagar
@@ -44,13 +36,14 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
             {
                 if (tipoGasto != null)
                 {
+                    tipoGastoIdText.Text = tipoGasto.id.ToString();
                     nombreText.Text = tipoGasto.nombre;
                     activoCheck.Checked = Convert.ToBoolean(tipoGasto.activo);
                 }
                 else
                 {
                     nombreText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

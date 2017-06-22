@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
-using IrisContabilidad.modulo_cuenta_por_cobrar;
 using IrisContabilidad.modulo_cuenta_por_pagar;
 using IrisContabilidad.modulo_facturacion;
 using IrisContabilidad.modulo_sistema;
@@ -54,7 +46,7 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                     nombreText.Focus();
                     nombreText.SelectAll();
 
-
+                    clienteIdText.Text = cliente.codigo.ToString();
                     nombreText.Text = cliente.nombre;
                     cedulaText.Text = cliente.cedula;
                     rncText.Text = cliente.rnc;
@@ -507,6 +499,13 @@ namespace IrisContabilidad.modulo_cuenta_por_cobrar
                 telefono2Text.Focus();
                 telefono2Text.SelectAll();
             }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            ventana_categoria_cliente ventana=new ventana_categoria_cliente();
+            ventana.Owner = this;
+            ventana.ShowDialog();
         }
     }
 }

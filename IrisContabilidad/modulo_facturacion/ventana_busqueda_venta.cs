@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -35,13 +30,21 @@ namespace IrisContabilidad.modulo_facturacion
         private int fila = 0;
         int index = 0;
         string TipoVenta = "";
+        private int idCliente = 0;
 
-
-        public ventana_busqueda_venta()
+        public ventana_busqueda_venta(bool mantenimiento =false)
         {
             InitializeComponent();
             tituloLabel.Text = this.Text;
             this.mantenimiento = mantenimiento;
+            loadLista();
+        }
+        public ventana_busqueda_venta(int idcliente)
+        {
+            InitializeComponent();
+            tituloLabel.Text = this.Text;
+            this.mantenimiento = false;
+            this.idCliente = idcliente;
             loadLista();
         }
         public void loadLista()
@@ -53,6 +56,10 @@ namespace IrisContabilidad.modulo_facturacion
                 {
                     listaVenta = new List<venta>();
                     listaVenta = modeloVenta.getListaCompleta();
+                }
+                if (idCliente != 0)
+                {
+                    listaVenta = listaVenta.FindAll(x => x.codigo_cliente == idCliente).ToList();
                 }
                 //se limpia el grid si tiene datos
                 if (dataGridView1.Rows.Count > 0)
@@ -169,6 +176,10 @@ namespace IrisContabilidad.modulo_facturacion
 
                     listaVenta = new List<venta>();
                     listaVenta = modeloVenta.getListaCompleta();
+                    if (idCliente != 0)
+                    {
+                        listaVenta = listaVenta.FindAll(x => x.codigo_cliente == idCliente).ToList();
+                    }
                     //por id
                     if (radioButtonId.Checked == true)
                     {

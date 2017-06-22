@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_inventario
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_inventario
 {
     partial class ventana_producto
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -29,11 +32,12 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventana_producto));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
@@ -52,7 +56,6 @@
             this.almacenIdText = new System.Windows.Forms.TextBox();
             this.itebisText = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.itebisIdText = new System.Windows.Forms.TextBox();
             this.puntoReordenText = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -98,6 +101,7 @@
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barraColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.cantidadText = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -137,7 +141,6 @@
             this.idUnidadColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -198,6 +201,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.linkLabel5);
             this.tabPage1.Controls.Add(this.linkLabel4);
             this.tabPage1.Controls.Add(this.linkLabel3);
             this.tabPage1.Controls.Add(this.linkLabel2);
@@ -216,7 +220,6 @@
             this.tabPage1.Controls.Add(this.almacenIdText);
             this.tabPage1.Controls.Add(this.itebisText);
             this.tabPage1.Controls.Add(this.button7);
-            this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.itebisIdText);
             this.tabPage1.Controls.Add(this.puntoReordenText);
             this.tabPage1.Controls.Add(this.label7);
@@ -240,6 +243,19 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Producto";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel5
+            // 
+            this.linkLabel5.AutoSize = true;
+            this.linkLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel5.LinkColor = System.Drawing.Color.Black;
+            this.linkLabel5.Location = new System.Drawing.Point(108, 390);
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.Size = new System.Drawing.Size(44, 20);
+            this.linkLabel5.TabIndex = 74;
+            this.linkLabel5.TabStop = true;
+            this.linkLabel5.Text = "Itbis";
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
             // 
             // linkLabel4
             // 
@@ -449,16 +465,6 @@
             this.button7.TabIndex = 40;
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(108, 389);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 20);
-            this.label8.TabIndex = 39;
-            this.label8.Text = "Itbis";
             // 
             // itebisIdText
             // 
@@ -956,6 +962,17 @@
             this.tabPage4.Text = "Unidades";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(9, 4);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(870, 15);
+            this.label9.TabIndex = 70;
+            this.label9.Text = "Aqui se debe establecer el precio de venta más alto, es decir el precio de venta " +
+    "con mayor beneficio de ganancia para el primer precio";
+            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.cantidadText);
@@ -985,6 +1002,7 @@
             this.cantidadText.Name = "cantidadText";
             this.cantidadText.Size = new System.Drawing.Size(104, 26);
             this.cantidadText.TabIndex = 62;
+            this.cantidadText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cantidadText_KeyDown);
             this.cantidadText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cantidadText_KeyPress);
             // 
             // label18
@@ -1006,6 +1024,7 @@
             this.precioCostoText.Name = "precioCostoText";
             this.precioCostoText.Size = new System.Drawing.Size(104, 26);
             this.precioCostoText.TabIndex = 60;
+            this.precioCostoText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.precioCostoText_KeyDown);
             this.precioCostoText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.precioCostoText_KeyPress);
             // 
             // label17
@@ -1027,6 +1046,7 @@
             this.precioVentaText.Name = "precioVentaText";
             this.precioVentaText.Size = new System.Drawing.Size(104, 26);
             this.precioVentaText.TabIndex = 58;
+            this.precioVentaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.precioVentaText_KeyDown);
             this.precioVentaText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.precioVentaText_KeyPress);
             // 
             // label14
@@ -1080,6 +1100,8 @@
             this.unidadIdPrecioVentaText.Name = "unidadIdPrecioVentaText";
             this.unidadIdPrecioVentaText.Size = new System.Drawing.Size(183, 26);
             this.unidadIdPrecioVentaText.TabIndex = 53;
+            this.unidadIdPrecioVentaText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.unidadIdPrecioVentaText_KeyDown);
+            this.unidadIdPrecioVentaText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unidadIdPrecioVentaText_KeyPress);
             // 
             // button19
             // 
@@ -1149,8 +1171,8 @@
             // 
             // dataGridViewTextBoxColumn5
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewTextBoxColumn5.FillWeight = 70F;
             this.dataGridViewTextBoxColumn5.HeaderText = "Precio costo";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
@@ -1158,8 +1180,8 @@
             // 
             // precioVentaColumn
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.precioVentaColumn.DefaultCellStyle = dataGridViewCellStyle14;
             this.precioVentaColumn.FillWeight = 70F;
             this.precioVentaColumn.HeaderText = "Precio venta";
             this.precioVentaColumn.Name = "precioVentaColumn";
@@ -1254,7 +1276,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(668, 25);
+            this.label4.Location = new System.Drawing.Point(655, 25);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 20);
             this.label4.TabIndex = 61;
@@ -1378,23 +1400,12 @@
             // 
             // dataGridViewTextBoxColumn8
             // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
-            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopRight;
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn8.FillWeight = 30F;
             this.dataGridViewTextBoxColumn8.HeaderText = "Cantidad";
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(9, 4);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(735, 15);
-            this.label9.TabIndex = 70;
-            this.label9.Text = "Aqui se debe establecer el precio de venta más alto, es decir el precio de venta " +
-    "con mayor beneficio de ganancia.";
             // 
             // ventana_producto
             // 
@@ -1440,111 +1451,111 @@
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox productoIdText;
-        private System.Windows.Forms.TextBox referenciaText;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox productoText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox categoriaIdText;
-        private System.Windows.Forms.TextBox categoriaText;
-        private System.Windows.Forms.TextBox subCategoriaText;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.TextBox subcategoriaIdText;
-        private System.Windows.Forms.TextBox puntoReordenText;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox puntoMaximoText;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox itebisText;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox itebisIdText;
-        private System.Windows.Forms.TextBox almacenText;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.TextBox almacenIdText;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox rutaImagenText;
-        private System.Windows.Forms.TextBox unidadMinimaText;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.TextBox unidadMinimaIdText;
-        private System.Windows.Forms.Panel imagenProducto;
-        private System.Windows.Forms.CheckBox activoCheck;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
-        public System.Windows.Forms.TextBox permisoText;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn secuenciacolumn;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.TextBox unidadTextCodigoBarra;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox unidadIdCodigoBarraText;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox codigoBarraText;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn barraColumn;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox precioVentaText;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox unidadPrecioVentaText;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox unidadIdPrecioVentaText;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaColumn;
-        private System.Windows.Forms.TextBox precioCostoText;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox cantidadText;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.LinkLabel linkLabel4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.TextBox cantidadProduccionText;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox productoProduccionText;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox productoProduccionIdText;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProductoREquisitoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idUnidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.TextBox unidadProduccionText;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox unidadProduccionIdText;
-        private System.Windows.Forms.Label label9;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private GroupBox groupBox1;
+        private Button button4;
+        private Label label1;
+        private TextBox productoIdText;
+        private TextBox referenciaText;
+        private Label label3;
+        private TextBox productoText;
+        private Label label2;
+        private Button button5;
+        private TextBox categoriaIdText;
+        private TextBox categoriaText;
+        private TextBox subCategoriaText;
+        private Button button6;
+        private TextBox subcategoriaIdText;
+        private TextBox puntoReordenText;
+        private Label label7;
+        private TextBox puntoMaximoText;
+        private Label label6;
+        private TextBox itebisText;
+        private Button button7;
+        private TextBox itebisIdText;
+        private TextBox almacenText;
+        private Button button8;
+        private TextBox almacenIdText;
+        private Button button9;
+        private Label label10;
+        private TextBox rutaImagenText;
+        private TextBox unidadMinimaText;
+        private Button button10;
+        private TextBox unidadMinimaIdText;
+        private Panel imagenProducto;
+        private CheckBox activoCheck;
+        private GroupBox groupBox3;
+        private Button button14;
+        private Button button13;
+        public TextBox permisoText;
+        private TextBox textBox6;
+        private Label label15;
+        private Button button12;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn codigoColumn;
+        private DataGridViewTextBoxColumn secuenciacolumn;
+        private Button button15;
+        private TabPage tabPage3;
+        private GroupBox groupBox2;
+        private Button button11;
+        private Button button16;
+        private DataGridView dataGridView2;
+        private TextBox unidadTextCodigoBarra;
+        private Button button17;
+        private Label label12;
+        private TextBox unidadIdCodigoBarraText;
+        private Label label13;
+        private TextBox codigoBarraText;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn barraColumn;
+        private TabPage tabPage4;
+        private GroupBox groupBox4;
+        private TextBox precioVentaText;
+        private Label label14;
+        private TextBox unidadPrecioVentaText;
+        private Button button18;
+        private Label label16;
+        private TextBox unidadIdPrecioVentaText;
+        private Button button19;
+        private Button button20;
+        private DataGridView dataGridView3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn cantidadColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn precioVentaColumn;
+        private TextBox precioCostoText;
+        private Label label17;
+        private TextBox cantidadText;
+        private Label label18;
+        private LinkLabel linkLabel1;
+        private LinkLabel linkLabel2;
+        private LinkLabel linkLabel3;
+        private LinkLabel linkLabel4;
+        private TabPage tabPage5;
+        private GroupBox groupBox5;
+        private TextBox cantidadProduccionText;
+        private Label label4;
+        private TextBox productoProduccionText;
+        private Button button21;
+        private Label label11;
+        private TextBox productoProduccionIdText;
+        private Button button22;
+        private Button button23;
+        private DataGridView dataGridView4;
+        private DataGridViewTextBoxColumn idProductoREquisitoColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn idUnidadColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private TextBox unidadProduccionText;
+        private Button button24;
+        private Label label5;
+        private TextBox unidadProduccionIdText;
+        private Label label9;
+        private LinkLabel linkLabel5;
     }
 }

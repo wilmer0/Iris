@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IrisContabilidad.clases
 {
@@ -26,6 +22,7 @@ namespace IrisContabilidad.clases
         public string identificacion { get; set; }
         public string pasaporte { get; set; }
         public string foto { get; set; }
+        public int tipoVentana { get; set; }
 
     }
 }

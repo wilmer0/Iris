@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IrisContabilidad.clases
+﻿namespace IrisContabilidad.clases
 {
     public class cajero
     {
@@ -12,5 +6,6 @@ namespace IrisContabilidad.clases
         public int codigo_empleado { get; set; }
         public int codigo_caja { get; set; }
         public bool activo { get; set; }
+        public int tipoImpresionVenta { get; set; }
     }
 }

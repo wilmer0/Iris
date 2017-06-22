@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -44,13 +37,14 @@ namespace IrisContabilidad.modulo_empresa
             {
                 if (ciudad != null)
                 {
+                    ciudadIdText.Text = ciudad.codigo.ToString();
                     nombreText.Text = ciudad.nombre;
                     activoCheck.Checked = Convert.ToBoolean(ciudad.activo);
                 }
                 else
                 {
                     nombreText.Text = "";
-                    activoCheck.Checked = false;
+                    activoCheck.Checked = true;
                 }
             }
             catch (Exception ex)

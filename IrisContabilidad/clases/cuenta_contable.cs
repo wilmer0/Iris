@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IrisContabilidad.clases
+﻿namespace IrisContabilidad.clases
 {
     public class cuenta_contable
     {
@@ -17,5 +11,6 @@ namespace IrisContabilidad.clases
         public bool origen_credito { get; set; }
         public bool origen_debito { get; set; }
         public bool activo { get; set; }
+        public string origenCuentaS { get; set; }
     }
 }

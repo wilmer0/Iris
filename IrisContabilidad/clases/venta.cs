@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IrisContabilidad.clases
 {
@@ -15,6 +11,7 @@ namespace IrisContabilidad.clases
         public int codigo_empleado { get; set; }
         public int codigo_cliente { get; set; }
         public string ncf { get; set; }
+        public int codigo_tipo_venta { get; set; }
         public string tipo_venta { get; set; }
         public int codigo_sucursal { get; set; }
         public bool activo { get; set; }
@@ -27,6 +24,8 @@ namespace IrisContabilidad.clases
         public bool cuadrado { get; set; }
         public string detalle { get; set; }
         public int codigo_tipo_comprobante { get; set; }
+        public bool pedido { get; set; }
+        public decimal monto_impuesto { get; set; }
 
 
     }

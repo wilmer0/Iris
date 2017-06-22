@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_facturacion
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_facturacion
 {
     partial class ventana_seleccion_producto_unidad_precio
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -130,9 +133,9 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unidadColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioVentaColumn;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn ProductoColumn;
+        private DataGridViewTextBoxColumn unidadColumn;
+        private DataGridViewTextBoxColumn precioVentaColumn;
     }
 }

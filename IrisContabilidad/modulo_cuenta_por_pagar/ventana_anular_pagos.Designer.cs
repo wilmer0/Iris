@@ -1,11 +1,14 @@
-﻿namespace IrisContabilidad.modulo_cuenta_por_pagar
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace IrisContabilidad.modulo_cuenta_por_pagar
 {
     partial class ventana_anular_pagos
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -51,7 +54,7 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 609);
+            this.panel1.Location = new System.Drawing.Point(12, 523);
             this.panel1.Size = new System.Drawing.Size(919, 54);
             // 
             // button2
@@ -115,7 +118,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(914, 386);
+            this.dataGridView1.Size = new System.Drawing.Size(914, 297);
             this.dataGridView1.TabIndex = 109;
             this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
@@ -224,7 +227,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 675);
+            this.ClientSize = new System.Drawing.Size(943, 589);
             this.Controls.Add(this.motivoAnularText);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
@@ -251,19 +254,19 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox motivoAnularText;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox suplidorText;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox suplidorIdText;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPagoCOlumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmpleadoColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn meotodopagodetalle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoCompraColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn anularCobroColumn;
+        private TextBox motivoAnularText;
+        private Label label1;
+        private DataGridView dataGridView1;
+        private GroupBox groupBox1;
+        private Label label2;
+        private TextBox suplidorText;
+        private Button button5;
+        private TextBox suplidorIdText;
+        private DataGridViewTextBoxColumn idPagoCOlumn;
+        private DataGridViewTextBoxColumn fechaColumn;
+        private DataGridViewTextBoxColumn EmpleadoColumn;
+        private DataGridViewTextBoxColumn meotodopagodetalle;
+        private DataGridViewTextBoxColumn codigoCompraColumn;
+        private DataGridViewCheckBoxColumn anularCobroColumn;
     }
 }

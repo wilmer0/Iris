@@ -1,16 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using IrisContabilidad.modulo_facturacion;
-using IrisContabilidad.modulo_sistema;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
+using IrisContabilidad.modulo_sistema;
 
 namespace IrisContabilidad.modulo_facturacion
 {
@@ -96,7 +89,7 @@ namespace IrisContabilidad.modulo_facturacion
                 }
 
                 listaVentaDetalle=new List<venta_detalle>();
-                listaVentaDetalle = modeloVenta.getListaVentaDetalleByVenta(venta.codigo);
+                listaVentaDetalle = modeloVenta.getListaVentaDetalleByVentaId(venta.codigo);
 
                 listaVentaDetalle.ForEach(x =>
                 {
@@ -147,7 +140,7 @@ namespace IrisContabilidad.modulo_facturacion
                     return false;
                 }
                 //validar que exista un producto devuelto
-                if (dataGridView1.Rows.Count < 0)
+                if (dataGridView1.Rows.Count > 0)
                 {
                     bool existe = false;
                     foreach (DataGridViewRow row in dataGridView1.Rows)
@@ -163,6 +156,8 @@ namespace IrisContabilidad.modulo_facturacion
                         return false;
                     }
                 }
+
+
                 return true;
             }
             catch (Exception ex)

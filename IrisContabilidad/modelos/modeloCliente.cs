@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 
@@ -14,7 +11,7 @@ namespace IrisContabilidad.modelos
         //objetos
         utilidades utilidades = new utilidades();
 
-
+        string sqlGeneral="select codigo,nombre,limite_credito,cod_categoria,activo,fecha_creado,abrir_credito,cod_sucursal_creado,cliente_contado,telefono1,telefono2,cedula,rnc,cod_tipo_comprobante,direccion1,direccion2  from cliente where codigo>0 ";
 
 
 
@@ -120,7 +117,6 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
         //obtener el codigo siguiente
         public int getNext()
         {
@@ -147,7 +143,6 @@ namespace IrisContabilidad.modelos
                 return 0;
             }
         }
-
 
         //get objeto
         public cliente getClienteById(int id)
@@ -186,7 +181,40 @@ namespace IrisContabilidad.modelos
             }
         }
 
-
+        //get cliente by telefono
+        public cliente getClienteByTelefono(string telefono)
+        {
+            try
+            {
+                cliente cliente = new cliente();
+                string sql = sqlGeneral + " and telefono1 like '%"+telefono+"%' or telefono2 like '%"+telefono+"%'";
+                DataSet ds = utilidades.ejecutarcomando_mysql(sql);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    cliente.codigo = Convert.ToInt16(ds.Tables[0].Rows[0][0].ToString());
+                    cliente.nombre = ds.Tables[0].Rows[0][1].ToString();
+                    cliente.limite_credito = Convert.ToDecimal(ds.Tables[0].Rows[0][2].ToString());
+                    cliente.codigo_categoria = Convert.ToInt16(ds.Tables[0].Rows[0][3].ToString());
+                    cliente.activo = Convert.ToBoolean(ds.Tables[0].Rows[0][4]);
+                    cliente.fecha_creado = Convert.ToDateTime(ds.Tables[0].Rows[0][5].ToString());
+                    cliente.abrir_credito = Convert.ToBoolean(ds.Tables[0].Rows[0][6]);
+                    cliente.codigo_sucursal_creado = Convert.ToInt16(ds.Tables[0].Rows[0][7].ToString());
+                    cliente.cliente_contado = Convert.ToBoolean(ds.Tables[0].Rows[0][8]);
+                    cliente.telefono1 = ds.Tables[0].Rows[0][9].ToString();
+                    cliente.telefono2 = ds.Tables[0].Rows[0][10].ToString();
+                    cliente.cedula = ds.Tables[0].Rows[0][11].ToString();
+                    cliente.rnc = ds.Tables[0].Rows[0][12].ToString();
+                    cliente.codigo_tipo_comprobante_fiscal = Convert.ToInt16(ds.Tables[0].Rows[0][13].ToString());
+                }
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error getClienteByTelefono.:" + ex.ToString(), "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        
         //get lista completa
         public List<cliente> getListaCompleta(bool mantenimiento = false)
         {
@@ -236,6 +264,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get lista completa por nombre
         public List<cliente> getListaByNombre(string nombre)
         {
@@ -278,6 +307,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+        
         //get cliente by venta cobro
         public cliente getClienteByVentaCobro(int codigoCobro)
         {
@@ -315,5 +345,7 @@ namespace IrisContabilidad.modelos
                 return null;
             }
         }
+
+
     }
 }

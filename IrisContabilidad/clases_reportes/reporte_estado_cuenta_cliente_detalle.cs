@@ -1,13 +1,7 @@
-﻿using IrisContabilidad.clases;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using IrisContabilidad.modelos;
+﻿using System;
 using System.Windows.Forms;
-using MessageBox = System.Windows.Forms.MessageBox;
+using IrisContabilidad.clases;
+using IrisContabilidad.modelos;
 
 namespace IrisContabilidad.clases_reportes
 {
@@ -21,6 +15,9 @@ namespace IrisContabilidad.clases_reportes
         public decimal montoFacturado { get; set; }
         public decimal montoCobrado { get; set; }
         public decimal montoPendiente { get; set; }
+        public decimal montoNotasCredito { get; set; }
+        public decimal montoNotasDebito { get; set; }
+        
 
         public reporte_estado_cuenta_cliente_detalle()
         {
@@ -39,6 +36,8 @@ namespace IrisContabilidad.clases_reportes
                 this.montoFacturado = new modeloVenta().getMontoFacturadoByClienteId(cliente.codigo);
                 this.montoPendiente = new modeloVenta().getMontoPendienteByClienteId(cliente.codigo);
                 this.montoCobrado = new modeloVenta().getMontoCobradoByClienteId(cliente.codigo);
+                this.montoNotasCredito = new modeloVenta().getMontoNotasCreditoByClienteId(cliente.codigo);
+                this.montoNotasDebito = new modeloVenta().getMontoNotasDebitoByClienteId(cliente.codigo);
             }
             catch (Exception ex)
             {
