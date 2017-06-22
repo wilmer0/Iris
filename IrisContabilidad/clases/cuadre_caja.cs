@@ -24,7 +24,6 @@ namespace IrisContabilidad.clases
         public List<cuadre_caja_transacciones> cuadreCajaTransacciones { get; set; }
 
 
-
         public cuadre_caja()
         {
             
@@ -513,5 +512,6 @@ namespace IrisContabilidad.clases
                 return null;
             }
         }
+    
     }
 }

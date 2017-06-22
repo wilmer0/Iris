@@ -19,12 +19,12 @@ namespace IrisContabilidad.modulo_facturacion
         private cuadre_caja cuadreCaja;
         
 
-
         //modelos
         modeloCajero modeloCajero = new modeloCajero();
         modeloEmpleado modeloEmpelado = new modeloEmpleado();
         ModeloReporte modeloReporte=new ModeloReporte();
         modeloCuadreCaja modeloCuadreCaja=new modeloCuadreCaja();
+
 
         //variables
         private DateTime fechaCierre;
@@ -34,7 +34,6 @@ namespace IrisContabilidad.modulo_facturacion
         //Proceso
         private ventana_procesando procesando;
         private BackgroundWorker SincronizarProceso = new BackgroundWorker();
-
 
 
         public ventana_imprimir_cuadre_caja_rd()
@@ -102,9 +101,14 @@ namespace IrisContabilidad.modulo_facturacion
             {
                 cajeroIdText.Focus();
                 cajeroIdText.SelectAll();
-
-
+                
+                loadCajero();
+                
                 fechaCierreDateTime.Text = utilidades.getFechaddMMyyyy(DateTime.Today);
+                
+                radioButtonGeneral.Checked = true;
+                radioButtonDetallado.Checked = false;
+            
             }
             catch (Exception ex)
             {
@@ -329,5 +333,7 @@ namespace IrisContabilidad.modulo_facturacion
             {
             }
         }
+
+
     }
 }
