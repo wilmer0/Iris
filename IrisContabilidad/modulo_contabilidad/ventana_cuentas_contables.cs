@@ -614,5 +614,9 @@ namespace IrisContabilidad.modulo_contabilidad
                     MessageBoxIcon.Error);
             }    
         }
+
+
+
+
     }
 }
