@@ -98,7 +98,7 @@ namespace IrisContabilidad.modulo_contabilidad
             // 
             this.cuentaIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.cuentaIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuentaIdText.Location = new System.Drawing.Point(133, 23);
+            this.cuentaIdText.Location = new System.Drawing.Point(151, 23);
             this.cuentaIdText.Name = "cuentaIdText";
             this.cuentaIdText.Size = new System.Drawing.Size(183, 26);
             this.cuentaIdText.TabIndex = 118;
@@ -109,7 +109,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.button7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button7.BackgroundImage")));
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(322, 19);
+            this.button7.Location = new System.Drawing.Point(340, 19);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(47, 37);
             this.button7.TabIndex = 119;
@@ -129,7 +129,7 @@ namespace IrisContabilidad.modulo_contabilidad
             // numeroCuentaText
             // 
             this.numeroCuentaText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numeroCuentaText.Location = new System.Drawing.Point(133, 123);
+            this.numeroCuentaText.Location = new System.Drawing.Point(151, 123);
             this.numeroCuentaText.MaxLength = 19;
             this.numeroCuentaText.Name = "numeroCuentaText";
             this.numeroCuentaText.Size = new System.Drawing.Size(253, 26);
@@ -159,7 +159,7 @@ namespace IrisContabilidad.modulo_contabilidad
             // nombreText
             // 
             this.nombreText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombreText.Location = new System.Drawing.Point(133, 74);
+            this.nombreText.Location = new System.Drawing.Point(151, 74);
             this.nombreText.MaxLength = 150;
             this.nombreText.Name = "nombreText";
             this.nombreText.Size = new System.Drawing.Size(253, 26);
@@ -170,7 +170,7 @@ namespace IrisContabilidad.modulo_contabilidad
             // 
             this.cuentaPadreIdText.BackColor = System.Drawing.Color.SkyBlue;
             this.cuentaPadreIdText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuentaPadreIdText.Location = new System.Drawing.Point(133, 175);
+            this.cuentaPadreIdText.Location = new System.Drawing.Point(151, 175);
             this.cuentaPadreIdText.Name = "cuentaPadreIdText";
             this.cuentaPadreIdText.Size = new System.Drawing.Size(183, 26);
             this.cuentaPadreIdText.TabIndex = 126;
@@ -181,7 +181,7 @@ namespace IrisContabilidad.modulo_contabilidad
             this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(322, 171);
+            this.button6.Location = new System.Drawing.Point(340, 171);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(47, 37);
             this.button6.TabIndex = 127;
@@ -201,7 +201,7 @@ namespace IrisContabilidad.modulo_contabilidad
             // cuentaPadreText
             // 
             this.cuentaPadreText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cuentaPadreText.Location = new System.Drawing.Point(133, 214);
+            this.cuentaPadreText.Location = new System.Drawing.Point(151, 214);
             this.cuentaPadreText.MaxLength = 19;
             this.cuentaPadreText.Name = "cuentaPadreText";
             this.cuentaPadreText.Size = new System.Drawing.Size(253, 26);
