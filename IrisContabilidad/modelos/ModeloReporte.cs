@@ -134,13 +134,13 @@ namespace IrisContabilidad.modelos
                 {
                     //hoja normal
                     //reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_completa_rd.rdlc";
-                    if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                    if (sistemaConfiguracion.codigoIdiomaSistema == 1)
                     {
                         //rd
                         reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_completa_rd.rdlc";
                     
                     }
-                    else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                    else if (sistemaConfiguracion.codigoIdiomaSistema == 2)
                     {
                         //usa
                         reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_completa_usa.rdlc";
@@ -150,12 +150,12 @@ namespace IrisContabilidad.modelos
                 else if (cajero.tipoImpresionVenta == 2)
                 {
                     //hoja rollo de 3 pulgadas"
-                    if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                    if (sistemaConfiguracion.codigoIdiomaSistema == 1)
                     {
                         //rd
                         reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_rollo_rd.rdlc";
                     }
-                    else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                    else if (sistemaConfiguracion.codigoIdiomaSistema == 2)
                     {
                         //usa
                         reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_venta_hoja_rollo_usa.rdlc";
@@ -714,13 +714,14 @@ namespace IrisContabilidad.modelos
 
                 //llenar encabezado
                 reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
-                if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                if (sistemaConfiguracion.codigoIdiomaSistema == 1)
                 {
                     //rd
                     reporteEncabezado.fecha = utilidades.getFecha_dd_MM_yyyy(cuadreCaja.fecha_cierre_cuadre);
                     reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_general_rd.rdlc";
 
-                }else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                }
+                else if (sistemaConfiguracion.codigoIdiomaSistema == 2)
                 {
                     //usa
                     reporteEncabezado.fecha = utilidades.getFecha_MM_dd_yyyy(cuadreCaja.fecha_cierre_cuadre);
@@ -777,13 +778,13 @@ namespace IrisContabilidad.modelos
 
                 //llenar encabezado
                 reporte_encabezado_general reporteEncabezado = new reporte_encabezado_general(empleadoSesion);
-                if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                if (sistemaConfiguracion.codigoIdiomaSistema == 1)
                 {
                     //rd
                     reporteEncabezado.fecha = utilidades.getFecha_dd_MM_yyyy(cuadreCaja.fecha_cierre_cuadre);
                     reporte = "IrisContabilidad.modulo_facturacion.Reporte.reporte_cuadre_caja_detallado_rd.rdlc";
                 }
-                else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                else if (sistemaConfiguracion.codigoIdiomaSistema == 2)
                 {
                     //usa
                     reporteEncabezado.fecha = utilidades.getFecha_MM_dd_yyyy(cuadreCaja.fecha_cierre_cuadre);
@@ -842,12 +843,12 @@ namespace IrisContabilidad.modelos
 
                 //llenando el encabezado
                 reporteEncabezado.empleadoImpresion = empleado.nombre;
-                if (sistemaConfiguracion.tipoVentanaCuadreCaja == 1)
+                if (sistemaConfiguracion.codigoIdiomaSistema == 1)
                 {
                     //rd
                     reporteEncabezado.fecha_impresion = utilidades.getFecha_MM_dd_yyyy_hh_mm_ss_tt(DateTime.Now);
                 }
-                else if (sistemaConfiguracion.tipoVentanaCuadreCaja == 2)
+                else if (sistemaConfiguracion.codigoIdiomaSistema == 2)
                 {
                     //usa
                     reporteEncabezado.fecha_impresion = utilidades.getFecha_MM_dd_yyyy_hh_mm_ss_tt(DateTime.Now);
@@ -959,11 +960,12 @@ namespace IrisContabilidad.modelos
 
                 //llenando el encabezado
                 reporteEncabezado.empleadoImpresion = empleado.nombre;
-                if (sistema.tipoVentanaCuadreCaja == 1)
+                if (sistema.codigoIdiomaSistema == 1)
                 {
                     //rd
                     reporteEncabezado.fecha_impresion = utilidades.getFecha_dd_MM_yyyy_hh_mm_ss_tt(DateTime.Now);
-                }else if (sistema.tipoVentanaCuadreCaja == 2)
+                }
+                else if (sistema.codigoIdiomaSistema == 2)
                 {
                     //usa
                     reporteEncabezado.fecha_impresion = utilidades.getFecha_MM_dd_yyyy_hh_mm_ss_tt(DateTime.Now);

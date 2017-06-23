@@ -23,11 +23,13 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private compra_vs_pagos_detalles compraPagoDetalle;
         private suplidor suplidor;
 
+
         //modelos
         private modeloCompra modeloCompra = new modeloCompra();
         private modeloSuplidor modeloSuplidor=new modeloSuplidor();
         private modeloEmpleado modeloEmpleado=new modeloEmpleado();
         private ModeloReporte modeloReporte=new ModeloReporte();
+
 
         //variables
         bool existe = false;//para saber si existe la unidad actual y el codigo de barra
@@ -36,11 +38,13 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
         private decimal totalDescontado = 0;
         private string metodoPago = "";
 
+
         //listas
         private List<compra_vs_pagos> listaCompraPago;
         private List<compra_vs_pagos_detalles> listaCompraPagoDetalle;
         private List<compra> listaCompra;
         private List<compra_detalle> listaCompraDetalle; 
+
 
         //variables
         private decimal cantidad_monto = 0;
@@ -393,7 +397,6 @@ namespace IrisContabilidad.modulo_cuenta_por_pagar
                     {
                         modeloCompra.setCompraPagada(x.codigo);
                     }
-                    
                 }
                 calcularTotal();
             }

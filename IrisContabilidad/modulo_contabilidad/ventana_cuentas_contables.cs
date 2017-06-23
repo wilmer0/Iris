@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using IrisContabilidad.clases;
 using IrisContabilidad.modelos;
@@ -19,6 +20,8 @@ namespace IrisContabilidad.modulo_contabilidad
         //modelos
         modeloEmpleado modeloEmpleado = new modeloEmpleado();
         modeloCuentaContable modeloCuentaContable=new modeloCuentaContable();
+        modeloSistemaConfiguracion modeloSistema=new modeloSistemaConfiguracion();
+
 
         //listas
         private List<cuenta_contable> listaCuentacontable; 
@@ -27,11 +30,14 @@ namespace IrisContabilidad.modulo_contabilidad
         {
             InitializeComponent();
             empleado = singleton.getEmpleado();
+            singleton.obtenerDatos();
             this.tituloLabel.Text = utilidades.GetTituloVentana(empleado, "ventana cuentas contables");
             this.Text = tituloLabel.Text;
             loadVentana(); 
             loadListaCuentascontables();
+            traducirContenido();
         }
+
         public void loadVentana()
         {
             try
@@ -541,5 +547,77 @@ namespace IrisContabilidad.modulo_contabilidad
             string mensajeAyuda = "Si selecciona una de las cuentas contables de la lista inferior no modificara dicha cuenta, mas bien se utiliza como guia para crear más cuentas contables usando la cuenta seleccionada.";
             this.mensajeAyuda(mensajeAyuda);
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Desea cargar un catalogo de cuentas desde un archivo de excel", "", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (DialogResult.No == MessageBox.Show("Desea cargar un catalogo de cuentas desde un archivo de excel", "",MessageBoxButtons.YesNo,MessageBoxIcon.Question))
+            {
+                return;
+            }
+
+            //la respuesta fue si
+
+
+
+
+        }
+
+        public void traducirContenido()
+        {
+            try
+            {
+                singleton.sistema = modeloSistema.getSistemaConfiguracion();
+                if (singleton.sistema.codigoIdiomaSistema == 1)
+                {
+                    //es
+                    cuenta_label.Text = idiomas.Es_do.cuenta;
+                    nombre_label.Text = idiomas.Es_do.nombre;
+                    numeroCuentaLabel.Text = idiomas.Es_do.noCuenta;
+                    cuentaPadreLabel.Text = idiomas.Es_do.cuentaPadre;
+                    radioCuentaAcumulativa.Text = idiomas.Es_do.cuentaAcumulativa;
+                    radioCuentaMovimiento.Text = idiomas.Es_do.cuentaMovimiento;
+                    radioOrigenDebito.Text = idiomas.Es_do.origenDebito;
+                    radioOrigenCredito.Text = idiomas.Es_do.origenCredito;
+                    activoCheck.Text = idiomas.Es_do.activo;
+
+                    idColumn.HeaderText = idiomas.Es_do.id;
+                    numeroCuentaColumn.HeaderText = idiomas.Es_do.numeroCuenta;
+                    nombreColumn.HeaderText = idiomas.Es_do.nombre;
+                    idCuentaPadreColumn.HeaderText = idiomas.Es_do.id;
+                    cuentaPadreColumn.HeaderText = idiomas.Es_do.cuentaPadre;
+                    numeroCuentaPadreColumn.HeaderText = idiomas.Es_do.numeroCuenta;
+
+                }else if (singleton.sistema.codigoIdiomaSistema == 2)
+                {
+                    //usa
+                    cuenta_label.Text = idiomas.En_us.cuenta;
+                    nombre_label.Text = idiomas.En_us.nombre;
+                    numeroCuentaLabel.Text = idiomas.En_us.noCuenta;
+                    cuentaPadreLabel.Text = idiomas.En_us.cuentaPadre;
+                    radioCuentaAcumulativa.Text = idiomas.En_us.cuentaAcumulativa;
+                    radioCuentaMovimiento.Text = idiomas.En_us.cuentaMovimiento;
+                    radioOrigenDebito.Text = idiomas.En_us.origenDebito;
+                    radioOrigenCredito.Text = idiomas.En_us.origenCredito;
+                    activoCheck.Text = idiomas.En_us.activo;
+
+                    idColumn.HeaderText = idiomas.En_us.id;
+                    numeroCuentaColumn.HeaderText = idiomas.En_us.numeroCuenta;
+                    nombreColumn.HeaderText = idiomas.En_us.nombre;
+                    idCuentaPadreColumn.HeaderText = idiomas.En_us.id;
+                    cuentaPadreColumn.HeaderText = idiomas.En_us.cuentaPadre;
+                    numeroCuentaPadreColumn.HeaderText = idiomas.En_us.numeroCuenta;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error traducir contenido.: " + ex.ToString(), "", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }    
+        }
+
+
+
+
     }
 }

@@ -130,7 +130,7 @@ namespace IrisContabilidad.modulo_facturacion
             this.radioButtonGeneral.AutoSize = true;
             this.radioButtonGeneral.Checked = true;
             this.radioButtonGeneral.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonGeneral.Location = new System.Drawing.Point(149, 243);
+            this.radioButtonGeneral.Location = new System.Drawing.Point(158, 243);
             this.radioButtonGeneral.Name = "radioButtonGeneral";
             this.radioButtonGeneral.Size = new System.Drawing.Size(84, 21);
             this.radioButtonGeneral.TabIndex = 85;
@@ -143,7 +143,7 @@ namespace IrisContabilidad.modulo_facturacion
             // 
             this.radioButtonDetallado.AutoSize = true;
             this.radioButtonDetallado.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonDetallado.Location = new System.Drawing.Point(310, 243);
+            this.radioButtonDetallado.Location = new System.Drawing.Point(322, 243);
             this.radioButtonDetallado.Name = "radioButtonDetallado";
             this.radioButtonDetallado.Size = new System.Drawing.Size(95, 21);
             this.radioButtonDetallado.TabIndex = 86;
